@@ -1,0 +1,14 @@
+2024-03-14 00:20:44.487 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-14 00:20:45.348 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-14 00:20:45.350 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-14 00:20:45.353 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-14 00:20:45.354 +07:00 [INF] Hosting environment: Development
+2024-03-14 00:20:45.355 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-14 00:20:51.200 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-14 00:20:52.435 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 984.6037 ms
+2024-03-14 00:20:52.447 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-14 00:20:52.835 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 1640.8505ms
+2024-03-14 00:20:52.861 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 413.5876ms
+2024-03-14 00:20:53.009 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-14 00:20:53.589 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 306.9842 ms
+2024-03-14 00:20:53.614 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 604.6627ms

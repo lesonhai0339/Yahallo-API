@@ -1,0 +1,17 @@
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\bin\Debug\net7.0\YAHALLO.Application.deps.json
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\bin\Debug\net7.0\YAHALLO.Application.dll
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\bin\Debug\net7.0\YAHALLO.Application.pdb
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\bin\Debug\net7.0\YAHALLO.Domain.dll
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\bin\Debug\net7.0\YAHALLO.Infrastructure.dll
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\bin\Debug\net7.0\YAHALLO.Domain.pdb
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\bin\Debug\net7.0\YAHALLO.Infrastructure.pdb
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\YAHALLO.Application.csproj.AssemblyReference.cache
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\YAHALLO.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\YAHALLO.Application.AssemblyInfoInputs.cache
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\YAHALLO.Application.AssemblyInfo.cs
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\YAHALLO.Application.csproj.CoreCompileInputs.cache
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\YAHALLO.Application.csproj.CopyComplete
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\YAHALLO.Application.dll
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\refint\YAHALLO.Application.dll
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\YAHALLO.Application.pdb
+D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\obj\Debug\net7.0\ref\YAHALLO.Application.dll
