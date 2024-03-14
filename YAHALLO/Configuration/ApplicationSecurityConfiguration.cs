@@ -33,9 +33,9 @@ namespace YAHALLO.Configuration
                         ValidateIssuer = false,
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
-                        ValidIssuer = configuration.GetSection("Security.Bearer:Authority").Get<string>(),
-                        ValidAudience = configuration.GetSection("Security.Bearer:Audience").Get<string>(),
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YahalloMangaAPI")),
+                        ValidIssuer = configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
+                        ValidAudience = configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!)),
                     };
                 });
 

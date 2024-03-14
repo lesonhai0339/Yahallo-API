@@ -12,3 +12,342 @@
 2024-03-14 00:20:53.009 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
 2024-03-14 00:20:53.589 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 306.9842 ms
 2024-03-14 00:20:53.614 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 604.6627ms
+2024-03-14 14:29:26.301 +07:00 [INF] Executed DbCommand (261ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Yahallo];
+2024-03-14 14:29:26.458 +07:00 [INF] Executed DbCommand (106ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Yahallo] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2024-03-14 14:29:26.489 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-14 14:29:26.583 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2024-03-14 14:29:26.585 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-14 14:29:26.606 +07:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-14 14:29:26.622 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-14 14:29:26.642 +07:00 [INF] Applying migration '20240314072844_v1'.
+2024-03-14 14:29:26.875 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Artist] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Artist] PRIMARY KEY ([Id])
+);
+2024-03-14 14:29:26.877 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Author] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Author] PRIMARY KEY ([Id])
+);
+2024-03-14 14:29:26.880 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaSeason] (
+    [Id] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaSeason] PRIMARY KEY ([Id])
+);
+2024-03-14 14:29:26.883 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Roles] (
+    [Id] nvarchar(450) NOT NULL,
+    [RoleCode] int NOT NULL,
+    [RoleName] nvarchar(450) NOT NULL,
+    [RoleDescription] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+2024-03-14 14:29:26.885 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [Id] nvarchar(450) NOT NULL,
+    [DisplayName] nvarchar(max) NULL,
+    [FirstName] nvarchar(200) NULL,
+    [LastName] nvarchar(200) NULL,
+    [Email] nvarchar(450) NOT NULL,
+    [PhoneNumber] varchar(max) NULL,
+    [EmailConfirm] bit NOT NULL,
+    [PhoneConfirmed] bit NOT NULL,
+    [UserName] nvarchar(max) NOT NULL,
+    [Password] nvarchar(max) NOT NULL,
+    [Status] int NOT NULL,
+    [Level] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+);
+2024-03-14 14:29:26.888 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Manga] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Level] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [Countries] int NOT NULL,
+    [Season] int NOT NULL,
+    [MangaSeasonId] nvarchar(450) NULL,
+    [UserId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Manga] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Manga_MangaSeason_MangaSeasonId] FOREIGN KEY ([MangaSeasonId]) REFERENCES [MangaSeason] ([Id]),
+    CONSTRAINT [FK_Manga_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id])
+);
+2024-03-14 14:29:26.894 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserRole] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    [Id] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserRole] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_UserRole_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_UserRole_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:26.910 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserToken] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessToken] nvarchar(max) NULL,
+    [RefeshToken] nvarchar(max) NULL,
+    [ExpiredRefeshToken] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserToken] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserToken_Users_Id] FOREIGN KEY ([Id]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:26.914 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AssociateName] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_AssociateName] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AssociateName_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:26.917 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Chapter] (
+    [Id] nvarchar(450) NOT NULL,
+    [Title] nvarchar(255) NULL,
+    [Index] int NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Chapter] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Chapter_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:26.921 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Follow] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Follow] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Follow_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Follow_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:26.924 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaArtist] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [ArtistId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaArtist] PRIMARY KEY ([MangaId], [ArtistId]),
+    CONSTRAINT [FK_MangaArtist_Artist_ArtistId] FOREIGN KEY ([ArtistId]) REFERENCES [Artist] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaArtist_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:26.928 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaAuthor] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [AuthorId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaAuthor] PRIMARY KEY ([MangaId], [AuthorId]),
+    CONSTRAINT [FK_MangaAuthor_Author_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Author] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaAuthor_Manga_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:27.996 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaView] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [View] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaView] PRIMARY KEY ([MangaId]),
+    CONSTRAINT [FK_MangaView_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:28.001 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Rating] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [Rating] int NOT NULL,
+    [Id] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Rating] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Rating_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Rating_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:28.005 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Data] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [UserReplyId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserReplyId] FOREIGN KEY ([UserReplyId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:28.008 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Image] (
+    [Id] nvarchar(450) NOT NULL,
+    [Index] int NOT NULL,
+    [Url] nvarchar(max) NOT NULL,
+    [TypeImage] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Image] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Image_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-14 14:29:28.013 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AssociateName_MangaId] ON [AssociateName] ([MangaId]);
+2024-03-14 14:29:28.014 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Chapter_MangaId] ON [Chapter] ([MangaId]);
+2024-03-14 14:29:29.055 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_ChapterId] ON [Comment] ([ChapterId]);
+2024-03-14 14:29:29.056 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_MangaId] ON [Comment] ([MangaId]);
+2024-03-14 14:29:29.058 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserId] ON [Comment] ([UserId]);
+2024-03-14 14:29:29.059 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserReplyId] ON [Comment] ([UserReplyId]);
+2024-03-14 14:29:29.062 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Follow_MangaId] ON [Follow] ([MangaId]);
+2024-03-14 14:29:29.063 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Image_ChapterId] ON [Image] ([ChapterId]);
+2024-03-14 14:29:29.068 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_MangaId] ON [Image] ([MangaId]) WHERE [MangaId] IS NOT NULL;
+2024-03-14 14:29:29.070 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_UserId] ON [Image] ([UserId]) WHERE [UserId] IS NOT NULL;
+2024-03-14 14:29:29.071 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_Id] ON [Manga] ([Id]);
+2024-03-14 14:29:29.073 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_MangaSeasonId] ON [Manga] ([MangaSeasonId]);
+2024-03-14 14:29:29.074 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_UserId] ON [Manga] ([UserId]);
+2024-03-14 14:29:29.076 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaArtist_ArtistId] ON [MangaArtist] ([ArtistId]);
+2024-03-14 14:29:29.077 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaAuthor_AuthorId] ON [MangaAuthor] ([AuthorId]);
+2024-03-14 14:29:29.078 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Rating_MangaId] ON [Rating] ([MangaId]);
+2024-03-14 14:29:29.080 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Roles_Id] ON [Roles] ([Id]);
+2024-03-14 14:29:29.081 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_RoleId] ON [UserRole] ([RoleId]);
+2024-03-14 14:29:29.083 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_UserId] ON [UserRole] ([UserId]);
+2024-03-14 14:29:29.084 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_Email] ON [Users] ([Email]);
+2024-03-14 14:29:29.092 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240314072844_v1', N'7.0.0');

@@ -30,6 +30,7 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<UserEntity>? UserEntities { get; set; }
         public DbSet<MangaArtistEntity> MangaArtistEntities { get; set; }
         public DbSet<MangaAuthorEntity> MangaAuthorEntities { get; set; }
+        public DbSet<UserTokenEntity> UserTokens { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -49,6 +50,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new MangaArtistConfiguration());
             modelBuilder.ApplyConfiguration(new MangaAuthorConfiguration());
+            modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
         }
     }
 }

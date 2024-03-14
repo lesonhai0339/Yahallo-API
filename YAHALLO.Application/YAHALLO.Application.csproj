@@ -26,7 +26,6 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Commands\" />
 	  <Folder Include="Queries\" />
 	</ItemGroup>
 </Project>

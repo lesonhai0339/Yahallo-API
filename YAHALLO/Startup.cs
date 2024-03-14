@@ -1,5 +1,6 @@
 ﻿using Serilog;
 using YAHALLO.Application;
+using YAHALLO.Application.Services.MailService;
 using YAHALLO.Configuration;
 using YAHALLO.Filters;
 using YAHALLO.Infrastructure;
@@ -28,6 +29,7 @@ namespace YAHALLO
             services.ConfigureApiVersioning();
             services.Infrastructure(Configuration);
             services.ConfigureSwagger(Configuration);
+            services.AddEmailService(Configuration);
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -61,7 +63,6 @@ namespace YAHALLO
                 endpoints.MapControllers();
             });
             app.UseSwashbuckle(Configuration);
-
         }
     }
 }

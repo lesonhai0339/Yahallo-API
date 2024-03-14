@@ -735,6 +735,43 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.ToTable("UserRole", (string)null);
                 });
 
+            modelBuilder.Entity("YAHALLO.Domain.Entities.UserTokenEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ExpiredRefeshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserDelete")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserUpdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefeshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserToken", (string)null);
+                });
+
             modelBuilder.Entity("YAHALLO.Domain.Entities.ChapterEntity", b =>
                 {
                     b.HasOne("YAHALLO.Domain.Entities.MangaEntity", "MangaEntity")
@@ -935,6 +972,17 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Navigation("UserEntity");
                 });
 
+            modelBuilder.Entity("YAHALLO.Domain.Entities.UserTokenEntity", b =>
+                {
+                    b.HasOne("YAHALLO.Domain.Entities.UserEntity", "UserEntity")
+                        .WithOne("UserToken")
+                        .HasForeignKey("YAHALLO.Domain.Entities.UserTokenEntity", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("UserEntity");
+                });
+
             modelBuilder.Entity("YAHALLO.Domain.Entities.ArtistEntity", b =>
                 {
                     b.Navigation("ArtistEntities");
@@ -998,6 +1046,8 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Navigation("ReplyComment");
 
                     b.Navigation("UserRoleEntities");
+
+                    b.Navigation("UserToken");
                 });
 #pragma warning restore 612, 618
         }

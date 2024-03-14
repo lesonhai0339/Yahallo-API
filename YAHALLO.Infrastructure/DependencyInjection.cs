@@ -44,6 +44,7 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IMangaRatingRepository, MangaRatingRepository>(); 
             services.AddTransient<IMangaSeasonRepository, MangaSeasonRepository>();
             services.AddTransient<IMangaViewRepository, MangaViewRepository>();
+            services.AddTransient<IUserTokenRepository, UserTokenRepository>();
             return services;
         }
     }
