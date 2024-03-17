@@ -51,6 +51,16 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new MangaArtistConfiguration());
             modelBuilder.ApplyConfiguration(new MangaAuthorConfiguration());
             modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
+            //CreateData(modelBuilder);
+        }
+        protected void CreateData(ModelBuilder builder)
+        {
+            builder.Entity<RoleEntity>().HasData(
+                new RoleEntity { RoleCode = 1, RoleName = "Admin", RoleDescription = "Only Admin has this Role" },
+                new RoleEntity { RoleCode = 2, RoleName = "User", RoleDescription = "Normal User or New User has this Role" },
+                new RoleEntity { RoleCode = 3, RoleName = "Mod", RoleDescription = "Role for Moderator" },
+                new RoleEntity { RoleCode = 4, RoleName = "Upload", RoleDescription = "If User has this role then User can use Create, Update, Delete Manga" }
+                );
         }
     }
 }

@@ -16,10 +16,15 @@ namespace YAHALLO.Application.Commands.Create
     {
         private readonly IUserRepository _userRepository;
         private readonly ICurrentUserService _currentUser;
-        public CreateUserCommandHandler(IUserRepository userRepository, ICurrentUserService currentUser)
+        private readonly IUserRoleRepository _userRoleRepository;
+        public CreateUserCommandHandler(
+            IUserRepository userRepository, 
+            ICurrentUserService currentUser,
+            IUserRoleRepository userRole)
         {
             _userRepository = userRepository;
             _currentUser = currentUser;
+            _userRoleRepository = userRole;
         }   
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
@@ -30,6 +35,7 @@ namespace YAHALLO.Application.Commands.Create
             }
             var User = new UserEntity
             {
+                DisplayName= (request.FirstName +" "+ request.LastName).ToString(),
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Email = request.Email,
@@ -42,6 +48,8 @@ namespace YAHALLO.Application.Commands.Create
                 Level = UserLevel.One
             };
             _userRepository.Add(User);
+            var userRole= new UserRoleEntity { UserId = User.Id , RoleId = "1"};
+            _userRoleRepository.Add(userRole);
             var result= await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result > 0)
             {

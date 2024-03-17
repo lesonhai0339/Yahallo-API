@@ -7,7 +7,7 @@ using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Functions
 {
-    public static class Math
+    public static class Maths
     {
         public static double AverageRating(IEnumerable<MangaRatingEntity> Ratings)
         {

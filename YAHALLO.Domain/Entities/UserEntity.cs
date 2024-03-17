@@ -10,6 +10,24 @@ namespace YAHALLO.Domain.Entities
 {
     public class UserEntity: BaseEntity
     {
+        public UserEntity() { }
+        public UserEntity(
+            string? displayname,
+            string? firstname,
+            string? lastname,
+            string email,
+            string? phone,
+            string username,
+            string password)
+        {
+            DisplayName = displayname;
+            FirstName = firstname; 
+            LastName = lastname;
+            Email = email;
+            PhoneNumber = phone;
+            UserName = username;
+            Password = password;
+        }
         public string? DisplayName { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

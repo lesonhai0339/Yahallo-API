@@ -1,0 +1,42 @@
+2024-03-15 00:24:15.631 +07:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-15 00:24:15.740 +07:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-15 00:24:15.745 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-15 00:24:15.747 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-15 00:24:15.819 +07:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-15 00:24:15.847 +07:00 [INF] Applying migration '20240314172402_v2'.
+2024-03-15 00:24:16.092 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240314172402_v2', N'7.0.0');
+2024-03-15 00:25:31.871 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-15 00:25:31.945 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-15 00:25:31.948 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-15 00:25:31.949 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-15 00:25:31.980 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-15 00:25:32.003 +07:00 [INF] Applying migration '20240314172452_v2'.
+2024-03-15 00:25:32.275 +07:00 [INF] Executed DbCommand (97ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (N'0994dbb9490744fe9ba51d623e07d109', NULL, NULL, NULL, NULL, NULL, 3, N'Role for Moderator', N'Mod', NULL),
+(N'6a8225cb691c49c799f68796a5148cd1', NULL, NULL, NULL, NULL, NULL, 2, N'Normal User or New User has this Role', N'User', NULL),
+(N'8a2825a011a74b969b75e11b9e910a29', NULL, NULL, NULL, NULL, NULL, 4, N'If User has this role then User can use Create, Update, Delete Manga', N'Upload', NULL),
+(N'c7044759bc4d43ba97dfef293e4ba5b0', NULL, NULL, NULL, NULL, NULL, 1, N'Only Admin has this Role', N'Admin', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] OFF;
+2024-03-15 00:25:32.278 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240314172452_v2', N'7.0.0');
