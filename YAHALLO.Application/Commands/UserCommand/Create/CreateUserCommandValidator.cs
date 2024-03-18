@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YAHALLO.Application.Commands.Create
+namespace YAHALLO.Application.Commands.UserCommand.Create
 {
-    public class CreateUserCommandValidator: AbstractValidator<CreateUserCommand>   
+    public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
     {
         public CreateUserCommandValidator()
         {

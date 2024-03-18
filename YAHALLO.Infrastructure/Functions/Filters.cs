@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using YAHALLO.Domain.Functions;
 
-namespace YAHALLO.Domain.Functions
+namespace YAHALLO.Infrastructure.Functions
 {
-    public class Filters
+    public class Filters: IFilters
     {
-        protected static GroupsCharacter[] array = new GroupsCharacter[]
+        internal protected GroupsCharacter[] array = new GroupsCharacter[]
         {
             new GroupsCharacter("A", new List<char> { 'a', 'ă', 'â','A', 'Ă', 'Â'}),
             new GroupsCharacter("B", new List<char> { 'b', 'B' }),
@@ -35,7 +36,7 @@ namespace YAHALLO.Domain.Functions
             new GroupsCharacter("Y", new List<char> { 'y', 'ỳ', 'ý', 'ỷ', 'ỹ', 'ỵ', 'Y', 'Ỳ', 'Ý', 'Ỷ', 'Ỹ', 'Ỵ' }),
             new GroupsCharacter("Z", new List<char> { 'z', 'Z' })
         };
-        public static bool CheckString(string str1, string str2)
+        public bool CheckString(string str1, string str2)
         {
             string pattern = @"[^a-zA-Z0-9\u0080-\uFFFF]";
             var formatstr1 = Regex.Replace(str1, pattern, "");

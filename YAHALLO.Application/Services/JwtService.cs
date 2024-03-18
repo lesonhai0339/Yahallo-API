@@ -15,7 +15,7 @@ namespace YAHALLO.Services
         {
             _configuration = configuration;
         }
-        public string CreateToken(string ID, string roles)
+        public string CreateToken(string ID, List<string> roles)
         {
             var secret = _configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!;
             var validIssuer = _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value;
@@ -24,8 +24,12 @@ namespace YAHALLO.Services
             {
 
                 new(JwtRegisteredClaimNames.Sub, ID),
-                new(ClaimTypes.Role, roles)
+                //new(ClaimTypes.Role, roles)
             };
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
            

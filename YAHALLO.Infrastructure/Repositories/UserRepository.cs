@@ -16,7 +16,7 @@ namespace YAHALLO.Infrastructure.Repositories
         public UserRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
-        public static string HashPassword(string password)
+        public string HashPassword(string password)
         {
             byte[] salt = new byte[16];
             using (var rng = RandomNumberGenerator.Create())
@@ -34,7 +34,7 @@ namespace YAHALLO.Infrastructure.Repositories
             string hashedPassword = Convert.ToBase64String(hashBytes);
             return hashedPassword;
         }
-        public static bool VerifyPassword(string savedPasswordHash, string enteredPassword)
+        public bool VerifyPassword(string savedPasswordHash, string enteredPassword)
         {
             byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
 

@@ -9,5 +9,6 @@ namespace YAHALLO.Domain.Repositories
 {
     public interface IMangaRatingRepository: IEFRepository<MangaRatingEntity, MangaRatingEntity>
     {
+        double AverageRating(IEnumerable<MangaRatingEntity> Ratings);
     }
 }

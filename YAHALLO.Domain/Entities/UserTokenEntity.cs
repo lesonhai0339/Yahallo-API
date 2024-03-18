@@ -11,8 +11,8 @@ namespace YAHALLO.Domain.Entities
     {
         public string Id { get; set; } = null!;
         public virtual UserEntity UserEntity { get; set; } = null!;
-        public string? AccessToken { get; set; }
-        public string? RefeshToken { get; set; }
+        public string AccessToken { get; set; } = null!;
+        public string RefeshToken { get; set; } = null!;
         public string? ExpiredRefeshToken { get;set; }
         public void SetExpiredTime(DateTime date)
         {

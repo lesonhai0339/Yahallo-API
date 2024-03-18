@@ -26,6 +26,23 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Queries\" />
+	  <Folder Include="Commands\MangaCommand\" />
+	  <Folder Include="Commands\ChapterCommand\" />
+	  <Folder Include="Commands\AuthorCommand\" />
+	  <Folder Include="Commands\ArtistCommand\" />
+	  <Folder Include="Commands\CommentCommand\" />
+	  <Folder Include="Commands\FollowCommand\" />
+	  <Folder Include="Commands\MangaRatingCommand\" />
+	  <Folder Include="Commands\MangaSeasonCommand\" />
+	  <Folder Include="Commands\RoleCommand\" />
+	  <Folder Include="Commands\UserRoleCommand\" />
+	  <Folder Include="Queries\MangaQuery\" />
+	  <Folder Include="Queries\ChapterQuery\" />
+	  <Folder Include="Queries\AuthorQuery\" />
+	  <Folder Include="Queries\ArtistQuery\" />
+	  <Folder Include="Queries\CommentQuery\" />
+	  <Folder Include="Queries\FollowQuery\" />
+	  <Folder Include="Queries\UserRoleQuery\" />
+	  <Folder Include="Queries\RoleQuery\" />
 	</ItemGroup>
 </Project>

@@ -9,5 +9,7 @@ namespace YAHALLO.Domain.Repositories
 {
     public interface IUserRepository: IEFRepository<UserEntity, UserEntity>
     {
+        string HashPassword(string password);
+        bool VerifyPassword(string savedPasswordHash, string enteredPassword);
     }
 }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.UserEnums;
 
-namespace YAHALLO.Application.Commands.Create
+namespace YAHALLO.Application.Commands.UserCommand.Create
 {
-    public class CreateUserCommand: IRequest<string>
+    public class CreateUserCommand : IRequest<string>
     {
         public CreateUserCommand(
             string firstname,
@@ -18,14 +18,14 @@ namespace YAHALLO.Application.Commands.Create
             string? phonenumber,
             string username,
             string password
-            ) 
-        { 
-            FirstName= firstname;
-            LastName= lastname;
-            Email= email;
-            PhoneNumber= phonenumber;
-            UserName= username;
-            Password= password;
+            )
+        {
+            FirstName = firstname;
+            LastName = lastname;
+            Email = email;
+            PhoneNumber = phonenumber;
+            UserName = username;
+            Password = password;
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
