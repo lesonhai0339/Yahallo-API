@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Application.ResponeTypes;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
 {
-    public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
+    public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginRespone>
     {
         private readonly IUserRepository _userRepository;
         private readonly IUserTokenRepository _userTokenRepository;
@@ -22,7 +23,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
             _userTokenRepository = userTokenRepository;
             _token = token;
         }
-        public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)
+        public async Task<LoginRespone> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             var checkUserExist= await _userRepository.FindAsync(x=> x.UserName == request.UserName, cancellationToken); 
             if(checkUserExist == null)
@@ -41,7 +42,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                 {
                     if(expried > DateTime.Now)
                     {
-                        return checkExistToken.AccessToken;
+                        return new LoginRespone(checkExistToken.Id, checkExistToken.AccessToken, checkExistToken.RefeshToken);
                     }
                     else
                     {
@@ -50,12 +51,12 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                         {
                             checkExistToken.AccessToken = newtoken;
                             checkExistToken.RefeshToken = _token.GenerateRefreshToken();
-                            checkExistToken.ExpiredRefeshToken = DateTime.Now.AddDays(7).ToString();                        
+                            checkExistToken.ExpiredRefeshToken = DateTime.Now.AddDays(1).ToString();                        
                             _userTokenRepository.Update(checkExistToken);
                             var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                             if (result > 0)
                             {
-                                return newtoken;
+                                return new LoginRespone(checkExistToken.Id, checkExistToken.AccessToken, checkExistToken.RefeshToken);
                             }
                             else
                             {
@@ -77,13 +78,13 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                         Id = checkUserExist.Id,
                         AccessToken = token,
                         RefeshToken = refeshToken,
-                        ExpiredRefeshToken = DateTime.Now.AddDays(7).ToString()
+                        ExpiredRefeshToken = DateTime.Now.AddDays(1).ToString()
                     };
                     _userTokenRepository.Add(usertoken);
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (result > 0)
                     {
-                        return token;
+                        return new LoginRespone(checkUserExist.Id, token, refeshToken);
                     }
                     else
                     {

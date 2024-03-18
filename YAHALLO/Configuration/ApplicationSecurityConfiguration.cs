@@ -48,8 +48,8 @@ namespace YAHALLO.Configuration
         private static void ConfigureAuthorization(AuthorizationOptions options)
         {
             //Configure policies and other authorization options here. For example:
-            //options.AddPolicy("EmployeeOnly", policy => policy.RequireClaim("role", "employee"));
-            //options.AddPolicy("AdminOnly", policy => policy.RequireClaim("role", "Admin"));
+            options.AddPolicy("Any", policy => policy.RequireRole("role", "2"));
+            options.AddPolicy("Admin", policy => policy.RequireRole("role", "1"));
         }
     }
 }

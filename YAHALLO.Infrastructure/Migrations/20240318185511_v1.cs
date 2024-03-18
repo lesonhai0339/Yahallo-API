@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace YAHALLO.Infrastructure.Migrations
 {
     /// <inheritdoc />
@@ -162,7 +164,6 @@ namespace YAHALLO.Infrastructure.Migrations
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -192,8 +193,8 @@ namespace YAHALLO.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AccessToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RefeshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AccessToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefeshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ExpiredRefeshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -496,6 +497,17 @@ namespace YAHALLO.Infrastructure.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "CreateDate", "DeleteDate", "IdUserCreate", "IdUserDelete", "IdUserUpdate", "RoleCode", "RoleDescription", "RoleName", "UpdateDate" },
+                values: new object[,]
+                {
+                    { "2bc1440c3e5e4bcfbe67078eaaff3cc5", null, null, null, null, null, 4, "If User has this role then User can use Create, Update, Delete Manga", "Upload", null },
+                    { "68703c58dd2a4b5abab0055f1ba83094", null, null, null, null, null, 2, "Normal User or New User has this Role", "User", null },
+                    { "90517b7270e94a928fe6d5808c3a78ba", null, null, null, null, null, 1, "Only Admin has this Role", "Admin", null },
+                    { "ea2149497607459ba0958d7a1a86af06", null, null, null, null, null, 3, "Role for Moderator", "Mod", null }
                 });
 
             migrationBuilder.CreateIndex(

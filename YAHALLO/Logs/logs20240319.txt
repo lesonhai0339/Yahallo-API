@@ -1,0 +1,1239 @@
+2024-03-19 00:55:35.030 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 00:55:36.899 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 00:55:36.900 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 00:55:36.902 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 00:55:36.903 +07:00 [INF] Hosting environment: Development
+2024-03-19 00:55:36.904 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 00:55:40.733 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 00:55:41.600 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 575.7438 ms
+2024-03-19 00:55:41.611 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 880.4864ms
+2024-03-19 00:55:41.638 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 00:55:41.638 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 00:55:41.651 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 12.8594ms
+2024-03-19 00:55:41.883 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 245.6678ms
+2024-03-19 00:55:41.973 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 00:55:42.313 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 338.4601 ms
+2024-03-19 00:55:42.318 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 345.0145ms
+2024-03-19 00:55:57.526 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/login application/json 60
+2024-03-19 00:55:57.533 +07:00 [INF] CORS policy execution successful.
+2024-03-19 00:55:57.541 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 00:55:57.587 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 00:56:02.877 +07:00 [INF] Executed DbCommand (201ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-19 00:56:03.119 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-19 00:56:03.185 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (5244 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-19 00:56:03.221 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-19 00:56:03.231 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.Login (YAHALLO) in 5637.2325ms
+2024-03-19 00:56:03.233 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 00:56:03.233 +07:00 [INF] HTTP POST /login responded 200 in 5697.4516 ms
+2024-03-19 00:56:03.243 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/login application/json 60 - 200 - application/json;+charset=utf-8 5716.7596ms
+2024-03-19 00:56:13.224 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 00:56:13.382 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The AuthorizationPolicy named: '1' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData, IEnumerable`1 policies)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 00:56:13.418 +07:00 [ERR] HTTP GET /get-all responded 500 in 187.3376 ms
+2024-03-19 00:56:13.420 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 500 - application/problem+json 196.3235ms
+2024-03-19 00:56:30.523 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 00:56:31.600 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The AuthorizationPolicy named: '1' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData, IEnumerable`1 policies)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 00:56:31.608 +07:00 [ERR] HTTP GET /get-all responded 500 in 1081.6960 ms
+2024-03-19 00:56:31.612 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 500 - application/problem+json 1088.5410ms
+2024-03-19 00:57:18.076 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 00:57:18.806 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 00:57:18.809 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 00:57:18.811 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 00:57:18.812 +07:00 [INF] Hosting environment: Development
+2024-03-19 00:57:18.813 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 00:57:24.131 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 00:57:24.843 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 345.7288 ms
+2024-03-19 00:57:24.856 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 738.8142ms
+2024-03-19 00:57:24.870 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 00:57:24.870 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 00:57:24.890 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 19.0638ms
+2024-03-19 00:57:24.937 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 66.3404ms
+2024-03-19 00:57:24.997 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 00:57:25.268 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 270.1592 ms
+2024-03-19 00:57:25.271 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 273.9187ms
+2024-03-19 00:57:38.063 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/login application/json 60
+2024-03-19 00:57:38.069 +07:00 [INF] CORS policy execution successful.
+2024-03-19 00:57:38.078 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 00:57:38.136 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 00:57:41.220 +07:00 [INF] Executed DbCommand (56ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-19 00:57:41.445 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-19 00:57:41.509 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (3148 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-19 00:57:41.536 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-19 00:57:41.547 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.Login (YAHALLO) in 3406.1596ms
+2024-03-19 00:57:41.550 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 00:57:41.551 +07:00 [INF] HTTP POST /login responded 200 in 3478.8702 ms
+2024-03-19 00:57:41.563 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/login application/json 60 - 200 - application/json;+charset=utf-8 3500.6252ms
+2024-03-19 00:57:52.524 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 00:57:52.538 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+ClaimsAuthorizationRequirement:Claim.Type=role and Claim.Value is one of the following values: (1)
+2024-03-19 00:57:52.548 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-03-19 00:57:52.549 +07:00 [INF] HTTP GET /get-all responded 401 in 23.6401 ms
+2024-03-19 00:57:52.550 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 401 0 - 26.1217ms
+2024-03-19 00:57:57.184 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 00:57:57.397 +07:00 [INF] Authorization failed. These requirements were not met:
+ClaimsAuthorizationRequirement:Claim.Type=role and Claim.Value is one of the following values: (1)
+2024-03-19 00:57:57.399 +07:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2024-03-19 00:57:57.400 +07:00 [INF] HTTP GET /get-all responded 403 in 214.5374 ms
+2024-03-19 00:57:57.401 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 403 0 - 216.8794ms
+2024-03-19 00:58:07.960 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 00:58:07.964 +07:00 [INF] Authorization failed. These requirements were not met:
+ClaimsAuthorizationRequirement:Claim.Type=role and Claim.Value is one of the following values: (1)
+2024-03-19 00:58:07.967 +07:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2024-03-19 00:58:07.968 +07:00 [INF] HTTP GET /get-all responded 403 in 7.0109 ms
+2024-03-19 00:58:07.969 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 403 0 - 9.6363ms
+2024-03-19 00:58:48.257 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 00:58:48.974 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 00:58:48.975 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 00:58:48.978 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 00:58:48.979 +07:00 [INF] Hosting environment: Development
+2024-03-19 00:58:48.980 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 00:58:50.473 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 00:58:50.835 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 206.9126 ms
+2024-03-19 00:58:50.842 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 373.8490ms
+2024-03-19 00:58:52.500 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 00:58:52.500 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 00:58:52.511 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 10.1929ms
+2024-03-19 00:58:52.569 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 68.3163ms
+2024-03-19 00:58:52.642 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 00:58:52.880 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 237.0435 ms
+2024-03-19 00:58:52.881 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 239.7752ms
+2024-03-19 00:58:58.695 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 00:58:58.897 +07:00 [INF] Authorization failed. These requirements were not met:
+ClaimsAuthorizationRequirement:Claim.Type=role and Claim.Value is one of the following values: (2)
+2024-03-19 00:58:58.900 +07:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2024-03-19 00:58:58.901 +07:00 [INF] HTTP GET /get-all responded 403 in 203.9819 ms
+2024-03-19 00:58:58.902 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 403 0 - 207.7430ms
+2024-03-19 00:59:36.116 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 00:59:36.130 +07:00 [INF] Authorization failed. These requirements were not met:
+ClaimsAuthorizationRequirement:Claim.Type=role and Claim.Value is one of the following values: (2)
+2024-03-19 00:59:36.132 +07:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2024-03-19 00:59:36.132 +07:00 [INF] HTTP GET /get-all responded 403 in 6.0095 ms
+2024-03-19 00:59:36.134 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 403 0 - 18.1776ms
+2024-03-19 01:00:13.928 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 01:00:14.454 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 01:00:14.456 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 01:00:14.458 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 01:00:14.459 +07:00 [INF] Hosting environment: Development
+2024-03-19 01:00:14.459 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 01:00:16.170 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 01:00:16.531 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 231.5233 ms
+2024-03-19 01:00:16.539 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 373.0915ms
+2024-03-19 01:00:18.194 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 01:00:18.194 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 01:00:18.203 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 8.8539ms
+2024-03-19 01:00:18.248 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 53.9808ms
+2024-03-19 01:00:18.306 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 01:00:18.738 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 430.2275 ms
+2024-03-19 01:00:18.740 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 433.6320ms
+2024-03-19 01:00:32.677 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/login application/json 60
+2024-03-19 01:00:32.684 +07:00 [INF] CORS policy execution successful.
+2024-03-19 01:00:32.692 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 01:00:32.735 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 01:00:35.907 +07:00 [INF] Executed DbCommand (66ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-19 01:00:36.166 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-19 01:00:36.250 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (3324 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-19 01:00:36.266 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-19 01:00:36.275 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.Login (YAHALLO) in 3534.352ms
+2024-03-19 01:00:36.276 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 01:00:36.277 +07:00 [INF] HTTP POST /login responded 200 in 3590.7796 ms
+2024-03-19 01:00:36.287 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/login application/json 60 - 200 - application/json;+charset=utf-8 3609.8189ms
+2024-03-19 01:00:46.161 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 01:00:46.174 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (role|2)
+2024-03-19 01:00:46.182 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-03-19 01:00:46.183 +07:00 [INF] HTTP GET /get-all responded 401 in 20.4893 ms
+2024-03-19 01:00:46.184 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 401 0 - 22.8824ms
+2024-03-19 01:00:49.355 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 01:00:49.543 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.GetAll (YAHALLO)'
+2024-03-19 01:00:49.549 +07:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 01:00:49.761 +07:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-19 01:00:49.880 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-19 01:00:49.887 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-19 01:00:49.899 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.GetAll (YAHALLO) in 348.2678ms
+2024-03-19 01:00:49.901 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.GetAll (YAHALLO)'
+2024-03-19 01:00:49.902 +07:00 [INF] HTTP GET /get-all responded 200 in 544.8821 ms
+2024-03-19 01:00:49.903 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 200 - application/json;+charset=utf-8 547.6829ms
+2024-03-19 01:55:24.291 +07:00 [INF] Executed DbCommand (271ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Yahallo];
+2024-03-19 01:55:24.460 +07:00 [INF] Executed DbCommand (129ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Yahallo] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2024-03-19 01:55:24.485 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-19 01:55:24.553 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2024-03-19 01:55:24.555 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-19 01:55:24.571 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-19 01:55:24.584 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-19 01:55:24.601 +07:00 [INF] Applying migration '20240318185511_v1'.
+2024-03-19 01:55:24.794 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Artist] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Artist] PRIMARY KEY ([Id])
+);
+2024-03-19 01:55:24.798 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Author] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Author] PRIMARY KEY ([Id])
+);
+2024-03-19 01:55:24.800 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaSeason] (
+    [Id] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaSeason] PRIMARY KEY ([Id])
+);
+2024-03-19 01:55:24.803 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Roles] (
+    [Id] nvarchar(450) NOT NULL,
+    [RoleCode] int NOT NULL,
+    [RoleName] nvarchar(450) NOT NULL,
+    [RoleDescription] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+2024-03-19 01:55:24.806 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [Id] nvarchar(450) NOT NULL,
+    [DisplayName] nvarchar(max) NULL,
+    [FirstName] nvarchar(200) NULL,
+    [LastName] nvarchar(200) NULL,
+    [Email] nvarchar(450) NOT NULL,
+    [PhoneNumber] varchar(max) NULL,
+    [EmailConfirm] bit NOT NULL,
+    [PhoneConfirmed] bit NOT NULL,
+    [UserName] nvarchar(max) NOT NULL,
+    [Password] nvarchar(max) NOT NULL,
+    [Status] int NOT NULL,
+    [Level] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+);
+2024-03-19 01:55:24.810 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Manga] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Level] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [Countries] int NOT NULL,
+    [Season] int NOT NULL,
+    [MangaSeasonId] nvarchar(450) NULL,
+    [UserId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Manga] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Manga_MangaSeason_MangaSeasonId] FOREIGN KEY ([MangaSeasonId]) REFERENCES [MangaSeason] ([Id]),
+    CONSTRAINT [FK_Manga_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id])
+);
+2024-03-19 01:55:24.817 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserRole] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserRole] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_UserRole_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_UserRole_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:24.863 +07:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserToken] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessToken] nvarchar(max) NOT NULL,
+    [RefeshToken] nvarchar(max) NOT NULL,
+    [ExpiredRefeshToken] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserToken] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserToken_Users_Id] FOREIGN KEY ([Id]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:24.868 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AssociateName] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_AssociateName] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AssociateName_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:24.872 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Chapter] (
+    [Id] nvarchar(450) NOT NULL,
+    [Title] nvarchar(255) NULL,
+    [Index] int NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Chapter] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Chapter_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:24.874 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Follow] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Follow] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Follow_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Follow_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:24.877 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaArtist] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [ArtistId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaArtist] PRIMARY KEY ([MangaId], [ArtistId]),
+    CONSTRAINT [FK_MangaArtist_Artist_ArtistId] FOREIGN KEY ([ArtistId]) REFERENCES [Artist] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaArtist_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:24.901 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaAuthor] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [AuthorId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaAuthor] PRIMARY KEY ([MangaId], [AuthorId]),
+    CONSTRAINT [FK_MangaAuthor_Author_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Author] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaAuthor_Manga_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:25.583 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaView] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [View] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaView] PRIMARY KEY ([MangaId]),
+    CONSTRAINT [FK_MangaView_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:25.587 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Rating] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [Rating] int NOT NULL,
+    [Id] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Rating] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Rating_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Rating_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:25.591 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Data] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [UserReplyId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserReplyId] FOREIGN KEY ([UserReplyId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:25.594 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Image] (
+    [Id] nvarchar(450) NOT NULL,
+    [Index] int NOT NULL,
+    [Url] nvarchar(max) NOT NULL,
+    [TypeImage] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Image] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Image_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-03-19 01:55:25.629 +07:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (N'2bc1440c3e5e4bcfbe67078eaaff3cc5', NULL, NULL, NULL, NULL, NULL, 4, N'If User has this role then User can use Create, Update, Delete Manga', N'Upload', NULL),
+(N'68703c58dd2a4b5abab0055f1ba83094', NULL, NULL, NULL, NULL, NULL, 2, N'Normal User or New User has this Role', N'User', NULL),
+(N'90517b7270e94a928fe6d5808c3a78ba', NULL, NULL, NULL, NULL, NULL, 1, N'Only Admin has this Role', N'Admin', NULL),
+(N'ea2149497607459ba0958d7a1a86af06', NULL, NULL, NULL, NULL, NULL, 3, N'Role for Moderator', N'Mod', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] OFF;
+2024-03-19 01:55:26.184 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AssociateName_MangaId] ON [AssociateName] ([MangaId]);
+2024-03-19 01:55:26.185 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Chapter_MangaId] ON [Chapter] ([MangaId]);
+2024-03-19 01:55:26.187 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_ChapterId] ON [Comment] ([ChapterId]);
+2024-03-19 01:55:26.189 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_MangaId] ON [Comment] ([MangaId]);
+2024-03-19 01:55:26.190 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserId] ON [Comment] ([UserId]);
+2024-03-19 01:55:26.191 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserReplyId] ON [Comment] ([UserReplyId]);
+2024-03-19 01:55:26.193 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Follow_MangaId] ON [Follow] ([MangaId]);
+2024-03-19 01:55:26.194 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Image_ChapterId] ON [Image] ([ChapterId]);
+2024-03-19 01:55:26.199 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_MangaId] ON [Image] ([MangaId]) WHERE [MangaId] IS NOT NULL;
+2024-03-19 01:55:26.200 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_UserId] ON [Image] ([UserId]) WHERE [UserId] IS NOT NULL;
+2024-03-19 01:55:26.202 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_Id] ON [Manga] ([Id]);
+2024-03-19 01:55:26.204 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_MangaSeasonId] ON [Manga] ([MangaSeasonId]);
+2024-03-19 01:55:26.206 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_UserId] ON [Manga] ([UserId]);
+2024-03-19 01:55:26.207 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaArtist_ArtistId] ON [MangaArtist] ([ArtistId]);
+2024-03-19 01:55:26.209 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaAuthor_AuthorId] ON [MangaAuthor] ([AuthorId]);
+2024-03-19 01:55:26.210 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Rating_MangaId] ON [Rating] ([MangaId]);
+2024-03-19 01:55:26.234 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Roles_Id] ON [Roles] ([Id]);
+2024-03-19 01:55:26.235 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_RoleId] ON [UserRole] ([RoleId]);
+2024-03-19 01:55:26.236 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_UserId] ON [UserRole] ([UserId]);
+2024-03-19 01:55:26.676 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_Email] ON [Users] ([Email]);
+2024-03-19 01:55:26.681 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240318185511_v1', N'7.0.0');
+2024-03-19 01:57:20.452 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 01:57:21.231 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 01:57:21.232 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 01:57:21.234 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 01:57:21.235 +07:00 [INF] Hosting environment: Development
+2024-03-19 01:57:21.236 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 01:57:30.771 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 01:57:32.450 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 1229.2852 ms
+2024-03-19 01:57:32.478 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 1712.9908ms
+2024-03-19 01:57:32.529 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 01:57:32.529 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 01:57:32.546 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.7949ms
+2024-03-19 01:57:32.680 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 150.4799ms
+2024-03-19 01:57:32.836 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 01:57:33.123 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 285.0772 ms
+2024-03-19 01:57:33.133 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 297.3424ms
+2024-03-19 01:58:16.255 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/create application/json 176
+2024-03-19 01:58:16.261 +07:00 [INF] CORS policy execution successful.
+2024-03-19 01:58:16.271 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CreateUser (YAHALLO)'
+2024-03-19 01:58:16.321 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 01:58:20.074 +07:00 [INF] Executed DbCommand (188ms) [Parameters=[@__request_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2024-03-19 01:58:20.393 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-03-19 01:58:20.700 +07:00 [INF] Executed DbCommand (21ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (Size = 450), @p20='?' (DbType = DateTime2), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2024-03-19 01:58:20.740 +07:00 [WRN] Yahallo Long Running Request: CreateUserCommand (4149 milliseconds)  {"FirstName":"Lê Sơn","LastName":"Hải","Email":"haileds938@gmail.com","PhoneNumber":"0384539162","UserName":"lesonhai0339","Password":"Hai@119067","$type":"CreateUserCommand"}
+2024-03-19 01:58:20.767 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-19 01:58:20.776 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CreateUser (YAHALLO) in 4450.6545ms
+2024-03-19 01:58:20.778 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CreateUser (YAHALLO)'
+2024-03-19 01:58:20.779 +07:00 [INF] HTTP POST /create responded 200 in 4515.3283 ms
+2024-03-19 01:58:20.790 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/create application/json 176 - 200 - application/json;+charset=utf-8 4535.5177ms
+2024-03-19 01:58:36.582 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/login application/json 60
+2024-03-19 01:58:36.598 +07:00 [INF] CORS policy execution successful.
+2024-03-19 01:58:36.603 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 01:58:36.623 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 01:58:36.834 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-19 01:58:36.873 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-19 01:58:36.934 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-03-19 01:58:36.954 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__p_0
+2024-03-19 01:58:37.480 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([Id], [AccessToken], [CreateDate], [DeleteDate], [ExpiredRefeshToken], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RefeshToken], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2024-03-19 01:58:37.483 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (760 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-19 01:58:37.486 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-19 01:58:37.509 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.Login (YAHALLO) in 884.8629ms
+2024-03-19 01:58:37.510 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 01:58:37.511 +07:00 [INF] HTTP POST /login responded 200 in 911.4033 ms
+2024-03-19 01:58:37.513 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/login application/json 60 - 200 - application/json;+charset=utf-8 930.9743ms
+2024-03-19 01:58:56.274 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 01:58:56.285 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (role|2)
+2024-03-19 01:58:56.294 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-03-19 01:58:56.296 +07:00 [INF] HTTP GET /get-all responded 401 in 20.5622 ms
+2024-03-19 01:58:56.298 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 401 0 - 23.5440ms
+2024-03-19 01:59:02.582 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 01:59:02.671 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.GetAll (YAHALLO)'
+2024-03-19 01:59:02.675 +07:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 01:59:02.801 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-19 01:59:02.862 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-19 01:59:02.865 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-19 01:59:02.876 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.GetAll (YAHALLO) in 199.0484ms
+2024-03-19 01:59:02.877 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.GetAll (YAHALLO)'
+2024-03-19 01:59:02.878 +07:00 [INF] HTTP GET /get-all responded 200 in 294.0446 ms
+2024-03-19 01:59:02.903 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 200 - application/json;+charset=utf-8 321.0372ms
+2024-03-19 01:59:28.210 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired application/json 67
+2024-03-19 01:59:28.212 +07:00 [INF] CORS policy execution successful.
+2024-03-19 01:59:28.216 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 01:59:28.225 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 01:59:28.555 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 325.2747ms
+2024-03-19 01:59:28.608 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 01:59:28.691 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Each parameter in the deserialization constructor on type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled. The match can be case-insensitive.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ConstructorParameterIncompleteBinding(Type parentType)
+   at System.Text.Json.Serialization.Converters.ObjectWithParameterizedConstructorConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 01:59:28.730 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 517.3150 ms
+2024-03-19 01:59:28.732 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 67 - 500 - application/problem+json 522.0986ms
+2024-03-19 02:00:01.665 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired application/json 67
+2024-03-19 02:00:01.670 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:00:01.680 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:00:01.682 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:00:02.101 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 416.0824ms
+2024-03-19 02:00:02.145 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:00:02.218 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Each parameter in the deserialization constructor on type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled. The match can be case-insensitive.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ConstructorParameterIncompleteBinding(Type parentType)
+   at System.Text.Json.Serialization.Converters.ObjectWithParameterizedConstructorConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 02:00:02.228 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 549.5126 ms
+2024-03-19 02:00:02.230 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 67 - 500 - application/problem+json 565.2506ms
+2024-03-19 02:00:57.101 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired application/json 67
+2024-03-19 02:00:57.114 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:00:57.116 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:00:57.119 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:00:57.587 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 466.8208ms
+2024-03-19 02:00:57.664 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:00:57.755 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Each parameter in the deserialization constructor on type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled. The match can be case-insensitive.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ConstructorParameterIncompleteBinding(Type parentType)
+   at System.Text.Json.Serialization.Converters.ObjectWithParameterizedConstructorConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 02:00:57.771 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 656.0834 ms
+2024-03-19 02:00:57.782 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 67 - 500 - application/problem+json 680.5372ms
+2024-03-19 02:01:13.261 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired application/json 67
+2024-03-19 02:01:13.264 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:01:13.266 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:01:13.267 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:01:13.526 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 257.207ms
+2024-03-19 02:01:13.566 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:01:13.623 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Each parameter in the deserialization constructor on type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled. The match can be case-insensitive.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ConstructorParameterIncompleteBinding(Type parentType)
+   at System.Text.Json.Serialization.Converters.ObjectWithParameterizedConstructorConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 02:01:13.630 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 365.3405 ms
+2024-03-19 02:01:13.632 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 67 - 500 - application/problem+json 370.8087ms
+2024-03-19 02:03:59.274 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:03:59.785 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:03:59.786 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:03:59.788 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:03:59.789 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:03:59.789 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:04:01.823 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:04:02.336 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 316.4130 ms
+2024-03-19 02:04:02.347 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 529.4816ms
+2024-03-19 02:04:03.681 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:04:03.681 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:04:03.708 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 26.5864ms
+2024-03-19 02:04:03.762 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 81.1982ms
+2024-03-19 02:04:04.016 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:04:04.328 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 297.1017 ms
+2024-03-19 02:04:04.329 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 313.3043ms
+2024-03-19 02:04:07.797 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=CheckExpiredTokenCommand - 0
+2024-03-19 02:04:07.802 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:04:07.812 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:04:07.846 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:04:08.073 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 221.8463ms
+2024-03-19 02:04:08.122 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:04:08.191 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Could not create an instance of type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand'. Model bound complex types must not be abstract or value types and must have a parameterless constructor. Record types must have a single primary constructor. Alternatively, give the 'command' parameter a non-null default value.
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.CreateModel(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.BindModelCoreAsync(ModelBindingContext bindingContext, Int32 propertyData)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 02:04:08.219 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 415.2374 ms
+2024-03-19 02:04:08.221 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=CheckExpiredTokenCommand - 0 - 500 - application/problem+json 423.7465ms
+2024-03-19 02:04:51.638 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:04:52.087 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:04:52.088 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:04:52.090 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:04:52.091 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:04:52.091 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:04:56.869 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:04:57.264 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 215.2908 ms
+2024-03-19 02:04:57.280 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 413.3330ms
+2024-03-19 02:04:57.312 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:04:57.312 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:04:57.323 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 11.4368ms
+2024-03-19 02:04:57.382 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.0079ms
+2024-03-19 02:04:57.445 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:04:57.728 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 281.8278 ms
+2024-03-19 02:04:57.731 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 285.2855ms
+2024-03-19 02:05:02.904 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=123123 - 0
+2024-03-19 02:05:02.910 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:05:02.920 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:05:02.952 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:05:06.177 +07:00 [INF] Executed DbCommand (58ms) [Parameters=[@__request_RefeshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[RefeshToken] = @__request_RefeshToken_0
+2024-03-19 02:05:06.506 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CheckExpiredTokenCommand {"RefeshToken":"123123","$type":"CheckExpiredTokenCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy
+   at YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommandHandler.Handle(CheckExpiredTokenCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\AuthenticationCommand\CheckExpiredToken\CheckExpiredTokenCommandHandler.cs:line 64
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-19 02:05:06.923 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-19 02:05:06.935 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 3976.5861ms
+2024-03-19 02:05:06.936 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:05:06.937 +07:00 [INF] HTTP POST /check-token-expired responded 404 in 4025.3209 ms
+2024-03-19 02:05:06.946 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=123123 - 0 - 404 - application/problem+json;+charset=utf-8 4042.5273ms
+2024-03-19 02:05:29.488 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=bhcAnepi%2F3cN4mMdgMTLGenIgFPlctxMN3GSATYpuZk%3D - 0
+2024-03-19 02:05:29.513 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:05:29.518 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:05:29.520 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:05:29.623 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_RefeshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[RefeshToken] = @__request_RefeshToken_0
+2024-03-19 02:05:30.012 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CheckExpiredTokenCommand {"RefeshToken":"bhcAnepi/3cN4mMdgMTLGenIgFPlctxMN3GSATYpuZk=","$type":"CheckExpiredTokenCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Thất bại
+   at YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommandHandler.Handle(CheckExpiredTokenCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\AuthenticationCommand\CheckExpiredToken\CheckExpiredTokenCommandHandler.cs:line 62
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-19 02:05:30.455 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-19 02:05:30.457 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 934.463ms
+2024-03-19 02:05:30.458 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:05:30.460 +07:00 [INF] HTTP POST /check-token-expired responded 404 in 944.6149 ms
+2024-03-19 02:05:30.462 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=bhcAnepi%2F3cN4mMdgMTLGenIgFPlctxMN3GSATYpuZk%3D - 0 - 404 - application/problem+json;+charset=utf-8 974.6899ms
+2024-03-19 02:05:56.632 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=bhcAnepi%2F3cN4mMdgMTLGenIgFPlctxMN3GSATYpuZk%3D - 0
+2024-03-19 02:05:56.648 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:05:56.656 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:05:56.657 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:06:00.655 +07:00 [INF] Executed DbCommand (25ms) [Parameters=[@__request_RefeshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[RefeshToken] = @__request_RefeshToken_0
+2024-03-19 02:06:03.046 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2024-03-19 02:07:00.246 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:07:01.623 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:07:01.625 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:07:01.629 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:07:01.630 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:07:01.632 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:07:06.252 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:07:06.839 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 310.1681 ms
+2024-03-19 02:07:06.857 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 609.3957ms
+2024-03-19 02:07:06.925 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:07:06.925 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:07:06.962 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 36.7172ms
+2024-03-19 02:07:07.073 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 148.3259ms
+2024-03-19 02:07:07.147 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:07:07.409 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 260.9884 ms
+2024-03-19 02:07:07.411 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 264.1667ms
+2024-03-19 02:07:10.542 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=bhcAnepi%2F3cN4mMdgMTLGenIgFPlctxMN3GSATYpuZk%3D - 0
+2024-03-19 02:07:10.549 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:07:10.559 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:07:10.611 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:07:21.335 +07:00 [INF] Executed DbCommand (67ms) [Parameters=[@__request_RefeshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[RefeshToken] = @__request_RefeshToken_0
+2024-03-19 02:07:34.045 +07:00 [WRN] Yahallo Long Running Request: CheckExpiredTokenCommand (23232 milliseconds)  {"RefeshToken":"bhcAnepi/3cN4mMdgMTLGenIgFPlctxMN3GSATYpuZk=","$type":"CheckExpiredTokenCommand"}
+2024-03-19 02:07:34.064 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-19 02:07:34.078 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 23461.4183ms
+2024-03-19 02:07:34.082 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:07:34.082 +07:00 [INF] HTTP POST /check-token-expired responded 200 in 23531.9225 ms
+2024-03-19 02:07:34.094 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired?RefeshToken=bhcAnepi%2F3cN4mMdgMTLGenIgFPlctxMN3GSATYpuZk%3D - 0 - 200 - application/json;+charset=utf-8 23552.2307ms
+2024-03-19 02:08:18.079 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:08:18.636 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:08:18.638 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:08:18.640 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:08:18.641 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:08:18.642 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:08:23.614 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:08:24.199 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 314.2052 ms
+2024-03-19 02:08:24.210 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 601.5736ms
+2024-03-19 02:08:24.278 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:08:24.278 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:08:24.294 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 15.2672ms
+2024-03-19 02:08:24.377 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 98.4064ms
+2024-03-19 02:08:24.436 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:08:24.807 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 369.5375 ms
+2024-03-19 02:08:24.815 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 378.5037ms
+2024-03-19 02:08:30.526 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired application/json 67
+2024-03-19 02:08:30.533 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:08:30.547 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:08:30.593 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:08:30.950 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 350.9297ms
+2024-03-19 02:08:30.999 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:08:31.082 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Each parameter in the deserialization constructor on type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled. The match can be case-insensitive.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ConstructorParameterIncompleteBinding(Type parentType)
+   at System.Text.Json.Serialization.Converters.ObjectWithParameterizedConstructorConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 02:08:31.149 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 613.0861 ms
+2024-03-19 02:08:31.150 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 67 - 500 - application/problem+json 624.7184ms
+2024-03-19 02:11:19.979 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:11:20.503 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:11:20.504 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:11:20.507 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:11:20.508 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:11:20.509 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:11:25.443 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:11:25.864 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 240.0894 ms
+2024-03-19 02:11:25.874 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 435.8895ms
+2024-03-19 02:11:25.918 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:11:25.918 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:11:25.935 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.8822ms
+2024-03-19 02:11:26.095 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 177.1192ms
+2024-03-19 02:11:26.159 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:11:26.486 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 326.2588 ms
+2024-03-19 02:11:26.490 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 331.6537ms
+2024-03-19 02:11:40.784 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired - 0
+2024-03-19 02:11:40.793 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:11:40.811 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:11:40.893 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:11:41.408 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CheckExpiredTokenCommand {"RefeshToken":null,"$type":"CheckExpiredTokenCommand"}
+FluentValidation.ValidationException: Validation failed: 
+ -- RefeshToken: 'Refesh Token' must not be empty. Severity: Error
+ -- RefeshToken: Refesh token không thể bỏ trống Severity: Error
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 31
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-19 02:11:41.746 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-03-19 02:11:41.764 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 864.6088ms
+2024-03-19 02:11:41.765 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:11:41.766 +07:00 [INF] HTTP POST /check-token-expired responded 400 in 968.8563 ms
+2024-03-19 02:11:41.767 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired - 0 - 400 - application/problem+json;+charset=utf-8 982.5175ms
+2024-03-19 02:11:57.515 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired - 0
+2024-03-19 02:11:57.518 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:11:57.520 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:11:57.522 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:11:57.754 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CheckExpiredTokenCommand {"RefeshToken":null,"$type":"CheckExpiredTokenCommand"}
+FluentValidation.ValidationException: Validation failed: 
+ -- RefeshToken: 'Refesh Token' must not be empty. Severity: Error
+ -- RefeshToken: Refesh token không thể bỏ trống Severity: Error
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 31
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-19 02:11:58.007 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-03-19 02:11:58.011 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 486.2804ms
+2024-03-19 02:11:58.012 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:11:58.013 +07:00 [INF] HTTP POST /check-token-expired responded 400 in 494.5723 ms
+2024-03-19 02:11:58.020 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired - 0 - 400 - application/problem+json;+charset=utf-8 504.8698ms
+2024-03-19 02:12:22.532 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:12:23.109 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:12:23.121 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:12:23.123 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:12:23.125 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:12:23.125 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:12:27.735 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:12:28.146 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 220.5975 ms
+2024-03-19 02:12:28.179 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 448.0400ms
+2024-03-19 02:12:28.211 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:12:28.213 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:12:28.234 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 22.9397ms
+2024-03-19 02:12:28.533 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 319.9440ms
+2024-03-19 02:12:28.632 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:12:29.040 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 406.4841 ms
+2024-03-19 02:12:29.046 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 412.6652ms
+2024-03-19 02:12:36.209 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired - 0
+2024-03-19 02:12:36.218 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:12:36.240 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:12:36.302 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:12:36.558 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 250.0528ms
+2024-03-19 02:12:36.610 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:12:36.683 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Could not create an instance of type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand'. Model bound complex types must not be abstract or value types and must have a parameterless constructor. Record types must have a single primary constructor. Alternatively, give the 'command' parameter a non-null default value.
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.CreateModel(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.BindModelCoreAsync(ModelBindingContext bindingContext, Int32 propertyData)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 02:12:36.743 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 521.5342 ms
+2024-03-19 02:12:36.745 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired - 0 - 500 - application/problem+json 536.3610ms
+2024-03-19 02:13:46.149 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:13:46.627 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:13:46.628 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:13:46.630 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:13:46.630 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:13:46.631 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:13:51.666 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:13:52.108 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 289.9079 ms
+2024-03-19 02:13:52.120 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 456.4460ms
+2024-03-19 02:13:52.152 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:13:52.152 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:13:52.235 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 82.1669ms
+2024-03-19 02:13:52.351 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 198.7403ms
+2024-03-19 02:13:52.424 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:13:52.678 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 252.2901 ms
+2024-03-19 02:13:52.679 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 255.1438ms
+2024-03-19 02:14:20.392 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired - 0
+2024-03-19 02:14:20.443 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:14:20.453 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:14:20.487 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:14:21.046 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CheckExpiredTokenCommand {"RefeshToken":null,"$type":"CheckExpiredTokenCommand"}
+FluentValidation.ValidationException: Validation failed: 
+ -- RefeshToken: 'Refesh Token' must not be empty. Severity: Error
+ -- RefeshToken: Refesh token không thể bỏ trống Severity: Error
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 31
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-19 02:14:21.418 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-03-19 02:14:21.488 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 989.8958ms
+2024-03-19 02:14:21.503 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:14:21.509 +07:00 [INF] HTTP POST /check-token-expired responded 400 in 1064.1116 ms
+2024-03-19 02:14:21.515 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired - 0 - 400 - application/problem+json;+charset=utf-8 1125.5450ms
+2024-03-19 02:14:49.597 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:14:50.198 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:14:50.199 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:14:50.201 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:14:50.202 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:14:50.203 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:14:55.067 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:14:55.422 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 213.1466 ms
+2024-03-19 02:14:55.435 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 373.8730ms
+2024-03-19 02:14:55.460 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:14:55.460 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:14:55.474 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 12.9628ms
+2024-03-19 02:14:55.551 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 90.1594ms
+2024-03-19 02:14:55.718 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:14:56.127 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 316.7849 ms
+2024-03-19 02:14:56.130 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 412.1039ms
+2024-03-19 02:14:59.956 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired - 0
+2024-03-19 02:14:59.962 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:14:59.976 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:15:00.066 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:15:00.337 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 265.3495ms
+2024-03-19 02:15:00.395 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:15:00.504 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Could not create an instance of type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand'. Model bound complex types must not be abstract or value types and must have a parameterless constructor. Record types must have a single primary constructor. Alternatively, give the 'command' parameter a non-null default value.
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.CreateModel(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.BindModelCoreAsync(ModelBindingContext bindingContext, Int32 propertyData)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 02:15:00.550 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 585.5060 ms
+2024-03-19 02:15:00.552 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired - 0 - 500 - application/problem+json 596.4249ms
+2024-03-19 02:16:20.994 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:16:21.573 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:16:21.574 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:16:21.576 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:16:21.577 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:16:21.578 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:16:26.131 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:16:26.521 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 228.2704 ms
+2024-03-19 02:16:26.536 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 407.8788ms
+2024-03-19 02:16:26.560 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:16:26.560 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:16:26.578 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 17.3976ms
+2024-03-19 02:16:26.666 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 105.6437ms
+2024-03-19 02:16:26.740 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:16:27.010 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 268.7030 ms
+2024-03-19 02:16:27.012 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 271.8849ms
+2024-03-19 02:16:31.110 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired application/json 32
+2024-03-19 02:16:31.115 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:16:31.130 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:16:31.162 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:16:31.516 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 349.157ms
+2024-03-19 02:16:31.559 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:16:31.635 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Each parameter in the deserialization constructor on type 'YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand' must bind to an object property or field on deserialization. Each parameter name must match with a property or field on the object. Fields are only considered when 'JsonSerializerOptions.IncludeFields' is enabled. The match can be case-insensitive.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ConstructorParameterIncompleteBinding(Type parentType)
+   at System.Text.Json.Serialization.Converters.ObjectWithParameterizedConstructorConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 02:16:31.665 +07:00 [ERR] HTTP POST /check-token-expired responded 500 in 547.4833 ms
+2024-03-19 02:16:31.667 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 32 - 500 - application/problem+json 556.7922ms
+2024-03-19 02:19:06.251 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 02:19:06.757 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 02:19:06.758 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 02:19:06.761 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 02:19:06.762 +07:00 [INF] Hosting environment: Development
+2024-03-19 02:19:06.763 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 02:19:09.924 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 02:19:10.454 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 269.4423 ms
+2024-03-19 02:19:10.470 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 548.4392ms
+2024-03-19 02:19:10.544 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 02:19:10.546 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 02:19:10.578 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 33.7702ms
+2024-03-19 02:19:10.685 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 139.5069ms
+2024-03-19 02:19:10.761 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 02:19:11.036 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 273.5047 ms
+2024-03-19 02:19:11.038 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 276.7550ms
+2024-03-19 02:19:15.407 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired application/json 29
+2024-03-19 02:19:15.418 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:19:15.447 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:19:15.549 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:19:19.102 +07:00 [INF] Executed DbCommand (77ms) [Parameters=[@__request_Refeshtoken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[RefeshToken] = @__request_Refeshtoken_0
+2024-03-19 02:19:19.477 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CheckExpiredTokenCommand {"Refeshtoken":"123123","$type":"CheckExpiredTokenCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy
+   at YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommandHandler.Handle(CheckExpiredTokenCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\AuthenticationCommand\CheckExpiredToken\CheckExpiredTokenCommandHandler.cs:line 64
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-19 02:19:20.019 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-19 02:19:20.030 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 4472.8399ms
+2024-03-19 02:19:20.032 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:19:20.034 +07:00 [INF] HTTP POST /check-token-expired responded 404 in 4611.6327 ms
+2024-03-19 02:19:20.045 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 29 - 404 - application/problem+json;+charset=utf-8 4637.5381ms
+2024-03-19 02:19:31.257 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/check-token-expired application/json 67
+2024-03-19 02:19:31.263 +07:00 [INF] CORS policy execution successful.
+2024-03-19 02:19:31.270 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:19:31.273 +07:00 [INF] Route matched with {action = "CheckToken", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] CheckToken(YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken.CheckExpiredTokenCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 02:19:31.383 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__request_Refeshtoken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[RefeshToken] = @__request_Refeshtoken_0
+2024-03-19 02:19:31.526 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-19 02:19:31.532 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.CheckToken (YAHALLO) in 257.308ms
+2024-03-19 02:19:31.533 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
+2024-03-19 02:19:31.533 +07:00 [INF] HTTP POST /check-token-expired responded 200 in 268.8665 ms
+2024-03-19 02:19:31.535 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 67 - 200 - application/json;+charset=utf-8 277.4205ms

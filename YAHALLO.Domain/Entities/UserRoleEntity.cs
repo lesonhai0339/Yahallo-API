@@ -7,7 +7,7 @@ using YAHALLO.Domain.Entities.Base;
 
 namespace YAHALLO.Domain.Entities
 {
-    public class UserRoleEntity: BaseEntity
+    public class UserRoleEntity: RelationEntity
     {
         public string UserId { get; set; } = null!;
         public virtual UserEntity UserEntity { get; set; } = null!;

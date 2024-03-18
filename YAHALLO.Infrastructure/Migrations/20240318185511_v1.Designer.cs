@@ -12,8 +12,8 @@ using YAHALLO.Infrastructure.Data;
 namespace YAHALLO.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240314172452_v2")]
-    partial class v2
+    [Migration("20240318185511_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -631,28 +631,28 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c7044759bc4d43ba97dfef293e4ba5b0",
+                            Id = "90517b7270e94a928fe6d5808c3a78ba",
                             RoleCode = 1,
                             RoleDescription = "Only Admin has this Role",
                             RoleName = "Admin"
                         },
                         new
                         {
-                            Id = "6a8225cb691c49c799f68796a5148cd1",
+                            Id = "68703c58dd2a4b5abab0055f1ba83094",
                             RoleCode = 2,
                             RoleDescription = "Normal User or New User has this Role",
                             RoleName = "User"
                         },
                         new
                         {
-                            Id = "0994dbb9490744fe9ba51d623e07d109",
+                            Id = "ea2149497607459ba0958d7a1a86af06",
                             RoleCode = 3,
                             RoleDescription = "Role for Moderator",
                             RoleName = "Mod"
                         },
                         new
                         {
-                            Id = "8a2825a011a74b969b75e11b9e910a29",
+                            Id = "2bc1440c3e5e4bcfbe67078eaaff3cc5",
                             RoleCode = 4,
                             RoleDescription = "If User has this role then User can use Create, Update, Delete Manga",
                             RoleName = "Upload"
@@ -744,9 +744,6 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("IdUserCreate")
                         .HasColumnType("nvarchar(max)");
 
@@ -774,6 +771,7 @@ namespace YAHALLO.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AccessToken")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreateDate")
@@ -795,6 +793,7 @@ namespace YAHALLO.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RefeshToken")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdateDate")
