@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Infrastructure.Data;
 using YAHALLO.Infrastructure.Repositories;
@@ -45,6 +47,7 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IMangaSeasonRepository, MangaSeasonRepository>();
             services.AddTransient<IMangaViewRepository, MangaViewRepository>();
             services.AddTransient<IUserTokenRepository, UserTokenRepository>();
+            services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             return services;
         }
     }

@@ -1237,3 +1237,437 @@ WHERE [u].[RefeshToken] = @__request_Refeshtoken_0
 2024-03-19 02:19:31.533 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.CheckToken (YAHALLO)'
 2024-03-19 02:19:31.533 +07:00 [INF] HTTP POST /check-token-expired responded 200 in 268.8665 ms
 2024-03-19 02:19:31.535 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/check-token-expired application/json 67 - 200 - application/json;+charset=utf-8 277.4205ms
+2024-03-19 23:10:12.211 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:10:13.898 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:10:13.898 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:10:13.900 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:10:13.901 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:10:13.902 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:10:19.738 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:10:20.551 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 525.1291 ms
+2024-03-19 23:10:20.564 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 828.2629ms
+2024-03-19 23:10:20.646 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:10:20.646 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:10:20.660 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 14.1534ms
+2024-03-19 23:10:20.796 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 149.8925ms
+2024-03-19 23:10:20.881 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:10:21.356 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 472.7257 ms
+2024-03-19 23:10:21.363 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 481.3690ms
+2024-03-19 23:10:35.591 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/login application/json 61
+2024-03-19 23:10:35.599 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:10:35.616 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 23:10:35.704 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:10:36.183 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.Login (YAHALLO) in 473.3962ms
+2024-03-19 23:10:36.226 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 23:10:36.286 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'request')
+   at MediatR.Mediator.Send[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at YAHALLO.Controllers.UserController.Login(LoginCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\UserController.cs:line 49
+   at lambda_method7(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 23:10:36.344 +07:00 [ERR] HTTP POST /login responded 500 in 740.9761 ms
+2024-03-19 23:10:36.345 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/login application/json 61 - 500 - application/problem+json 754.4388ms
+2024-03-19 23:10:59.926 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/login application/json 60
+2024-03-19 23:10:59.934 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:10:59.937 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 23:10:59.939 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:11:06.579 +07:00 [INF] Executed DbCommand (208ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-19 23:11:06.933 +07:00 [INF] Executed DbCommand (49ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-19 23:11:07.042 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (6892 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-19 23:11:07.059 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-19 23:11:07.066 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.Login (YAHALLO) in 7125.7022ms
+2024-03-19 23:11:07.067 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 23:11:07.068 +07:00 [INF] HTTP POST /login responded 200 in 7133.1717 ms
+2024-03-19 23:11:07.079 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/login application/json 60 - 200 - application/json;+charset=utf-8 7153.5811ms
+2024-03-19 23:13:32.826 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7181/login application/json 63
+2024-03-19 23:13:32.831 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 23:13:32.832 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:13:32.957 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-19 23:13:32.967 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-19 23:13:32.972 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-19 23:13:32.976 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.Login (YAHALLO) in 143.143ms
+2024-03-19 23:13:32.977 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.Login (YAHALLO)'
+2024-03-19 23:13:32.979 +07:00 [INF] HTTP POST /login responded 200 in 150.7596 ms
+2024-03-19 23:13:32.981 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7181/login application/json 63 - 200 - application/json;+charset=utf-8 154.6343ms
+2024-03-19 23:13:43.729 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-19 23:13:43.739 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (role|2)
+2024-03-19 23:13:43.746 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-03-19 23:13:43.747 +07:00 [INF] HTTP GET /get-all responded 401 in 17.4984 ms
+2024-03-19 23:13:43.748 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 401 0 - 19.6824ms
+2024-03-19 23:15:17.261 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/get-all - -
+2024-03-19 23:15:17.262 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (role|2)
+2024-03-19 23:15:17.265 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-03-19 23:15:17.266 +07:00 [INF] HTTP GET /get-all responded 401 in 4.6619 ms
+2024-03-19 23:15:17.268 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/get-all - - - 401 0 - 7.5812ms
+2024-03-19 23:15:48.517 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/get-all - -
+2024-03-19 23:15:49.237 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.GetAll (YAHALLO)'
+2024-03-19 23:15:49.244 +07:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:15:49.468 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-19 23:15:49.652 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-19 23:15:49.659 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-19 23:15:49.673 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.GetAll (YAHALLO) in 426.5903ms
+2024-03-19 23:15:49.674 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.GetAll (YAHALLO)'
+2024-03-19 23:15:49.674 +07:00 [INF] HTTP GET /get-all responded 200 in 1146.9115 ms
+2024-03-19 23:15:49.675 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/get-all - - - 200 - application/json;+charset=utf-8 1158.2370ms
+2024-03-19 23:16:34.448 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/update application/json 96
+2024-03-19 23:16:34.454 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:16:34.455 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:16:34.461 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:16:34.806 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.UpdateUser (YAHALLO) in 343.7484ms
+2024-03-19 23:16:34.871 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:16:34.934 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'request')
+   at MediatR.Mediator.Send[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at YAHALLO.Controllers.UserController.UpdateUser(UpdateUserCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\UserController.cs:line 78
+   at lambda_method372(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 23:16:34.941 +07:00 [ERR] HTTP PUT /update responded 500 in 486.1667 ms
+2024-03-19 23:16:34.942 +07:00 [INF] Request finished HTTP/2 PUT https://localhost:7181/update application/json 96 - 500 - application/problem+json 493.9997ms
+2024-03-19 23:19:00.965 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7181/update multipart/form-data;+boundary=--------------------------207785244313326048345817 1557490
+2024-03-19 23:19:00.970 +07:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2024-03-19 23:19:00.971 +07:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2024-03-19 23:19:00.972 +07:00 [INF] HTTP POST /update responded 405 in 3.2427 ms
+2024-03-19 23:19:00.973 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7181/update multipart/form-data;+boundary=--------------------------207785244313326048345817 1557490 - 405 0 - 11.5516ms
+2024-03-19 23:19:00.976 +07:00 [INF] Connection id "0HN285S7QADC9", Request id "0HN285S7QADC9:00000004": the application completed without reading the entire request body.
+2024-03-19 23:19:35.010 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/update application/json 134
+2024-03-19 23:19:35.014 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:19:35.055 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:19:35.056 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:19:35.539 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.UpdateUser (YAHALLO) in 481.3675ms
+2024-03-19 23:19:35.623 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:19:35.799 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'request')
+   at MediatR.Mediator.Send[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at YAHALLO.Controllers.UserController.UpdateUser(UpdateUserCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\UserController.cs:line 78
+   at lambda_method372(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 23:19:35.807 +07:00 [ERR] HTTP PUT /update responded 500 in 751.9520 ms
+2024-03-19 23:19:35.809 +07:00 [INF] Request finished HTTP/2 PUT https://localhost:7181/update application/json 134 - 500 - application/problem+json 799.1068ms
+2024-03-19 23:25:08.056 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:25:09.346 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:25:09.349 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:25:09.354 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:25:09.356 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:25:09.357 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:25:14.382 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:25:14.801 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 253.1822 ms
+2024-03-19 23:25:14.812 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 433.1093ms
+2024-03-19 23:25:14.891 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:25:14.891 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:25:14.934 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 42.6416ms
+2024-03-19 23:25:15.046 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 154.7730ms
+2024-03-19 23:25:15.122 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:25:15.411 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 284.9782 ms
+2024-03-19 23:25:15.413 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 291.3611ms
+2024-03-19 23:25:20.359 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/update application/json 96
+2024-03-19 23:25:20.364 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:25:20.376 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:25:20.426 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, Microsoft.AspNetCore.Http.IFormFile, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:25:46.065 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:25:47.084 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:25:47.085 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:25:47.087 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:25:47.087 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:25:47.088 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:25:52.326 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:25:53.043 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 464.6788 ms
+2024-03-19 23:25:53.077 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 757.6356ms
+2024-03-19 23:25:53.150 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:25:53.161 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 10.2430ms
+2024-03-19 23:25:53.233 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:25:53.376 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 142.8406ms
+2024-03-19 23:25:53.465 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:25:53.844 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 375.7796 ms
+2024-03-19 23:25:53.848 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 382.3624ms
+2024-03-19 23:26:01.874 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7181/update application/json 142
+2024-03-19 23:26:02.179 +07:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2024-03-19 23:26:02.180 +07:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2024-03-19 23:26:02.181 +07:00 [INF] HTTP POST /update responded 405 in 304.8984 ms
+2024-03-19 23:26:02.198 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7181/update application/json 142 - 405 0 - 323.6566ms
+2024-03-19 23:26:44.353 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:26:44.908 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:26:44.909 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:26:44.911 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:26:44.912 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:26:44.913 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:26:49.625 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:26:50.086 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 228.0753 ms
+2024-03-19 23:26:50.108 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 489.5939ms
+2024-03-19 23:26:50.158 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:26:50.158 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:26:50.182 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 23.4568ms
+2024-03-19 23:26:50.256 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 98.0158ms
+2024-03-19 23:26:50.319 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:26:50.568 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 247.1797 ms
+2024-03-19 23:26:50.570 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 251.1240ms
+2024-03-19 23:29:19.261 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:29:20.119 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:29:20.121 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:29:20.123 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:29:20.124 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:29:20.124 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:29:22.534 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:29:23.020 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 300.9232 ms
+2024-03-19 23:29:23.034 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 502.6015ms
+2024-03-19 23:29:23.829 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:29:23.829 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:29:23.841 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 11.9296ms
+2024-03-19 23:29:23.904 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 75.2762ms
+2024-03-19 23:29:23.973 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:29:24.317 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 342.4540 ms
+2024-03-19 23:29:24.320 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 346.9064ms
+2024-03-19 23:29:38.781 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7181/update application/json 142
+2024-03-19 23:29:39.186 +07:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2024-03-19 23:29:39.188 +07:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2024-03-19 23:29:39.190 +07:00 [INF] HTTP POST /update responded 405 in 404.7393 ms
+2024-03-19 23:29:39.216 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7181/update application/json 142 - 405 0 - 434.6087ms
+2024-03-19 23:29:51.968 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7181/update - 0
+2024-03-19 23:29:51.972 +07:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2024-03-19 23:29:51.973 +07:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2024-03-19 23:29:51.974 +07:00 [INF] HTTP POST /update responded 405 in 4.3072 ms
+2024-03-19 23:29:51.978 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7181/update - 0 - 405 0 - 10.1622ms
+2024-03-19 23:30:00.563 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/update application/json 96
+2024-03-19 23:30:00.574 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:30:00.581 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:30:00.628 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, Microsoft.AspNetCore.Http.IFormFile, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:30:15.187 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:30:15.901 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:30:15.902 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:30:15.904 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:30:15.904 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:30:15.905 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:30:21.077 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:30:21.685 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 384.0770 ms
+2024-03-19 23:30:21.705 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 632.8710ms
+2024-03-19 23:30:21.782 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:30:21.782 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:30:21.809 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 24.8400ms
+2024-03-19 23:30:22.276 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 493.8793ms
+2024-03-19 23:30:22.392 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:30:23.009 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 614.0670 ms
+2024-03-19 23:30:23.011 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 618.6788ms
+2024-03-19 23:32:21.122 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:32:21.916 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:32:21.917 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:32:21.919 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:32:21.920 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:32:21.921 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:32:34.031 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:32:34.635 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:32:34.636 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:32:34.638 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:32:34.639 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:32:34.639 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:32:40.637 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:32:41.545 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 512.8301 ms
+2024-03-19 23:32:41.701 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:32:41.701 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:32:41.744 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 1114.2080ms
+2024-03-19 23:32:41.853 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 152.3308ms
+2024-03-19 23:32:42.062 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 361.3836ms
+2024-03-19 23:32:42.153 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:32:42.495 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 339.8702 ms
+2024-03-19 23:32:42.759 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 606.2467ms
+2024-03-19 23:32:56.381 +07:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7181/update multipart/form-data;+boundary=--------------------------084941608144044079330721 1557490
+2024-03-19 23:32:56.683 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:32:56.730 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, Microsoft.AspNetCore.Http.IFormFile, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:32:56.946 +07:00 [INF] Executing StatusCodeResult, setting HTTP status code 415
+2024-03-19 23:32:56.956 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.UpdateUser (YAHALLO) in 215.9948ms
+2024-03-19 23:32:56.958 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:32:56.959 +07:00 [INF] HTTP PUT /update responded 415 in 576.1170 ms
+2024-03-19 23:32:56.974 +07:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7181/update multipart/form-data;+boundary=--------------------------084941608144044079330721 1557490 - 415 0 - 593.1451ms
+2024-03-19 23:33:15.997 +07:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7181/update - 0
+2024-03-19 23:33:16.004 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:33:16.006 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, Microsoft.AspNetCore.Http.IFormFile, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:33:16.011 +07:00 [INF] Executing StatusCodeResult, setting HTTP status code 415
+2024-03-19 23:33:16.032 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.UpdateUser (YAHALLO) in 24.0815ms
+2024-03-19 23:33:16.034 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:33:16.035 +07:00 [INF] HTTP PUT /update responded 415 in 35.8449 ms
+2024-03-19 23:33:16.050 +07:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7181/update - 0 - 415 0 - 52.9140ms
+2024-03-19 23:34:08.026 +07:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7181/update multipart/form-data;+boundary=--------------------------486418823878551572572755 1557490
+2024-03-19 23:34:08.031 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:34:08.033 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, Microsoft.AspNetCore.Http.IFormFile, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:34:08.084 +07:00 [INF] Executing StatusCodeResult, setting HTTP status code 415
+2024-03-19 23:34:08.084 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.UpdateUser (YAHALLO) in 50.0594ms
+2024-03-19 23:34:08.085 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:34:08.086 +07:00 [INF] HTTP PUT /update responded 415 in 58.1481 ms
+2024-03-19 23:34:08.090 +07:00 [INF] Request finished HTTP/1.1 PUT https://localhost:7181/update multipart/form-data;+boundary=--------------------------486418823878551572572755 1557490 - 415 0 - 63.6417ms
+2024-03-19 23:34:55.441 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:34:55.973 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:34:55.974 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:34:55.976 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:34:55.977 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:34:55.978 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:34:57.776 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:34:58.233 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 301.7796 ms
+2024-03-19 23:34:58.245 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 473.1949ms
+2024-03-19 23:35:00.030 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:35:00.030 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:35:00.044 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 13.8186ms
+2024-03-19 23:35:00.115 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 85.0115ms
+2024-03-19 23:35:00.189 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:35:00.493 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 302.4269 ms
+2024-03-19 23:35:00.498 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 308.9366ms
+2024-03-19 23:35:29.248 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/update multipart/form-data;+boundary=----WebKitFormBoundarysioRVqb2fCGUDcHP 587483
+2024-03-19 23:35:29.261 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:35:29.272 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:35:29.340 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(Microsoft.AspNetCore.Http.IFormFile, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:35:29.522 +07:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-03-19 23:35:29.527 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.UpdateUser (YAHALLO) in 182.2705ms
+2024-03-19 23:35:29.529 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:35:29.530 +07:00 [INF] HTTP PUT /update responded 200 in 266.7802 ms
+2024-03-19 23:35:29.538 +07:00 [INF] Request finished HTTP/2 PUT https://localhost:7181/update multipart/form-data;+boundary=----WebKitFormBoundarysioRVqb2fCGUDcHP 587483 - 200 0 - 290.0570ms
+2024-03-19 23:37:22.609 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:37:23.144 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:37:23.145 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:37:23.149 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:37:23.150 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:37:23.151 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:37:28.087 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:37:28.533 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 212.3548 ms
+2024-03-19 23:37:28.567 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 484.6648ms
+2024-03-19 23:37:28.596 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:37:28.596 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:37:28.614 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 17.2682ms
+2024-03-19 23:37:28.666 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 69.6394ms
+2024-03-19 23:37:28.719 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:37:29.091 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 370.9157 ms
+2024-03-19 23:37:29.096 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 376.8581ms
+2024-03-19 23:37:42.249 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/update multipart/form-data;+boundary=----WebKitFormBoundaryDNbfjzhCmvHdbpAC 1557770
+2024-03-19 23:37:42.259 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:37:42.273 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:37:42.341 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:37:42.785 +07:00 [INF] Executed action YAHALLO.Controllers.UserController.UpdateUser (YAHALLO) in 438.8571ms
+2024-03-19 23:37:42.889 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:37:43.037 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Could not create an instance of type 'YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand'. Model bound complex types must not be abstract or value types and must have a parameterless constructor. Record types must have a single primary constructor. Alternatively, give the 'command' parameter a non-null default value.
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.CreateModel(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.BindModelCoreAsync(ModelBindingContext bindingContext, Int32 propertyData)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-19 23:37:43.080 +07:00 [ERR] HTTP PUT /update responded 500 in 818.1991 ms
+2024-03-19 23:37:43.119 +07:00 [INF] Request finished HTTP/2 PUT https://localhost:7181/update multipart/form-data;+boundary=----WebKitFormBoundaryDNbfjzhCmvHdbpAC 1557770 - 500 - application/problem+json 869.3089ms
+2024-03-19 23:38:26.982 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:38:27.642 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:38:27.644 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:38:27.647 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:38:27.648 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:38:27.649 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:38:30.300 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:38:30.793 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 343.5202 ms
+2024-03-19 23:38:30.811 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 513.9633ms
+2024-03-19 23:38:30.875 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:38:30.876 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:38:30.897 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 21.6878ms
+2024-03-19 23:38:31.061 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 184.4400ms
+2024-03-19 23:38:31.151 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:38:31.534 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 356.1389 ms
+2024-03-19 23:38:31.548 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 397.3508ms
+2024-03-19 23:38:41.077 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/update multipart/form-data;+boundary=----WebKitFormBoundaryH1DFSNhV2DzgYV9f 1557770
+2024-03-19 23:38:41.087 +07:00 [INF] CORS policy execution successful.
+2024-03-19 23:38:41.100 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:38:41.147 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).
+2024-03-19 23:39:24.874 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-19 23:39:25.623 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-19 23:39:25.624 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-19 23:39:25.627 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-19 23:39:25.627 +07:00 [INF] Hosting environment: Development
+2024-03-19 23:39:25.628 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-19 23:39:30.876 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-19 23:39:31.496 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 362.0954 ms
+2024-03-19 23:39:31.521 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 648.7535ms
+2024-03-19 23:39:31.584 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-19 23:39:31.584 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-19 23:39:31.602 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 17.6348ms
+2024-03-19 23:39:31.706 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 121.6699ms
+2024-03-19 23:39:31.786 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-19 23:39:32.160 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 371.4015 ms
+2024-03-19 23:39:32.163 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 376.0987ms
+2024-03-19 23:39:36.385 +07:00 [INF] Request starting HTTP/1.1 PUT https://localhost:7181/update application/json 116
+2024-03-19 23:39:36.891 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.UserController.UpdateUser (YAHALLO)'
+2024-03-19 23:39:36.968 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateUser(YAHALLO.Application.Commands.UserCommand.Update.UpdateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.UserController (YAHALLO).

@@ -30,8 +30,8 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Data\User\" />
 	  <Folder Include="Logs\" />
-	  <Folder Include="Data\" />
 	</ItemGroup>
 
 </Project>
