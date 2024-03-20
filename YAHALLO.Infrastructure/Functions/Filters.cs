@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -36,8 +37,16 @@ namespace YAHALLO.Infrastructure.Functions
             new GroupsCharacter("Y", new List<char> { 'y', 'ỳ', 'ý', 'ỷ', 'ỹ', 'ỵ', 'Y', 'Ỳ', 'Ý', 'Ỷ', 'Ỹ', 'Ỵ' }),
             new GroupsCharacter("Z", new List<char> { 'z', 'Z' })
         };
-        public bool CheckString(string str1, string str2)
+        public bool CheckString(string? str1, string? str2)
         {
+            if (str1 == null)
+            {
+                return false;
+            }
+            if(str2 == null)
+            {
+                return false;
+            }
             string pattern = @"[^a-zA-Z0-9\u0080-\uFFFF]";
             var formatstr1 = Regex.Replace(str1, pattern, "");
             var formatstr2 = Regex.Replace(str2, pattern, "");

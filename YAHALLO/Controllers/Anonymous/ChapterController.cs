@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace YAHALLO.Controllers
+namespace YAHALLO.Controllers.Anonymous
 {
-    public class UserRoleController : ControllerBase
+    public class ChapterController : ControllerBase
     {
         private readonly IMediator _sender;
-        public UserRoleController(IMediator sender)
+        public ChapterController(IMediator sender)
         {
             _sender = sender;
         }

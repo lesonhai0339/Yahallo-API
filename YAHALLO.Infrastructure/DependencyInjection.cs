@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Infrastructure.Data;
+using YAHALLO.Infrastructure.Functions;
 using YAHALLO.Infrastructure.Repositories;
 
 namespace YAHALLO.Infrastructure
@@ -48,6 +49,7 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IMangaViewRepository, MangaViewRepository>();
             services.AddTransient<IUserTokenRepository, UserTokenRepository>();
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
+            services.AddTransient<IFilters, Filters>();
             return services;
         }
     }

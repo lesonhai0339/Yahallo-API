@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace YAHALLO.Controllers
+namespace YAHALLO.Controllers.Anonymous
 {
-    public class FollowController : ControllerBase
+    public class MangaseasonController : ControllerBase
     {
         private readonly IMediator _sender;
-        public FollowController(IMediator sender)
+        public MangaseasonController(IMediator sender)
         {
             _sender = sender;
         }

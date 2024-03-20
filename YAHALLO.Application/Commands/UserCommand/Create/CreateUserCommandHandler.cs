@@ -31,10 +31,18 @@ namespace YAHALLO.Application.Commands.UserCommand.Create
         }
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var checkExists = await _userRepository.FindAllAsync(x => x.Email.Equals(request.Email), cancellationToken);
-            if (checkExists.Any())
+            var checkExists = await _userRepository.FindAllAsync(x => x.Email.Equals(request.Email) || x.UserName == request.UserName, cancellationToken);
+            if(checkExists.Any(x=> x.Email == request.Email))
             {
-                throw new NotFoundException("Have exists user for this email");
+                throw new NotFoundException("Email này đã được sử đụng");
+            }
+            if (checkExists.Any(x=> x.UserName == request.UserName))
+            {
+                throw new NotFoundException("Tên đăng nhập này đã được sử đụng");
+            }
+            if(checkExists.Any(x=> x.PhoneNumber == request.PhoneNumber))
+            {
+                throw new NotFoundException("Số điện thoại này đã được sử đụng");
             }
             var User = new UserEntity
             {

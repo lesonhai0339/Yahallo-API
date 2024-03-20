@@ -265,6 +265,7 @@ namespace YAHALLO.Infrastructure.Repositories
         {
             IQueryable<TPersistence> query = _dbContext.Set<TPersistence>().Where(filterExpression);
             return await query.ToDictionaryAsync(keySelector.Compile(), valueSelector.Compile(), cancellationToken);
-        }
+        }     
+
     }
 }
