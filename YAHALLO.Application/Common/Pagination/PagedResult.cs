@@ -1,4 +1,6 @@
-﻿namespace YAHALLO.Application.Common.Pagination
+﻿using YAHALLO.Application.Queries.UserQuery;
+
+namespace YAHALLO.Application.Common.Pagination
 {
     public class PagedResult<T>
     {
@@ -23,6 +25,11 @@
                 Data = data,
             };
         }
+
+        //internal static PagedResult<UserDto> Create(int totalCount, int pageCount, int pageSize, int pageNumber, List<UserDto> data)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public int TotalCount { get; set; }
 

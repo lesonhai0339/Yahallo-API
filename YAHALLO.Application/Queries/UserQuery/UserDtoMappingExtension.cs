@@ -15,7 +15,7 @@ namespace YAHALLO.Application.Queries.UserQuery
         public static UserDto MapToUserDto(this UserEntity Entity, IMapper mapper)
         {
             var map = mapper.Map<UserDto>(Entity);
-            map.DisplayName = Entity.FirstName + " "+ Entity.LastName;
+            map.DisplayName = Entity.FirstName + " " + Entity.LastName;
             return map;
         }
         public static List<UserDto> MapToUserDtoToList(this List<UserEntity> Entities, IMapper mapper) =>

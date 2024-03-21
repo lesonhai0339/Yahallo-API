@@ -35,5 +35,10 @@ namespace YAHALLO.Domain.Repositories
             Expression<Func<TPersistence, TKey>> keySelector,
             Expression<Func<TPersistence, TValue>> valueSelector,
             CancellationToken cancellationToken = default);
+
+        Task<List<TPersistence>> FindBySQLRaw(
+           string query,
+           CancellationToken cancellationToken = default,
+           params object[] paramenter);
     }
 }

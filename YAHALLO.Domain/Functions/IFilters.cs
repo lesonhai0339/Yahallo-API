@@ -11,5 +11,6 @@ namespace YAHALLO.Domain.Functions
     public interface IFilters
     {
        bool CheckString(string? str1, string? str2);
+        List<string> CheckString(string str1);
     }
 }

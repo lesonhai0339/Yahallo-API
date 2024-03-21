@@ -28,7 +28,7 @@ namespace YAHALLO.Application.Queries.UserQuery
             string phone,
             string avatar,
             UserStatus status,
-            UserLevel level) 
+            UserLevel level)
         {
             return new UserDto
             {

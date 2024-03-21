@@ -1,0 +1,1150 @@
+2024-03-22 00:07:11.474 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 00:07:12.699 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 00:07:12.700 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 00:07:12.704 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 00:07:12.705 +07:00 [INF] Hosting environment: Development
+2024-03-22 00:07:12.706 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 00:07:19.271 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 00:07:19.823 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 299.0055 ms
+2024-03-22 00:07:19.839 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 573.7080ms
+2024-03-22 00:07:20.240 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-22 00:07:20.240 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 00:07:20.279 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 39.1750ms
+2024-03-22 00:07:20.346 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 105.9319ms
+2024-03-22 00:07:20.456 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 00:07:20.921 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 462.7962 ms
+2024-03-22 00:07:20.931 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 474.9039ms
+2024-03-22 00:07:26.354 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-22 00:07:26.372 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (role|2)
+2024-03-22 00:07:26.381 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-03-22 00:07:26.383 +07:00 [INF] HTTP GET /get-all responded 401 in 26.3446 ms
+2024-03-22 00:07:26.384 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 401 0 - 30.6957ms
+2024-03-22 00:07:45.509 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/login application/json 60
+2024-03-22 00:07:45.515 +07:00 [INF] CORS policy execution successful.
+2024-03-22 00:07:45.522 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-22 00:07:45.602 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:07:51.071 +07:00 [INF] Executed DbCommand (125ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-22 00:07:51.377 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-22 00:07:51.537 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-03-22 00:07:51.653 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__p_0
+2024-03-22 00:07:52.617 +07:00 [INF] Executed DbCommand (43ms) [Parameters=[@p9='?' (Size = 450), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [UserToken] SET [AccessToken] = @p0, [CreateDate] = @p1, [DeleteDate] = @p2, [ExpiredRefeshToken] = @p3, [IdUserCreate] = @p4, [IdUserDelete] = @p5, [IdUserUpdate] = @p6, [RefeshToken] = @p7, [UpdateDate] = @p8
+OUTPUT 1
+WHERE [Id] = @p9;
+2024-03-22 00:07:52.639 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (6785 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-22 00:07:52.672 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-22 00:07:52.690 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 7077.2955ms
+2024-03-22 00:07:52.694 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-22 00:07:52.697 +07:00 [INF] HTTP POST /login responded 200 in 7179.5825 ms
+2024-03-22 00:07:52.711 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/login application/json 60 - 200 - application/json;+charset=utf-8 7202.4623ms
+2024-03-22 00:08:05.174 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-22 00:08:05.261 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2024-03-22 00:08:05.280 +07:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:08:05.553 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 00:08:05.613 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 00:08:05.656 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 00:08:05.659 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 00:08:05.673 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO) in 389.5362ms
+2024-03-22 00:08:05.674 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2024-03-22 00:08:05.675 +07:00 [INF] HTTP GET /get-all responded 200 in 499.1161 ms
+2024-03-22 00:08:05.676 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 200 - application/json;+charset=utf-8 502.5671ms
+2024-03-22 00:08:25.369 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-by-id?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - -
+2024-03-22 00:08:25.372 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO)'
+2024-03-22 00:08:25.380 +07:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.UserQuery.UserDto]]] GetById(YAHALLO.Application.Queries.UserQuery.GetById.GetUserByIdQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:08:25.588 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO) in 206.6748ms
+2024-03-22 00:08:25.633 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO)'
+2024-03-22 00:08:25.728 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Could not create an instance of type 'YAHALLO.Application.Queries.UserQuery.GetById.GetUserByIdQuery'. Model bound complex types must not be abstract or value types and must have a parameterless constructor. Record types must have a single primary constructor. Alternatively, give the 'query' parameter a non-null default value.
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.CreateModel(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.BindModelCoreAsync(ModelBindingContext bindingContext, Int32 propertyData)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 00:08:25.758 +07:00 [ERR] HTTP GET /get-by-id responded 500 in 388.1142 ms
+2024-03-22 00:08:25.761 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-by-id?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - - - 500 - application/problem+json 391.9350ms
+2024-03-22 00:08:50.693 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 00:08:51.245 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 00:08:51.246 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 00:08:51.249 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 00:08:51.250 +07:00 [INF] Hosting environment: Development
+2024-03-22 00:08:51.250 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 00:08:55.205 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 00:08:55.651 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 218.3173 ms
+2024-03-22 00:08:55.663 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 462.4976ms
+2024-03-22 00:08:55.740 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 00:08:55.740 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-22 00:08:55.767 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 26.7559ms
+2024-03-22 00:08:55.819 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 78.4750ms
+2024-03-22 00:08:55.881 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 00:08:56.203 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 319.4610 ms
+2024-03-22 00:08:56.206 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 325.6839ms
+2024-03-22 00:09:27.841 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/login application/json 60
+2024-03-22 00:09:27.851 +07:00 [INF] CORS policy execution successful.
+2024-03-22 00:09:27.860 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-22 00:09:27.903 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:09:33.860 +07:00 [INF] Executed DbCommand (76ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-22 00:09:34.236 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-22 00:09:34.392 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (6220 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-22 00:09:34.415 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-22 00:09:34.429 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 6519.1414ms
+2024-03-22 00:09:34.431 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-22 00:09:34.432 +07:00 [INF] HTTP POST /login responded 200 in 6579.4207 ms
+2024-03-22 00:09:34.461 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/login application/json 60 - 200 - application/json;+charset=utf-8 6618.5500ms
+2024-03-22 00:09:57.115 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-22 00:09:57.302 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2024-03-22 00:09:57.310 +07:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:09:57.660 +07:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 00:09:57.832 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 00:09:57.879 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 00:09:57.882 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 00:09:57.894 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO) in 582.6613ms
+2024-03-22 00:09:57.895 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2024-03-22 00:09:57.896 +07:00 [INF] HTTP GET /get-all responded 200 in 779.0352 ms
+2024-03-22 00:09:57.898 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 200 - application/json;+charset=utf-8 782.8166ms
+2024-03-22 00:10:05.051 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-by-id?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - -
+2024-03-22 00:10:05.059 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO)'
+2024-03-22 00:10:05.068 +07:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.UserQuery.UserDto]]] GetById(YAHALLO.Application.Queries.UserQuery.GetById.GetUserByIdQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:10:05.227 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_Id_0 AND (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 00:10:05.235 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 00:10:05.238 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-22 00:10:05.241 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO) in 170.1252ms
+2024-03-22 00:10:05.242 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO)'
+2024-03-22 00:10:05.243 +07:00 [INF] HTTP GET /get-by-id responded 200 in 190.7932 ms
+2024-03-22 00:10:05.245 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-by-id?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - - - 200 - application/json;+charset=utf-8 193.7746ms
+2024-03-22 00:10:11.407 +07:00 [INF] Request starting HTTP/2 DELETE https://localhost:7181/delete application/json 46
+2024-03-22 00:10:11.410 +07:00 [INF] CORS policy execution successful.
+2024-03-22 00:10:11.414 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.DeleteUser (YAHALLO)'
+2024-03-22 00:10:11.428 +07:00 [INF] Route matched with {action = "DeleteUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] DeleteUser(YAHALLO.Application.Commands.UserCommand.Delete.DeleteUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:10:11.505 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_Id_0 AND (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 00:10:11.610 +07:00 [INF] Executed DbCommand (19ms) [Parameters=[@p17='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 450), @p4='?' (DbType = Boolean), @p5='?' (Size = 200), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 200), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 8000) (DbType = AnsiString), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreateDate] = @p0, [DeleteDate] = @p1, [DisplayName] = @p2, [Email] = @p3, [EmailConfirm] = @p4, [FirstName] = @p5, [IdUserCreate] = @p6, [IdUserDelete] = @p7, [IdUserUpdate] = @p8, [LastName] = @p9, [Level] = @p10, [Password] = @p11, [PhoneConfirmed] = @p12, [PhoneNumber] = @p13, [Status] = @p14, [UpdateDate] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17;
+2024-03-22 00:10:11.637 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 00:10:11.639 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.DeleteUser (YAHALLO) in 209.8238ms
+2024-03-22 00:10:11.640 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.DeleteUser (YAHALLO)'
+2024-03-22 00:10:11.641 +07:00 [INF] HTTP DELETE /delete responded 200 in 229.3556 ms
+2024-03-22 00:10:11.642 +07:00 [INF] Request finished HTTP/2 DELETE https://localhost:7181/delete application/json 46 - 200 - application/json;+charset=utf-8 235.6841ms
+2024-03-22 00:10:19.681 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-by-id?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - -
+2024-03-22 00:10:19.682 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO)'
+2024-03-22 00:10:19.683 +07:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.UserQuery.UserDto]]] GetById(YAHALLO.Application.Queries.UserQuery.GetById.GetUserByIdQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:10:19.693 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_Id_0 AND (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 00:10:19.953 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request GetUserByIdQuery {"Id":"dce94bc31f3a4d6fb315b45ad1dfc20f","$type":"GetUserByIdQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy Thành viên với Id dce94bc31f3a4d6fb315b45ad1dfc20f
+   at YAHALLO.Application.Queries.UserQuery.GetById.GetUserByIdQueryhandler.Handle(GetUserByIdQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\UserQuery\GetById\GetUserByIdQueryhandler.cs:line 28
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-22 00:10:20.406 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-22 00:10:20.409 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO) in 723.995ms
+2024-03-22 00:10:20.410 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetById (YAHALLO)'
+2024-03-22 00:10:20.411 +07:00 [INF] HTTP GET /get-by-id responded 404 in 729.0185 ms
+2024-03-22 00:10:20.412 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-by-id?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - - - 404 - application/problem+json;+charset=utf-8 731.2563ms
+2024-03-22 00:10:27.000 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-by-id-deeleted?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - -
+2024-03-22 00:10:27.002 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetByIdDeleted (YAHALLO)'
+2024-03-22 00:10:27.008 +07:00 [INF] Route matched with {action = "GetByIdDeleted", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.UserQuery.UserDto]]] GetByIdDeleted(YAHALLO.Application.Queries.UserQuery.GetByIdDeleted.GetUserByIdDeleted, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:10:27.089 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_Id_0 AND (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 00:10:27.413 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request GetUserByIdDeleted {"Id":"dce94bc31f3a4d6fb315b45ad1dfc20f","$type":"GetUserByIdDeleted"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy thành viên với Id dce94bc31f3a4d6fb315b45ad1dfc20f
+   at YAHALLO.Application.Queries.UserQuery.GetByIdDeleted.GetUserByIdDeletedHandler.Handle(GetUserByIdDeleted request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\UserQuery\GetByIdDeleted\GetUserByIdDeletedHandler.cs:line 29
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-22 00:10:27.851 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-22 00:10:27.853 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetByIdDeleted (YAHALLO) in 843.1871ms
+2024-03-22 00:10:27.854 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetByIdDeleted (YAHALLO)'
+2024-03-22 00:10:27.856 +07:00 [INF] HTTP GET /get-by-id-deeleted responded 404 in 854.3530 ms
+2024-03-22 00:10:27.857 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-by-id-deeleted?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - - - 404 - application/problem+json;+charset=utf-8 856.4229ms
+2024-03-22 00:10:39.960 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/restore application/json 46
+2024-03-22 00:10:39.961 +07:00 [INF] CORS policy execution successful.
+2024-03-22 00:10:39.962 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.RestoreUser (YAHALLO)'
+2024-03-22 00:10:39.971 +07:00 [INF] Route matched with {action = "RestoreUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] RestoreUser(YAHALLO.Application.Commands.UserCommand.Restore.RestoreUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:10:40.063 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_Id_0 AND ([u].[IdUserDelete] IS NOT NULL) AND NOT ([u].[IdUserDelete] LIKE N'') AND ([u].[DeleteDate] IS NOT NULL)
+2024-03-22 00:10:40.071 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@p17='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 450), @p4='?' (DbType = Boolean), @p5='?' (Size = 200), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 200), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 8000) (DbType = AnsiString), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreateDate] = @p0, [DeleteDate] = @p1, [DisplayName] = @p2, [Email] = @p3, [EmailConfirm] = @p4, [FirstName] = @p5, [IdUserCreate] = @p6, [IdUserDelete] = @p7, [IdUserUpdate] = @p8, [LastName] = @p9, [Level] = @p10, [Password] = @p11, [PhoneConfirmed] = @p12, [PhoneNumber] = @p13, [Status] = @p14, [UpdateDate] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17;
+2024-03-22 00:10:40.073 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 00:10:40.075 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.RestoreUser (YAHALLO) in 101.7651ms
+2024-03-22 00:10:40.076 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.RestoreUser (YAHALLO)'
+2024-03-22 00:10:40.076 +07:00 [INF] HTTP POST /restore responded 200 in 114.8999 ms
+2024-03-22 00:10:40.078 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/restore application/json 46 - 200 - application/json;+charset=utf-8 118.0056ms
+2024-03-22 00:10:44.981 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-by-id-deeleted?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - -
+2024-03-22 00:10:44.982 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetByIdDeleted (YAHALLO)'
+2024-03-22 00:10:44.984 +07:00 [INF] Route matched with {action = "GetByIdDeleted", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.UserQuery.UserDto]]] GetByIdDeleted(YAHALLO.Application.Queries.UserQuery.GetByIdDeleted.GetUserByIdDeleted, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:10:44.994 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_Id_0 AND (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 00:10:45.001 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 00:10:45.003 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-22 00:10:45.004 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetByIdDeleted (YAHALLO) in 19.6485ms
+2024-03-22 00:10:45.006 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetByIdDeleted (YAHALLO)'
+2024-03-22 00:10:45.007 +07:00 [INF] HTTP GET /get-by-id-deeleted responded 200 in 25.3684 ms
+2024-03-22 00:10:45.009 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-by-id-deeleted?Id=dce94bc31f3a4d6fb315b45ad1dfc20f - - - 200 - application/json;+charset=utf-8 28.0454ms
+2024-03-22 00:12:15.887 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 00:12:16.453 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 00:12:16.454 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 00:12:16.456 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 00:12:16.457 +07:00 [INF] Hosting environment: Development
+2024-03-22 00:12:16.457 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 00:12:19.592 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 00:12:19.978 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 210.7865 ms
+2024-03-22 00:12:19.991 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 403.6786ms
+2024-03-22 00:12:20.027 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-22 00:12:20.027 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 00:12:20.143 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 111.2260ms
+2024-03-22 00:12:20.273 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 245.2937ms
+2024-03-22 00:12:20.359 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 00:12:20.766 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 403.2514 ms
+2024-03-22 00:12:20.770 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 410.2593ms
+2024-03-22 00:13:19.298 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-by-name?Name=tu%CC%80ng - -
+2024-03-22 00:13:19.340 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetuserByName (YAHALLO)'
+2024-03-22 00:13:19.418 +07:00 [INF] Route matched with {action = "GetuserByName", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetuserByName(YAHALLO.Application.Queries.UserQuery.GetByName.GetUserByNameQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 00:13:22.960 +07:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 00:13:23.308 +07:00 [INF] Executed DbCommand (32ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 00:13:23.332 +07:00 [WRN] Yahallo Long Running Request: GetUserByNameQuery (3591 milliseconds)  {"Name":"tùng","$type":"GetUserByNameQuery"}
+2024-03-22 00:13:23.353 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 00:13:23.377 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetuserByName (YAHALLO) in 3951.0367ms
+2024-03-22 00:13:23.378 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetuserByName (YAHALLO)'
+2024-03-22 00:13:23.379 +07:00 [INF] HTTP GET /get-by-name responded 200 in 4051.8869 ms
+2024-03-22 00:13:23.389 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-by-name?Name=tu%CC%80ng - - - 200 - application/json;+charset=utf-8 4091.1969ms
+2024-03-22 01:11:59.173 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:11:59.888 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:11:59.889 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:11:59.891 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:11:59.892 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:11:59.893 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:12:05.004 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:12:05.536 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 449.7205 ms
+2024-03-22 01:12:05.549 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 550.6219ms
+2024-03-22 01:12:05.585 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:12:05.715 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 130.2629ms
+2024-03-22 01:12:05.811 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:12:06.640 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 826.8456 ms
+2024-03-22 01:12:06.652 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 841.5853ms
+2024-03-22 01:12:45.222 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/get-all - -
+2024-03-22 01:12:45.235 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2024-03-22 01:12:45.277 +07:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 01:12:48.535 +07:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-03-22 01:12:48.919 +07:00 [INF] Executed DbCommand (39ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 01:12:48.996 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[ChapterId], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[Url], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-03-22 01:12:49.004 +07:00 [WRN] Yahallo Long Running Request: GetAllUserQuery (3562 milliseconds)  {"$type":"GetAllUserQuery"}
+2024-03-22 01:12:49.022 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 01:12:49.060 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO) in 3777.7634ms
+2024-03-22 01:12:49.062 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2024-03-22 01:12:49.063 +07:00 [INF] HTTP GET /get-all responded 200 in 3834.5916 ms
+2024-03-22 01:12:49.077 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/get-all - - - 200 - application/json;+charset=utf-8 3855.1645ms
+2024-03-22 01:14:22.333 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:14:23.117 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:14:23.118 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:14:23.121 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:14:23.121 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:14:23.122 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:14:28.538 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:14:29.455 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 777.1562 ms
+2024-03-22 01:14:29.481 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 957.4237ms
+2024-03-22 01:14:29.597 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:14:29.639 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 41.5463ms
+2024-03-22 01:14:29.762 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:14:30.222 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 443.6992 ms
+2024-03-22 01:14:30.225 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 463.2599ms
+2024-03-22 01:14:51.054 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - -
+2024-03-22 01:14:51.065 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:14:51.106 +07:00 [INF] Route matched with {action = "Image", controller = "PhysicalRespone"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Image(System.String) on controller YAHALLO.Controllers.Anonymous.PhysicalResponeController (YAHALLO).
+2024-03-22 01:14:51.154 +07:00 [INF] Executing PhysicalFileResult, sending file 'Data\User\80440526_p0.jpg' with download name '' ...
+2024-03-22 01:14:51.293 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO) in 181.1875ms
+2024-03-22 01:14:51.334 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:14:51.392 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NotSupportedException: Path 'Data\User\80440526_p0.jpg' was not rooted.
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.WriteFileAsyncInternal(HttpContext httpContext, PhysicalFileResult result, RangeItemHeaderValue range, Int64 rangeLength, ILogger logger)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.ExecuteAsync(ActionContext context, PhysicalFileResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:14:51.417 +07:00 [ERR] HTTP GET /services/image responded 500 in 361.6133 ms
+2024-03-22 01:14:51.420 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - - - 500 0 - 365.6285ms
+2024-03-22 01:15:12.517 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - -
+2024-03-22 01:15:12.560 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:15:12.563 +07:00 [INF] Route matched with {action = "Image", controller = "PhysicalRespone"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Image(System.String) on controller YAHALLO.Controllers.Anonymous.PhysicalResponeController (YAHALLO).
+2024-03-22 01:15:45.131 +07:00 [INF] Executing PhysicalFileResult, sending file 'Data\User\80440526_p0.jpg' with download name '' ...
+2024-03-22 01:15:45.234 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO) in 32670.1786ms
+2024-03-22 01:15:45.278 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:15:45.349 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NotSupportedException: Path 'Data\User\80440526_p0.jpg' was not rooted.
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.WriteFileAsyncInternal(HttpContext httpContext, PhysicalFileResult result, RangeItemHeaderValue range, Int64 rangeLength, ILogger logger)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.ExecuteAsync(ActionContext context, PhysicalFileResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:15:45.356 +07:00 [ERR] HTTP GET /services/image responded 500 in 32796.0692 ms
+2024-03-22 01:15:45.357 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - - - 500 0 - 32840.4547ms
+2024-03-22 01:16:13.555 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:16:14.102 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:16:14.103 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:16:14.107 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:16:14.108 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:16:14.108 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:16:19.213 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:16:19.582 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 289.5286 ms
+2024-03-22 01:16:19.599 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 388.9154ms
+2024-03-22 01:16:19.661 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:16:19.678 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.8791ms
+2024-03-22 01:16:19.812 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:16:20.290 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 469.5932 ms
+2024-03-22 01:16:20.306 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 493.4458ms
+2024-03-22 01:16:23.986 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - -
+2024-03-22 01:16:23.996 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:16:24.028 +07:00 [INF] Route matched with {action = "Image", controller = "PhysicalRespone"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Image(System.String) on controller YAHALLO.Controllers.Anonymous.PhysicalResponeController (YAHALLO).
+2024-03-22 01:16:24.078 +07:00 [INF] Executing PhysicalFileResult, sending file 'Data\User\80440526_p0.jpg' with download name '' ...
+2024-03-22 01:16:24.237 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO) in 199.8073ms
+2024-03-22 01:16:24.307 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:16:24.395 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NotSupportedException: Path 'Data\User\80440526_p0.jpg' was not rooted.
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.WriteFileAsyncInternal(HttpContext httpContext, PhysicalFileResult result, RangeItemHeaderValue range, Int64 rangeLength, ILogger logger)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.ExecuteAsync(ActionContext context, PhysicalFileResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:16:24.431 +07:00 [ERR] HTTP GET /services/image responded 500 in 442.5983 ms
+2024-03-22 01:16:24.433 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - - - 500 - application/problem+json 446.2249ms
+2024-03-22 01:18:33.933 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:18:34.450 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:18:34.451 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:18:34.453 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:18:34.453 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:18:34.454 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:18:39.802 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:18:40.279 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 383.8375 ms
+2024-03-22 01:18:40.300 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 509.8755ms
+2024-03-22 01:18:40.359 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:18:40.373 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 14.0351ms
+2024-03-22 01:18:40.462 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:18:40.832 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 368.0745 ms
+2024-03-22 01:18:40.841 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 379.2683ms
+2024-03-22 01:18:54.384 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - -
+2024-03-22 01:18:54.402 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:18:54.449 +07:00 [INF] Route matched with {action = "Image", controller = "PhysicalRespone"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Image(System.String) on controller YAHALLO.Controllers.Anonymous.PhysicalResponeController (YAHALLO).
+2024-03-22 01:19:08.757 +07:00 [INF] Executing PhysicalFileResult, sending file 'Data\User\80440526_p0.jpg' with download name '' ...
+2024-03-22 01:19:08.893 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO) in 14437.8083ms
+2024-03-22 01:19:08.936 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:19:09.007 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NotSupportedException: Path 'Data\User\80440526_p0.jpg' was not rooted.
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.WriteFileAsyncInternal(HttpContext httpContext, PhysicalFileResult result, RangeItemHeaderValue range, Int64 rangeLength, ILogger logger)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.ExecuteAsync(ActionContext context, PhysicalFileResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:19:09.039 +07:00 [ERR] HTTP GET /services/image responded 500 in 14649.7791 ms
+2024-03-22 01:19:09.041 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - - - 500 - application/problem+json 14656.6368ms
+2024-03-22 01:20:13.879 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:20:14.623 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:20:14.625 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:20:14.627 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:20:14.628 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:20:14.629 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:20:16.593 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:20:16.893 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 258.6626 ms
+2024-03-22 01:20:16.905 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 315.0352ms
+2024-03-22 01:20:18.847 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:20:18.860 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 13.5618ms
+2024-03-22 01:20:18.960 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:20:19.346 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 383.3212 ms
+2024-03-22 01:20:19.349 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 388.6675ms
+2024-03-22 01:20:24.793 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - -
+2024-03-22 01:20:24.802 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:20:24.830 +07:00 [INF] Route matched with {action = "Image", controller = "PhysicalRespone"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Image(System.String) on controller YAHALLO.Controllers.Anonymous.PhysicalResponeController (YAHALLO).
+2024-03-22 01:21:06.678 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:21:07.294 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:21:07.295 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:21:07.297 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:21:07.298 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:21:07.298 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:21:12.068 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:21:12.325 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 208.3776 ms
+2024-03-22 01:21:12.331 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 267.3242ms
+2024-03-22 01:21:12.416 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:21:12.439 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 20.7422ms
+2024-03-22 01:21:12.523 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:21:13.093 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 567.7194 ms
+2024-03-22 01:21:13.108 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 584.8486ms
+2024-03-22 01:21:22.747 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - -
+2024-03-22 01:21:22.756 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:21:22.794 +07:00 [INF] Route matched with {action = "Image", controller = "PhysicalRespone"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Image(System.String) on controller YAHALLO.Controllers.Anonymous.PhysicalResponeController (YAHALLO).
+2024-03-22 01:21:23.050 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO) in 250.3762ms
+2024-03-22 01:21:23.128 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:21:23.195 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'path1')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.IO.Path.Combine(String path1, String path2)
+   at YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image(String filepath) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\Anonymous\PhysicalResponeController.cs:line 22
+   at lambda_method4(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:21:23.252 +07:00 [ERR] HTTP GET /services/image responded 500 in 502.9519 ms
+2024-03-22 01:21:23.253 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - - - 500 - application/problem+json 506.7038ms
+2024-03-22 01:22:26.619 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:22:27.217 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:22:27.218 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:22:27.219 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:22:27.220 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:22:27.221 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:22:32.020 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:22:32.675 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 546.9134 ms
+2024-03-22 01:22:32.690 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 673.3914ms
+2024-03-22 01:22:32.748 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:22:32.783 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 34.3182ms
+2024-03-22 01:22:32.948 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:22:33.493 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 510.4712 ms
+2024-03-22 01:22:33.573 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 625.2406ms
+2024-03-22 01:22:37.731 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - -
+2024-03-22 01:22:37.741 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:22:37.785 +07:00 [INF] Route matched with {action = "Image", controller = "PhysicalRespone"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Image(System.String) on controller YAHALLO.Controllers.Anonymous.PhysicalResponeController (YAHALLO).
+2024-03-22 01:22:37.833 +07:00 [INF] Executing PhysicalFileResult, sending file 'Data\User\80440526_p0.jpg' with download name '' ...
+2024-03-22 01:22:38.004 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO) in 213.1214ms
+2024-03-22 01:22:38.048 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:22:38.106 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NotSupportedException: Path 'Data\User\80440526_p0.jpg' was not rooted.
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.WriteFileAsyncInternal(HttpContext httpContext, PhysicalFileResult result, RangeItemHeaderValue range, Int64 rangeLength, ILogger logger)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor.ExecuteAsync(ActionContext context, PhysicalFileResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:22:38.134 +07:00 [ERR] HTTP GET /services/image responded 500 in 401.4445 ms
+2024-03-22 01:22:38.136 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - - - 500 - application/problem+json 405.0540ms
+2024-03-22 01:24:49.881 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:24:50.750 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:24:50.751 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:24:50.754 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:24:50.755 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:24:50.756 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:24:58.448 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:24:58.935 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:24:58.935 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:24:58.937 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:24:58.938 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:24:58.938 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:25:03.623 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:25:03.988 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 282.7133 ms
+2024-03-22 01:25:03.997 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 382.4792ms
+2024-03-22 01:25:04.108 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:25:04.127 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 18.9628ms
+2024-03-22 01:25:04.232 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:25:05.110 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 875.7967 ms
+2024-03-22 01:25:05.127 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 894.5822ms
+2024-03-22 01:25:14.081 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - -
+2024-03-22 01:25:14.092 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:25:14.139 +07:00 [INF] Route matched with {action = "Image", controller = "PhysicalRespone"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Image(System.String) on controller YAHALLO.Controllers.Anonymous.PhysicalResponeController (YAHALLO).
+2024-03-22 01:25:30.999 +07:00 [INF] Executing PhysicalFileResult, sending file 'D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Data\User\80440526_p0.jpg' with download name '' ...
+2024-03-22 01:25:31.119 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO) in 16973.8041ms
+2024-03-22 01:25:31.121 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.PhysicalResponeController.Image (YAHALLO)'
+2024-03-22 01:25:31.122 +07:00 [INF] HTTP GET /services/image responded 200 in 17038.6502 ms
+2024-03-22 01:25:31.123 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/image?filepath=Data%5CUser%5C80440526_p0.jpg - - - 200 1557275 image/jpeg 17042.1832ms
+2024-03-22 01:26:52.160 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:26:52.739 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:26:52.740 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:26:52.742 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:26:52.742 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:26:52.743 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:26:57.782 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:26:58.147 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 283.6798 ms
+2024-03-22 01:26:58.158 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 380.3382ms
+2024-03-22 01:26:58.215 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:26:58.235 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 19.9038ms
+2024-03-22 01:26:58.392 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:26:58.935 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 539.7306 ms
+2024-03-22 01:26:58.938 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 545.8396ms
+2024-03-22 01:27:18.156 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:27:19.036 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:27:19.037 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:27:19.039 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:27:19.040 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:27:19.041 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:27:20.686 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:27:20.976 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 251.0447 ms
+2024-03-22 01:27:20.986 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 303.7709ms
+2024-03-22 01:27:22.728 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:27:22.747 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 19.3667ms
+2024-03-22 01:27:22.882 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:27:23.154 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 269.6398 ms
+2024-03-22 01:27:23.160 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 277.4208ms
+2024-03-22 01:56:46.530 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:56:47.333 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:56:47.334 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:56:47.337 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:56:47.338 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:56:47.339 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:56:51.584 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:56:52.318 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 634.2187 ms
+2024-03-22 01:56:52.381 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 800.5918ms
+2024-03-22 01:56:52.483 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:56:52.518 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 34.9971ms
+2024-03-22 01:56:52.578 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:56:52.852 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "POST create" for actions - YAHALLO.Controllers.Anonymous.ArtistController.CreateArtist (YAHALLO),YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:56:52.903 +07:00 [ERR] HTTP GET /swagger/v111/swagger.json responded 500 in 322.4510 ms
+2024-03-22 01:56:52.908 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 500 - application/problem+json 329.6770ms
+2024-03-22 01:57:17.939 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:57:18.838 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:57:18.845 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:57:18.849 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:57:18.850 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:57:18.851 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:57:22.322 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:57:22.684 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 294.3020 ms
+2024-03-22 01:57:22.692 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 380.4555ms
+2024-03-22 01:57:22.813 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:57:22.859 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 45.7209ms
+2024-03-22 01:57:22.932 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:57:23.257 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "POST create" for actions - YAHALLO.Controllers.Anonymous.ArtistController.CreateArtist (YAHALLO),YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:57:23.324 +07:00 [ERR] HTTP GET /swagger/v111/swagger.json responded 500 in 389.6557 ms
+2024-03-22 01:57:23.344 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 500 - application/problem+json 411.1552ms
+2024-03-22 01:59:07.291 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 01:59:07.979 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 01:59:07.980 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 01:59:07.982 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 01:59:07.983 +07:00 [INF] Hosting environment: Development
+2024-03-22 01:59:07.984 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 01:59:12.476 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 01:59:12.986 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 451.9014 ms
+2024-03-22 01:59:13.001 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 528.6929ms
+2024-03-22 01:59:13.250 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 01:59:13.266 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 15.8107ms
+2024-03-22 01:59:13.363 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 01:59:13.624 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "POST create" for actions - YAHALLO.Controllers.Anonymous.ArtistController.CreateArtist (YAHALLO),YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 01:59:13.661 +07:00 [ERR] HTTP GET /swagger/v111/swagger.json responded 500 in 293.7322 ms
+2024-03-22 01:59:13.665 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 500 - application/problem+json 301.6735ms
+2024-03-22 02:00:00.185 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:00:00.773 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:00:00.778 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:00:00.781 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:00:00.782 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:00:00.783 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:00:06.736 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:00:07.055 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 259.8275 ms
+2024-03-22 02:00:07.062 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 328.3736ms
+2024-03-22 02:00:07.264 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:00:07.293 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 28.1232ms
+2024-03-22 02:00:07.396 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:00:07.760 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 362.7855 ms
+2024-03-22 02:00:07.843 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 447.0394ms
+2024-03-22 02:00:38.614 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/artist-create application/json 142
+2024-03-22 02:00:38.619 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:00:38.625 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.CreateArtist (YAHALLO)'
+2024-03-22 02:00:38.667 +07:00 [INF] Route matched with {action = "CreateArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateArtist(YAHALLO.Application.Commands.ArtistCommand.Create.CreateArtistCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-22 02:00:46.997 +07:00 [INF] Executed DbCommand (215ms) [Parameters=[@__request_Name_1='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE ([a].[Name] LIKE @__request_Name_1) AND (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2024-03-22 02:00:57.363 +07:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = Int32), @p10='?' (Size = 255), @p11='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Artist] ([Id], [Birth], [Countries], [CreateDate], [DeleteDate], [Depscription], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LifeStatus], [Name], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+2024-03-22 02:01:02.843 +07:00 [WRN] Yahallo Long Running Request: CreateArtistCommand (23936 milliseconds)  {"Name":"Hajime","CountryCode":1,"Depscription":"Tác giả vô danh","Birth":"2024-03-21T19:00:12.7770000Z","LifeStatus":1,"$type":"CreateArtistCommand"}
+2024-03-22 02:01:02.861 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 02:01:02.873 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.CreateArtist (YAHALLO) in 24199.5185ms
+2024-03-22 02:01:02.874 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.CreateArtist (YAHALLO)'
+2024-03-22 02:01:02.875 +07:00 [INF] HTTP POST /artist-create responded 200 in 24254.7253 ms
+2024-03-22 02:01:02.885 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/artist-create application/json 142 - 200 - application/json;+charset=utf-8 24270.9369ms
+2024-03-22 02:02:58.114 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:02:58.623 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:02:58.624 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:02:58.626 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:02:58.627 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:02:58.627 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:03:03.195 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:03:03.580 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 297.5942 ms
+2024-03-22 02:03:03.591 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 402.0305ms
+2024-03-22 02:03:03.654 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:03:03.782 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 127.4957ms
+2024-03-22 02:03:03.866 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:03:04.188 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 306.8241 ms
+2024-03-22 02:03:04.194 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 328.0725ms
+2024-03-22 02:14:41.639 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:14:42.409 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:14:42.410 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:14:42.412 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:14:42.413 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:14:42.414 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:14:46.449 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:14:46.770 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 259.3862 ms
+2024-03-22 02:14:46.779 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 333.1588ms
+2024-03-22 02:14:46.878 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:14:46.899 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 20.5949ms
+2024-03-22 02:14:47.003 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:14:47.288 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 282.0501 ms
+2024-03-22 02:14:47.290 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 286.0613ms
+2024-03-22 02:15:30.137 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 164
+2024-03-22 02:15:30.141 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:15:30.148 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:15:30.189 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 02:15:37.306 +07:00 [INF] Executed DbCommand (107ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-03-22 02:15:47.598 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-03-22 02:15:50.171 +07:00 [INF] Executed DbCommand (39ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (Size = 450), @p20='?' (DbType = DateTime2), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2024-03-22 02:16:02.845 +07:00 [WRN] Yahallo Long Running Request: CreateUserCommand (32454 milliseconds)  {"FirstName":"test","LastName":"test","Email":"haileds9339@gmail.com","PhoneNumber":"0909307670","UserName":"test","Password":"Hai@119067","$type":"CreateUserCommand"}
+2024-03-22 02:16:02.869 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 02:16:02.882 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 32687.5216ms
+2024-03-22 02:16:02.884 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:16:02.886 +07:00 [INF] HTTP POST /user/create responded 200 in 32742.8298 ms
+2024-03-22 02:16:02.901 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 164 - 200 - application/json;+charset=utf-8 32764.3934ms
+2024-03-22 02:18:58.442 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:18:59.216 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:18:59.217 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:18:59.219 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:18:59.220 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:18:59.221 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:19:03.449 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:19:03.756 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 247.0675 ms
+2024-03-22 02:19:03.767 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 319.3346ms
+2024-03-22 02:19:03.817 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:19:03.891 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 73.2581ms
+2024-03-22 02:19:04.088 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:19:04.387 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 297.4336 ms
+2024-03-22 02:19:04.391 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 302.8777ms
+2024-03-22 02:19:37.510 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 164
+2024-03-22 02:19:37.515 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:19:37.523 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:19:37.590 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 02:19:41.740 +07:00 [INF] Executed DbCommand (57ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-03-22 02:19:42.030 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-03-22 02:19:42.351 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (Size = 450), @p20='?' (DbType = DateTime2), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2024-03-22 02:19:43.022 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateUserCommand {"FirstName":"test","LastName":"test","Email":"haileds9339@gmail.com","PhoneNumber":"0909307670","UserName":"test","Password":"Hai@119067","$type":"CreateUserCommand"}
+System.IO.FileNotFoundException: Could not find file 'D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\TemplateEmail.html'.
+File name: 'D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\TemplateEmail.html'
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at YAHALLO.Application.Services.MailService.Service.EmailService.CreateEmailMessageWithCSS(Message mess) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 48
+   at YAHALLO.Application.Services.MailService.Service.EmailService.SendEmailWithCSS(Message mess) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 27
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 73
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-22 02:19:43.768 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 6170.8239ms
+2024-03-22 02:19:43.915 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:19:44.234 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.FileNotFoundException: Could not find file 'D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\TemplateEmail.html'.
+File name: 'D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\TemplateEmail.html'
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at YAHALLO.Application.Services.MailService.Service.EmailService.CreateEmailMessageWithCSS(Message mess) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 48
+   at YAHALLO.Application.Services.MailService.Service.EmailService.SendEmailWithCSS(Message mess) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 27
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 73
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.UserController.CreateUser(CreateUserCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\Anonymous\UserController.cs:line 70
+   at lambda_method7(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 02:19:44.273 +07:00 [ERR] HTTP POST /user/create responded 500 in 6756.3333 ms
+2024-03-22 02:19:44.294 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 164 - 500 - application/problem+json 6784.2675ms
+2024-03-22 02:23:18.595 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:23:19.420 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:23:19.422 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:23:19.425 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:23:19.426 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:23:19.427 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:23:21.723 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:23:22.153 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 378.6647 ms
+2024-03-22 02:23:22.167 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 448.0962ms
+2024-03-22 02:23:22.513 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:23:22.554 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 41.3599ms
+2024-03-22 02:23:22.729 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:23:23.539 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 799.9594 ms
+2024-03-22 02:23:23.543 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 813.4014ms
+2024-03-22 02:23:32.225 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 164
+2024-03-22 02:23:32.233 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:23:32.243 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:23:32.312 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 02:23:36.451 +07:00 [INF] Executed DbCommand (240ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-03-22 02:23:37.265 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateUserCommand {"FirstName":"test","LastName":"test","Email":"haileds9339@gmail.com","PhoneNumber":"0909307670","UserName":"test","Password":"Hai@119067","$type":"CreateUserCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Email này đã được sử đụng
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 41
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-22 02:23:38.100 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-22 02:23:38.116 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 5794.2769ms
+2024-03-22 02:23:38.118 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:23:38.120 +07:00 [INF] HTTP POST /user/create responded 404 in 5884.9761 ms
+2024-03-22 02:23:38.150 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 164 - 404 - application/problem+json;+charset=utf-8 5925.0022ms
+2024-03-22 02:24:08.960 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:24:09.525 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:24:09.527 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:24:09.531 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:24:09.534 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:24:09.536 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:24:13.478 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:24:13.968 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 406.3885 ms
+2024-03-22 02:24:13.979 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 506.5356ms
+2024-03-22 02:24:14.093 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:24:14.212 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 118.6334ms
+2024-03-22 02:24:14.376 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:24:14.846 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 466.6915 ms
+2024-03-22 02:24:14.862 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 486.6943ms
+2024-03-22 02:24:24.023 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 164
+2024-03-22 02:24:24.034 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:24:24.043 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:24:24.095 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 02:24:27.417 +07:00 [INF] Executed DbCommand (65ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-03-22 02:24:27.757 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-03-22 02:24:28.102 +07:00 [INF] Executed DbCommand (35ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (Size = 450), @p20='?' (DbType = DateTime2), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2024-03-22 02:24:28.625 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateUserCommand {"FirstName":"test","LastName":"test","Email":"haileds9339@gmail.com","PhoneNumber":"0909307670","UserName":"test","Password":"Hai@119067","$type":"CreateUserCommand"}
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Application\Services\MailService\Service\TemplateEmail.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at YAHALLO.Application.Services.MailService.Service.EmailService.CreateEmailMessageWithCSS(Message mess) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 49
+   at YAHALLO.Application.Services.MailService.Service.EmailService.SendEmailWithCSS(Message mess) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 27
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 73
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-22 02:24:29.285 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 5183.5323ms
+2024-03-22 02:24:29.489 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:24:29.783 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Application\Services\MailService\Service\TemplateEmail.html'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at YAHALLO.Application.Services.MailService.Service.EmailService.CreateEmailMessageWithCSS(Message mess) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 49
+   at YAHALLO.Application.Services.MailService.Service.EmailService.SendEmailWithCSS(Message mess) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 27
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 73
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.UserController.CreateUser(CreateUserCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\Anonymous\UserController.cs:line 70
+   at lambda_method7(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-22 02:24:29.815 +07:00 [ERR] HTTP POST /user/create responded 500 in 5779.0549 ms
+2024-03-22 02:24:29.828 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 164 - 500 - application/problem+json 5805.0176ms
+2024-03-22 02:31:19.320 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:31:20.071 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:31:20.072 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:31:20.074 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:31:20.075 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:31:20.075 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:31:23.431 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:31:23.726 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 240.6972 ms
+2024-03-22 02:31:23.732 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 307.8943ms
+2024-03-22 02:31:23.787 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:31:23.815 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 28.1233ms
+2024-03-22 02:31:23.922 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:31:24.259 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 334.6574 ms
+2024-03-22 02:31:24.262 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 339.7345ms
+2024-03-22 02:31:35.473 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 164
+2024-03-22 02:31:35.479 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:31:35.487 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:31:35.542 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 02:31:38.797 +07:00 [INF] Executed DbCommand (75ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-03-22 02:31:39.066 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-03-22 02:31:39.361 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (Size = 450), @p20='?' (DbType = DateTime2), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2024-03-22 02:31:43.001 +07:00 [WRN] Yahallo Long Running Request: CreateUserCommand (7225 milliseconds)  {"FirstName":"test","LastName":"test","Email":"haileds9339@gmail.com","PhoneNumber":"0909307670","UserName":"test","Password":"Hai@119067","$type":"CreateUserCommand"}
+2024-03-22 02:31:43.020 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 02:31:43.032 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 7483.3537ms
+2024-03-22 02:31:43.034 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:31:43.035 +07:00 [INF] HTTP POST /user/create responded 200 in 7554.5109 ms
+2024-03-22 02:31:43.086 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 164 - 200 - application/json;+charset=utf-8 7613.4498ms
+2024-03-22 02:34:21.845 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:34:22.637 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:34:22.638 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:34:22.640 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:34:22.641 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:34:22.642 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:34:27.431 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:34:27.871 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 363.0171 ms
+2024-03-22 02:34:27.884 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 456.9015ms
+2024-03-22 02:34:28.155 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:34:28.185 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 29.4925ms
+2024-03-22 02:34:28.312 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:34:28.995 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 680.3581 ms
+2024-03-22 02:34:29.001 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 689.2550ms
+2024-03-22 02:34:44.684 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 164
+2024-03-22 02:34:44.691 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:34:44.700 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:34:44.755 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 02:34:48.035 +07:00 [INF] Executed DbCommand (61ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-03-22 02:34:48.268 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-03-22 02:34:48.620 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (Size = 450), @p20='?' (DbType = DateTime2), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2024-03-22 02:34:52.061 +07:00 [WRN] Yahallo Long Running Request: CreateUserCommand (7044 milliseconds)  {"FirstName":"test","LastName":"test","Email":"haileds9339@gmail.com","PhoneNumber":"0909307670","UserName":"test","Password":"Hai@119067","$type":"CreateUserCommand"}
+2024-03-22 02:34:52.084 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 02:34:52.095 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 7333.3962ms
+2024-03-22 02:34:52.096 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:34:52.097 +07:00 [INF] HTTP POST /user/create responded 200 in 7403.0138 ms
+2024-03-22 02:34:52.109 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 164 - 200 - application/json;+charset=utf-8 7424.7029ms
+2024-03-22 02:37:58.641 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:37:59.551 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:37:59.553 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:37:59.555 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:37:59.556 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:37:59.557 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:38:03.212 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:38:03.966 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 603.1651 ms
+2024-03-22 02:38:04.000 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 794.6114ms
+2024-03-22 02:38:04.028 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:38:04.139 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 110.5796ms
+2024-03-22 02:38:04.446 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:38:05.635 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 1187.4913 ms
+2024-03-22 02:38:05.687 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 1240.7484ms
+2024-03-22 02:38:12.809 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 164
+2024-03-22 02:38:12.819 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:38:12.834 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:38:12.951 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 02:38:17.712 +07:00 [INF] Executed DbCommand (93ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-03-22 02:38:18.118 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-03-22 02:38:18.549 +07:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (Size = 450), @p20='?' (DbType = DateTime2), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2024-03-22 02:38:22.250 +07:00 [WRN] Yahallo Long Running Request: CreateUserCommand (8994 milliseconds)  {"FirstName":"test","LastName":"test","Email":"haileds9339@gmail.com","PhoneNumber":"0909307670","UserName":"test","Password":"Hai@119067","$type":"CreateUserCommand"}
+2024-03-22 02:38:22.273 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 02:38:22.285 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 9328.9705ms
+2024-03-22 02:38:22.289 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:38:22.290 +07:00 [INF] HTTP POST /user/create responded 200 in 9467.8297 ms
+2024-03-22 02:38:22.316 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 164 - 200 - application/json;+charset=utf-8 9507.0992ms
+2024-03-22 02:52:20.085 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-22 02:52:20.811 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-22 02:52:20.812 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-22 02:52:20.813 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-22 02:52:20.814 +07:00 [INF] Hosting environment: Development
+2024-03-22 02:52:20.815 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-22 02:52:24.320 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-22 02:52:24.584 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 218.9770 ms
+2024-03-22 02:52:24.591 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 275.4915ms
+2024-03-22 02:52:24.636 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-22 02:52:24.652 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.0582ms
+2024-03-22 02:52:24.755 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-22 02:52:25.281 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 521.2532 ms
+2024-03-22 02:52:25.285 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 529.6015ms
+2024-03-22 02:52:36.030 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 164
+2024-03-22 02:52:36.037 +07:00 [INF] CORS policy execution successful.
+2024-03-22 02:52:36.046 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:52:36.091 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-22 02:52:39.331 +07:00 [INF] Executed DbCommand (73ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-03-22 02:52:39.596 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-03-22 02:52:39.900 +07:00 [INF] Executed DbCommand (20ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (Size = 450), @p20='?' (DbType = DateTime2), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+2024-03-22 02:52:44.008 +07:00 [WRN] Yahallo Long Running Request: CreateUserCommand (7670 milliseconds)  {"FirstName":"test","LastName":"test","Email":"haileds9339@gmail.com","PhoneNumber":"0909307670","UserName":"test","Password":"Hai@119067","$type":"CreateUserCommand"}
+2024-03-22 02:52:44.032 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-22 02:52:44.047 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 7948.6086ms
+2024-03-22 02:52:44.049 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-03-22 02:52:44.051 +07:00 [INF] HTTP POST /user/create responded 200 in 8011.6777 ms
+2024-03-22 02:52:44.067 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 164 - 200 - application/json;+charset=utf-8 8036.7570ms
