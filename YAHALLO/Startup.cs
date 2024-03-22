@@ -34,7 +34,7 @@ namespace YAHALLO
             services.Infrastructure(Configuration);
             services.ConfigureSwagger(Configuration);
             services.AddEmailService(Configuration);
-            services.AddTransient<ICurrentContextService, CurrentContextService>();
+            services.ConfigurationServiceDJ(Configuration);
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",

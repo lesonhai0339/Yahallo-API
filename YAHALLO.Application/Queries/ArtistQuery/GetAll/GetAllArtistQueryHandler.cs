@@ -1,0 +1,33 @@
+﻿using AutoMapper;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using YAHALLO.Domain.Exceptions;
+using YAHALLO.Domain.Repositories;
+
+namespace YAHALLO.Application.Queries.ArtistQuery.GetAll
+{
+    public class GetAllArtistQueryhandler : IRequestHandler<GetAllArtistQuery, List<ArtistDto>>
+    {
+        private readonly IArtistRepository _artistReepository;
+        private readonly IMapper _mapper;
+        public GetAllArtistQueryhandler(IArtistRepository artistReepository, IMapper mapper)
+        {
+            _artistReepository = artistReepository;
+            _mapper = mapper;
+        }
+        public async Task<List<ArtistDto>> Handle(GetAllArtistQuery request, CancellationToken cancellationToken)
+        {
+            var listArtists= await _artistReepository
+                .FindAllAsync(x=> string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
+            if(!listArtists.Any())
+            {
+                throw new NotFoundException("Không tìm thấy bất kỳ họa sĩ nào");
+            }
+            return listArtists.MapToArtistDtoToList(_mapper);
+        }
+    }
+}

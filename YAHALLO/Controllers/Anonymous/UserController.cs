@@ -201,7 +201,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<UserDto>(result));
         }
         [HttpGet]
-        [Route("user/get-by-id-deeleted")]
+        [Route("user/get-by-id-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<UserDto>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -41,7 +41,6 @@
 	  <Folder Include="Queries\MangaQuery\" />
 	  <Folder Include="Queries\ChapterQuery\" />
 	  <Folder Include="Queries\AuthorQuery\" />
-	  <Folder Include="Queries\ArtistQuery\" />
 	  <Folder Include="Queries\CommentQuery\" />
 	  <Folder Include="Queries\FollowQuery\" />
 	  <Folder Include="Queries\UserQuery\Admin\GetAll\" />
