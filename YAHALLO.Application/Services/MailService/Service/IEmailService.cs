@@ -11,5 +11,7 @@ namespace YAHALLO.Application.Services.MailService.Service
     {
         void SendEmail(Message mess);
         void SendEmailWithCSS(Message mess);
+        string GenerateEmailToken(string userId);
+        bool VerifyEmailToken(string userId, string token);
     }
 }

@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken;
 using YAHALLO.Application.Commands.AuthenticationCommand.Login;
+using YAHALLO.Application.Commands.UserCommand.Anynomous.ChangePassword;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Create;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Delete;
+using YAHALLO.Application.Commands.UserCommand.Anynomous.ForgotPassword;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Restore;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Update;
 using YAHALLO.Application.Common.Pagination;
@@ -43,6 +45,32 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _Sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<LoginRespone>(result));
+        }
+        [HttpPost]
+        [Route("user/forgot-password")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<string>>> ForgotPassword(
+         [FromBody] ForgotPasswordCommand command,
+         CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<string>(result));
+        }
+        [HttpPost]
+        [Route("user/change-password")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<string>>> ChangePassword(
+         [FromBody] ChangePasswordCommand command,
+         CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<string>(result));
         }
         [HttpPost]
         [Route("user/login")]

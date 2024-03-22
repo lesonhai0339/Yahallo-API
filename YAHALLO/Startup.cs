@@ -1,9 +1,13 @@
-﻿using Serilog;
+﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Serilog;
 using YAHALLO.Application;
+using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Services.MailService;
 using YAHALLO.Configuration;
 using YAHALLO.Filters;
 using YAHALLO.Infrastructure;
+using YAHALLO.Services;
 
 namespace YAHALLO
 {
@@ -30,6 +34,7 @@ namespace YAHALLO
             services.Infrastructure(Configuration);
             services.ConfigureSwagger(Configuration);
             services.AddEmailService(Configuration);
+            services.AddTransient<ICurrentContextService, CurrentContextService>();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",

@@ -1,8 +1,12 @@
 ﻿using MailKit.Net.Smtp;
+using Microsoft.Extensions.Configuration;
 using MimeKit;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Services.MailService.Models;
@@ -12,9 +16,12 @@ namespace YAHALLO.Application.Services.MailService.Service
     public class EmailService : IEmailService
     {
         private readonly EmailConfigration _econfigration;
-        public EmailService(EmailConfigration econfigration)
+        private readonly IConfiguration _configuration;
+        public EmailService(EmailConfigration econfigration,
+            IConfiguration configuration)
         {
             _econfigration = econfigration;
+            _configuration = configuration; 
         }
 
         public void SendEmail(Message mess)
@@ -30,7 +37,7 @@ namespace YAHALLO.Application.Services.MailService.Service
         private MimeMessage CreateEmailMessage(Message mess)
         {
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("email", _econfigration.From));
+            emailMessage.From.Add(new MailboxAddress("Yahallo Email Services", _econfigration.From));
             emailMessage.To.AddRange(mess.To);
             emailMessage.Subject = mess.Subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text)
@@ -42,18 +49,9 @@ namespace YAHALLO.Application.Services.MailService.Service
         private MimeMessage CreateEmailMessageWithCSS(Message mess)
         {
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("email", _econfigration.From));
+            emailMessage.From.Add(new MailboxAddress("Yahallo Email Services", _econfigration.From));
             emailMessage.To.AddRange(mess.To);
             emailMessage.Subject = mess.Subject;
-            //string htmlBody = File.ReadAllText("TemplateEmail.html");
-            //htmlBody = htmlBody.Replace("{mess.Subject}", mess.Subject);
-            //htmlBody = htmlBody.Replace("{mess.Content}", mess.Content);
-
-            //var bodyBuilder = new BodyBuilder();
-            //bodyBuilder.HtmlBody = htmlBody;
-
-            //emailMessage.Body = bodyBuilder.ToMessageBody();
-
             var bodyBuilder = new BodyBuilder();
             bodyBuilder.HtmlBody = $@"
                       <!DOCTYPE html>
@@ -91,6 +89,21 @@ namespace YAHALLO.Application.Services.MailService.Service
                                     .content{{
                                         color: black;
                                     }}
+                                    a{{
+                                        background-color: #f44336;
+                                        padding: 14px 25px;
+                                        text-align: center;
+                                        text-decoration: none;
+                                        display: inline-block;
+                                        max-width: 100px;
+                                        height: 20px;
+                                        border-radius: .5rem;
+                                    }}
+                                    a:hover{{
+                                        background-color: green;
+                                        color: aqua;
+                                        text-shadow: 0 0 3px;
+                                    }}
                                 </style>
                             </head>
                             <body>
@@ -98,8 +111,11 @@ namespace YAHALLO.Application.Services.MailService.Service
                                     <h3 class=""subject"">{mess.Subject}</h3>
                                     <div class=""content"">
                                         {mess.Content}
+                                        <p>Vui lòng click vào đường link bên dưới để kích hoạt email</p>
+                                        <a style=""color: white;"" href=""{mess.Link}"" target=""_blank"">Xác thực</a>
                                     </div>
-                                </div>
+                                    </div>
+
                             </body>
                             </html>
                         ";
@@ -125,6 +141,22 @@ namespace YAHALLO.Application.Services.MailService.Service
                 client.Disconnect(true);
                 client.Dispose();
             }
+        }
+        public string GenerateEmailToken(string userId)
+        {
+            var key = _configuration.GetSection("EmailConfiguration:SecretToken").Value!;
+            using (HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key)))
+            {
+                byte[] userIdBytes = Encoding.UTF8.GetBytes(userId);
+                byte[] hashBytes = hmac.ComputeHash(userIdBytes);
+                return BitConverter.ToString(hashBytes).Replace("-", "");
+            }
+        }
+
+        public bool VerifyEmailToken(string userId, string token)
+        {
+            string expectedToken = GenerateEmailToken(userId);
+            return string.Equals(expectedToken, token, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
