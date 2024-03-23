@@ -39,5 +39,6 @@ namespace YAHALLO.Domain.Repositories
         Task<List<TPersistence>> FindBySQLRaw(
            string query,
            CancellationToken cancellationToken = default,
+           params object[] paramenter);
     }
 }
