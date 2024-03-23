@@ -29,7 +29,6 @@
 	<ItemGroup>
 	  <Folder Include="Commands\MangaCommand\" />
 	  <Folder Include="Commands\ChapterCommand\" />
-	  <Folder Include="Commands\AuthorCommand\" />
 	  <Folder Include="Commands\CommentCommand\" />
 	  <Folder Include="Commands\FollowCommand\" />
 	  <Folder Include="Commands\MangaRatingCommand\" />
@@ -38,9 +37,10 @@
 	  <Folder Include="Commands\UserCommand\Moderator\" />
 	  <Folder Include="Commands\UserCommand\Admin\" />
 	  <Folder Include="Commands\UserRoleCommand\" />
+	  <Folder Include="Queries\AuthorQuery\GetById\" />
+	  <Folder Include="Queries\AuthorQuery\GetByIdDeleted\" />
 	  <Folder Include="Queries\MangaQuery\" />
 	  <Folder Include="Queries\ChapterQuery\" />
-	  <Folder Include="Queries\AuthorQuery\" />
 	  <Folder Include="Queries\CommentQuery\" />
 	  <Folder Include="Queries\FollowQuery\" />
 	  <Folder Include="Queries\UserQuery\Admin\GetAll\" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Domain.Repositories
 {
-    public interface IEFRepository<TDomain, TPersistence>: IRepository<TDomain>
+    public interface IEFRepository<TDomain, TPersistence> : IRepository<TDomain>
     {
         IUnitOfWork UnitOfWork { get; }
         Task<TDomain?> FindAsync(Expression<Func<TPersistence, bool>> filterExpression, CancellationToken cancellationToken = default);
@@ -39,6 +39,5 @@ namespace YAHALLO.Domain.Repositories
         Task<List<TPersistence>> FindBySQLRaw(
            string query,
            CancellationToken cancellationToken = default,
-           params object[] paramenter);
     }
 }

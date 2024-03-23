@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Repositories;
@@ -151,7 +153,7 @@ namespace YAHALLO.Infrastructure.Repositories
         {
             return await QueryInternal(queryOptions).ToListAsync<TDomain>(cancellationToken);
         }
-
+      
         public virtual async Task<IPagedResult<TDomain>> FindAllAsync(
             int pageNo,
             int pageSize,
@@ -209,7 +211,6 @@ namespace YAHALLO.Infrastructure.Repositories
             }
             return queryable;
         }
-
         protected virtual IQueryable<TPersistence> CreateQuery()
         {
             return GetSet();
@@ -274,6 +275,5 @@ namespace YAHALLO.Infrastructure.Repositories
             var queryable = GetSet();
             return await queryable.FromSqlRaw(query, paramenter).ToListAsync(cancellationToken);
         }
-
     }
 }
