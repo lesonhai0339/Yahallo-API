@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,9 +37,19 @@ namespace YAHALLO.Domain.Repositories
             Expression<Func<TPersistence, TValue>> valueSelector,
             CancellationToken cancellationToken = default);
 
+        //custom
         Task<List<TPersistence>> FindBySQLRaw(
            string query,
            CancellationToken cancellationToken = default,
            params object[] paramenter);
+        Func<IQueryable<TPersistence>, IQueryable<TPersistence>> IQueryableHandlerEqual(object request);
+        Expression<Func<TPersistence, bool>>? IExpressionEqual(PropertyInfo pro, object value);
+        Func<IQueryable<TPersistence>, IQueryable<TPersistence>> IQueryableHandlerMultiple(
+           object request,
+           Func<Expression, Expression, BinaryExpression> expression);
+        Expression<Func<TPersistence, bool>>? IExpressionMultiple
+            (PropertyInfo pro,
+            object value,
+            Func<Expression, Expression, BinaryExpression> expression);
     }
 }

@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Infrastructure.Repositories
@@ -267,6 +268,8 @@ namespace YAHALLO.Infrastructure.Repositories
             IQueryable<TPersistence> query = _dbContext.Set<TPersistence>().Where(filterExpression);
             return await query.ToDictionaryAsync(keySelector.Compile(), valueSelector.Compile(), cancellationToken);
         }
+
+        //custom
         public async Task<List<TPersistence>> FindBySQLRaw(
             string query,
             CancellationToken cancellationToken = default,
@@ -275,5 +278,105 @@ namespace YAHALLO.Infrastructure.Repositories
             var queryable = GetSet();
             return await queryable.FromSqlRaw(query, paramenter).ToListAsync(cancellationToken);
         }
+        public Func<IQueryable<TPersistence>, IQueryable<TPersistence>> IQueryableHandlerEqual(object request)
+        {
+            Func<IQueryable<TPersistence>, IQueryable<TPersistence>> handler = query =>
+            {
+                PropertyInfo[] propeties = request.GetType().GetProperties();
+                foreach (PropertyInfo prop in propeties)
+                {
+                    var propetyValue = prop.GetValue(request, null);
+                    if (propetyValue != null)
+                    {
+                        var domainProperty = typeof(TPersistence).GetProperty(prop.Name);
+                        if (domainProperty != null)
+                        {
+                            var parameter = Expression.Parameter(typeof(TPersistence), "x");
+                            var property = Expression.Property(parameter, domainProperty); // Truy cập thuộc tính
+                            var constant = Expression.Constant(propetyValue); // Tạo hằng số
+                            var equal = Expression.Equal(property, constant); // Tạo biểu thức so sánh bằng
+                            var lambda = Expression.Lambda<Func<TPersistence, bool>>(equal, parameter); // Tạo biểu thức lambda
+                            query = query.Where(lambda); // Sử dụng biểu thức lambda trong phương thức Where
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+                return query;
+            };
+            return handler;
+        }
+        public Func<IQueryable<TPersistence>, IQueryable<TPersistence>> IQueryableHandlerMultiple(
+            object request,
+            Func<Expression, Expression, BinaryExpression> expression)
+        {
+            Func<IQueryable<TPersistence>, IQueryable<TPersistence>> handler = query =>
+            {
+                PropertyInfo[] propeties = request.GetType().GetProperties();
+                foreach (PropertyInfo prop in propeties)
+                {
+                    var propetyValue = prop.GetValue(request, null);
+                    if (propetyValue != null)
+                    {
+                        var domainProperty = typeof(TPersistence).GetProperty(prop.Name);
+                        if (domainProperty != null)
+                        {
+                            var parameter = Expression.Parameter(typeof(TPersistence), "x");
+                            var property = Expression.Property(parameter, domainProperty);
+                            var constant = Expression.Constant(propetyValue);
+                            var equal = expression(property, constant);
+                            var lambda = Expression.Lambda<Func<TPersistence, bool>>(equal, parameter);
+                            query = query.Where(lambda);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+                return query;
+            };
+            return handler;
+        }
+        public Expression<Func<TPersistence, bool>>? IExpressionEqual(PropertyInfo pro, object value)
+        {
+            var domainProperty = typeof(TPersistence).GetProperty(pro.Name);
+            if (domainProperty != null)
+            {
+                var parameter = Expression.Parameter(typeof(TPersistence), "x");
+                var property = Expression.Property(parameter, domainProperty);
+                var constant = Expression.Constant(value);
+                var equal = Expression.Equal(property, constant);
+                var lambda = Expression.Lambda<Func<TPersistence, bool>>(equal, parameter);
+                return lambda;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public Expression<Func<TPersistence, bool>>? IExpressionMultiple
+            (PropertyInfo pro, 
+            object value,
+            Func<Expression, Expression, BinaryExpression> expression)
+        {
+            var domainProperty = typeof(TPersistence).GetProperty(pro.Name);
+            if (domainProperty != null)
+            {
+                var parameter = Expression.Parameter(typeof(TPersistence), "x");
+                var property = Expression.Property(parameter, domainProperty);
+                var constant = Expression.Constant(value);
+                var ex = expression(property, constant);
+                var lambda = Expression.Lambda<Func<TPersistence, bool>>(ex, parameter);
+                return lambda;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }

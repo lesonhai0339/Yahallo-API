@@ -9,5 +9,6 @@ namespace YAHALLO.Domain.Repositories
 {
     public interface IAuthorRepository: IEFRepository<AuthorEntity, AuthorEntity>
     {
+        //Func<IQueryable<AuthorEntity>, IQueryable<AuthorEntity>> IQueryableHandler(object request);
     }
 }
