@@ -823,3 +823,260 @@ OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
 2024-03-25 11:48:31.109 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
 2024-03-25 11:48:31.111 +07:00 [INF] HTTP GET /author/filter-author responded 200 in 75.1492 ms
 2024-03-25 11:48:31.112 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Id=bc34c5be4fc24099ad06fcf8a1c39d5d - - - 200 - application/json;+charset=utf-8 77.2178ms
+2024-03-25 22:52:29.807 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 22:52:31.952 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-25 22:52:31.952 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-25 22:52:31.954 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 22:52:31.955 +07:00 [INF] Hosting environment: Development
+2024-03-25 22:52:31.956 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-25 22:52:35.542 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-25 22:52:36.463 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-25 22:52:36.463 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-25 22:52:36.482 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 636.1047 ms
+2024-03-25 22:52:36.502 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 962.5719ms
+2024-03-25 22:52:36.502 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 35.6795ms
+2024-03-25 22:52:36.846 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 383.8198ms
+2024-03-25 22:52:36.913 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-25 22:52:37.342 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 427.7984 ms
+2024-03-25 22:52:37.344 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 431.4603ms
+2024-03-25 22:53:40.059 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2024-03-25 22:53:40.066 +07:00 [INF] CORS policy execution successful.
+2024-03-25 22:53:40.079 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-25 22:53:40.141 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-25 22:53:49.923 +07:00 [INF] Executed DbCommand (235ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-25 22:53:50.323 +07:00 [INF] Executed DbCommand (17ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-25 22:53:50.417 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (9932 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-25 22:53:50.478 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 22:53:50.525 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 10357.8621ms
+2024-03-25 22:53:50.529 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-25 22:53:50.530 +07:00 [INF] HTTP POST /user/login responded 200 in 10460.7556 ms
+2024-03-25 22:53:50.555 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 10496.1898ms
+2024-03-25 23:12:01.903 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - -
+2024-03-25 23:12:02.507 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2024-03-25 23:12:02.513 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:02.823 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2024-03-25 23:12:02.906 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-25 23:12:02.925 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 410.5589ms
+2024-03-25 23:12:02.926 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2024-03-25 23:12:02.927 +07:00 [INF] HTTP GET /artist/get-all responded 200 in 1015.6801 ms
+2024-03-25 23:12:02.930 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - - - 200 - application/json;+charset=utf-8 1026.2923ms
+2024-03-25 23:12:13.023 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Id=9ae0cd9d8bff430ea781f8d234b0cca6 - -
+2024-03-25 23:12:13.029 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:13.042 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:13.337 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Id] = @__request_Id_0
+2024-03-25 23:12:13.372 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:12:13.374 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:12:13.395 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__request_Id_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Id] = @__request_Id_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-25 23:12:13.405 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 23:12:13.414 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 370.1341ms
+2024-03-25 23:12:13.416 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:13.416 +07:00 [INF] HTTP GET /artist/filter-artist responded 200 in 392.7865 ms
+2024-03-25 23:12:13.419 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Id=9ae0cd9d8bff430ea781f8d234b0cca6 - - - 200 - application/json;+charset=utf-8 396.7915ms
+2024-03-25 23:12:17.449 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Id=9ae0cd9d8bff430ea781f8d234b0cca62222 - -
+2024-03-25 23:12:17.457 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:17.460 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:17.494 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Id] = @__request_Id_0
+2024-03-25 23:12:17.503 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_Id_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Id] = @__request_Id_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-25 23:12:17.863 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterArtistQuery {"PageNumber":1,"PageSize":5,"Id":"9ae0cd9d8bff430ea781f8d234b0cca62222","Name":null,"Countries":null,"LifeStatus":null,"$type":"FilterArtistQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ họa sĩ nào
+   at YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQueryHandler.Handle(FilterArtistQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\ArtistQuery\FilterArtist\FilterArtistQueryHandler.cs:line 61
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-25 23:12:18.341 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-25 23:12:18.344 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 880.686ms
+2024-03-25 23:12:18.345 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:18.346 +07:00 [INF] HTTP GET /artist/filter-artist responded 404 in 892.8858 ms
+2024-03-25 23:12:18.347 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Id=9ae0cd9d8bff430ea781f8d234b0cca62222 - - - 404 - application/problem+json;+charset=utf-8 898.1961ms
+2024-03-25 23:12:25.515 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Countries=1 - -
+2024-03-25 23:12:25.517 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:25.518 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:25.544 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__request_Countries_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Countries] = @__request_Countries_0
+2024-03-25 23:12:25.546 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:12:25.546 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:12:25.563 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_Countries_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Countries] = @__request_Countries_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-25 23:12:25.852 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterArtistQuery {"PageNumber":1,"PageSize":5,"Id":null,"Name":null,"Countries":"AF","LifeStatus":null,"$type":"FilterArtistQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ họa sĩ nào
+   at YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQueryHandler.Handle(FilterArtistQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\ArtistQuery\FilterArtist\FilterArtistQueryHandler.cs:line 61
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-25 23:12:26.248 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-25 23:12:26.250 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 728.6533ms
+2024-03-25 23:12:26.251 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:26.252 +07:00 [INF] HTTP GET /artist/filter-artist responded 404 in 735.3982 ms
+2024-03-25 23:12:26.254 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Countries=1 - - - 404 - application/problem+json;+charset=utf-8 738.1165ms
+2024-03-25 23:12:30.635 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Countries=2 - -
+2024-03-25 23:12:30.636 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:30.637 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:30.670 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[@__request_Countries_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Countries] = @__request_Countries_0
+2024-03-25 23:12:30.679 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Countries_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Countries] = @__request_Countries_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-25 23:12:30.682 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 23:12:30.683 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 44.0966ms
+2024-03-25 23:12:30.684 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:30.684 +07:00 [INF] HTTP GET /artist/filter-artist responded 200 in 48.4478 ms
+2024-03-25 23:12:30.686 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Countries=2 - - - 200 - application/json;+charset=utf-8 51.2788ms
+2024-03-25 23:12:36.334 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&LifeStatus=1 - -
+2024-03-25 23:12:36.335 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:36.336 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:36.368 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_LifeStatus_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[LifeStatus] = @__request_LifeStatus_0
+2024-03-25 23:12:36.371 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:12:36.372 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:12:36.386 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_LifeStatus_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[LifeStatus] = @__request_LifeStatus_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-25 23:12:36.388 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 23:12:36.389 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 51.4663ms
+2024-03-25 23:12:36.389 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:36.390 +07:00 [INF] HTTP GET /artist/filter-artist responded 200 in 55.4328 ms
+2024-03-25 23:12:36.392 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&LifeStatus=1 - - - 200 - application/json;+charset=utf-8 57.6223ms
+2024-03-25 23:12:41.456 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&LifeStatus=2 - -
+2024-03-25 23:12:41.457 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:41.458 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:41.464 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_LifeStatus_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[LifeStatus] = @__request_LifeStatus_0
+2024-03-25 23:12:41.469 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_LifeStatus_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[LifeStatus] = @__request_LifeStatus_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-25 23:12:41.484 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 23:12:41.485 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 25.4966ms
+2024-03-25 23:12:41.487 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:41.488 +07:00 [INF] HTTP GET /artist/filter-artist responded 200 in 30.7907 ms
+2024-03-25 23:12:41.489 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&LifeStatus=2 - - - 200 - application/json;+charset=utf-8 33.6495ms
+2024-03-25 23:12:46.616 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&LifeStatus=1 - -
+2024-03-25 23:12:46.617 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:46.618 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:46.636 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__request_LifeStatus_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[LifeStatus] = @__request_LifeStatus_0
+2024-03-25 23:12:46.640 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_LifeStatus_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[LifeStatus] = @__request_LifeStatus_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-25 23:12:46.648 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 23:12:46.650 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 30.4405ms
+2024-03-25 23:12:46.651 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:46.651 +07:00 [INF] HTTP GET /artist/filter-artist responded 200 in 34.8163 ms
+2024-03-25 23:12:46.654 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&LifeStatus=1 - - - 200 - application/json;+charset=utf-8 38.1810ms
+2024-03-25 23:12:57.175 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Name=Ling%20&LifeStatus=1 - -
+2024-03-25 23:12:57.176 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:57.177 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:12:57.231 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__request_LifeStatus_9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0) AND [a].[LifeStatus] = @__request_LifeStatus_9
+2024-03-25 23:12:57.235 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:12:57.235 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:12:57.249 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__request_LifeStatus_9='?' (DbType = Int32), @__p_10='?' (DbType = Int32), @__p_11='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0) AND [a].[LifeStatus] = @__request_LifeStatus_9
+ORDER BY (SELECT 1)
+OFFSET @__p_10 ROWS FETCH NEXT @__p_11 ROWS ONLY
+2024-03-25 23:12:57.252 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 23:12:57.253 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 69.1567ms
+2024-03-25 23:12:57.254 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:12:57.255 +07:00 [INF] HTTP GET /artist/filter-artist responded 200 in 79.2518 ms
+2024-03-25 23:12:57.256 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Name=Ling%20&LifeStatus=1 - - - 200 - application/json;+charset=utf-8 81.4206ms
+2024-03-25 23:13:00.783 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Name=Ling%20&LifeStatus=2 - -
+2024-03-25 23:13:00.785 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:13:00.786 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:13:00.791 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__request_LifeStatus_9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0) AND [a].[LifeStatus] = @__request_LifeStatus_9
+2024-03-25 23:13:00.795 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__request_LifeStatus_9='?' (DbType = Int32), @__p_10='?' (DbType = Int32), @__p_11='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0) AND [a].[LifeStatus] = @__request_LifeStatus_9
+ORDER BY (SELECT 1)
+OFFSET @__p_10 ROWS FETCH NEXT @__p_11 ROWS ONLY
+2024-03-25 23:13:01.077 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterArtistQuery {"PageNumber":1,"PageSize":5,"Id":null,"Name":"Ling ","Countries":null,"LifeStatus":"Dead","$type":"FilterArtistQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ họa sĩ nào
+   at YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQueryHandler.Handle(FilterArtistQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\ArtistQuery\FilterArtist\FilterArtistQueryHandler.cs:line 61
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-25 23:13:01.460 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-25 23:13:01.461 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 674.1598ms
+2024-03-25 23:13:01.462 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:13:01.463 +07:00 [INF] HTTP GET /artist/filter-artist responded 404 in 678.3919 ms
+2024-03-25 23:13:01.464 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Name=Ling%20&LifeStatus=2 - - - 404 - application/problem+json;+charset=utf-8 681.0728ms
+2024-03-25 23:13:04.326 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Name=Ling%20 - -
+2024-03-25 23:13:04.327 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:13:04.328 +07:00 [INF] Route matched with {action = "FilterArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] FilterArtist(YAHALLO.Application.Queries.ArtistQuery.FilterArtist.FilterArtistQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2024-03-25 23:13:04.357 +07:00 [INF] Executed DbCommand (20ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0)
+2024-03-25 23:13:04.368 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:13:04.369 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 23:13:04.385 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__p_9='?' (DbType = Int32), @__p_10='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0)
+ORDER BY (SELECT 1)
+OFFSET @__p_9 ROWS FETCH NEXT @__p_10 ROWS ONLY
+2024-03-25 23:13:04.387 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 23:13:04.388 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO) in 59.216ms
+2024-03-25 23:13:04.389 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.FilterArtist (YAHALLO)'
+2024-03-25 23:13:04.390 +07:00 [INF] HTTP GET /artist/filter-artist responded 200 in 63.3355 ms
+2024-03-25 23:13:04.393 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/filter-artist?PageNumber=1&PageSize=5&Name=Ling%20 - - - 200 - application/json;+charset=utf-8 66.4833ms

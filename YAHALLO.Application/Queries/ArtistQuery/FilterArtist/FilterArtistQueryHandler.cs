@@ -29,36 +29,33 @@ namespace YAHALLO.Application.Queries.ArtistQuery.FilterArtist
 
         public async Task<PagedResult<ArtistDto>> Handle(FilterArtistQuery request, CancellationToken cancellationToken)
         {
-            Func<IQueryable<ArtistEntity>, IQueryable<ArtistEntity>> options = query =>
+            var query = _artistRepository.CreateQueryable();
+            query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
+            if (!string.IsNullOrEmpty(request.Id))
             {
-                query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
-                if (!string.IsNullOrEmpty(request.Id))
+                query = query.Where(x => x.Id == request.Id);
+            }
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                var filters = _filters.CheckString(request.Name);
+                var predicate = PredicateBuilder.New<ArtistEntity>();
+                foreach (var filter in filters)
                 {
-                    query = query.Where(x => x.Id == request.Id);
+                    predicate = predicate.Or(x => x.Name.Contains(filter));
                 }
-                if (!string.IsNullOrEmpty(request.Name))
-                {
-                    var filters = _filters.CheckString(request.Name);
-                    var predicate = PredicateBuilder.False<ArtistEntity>();
-                    foreach (var filter in filters)
-                    {
-                        predicate = predicate.Or(x => x.Name.Contains(filter));
-                    }
-                    query= query.Where(predicate);
-                }
-                if (request.Countries != null)
-                {
-                    query = query.Where(x => x.Countries == request.Countries);
-                }
-                if (request.LifeStatus != null)
-                {
-                    query = query.Where(x => x.LifeStatus == request.LifeStatus);
-                }
-                return query;
-            };
-
+                query = query.Where(predicate);
+            }
+            if (request.Countries != null)
+            {
+                query = query.Where(x => x.Countries == request.Countries);
+            }
+            if (request.LifeStatus != null)
+            {
+                query = query.Where(x => x.LifeStatus == request.LifeStatus);
+            }
+         
             var listArtists = await _artistRepository
-                .FindAllAsync(request.PageNumber, request.PageSize, options, cancellationToken);
+                .FindAllAsync( query,request.PageNumber, request.PageSize, cancellationToken);
             if (!listArtists.Any())
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ họa sĩ nào");

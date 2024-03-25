@@ -1,0 +1,625 @@
+2024-03-26 00:46:24.767 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-26 00:46:25.627 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-26 00:46:25.628 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-26 00:46:25.630 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-26 00:46:25.631 +07:00 [INF] Hosting environment: Development
+2024-03-26 00:46:25.632 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-26 00:46:30.007 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-26 00:46:30.906 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 605.6348 ms
+2024-03-26 00:46:30.917 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 915.1615ms
+2024-03-26 00:46:30.949 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-26 00:46:30.951 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-26 00:46:31.006 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 54.8615ms
+2024-03-26 00:46:31.065 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 116.0553ms
+2024-03-26 00:46:31.127 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-26 00:46:31.483 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 354.1131 ms
+2024-03-26 00:46:31.488 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 361.2485ms
+2024-03-26 00:46:47.517 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2024-03-26 00:46:47.523 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:46:47.536 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-26 00:46:47.580 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-26 00:46:52.095 +07:00 [INF] Executed DbCommand (168ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-26 00:46:52.312 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-26 00:46:52.383 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (4542 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-26 00:46:52.398 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:46:52.408 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 4822.9322ms
+2024-03-26 00:46:52.410 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-26 00:46:52.410 +07:00 [INF] HTTP POST /user/login responded 200 in 4884.5616 ms
+2024-03-26 00:46:52.420 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 4903.5333ms
+2024-03-26 00:47:14.294 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all - -
+2024-03-26 00:47:14.801 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:47:14.809 +07:00 [INF] Route matched with {action = "GetAll", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:47:15.101 +07:00 [INF] Executed DbCommand (89ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:47:15.141 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:47:15.147 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO) in 336.271ms
+2024-03-26 00:47:15.148 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:47:15.149 +07:00 [INF] HTTP GET /role/get-all responded 200 in 845.3046 ms
+2024-03-26 00:47:15.151 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all - - - 200 - application/json;+charset=utf-8 856.5499ms
+2024-03-26 00:47:24.209 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all-pagination - -
+2024-03-26 00:47:24.227 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO)'
+2024-03-26 00:47:24.233 +07:00 [INF] Route matched with {action = "GetAllPagination", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAllPagination(YAHALLO.Application.Queries.RoleQuery.GetAllPagination.GetAllRolePaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:47:24.592 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request GetAllRolePaginationQuery {"PageNumber":0,"PageSize":0,"$type":"GetAllRolePaginationQuery"}
+FluentValidation.ValidationException: Validation failed: 
+ -- PageNumber: Page Number không được bỏ trống Severity: Error
+ -- PageSize: Page Size không được bỏ trống Severity: Error
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 31
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-26 00:47:24.849 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-03-26 00:47:24.853 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO) in 619.2936ms
+2024-03-26 00:47:24.855 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO)'
+2024-03-26 00:47:24.856 +07:00 [INF] HTTP GET /role/get-all-pagination responded 400 in 635.9761 ms
+2024-03-26 00:47:24.857 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all-pagination - - - 400 - application/problem+json;+charset=utf-8 647.7304ms
+2024-03-26 00:47:29.396 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all-pagination?PageNumber=1&PageSize=1 - -
+2024-03-26 00:47:29.400 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO)'
+2024-03-26 00:47:29.401 +07:00 [INF] Route matched with {action = "GetAllPagination", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAllPagination(YAHALLO.Application.Queries.RoleQuery.GetAllPagination.GetAllRolePaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:47:29.482 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:47:29.492 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:47:29.492 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:47:29.509 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-26 00:47:29.515 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:47:29.521 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO) in 119.2305ms
+2024-03-26 00:47:29.523 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO)'
+2024-03-26 00:47:29.524 +07:00 [INF] HTTP GET /role/get-all-pagination responded 200 in 126.9799 ms
+2024-03-26 00:47:29.526 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all-pagination?PageNumber=1&PageSize=1 - - - 200 - application/json;+charset=utf-8 129.2438ms
+2024-03-26 00:47:32.240 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all-pagination?PageNumber=1&PageSize=2 - -
+2024-03-26 00:47:32.242 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO)'
+2024-03-26 00:47:32.244 +07:00 [INF] Route matched with {action = "GetAllPagination", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAllPagination(YAHALLO.Application.Queries.RoleQuery.GetAllPagination.GetAllRolePaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:47:32.265 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:47:32.275 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-26 00:47:32.281 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:47:32.282 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO) in 36.5719ms
+2024-03-26 00:47:32.284 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllPagination (YAHALLO)'
+2024-03-26 00:47:32.285 +07:00 [INF] HTTP GET /role/get-all-pagination responded 200 in 44.1313 ms
+2024-03-26 00:47:32.289 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all-pagination?PageNumber=1&PageSize=2 - - - 200 - application/json;+charset=utf-8 49.4879ms
+2024-03-26 00:47:42.243 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/filter-role - -
+2024-03-26 00:47:42.244 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:47:42.252 +07:00 [INF] Route matched with {action = "FilterRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] FilterRole(YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:47:42.522 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterRoleQuery {"PageNumber":0,"PageSize":0,"Id":null,"RoleCode":null,"RoleName":null,"$type":"FilterRoleQuery"}
+FluentValidation.ValidationException: Validation failed: 
+ -- PageNumber: Page Number không thể bỏ trống Severity: Error
+ -- PageSize: Page Size khogn6 được bỏ trống Severity: Error
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 31
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-26 00:47:42.820 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-03-26 00:47:42.821 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO) in 558.9347ms
+2024-03-26 00:47:42.822 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:47:42.822 +07:00 [INF] HTTP GET /role/filter-role responded 400 in 578.7788 ms
+2024-03-26 00:47:42.824 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/filter-role - - - 400 - application/problem+json;+charset=utf-8 580.9051ms
+2024-03-26 00:47:47.083 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5 - -
+2024-03-26 00:47:47.093 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:47:47.093 +07:00 [INF] Route matched with {action = "FilterRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] FilterRole(YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:47:47.310 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:47:47.322 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-26 00:47:47.334 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:47:47.342 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO) in 247.3238ms
+2024-03-26 00:47:47.351 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:47:47.352 +07:00 [INF] HTTP GET /role/filter-role responded 200 in 260.9679 ms
+2024-03-26 00:47:47.355 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 271.6533ms
+2024-03-26 00:48:00.247 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&RoleName=upload - -
+2024-03-26 00:48:00.249 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:00.250 +07:00 [INF] Route matched with {action = "FilterRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] FilterRole(YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:48:00.330 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[@__filter_0='?' (Size = 450), @__filter_1='?' (Size = 450), @__filter_2='?' (Size = 450), @__filter_3='?' (Size = 450), @__filter_4='?' (Size = 450), @__filter_5='?' (Size = 450), @__filter_6='?' (Size = 450), @__filter_7='?' (Size = 450), @__filter_8='?' (Size = 450), @__filter_9='?' (Size = 450), @__filter_10='?' (Size = 450), @__filter_11='?' (Size = 450), @__filter_12='?' (Size = 450), @__filter_13='?' (Size = 450), @__filter_14='?' (Size = 450), @__filter_15='?' (Size = 450), @__filter_16='?' (Size = 450), @__filter_17='?' (Size = 450), @__filter_18='?' (Size = 450), @__filter_19='?' (Size = 450), @__filter_20='?' (Size = 450), @__filter_21='?' (Size = 450), @__filter_22='?' (Size = 450), @__filter_23='?' (Size = 450), @__filter_24='?' (Size = 450), @__filter_25='?' (Size = 450), @__filter_26='?' (Size = 450), @__filter_27='?' (Size = 450), @__filter_28='?' (Size = 450), @__filter_29='?' (Size = 450), @__filter_30='?' (Size = 450), @__filter_31='?' (Size = 450), @__filter_32='?' (Size = 450), @__filter_33='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [r].[RoleName]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [r].[RoleName]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [r].[RoleName]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [r].[RoleName]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [r].[RoleName]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [r].[RoleName]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [r].[RoleName]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [r].[RoleName]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [r].[RoleName]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [r].[RoleName]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [r].[RoleName]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [r].[RoleName]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [r].[RoleName]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [r].[RoleName]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [r].[RoleName]) > 0 OR (@__filter_15 LIKE N'') OR CHARINDEX(@__filter_15, [r].[RoleName]) > 0 OR (@__filter_16 LIKE N'') OR CHARINDEX(@__filter_16, [r].[RoleName]) > 0 OR (@__filter_17 LIKE N'') OR CHARINDEX(@__filter_17, [r].[RoleName]) > 0 OR (@__filter_18 LIKE N'') OR CHARINDEX(@__filter_18, [r].[RoleName]) > 0 OR (@__filter_19 LIKE N'') OR CHARINDEX(@__filter_19, [r].[RoleName]) > 0 OR (@__filter_20 LIKE N'') OR CHARINDEX(@__filter_20, [r].[RoleName]) > 0 OR (@__filter_21 LIKE N'') OR CHARINDEX(@__filter_21, [r].[RoleName]) > 0 OR (@__filter_22 LIKE N'') OR CHARINDEX(@__filter_22, [r].[RoleName]) > 0 OR (@__filter_23 LIKE N'') OR CHARINDEX(@__filter_23, [r].[RoleName]) > 0 OR (@__filter_24 LIKE N'') OR CHARINDEX(@__filter_24, [r].[RoleName]) > 0 OR (@__filter_25 LIKE N'') OR CHARINDEX(@__filter_25, [r].[RoleName]) > 0 OR (@__filter_26 LIKE N'') OR CHARINDEX(@__filter_26, [r].[RoleName]) > 0 OR (@__filter_27 LIKE N'') OR CHARINDEX(@__filter_27, [r].[RoleName]) > 0 OR (@__filter_28 LIKE N'') OR CHARINDEX(@__filter_28, [r].[RoleName]) > 0 OR (@__filter_29 LIKE N'') OR CHARINDEX(@__filter_29, [r].[RoleName]) > 0 OR (@__filter_30 LIKE N'') OR CHARINDEX(@__filter_30, [r].[RoleName]) > 0 OR (@__filter_31 LIKE N'') OR CHARINDEX(@__filter_31, [r].[RoleName]) > 0 OR (@__filter_32 LIKE N'') OR CHARINDEX(@__filter_32, [r].[RoleName]) > 0 OR (@__filter_33 LIKE N'') OR CHARINDEX(@__filter_33, [r].[RoleName]) > 0)
+2024-03-26 00:48:00.341 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:48:00.342 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:48:00.364 +07:00 [INF] Executed DbCommand (14ms) [Parameters=[@__filter_0='?' (Size = 450), @__filter_1='?' (Size = 450), @__filter_2='?' (Size = 450), @__filter_3='?' (Size = 450), @__filter_4='?' (Size = 450), @__filter_5='?' (Size = 450), @__filter_6='?' (Size = 450), @__filter_7='?' (Size = 450), @__filter_8='?' (Size = 450), @__filter_9='?' (Size = 450), @__filter_10='?' (Size = 450), @__filter_11='?' (Size = 450), @__filter_12='?' (Size = 450), @__filter_13='?' (Size = 450), @__filter_14='?' (Size = 450), @__filter_15='?' (Size = 450), @__filter_16='?' (Size = 450), @__filter_17='?' (Size = 450), @__filter_18='?' (Size = 450), @__filter_19='?' (Size = 450), @__filter_20='?' (Size = 450), @__filter_21='?' (Size = 450), @__filter_22='?' (Size = 450), @__filter_23='?' (Size = 450), @__filter_24='?' (Size = 450), @__filter_25='?' (Size = 450), @__filter_26='?' (Size = 450), @__filter_27='?' (Size = 450), @__filter_28='?' (Size = 450), @__filter_29='?' (Size = 450), @__filter_30='?' (Size = 450), @__filter_31='?' (Size = 450), @__filter_32='?' (Size = 450), @__filter_33='?' (Size = 450), @__p_34='?' (DbType = Int32), @__p_35='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [r].[RoleName]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [r].[RoleName]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [r].[RoleName]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [r].[RoleName]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [r].[RoleName]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [r].[RoleName]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [r].[RoleName]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [r].[RoleName]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [r].[RoleName]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [r].[RoleName]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [r].[RoleName]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [r].[RoleName]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [r].[RoleName]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [r].[RoleName]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [r].[RoleName]) > 0 OR (@__filter_15 LIKE N'') OR CHARINDEX(@__filter_15, [r].[RoleName]) > 0 OR (@__filter_16 LIKE N'') OR CHARINDEX(@__filter_16, [r].[RoleName]) > 0 OR (@__filter_17 LIKE N'') OR CHARINDEX(@__filter_17, [r].[RoleName]) > 0 OR (@__filter_18 LIKE N'') OR CHARINDEX(@__filter_18, [r].[RoleName]) > 0 OR (@__filter_19 LIKE N'') OR CHARINDEX(@__filter_19, [r].[RoleName]) > 0 OR (@__filter_20 LIKE N'') OR CHARINDEX(@__filter_20, [r].[RoleName]) > 0 OR (@__filter_21 LIKE N'') OR CHARINDEX(@__filter_21, [r].[RoleName]) > 0 OR (@__filter_22 LIKE N'') OR CHARINDEX(@__filter_22, [r].[RoleName]) > 0 OR (@__filter_23 LIKE N'') OR CHARINDEX(@__filter_23, [r].[RoleName]) > 0 OR (@__filter_24 LIKE N'') OR CHARINDEX(@__filter_24, [r].[RoleName]) > 0 OR (@__filter_25 LIKE N'') OR CHARINDEX(@__filter_25, [r].[RoleName]) > 0 OR (@__filter_26 LIKE N'') OR CHARINDEX(@__filter_26, [r].[RoleName]) > 0 OR (@__filter_27 LIKE N'') OR CHARINDEX(@__filter_27, [r].[RoleName]) > 0 OR (@__filter_28 LIKE N'') OR CHARINDEX(@__filter_28, [r].[RoleName]) > 0 OR (@__filter_29 LIKE N'') OR CHARINDEX(@__filter_29, [r].[RoleName]) > 0 OR (@__filter_30 LIKE N'') OR CHARINDEX(@__filter_30, [r].[RoleName]) > 0 OR (@__filter_31 LIKE N'') OR CHARINDEX(@__filter_31, [r].[RoleName]) > 0 OR (@__filter_32 LIKE N'') OR CHARINDEX(@__filter_32, [r].[RoleName]) > 0 OR (@__filter_33 LIKE N'') OR CHARINDEX(@__filter_33, [r].[RoleName]) > 0)
+ORDER BY (SELECT 1)
+OFFSET @__p_34 ROWS FETCH NEXT @__p_35 ROWS ONLY
+2024-03-26 00:48:00.367 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:48:00.370 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO) in 118.2959ms
+2024-03-26 00:48:00.372 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:00.373 +07:00 [INF] HTTP GET /role/filter-role responded 200 in 124.1053 ms
+2024-03-26 00:48:00.374 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&RoleName=upload - - - 200 - application/json;+charset=utf-8 126.7585ms
+2024-03-26 00:48:04.923 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&RoleCode=1 - -
+2024-03-26 00:48:04.924 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:04.925 +07:00 [INF] Route matched with {action = "FilterRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] FilterRole(YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:48:04.946 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[RoleCode] = @__request_RoleCode_0
+2024-03-26 00:48:04.949 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:48:04.950 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:48:04.971 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[RoleCode] = @__request_RoleCode_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-26 00:48:04.973 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:48:04.974 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO) in 47.3429ms
+2024-03-26 00:48:04.978 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:04.978 +07:00 [INF] HTTP GET /role/filter-role responded 200 in 54.5715 ms
+2024-03-26 00:48:04.980 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&RoleCode=1 - - - 200 - application/json;+charset=utf-8 56.9447ms
+2024-03-26 00:48:10.955 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&RoleCode=1&RoleName=admin - -
+2024-03-26 00:48:10.956 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:10.957 +07:00 [INF] Route matched with {action = "FilterRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] FilterRole(YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:48:10.982 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32), @__filter_1='?' (Size = 450), @__filter_2='?' (Size = 450), @__filter_3='?' (Size = 450), @__filter_4='?' (Size = 450), @__filter_5='?' (Size = 450), @__filter_6='?' (Size = 450), @__filter_7='?' (Size = 450), @__filter_8='?' (Size = 450), @__filter_9='?' (Size = 450), @__filter_10='?' (Size = 450), @__filter_11='?' (Size = 450), @__filter_12='?' (Size = 450), @__filter_13='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[RoleCode] = @__request_RoleCode_0 AND ((@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [r].[RoleName]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [r].[RoleName]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [r].[RoleName]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [r].[RoleName]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [r].[RoleName]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [r].[RoleName]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [r].[RoleName]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [r].[RoleName]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [r].[RoleName]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [r].[RoleName]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [r].[RoleName]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [r].[RoleName]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [r].[RoleName]) > 0)
+2024-03-26 00:48:10.987 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:48:10.988 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:48:11.004 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32), @__filter_1='?' (Size = 450), @__filter_2='?' (Size = 450), @__filter_3='?' (Size = 450), @__filter_4='?' (Size = 450), @__filter_5='?' (Size = 450), @__filter_6='?' (Size = 450), @__filter_7='?' (Size = 450), @__filter_8='?' (Size = 450), @__filter_9='?' (Size = 450), @__filter_10='?' (Size = 450), @__filter_11='?' (Size = 450), @__filter_12='?' (Size = 450), @__filter_13='?' (Size = 450), @__p_14='?' (DbType = Int32), @__p_15='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[RoleCode] = @__request_RoleCode_0 AND ((@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [r].[RoleName]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [r].[RoleName]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [r].[RoleName]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [r].[RoleName]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [r].[RoleName]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [r].[RoleName]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [r].[RoleName]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [r].[RoleName]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [r].[RoleName]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [r].[RoleName]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [r].[RoleName]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [r].[RoleName]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [r].[RoleName]) > 0)
+ORDER BY (SELECT 1)
+OFFSET @__p_14 ROWS FETCH NEXT @__p_15 ROWS ONLY
+2024-03-26 00:48:11.008 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:48:11.010 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO) in 50.6037ms
+2024-03-26 00:48:11.011 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:11.012 +07:00 [INF] HTTP GET /role/filter-role responded 200 in 56.7025 ms
+2024-03-26 00:48:11.013 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&RoleCode=1&RoleName=admin - - - 200 - application/json;+charset=utf-8 58.8908ms
+2024-03-26 00:48:14.276 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&Id=90517b7270e94a928fe6d5808c3a78ba&RoleCode=1&RoleName=admin - -
+2024-03-26 00:48:14.277 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:14.278 +07:00 [INF] Route matched with {action = "FilterRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] FilterRole(YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:48:14.306 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__request_Id_0='?' (Size = 450), @__request_RoleCode_1='?' (DbType = Int32), @__filter_2='?' (Size = 450), @__filter_3='?' (Size = 450), @__filter_4='?' (Size = 450), @__filter_5='?' (Size = 450), @__filter_6='?' (Size = 450), @__filter_7='?' (Size = 450), @__filter_8='?' (Size = 450), @__filter_9='?' (Size = 450), @__filter_10='?' (Size = 450), @__filter_11='?' (Size = 450), @__filter_12='?' (Size = 450), @__filter_13='?' (Size = 450), @__filter_14='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[Id] = @__request_Id_0 AND [r].[RoleCode] = @__request_RoleCode_1 AND ((@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [r].[RoleName]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [r].[RoleName]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [r].[RoleName]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [r].[RoleName]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [r].[RoleName]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [r].[RoleName]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [r].[RoleName]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [r].[RoleName]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [r].[RoleName]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [r].[RoleName]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [r].[RoleName]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [r].[RoleName]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [r].[RoleName]) > 0)
+2024-03-26 00:48:14.313 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:48:14.314 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:48:14.335 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_Id_0='?' (Size = 450), @__request_RoleCode_1='?' (DbType = Int32), @__filter_2='?' (Size = 450), @__filter_3='?' (Size = 450), @__filter_4='?' (Size = 450), @__filter_5='?' (Size = 450), @__filter_6='?' (Size = 450), @__filter_7='?' (Size = 450), @__filter_8='?' (Size = 450), @__filter_9='?' (Size = 450), @__filter_10='?' (Size = 450), @__filter_11='?' (Size = 450), @__filter_12='?' (Size = 450), @__filter_13='?' (Size = 450), @__filter_14='?' (Size = 450), @__p_15='?' (DbType = Int32), @__p_16='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[Id] = @__request_Id_0 AND [r].[RoleCode] = @__request_RoleCode_1 AND ((@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [r].[RoleName]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [r].[RoleName]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [r].[RoleName]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [r].[RoleName]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [r].[RoleName]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [r].[RoleName]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [r].[RoleName]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [r].[RoleName]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [r].[RoleName]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [r].[RoleName]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [r].[RoleName]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [r].[RoleName]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [r].[RoleName]) > 0)
+ORDER BY (SELECT 1)
+OFFSET @__p_15 ROWS FETCH NEXT @__p_16 ROWS ONLY
+2024-03-26 00:48:14.338 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:48:14.339 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO) in 59.0925ms
+2024-03-26 00:48:14.341 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:14.341 +07:00 [INF] HTTP GET /role/filter-role responded 200 in 64.6333 ms
+2024-03-26 00:48:14.343 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&Id=90517b7270e94a928fe6d5808c3a78ba&RoleCode=1&RoleName=admin - - - 200 - application/json;+charset=utf-8 66.7824ms
+2024-03-26 00:48:17.337 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&Id=90517b7270e94a928fe6d5808c3a78ba1&RoleCode=1&RoleName=admin - -
+2024-03-26 00:48:17.338 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:17.339 +07:00 [INF] Route matched with {action = "FilterRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] FilterRole(YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:48:17.351 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_Id_0='?' (Size = 450), @__request_RoleCode_1='?' (DbType = Int32), @__filter_2='?' (Size = 450), @__filter_3='?' (Size = 450), @__filter_4='?' (Size = 450), @__filter_5='?' (Size = 450), @__filter_6='?' (Size = 450), @__filter_7='?' (Size = 450), @__filter_8='?' (Size = 450), @__filter_9='?' (Size = 450), @__filter_10='?' (Size = 450), @__filter_11='?' (Size = 450), @__filter_12='?' (Size = 450), @__filter_13='?' (Size = 450), @__filter_14='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[Id] = @__request_Id_0 AND [r].[RoleCode] = @__request_RoleCode_1 AND ((@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [r].[RoleName]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [r].[RoleName]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [r].[RoleName]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [r].[RoleName]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [r].[RoleName]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [r].[RoleName]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [r].[RoleName]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [r].[RoleName]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [r].[RoleName]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [r].[RoleName]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [r].[RoleName]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [r].[RoleName]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [r].[RoleName]) > 0)
+2024-03-26 00:48:17.368 +07:00 [INF] Executed DbCommand (14ms) [Parameters=[@__request_Id_0='?' (Size = 450), @__request_RoleCode_1='?' (DbType = Int32), @__filter_2='?' (Size = 450), @__filter_3='?' (Size = 450), @__filter_4='?' (Size = 450), @__filter_5='?' (Size = 450), @__filter_6='?' (Size = 450), @__filter_7='?' (Size = 450), @__filter_8='?' (Size = 450), @__filter_9='?' (Size = 450), @__filter_10='?' (Size = 450), @__filter_11='?' (Size = 450), @__filter_12='?' (Size = 450), @__filter_13='?' (Size = 450), @__filter_14='?' (Size = 450), @__p_15='?' (DbType = Int32), @__p_16='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[Id] = @__request_Id_0 AND [r].[RoleCode] = @__request_RoleCode_1 AND ((@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [r].[RoleName]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [r].[RoleName]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [r].[RoleName]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [r].[RoleName]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [r].[RoleName]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [r].[RoleName]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [r].[RoleName]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [r].[RoleName]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [r].[RoleName]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [r].[RoleName]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [r].[RoleName]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [r].[RoleName]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [r].[RoleName]) > 0)
+ORDER BY (SELECT 1)
+OFFSET @__p_15 ROWS FETCH NEXT @__p_16 ROWS ONLY
+2024-03-26 00:48:17.717 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterRoleQuery {"PageNumber":1,"PageSize":5,"Id":"90517b7270e94a928fe6d5808c3a78ba1","RoleCode":1,"RoleName":"admin","$type":"FilterRoleQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ role nào
+   at YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQueryHandler.Handle(FilterRoleQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\RoleQuery\FilterRole\FilterRoleQueryHandler.cs:line 56
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-26 00:48:18.142 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-26 00:48:18.143 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO) in 802.9193ms
+2024-03-26 00:48:18.144 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:48:18.145 +07:00 [INF] HTTP GET /role/filter-role responded 404 in 807.4132 ms
+2024-03-26 00:48:18.146 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&Id=90517b7270e94a928fe6d5808c3a78ba1&RoleCode=1&RoleName=admin - - - 404 - application/problem+json;+charset=utf-8 809.6837ms
+2024-03-26 00:48:46.762 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/delete application/json 46
+2024-03-26 00:48:46.766 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:48:46.767 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.DeleteRole (YAHALLO)'
+2024-03-26 00:48:46.772 +07:00 [INF] Route matched with {action = "DeleteRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] DeleteRole(YAHALLO.Application.Commands.RoleCommand.Delete.DeleteRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:48:46.860 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__request_Id_0 AND (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:48:46.906 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[@__checkRoleExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[RoleId] = @__checkRoleExist_Id_0
+2024-03-26 00:48:47.141 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request DeleteRoleCommand {"Id":"ea2149497607459ba0958d7a1a86af06","$type":"DeleteRoleCommand"}
+YAHALLO.Domain.Exceptions.ForeignKeyConstraintException: Không thể xóa role do tồn tại 0 thành viên có role này
+   at YAHALLO.Application.Commands.RoleCommand.Delete.DeleteRoleCommandhandler.Handle(DeleteRoleCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\RoleCommand\Delete\DeleteRoleCommandHandler.cs:line 37
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-26 00:48:47.603 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.DeleteRole (YAHALLO) in 829.2861ms
+2024-03-26 00:48:47.725 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.DeleteRole (YAHALLO)'
+2024-03-26 00:48:47.959 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+YAHALLO.Domain.Exceptions.ForeignKeyConstraintException: Không thể xóa role do tồn tại 0 thành viên có role này
+   at YAHALLO.Application.Commands.RoleCommand.Delete.DeleteRoleCommandhandler.Handle(DeleteRoleCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\RoleCommand\Delete\DeleteRoleCommandHandler.cs:line 37
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.RoleController.DeleteRole(DeleteRoleCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\Anonymous\RoleController.cs:line 77
+   at lambda_method445(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-26 00:48:48.001 +07:00 [ERR] HTTP POST /role/delete responded 500 in 1234.3889 ms
+2024-03-26 00:48:48.002 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/delete application/json 46 - 500 - application/problem+json 1240.8859ms
+2024-03-26 00:52:07.287 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-26 00:52:07.879 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-26 00:52:07.880 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-26 00:52:07.881 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-26 00:52:07.882 +07:00 [INF] Hosting environment: Development
+2024-03-26 00:52:07.882 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-26 00:52:09.325 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-26 00:52:09.671 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 211.5781 ms
+2024-03-26 00:52:09.684 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 359.4167ms
+2024-03-26 00:52:11.478 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-26 00:52:11.478 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-26 00:52:11.495 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.1191ms
+2024-03-26 00:52:11.549 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.3728ms
+2024-03-26 00:52:11.616 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-26 00:52:12.024 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 405.4931 ms
+2024-03-26 00:52:12.026 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 410.4746ms
+2024-03-26 00:52:21.134 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all - -
+2024-03-26 00:52:21.355 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:52:21.386 +07:00 [INF] Route matched with {action = "GetAll", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:52:23.813 +07:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:52:24.002 +07:00 [WRN] Yahallo Long Running Request: GetAllRoleQuery (2467 milliseconds) c231edec8be24e169a638ccf4a547f02 {"$type":"GetAllRoleQuery"}
+2024-03-26 00:52:24.036 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:52:24.061 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO) in 2668.0244ms
+2024-03-26 00:52:24.063 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:52:24.064 +07:00 [INF] HTTP GET /role/get-all responded 200 in 2929.2023 ms
+2024-03-26 00:52:24.085 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all - - - 200 - application/json;+charset=utf-8 2950.8791ms
+2024-03-26 00:52:35.674 +07:00 [INF] Request starting HTTP/2 DELETE https://localhost:7181/role/delete application/json 46
+2024-03-26 00:52:35.682 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:52:35.696 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.DeleteRole (YAHALLO)'
+2024-03-26 00:52:35.708 +07:00 [INF] Route matched with {action = "DeleteRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] DeleteRole(YAHALLO.Application.Commands.RoleCommand.Delete.DeleteRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:52:36.019 +07:00 [INF] Executed DbCommand (34ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__request_Id_0 AND (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:52:36.056 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__checkRoleExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[RoleId] = @__checkRoleExist_Id_0
+2024-03-26 00:52:36.191 +07:00 [INF] Executed DbCommand (31ms) [Parameters=[@p9='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (Size = 450), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Roles] SET [CreateDate] = @p0, [DeleteDate] = @p1, [IdUserCreate] = @p2, [IdUserDelete] = @p3, [IdUserUpdate] = @p4, [RoleCode] = @p5, [RoleDescription] = @p6, [RoleName] = @p7, [UpdateDate] = @p8
+OUTPUT 1
+WHERE [Id] = @p9;
+2024-03-26 00:52:36.218 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:52:36.222 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.DeleteRole (YAHALLO) in 511.9345ms
+2024-03-26 00:52:36.224 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.DeleteRole (YAHALLO)'
+2024-03-26 00:52:36.224 +07:00 [INF] HTTP DELETE /role/delete responded 200 in 540.3117 ms
+2024-03-26 00:52:36.226 +07:00 [INF] Request finished HTTP/2 DELETE https://localhost:7181/role/delete application/json 46 - 200 - application/json;+charset=utf-8 552.0830ms
+2024-03-26 00:52:42.907 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all - -
+2024-03-26 00:52:42.912 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:52:42.912 +07:00 [INF] Route matched with {action = "GetAll", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:52:42.939 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:52:42.941 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:52:42.942 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO) in 28.0961ms
+2024-03-26 00:52:42.943 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:52:42.944 +07:00 [INF] HTTP GET /role/get-all responded 200 in 34.5475 ms
+2024-03-26 00:52:42.945 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all - - - 200 - application/json;+charset=utf-8 37.2738ms
+2024-03-26 00:52:52.075 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&RoleCode=3 - -
+2024-03-26 00:52:52.078 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:52:52.087 +07:00 [INF] Route matched with {action = "FilterRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] FilterRole(YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:52:52.316 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[RoleCode] = @__request_RoleCode_0
+2024-03-26 00:52:52.345 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:52:52.350 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:52:52.372 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL) AND [r].[RoleCode] = @__request_RoleCode_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2024-03-26 00:52:52.668 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterRoleQuery {"PageNumber":1,"PageSize":5,"Id":null,"RoleCode":3,"RoleName":null,"$type":"FilterRoleQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ role nào
+   at YAHALLO.Application.Queries.RoleQuery.FilterRole.FilterRoleQueryHandler.Handle(FilterRoleQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\RoleQuery\FilterRole\FilterRoleQueryHandler.cs:line 56
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-26 00:52:53.116 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-26 00:52:53.118 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO) in 1029.666ms
+2024-03-26 00:52:53.119 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.FilterRole (YAHALLO)'
+2024-03-26 00:52:53.120 +07:00 [INF] HTTP GET /role/filter-role responded 404 in 1043.1026 ms
+2024-03-26 00:52:53.121 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/filter-role?PageNumber=1&PageSize=5&RoleCode=3 - - - 404 - application/problem+json;+charset=utf-8 1045.8446ms
+2024-03-26 00:52:59.114 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all-deleted - -
+2024-03-26 00:52:59.115 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllDeleted (YAHALLO)'
+2024-03-26 00:52:59.122 +07:00 [INF] Route matched with {action = "GetAllDeleted", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAllDeleted(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:52:59.206 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE ([r].[IdUserDelete] IS NOT NULL) AND NOT ([r].[IdUserDelete] LIKE N'') AND ([r].[DeleteDate] IS NOT NULL)
+2024-03-26 00:52:59.211 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:52:59.212 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAllDeleted (YAHALLO) in 88.9381ms
+2024-03-26 00:52:59.214 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllDeleted (YAHALLO)'
+2024-03-26 00:52:59.215 +07:00 [INF] HTTP GET /role/get-all-deleted responded 200 in 100.2501 ms
+2024-03-26 00:52:59.217 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all-deleted - - - 200 - application/json;+charset=utf-8 103.3261ms
+2024-03-26 00:53:06.214 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all-deleted-pagination?PageNumber=1&PageSize=5 - -
+2024-03-26 00:53:06.216 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllDeletedPagination (YAHALLO)'
+2024-03-26 00:53:06.229 +07:00 [INF] Route matched with {action = "GetAllDeletedPagination", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAllDeletedPagination(YAHALLO.Application.Queries.RoleQuery.GetAllDeletedPagination.GetAllRoleDeletedPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:53:06.332 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+WHERE ([r].[IdUserDelete] IS NOT NULL) AND NOT ([r].[IdUserDelete] LIKE N'') AND ([r].[DeleteDate] IS NOT NULL)
+2024-03-26 00:53:06.336 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:53:06.337 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-26 00:53:06.349 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE ([r].[IdUserDelete] IS NOT NULL) AND NOT ([r].[IdUserDelete] LIKE N'') AND ([r].[DeleteDate] IS NOT NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-26 00:53:06.355 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-26 00:53:06.358 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAllDeletedPagination (YAHALLO) in 123.1228ms
+2024-03-26 00:53:06.360 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllDeletedPagination (YAHALLO)'
+2024-03-26 00:53:06.361 +07:00 [INF] HTTP GET /role/get-all-deleted-pagination responded 200 in 145.2861 ms
+2024-03-26 00:53:06.362 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all-deleted-pagination?PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 148.0169ms
+2024-03-26 00:53:12.091 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/restore application/json 46
+2024-03-26 00:53:12.092 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:53:12.093 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.RestoreRole (YAHALLO)'
+2024-03-26 00:53:12.097 +07:00 [INF] Route matched with {action = "RestoreRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] RestoreRole(YAHALLO.Application.Commands.RoleCommand.Restore.RestoreRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:53:12.228 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__request_Id_0 AND (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:53:12.523 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request RestoreRoleCommand {"Id":"ea2149497607459ba0958d7a1a86af06","$type":"RestoreRoleCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy role với Id ea2149497607459ba0958d7a1a86af06
+   at YAHALLO.Application.Commands.RoleCommand.Restore.RestoreRoleCommandhandler.Handle(RestoreRoleCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\RoleCommand\Restore\RestoreRoleCommandHandler.cs:line 29
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-26 00:53:12.909 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-26 00:53:12.910 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.RestoreRole (YAHALLO) in 809.0496ms
+2024-03-26 00:53:12.911 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.RestoreRole (YAHALLO)'
+2024-03-26 00:53:12.912 +07:00 [INF] HTTP POST /role/restore responded 404 in 819.3801 ms
+2024-03-26 00:53:12.914 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/restore application/json 46 - 404 - application/problem+json;+charset=utf-8 823.0046ms
+2024-03-26 00:53:35.620 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-26 00:53:36.060 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-26 00:53:36.061 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-26 00:53:36.063 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-26 00:53:36.064 +07:00 [INF] Hosting environment: Development
+2024-03-26 00:53:36.064 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-26 00:53:39.808 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-26 00:53:40.268 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 220.8347 ms
+2024-03-26 00:53:40.283 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 479.8513ms
+2024-03-26 00:53:40.304 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-26 00:53:40.304 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-26 00:53:40.325 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 20.7363ms
+2024-03-26 00:53:40.390 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 85.5626ms
+2024-03-26 00:53:40.482 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-26 00:53:40.937 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 452.6835 ms
+2024-03-26 00:53:40.938 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 455.7256ms
+2024-03-26 00:53:50.692 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all-deleted - -
+2024-03-26 00:53:51.028 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllDeleted (YAHALLO)'
+2024-03-26 00:53:51.061 +07:00 [INF] Route matched with {action = "GetAllDeleted", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAllDeleted(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:53:53.959 +07:00 [INF] Executed DbCommand (52ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE ([r].[IdUserDelete] IS NOT NULL) AND NOT ([r].[IdUserDelete] LIKE N'') AND ([r].[DeleteDate] IS NOT NULL)
+2024-03-26 00:53:54.128 +07:00 [WRN] Yahallo Long Running Request: GetAllRoleDeletedQuery (2835 milliseconds) c231edec8be24e169a638ccf4a547f02 {"$type":"GetAllRoleDeletedQuery"}
+2024-03-26 00:53:54.143 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:53:54.157 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAllDeleted (YAHALLO) in 3089.6109ms
+2024-03-26 00:53:54.159 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAllDeleted (YAHALLO)'
+2024-03-26 00:53:54.159 +07:00 [INF] HTTP GET /role/get-all-deleted responded 200 in 3464.8964 ms
+2024-03-26 00:53:54.171 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all-deleted - - - 200 - application/json;+charset=utf-8 3479.3139ms
+2024-03-26 00:54:02.039 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/restore application/json 46
+2024-03-26 00:54:02.045 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:54:02.052 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.RestoreRole (YAHALLO)'
+2024-03-26 00:54:02.057 +07:00 [INF] Route matched with {action = "RestoreRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] RestoreRole(YAHALLO.Application.Commands.RoleCommand.Restore.RestoreRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:54:02.280 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__request_Id_0 AND ([r].[IdUserDelete] IS NOT NULL) AND NOT ([r].[IdUserDelete] LIKE N'') AND ([r].[DeleteDate] IS NOT NULL)
+2024-03-26 00:54:02.400 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@p9='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (Size = 450), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Roles] SET [CreateDate] = @p0, [DeleteDate] = @p1, [IdUserCreate] = @p2, [IdUserDelete] = @p3, [IdUserUpdate] = @p4, [RoleCode] = @p5, [RoleDescription] = @p6, [RoleName] = @p7, [UpdateDate] = @p8
+OUTPUT 1
+WHERE [Id] = @p9;
+2024-03-26 00:54:02.425 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:54:02.430 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.RestoreRole (YAHALLO) in 371.7645ms
+2024-03-26 00:54:02.432 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.RestoreRole (YAHALLO)'
+2024-03-26 00:54:02.432 +07:00 [INF] HTTP POST /role/restore responded 200 in 385.0592 ms
+2024-03-26 00:54:02.434 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/restore application/json 46 - 200 - application/json;+charset=utf-8 395.1777ms
+2024-03-26 00:54:54.156 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/role/update application/json 145
+2024-03-26 00:54:54.158 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:54:54.162 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.UpdateRole (YAHALLO)'
+2024-03-26 00:54:54.169 +07:00 [INF] Route matched with {action = "UpdateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateRole(YAHALLO.Application.Commands.RoleCommand.Update.UpdateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:54:54.304 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__request_Id_0 AND (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:54:54.316 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = @__request_RoleCode_0
+2024-03-26 00:54:54.575 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request UpdateRoleCommand {"Id":"ea2149497607459ba0958d7a1a86af06","RoleCode":3,"RoleName":"Mod","RoleDescription":"Role Description has been update now","$type":"UpdateRoleCommand"}
+YAHALLO.Domain.Exceptions.DuplicateException: Đã tồn tại role với role code 3
+   at YAHALLO.Application.Commands.RoleCommand.Update.UpdateRoleCommandHandler.Handle(UpdateRoleCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\RoleCommand\Update\UpdateRoleCommandHandler.cs:line 36
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-26 00:54:54.946 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-26 00:54:54.948 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.UpdateRole (YAHALLO) in 778.0546ms
+2024-03-26 00:54:54.949 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.UpdateRole (YAHALLO)'
+2024-03-26 00:54:54.950 +07:00 [INF] HTTP PUT /role/update responded 400 in 790.3059 ms
+2024-03-26 00:54:54.952 +07:00 [INF] Request finished HTTP/2 PUT https://localhost:7181/role/update application/json 145 - 400 - application/problem+json;+charset=utf-8 795.5501ms
+2024-03-26 00:56:07.930 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-26 00:56:08.410 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-26 00:56:08.412 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-26 00:56:08.415 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-26 00:56:08.416 +07:00 [INF] Hosting environment: Development
+2024-03-26 00:56:08.417 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-26 00:56:13.026 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-26 00:56:13.407 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 228.2884 ms
+2024-03-26 00:56:13.419 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 397.2041ms
+2024-03-26 00:56:13.442 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-26 00:56:13.442 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-26 00:56:13.467 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 24.9019ms
+2024-03-26 00:56:13.566 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 123.3295ms
+2024-03-26 00:56:13.651 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-26 00:56:14.013 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 359.6936 ms
+2024-03-26 00:56:14.016 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 365.2445ms
+2024-03-26 00:56:34.295 +07:00 [INF] Request starting HTTP/2 PUT https://localhost:7181/role/update application/json 145
+2024-03-26 00:56:34.299 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:56:34.585 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.UpdateRole (YAHALLO)'
+2024-03-26 00:56:34.626 +07:00 [INF] Route matched with {action = "UpdateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] UpdateRole(YAHALLO.Application.Commands.RoleCommand.Update.UpdateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:56:37.269 +07:00 [INF] Executed DbCommand (57ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__request_Id_0 AND (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:56:37.425 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = @__request_RoleCode_0
+2024-03-26 00:56:37.561 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@p9='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (Size = 450), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Roles] SET [CreateDate] = @p0, [DeleteDate] = @p1, [IdUserCreate] = @p2, [IdUserDelete] = @p3, [IdUserUpdate] = @p4, [RoleCode] = @p5, [RoleDescription] = @p6, [RoleName] = @p7, [UpdateDate] = @p8
+OUTPUT 1
+WHERE [Id] = @p9;
+2024-03-26 00:56:37.585 +07:00 [WRN] Yahallo Long Running Request: UpdateRoleCommand (2781 milliseconds) c231edec8be24e169a638ccf4a547f02 {"Id":"ea2149497607459ba0958d7a1a86af06","RoleCode":3,"RoleName":"Mod","RoleDescription":"Role Description has been update now","$type":"UpdateRoleCommand"}
+2024-03-26 00:56:37.607 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:56:37.623 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.UpdateRole (YAHALLO) in 2987.4676ms
+2024-03-26 00:56:37.627 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.UpdateRole (YAHALLO)'
+2024-03-26 00:56:37.630 +07:00 [INF] HTTP PUT /role/update responded 200 in 3329.0181 ms
+2024-03-26 00:56:37.648 +07:00 [INF] Request finished HTTP/2 PUT https://localhost:7181/role/update application/json 145 - 200 - application/json;+charset=utf-8 3353.6500ms
+2024-03-26 00:56:43.809 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all - -
+2024-03-26 00:56:43.817 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:56:43.827 +07:00 [INF] Route matched with {action = "GetAll", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:56:43.988 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:56:44.008 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:56:44.014 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO) in 185.9693ms
+2024-03-26 00:56:44.016 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:56:44.017 +07:00 [INF] HTTP GET /role/get-all responded 200 in 205.9202 ms
+2024-03-26 00:56:44.019 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all - - - 200 - application/json;+charset=utf-8 209.4427ms
+2024-03-26 00:57:15.628 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-26 00:57:16.331 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-26 00:57:16.331 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-26 00:57:16.333 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-26 00:57:16.334 +07:00 [INF] Hosting environment: Development
+2024-03-26 00:57:16.335 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-26 00:57:17.907 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-26 00:57:18.384 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 253.2037 ms
+2024-03-26 00:57:18.393 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 488.9722ms
+2024-03-26 00:57:20.119 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-03-26 00:57:20.119 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-26 00:57:20.137 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 17.8365ms
+2024-03-26 00:57:20.219 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 100.5864ms
+2024-03-26 00:57:20.344 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-26 00:57:20.905 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 558.5259 ms
+2024-03-26 00:57:20.906 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 562.6750ms
+2024-03-26 00:57:57.086 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/create application/json 113
+2024-03-26 00:57:57.098 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:57:57.325 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2024-03-26 00:57:57.362 +07:00 [INF] Route matched with {action = "CreateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateRole(YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:57:59.898 +07:00 [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 3 AND [r].[RoleName] = N'ConTent Creater' AND [r].[RoleDescription] = N'Người sáng tạo nội dùng'
+2024-03-26 00:58:00.243 +07:00 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 450), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2024-03-26 00:58:00.262 +07:00 [WRN] Yahallo Long Running Request: CreateRoleCommand (2734 milliseconds) c231edec8be24e169a638ccf4a547f02 {"RoleCode":3,"RoleName":"ConTent Creater","RoleDescription":"Người sáng tạo nội dùng","$type":"CreateRoleCommand"}
+2024-03-26 00:58:00.282 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:58:00.292 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO) in 2922.3974ms
+2024-03-26 00:58:00.294 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2024-03-26 00:58:00.294 +07:00 [INF] HTTP POST /role/create responded 200 in 3194.7899 ms
+2024-03-26 00:58:00.307 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/create application/json 113 - 200 - application/json;+charset=utf-8 3220.8553ms
+2024-03-26 00:58:11.682 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/role/get-all - -
+2024-03-26 00:58:11.691 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:58:11.702 +07:00 [INF] Route matched with {action = "GetAll", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.RoleQuery.RoleDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:58:12.016 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE (([r].[IdUserDelete] IS NULL) OR ([r].[IdUserDelete] LIKE N'')) AND ([r].[DeleteDate] IS NULL)
+2024-03-26 00:58:12.053 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.RoleQuery.RoleDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-26 00:58:12.058 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO) in 351.145ms
+2024-03-26 00:58:12.060 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.GetAll (YAHALLO)'
+2024-03-26 00:58:12.061 +07:00 [INF] HTTP GET /role/get-all responded 200 in 376.8397 ms
+2024-03-26 00:58:12.063 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/role/get-all - - - 200 - application/json;+charset=utf-8 380.1205ms
+2024-03-26 00:59:09.169 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/create application/json 113
+2024-03-26 00:59:09.177 +07:00 [INF] CORS policy execution successful.
+2024-03-26 00:59:09.181 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2024-03-26 00:59:09.182 +07:00 [INF] Route matched with {action = "CreateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateRole(YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2024-03-26 00:59:28.970 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 3 AND [r].[RoleName] = N'ConTent Creater' AND [r].[RoleDescription] = N'Người sáng tạo nội dùng'
+2024-03-26 00:59:34.972 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[RoleId] = @__p_0
+2024-03-26 00:59:43.004 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateRoleCommand {"RoleCode":3,"RoleName":"ConTent Creater","RoleDescription":"Người sáng tạo nội dùng","$type":"CreateRoleCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Đã tồn tại role với các thông tin trên
+   at YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommandHandler.Handle(CreateRoleCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\RoleCommand\Create\CreateRoleCommandHandler.cs:line 29
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-26 00:59:43.395 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-26 00:59:43.398 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO) in 34214.2945ms
+2024-03-26 00:59:43.399 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2024-03-26 00:59:43.400 +07:00 [INF] HTTP POST /role/create responded 404 in 34221.6390 ms
+2024-03-26 00:59:43.401 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/create application/json 113 - 404 - application/problem+json;+charset=utf-8 34232.1667ms
