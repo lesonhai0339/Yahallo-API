@@ -29,11 +29,45 @@ namespace YAHALLO.Application.Queries.AuthorQuery.FilterAuthor
         }
         public async Task<PagedResult<AuthorDto>> Handle(FilterAuthorQuery request, CancellationToken cancellationToken)
         {
-            var options = _authorRepository.IQueryableHandlerMultiple(request, Expression.Equal);
-            var project= await _authorRepository.FindAllProjectToAsync<AuthorDto>(options, cancellationToken);
+            var query = _authorRepository.CreateQueryable();
+            query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
+            if (!string.IsNullOrEmpty(request.Id))
+            {
+                var pro= typeof(FilterAuthorQuery).GetProperty(nameof(request.Id));
+                var expression = _authorRepository.IExpressionMultiple(pro!, request.Id, Expression.Equal);
+                if(expression != null) query = query.Where(expression);
+            }
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                var predicate = PredicateBuilder.New<AuthorEntity>();
+                var filters = _filters.CheckString(request.Name);
+                foreach(var filter in filters)
+                {
+                    predicate = predicate.Or(x => x.Name.Contains(filter));
+                }
+                query = query.Where(predicate);
+            }
+            if(request.Countries != null)
+            {
+                var pro = typeof(FilterAuthorQuery).GetProperty(nameof(request.Countries));
+                var expression = _authorRepository.IExpressionMultiple(pro!, request.Countries, Expression.Equal);
+                if (expression != null) query = query.Where(expression);
+            }
+            if (request.Birth != null)
+            {
+                var pro = typeof(FilterAuthorQuery).GetProperty(nameof(request.Birth));
+                var expression = _authorRepository.IExpressionMultiple(pro!, request.Birth, Expression.Equal);
+                if (expression != null) query = query.Where(expression);
+            }
+            if (request.LifeStatus != null)
+            {
+                var pro = typeof(FilterAuthorQuery).GetProperty(nameof(request.LifeStatus));
+                var expression = _authorRepository.IExpressionMultiple(pro!, request.LifeStatus, Expression.Equal);
+                if (expression != null) query = query.Where(expression);
+            }
+
             var listAuthorExists = await _authorRepository
-               .FindAllAsync(x=> string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue,
-               request.PageNumber, request.PageSize, options, cancellationToken); 
+              .FindAllAsync(query,request.PageNumber, request.PageSize, cancellationToken);
             if (!listAuthorExists.Any())
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ tác giả nào");

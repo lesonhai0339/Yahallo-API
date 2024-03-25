@@ -377,6 +377,26 @@ namespace YAHALLO.Infrastructure.Repositories
                 return null;
             }
         }
-
+        public IQueryable<TPersistence> CreateQueryable()
+        {
+            return GetSet();
+        }
+        public virtual async Task<IPagedResult<TDomain>> FindAllAsync(
+            IQueryable<TPersistence> filterExpression,
+            int pageNo,
+            int pageSize,
+            CancellationToken cancellationToken = default)
+        {
+            var query = QueryInternal(filterExpression);
+            return await PagedList<TDomain>.CreateAsync(
+                query,
+                pageNo,
+                pageSize,
+                cancellationToken);
+        }
+        protected virtual IQueryable<TPersistence> QueryInternal(IQueryable<TPersistence> queryOptions)
+        {
+            return queryOptions;
+        }
     }
 }

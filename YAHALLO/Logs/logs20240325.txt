@@ -378,3 +378,448 @@ YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ ta
 SELECT [a].[Id], [a].[Name], [a].[Countries], [a].[Depscription], [a].[Birth], [a].[LifeStatus]
 FROM [Author] AS [a]
 WHERE [a].[Name] = N'sakurasou'
+2024-03-25 10:47:11.625 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 10:47:13.469 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-25 10:47:13.469 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-25 10:47:13.471 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 10:47:13.472 +07:00 [INF] Hosting environment: Development
+2024-03-25 10:47:13.473 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-25 10:47:19.765 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-25 10:47:20.521 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 599.0535 ms
+2024-03-25 10:47:20.533 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 775.9381ms
+2024-03-25 10:47:20.604 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-25 10:47:20.621 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.6967ms
+2024-03-25 10:47:20.729 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-25 10:47:21.308 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 575.9578 ms
+2024-03-25 10:47:21.313 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 583.9184ms
+2024-03-25 10:48:22.876 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=s - -
+2024-03-25 10:48:22.891 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-03-25 10:48:22.898 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-03-25 10:48:22.898 +07:00 [INF] HTTP GET /author/filter-author responded 401 in 20.3736 ms
+2024-03-25 10:48:22.900 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=s - - - 401 0 - 23.6616ms
+2024-03-25 10:48:41.237 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2024-03-25 10:48:41.243 +07:00 [INF] CORS policy execution successful.
+2024-03-25 10:48:41.249 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-25 10:48:41.297 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-25 10:48:47.049 +07:00 [INF] Executed DbCommand (208ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-25 10:48:47.365 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-25 10:48:47.580 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-03-25 10:48:47.668 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__p_0
+2024-03-25 10:48:47.697 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__p_0
+2024-03-25 10:48:48.318 +07:00 [INF] Executed DbCommand (49ms) [Parameters=[@p9='?' (Size = 450), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [UserToken] SET [AccessToken] = @p0, [CreateDate] = @p1, [DeleteDate] = @p2, [ExpiredRefeshToken] = @p3, [IdUserCreate] = @p4, [IdUserDelete] = @p5, [IdUserUpdate] = @p6, [RefeshToken] = @p7, [UpdateDate] = @p8
+OUTPUT 1
+WHERE [Id] = @p9;
+2024-03-25 10:48:48.335 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (6734 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-25 10:48:48.353 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 10:48:48.364 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 7061.1932ms
+2024-03-25 10:48:48.366 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-25 10:48:48.368 +07:00 [INF] HTTP POST /user/login responded 200 in 7122.6521 ms
+2024-03-25 10:48:48.379 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 7141.3437ms
+2024-03-25 10:49:06.653 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=s - -
+2024-03-25 10:49:06.753 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 10:49:06.762 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 10:49:07.069 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Countries], [a].[Depscription], [a].[Birth], [a].[LifeStatus]
+FROM [Author] AS [a]
+WHERE [a].[Name] = N's'
+2024-03-25 10:49:07.182 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N's'
+2024-03-25 10:49:07.195 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 10:49:07.196 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 10:49:07.233 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N's'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 10:49:07.523 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterAuthorQuery {"PageNumber":1,"PageSize":5,"Id":null,"Name":"s","Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ tác giả nào
+   at YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQueryHandler.Handle(FilterAuthorQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\AuthorQuery\FilterAuthor\FilterAuthorQueryHandler.cs:line 39
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-25 10:49:07.976 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-25 10:49:07.980 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 1216.5207ms
+2024-03-25 10:49:07.982 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 10:49:07.983 +07:00 [INF] HTTP GET /author/filter-author responded 404 in 1318.6301 ms
+2024-03-25 10:49:07.985 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=s - - - 404 - application/problem+json;+charset=utf-8 1334.6281ms
+2024-03-25 10:49:13.487 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=sakura - -
+2024-03-25 10:49:13.493 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 10:49:13.494 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 10:49:13.529 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Countries], [a].[Depscription], [a].[Birth], [a].[LifeStatus]
+FROM [Author] AS [a]
+WHERE [a].[Name] = N'sakura'
+2024-03-25 10:49:13.537 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N'sakura'
+2024-03-25 10:49:13.540 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 10:49:13.541 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 10:49:13.551 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N'sakura'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 10:49:13.874 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterAuthorQuery {"PageNumber":1,"PageSize":5,"Id":null,"Name":"sakura","Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ tác giả nào
+   at YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQueryHandler.Handle(FilterAuthorQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\AuthorQuery\FilterAuthor\FilterAuthorQueryHandler.cs:line 39
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-25 10:49:14.325 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-25 10:49:14.326 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 830.5418ms
+2024-03-25 10:49:14.327 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 10:49:14.328 +07:00 [INF] HTTP GET /author/filter-author responded 404 in 840.0881 ms
+2024-03-25 10:49:14.330 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=sakura - - - 404 - application/problem+json;+charset=utf-8 842.9508ms
+2024-03-25 10:49:19.145 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=sakurasou - -
+2024-03-25 10:49:19.147 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 10:49:19.148 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 10:49:19.169 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Countries], [a].[Depscription], [a].[Birth], [a].[LifeStatus]
+FROM [Author] AS [a]
+WHERE [a].[Name] = N'sakurasou'
+2024-03-25 10:49:19.180 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N'sakurasou'
+2024-03-25 10:49:19.183 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 10:49:19.184 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 10:49:19.198 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N'sakurasou'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 10:49:19.277 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 10:49:19.312 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 163.2481ms
+2024-03-25 10:49:19.314 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 10:49:19.314 +07:00 [INF] HTTP GET /author/filter-author responded 200 in 168.3415 ms
+2024-03-25 10:49:19.316 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=sakurasou - - - 200 - application/json;+charset=utf-8 170.4239ms
+2024-03-25 11:23:52.102 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 11:23:52.846 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-25 11:23:52.847 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-25 11:23:52.848 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 11:23:52.849 +07:00 [INF] Hosting environment: Development
+2024-03-25 11:23:52.849 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-25 11:23:57.498 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-25 11:23:58.262 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 660.4992 ms
+2024-03-25 11:23:58.275 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 787.2849ms
+2024-03-25 11:23:58.969 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-25 11:23:58.992 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 23.3208ms
+2024-03-25 11:24:00.607 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-25 11:24:01.062 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 451.6081 ms
+2024-03-25 11:24:01.064 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 456.2868ms
+2024-03-25 11:24:24.263 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2024-03-25 11:24:24.298 +07:00 [INF] CORS policy execution successful.
+2024-03-25 11:24:24.308 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-25 11:24:24.380 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-25 11:24:31.014 +07:00 [INF] Executed DbCommand (81ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-25 11:24:31.430 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-25 11:24:31.520 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (6897 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-25 11:24:31.546 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 11:24:31.561 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 7174.4102ms
+2024-03-25 11:24:31.564 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-25 11:24:31.566 +07:00 [INF] HTTP POST /user/login responded 200 in 7266.0424 ms
+2024-03-25 11:24:31.581 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 7318.1825ms
+2024-03-25 11:25:07.167 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=saku - -
+2024-03-25 11:25:07.384 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:25:07.404 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:25:53.156 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Countries], [a].[Depscription], [a].[Birth], [a].[LifeStatus]
+FROM [Author] AS [a]
+WHERE [a].[Name] = N'saku'
+2024-03-25 11:25:53.207 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE [a].[Name] = N'saku'
+2024-03-25 11:25:53.220 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:25:53.221 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:25:53.247 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE [a].[Name] = N'saku'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 11:25:53.287 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N'saku'
+2024-03-25 11:25:53.290 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:25:53.291 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:25:53.301 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N'saku'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 11:25:53.582 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterAuthorQuery {"PageNumber":1,"PageSize":5,"Id":null,"Name":"saku","Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ tác giả nào
+   at YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQueryHandler.Handle(FilterAuthorQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\AuthorQuery\FilterAuthor\FilterAuthorQueryHandler.cs:line 78
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-25 11:25:54.016 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-25 11:25:54.019 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 46611.694ms
+2024-03-25 11:25:54.020 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:25:54.021 +07:00 [INF] HTTP GET /author/filter-author responded 404 in 46846.3260 ms
+2024-03-25 11:25:54.023 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=saku - - - 404 - application/problem+json;+charset=utf-8 46855.8726ms
+2024-03-25 11:26:17.975 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=saku - -
+2024-03-25 11:26:17.984 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:26:17.985 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:26:19.696 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Countries], [a].[Depscription], [a].[Birth], [a].[LifeStatus]
+FROM [Author] AS [a]
+WHERE [a].[Name] = N'saku'
+2024-03-25 11:30:38.908 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 11:30:39.551 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-25 11:30:39.552 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-25 11:30:39.554 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 11:30:39.555 +07:00 [INF] Hosting environment: Development
+2024-03-25 11:30:39.555 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-25 11:30:44.350 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-25 11:30:44.657 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 255.5094 ms
+2024-03-25 11:30:44.667 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 318.6176ms
+2024-03-25 11:30:44.732 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-25 11:30:44.749 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.3565ms
+2024-03-25 11:30:44.843 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-25 11:30:45.206 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 357.8569 ms
+2024-03-25 11:30:45.210 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 366.9024ms
+2024-03-25 11:31:08.695 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=saku - -
+2024-03-25 11:31:08.931 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:31:08.980 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:31:21.956 +07:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Countries], [a].[Depscription], [a].[Birth], [a].[LifeStatus]
+FROM [Author] AS [a]
+WHERE [a].[Name] = N'saku'
+2024-03-25 11:31:22.132 +07:00 [INF] Executed DbCommand (32ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__filter_9='?' (Size = 255), @__filter_10='?' (Size = 255), @__filter_11='?' (Size = 255), @__filter_12='?' (Size = 255), @__filter_13='?' (Size = 255), @__filter_14='?' (Size = 255), @__filter_15='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [a].[Name]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [a].[Name]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [a].[Name]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [a].[Name]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [a].[Name]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [a].[Name]) > 0 OR (@__filter_15 LIKE N'') OR CHARINDEX(@__filter_15, [a].[Name]) > 0)
+2024-03-25 11:31:22.156 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:31:22.157 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:31:22.349 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__filter_9='?' (Size = 255), @__filter_10='?' (Size = 255), @__filter_11='?' (Size = 255), @__filter_12='?' (Size = 255), @__filter_13='?' (Size = 255), @__filter_14='?' (Size = 255), @__filter_15='?' (Size = 255), @__p_16='?' (DbType = Int32), @__p_17='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [a].[Name]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [a].[Name]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [a].[Name]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [a].[Name]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [a].[Name]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [a].[Name]) > 0 OR (@__filter_15 LIKE N'') OR CHARINDEX(@__filter_15, [a].[Name]) > 0)
+ORDER BY (SELECT 1)
+OFFSET @__p_16 ROWS FETCH NEXT @__p_17 ROWS ONLY
+2024-03-25 11:31:22.461 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N'saku'
+2024-03-25 11:31:22.464 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:31:22.465 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:31:22.482 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Name] = N'saku'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 11:31:29.853 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MangaId], [m].[AuthorId], [m].[CreateDate], [m].[DeleteDate], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[UpdateDate]
+FROM [MangaAuthor] AS [m]
+WHERE [m].[AuthorId] = @__p_0
+2024-03-25 11:31:35.366 +07:00 [WRN] Yahallo Long Running Request: FilterAuthorQuery (26206 milliseconds) c231edec8be24e169a638ccf4a547f02 {"PageNumber":1,"PageSize":5,"Id":null,"Name":"saku","Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+2024-03-25 11:31:35.391 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 11:31:35.438 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 26451.5843ms
+2024-03-25 11:31:35.441 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:31:35.442 +07:00 [INF] HTTP GET /author/filter-author responded 200 in 26743.7713 ms
+2024-03-25 11:31:35.457 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=saku - - - 200 - application/json;+charset=utf-8 26761.8127ms
+2024-03-25 11:43:46.222 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 11:43:46.698 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-25 11:43:46.701 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-25 11:43:46.704 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 11:43:46.705 +07:00 [INF] Hosting environment: Development
+2024-03-25 11:43:46.706 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-25 11:43:49.833 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-25 11:43:50.116 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 227.3450 ms
+2024-03-25 11:43:50.122 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 294.3394ms
+2024-03-25 11:43:50.166 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-25 11:43:50.181 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 14.7600ms
+2024-03-25 11:43:50.281 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-25 11:43:50.882 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 599.0713 ms
+2024-03-25 11:43:50.889 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 608.0046ms
+2024-03-25 11:44:07.569 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5 - -
+2024-03-25 11:44:07.812 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:44:07.891 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:44:10.353 +07:00 [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2024-03-25 11:44:10.417 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:44:10.418 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:44:10.650 +07:00 [INF] Executed DbCommand (44ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 11:44:10.773 +07:00 [WRN] Yahallo Long Running Request: FilterAuthorQuery (2703 milliseconds) c231edec8be24e169a638ccf4a547f02 {"PageNumber":1,"PageSize":5,"Id":null,"Name":null,"Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+2024-03-25 11:44:10.793 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 11:44:10.832 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 2935.2558ms
+2024-03-25 11:44:10.833 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:44:10.834 +07:00 [INF] HTTP GET /author/filter-author responded 200 in 3263.5194 ms
+2024-03-25 11:44:10.847 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 3277.7501ms
+2024-03-25 11:44:19.929 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Id=bc34c5be4fc24099ad06fcf8a1c39d5d13123 - -
+2024-03-25 11:44:19.938 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:44:19.940 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:45:04.779 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterAuthorQuery {"PageNumber":1,"PageSize":5,"Id":"bc34c5be4fc24099ad06fcf8a1c39d5d13123","Name":null,"Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at YAHALLO.Infrastructure.Repositories.RepositoryBase`3.IExpressionMultiple(PropertyInfo pro, Object value, Func`3 expression) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Infrastructure\Repositories\RepositoryBase.cs:line 365
+   at YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQueryHandler.Handle(FilterAuthorQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\AuthorQuery\FilterAuthor\FilterAuthorQueryHandler.cs:line 37
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-25 11:45:22.207 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 11:45:22.988 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-25 11:45:22.989 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-25 11:45:22.991 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 11:45:22.992 +07:00 [INF] Hosting environment: Development
+2024-03-25 11:45:22.993 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-25 11:45:27.966 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-25 11:45:28.230 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 208.5686 ms
+2024-03-25 11:45:28.240 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 278.0197ms
+2024-03-25 11:45:28.294 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-25 11:45:28.309 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 15.2360ms
+2024-03-25 11:45:28.409 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-25 11:45:28.757 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 346.4044 ms
+2024-03-25 11:45:28.762 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 352.8587ms
+2024-03-25 11:45:51.634 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=sakurasou - -
+2024-03-25 11:45:51.834 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:45:51.865 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:46:07.868 +07:00 [INF] Executed DbCommand (82ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__filter_9='?' (Size = 255), @__filter_10='?' (Size = 255), @__filter_11='?' (Size = 255), @__filter_12='?' (Size = 255), @__filter_13='?' (Size = 255), @__filter_14='?' (Size = 255), @__filter_15='?' (Size = 255), @__filter_16='?' (Size = 255), @__filter_17='?' (Size = 255), @__filter_18='?' (Size = 255), @__filter_19='?' (Size = 255), @__filter_20='?' (Size = 255), @__filter_21='?' (Size = 255), @__filter_22='?' (Size = 255), @__filter_23='?' (Size = 255), @__filter_24='?' (Size = 255), @__filter_25='?' (Size = 255), @__filter_26='?' (Size = 255), @__filter_27='?' (Size = 255), @__filter_28='?' (Size = 255), @__filter_29='?' (Size = 255), @__filter_30='?' (Size = 255), @__filter_31='?' (Size = 255), @__filter_32='?' (Size = 255), @__filter_33='?' (Size = 255), @__filter_34='?' (Size = 255), @__filter_35='?' (Size = 255), @__filter_36='?' (Size = 255), @__filter_37='?' (Size = 255), @__filter_38='?' (Size = 255), @__filter_39='?' (Size = 255), @__filter_40='?' (Size = 255), @__filter_41='?' (Size = 255), @__filter_42='?' (Size = 255), @__filter_43='?' (Size = 255), @__filter_44='?' (Size = 255), @__filter_45='?' (Size = 255), @__filter_46='?' (Size = 255), @__filter_47='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [a].[Name]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [a].[Name]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [a].[Name]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [a].[Name]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [a].[Name]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [a].[Name]) > 0 OR (@__filter_15 LIKE N'') OR CHARINDEX(@__filter_15, [a].[Name]) > 0 OR (@__filter_16 LIKE N'') OR CHARINDEX(@__filter_16, [a].[Name]) > 0 OR (@__filter_17 LIKE N'') OR CHARINDEX(@__filter_17, [a].[Name]) > 0 OR (@__filter_18 LIKE N'') OR CHARINDEX(@__filter_18, [a].[Name]) > 0 OR (@__filter_19 LIKE N'') OR CHARINDEX(@__filter_19, [a].[Name]) > 0 OR (@__filter_20 LIKE N'') OR CHARINDEX(@__filter_20, [a].[Name]) > 0 OR (@__filter_21 LIKE N'') OR CHARINDEX(@__filter_21, [a].[Name]) > 0 OR (@__filter_22 LIKE N'') OR CHARINDEX(@__filter_22, [a].[Name]) > 0 OR (@__filter_23 LIKE N'') OR CHARINDEX(@__filter_23, [a].[Name]) > 0 OR (@__filter_24 LIKE N'') OR CHARINDEX(@__filter_24, [a].[Name]) > 0 OR (@__filter_25 LIKE N'') OR CHARINDEX(@__filter_25, [a].[Name]) > 0 OR (@__filter_26 LIKE N'') OR CHARINDEX(@__filter_26, [a].[Name]) > 0 OR (@__filter_27 LIKE N'') OR CHARINDEX(@__filter_27, [a].[Name]) > 0 OR (@__filter_28 LIKE N'') OR CHARINDEX(@__filter_28, [a].[Name]) > 0 OR (@__filter_29 LIKE N'') OR CHARINDEX(@__filter_29, [a].[Name]) > 0 OR (@__filter_30 LIKE N'') OR CHARINDEX(@__filter_30, [a].[Name]) > 0 OR (@__filter_31 LIKE N'') OR CHARINDEX(@__filter_31, [a].[Name]) > 0 OR (@__filter_32 LIKE N'') OR CHARINDEX(@__filter_32, [a].[Name]) > 0 OR (@__filter_33 LIKE N'') OR CHARINDEX(@__filter_33, [a].[Name]) > 0 OR (@__filter_34 LIKE N'') OR CHARINDEX(@__filter_34, [a].[Name]) > 0 OR (@__filter_35 LIKE N'') OR CHARINDEX(@__filter_35, [a].[Name]) > 0 OR (@__filter_36 LIKE N'') OR CHARINDEX(@__filter_36, [a].[Name]) > 0 OR (@__filter_37 LIKE N'') OR CHARINDEX(@__filter_37, [a].[Name]) > 0 OR (@__filter_38 LIKE N'') OR CHARINDEX(@__filter_38, [a].[Name]) > 0 OR (@__filter_39 LIKE N'') OR CHARINDEX(@__filter_39, [a].[Name]) > 0 OR (@__filter_40 LIKE N'') OR CHARINDEX(@__filter_40, [a].[Name]) > 0 OR (@__filter_41 LIKE N'') OR CHARINDEX(@__filter_41, [a].[Name]) > 0 OR (@__filter_42 LIKE N'') OR CHARINDEX(@__filter_42, [a].[Name]) > 0 OR (@__filter_43 LIKE N'') OR CHARINDEX(@__filter_43, [a].[Name]) > 0 OR (@__filter_44 LIKE N'') OR CHARINDEX(@__filter_44, [a].[Name]) > 0 OR (@__filter_45 LIKE N'') OR CHARINDEX(@__filter_45, [a].[Name]) > 0 OR (@__filter_46 LIKE N'') OR CHARINDEX(@__filter_46, [a].[Name]) > 0 OR (@__filter_47 LIKE N'') OR CHARINDEX(@__filter_47, [a].[Name]) > 0)
+2024-03-25 11:46:07.961 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:46:07.962 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:46:08.266 +07:00 [INF] Executed DbCommand (30ms) [Parameters=[@__filter_0='?' (Size = 255), @__filter_1='?' (Size = 255), @__filter_2='?' (Size = 255), @__filter_3='?' (Size = 255), @__filter_4='?' (Size = 255), @__filter_5='?' (Size = 255), @__filter_6='?' (Size = 255), @__filter_7='?' (Size = 255), @__filter_8='?' (Size = 255), @__filter_9='?' (Size = 255), @__filter_10='?' (Size = 255), @__filter_11='?' (Size = 255), @__filter_12='?' (Size = 255), @__filter_13='?' (Size = 255), @__filter_14='?' (Size = 255), @__filter_15='?' (Size = 255), @__filter_16='?' (Size = 255), @__filter_17='?' (Size = 255), @__filter_18='?' (Size = 255), @__filter_19='?' (Size = 255), @__filter_20='?' (Size = 255), @__filter_21='?' (Size = 255), @__filter_22='?' (Size = 255), @__filter_23='?' (Size = 255), @__filter_24='?' (Size = 255), @__filter_25='?' (Size = 255), @__filter_26='?' (Size = 255), @__filter_27='?' (Size = 255), @__filter_28='?' (Size = 255), @__filter_29='?' (Size = 255), @__filter_30='?' (Size = 255), @__filter_31='?' (Size = 255), @__filter_32='?' (Size = 255), @__filter_33='?' (Size = 255), @__filter_34='?' (Size = 255), @__filter_35='?' (Size = 255), @__filter_36='?' (Size = 255), @__filter_37='?' (Size = 255), @__filter_38='?' (Size = 255), @__filter_39='?' (Size = 255), @__filter_40='?' (Size = 255), @__filter_41='?' (Size = 255), @__filter_42='?' (Size = 255), @__filter_43='?' (Size = 255), @__filter_44='?' (Size = 255), @__filter_45='?' (Size = 255), @__filter_46='?' (Size = 255), @__filter_47='?' (Size = 255), @__p_48='?' (DbType = Int32), @__p_49='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND ((@__filter_0 LIKE N'') OR CHARINDEX(@__filter_0, [a].[Name]) > 0 OR (@__filter_1 LIKE N'') OR CHARINDEX(@__filter_1, [a].[Name]) > 0 OR (@__filter_2 LIKE N'') OR CHARINDEX(@__filter_2, [a].[Name]) > 0 OR (@__filter_3 LIKE N'') OR CHARINDEX(@__filter_3, [a].[Name]) > 0 OR (@__filter_4 LIKE N'') OR CHARINDEX(@__filter_4, [a].[Name]) > 0 OR (@__filter_5 LIKE N'') OR CHARINDEX(@__filter_5, [a].[Name]) > 0 OR (@__filter_6 LIKE N'') OR CHARINDEX(@__filter_6, [a].[Name]) > 0 OR (@__filter_7 LIKE N'') OR CHARINDEX(@__filter_7, [a].[Name]) > 0 OR (@__filter_8 LIKE N'') OR CHARINDEX(@__filter_8, [a].[Name]) > 0 OR (@__filter_9 LIKE N'') OR CHARINDEX(@__filter_9, [a].[Name]) > 0 OR (@__filter_10 LIKE N'') OR CHARINDEX(@__filter_10, [a].[Name]) > 0 OR (@__filter_11 LIKE N'') OR CHARINDEX(@__filter_11, [a].[Name]) > 0 OR (@__filter_12 LIKE N'') OR CHARINDEX(@__filter_12, [a].[Name]) > 0 OR (@__filter_13 LIKE N'') OR CHARINDEX(@__filter_13, [a].[Name]) > 0 OR (@__filter_14 LIKE N'') OR CHARINDEX(@__filter_14, [a].[Name]) > 0 OR (@__filter_15 LIKE N'') OR CHARINDEX(@__filter_15, [a].[Name]) > 0 OR (@__filter_16 LIKE N'') OR CHARINDEX(@__filter_16, [a].[Name]) > 0 OR (@__filter_17 LIKE N'') OR CHARINDEX(@__filter_17, [a].[Name]) > 0 OR (@__filter_18 LIKE N'') OR CHARINDEX(@__filter_18, [a].[Name]) > 0 OR (@__filter_19 LIKE N'') OR CHARINDEX(@__filter_19, [a].[Name]) > 0 OR (@__filter_20 LIKE N'') OR CHARINDEX(@__filter_20, [a].[Name]) > 0 OR (@__filter_21 LIKE N'') OR CHARINDEX(@__filter_21, [a].[Name]) > 0 OR (@__filter_22 LIKE N'') OR CHARINDEX(@__filter_22, [a].[Name]) > 0 OR (@__filter_23 LIKE N'') OR CHARINDEX(@__filter_23, [a].[Name]) > 0 OR (@__filter_24 LIKE N'') OR CHARINDEX(@__filter_24, [a].[Name]) > 0 OR (@__filter_25 LIKE N'') OR CHARINDEX(@__filter_25, [a].[Name]) > 0 OR (@__filter_26 LIKE N'') OR CHARINDEX(@__filter_26, [a].[Name]) > 0 OR (@__filter_27 LIKE N'') OR CHARINDEX(@__filter_27, [a].[Name]) > 0 OR (@__filter_28 LIKE N'') OR CHARINDEX(@__filter_28, [a].[Name]) > 0 OR (@__filter_29 LIKE N'') OR CHARINDEX(@__filter_29, [a].[Name]) > 0 OR (@__filter_30 LIKE N'') OR CHARINDEX(@__filter_30, [a].[Name]) > 0 OR (@__filter_31 LIKE N'') OR CHARINDEX(@__filter_31, [a].[Name]) > 0 OR (@__filter_32 LIKE N'') OR CHARINDEX(@__filter_32, [a].[Name]) > 0 OR (@__filter_33 LIKE N'') OR CHARINDEX(@__filter_33, [a].[Name]) > 0 OR (@__filter_34 LIKE N'') OR CHARINDEX(@__filter_34, [a].[Name]) > 0 OR (@__filter_35 LIKE N'') OR CHARINDEX(@__filter_35, [a].[Name]) > 0 OR (@__filter_36 LIKE N'') OR CHARINDEX(@__filter_36, [a].[Name]) > 0 OR (@__filter_37 LIKE N'') OR CHARINDEX(@__filter_37, [a].[Name]) > 0 OR (@__filter_38 LIKE N'') OR CHARINDEX(@__filter_38, [a].[Name]) > 0 OR (@__filter_39 LIKE N'') OR CHARINDEX(@__filter_39, [a].[Name]) > 0 OR (@__filter_40 LIKE N'') OR CHARINDEX(@__filter_40, [a].[Name]) > 0 OR (@__filter_41 LIKE N'') OR CHARINDEX(@__filter_41, [a].[Name]) > 0 OR (@__filter_42 LIKE N'') OR CHARINDEX(@__filter_42, [a].[Name]) > 0 OR (@__filter_43 LIKE N'') OR CHARINDEX(@__filter_43, [a].[Name]) > 0 OR (@__filter_44 LIKE N'') OR CHARINDEX(@__filter_44, [a].[Name]) > 0 OR (@__filter_45 LIKE N'') OR CHARINDEX(@__filter_45, [a].[Name]) > 0 OR (@__filter_46 LIKE N'') OR CHARINDEX(@__filter_46, [a].[Name]) > 0 OR (@__filter_47 LIKE N'') OR CHARINDEX(@__filter_47, [a].[Name]) > 0)
+ORDER BY (SELECT 1)
+OFFSET @__p_48 ROWS FETCH NEXT @__p_49 ROWS ONLY
+2024-03-25 11:46:08.396 +07:00 [WRN] Yahallo Long Running Request: FilterAuthorQuery (16379 milliseconds) c231edec8be24e169a638ccf4a547f02 {"PageNumber":1,"PageSize":5,"Id":null,"Name":"sakurasou","Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+2024-03-25 11:46:08.422 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 11:46:08.465 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 16593.9143ms
+2024-03-25 11:46:08.467 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:46:08.468 +07:00 [INF] HTTP GET /author/filter-author responded 200 in 16832.6633 ms
+2024-03-25 11:46:08.483 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Name=sakurasou - - - 200 - application/json;+charset=utf-8 16848.9333ms
+2024-03-25 11:46:22.510 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Id=bc34c5be4fc24099ad06fcf8a1c39d5dadad - -
+2024-03-25 11:46:22.533 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:46:22.536 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:47:56.742 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-25 11:47:57.306 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-25 11:47:57.307 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-25 11:47:57.309 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-25 11:47:57.310 +07:00 [INF] Hosting environment: Development
+2024-03-25 11:47:57.311 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-25 11:48:01.813 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-25 11:48:02.091 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 219.4193 ms
+2024-03-25 11:48:02.099 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 289.9855ms
+2024-03-25 11:48:02.145 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-25 11:48:02.162 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 15.7769ms
+2024-03-25 11:48:02.251 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-25 11:48:02.585 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 333.0498 ms
+2024-03-25 11:48:02.589 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 338.1359ms
+2024-03-25 11:48:15.091 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5 - -
+2024-03-25 11:48:15.327 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:48:15.374 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:48:17.889 +07:00 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2024-03-25 11:48:17.957 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:48:17.958 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:48:18.134 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 11:48:18.246 +07:00 [WRN] Yahallo Long Running Request: FilterAuthorQuery (2690 milliseconds) c231edec8be24e169a638ccf4a547f02 {"PageNumber":1,"PageSize":5,"Id":null,"Name":null,"Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+2024-03-25 11:48:18.269 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 11:48:18.311 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 2931.406ms
+2024-03-25 11:48:18.314 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:48:18.315 +07:00 [INF] HTTP GET /author/filter-author responded 200 in 3222.3684 ms
+2024-03-25 11:48:18.331 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5 - - - 200 - application/json;+charset=utf-8 3240.1257ms
+2024-03-25 11:48:25.948 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Id=bc34c5be4fc24099ad06fcf8a1c39d5d123123 - -
+2024-03-25 11:48:25.954 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:48:25.965 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:48:26.090 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Id] = N'bc34c5be4fc24099ad06fcf8a1c39d5d123123'
+2024-03-25 11:48:26.095 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:48:26.096 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:48:26.113 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Id] = N'bc34c5be4fc24099ad06fcf8a1c39d5d123123'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 11:48:26.452 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterAuthorQuery {"PageNumber":1,"PageSize":5,"Id":"bc34c5be4fc24099ad06fcf8a1c39d5d123123","Name":null,"Countries":null,"Birth":null,"LifeStatus":null,"$type":"FilterAuthorQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ tác giả nào
+   at YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQueryHandler.Handle(FilterAuthorQuery request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Queries\AuthorQuery\FilterAuthor\FilterAuthorQueryHandler.cs:line 73
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-25 11:48:26.872 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-03-25 11:48:26.875 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 905.9706ms
+2024-03-25 11:48:26.877 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:48:26.878 +07:00 [INF] HTTP GET /author/filter-author responded 404 in 928.9675 ms
+2024-03-25 11:48:26.879 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Id=bc34c5be4fc24099ad06fcf8a1c39d5d123123 - - - 404 - application/problem+json;+charset=utf-8 931.2198ms
+2024-03-25 11:48:31.035 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Id=bc34c5be4fc24099ad06fcf8a1c39d5d - -
+2024-03-25 11:48:31.038 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:48:31.040 +07:00 [INF] Route matched with {action = "FilterAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] FilterAuthor(YAHALLO.Application.Queries.AuthorQuery.FilterAuthor.FilterAuthorQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2024-03-25 11:48:31.079 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Id] = N'bc34c5be4fc24099ad06fcf8a1c39d5d'
+2024-03-25 11:48:31.082 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:48:31.083 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-03-25 11:48:31.098 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL) AND [a].[Id] = N'bc34c5be4fc24099ad06fcf8a1c39d5d'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-03-25 11:48:31.106 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-25 11:48:31.108 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO) in 65.3506ms
+2024-03-25 11:48:31.109 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.FilterAuthor (YAHALLO)'
+2024-03-25 11:48:31.111 +07:00 [INF] HTTP GET /author/filter-author responded 200 in 75.1492 ms
+2024-03-25 11:48:31.112 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/filter-author?PageNumber=1&PageSize=5&Id=bc34c5be4fc24099ad06fcf8a1c39d5d - - - 200 - application/json;+charset=utf-8 77.2178ms
