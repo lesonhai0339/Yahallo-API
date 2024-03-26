@@ -23,7 +23,12 @@ namespace YAHALLO.Application.Commands.RoleCommand.Create
         public async Task<string> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
         {
             var query = _roleRepository.IQueryableHandlerEqual(request);
-            var checkExists= await _roleRepository.FindAsync(query, cancellationToken);
+            var checkCodeExist = await _roleRepository.FindAsync(x=> x.RoleCode == request.RoleCode, cancellationToken);
+            if (checkCodeExist != null)
+            {
+                throw new NotFoundException($"Đã tồn tại rolecode trên");
+            }
+            var checkExists = await _roleRepository.FindAsync(query, cancellationToken);
             if(checkExists != null)
             {
                 throw new NotFoundException("Đã tồn tại role với các thông tin trên");

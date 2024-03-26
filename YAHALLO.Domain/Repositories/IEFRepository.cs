@@ -91,6 +91,5 @@ namespace YAHALLO.Domain.Repositories
             int pageNo,
             int pageSize,
             CancellationToken cancellationToken = default);
-
     }
 }
