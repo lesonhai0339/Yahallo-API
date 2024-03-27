@@ -91,5 +91,8 @@ namespace YAHALLO.Domain.Repositories
             int pageNo,
             int pageSize,
             CancellationToken cancellationToken = default);
+        Task<TDomain?> FindAsync(
+            IQueryable<TPersistence> iqueryable,
+            CancellationToken cancellationToken = default);
     }
 }

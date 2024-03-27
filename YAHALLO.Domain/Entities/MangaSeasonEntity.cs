@@ -10,6 +10,10 @@ namespace YAHALLO.Domain.Entities
 {
     public class MangaSeasonEntity: BaseEntity
     {
+        public MangaSeasonEntity()
+        {
+            MangaEntities = new List<MangaEntity>();
+        }
         public virtual ICollection<MangaEntity> MangaEntities { get; set; } = null!;
     }
 }

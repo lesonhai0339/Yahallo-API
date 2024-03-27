@@ -1,0 +1,114 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Enums.Base;
+using YAHALLO.Domain.Exceptions;
+using YAHALLO.Domain.Functions;
+using YAHALLO.Domain.Repositories;
+
+namespace YAHALLO.Application.Commands.MangaCommand.Create
+{
+    public class CreateMangaCommandHandler : IRequestHandler<CreateMangaCommand, string>
+    {
+        private readonly IMangaRepository _mangaRepository;
+        private readonly IMangaSeasonRepository _mangaSeasonRepository;
+        private readonly ICurrentUserService _currentUser;
+        private readonly IFiles<IFormFile> _files;
+        private readonly IImageRepository _imageRepository;
+        public CreateMangaCommandHandler(
+            IMangaRepository mangaRepository,
+            IMangaSeasonRepository mangaSeasonRepository,
+            ICurrentUserService currentUser,
+            IFiles<IFormFile> files,
+            IImageRepository imageRepository)
+        {
+            _mangaRepository = mangaRepository;
+            _mangaSeasonRepository = mangaSeasonRepository;
+            _currentUser = currentUser;
+            _files = files;
+            _imageRepository = imageRepository;
+        }
+        public async Task<string> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
+        {
+            var query = _mangaRepository.CreateQueryable();
+            query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
+            foreach (var property in typeof(CreateMangaCommand).GetProperties())
+            {
+                if (property.PropertyType == typeof(IFormFile)) continue;
+                var propertyValue = property.GetValue(request);
+                if (propertyValue != null)
+                {
+                    var expression = _mangaRepository.IExpressionEqual(property, propertyValue);
+                    if(expression !=null) query = query.Where(expression);
+                }
+            }
+            var checkMangaExist = await _mangaRepository
+                .FindAsync(query, cancellationToken);
+            if(checkMangaExist != null)
+            {
+                throw new DuplicateException("Đã tồn tại manga với các thông tin trên");
+            }
+            var newManga = new MangaEntity
+            {
+                Name = request.Name,
+                Description = request.Description ?? "",
+                Level = request.Level,
+                Status = request.Status,
+                Type = request.Type,
+                Countries = request.Countries,
+                Season = request.Season,
+                CreateDate = DateTime.Now,
+                IdUserCreate = _currentUser.UserId
+            };
+            _mangaRepository.Add(newManga);
+            var result = await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+            if(result > 0)
+            {
+                var checkMangaSeasonExist = await _mangaSeasonRepository
+                    .FindAsync(x => x.Id == request.MangaSeasonId, cancellationToken);
+                if(checkMangaSeasonExist == null)
+                {
+                    var newMangaSeason = new MangaSeasonEntity();
+                    newMangaSeason.MangaEntities.Add(newManga);
+                    _mangaSeasonRepository.Add(newMangaSeason);
+                    var retuls = await _mangaSeasonRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+                    if (result <= 0) throw new Exception("đã xảy ra lỗi");
+                }
+                else
+                {
+                    checkMangaSeasonExist.MangaEntities.Add(newManga);
+                    _mangaSeasonRepository.Update(checkMangaSeasonExist);
+                    var retuls = await _mangaSeasonRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+                    if (result <= 0) throw new Exception("đã xảy ra lỗi");
+                }
+                var path= $"Data\\Thumbnail";
+                if(request.Thumbnail != null)
+                {
+                    var mangaThumbnail = new ImageEntity(index: 1, $"{path}\\{request.Thumbnail.FileName}", TypeImage.Manga, null, null, newManga.Id, _currentUser.UserId, DateTime.Now);
+                    _imageRepository.Add(mangaThumbnail);
+                    var resultimg = await _imageRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+                    if (resultimg > 0)
+                    {
+                        var upfiles = await _files.UpLoadimage(request.Thumbnail, path);
+                        if (upfiles == true)
+                        {
+                            return "Thêm thành công";
+                        }
+                    }
+                    throw new NotFoundException("Đã gặp lỗi trong quá trình cập nhật dữ liệu");
+                }
+                return "Thêm thành công";
+            }
+            else
+            {
+                return "Đã gặp lỗi trong quá trình thêm dữ liệu";
+            }
+        }
+    }
+}

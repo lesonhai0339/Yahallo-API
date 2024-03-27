@@ -27,10 +27,12 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Commands\MangaCommand\" />
 	  <Folder Include="Commands\ChapterCommand\" />
 	  <Folder Include="Commands\CommentCommand\" />
 	  <Folder Include="Commands\FollowCommand\" />
+	  <Folder Include="Commands\MangaCommand\Delete\" />
+	  <Folder Include="Commands\MangaCommand\Restore\" />
+	  <Folder Include="Commands\MangaCommand\Update\" />
 	  <Folder Include="Commands\MangaRatingCommand\" />
 	  <Folder Include="Commands\MangaSeasonCommand\" />
 	  <Folder Include="Commands\UserCommand\Moderator\" />

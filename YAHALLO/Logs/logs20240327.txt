@@ -2216,3 +2216,323 @@ WHERE [r].[Id] = @__p_0
 2024-03-27 01:20:19.347 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserRoleController.FilterUserRole (YAHALLO)'
 2024-03-27 01:20:19.348 +07:00 [INF] HTTP GET /user-role/filter-user-role responded 200 in 3521.7373 ms
 2024-03-27 01:20:19.359 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/user-role/filter-user-role?PageNumber=1&PageSize=5&UserName=hai - - - 200 - application/json;+charset=utf-8 3534.4826ms
+2024-03-27 17:16:53.819 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:16:53.885 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:16:53.888 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:16:53.889 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:16:53.914 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-27 17:16:53.931 +07:00 [INF] Applying migration '20240327101609_v2'.
+2024-03-27 17:16:54.161 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240327101609_v2', N'7.0.0');
+2024-03-27 17:19:32.031 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:19:32.081 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:19:32.083 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:19:32.084 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:19:32.102 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-27 17:19:32.118 +07:00 [INF] Applying migration '20240327101809_v1'.
+2024-03-27 17:19:32.304 +07:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TRIGGER tg_manga_insert_mangaview
+                ON Manga 
+                AFTER INSERT
+                AS 
+                BEGIN
+                    INSERT MangaView(MangaId, View,CreateDate,IdUserCreate,UpdateDate,IdUserUpdate,DeleteDate,IdUserDelete)
+                    SELECT DISTINCT C.Id, 0, null,null,null,null,null,null
+                    FROM INSERTED AS C
+                END;
+2024-03-27 17:19:52.516 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:19:52.567 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:19:52.570 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:19:52.571 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:19:52.589 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-27 17:19:52.605 +07:00 [INF] Applying migration '20240327101809_v1'.
+2024-03-27 17:19:52.844 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TRIGGER tg_manga_insert_mangaview
+                ON Manga 
+                AFTER INSERT
+                AS 
+                BEGIN
+                    INSERT MangaView(MangaId, [View],CreateDate,IdUserCreate,UpdateDate,IdUserUpdate,DeleteDate,IdUserDelete)
+                    SELECT DISTINCT C.Id, 0, null,null,null,null,null,null
+                    FROM INSERTED AS C
+                END;
+2024-03-27 17:19:52.849 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240327101809_v1', N'7.0.0');
+2024-03-27 17:26:59.759 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:26:59.817 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:26:59.820 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:26:59.821 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:26:59.845 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-27 17:26:59.862 +07:00 [INF] No migrations were applied. The database is already up to date.
+2024-03-27 17:28:35.081 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:28:35.141 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:28:35.143 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:28:35.144 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:28:35.165 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-27 17:28:35.183 +07:00 [INF] Applying migration '20240327102754_v1'.
+2024-03-27 17:28:35.427 +07:00 [ERR] Failed executing DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TRIGGER tg_manga_insert_mangaview
+                ON Manga 
+                AFTER INSERT
+                AS 
+                BEGIN
+                    INSERT MangaView(MangaId, View,CreateDate,IdUserCreate,UpdateDate,IdUserUpdate,DeleteDate,IdUserDelete)
+                    SELECT DISTINCT C.Id, 0, null,null,null,null,null,null
+                    FROM INSERTED AS C
+                END;
+2024-03-27 17:28:56.425 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:28:56.476 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:28:56.478 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-03-27 17:28:56.479 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-03-27 17:28:56.497 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-03-27 17:28:56.513 +07:00 [INF] Applying migration '20240327102754_v1'.
+2024-03-27 17:28:56.685 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TRIGGER tg_manga_insert_mangaview
+                ON Manga 
+                AFTER INSERT
+                AS 
+                BEGIN
+                    INSERT MangaView(MangaId, [View],CreateDate,IdUserCreate,UpdateDate,IdUserUpdate,DeleteDate,IdUserDelete)
+                    SELECT DISTINCT C.Id, 0, null,null,null,null,null,null
+                    FROM INSERTED AS C
+                END;
+2024-03-27 17:28:56.688 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240327102754_v1', N'7.0.0');
+2024-03-27 18:27:55.828 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-27 18:27:57.298 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-27 18:27:57.299 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-27 18:27:57.300 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-27 18:27:57.301 +07:00 [INF] Hosting environment: Development
+2024-03-27 18:27:57.302 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-27 18:28:01.251 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-27 18:28:01.827 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 495.8799 ms
+2024-03-27 18:28:01.839 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 589.6381ms
+2024-03-27 18:28:01.912 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-27 18:28:01.962 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 49.9264ms
+2024-03-27 18:28:02.053 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-27 18:28:02.472 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 415.9597 ms
+2024-03-27 18:28:02.476 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 423.0396ms
+2024-03-27 18:28:18.070 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2024-03-27 18:28:18.082 +07:00 [INF] CORS policy execution successful.
+2024-03-27 18:28:18.094 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-27 18:28:18.140 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-03-27 18:28:23.592 +07:00 [INF] Executed DbCommand (118ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-03-27 18:28:23.812 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-03-27 18:28:23.902 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (5492 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2024-03-27 18:28:23.918 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-03-27 18:28:23.930 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 5784.9738ms
+2024-03-27 18:28:23.931 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-03-27 18:28:23.933 +07:00 [INF] HTTP POST /user/login responded 200 in 5847.7246 ms
+2024-03-27 18:28:23.943 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 5872.7975ms
+2024-03-27 18:30:41.618 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/manga/create multipart/form-data;+boundary=----WebKitFormBoundaryQ3ZnT5bI4WgJT7q0 25801
+2024-03-27 18:30:41.624 +07:00 [INF] CORS policy execution successful.
+2024-03-27 18:30:42.392 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO)'
+2024-03-27 18:30:42.400 +07:00 [INF] Route matched with {action = "CreateManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateManga(YAHALLO.Application.Commands.MangaCommand.Create.CreateMangaCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2024-03-27 18:30:42.664 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO) in 262.6711ms
+2024-03-27 18:30:42.714 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO)'
+2024-03-27 18:30:42.776 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Could not create an instance of type 'YAHALLO.Application.Commands.MangaCommand.Create.CreateMangaCommand'. Model bound complex types must not be abstract or value types and must have a parameterless constructor. Record types must have a single primary constructor. Alternatively, give the 'command' parameter a non-null default value.
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.CreateModel(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinder.BindModelCoreAsync(ModelBindingContext bindingContext, Int32 propertyData)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-27 18:30:42.803 +07:00 [ERR] HTTP POST /manga/create responded 500 in 1177.0030 ms
+2024-03-27 18:30:42.804 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/manga/create multipart/form-data;+boundary=----WebKitFormBoundaryQ3ZnT5bI4WgJT7q0 25801 - 500 - application/problem+json 1186.8491ms
+2024-03-27 18:33:36.994 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-27 18:33:37.501 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-27 18:33:37.503 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-27 18:33:37.506 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-27 18:33:37.506 +07:00 [INF] Hosting environment: Development
+2024-03-27 18:33:37.507 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-27 18:33:41.138 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-27 18:33:41.463 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 260.9322 ms
+2024-03-27 18:33:41.476 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 341.1496ms
+2024-03-27 18:33:41.529 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-27 18:33:41.546 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.7956ms
+2024-03-27 18:33:41.639 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-27 18:33:42.239 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 597.7741 ms
+2024-03-27 18:33:42.241 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 602.1436ms
+2024-03-27 18:34:42.260 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/manga/create multipart/form-data;+boundary=----WebKitFormBoundaryYERIUBbYxnbVEpbM 25802
+2024-03-27 18:34:42.265 +07:00 [INF] CORS policy execution successful.
+2024-03-27 18:34:42.505 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO)'
+2024-03-27 18:34:42.539 +07:00 [INF] Route matched with {action = "CreateManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateManga(YAHALLO.Application.Commands.MangaCommand.Create.CreateMangaCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2024-03-27 18:36:30.647 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateMangaCommand {"Name":"Sakurasou No Pet Na Kanojo","Description":"Tại trường trung học Suimei, ký túc xá Sakura-sou nổi tiếng là nơi ở của những tên tội phạm khét tiếng nhất trường. Vì vậy, khi Sorata Kanda tương đối thuần hóa được chuyển đến ký túc xá, việc thoát khỏi nơi tị nạn điên rồ này trở thành mục tiêu hàng đầu của anh ấy. Bị mắc kẹt ở đó trong thời gian này, anh phải học cách đối phó với những người đồng hương của mình, bao gồm họa sĩ hoạt hình sôi nổi Misaki Kamiigusa, nhà văn ăn chơi quyến rũ Jin Mitaka và Ryuunosuke Akasaka luôn ẩn dật. Bị bao quanh bởi sự kỳ lạ, Sorata thường xuyên tìm thấy sự nghỉ ngơi khi tương tác với một người bạn \"bình thường\" của mình, nữ diễn viên lồng tiếng đầy tham vọng Nanami Aoyama.","Level":"Normal","Status":"Active","Type":"Oneshot","Countries":"AF","Season":1,"Thumbnail":{"ContentDisposition":"form-data; name=\"Thumbnail\"; filename=\"43643.jpg\"","ContentType":"image/jpeg","Headers":[{"Key":"Content-Disposition","Value":["form-data; name=\"Thumbnail\"; filename=\"43643.jpg\""],"$type":"KeyValuePair`2"},{"Key":"Content-Type","Value":["image/jpeg"],"$type":"KeyValuePair`2"}],"Length":24060,"Name":"Thumbnail","FileName":"43643.jpg","$type":"FormFile"},"$type":"CreateMangaCommand"}
+System.InvalidOperationException: The binary operator Equal is not defined for the types 'YAHALLO.Domain.Entities.ImageEntity' and 'Microsoft.AspNetCore.Http.FormFile'.
+   at System.Linq.Expressions.Expression.GetEqualityComparisonOperator(ExpressionType binaryType, String opName, Expression left, Expression right, Boolean liftToNull)
+   at System.Linq.Expressions.Expression.Equal(Expression left, Expression right, Boolean liftToNull, MethodInfo method)
+   at YAHALLO.Infrastructure.Repositories.RepositoryBase`3.IExpressionEqual(PropertyInfo pro, Object value) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Infrastructure\Repositories\RepositoryBase.cs:line 351
+   at YAHALLO.Application.Commands.MangaCommand.Create.CreateMangaCommandHandler.Handle(CreateMangaCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\MangaCommand\Create\CreateMangaCommandHandler.cs:line 46
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-03-27 18:36:30.968 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO) in 108424.1637ms
+2024-03-27 18:36:31.013 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO)'
+2024-03-27 18:36:31.069 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The binary operator Equal is not defined for the types 'YAHALLO.Domain.Entities.ImageEntity' and 'Microsoft.AspNetCore.Http.FormFile'.
+   at System.Linq.Expressions.Expression.GetEqualityComparisonOperator(ExpressionType binaryType, String opName, Expression left, Expression right, Boolean liftToNull)
+   at System.Linq.Expressions.Expression.Equal(Expression left, Expression right, Boolean liftToNull, MethodInfo method)
+   at YAHALLO.Infrastructure.Repositories.RepositoryBase`3.IExpressionEqual(PropertyInfo pro, Object value) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Infrastructure\Repositories\RepositoryBase.cs:line 351
+   at YAHALLO.Application.Commands.MangaCommand.Create.CreateMangaCommandHandler.Handle(CreateMangaCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\MangaCommand\Create\CreateMangaCommandHandler.cs:line 46
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.MangaController.CreateManga(CreateMangaCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\Anonymous\MangaController.cs:line 30
+   at lambda_method7(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-03-27 18:36:31.119 +07:00 [ERR] HTTP POST /manga/create responded 500 in 108853.0255 ms
+2024-03-27 18:36:31.139 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/manga/create multipart/form-data;+boundary=----WebKitFormBoundaryYERIUBbYxnbVEpbM 25802 - 500 - application/problem+json 108879.1935ms
+2024-03-27 18:38:49.255 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-27 18:38:49.732 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-27 18:38:49.733 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-27 18:38:49.734 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-27 18:38:49.735 +07:00 [INF] Hosting environment: Development
+2024-03-27 18:38:49.736 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-27 18:38:53.154 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-27 18:38:53.404 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 203.3013 ms
+2024-03-27 18:38:53.415 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 266.2733ms
+2024-03-27 18:38:53.464 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-27 18:38:53.478 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 13.9953ms
+2024-03-27 18:38:53.605 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-27 18:38:54.388 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 780.0209 ms
+2024-03-27 18:38:54.394 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 788.8127ms
+2024-03-27 18:39:30.557 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/manga/create multipart/form-data;+boundary=----WebKitFormBoundaryF5VNL5P3tXmDeAjC 24938
+2024-03-27 18:39:30.570 +07:00 [INF] CORS policy execution successful.
+2024-03-27 18:39:30.880 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO)'
+2024-03-27 18:39:30.916 +07:00 [INF] Route matched with {action = "CreateManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateManga(YAHALLO.Application.Commands.MangaCommand.Create.CreateMangaCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2024-03-27 18:40:25.283 +07:00 [INF] Executed DbCommand (87ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL) AND [m].[Name] = N'Sakurasou no Pet na kanojo' AND [m].[Description] = N'Tests' AND [m].[Level] = 1 AND [m].[Status] = 1 AND [m].[Type] = 1 AND [m].[Countries] = 1 AND [m].[Season] = 1
+2024-03-27 18:40:50.167 +07:00 [INF] Executed DbCommand (127ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 450), @p10='?' (Size = 256), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = DateTime2), @p15='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Manga] ([Id], [Countries], [CreateDate], [DeleteDate], [Description], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Level], [MangaSeasonId], [Name], [Season], [Status], [Type], [UpdateDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2024-03-27 18:44:16.764 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-27 18:44:17.238 +07:00 [INF] Now listening on: https://localhost:7181
+2024-03-27 18:44:17.239 +07:00 [INF] Now listening on: http://localhost:5213
+2024-03-27 18:44:17.241 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-27 18:44:17.242 +07:00 [INF] Hosting environment: Development
+2024-03-27 18:44:17.243 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-03-27 18:44:20.376 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-03-27 18:44:20.699 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 268.2622 ms
+2024-03-27 18:44:20.709 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 336.7062ms
+2024-03-27 18:44:20.760 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-03-27 18:44:20.791 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 30.7703ms
+2024-03-27 18:44:20.868 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-03-27 18:44:21.422 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 552.3838 ms
+2024-03-27 18:44:21.429 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 560.7623ms
+2024-03-27 18:44:59.559 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/manga/create multipart/form-data;+boundary=----WebKitFormBoundarykbHtqGPiNn9jxpEU 24937
+2024-03-27 18:44:59.569 +07:00 [INF] CORS policy execution successful.
+2024-03-27 18:44:59.829 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO)'
+2024-03-27 18:44:59.875 +07:00 [INF] Route matched with {action = "CreateManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateManga(YAHALLO.Application.Commands.MangaCommand.Create.CreateMangaCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2024-03-27 18:45:04.606 +07:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL) AND [m].[Name] = N'Sakurasou no Pet na Kanojo' AND [m].[Description] = N'test' AND [m].[Level] = 1 AND [m].[Status] = 1 AND [m].[Type] = 1 AND [m].[Countries] = 1 AND [m].[Season] = 1
+2024-03-27 18:45:04.981 +07:00 [INF] Executed DbCommand (38ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 450), @p10='?' (Size = 256), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = DateTime2), @p15='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Manga] ([Id], [Countries], [CreateDate], [DeleteDate], [Description], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Level], [MangaSeasonId], [Name], [Season], [Status], [Type], [UpdateDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2024-03-27 18:45:24.534 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p8='?' (Size = 450), @p7='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [MangaSeason] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+UPDATE [Manga] SET [MangaSeasonId] = @p7
+OUTPUT 1
+WHERE [Id] = @p8;
+2024-03-27 18:45:48.044 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (Size = 450), @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime2), @p11='?' (Size = 4000), @p12='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Image] ([Id], [ChapterId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Index], [MangaId], [TypeImage], [UpdateDate], [Url], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2024-03-27 18:46:37.968 +07:00 [WRN] Yahallo Long Running Request: CreateMangaCommand (97838 milliseconds) c231edec8be24e169a638ccf4a547f02 {"Name":"Sakurasou no Pet na Kanojo","Description":"test","Level":"Normal","Status":"Active","Type":"Oneshot","Countries":"AF","Season":1,"Thumbnail":{"ContentDisposition":"form-data; name=\"Thumbnail\"; filename=\"43643.jpg\"","ContentType":"image/jpeg","Headers":[{"Key":"Content-Disposition","Value":["form-data; name=\"Thumbnail\"; filename=\"43643.jpg\""],"$type":"KeyValuePair`2"},{"Key":"Content-Type","Value":["image/jpeg"],"$type":"KeyValuePair`2"}],"Length":24060,"Name":"Thumbnail","FileName":"43643.jpg","$type":"FormFile"},"$type":"CreateMangaCommand"}
+2024-03-27 18:46:37.992 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-27 18:46:38.004 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO) in 98124.9947ms
+2024-03-27 18:46:38.006 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.CreateManga (YAHALLO)'
+2024-03-27 18:46:38.006 +07:00 [INF] HTTP POST /manga/create responded 200 in 98435.7674 ms
+2024-03-27 18:46:38.020 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/manga/create multipart/form-data;+boundary=----WebKitFormBoundarykbHtqGPiNn9jxpEU 24937 - 200 - application/json;+charset=utf-8 98460.8686ms

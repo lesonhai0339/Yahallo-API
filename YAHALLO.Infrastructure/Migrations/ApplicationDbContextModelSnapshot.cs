@@ -624,36 +624,6 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.HasIndex("Id");
 
                     b.ToTable("Roles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "90517b7270e94a928fe6d5808c3a78ba",
-                            RoleCode = 1,
-                            RoleDescription = "Only Admin has this Role",
-                            RoleName = "Admin"
-                        },
-                        new
-                        {
-                            Id = "68703c58dd2a4b5abab0055f1ba83094",
-                            RoleCode = 2,
-                            RoleDescription = "Normal User or New User has this Role",
-                            RoleName = "User"
-                        },
-                        new
-                        {
-                            Id = "ea2149497607459ba0958d7a1a86af06",
-                            RoleCode = 3,
-                            RoleDescription = "Role for Moderator",
-                            RoleName = "Mod"
-                        },
-                        new
-                        {
-                            Id = "2bc1440c3e5e4bcfbe67078eaaff3cc5",
-                            RoleCode = 4,
-                            RoleDescription = "If User has this role then User can use Create, Update, Delete Manga",
-                            RoleName = "Upload"
-                        });
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.UserEntity", b =>

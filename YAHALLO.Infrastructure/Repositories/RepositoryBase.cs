@@ -394,6 +394,12 @@ namespace YAHALLO.Infrastructure.Repositories
                 pageSize,
                 cancellationToken);
         }
+        public virtual async Task<TDomain?> FindAsync(
+           IQueryable<TPersistence> iqueryable,
+           CancellationToken cancellationToken = default)
+        {
+            return await iqueryable.SingleOrDefaultAsync<TDomain>(cancellationToken);
+        }
         protected virtual IQueryable<TPersistence> QueryInternal(IQueryable<TPersistence> queryOptions)
         {
             return queryOptions;
