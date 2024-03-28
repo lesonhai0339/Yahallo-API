@@ -11,11 +11,11 @@ using YAHALLO.Domain.Enums.MangaEnums;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Create
 {
-    public class CreateMangaCommand: IRequest<string>
+    public class CreateMangaCommand : IRequest<string>
     {
         public CreateMangaCommand() { }
         public CreateMangaCommand(
-            string name, 
+            string name,
             string? description,
             MangaLevel level,
             MangaStatus status,
@@ -43,6 +43,9 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
         public CountriesEnum Countries { get; set; }
         public int Season { get; set; }
         public IFormFile? Thumbnail { get; set; }
-        public string? MangaSeasonId { get; set; 
+        public string? MangaSeasonId
+        {
+            get; set;
+        }
     }
 }

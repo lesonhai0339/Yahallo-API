@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using dotenv.net;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using dotenv.net;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -17,9 +18,13 @@ namespace YAHALLO.Services
         }
         public string CreateToken(string ID, List<string> roles)
         {
-            var secret = _configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!;
-            var validIssuer = _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value;
-            var validAudience = _configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value;
+            DotEnv.Load();
+            var secret = Environment.GetEnvironmentVariable("Authentication_SecretKey");
+            var validIssuer = Environment.GetEnvironmentVariable("Authentication_ValidIssuer");
+            var validAudience = Environment.GetEnvironmentVariable("Authentication_ValidAudience");
+            //var secret = _configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!;
+            //var validIssuer = _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value;
+            //var validAudience = _configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value;
             var claims = new List<Claim>
             {
 
@@ -30,7 +35,7 @@ namespace YAHALLO.Services
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
            
             var token = new JwtSecurityToken(

@@ -1,7 +1,9 @@
 ﻿
 using Castle.Core.Logging;
+using dotenv.net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -17,6 +19,7 @@ namespace YAHALLO.Configuration
             this IServiceCollection services,
             IConfiguration configuration)
         {
+            DotEnv.Load();
             services.AddTransient<ICurrentUserService, CurrentUserService>();
             services.AddTransient<IJwtService, JwtService>();
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
@@ -34,9 +37,12 @@ namespace YAHALLO.Configuration
                         ValidateIssuer = false,
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
-                        ValidIssuer = configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
-                        ValidAudience = configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!)),
+                        ValidIssuer = Environment.GetEnvironmentVariable("Authentication_ValidIssuer"),
+                        ValidAudience = Environment.GetEnvironmentVariable("Authentication_ValidAudience"),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("Authentication_SecretKey")!))
+                        //ValidIssuer = configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
+                        //ValidAudience = configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value,
+                        //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!)),
                     };
                 });
 
