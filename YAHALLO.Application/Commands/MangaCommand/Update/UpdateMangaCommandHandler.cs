@@ -20,19 +20,16 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
     public class UpdateMangaCommandHandler : IRequestHandler<UpdateMangaCommand, ResponeResult>
     {
         private readonly IMangaRepository _mangaRepository;
-        private readonly IMangaSeasonRepository _mangaSeasonRepository;
         private readonly IFiles<IFormFile> _files;
         private readonly ICurrentUserService _currentUser;
         private readonly IImageRepository _imageRepository;
         public UpdateMangaCommandHandler(
             IMangaRepository mangaRepository, 
-            IMangaSeasonRepository mangaSeasonRepository, 
             IFiles<IFormFile> files, 
             ICurrentUserService currentUser,
             IImageRepository imageRepository)
         {
             _mangaRepository = mangaRepository;
-            _mangaSeasonRepository = mangaSeasonRepository;
             _files = files;
             _currentUser = currentUser;
             _imageRepository = imageRepository; 
