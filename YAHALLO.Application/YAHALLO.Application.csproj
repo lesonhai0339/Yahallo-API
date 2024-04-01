@@ -31,8 +31,6 @@
 	  <Folder Include="Commands\ChapterCommand\" />
 	  <Folder Include="Commands\CommentCommand\" />
 	  <Folder Include="Commands\FollowCommand\" />
-	  <Folder Include="Commands\MangaCommand\Restore\" />
-	  <Folder Include="Commands\MangaCommand\Update\" />
 	  <Folder Include="Commands\MangaRatingCommand\" />
 	  <Folder Include="Commands\MangaSeasonCommand\" />
 	  <Folder Include="Commands\UserCommand\Moderator\" />
