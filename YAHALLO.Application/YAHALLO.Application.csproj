@@ -31,7 +31,6 @@
 	  <Folder Include="Commands\ChapterCommand\" />
 	  <Folder Include="Commands\CommentCommand\" />
 	  <Folder Include="Commands\FollowCommand\" />
-	  <Folder Include="Commands\MangaCommand\Delete\" />
 	  <Folder Include="Commands\MangaCommand\Restore\" />
 	  <Folder Include="Commands\MangaCommand\Update\" />
 	  <Folder Include="Commands\MangaRatingCommand\" />
@@ -40,7 +39,6 @@
 	  <Folder Include="Commands\UserCommand\Admin\" />
 	  <Folder Include="Queries\AuthorQuery\GetById\" />
 	  <Folder Include="Queries\AuthorQuery\GetByIdDeleted\" />
-	  <Folder Include="Queries\MangaQuery\" />
 	  <Folder Include="Queries\ChapterQuery\" />
 	  <Folder Include="Queries\CommentQuery\" />
 	  <Folder Include="Queries\FollowQuery\" />

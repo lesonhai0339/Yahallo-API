@@ -49,7 +49,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
                 var checkImage = await _imageRepository.FindAsync(x => x.UserId == checkUserExists.Id, cancellationToken);
                 if (checkImage == null)
                 {
-                    var userAvatar = new ImageEntity(index: 1, $"{path}\\{request.Avatar.FileName}", TypeImage.User, checkUserExists.Id, null, null, _currentUser.UserId, DateTime.Now);
+                    var userAvatar = new ImageEntity(index: 1, $"{path}\\{request.Avatar.FileName}",null, TypeImage.User, checkUserExists.Id, null, null, _currentUser.UserId, DateTime.Now);
                     _imageRepository.Add(userAvatar);
                     var resultimg = await _imageRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (resultimg > 0)
@@ -64,12 +64,12 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
                 }
                 else
                 {
-                    var deleteOldImage = _files.DeleteImage(checkImage.Url);
+                    var deleteOldImage = _files.DeleteImage(checkImage.BaseUrl);
                     if (deleteOldImage == false)
                     {
                         throw new Exception("Xảy ra lỗi trong quá trình cập nhật dữ liệu");
                     }
-                    checkImage.Url = $"{path}\\{request.Avatar.FileName}";
+                    checkImage.BaseUrl = $"{path}\\{request.Avatar.FileName}";
                     checkImage.UpdateDate = DateTime.Now;
                     checkImage.IdUserUpdate = _currentUser.UserId;
                     _imageRepository.Update(checkImage);

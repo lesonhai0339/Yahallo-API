@@ -12,7 +12,7 @@ using YAHALLO.Infrastructure.Data;
 namespace YAHALLO.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240327102754_v1")]
+    [Migration("20240401171442_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -262,8 +262,15 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("BaseUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ChapterId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CloudUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -292,10 +299,6 @@ namespace YAHALLO.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");

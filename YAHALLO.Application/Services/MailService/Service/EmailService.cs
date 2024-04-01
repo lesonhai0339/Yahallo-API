@@ -1,4 +1,5 @@
-﻿using MailKit.Net.Smtp;
+﻿using dotenv.net;
+using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
 using System;
@@ -144,8 +145,10 @@ namespace YAHALLO.Application.Services.MailService.Service
         }
         public string GenerateEmailToken(string userId)
         {
-            var key = _configuration.GetSection("EmailConfiguration:SecretToken").Value!;
-            using (HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key)))
+            DotEnv.Load();
+            var key = Environment.GetEnvironmentVariable("EmailConfiguration_SecretToken");
+            //var key = _configuration.GetSection("EmailConfiguration:SecretToken").Value!;
+            using (HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key!)))
             {
                 byte[] userIdBytes = Encoding.UTF8.GetBytes(userId);
                 byte[] hashBytes = hmac.ComputeHash(userIdBytes);

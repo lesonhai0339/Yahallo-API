@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using dotenv.net;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,10 +21,13 @@ namespace YAHALLO.Infrastructure
     {
         public static IServiceCollection Infrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            DotEnv.Load();
+            var sqlConnection = Environment.GetEnvironmentVariable("Server");
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
                 options.UseSqlServer(
-                    configuration.GetConnectionString("Server"),
+                    sqlConnection,
+                    //configuration.GetConnectionString("Server"),
                     b =>
                     {
                         b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);

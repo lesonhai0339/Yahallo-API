@@ -64,7 +64,8 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                 Countries = request.Countries,
                 Season = request.Season,
                 CreateDate = DateTime.Now,
-                IdUserCreate = _currentUser.UserId
+                IdUserCreate = _currentUser.UserId,
+                UserId = _currentUser.UserId
             };
             _mangaRepository.Add(newManga);
             var result = await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
@@ -90,7 +91,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                 var path= $"Data\\Thumbnail";
                 if(request.Thumbnail != null)
                 {
-                    var mangaThumbnail = new ImageEntity(index: 1, $"{path}\\{request.Thumbnail.FileName}", TypeImage.Manga, null, null, newManga.Id, _currentUser.UserId, DateTime.Now);
+                    var mangaThumbnail = new ImageEntity(index: 1, $"{path}\\{request.Thumbnail.FileName}",null, TypeImage.Manga, null, null, newManga.Id, _currentUser.UserId, DateTime.Now);
                     _imageRepository.Add(mangaThumbnail);
                     var resultimg = await _imageRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (resultimg > 0)

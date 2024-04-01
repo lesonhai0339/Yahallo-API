@@ -19,16 +19,16 @@ namespace YAHALLO.Application.Queries.UserQuery
 
 
         public string? Avatar { get; set; }
-        public UserStatus Status { get; set; }
-        public UserLevel Level { get; set; }
+        public string? Status { get; set; }
+        public string? Level { get; set; }
         public static UserDto CreateUserDto(
             string id,
             string name,
             string email,
             string phone,
             string avatar,
-            UserStatus status,
-            UserLevel level)
+            string status,
+            string level)
         {
             return new UserDto
             {

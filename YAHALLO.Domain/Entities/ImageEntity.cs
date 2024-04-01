@@ -15,7 +15,8 @@ namespace YAHALLO.Domain.Entities
         public ImageEntity() { }
         public ImageEntity(
             int index,
-            string url,
+            string baseurl,
+            string? cloudurl,
             TypeImage typeimage,
             string? userid,
             string? chapterid,
@@ -24,7 +25,8 @@ namespace YAHALLO.Domain.Entities
             DateTime createdate) 
         {
             Index = index;
-            Url = url;
+            BaseUrl = baseurl;
+            CloudUrl = cloudurl;
             TypeImage = typeimage;
             UserId = userid;
             ChapterId = chapterid;
@@ -33,9 +35,8 @@ namespace YAHALLO.Domain.Entities
             CreateDate = createdate;
         }
         public int Index { get;set; }
-        public string Url { get; set; } = null!;
-        //public string BaseUrl { get; set; } migration sau
-        //public string CloudUrl { get; set; }
+        public string BaseUrl { get; set; }
+        public string? CloudUrl { get; set; }
 
         public TypeImage TypeImage { get; set; }
 
