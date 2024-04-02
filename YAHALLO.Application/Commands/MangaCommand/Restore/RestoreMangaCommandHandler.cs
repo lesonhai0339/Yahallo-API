@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Restore
             {
                 throw new NotFoundException($"Không tìm thấy manga nào có Id {request.Id} bị xóa");
             }
-            if(checkMangaExist.UserId != _currentUser.UserId || checkRole == false)
+            if(checkMangaExist.UserId != _currentUser.UserId || checkRole == false && checkMangaExist.UserId != _currentUser.UserId)
             {
                 throw new UnAuthorizeException("Tài khoản hiện tại không có quyền sử dụng chức năng này");
             }

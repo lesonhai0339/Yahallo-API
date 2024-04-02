@@ -10,6 +10,25 @@ namespace YAHALLO.Application.Queries.UserRoleQuery.FilterUserRole
 {
     public class FilterUserRoleQuery: IRequest<PagedResult<UserRoleDto>>
     {
+        public FilterUserRoleQuery() { }
+        public FilterUserRoleQuery(
+            int pageNumber,
+            int pageSize,
+            string? userId, 
+            string? roleId, 
+            string? userName,
+            string? roleName, 
+            int? roleCode)
+        {
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+            UserId = userId;
+            RoleId = roleId;
+            UserName = userName;
+            RoleName = roleName;
+            RoleCode = roleCode;
+        }
+
         public int PageNumber { get; set; } 
         public int PageSize { get; set; }
         public string? UserId { get; set; }

@@ -43,7 +43,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
             {
                 throw new NotFoundException($"Không tồn tại manga với Id {request.Id}");
             }
-            if(checkMangaExist.UserId != _currentUser.UserId || checkRole == false)
+            if(checkMangaExist.UserId != _currentUser.UserId || checkRole == false && checkMangaExist.UserId != _currentUser.UserId)
             {
                 throw new UnAuthorizeException("Tài khoản hiện tại không có quyền thực hiện chức năng này");
             }

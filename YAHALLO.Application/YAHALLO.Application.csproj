@@ -30,7 +30,6 @@
 	<ItemGroup>
 	  <Folder Include="Commands\ChapterCommand\" />
 	  <Folder Include="Commands\CommentCommand\" />
-	  <Folder Include="Commands\FollowCommand\" />
 	  <Folder Include="Commands\MangaRatingCommand\" />
 	  <Folder Include="Commands\MangaSeasonCommand\" />
 	  <Folder Include="Commands\UserCommand\Moderator\" />
@@ -39,7 +38,6 @@
 	  <Folder Include="Queries\AuthorQuery\GetByIdDeleted\" />
 	  <Folder Include="Queries\ChapterQuery\" />
 	  <Folder Include="Queries\CommentQuery\" />
-	  <Folder Include="Queries\FollowQuery\" />
 	  <Folder Include="Queries\UserQuery\Admin\GetAll\" />
 	  <Folder Include="Queries\UserQuery\Moderator\" />
 	</ItemGroup>

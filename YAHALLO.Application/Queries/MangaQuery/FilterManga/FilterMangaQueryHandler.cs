@@ -70,7 +70,10 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             {
                 query = query.Where(x=> x.UpdateDate == request.DateUpdate);
             }
-
+            if(request.UserId != null)
+            {
+                query = query.Where(x => x.UserId == request.UserId);
+            }
             var listMangaExists = await _mangaRepository
                 .FindAllAsync(query, request.PageNumber, request.PageSizee, cancellationToken);
             if(listMangaExists.Count() == 0)

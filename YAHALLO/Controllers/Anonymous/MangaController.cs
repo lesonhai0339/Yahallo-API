@@ -5,6 +5,7 @@ using System.Net.Mime;
 using YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken;
 using YAHALLO.Application.Commands.MangaCommand.Create;
 using YAHALLO.Application.Commands.MangaCommand.Delete;
+using YAHALLO.Application.Commands.MangaCommand.Restore;
 using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.MangaQuery;
@@ -41,6 +42,19 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<string>(result));
         }
         [HttpPost]
+        [Route("manga/restore")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<ResponeResult>>> RestoreManga(
+        [FromBody] RestoreMangaCommand command,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<ResponeResult>(result));
+        }
+        [HttpPut]
         [Route("manga/update")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]

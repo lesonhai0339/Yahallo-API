@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Delete
             {
                 throw new NotFoundException($"Không tìm thấy manga với Id {request.Id}");
             }
-            if(checkUserForManga.UserId != _currentUser.UserId || role == false)
+            if(checkUserForManga.UserId != _currentUser.UserId || role == false && checkUserForManga.UserId != _currentUser.UserId)
             {
                 throw new UnAuthorizeException("Tài khoản hiện tại không có quyền để xóa truyện này");
             }

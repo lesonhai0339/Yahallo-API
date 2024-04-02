@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
 {
     public class UpdateMangaCommand: IRequest<ResponeResult>
     {
+        public UpdateMangaCommand() { }
         public UpdateMangaCommand(
             string id,
             string? name,
@@ -35,7 +37,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
             Season = season;
             Thumbnail = thumbnail;
         }
-        public string Id { get; set; }
+        public required string Id { get; set; }
         public string? Name { get; set; } = null!;
         public string? Description { get; set; }
         public MangaLevel? Level { get; set; }
