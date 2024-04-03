@@ -40,7 +40,7 @@ namespace YAHALLO.Domain.Functions
         }
         public async Task<bool> UpLoadimage(TDomain imageFile, string filePath)
         {
-            var path= Path.Combine(filePath, imageFile.Name);
+            var path= Path.Combine(filePath, imageFile.FileName);
             if (File.Exists(path))
             {
                 return false;

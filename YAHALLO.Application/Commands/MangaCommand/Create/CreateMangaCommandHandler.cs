@@ -71,6 +71,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
             var result = await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result > 0)
             {
+                _files.CreateFolder($"Data\\Manga", newManga.Id);
                 var checkMangaSeasonExist = await _mangaSeasonRepository
                     .FindAsync(x => x.Id == request.MangaSeasonId, cancellationToken);
                 if(checkMangaSeasonExist == null)

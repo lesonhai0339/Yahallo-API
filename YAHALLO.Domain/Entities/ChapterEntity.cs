@@ -9,6 +9,10 @@ namespace YAHALLO.Domain.Entities
 {
     public class ChapterEntity:BaseEntity
     {
+        public ChapterEntity() 
+        {
+            ImagesEntities = new List<ImageEntity>();
+        }
         public string? Title { get; set; }
         public int Index { get;set; }
 
