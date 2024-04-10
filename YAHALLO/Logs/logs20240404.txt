@@ -84,3 +84,444 @@ VALUES (@p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, 
 2024-04-04 00:13:07.338 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
 2024-04-04 00:13:07.788 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 447.9640 ms
 2024-04-04 00:13:07.790 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 451.8193ms
+2024-04-04 00:50:32.998 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-04-04 00:50:33.967 +07:00 [INF] Now listening on: https://localhost:7181
+2024-04-04 00:50:33.968 +07:00 [INF] Now listening on: http://localhost:5213
+2024-04-04 00:50:33.970 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-04-04 00:50:33.971 +07:00 [INF] Hosting environment: Development
+2024-04-04 00:50:33.972 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-04-04 00:50:37.425 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-04-04 00:50:38.580 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 926.0405 ms
+2024-04-04 00:50:38.591 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 1171.6278ms
+2024-04-04 00:50:38.622 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-04-04 00:50:38.622 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-04-04 00:50:38.637 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 15.1860ms
+2024-04-04 00:50:38.728 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 105.8402ms
+2024-04-04 00:50:38.801 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-04-04 00:50:39.286 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 481.9969 ms
+2024-04-04 00:50:39.288 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 486.4206ms
+2024-04-04 00:50:51.159 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all - -
+2024-04-04 00:50:51.428 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO)'
+2024-04-04 00:50:51.479 +07:00 [INF] Route matched with {action = "GetAllManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllManga(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2024-04-04 00:50:54.793 +07:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2024-04-04 00:50:55.196 +07:00 [INF] Executed DbCommand (32ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2024-04-04 00:50:55.354 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2024-04-04 00:50:55.479 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2024-04-04 00:50:55.484 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2024-04-04 00:50:55.487 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2024-04-04 00:50:55.494 +07:00 [WRN] Yahallo Long Running Request: GetAllMangaQuery (3836 milliseconds) 0c425578cf3545498bfe86ae001ad508 {"$type":"GetAllMangaQuery"}
+2024-04-04 00:50:55.510 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-04-04 00:50:55.532 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO) in 4046.2448ms
+2024-04-04 00:50:55.538 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO)'
+2024-04-04 00:50:55.539 +07:00 [INF] HTTP GET /manga/get-all responded 200 in 4377.5444 ms
+2024-04-04 00:50:55.562 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all - - - 200 - application/json;+charset=utf-8 4402.9918ms
+2024-04-04 00:52:30.305 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/chapter/create multipart/form-data;+boundary=----WebKitFormBoundaryMEGvXCklNrgXNV9h 818
+2024-04-04 00:52:30.347 +07:00 [INF] CORS policy execution successful.
+2024-04-04 00:52:30.360 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO)'
+2024-04-04 00:52:30.385 +07:00 [INF] Route matched with {action = "CreateChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponeResult]]] CreateChapter(YAHALLO.Application.Commands.ChapterCommand.Create.CreateChapterCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2024-04-04 00:52:31.101 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE [m].[Id] = @__request_MangaId_0
+2024-04-04 00:52:31.425 +07:00 [INF] Executed DbCommand (64ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__request_Index_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE [c].[MangaId] = @__request_MangaId_0 AND [c].[Index] = @__request_Index_1 AND (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL)
+2024-04-04 00:52:31.888 +07:00 [ERR] Failed executing DbCommand (195ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 450), @p8='?' (Size = 255), @p9='?' (DbType = DateTime2), @p10='?' (Size = 450), @p11='?' (Size = 4000), @p12='?' (Size = 450), @p13='?' (Size = 4000), @p14='?' (DbType = DateTime2), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = Int32), @p20='?' (Size = 450), @p21='?' (DbType = Int32), @p22='?' (DbType = DateTime2), @p23='?' (Size = 450), @p24='?' (Size = 450), @p25='?' (Size = 4000), @p26='?' (Size = 450), @p27='?' (Size = 4000), @p28='?' (DbType = DateTime2), @p29='?' (DbType = DateTime2), @p30='?' (Size = 4000), @p31='?' (Size = 4000), @p32='?' (Size = 4000), @p33='?' (DbType = Int32), @p34='?' (Size = 450), @p35='?' (DbType = Int32), @p36='?' (DbType = DateTime2), @p37='?' (Size = 450), @p38='?' (Size = 450), @p39='?' (Size = 4000), @p40='?' (Size = 450), @p41='?' (Size = 4000), @p42='?' (DbType = DateTime2), @p43='?' (DbType = DateTime2), @p44='?' (Size = 4000), @p45='?' (Size = 4000), @p46='?' (Size = 4000), @p47='?' (DbType = Int32), @p48='?' (Size = 450), @p49='?' (DbType = Int32), @p50='?' (DbType = DateTime2), @p51='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Chapter] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Index], [MangaId], [Title], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+INSERT INTO [Image] ([Id], [BaseUrl], [ChapterId], [CloudUrl], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Index], [MangaId], [TypeImage], [UpdateDate], [UserId])
+VALUES (@p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23),
+(@p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37),
+(@p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51);
+2024-04-04 00:52:32.274 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'YAHALLO.Infrastructure.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'BaseUrl', table 'Yahallo.dbo.Image'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:ec8bb057-f72f-43f5-839b-40cf7135b5d1
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'BaseUrl', table 'Yahallo.dbo.Image'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:ec8bb057-f72f-43f5-839b-40cf7135b5d1
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2024-04-04 00:52:32.665 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateChapterCommand {"Title":"Chương 1","Index":1,"MangaId":"56ba33409cc24bba87860241dede73b2","Images":null,"ImageUrls":["https://cdn.myanimelist.net/images/anime/13/50521.jpg","https://cdn.myanimelist.net/images/anime/1758/141268.jpg","https://cdn.myanimelist.net/images/anime/1587/141789.jpg"],"$type":"CreateChapterCommand"}
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'BaseUrl', table 'Yahallo.dbo.Image'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:ec8bb057-f72f-43f5-839b-40cf7135b5d1
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at YAHALLO.Application.Commands.ChapterCommand.Create.CreateChapterCommandHandler.Handle(CreateChapterCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\ChapterCommand\Create\CreateChapterCommandHandler.cs:line 165
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-04-04 00:52:33.903 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO) in 3515.5258ms
+2024-04-04 00:52:34.090 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO)'
+2024-04-04 00:52:34.773 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'BaseUrl', table 'Yahallo.dbo.Image'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:ec8bb057-f72f-43f5-839b-40cf7135b5d1
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at YAHALLO.Application.Commands.ChapterCommand.Create.CreateChapterCommandHandler.Handle(CreateChapterCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\ChapterCommand\Create\CreateChapterCommandHandler.cs:line 165
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter(CreateChapterCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\Anonymous\ChapterController.cs:line 30
+   at lambda_method564(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-04-04 00:52:34.846 +07:00 [ERR] HTTP POST /chapter/create responded 500 in 4493.2090 ms
+2024-04-04 00:52:34.848 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/chapter/create multipart/form-data;+boundary=----WebKitFormBoundaryMEGvXCklNrgXNV9h 818 - 500 - application/problem+json 4543.7551ms
+2024-04-04 00:52:54.516 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/chapter/create multipart/form-data;+boundary=----WebKitFormBoundaryLAi0UwiVHyh6Bto6 818
+2024-04-04 00:52:54.643 +07:00 [INF] CORS policy execution successful.
+2024-04-04 00:52:54.649 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO)'
+2024-04-04 00:52:54.651 +07:00 [INF] Route matched with {action = "CreateChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponeResult]]] CreateChapter(YAHALLO.Application.Commands.ChapterCommand.Create.CreateChapterCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2024-04-04 00:52:59.122 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE [m].[Id] = @__request_MangaId_0
+2024-04-04 00:53:02.571 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__request_Index_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE [c].[MangaId] = @__request_MangaId_0 AND [c].[Index] = @__request_Index_1 AND (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL)
+2024-04-04 00:54:09.743 +07:00 [ERR] Failed executing DbCommand (113ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 450), @p8='?' (Size = 255), @p9='?' (DbType = DateTime2), @p10='?' (Size = 450), @p11='?' (Size = 4000), @p12='?' (Size = 450), @p13='?' (Size = 4000), @p14='?' (DbType = DateTime2), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = Int32), @p20='?' (Size = 450), @p21='?' (DbType = Int32), @p22='?' (DbType = DateTime2), @p23='?' (Size = 450), @p24='?' (Size = 450), @p25='?' (Size = 4000), @p26='?' (Size = 450), @p27='?' (Size = 4000), @p28='?' (DbType = DateTime2), @p29='?' (DbType = DateTime2), @p30='?' (Size = 4000), @p31='?' (Size = 4000), @p32='?' (Size = 4000), @p33='?' (DbType = Int32), @p34='?' (Size = 450), @p35='?' (DbType = Int32), @p36='?' (DbType = DateTime2), @p37='?' (Size = 450), @p38='?' (Size = 450), @p39='?' (Size = 4000), @p40='?' (Size = 450), @p41='?' (Size = 4000), @p42='?' (DbType = DateTime2), @p43='?' (DbType = DateTime2), @p44='?' (Size = 4000), @p45='?' (Size = 4000), @p46='?' (Size = 4000), @p47='?' (DbType = Int32), @p48='?' (Size = 450), @p49='?' (DbType = Int32), @p50='?' (DbType = DateTime2), @p51='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Chapter] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Index], [MangaId], [Title], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+INSERT INTO [Image] ([Id], [BaseUrl], [ChapterId], [CloudUrl], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Index], [MangaId], [TypeImage], [UpdateDate], [UserId])
+VALUES (@p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23),
+(@p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37),
+(@p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51);
+2024-04-04 00:54:10.028 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'YAHALLO.Infrastructure.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'BaseUrl', table 'Yahallo.dbo.Image'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:ec8bb057-f72f-43f5-839b-40cf7135b5d1
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'BaseUrl', table 'Yahallo.dbo.Image'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:ec8bb057-f72f-43f5-839b-40cf7135b5d1
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2024-04-04 00:54:10.355 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateChapterCommand {"Title":"Chương 1","Index":1,"MangaId":"56ba33409cc24bba87860241dede73b2","Images":null,"ImageUrls":["https://cdn.myanimelist.net/images/anime/13/50521.jpg","https://cdn.myanimelist.net/images/anime/1758/141268.jpg","https://cdn.myanimelist.net/images/anime/1587/141789.jpg"],"$type":"CreateChapterCommand"}
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'BaseUrl', table 'Yahallo.dbo.Image'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:ec8bb057-f72f-43f5-839b-40cf7135b5d1
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at YAHALLO.Application.Commands.ChapterCommand.Create.CreateChapterCommandHandler.Handle(CreateChapterCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\ChapterCommand\Create\CreateChapterCommandHandler.cs:line 165
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-04-04 00:54:11.026 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO) in 76373.3641ms
+2024-04-04 00:54:11.196 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO)'
+2024-04-04 00:54:11.487 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'BaseUrl', table 'Yahallo.dbo.Image'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:ec8bb057-f72f-43f5-839b-40cf7135b5d1
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at YAHALLO.Application.Commands.ChapterCommand.Create.CreateChapterCommandHandler.Handle(CreateChapterCommand request, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Commands\ChapterCommand\Create\CreateChapterCommandHandler.cs:line 165
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter(CreateChapterCommand command, CancellationToken cancellationToken) in D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO\Controllers\Anonymous\ChapterController.cs:line 30
+   at lambda_method564(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-04-04 00:54:11.502 +07:00 [ERR] HTTP POST /chapter/create responded 500 in 76857.4546 ms
+2024-04-04 00:54:11.510 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/chapter/create multipart/form-data;+boundary=----WebKitFormBoundaryLAi0UwiVHyh6Bto6 818 - 500 - application/problem+json 76994.2810ms
+2024-04-04 00:54:49.737 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-04-04 00:54:50.537 +07:00 [INF] Now listening on: https://localhost:7181
+2024-04-04 00:54:50.538 +07:00 [INF] Now listening on: http://localhost:5213
+2024-04-04 00:54:50.540 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-04-04 00:54:50.541 +07:00 [INF] Hosting environment: Development
+2024-04-04 00:54:50.542 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-04-04 00:54:52.230 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-04-04 00:54:52.900 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 485.3616 ms
+2024-04-04 00:54:52.911 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 683.1877ms
+2024-04-04 00:54:52.994 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-04-04 00:54:52.994 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-04-04 00:54:53.014 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 19.5565ms
+2024-04-04 00:54:53.105 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 111.7191ms
+2024-04-04 00:54:53.172 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - -
+2024-04-04 00:54:53.720 +07:00 [INF] HTTP GET /swagger/v111/swagger.json responded 200 in 545.4737 ms
+2024-04-04 00:54:53.727 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v111/swagger.json - - - 200 - application/json;charset=utf-8 555.2413ms
+2024-04-04 00:55:37.144 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all - -
+2024-04-04 00:55:37.385 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO)'
+2024-04-04 00:55:37.418 +07:00 [INF] Route matched with {action = "GetAllManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllManga(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2024-04-04 00:55:40.325 +07:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2024-04-04 00:55:40.682 +07:00 [INF] Executed DbCommand (31ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2024-04-04 00:55:40.828 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2024-04-04 00:55:40.917 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2024-04-04 00:55:40.922 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2024-04-04 00:55:40.925 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2024-04-04 00:55:40.931 +07:00 [WRN] Yahallo Long Running Request: GetAllMangaQuery (3365 milliseconds) 0c425578cf3545498bfe86ae001ad508 {"$type":"GetAllMangaQuery"}
+2024-04-04 00:55:40.948 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-04-04 00:55:40.968 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO) in 3542.6807ms
+2024-04-04 00:55:40.971 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO)'
+2024-04-04 00:55:40.972 +07:00 [INF] HTTP GET /manga/get-all responded 200 in 3820.0180 ms
+2024-04-04 00:55:40.997 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all - - - 200 - application/json;+charset=utf-8 3852.5876ms
+2024-04-04 00:56:09.349 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/favicon.ico - -
+2024-04-04 00:56:09.351 +07:00 [INF] HTTP GET /favicon.ico responded 404 in 0.9908 ms
+2024-04-04 00:56:09.354 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/favicon.ico - - - 404 0 - 5.1985ms
+2024-04-04 00:56:35.874 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/chapter/create multipart/form-data;+boundary=----WebKitFormBoundaryhK1YBylHXDL7NpJ7 844
+2024-04-04 00:56:35.884 +07:00 [INF] CORS policy execution successful.
+2024-04-04 00:56:35.890 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO)'
+2024-04-04 00:56:35.899 +07:00 [INF] Route matched with {action = "CreateChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponeResult]]] CreateChapter(YAHALLO.Application.Commands.ChapterCommand.Create.CreateChapterCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2024-04-04 00:56:39.584 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE [m].[Id] = @__request_MangaId_0
+2024-04-04 00:56:39.637 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__request_Index_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE [c].[MangaId] = @__request_MangaId_0 AND [c].[Index] = @__request_Index_1 AND (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL)
+2024-04-04 00:56:39.866 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 450), @p8='?' (Size = 255), @p9='?' (DbType = DateTime2), @p10='?' (Size = 450), @p11='?' (Size = 4000), @p12='?' (Size = 450), @p13='?' (Size = 4000), @p14='?' (DbType = DateTime2), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = Int32), @p20='?' (Size = 450), @p21='?' (DbType = Int32), @p22='?' (DbType = DateTime2), @p23='?' (Size = 450), @p24='?' (Size = 450), @p25='?' (Size = 4000), @p26='?' (Size = 450), @p27='?' (Size = 4000), @p28='?' (DbType = DateTime2), @p29='?' (DbType = DateTime2), @p30='?' (Size = 4000), @p31='?' (Size = 4000), @p32='?' (Size = 4000), @p33='?' (DbType = Int32), @p34='?' (Size = 450), @p35='?' (DbType = Int32), @p36='?' (DbType = DateTime2), @p37='?' (Size = 450), @p38='?' (Size = 450), @p39='?' (Size = 4000), @p40='?' (Size = 450), @p41='?' (Size = 4000), @p42='?' (DbType = DateTime2), @p43='?' (DbType = DateTime2), @p44='?' (Size = 4000), @p45='?' (Size = 4000), @p46='?' (Size = 4000), @p47='?' (DbType = Int32), @p48='?' (Size = 450), @p49='?' (DbType = Int32), @p50='?' (DbType = DateTime2), @p51='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Chapter] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Index], [MangaId], [Title], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+INSERT INTO [Image] ([Id], [BaseUrl], [ChapterId], [CloudUrl], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [Index], [MangaId], [TypeImage], [UpdateDate], [UserId])
+VALUES (@p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23),
+(@p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37),
+(@p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51);
+2024-04-04 00:56:39.897 +07:00 [WRN] Yahallo Long Running Request: CreateChapterCommand (3856 milliseconds) 0c425578cf3545498bfe86ae001ad508 {"Title":"test","Index":1,"MangaId":"56ba33409cc24bba87860241dede73b2","Images":null,"ImageUrls":["https://localhost:7181/services/image?filepath=Data%5C%5CThumbnail%5C%5Conepunchmann.jpg","https://cdn.myanimelist.net/images/anime/13/50521.jpg","https://cdn.myanimelist.net/images/anime/1587/141789.jpg"],"$type":"CreateChapterCommand"}
+2024-04-04 00:56:39.905 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Domain.Common.Interfaces.ResponeResult, YAHALLO.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-04-04 00:56:39.912 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO) in 4011.9242ms
+2024-04-04 00:56:39.913 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.CreateChapter (YAHALLO)'
+2024-04-04 00:56:39.914 +07:00 [INF] HTTP POST /chapter/create responded 200 in 4027.8102 ms
+2024-04-04 00:56:39.915 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/chapter/create multipart/form-data;+boundary=----WebKitFormBoundaryhK1YBylHXDL7NpJ7 844 - 200 - application/json;+charset=utf-8 4041.6853ms

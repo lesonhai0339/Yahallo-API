@@ -156,6 +156,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
                     {
                         Index = i + 1,
                         TypeImage = TypeImage.Manga,
+                        BaseUrl = imageUrlsOrderby[i],
                         CloudUrl = imageUrlsOrderby[i]
                     };
                     listChapterImage.Add(imageChapter);
