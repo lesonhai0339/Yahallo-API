@@ -28,7 +28,6 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Commands\ChapterCommand\Update\" />
 	  <Folder Include="Commands\CommentCommand\" />
 	  <Folder Include="Commands\MangaRatingCommand\" />
 	  <Folder Include="Commands\MangaSeasonCommand\" />
