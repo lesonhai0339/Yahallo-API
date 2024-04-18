@@ -1,11 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Application.Common.Logger;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.Base;
 using YAHALLO.Domain.Exceptions;
@@ -21,21 +23,25 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
         private readonly ICurrentUserService _currentUser;
         private readonly IFiles<IFormFile> _files;
         private readonly IImageRepository _imageRepository;
+        private readonly ILogger _logger;
         public CreateMangaCommandHandler(
             IMangaRepository mangaRepository,
             IMangaSeasonRepository mangaSeasonRepository,
             ICurrentUserService currentUser,
             IFiles<IFormFile> files,
-            IImageRepository imageRepository)
+            IImageRepository imageRepository,
+            ILoggerExtension logger)
         {
             _mangaRepository = mangaRepository;
             _mangaSeasonRepository = mangaSeasonRepository;
             _currentUser = currentUser;
             _files = files;
             _imageRepository = imageRepository;
+            _logger = logger.CreateLogger("","");
         }
         public async Task<string> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
         {
+            _logger.Information("Strart Log");
             var query = _mangaRepository.CreateQueryable();
             query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
             foreach (var property in typeof(CreateMangaCommand).GetProperties())
