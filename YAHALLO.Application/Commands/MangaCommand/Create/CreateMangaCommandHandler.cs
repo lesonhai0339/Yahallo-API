@@ -37,11 +37,10 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
             _currentUser = currentUser;
             _files = files;
             _imageRepository = imageRepository;
-            _logger = logger.CreateLogger("","");
+            _logger = logger.CreateLogger("Logs/Mangas", "Create_manga");
         }
         public async Task<string> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
         {
-            _logger.Information("Strart Log");
             var query = _mangaRepository.CreateQueryable();
             query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
             foreach (var property in typeof(CreateMangaCommand).GetProperties())
@@ -58,6 +57,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                 .FindAsync(query, cancellationToken);
             if(checkMangaExist != null)
             {
+                _logger.Error($"Manga had exist");
                 throw new DuplicateException("Đã tồn tại manga với các thông tin trên");
             }
             var newManga = new MangaEntity
@@ -86,14 +86,22 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                     newMangaSeason.MangaEntities.Add(newManga);
                     _mangaSeasonRepository.Add(newMangaSeason);
                     var retuls = await _mangaSeasonRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-                    if (result <= 0) throw new Exception("đã xảy ra lỗi");
+                    if (result <= 0)
+                    {
+                        _logger.Error($"Error when create manga");
+                        throw new Exception("đã xảy ra lỗi");
+                    }
                 }
                 else
                 {
                     checkMangaSeasonExist.MangaEntities.Add(newManga);
                     _mangaSeasonRepository.Update(checkMangaSeasonExist);
                     var retuls = await _mangaSeasonRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-                    if (result <= 0) throw new Exception("đã xảy ra lỗi");
+                    if (result <= 0)
+                    {
+                        _logger.Error($"Error when create manga");
+                        throw new Exception("đã xảy ra lỗi");
+                    }
                 }
                 var path= $"Data\\Thumbnail";
                 if(request.Thumbnail != null)
@@ -106,15 +114,18 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                         var upfiles = await _files.UpLoadimage(request.Thumbnail, path);
                         if (upfiles == true)
                         {
+                            _logger.Information($"Create success manga with Id: {newManga.Id} - Name: {newManga.Name}");
                             return "Thêm thành công";
                         }
                     }
                     throw new NotFoundException("Đã gặp lỗi trong quá trình cập nhật dữ liệu");
                 }
+                _logger.Information($"Create success manga with Id: {newManga.Id} - Name: {newManga.Name}");
                 return "Thêm thành công";
             }
             else
             {
+                _logger.Error($"Create failed manga with Id: {newManga.Id} - Name: {newManga.Name}");
                 return "Đã gặp lỗi trong quá trình thêm dữ liệu";
             }
         }

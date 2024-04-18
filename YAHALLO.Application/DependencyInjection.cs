@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using YAHALLO.Application.Common.Behaviours;
+using YAHALLO.Application.Common.Logger;
 using YAHALLO.Application.Common.Validation;
 using YAHALLO.Application.Services.MailService.Service;
 
@@ -25,6 +26,7 @@ namespace YAHALLO.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IValidatorProvider, ValidatorProvider>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<ILoggerExtension, LoggerExtension>();
             return services;
         }
     }

@@ -1,0 +1,2 @@
+23:37:03 18/04/2024 [INF] Start create manga log
+23:44:11 18/04/2024 [INF] Create success manga with Id: 2d1dde391b544430aecda5a90844aa74 - Name: Hello world
