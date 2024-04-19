@@ -10,7 +10,7 @@ namespace YAHALLO.Configuration
             {
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
-                options.DefaultApiVersion = new ApiVersion(111);
+                options.DefaultApiVersion = new ApiVersion(1.0);
                 options.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader());
             })
             .AddMvc()

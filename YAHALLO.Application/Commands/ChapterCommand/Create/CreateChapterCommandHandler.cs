@@ -79,8 +79,8 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
                         var imageChapter = new ImageEntity
                         {
                             Index = i + 1,
-                            TypeImage = TypeImage.Manga,
-                            BaseUrl = imagePath,
+                            TypeImage = TypeImage.Chapter,
+                            BaseUrl = $"{imagePath}\\{imagesOrderby[i].FileName}",
                             CloudUrl = imageUrlsOrderby[i]
                         };
                         listChapterImage.Add(imageChapter);
@@ -119,7 +119,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
                         {
                             Index = i + 1,
                             TypeImage = TypeImage.Manga,
-                            BaseUrl = imagePath,
+                            BaseUrl = $"{imagePath}\\{imagesOrderby[i].FileName}",
                         };
                         listChapterImage.Add(imageChapter);
                         var image = imagesOrderby[i];

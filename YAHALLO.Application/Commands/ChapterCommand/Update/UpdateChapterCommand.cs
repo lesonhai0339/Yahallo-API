@@ -11,13 +11,14 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
 {
     public class UpdateChapterCommand: IRequest<ResponeResult>
     {
+        public UpdateChapterCommand() { }
         public UpdateChapterCommand(
             string chapterid,
             string mangaid,
             string? title,
             int? index,
-            ICollection<IFormFile> images,
-            ICollection<string>? imageUrls)
+            List<IFormFile> images,
+            List<string>? imageUrls)
         {
             ChapterId = chapterid;
             MangaId= mangaid;
@@ -30,7 +31,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
         public required string MangaId { get; set; }
         public string? Title { get; set; }
         public int? Index { get; set; }
-        public ICollection<IFormFile>? Images { get; set; }
-        public ICollection<string>? ImageUrls { get; set; }
+        public List<IFormFile>? Images { get; set; }
+        public List<string>? ImageUrls { get; set; }
     }
 }

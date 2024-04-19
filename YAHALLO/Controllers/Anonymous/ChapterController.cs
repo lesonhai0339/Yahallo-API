@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.ChapterCommand.Create;
+using YAHALLO.Application.Commands.ChapterCommand.Delete;
+using YAHALLO.Application.Commands.ChapterCommand.Restore;
+using YAHALLO.Application.Commands.ChapterCommand.Update;
 using YAHALLO.Application.Commands.RoleCommand.Create;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
@@ -26,6 +29,45 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<ResponeResult>>> CreateChapter(
           [FromForm] CreateChapterCommand command,
           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<ResponeResult>(result));
+        }
+        [HttpPost]
+        [Route("chapter/restore")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<ResponeResult>>> RestoreChapter(
+       [FromBody] RestoreChapterCommand command,
+       CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<ResponeResult>(result));
+        }
+        [HttpPut]
+        [Route("chapter/update")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<ResponeResult>>> UpdateChapter(
+         [FromForm] UpdateChapterCommand command,
+         CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<ResponeResult>(result));
+        }
+        [HttpDelete]
+        [Route("chapter/delete")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<ResponeResult>>> DeleteChapter(
+       [FromBody] DeleteChapterCommand command,
+       CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponeResult>(result));
