@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Restore
 {
-    public class RestoreChapterCommandHandler : IRequestHandler<RestoreChapterCommand, ResponeResult>
+    public class RestoreChapterCommandHandler : IRequestHandler<RestoreChapterCommand, ResponeResult<string>>
     {
         private readonly IChapterRepository _chapterRepository;
         private readonly ICurrentUserService _currentUser;
@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Restore
             _currentUser = currentUser;
         }
     
-        public async Task<ResponeResult> Handle(RestoreChapterCommand request, CancellationToken cancellationToken)
+        public async Task<ResponeResult<string>> Handle(RestoreChapterCommand request, CancellationToken cancellationToken)
         {
             var checkRole = await _currentUser.IsInRoleAsync("1");
             var checkChapterExist = await _chapterRepository
@@ -42,11 +42,11 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Restore
             var result = await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (result > 0)
             {
-                return new ResponeResult(message: "Phục hồi thành công");
+                return new ResponeResult<string>(message: "Phục hồi thành công");
             }
             else
             {
-                return new ResponeResult(message: "Phục hồi thất bại");
+                return new ResponeResult<string>(message: "Phục hồi thất bại");
             }
         }
     }

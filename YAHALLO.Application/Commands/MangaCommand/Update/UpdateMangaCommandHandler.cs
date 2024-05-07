@@ -17,7 +17,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Update
 {
-    public class UpdateMangaCommandHandler : IRequestHandler<UpdateMangaCommand, ResponeResult>
+    public class UpdateMangaCommandHandler : IRequestHandler<UpdateMangaCommand, ResponeResult<string>>
     {
         private readonly IMangaRepository _mangaRepository;
         private readonly IFiles<IFormFile> _files;
@@ -34,7 +34,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
             _currentUser = currentUser;
             _imageRepository = imageRepository; 
         }
-        public async Task<ResponeResult> Handle(UpdateMangaCommand request, CancellationToken cancellationToken)
+        public async Task<ResponeResult<string>> Handle(UpdateMangaCommand request, CancellationToken cancellationToken)
         {
             var checkRole = await _currentUser.IsInRoleAsync("1");
             var checkMangaExist = await _mangaRepository
@@ -85,24 +85,24 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                             var check= await _files.UpLoadimage(request.Thumbnail, newImagePath);
                             if(check == true)
                             {
-                                return new ResponeResult(message: "Cập nhật thành công");
+                                return new ResponeResult<string>(message: "Cập nhật thành công");
                             }
                             else
                             {
-                                return new ResponeResult(message: "Cập nhật thất bại");
+                                return new ResponeResult<string>(message: "Cập nhật thất bại");
                             }
                         }
                         else
                         {
-                            return new ResponeResult(message: "Đã xảy ra lỗi");
+                            return new ResponeResult<string>(message: "Đã xảy ra lỗi");
                         }
                     }
                 }
-                return new ResponeResult(message: "Cập nhật thành công");
+                return new ResponeResult<string>(message: "Cập nhật thành công");
             }
             else
             {
-                return new ResponeResult(message: "Cập nhật thất bại");
+                return new ResponeResult<string>(message: "Cập nhật thất bại");
             }
         }
     }

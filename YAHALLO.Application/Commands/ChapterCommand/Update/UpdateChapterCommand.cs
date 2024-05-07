@@ -9,7 +9,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Update
 {
-    public class UpdateChapterCommand: IRequest<ResponeResult>
+    public class UpdateChapterCommand: IRequest<ResponeResult<string>>
     {
         public UpdateChapterCommand() { }
         public UpdateChapterCommand(

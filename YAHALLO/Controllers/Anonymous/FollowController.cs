@@ -29,41 +29,41 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("follow-manga/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult>>> CreateFollowManga(
+        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> CreateFollowManga(
            [FromBody] CreateFollowMangaCommand command,
            CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult>(result));
+            return Ok(new JsonResponse<ResponeResult<string>>(result));
         }
         [HttpPost]
         [Route("follow-manga/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult>>> RestoreFollowManga(
+        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> RestoreFollowManga(
           [FromBody] RestoreFollowMangaCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult>(result));
+            return Ok(new JsonResponse<ResponeResult<string>>(result));
         }
         [HttpDelete]
         [Route("follow-manga/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult>>> DeleteFollowManga(
+        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> DeleteFollowManga(
           [FromBody] DeleteFollowMangaCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult>(result));
+            return Ok(new JsonResponse<ResponeResult<string>>(result));
         }
         [HttpGet]
         [Route("follow-manga/get-all")]

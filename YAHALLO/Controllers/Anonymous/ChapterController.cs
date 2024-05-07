@@ -23,54 +23,54 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("chapter/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult>>> CreateChapter(
+        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> CreateChapter(
           [FromForm] CreateChapterCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult>(result));
+            return Ok(new JsonResponse<ResponeResult<string>>(result));
         }
         [HttpPost]
         [Route("chapter/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult>>> RestoreChapter(
+        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> RestoreChapter(
        [FromBody] RestoreChapterCommand command,
        CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult>(result));
+            return Ok(new JsonResponse<ResponeResult<string>>(result));
         }
         [HttpPut]
         [Route("chapter/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult>>> UpdateChapter(
+        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> UpdateChapter(
          [FromForm] UpdateChapterCommand command,
          CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult>(result));
+            return Ok(new JsonResponse<ResponeResult<string>>(result));
         }
         [HttpDelete]
         [Route("chapter/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult>>> DeleteChapter(
+        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> DeleteChapter(
        [FromBody] DeleteChapterCommand command,
        CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult>(result));
+            return Ok(new JsonResponse<ResponeResult<string>>(result));
         }
     }
 }
