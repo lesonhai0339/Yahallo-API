@@ -37,10 +37,6 @@
 	  <Folder Include="Commands\UserCommand\Admin\" />
 	  <Folder Include="Queries\AuthorQuery\GetById\" />
 	  <Folder Include="Queries\AuthorQuery\GetByIdDeleted\" />
-	  <Folder Include="Queries\ChapterQuery\GetAllPagination\" />
-	  <Folder Include="Queries\ChapterQuery\GetAllDeleted\" />
-	  <Folder Include="Queries\ChapterQuery\GetAllDeletedPagination\" />
-	  <Folder Include="Queries\ChapterQuery\FilterChapter\" />
 	  <Folder Include="Queries\CommentQuery\" />
 	  <Folder Include="Queries\UserQuery\Admin\GetAll\" />
 	  <Folder Include="Queries\UserQuery\Moderator\" />
