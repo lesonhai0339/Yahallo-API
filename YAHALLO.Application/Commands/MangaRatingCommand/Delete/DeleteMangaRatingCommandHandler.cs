@@ -27,7 +27,11 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
                 .FindAsync(x => x.MangaId == request.Mangaid && x.UserId == request.UserId, cancellationToken);
             if(checkMangaRatingExist == null)
             {
-                throw new NotFoundException("Không tìm thấy MangaRating với thôn6gt in trên");
+                throw new NotFoundException("Không tìm thấy MangaRating với thông tin trên");
+            }
+            if(!string.IsNullOrEmpty(checkMangaRatingExist.IdUserDelete) && checkMangaRatingExist.DeleteDate.HasValue)
+            {
+                throw new DuplicateException("Đã tồn tại MangaRating nhưng đã bị xóa trước đó");
             }
             checkMangaRatingExist.DeleteDate = DateTime.Now;
             checkMangaRatingExist.IdUserDelete = _currentUser.UserId;

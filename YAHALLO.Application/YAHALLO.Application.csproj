@@ -31,8 +31,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Commands\CommentCommand\" />
-	  <Folder Include="Commands\MangaRatingCommand\Restore\" />
-	  <Folder Include="Commands\MangaRatingCommand\Update\" />
 	  <Folder Include="Commands\MangaSeasonCommand\" />
 	  <Folder Include="Commands\UserCommand\Moderator\" />
 	  <Folder Include="Commands\UserCommand\Admin\" />
