@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.FollowCommand.Restore
 {
-    public class RestoreFollowMangaCommand: IRequest<ResponeResult>
+    public class RestoreFollowMangaCommand: IRequest<ResponeResult<string>>
     {
         public RestoreFollowMangaCommand(
            string userid,

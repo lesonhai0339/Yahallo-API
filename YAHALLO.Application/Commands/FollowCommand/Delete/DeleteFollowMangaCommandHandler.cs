@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.FollowCommand.Delete
 {
-    public class DeleteFollowMangaCommandHandler : IRequestHandler<DeleteFollowMangaCommand, ResponeResult>
+    public class DeleteFollowMangaCommandHandler : IRequestHandler<DeleteFollowMangaCommand, ResponeResult<string>>
     {
         private readonly IFollowRepository _followRepository;
         private readonly ICurrentUserService _currentUser;
@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Commands.FollowCommand.Delete
             _currentUser = currentUser;
         }
 
-        public async Task<ResponeResult> Handle(DeleteFollowMangaCommand request, CancellationToken cancellationToken)
+        public async Task<ResponeResult<string>> Handle(DeleteFollowMangaCommand request, CancellationToken cancellationToken)
         {
             var checkFollowExist = await _followRepository
                 .FindAsync(x => x.UserId == request.UserId && x.MangaId == request.MangaId
@@ -36,11 +36,11 @@ namespace YAHALLO.Application.Commands.FollowCommand.Delete
             var result = await _followRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result> 0)
             {
-                return new ResponeResult(message: "Xóa thành công");
+                return new ResponeResult<string>(message: "Xóa thành công");
             }
             else
             {
-                return new ResponeResult(message: "Xóa thất bại");
+                return new ResponeResult<string>(message: "Xóa thất bại");
             }
         }
     }

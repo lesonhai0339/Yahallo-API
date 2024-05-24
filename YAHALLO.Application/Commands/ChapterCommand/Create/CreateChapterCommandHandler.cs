@@ -17,7 +17,7 @@ using NotMappedAttribute = YAHALLO.Domain.Exceptions.NotMappedAttribute;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Create
 {
-    public class CreateChapterCommandHandler : IRequestHandler<CreateChapterCommand, ResponeResult>
+    public class CreateChapterCommandHandler : IRequestHandler<CreateChapterCommand, ResponeResult<string>>
     {
         private IChapterRepository _chapterRepository;
         private IMangaRepository _mangaRepository;
@@ -32,7 +32,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
             _files = files;
         }
 
-        public async Task<ResponeResult> Handle(CreateChapterCommand request, CancellationToken cancellationToken)
+        public async Task<ResponeResult<string>> Handle(CreateChapterCommand request, CancellationToken cancellationToken)
         {
             var checkRole = await _currentUser.IsInRoleAsync("1");
             var checkMangaExist = await _mangaRepository
@@ -92,11 +92,11 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
                     var result = await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if(result > 0)
                     {
-                        return new ResponeResult(message: "Tạo thành công");
+                        return new ResponeResult<string>(message: "Tạo thành công");
                     }
                     else
                     {
-                        return new ResponeResult(message: "Tạo thất bại");
+                        return new ResponeResult<string>(message: "Tạo thất bại");
                     }
                 }
                 else
@@ -130,11 +130,11 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
                     var result = await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (result > 0)
                     {
-                        return new ResponeResult(message: "Tạo thành công");
+                        return new ResponeResult<string>(message: "Tạo thành công");
                     }
                     else
                     {
-                        return new ResponeResult(message: "Tạo thất bại");
+                        return new ResponeResult<string>(message: "Tạo thất bại");
                     }
                 }
             }
@@ -166,14 +166,14 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
                 var result = await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                 if (result > 0)
                 {
-                    return new ResponeResult(message: "Tạo thành công");
+                    return new ResponeResult<string>(message: "Tạo thành công");
                 }
                 else
                 {
-                    return new ResponeResult(message: "Tạo thất bại");
+                    return new ResponeResult<string>(message: "Tạo thất bại");
                 }
             }
-            return new ResponeResult(message: "Đã xảy ra lỗi");
+            return new ResponeResult<string>(message: "Đã xảy ra lỗi");
         }
     }
 }

@@ -7,20 +7,25 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Domain.Common.Interfaces
 {
-    public class ResponeResult
+    public class ResponeResult<T>
     {
         public ResponeResult() { }
         public ResponeResult(string? message) 
         {
             Message = message;
         }
+        public ResponeResult(List<T>? entities) 
+        {
+            ListEntity = entities;
+        }
+
         public ResponeResult(
             string? id,
             string? name,
             string? message,
             string? content,
-            object? entity,
-            List<object>? entities,
+            T? entity,
+            List<T>? entities,
             IFormFile? file,
             List<IFormFile>? files
             ) 
@@ -38,8 +43,8 @@ namespace YAHALLO.Domain.Common.Interfaces
         public string? Name { get;set; }
         public string? Message { get;set; }
         public string? Content { get;set; }
-        public object? Entity { get;set; }
-        public List<object>? ListEntity { get;set; }
+        public T? Entity { get;set; }
+        public List<T>? ListEntity { get;set; }
         public IFormFile? File { get;set; }  
         public List<IFormFile>? ListFile { get;set; }
     }

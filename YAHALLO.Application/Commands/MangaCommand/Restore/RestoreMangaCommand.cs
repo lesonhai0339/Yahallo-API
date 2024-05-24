@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Restore
 {
-    public class RestoreMangaCommand: IRequest<ResponeResult>
+    public class RestoreMangaCommand: IRequest<ResponeResult<string>>
     {
         public string Id { get;set; }
         public RestoreMangaCommand(

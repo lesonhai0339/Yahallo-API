@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Restore
 {
-    public class RestoreMangaCommandHandler : IRequestHandler<RestoreMangaCommand, ResponeResult>
+    public class RestoreMangaCommandHandler : IRequestHandler<RestoreMangaCommand, ResponeResult<string>>
     {
         private readonly IMangaRepository _mangaRepository;
         private readonly ICurrentUserService _currentUser;
@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Restore
             _currentUser = currentUser;
         }
     
-        public async Task<ResponeResult> Handle(RestoreMangaCommand request, CancellationToken cancellationToken)
+        public async Task<ResponeResult<string>> Handle(RestoreMangaCommand request, CancellationToken cancellationToken)
         {
             var checkRole =await _currentUser.IsInRoleAsync("1");
             var checkMangaExist = await _mangaRepository
@@ -42,11 +42,11 @@ namespace YAHALLO.Application.Commands.MangaCommand.Restore
             var result = await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result > 0)
             {
-                return new ResponeResult(message: "Phục hồi thành công");
+                return new ResponeResult<string>(message: "Phục hồi thành công");
             }
             else
             {
-                return new ResponeResult(message: "Phục hồi thất bại");
+                return new ResponeResult<string>(message: "Phục hồi thất bại");
             }
         }
     }

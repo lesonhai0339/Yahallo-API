@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.FollowCommand.Restore
 {
-    public class RestoreFollowMangaCommandHandler : IRequestHandler<RestoreFollowMangaCommand, ResponeResult>
+    public class RestoreFollowMangaCommandHandler : IRequestHandler<RestoreFollowMangaCommand, ResponeResult<string>>
     {
         private readonly IFollowRepository _followRepository;
         private readonly ICurrentUserService _currentUserService;
@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Commands.FollowCommand.Restore
             _currentUserService = currentUserService;
         }
 
-        public async Task<ResponeResult> Handle(RestoreFollowMangaCommand request, CancellationToken cancellationToken)
+        public async Task<ResponeResult<string>> Handle(RestoreFollowMangaCommand request, CancellationToken cancellationToken)
         {
             var checkFollowMangaExist= await _followRepository
                 .FindAsync(x=> x.UserId == request.UserId && x.MangaId == request.MangaId
@@ -38,11 +38,11 @@ namespace YAHALLO.Application.Commands.FollowCommand.Restore
             var result = await _followRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (result > 0)
             {
-                return new ResponeResult(message: "Phục hồi thành công");
+                return new ResponeResult<string>(message: "Phục hồi thành công");
             }
             else
             {
-                return new ResponeResult(message: "Phục hồi thất bại");
+                return new ResponeResult<string>(message: "Phục hồi thất bại");
             }
         }
     }

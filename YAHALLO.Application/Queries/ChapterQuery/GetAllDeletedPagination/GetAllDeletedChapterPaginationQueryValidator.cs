@@ -9,9 +9,16 @@ namespace YAHALLO.Application.Queries.ChapterQuery.GetAllDeletedPagination
 {
     public class GetAllDeletedChapterPaginationQueryValidator: AbstractValidator<GetAllDeletedChapterPaginationQuery>
     {
+<<<<<<< HEAD
         public GetAllDeletedChapterPaginationQueryValidator() {
             RuleFor(x => x.PageNumber).NotNull().NotEmpty().WithMessage("Page Number không được bỏ trống");
             RuleFor(x => x.PageNumber).NotNull().NotEmpty().WithMessage("Page Size không được bỏ trống");
+=======
+        public GetAllDeletedChapterPaginationQueryValidator()
+        {
+            RuleFor(x => x.PageNumber).NotNull().NotEmpty().WithMessage("Page Number không được bỏ trống");
+            RuleFor(x => x.PageSize).NotNull().NotEmpty().WithMessage("Page Size không được boo3 trống");
+>>>>>>> master
         }
     }
 }
