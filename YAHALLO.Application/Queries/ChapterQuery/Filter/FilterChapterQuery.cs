@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.ChapterQuery.Filter
 {
-    public class FilterChapterQuery: IRequest<IPagedResult<ChapterDto>>
+    public class FilterChapterQuery: IRequest<PagedResult<ChapterDto>>
     {
         public FilterChapterQuery() { }
         public FilterChapterQuery(

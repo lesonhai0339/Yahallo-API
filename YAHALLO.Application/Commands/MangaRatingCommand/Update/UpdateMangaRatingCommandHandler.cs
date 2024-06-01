@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Update
 {
-    public class UpdateMangaRatingCommandHandler : IRequestHandler<UpdateMangaRatingCommand, ResponeResult<string>>
+    public class UpdateMangaRatingCommandHandler : IRequestHandler<UpdateMangaRatingCommand, ResponseResult<string>>
     {
         private readonly IMangaRatingRepository _mangaRatingRepository;
         private readonly ICurrentUserService _currentUser;
@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Update
             _currentUser = currentUser;
         }
 
-        public async Task<ResponeResult<string>> Handle(UpdateMangaRatingCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<string>> Handle(UpdateMangaRatingCommand request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExist = await _mangaRatingRepository
                 .FindAsync(x => x.MangaId == request.MangaId && x.UserId == request.UserId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
@@ -36,11 +36,11 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Update
             var result = await _mangaRatingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result> 0)
             {
-                return new ResponeResult<string>("Cập nhật thành công");
+                return new ResponseResult<string>("Cập nhật thành công");
             }
             else
             {
-                return new ResponeResult<string>("Cập nhật thất bại");
+                return new ResponseResult<string>("Cập nhật thất bại");
             }
         }
     }

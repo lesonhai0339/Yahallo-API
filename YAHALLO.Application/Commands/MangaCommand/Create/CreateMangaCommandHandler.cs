@@ -82,7 +82,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                     .FindAsync(x => x.Id == request.MangaSeasonId, cancellationToken);
                 if(checkMangaSeasonExist == null)
                 {
-                    var newMangaSeason = new MangaSeasonEntity();
+                    var newMangaSeason = new MangaSeasonEntity(season: 1,description: null);
                     newMangaSeason.MangaEntities.Add(newManga);
                     _mangaSeasonRepository.Add(newMangaSeason);
                     var retuls = await _mangaSeasonRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

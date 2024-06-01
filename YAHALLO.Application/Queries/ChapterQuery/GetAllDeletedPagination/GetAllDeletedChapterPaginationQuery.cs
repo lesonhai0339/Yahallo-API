@@ -10,15 +10,6 @@ namespace YAHALLO.Application.Queries.ChapterQuery.GetAllDeletedPagination
 {
     public class GetAllDeletedChapterPaginationQuery: IRequest<PagedResult<ChapterDto>>
     {
-<<<<<<< HEAD
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
-        public GetAllDeletedChapterPaginationQuery(int pagenumber,
-            int pagesize)
-        {
-            PageNumber = pagenumber;
-            PageSize = pagesize;
-=======
         public int PageNumber { get;set; }
         public int PageSize { get; set; }
         public GetAllDeletedChapterPaginationQuery() { }
@@ -26,7 +17,6 @@ namespace YAHALLO.Application.Queries.ChapterQuery.GetAllDeletedPagination
         {
             PageNumber = pageNumber;
             PageSize = pageSize;    
->>>>>>> master
         }
     }
 }

@@ -6,14 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Common.Interfaces;
 
-namespace YAHALLO.Application.Commands.ChapterCommand.Delete
+namespace YAHALLO.Application.Commands.MangaSeasonCommand.Delete
 {
-    public class DeleteChapterCommand: IRequest<ResponseResult<string>>
+    public class DeleteMangaSeasonCommand: IRequest<ResponseResult<String>>
     {
-        public DeleteChapterCommand(string id)
+        public string Id { get;set; }
+        public DeleteMangaSeasonCommand(string id)
         {
             Id = id;
         }
-        public string Id { get; set; }
     }
 }

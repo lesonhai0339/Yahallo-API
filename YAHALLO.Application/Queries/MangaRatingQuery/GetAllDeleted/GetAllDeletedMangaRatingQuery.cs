@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Queries.MangaRatingQuery.GetAllDeleted
 {
-    public class GetAllDeletedMangaRatingQuery: IRequest<ResponeResult<MangaRatingDto>>
+    public class GetAllDeletedMangaRatingQuery: IRequest<ResponseResult<MangaRatingDto>>
     {
         public GetAllDeletedMangaRatingQuery() { }
     }

@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.CommentCommand.Create
 {
-    public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, ResponeResult<string>>
+    public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, ResponseResult<string>>
     {
         private readonly IUserRepository _userRepository;
         private readonly IMangaRepository _mangaRepository;
@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
             _mangaRepository = mangaRepository;
             _commentRepository = commentRepository;
         }
-        public async Task<ResponeResult<string>> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<string>> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

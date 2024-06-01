@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.FollowCommand.Delete
 {
-    public class DeleteFollowMangaCommand: IRequest<ResponeResult<string>>
+    public class DeleteFollowMangaCommand: IRequest<ResponseResult<string>>
     {
         public DeleteFollowMangaCommand(
            string userid,

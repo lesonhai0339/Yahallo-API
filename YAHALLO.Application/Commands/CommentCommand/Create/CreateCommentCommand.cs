@@ -10,7 +10,7 @@ using YAHALLO.Domain.Enums.MangaEnums;
 
 namespace YAHALLO.Application.Commands.CommentCommand.Create
 {
-    public class CreateCommentCommand: IRequest<ResponeResult<string>>
+    public class CreateCommentCommand: IRequest<ResponseResult<string>>
     {
         public string UserId { get;set; }
         public string MangaId { get;set; }

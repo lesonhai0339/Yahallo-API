@@ -33,7 +33,6 @@
 	  <Folder Include="Commands\CommentCommand\Delete\" />
 	  <Folder Include="Commands\CommentCommand\Restore\" />
 	  <Folder Include="Commands\CommentCommand\Update\" />
-	  <Folder Include="Commands\MangaSeasonCommand\" />
 	  <Folder Include="Commands\UserCommand\Moderator\" />
 	  <Folder Include="Commands\UserCommand\Admin\" />
 	  <Folder Include="Queries\AuthorQuery\GetById\" />

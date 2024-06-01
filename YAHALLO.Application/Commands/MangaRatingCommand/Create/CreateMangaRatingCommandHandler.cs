@@ -12,7 +12,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
 {
-    public class CreateMangaRatingCommandHandler : IRequestHandler<CreateMangaRatingCommand, ResponeResult<string>>
+    public class CreateMangaRatingCommandHandler : IRequestHandler<CreateMangaRatingCommand, ResponseResult<string>>
     {
         private readonly IMangaRepository _mangaRepository;
         private readonly IUserRepository _userRepository;
@@ -26,7 +26,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
             _mangaRatingRepository = mangaRatingRepository;
         }
 
-        public async Task<ResponeResult<string>> Handle(CreateMangaRatingCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<string>> Handle(CreateMangaRatingCommand request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExist = _mangaRatingRepository
                 .FindAsync(x => x.MangaId == request.MangaId && x.UserId == request.UserId, cancellationToken);
@@ -46,11 +46,11 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
             var result =await _mangaRatingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result > 0)
             {
-                return new ResponeResult<string>("Tạo thành công");
+                return new ResponseResult<string>("Tạo thành công");
             }
             else
             {
-                return new ResponeResult<string>("Tạo thất bại");
+                return new ResponseResult<string>("Tạo thất bại");
             }
         }
     }

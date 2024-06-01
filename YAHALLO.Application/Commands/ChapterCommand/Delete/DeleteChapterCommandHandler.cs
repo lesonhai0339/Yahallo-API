@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Delete
 {
-    public class DeleteChapterCommandHandler : IRequestHandler<DeleteChapterCommand, ResponeResult<string>>
+    public class DeleteChapterCommandHandler : IRequestHandler<DeleteChapterCommand, ResponseResult<string>>
     {
         private readonly IChapterRepository _chapterRepository;
         private readonly ICurrentUserService _currentUser;
@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Delete
             _currentUser = currentUser;
         }
 
-        public async Task<ResponeResult<string>> Handle(DeleteChapterCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<string>> Handle(DeleteChapterCommand request, CancellationToken cancellationToken)
         {
             var checkRole =await _currentUser.IsInRoleAsync("1");
             var checkChapterExist = await _chapterRepository
@@ -41,11 +41,11 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Delete
             var result= await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result> 0)
             {
-                return new ResponeResult<string>(message: "Xóa thành công");
+                return new ResponseResult<string>(message: "Xóa thành công");
             }
             else
             {
-                return new ResponeResult<string>(message: "Xóa thất bại");
+                return new ResponseResult<string>(message: "Xóa thất bại");
             }
         }
     }

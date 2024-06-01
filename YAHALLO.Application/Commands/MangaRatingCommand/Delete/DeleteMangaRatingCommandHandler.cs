@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
 {
-    public class DeleteMangaRatingCommandHandler : IRequestHandler<DeleteMangaRatingCommand, ResponeResult<string>>
+    public class DeleteMangaRatingCommandHandler : IRequestHandler<DeleteMangaRatingCommand, ResponseResult<string>>
     {
         private readonly IMangaRatingRepository _mangaRatingRepository;
         private readonly ICurrentUserService _currentUser;
@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
             _currentUser = curreentUser;
         }
 
-        public async Task<ResponeResult<string>> Handle(DeleteMangaRatingCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<string>> Handle(DeleteMangaRatingCommand request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExist = await _mangaRatingRepository
                 .FindAsync(x => x.MangaId == request.Mangaid && x.UserId == request.UserId, cancellationToken);
@@ -39,11 +39,11 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
             var result = await _mangaRatingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result>0)
             {
-                return new ResponeResult<string>("Xóa thành công");
+                return new ResponseResult<string>("Xóa thành công");
             }
             else
             {
-                return new ResponeResult<string>("Xóa thất bại");
+                return new ResponseResult<string>("Xóa thất bại");
             }
         }
     }

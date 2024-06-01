@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Update
 {
-    public class UpdateMangaRatingCommand: IRequest<ResponeResult<string>>
+    public class UpdateMangaRatingCommand: IRequest<ResponseResult<string>>
     {
         public string MangaId { get;set; }
         public string UserId { get;set; }

@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Queries.MangaRatingQuery.GetAll
 {
-    public class GetAllMangaRatingQuery: IRequest<ResponeResult<MangaRatingDto>>
+    public class GetAllMangaRatingQuery: IRequest<ResponseResult<MangaRatingDto>>
     {
         public GetAllMangaRatingQuery() { }
     }
