@@ -11,13 +11,13 @@ namespace YAHALLO.Domain.Entities.Reference
     public class CommentAttechment: BaseEntity
     {
         public string? Description { get;set; }
-        public required string MediaType { get;set; }
+        public string? MediaType { get; set; } = null!;
         public string? Title { get;set; }    
         public string? Url1 { get;set; }
         public string? Url2 { get;set;}
         public string? Url3 { get;set;}
 
         public required string ParentId { get;set; }
-        public virtual CommentEntity Parent { get; set; }
+        public virtual CommentEntity Parent { get; set; } = null!;
     }
 }

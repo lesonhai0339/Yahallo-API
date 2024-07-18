@@ -18,6 +18,6 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
         public DateTime? DateTime { get; set; }
         public bool? IsDateTimeReverser { get; set; }
         public bool? IsLikeReserver { get; set; }
-        public bool? IsCommentReserver { get;set; }
+        public bool? IsNumberChildrenCommentReserver { get;set; }
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
@@ -25,7 +27,7 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
             _mapgaRepository = mapgaRepository;
         }
     
-        public Task<PagedResult<CommentDto>> Handle(FilterCommentQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<CommentDto>> Handle(FilterCommentQuery request, CancellationToken cancellationToken)
         {
             var query = _commentRepository.CreateQueryable();
             query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
@@ -43,24 +45,47 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
             }
             if(request.DateTime != null)
             {
-                if(request.IsDateTimeReverser != null)
-                { 
-                    if(request.IsDateTimeReverser == true)
-                    {
-                        query = query.OrderByDescending(x => x.CreateDate);
-                    }
-                    else
-                    {
-                        query = query.OrderBy(x => x.CreateDate);
-                    }
+                query = query.Where(x => x.CreateDate == request.DateTime);
+            }
+            if (request.IsDateTimeReverser != null)
+            {
+                if (request.IsDateTimeReverser == true)
+                {
+                    query = query.OrderByDescending(x => x.CreateDate);
                 }
                 else
                 {
-                    query =query.Where(x=> x.CreateDate == request.DateTime);
+                    query = query.OrderBy(x => x.CreateDate);
                 }
             }
-
-            throw new NotImplementedException();
+            if(request.IsLikeReserver != null)
+            {
+                if(request.IsLikeReserver == true)
+                {
+                    query =query.OrderByDescending(x=> x.LikeCount);
+                }
+                else
+                {
+                    query = query.OrderBy(x => x.LikeCount);
+                }
+            }
+            if(request.IsNumberChildrenCommentReserver != null)
+            {
+                if(request.IsNumberChildrenCommentReserver == true)
+                {
+                    query =query.OrderByDescending(x=> x.CommentCount);
+                }
+                else
+                {
+                    query = query.OrderBy(x=> x.CommentCount);
+                }
+            }
+            var listCommentExists= await _commentRepository.FindAllAsync(query, request.PageNumber, request.PageSize, cancellationToken);
+            if(! listCommentExists.Any() )
+            {
+                throw new NotFoundException("Không tìm thấy comment phù hợp yêu cầu");
+            }
+            return listCommentExists.MapToPagedResult(x => x.MapToCommentDto(_mapper));
         }
     }
 }

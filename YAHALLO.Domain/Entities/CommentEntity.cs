@@ -12,6 +12,27 @@ namespace YAHALLO.Domain.Entities
 {
     public class CommentEntity: BaseEntity
     {
+        public CommentEntity() { }  
+        public CommentEntity(bool canComment, bool canRemove, bool canHide, bool canLike, bool canReply, int commentCount, int likeCount, int disLikeCount, string message, CommentAttechment? metaData, MangaCommentType commentType, string? parentId,string userId, UserEntity? userEntity, string? mangaId, string? chapterId)
+        {
+            CanComment = canComment;
+            CanRemove = canRemove;
+            CanHide = canHide;
+            CanLike = canLike;
+            CanReply = canReply;
+            CommentCount = commentCount;
+            LikeCount = likeCount;
+            DisLikeCount = disLikeCount;
+            Message = message;
+            MetaData = metaData;
+            CommentType = commentType;
+            ParentId = parentId;
+            UserId = userId;
+            UserEntity = userEntity;
+            MangaId = mangaId;
+            ChapterId = chapterId;
+        }
+
         public bool CanComment { get; set; }
         public bool CanRemove { get;set; }
         public bool CanHide { get;set; }
@@ -19,10 +40,9 @@ namespace YAHALLO.Domain.Entities
         public bool CanReply { get; set; }
         public int CommentCount { get; set; }
         public int LikeCount { get;set; }
-        public int DisLike { get; set; }
-        public required string Message { get; set;}
+        public int DisLikeCount { get; set; }
+        public string? Message { get; set;}
         public CommentAttechment? MetaData { get; set; }
-        public bool UserLike { get; set; }
         public MangaCommentType CommentType { get; set; }
         public string? ParentId { get; set; }
         public virtual CommentEntity? Parent { get; set; }
@@ -32,8 +52,6 @@ namespace YAHALLO.Domain.Entities
         public virtual MangaEntity? MangaEntity { get; set; }
         public string? ChapterId { get; set; }
         public virtual ChapterEntity? ChapterEntity { get; set; }
-        public string? UserReplyId { get; set; }
-        public virtual UserEntity? UserReply { get; set; } = null!;
         public virtual ICollection<CommentEntity>? entities { get; set; }
     }
 }
