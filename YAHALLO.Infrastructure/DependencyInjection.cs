@@ -22,7 +22,7 @@ namespace YAHALLO.Infrastructure
         public static IServiceCollection Infrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             DotEnv.Load();
-            var sqlConnection = Environment.GetEnvironmentVariable("Server");
+            var sqlConnection = Environment.GetEnvironmentVariable("Cloud_Server");
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
                 options.UseSqlServer(
