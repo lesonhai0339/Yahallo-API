@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Restore
 {
-    public class RestoreChapterCommand: IRequest<ResponeResult<string>>
+    public class RestoreChapterCommand: IRequest<ResponseResult<string>>
     {
         public string Id { get;set; }
         public RestoreChapterCommand(string id)

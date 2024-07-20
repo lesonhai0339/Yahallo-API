@@ -12,8 +12,17 @@ namespace YAHALLO.Domain.Entities
     {
         public MangaSeasonEntity()
         {
+            Season = 1;
             MangaEntities = new List<MangaEntity>();
         }
+        public MangaSeasonEntity(double season, string? description)
+        {
+            Description = description ?? null;
+            Season = season;
+            MangaEntities = new List<MangaEntity>();
+        }
+        public double Season { get;set; }
+        public string? Description { get;set; }
         public virtual ICollection<MangaEntity> MangaEntities { get; set; } = null!;
     }
 }

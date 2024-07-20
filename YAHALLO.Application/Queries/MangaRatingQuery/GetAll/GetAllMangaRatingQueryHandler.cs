@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.MangaRatingQuery.GetAll
 {
-    public class GetAllMangaRatingQueryHandler : IRequestHandler<GetAllMangaRatingQuery, ResponeResult<MangaRatingDto>>
+    public class GetAllMangaRatingQueryHandler : IRequestHandler<GetAllMangaRatingQuery, ResponseResult<MangaRatingDto>>
     {
         private readonly IMangaRatingRepository _mangaRatingRepository;
         private readonly IMapper _mapper;
@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.GetAll
             _mapper = mapper;
         }
 
-        public async Task<ResponeResult<MangaRatingDto>> Handle(GetAllMangaRatingQuery request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<MangaRatingDto>> Handle(GetAllMangaRatingQuery request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExists = await _mangaRatingRepository
                 .FindAllAsync(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.GetAll
                 throw new NotFoundException("Không tìm thấy MangaRating nào");
             }
             var result = checkMangaRatingExists.MapFullToMangaRatingDtoToList(_mapper);
-            return new ResponeResult<MangaRatingDto>(result);
+            return new ResponseResult<MangaRatingDto>(result);
         }
     }
 }

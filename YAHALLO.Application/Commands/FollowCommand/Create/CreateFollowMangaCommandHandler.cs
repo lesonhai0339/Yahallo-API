@@ -12,7 +12,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.FollowCommand.Create
 {
-    public class CreateFollowMangaCommandHandler : IRequestHandler<CreateFollowMangaCommand, ResponeResult<string>>
+    public class CreateFollowMangaCommandHandler : IRequestHandler<CreateFollowMangaCommand, ResponseResult<string>>
     {
         private readonly IMangaRepository _mangaRepository;
         private readonly IUserRepository _userRepository;
@@ -27,7 +27,7 @@ namespace YAHALLO.Application.Commands.FollowCommand.Create
             _followRepository = followRepository;
         }
 
-        public async Task<ResponeResult<string>> Handle(CreateFollowMangaCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<string>> Handle(CreateFollowMangaCommand request, CancellationToken cancellationToken)
         {
             var checkUserExist = await _userRepository
                 .FindAsync(x => x.Id == request.UserId, cancellationToken);
@@ -52,11 +52,11 @@ namespace YAHALLO.Application.Commands.FollowCommand.Create
             var result = await _followRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result > 0)
             {
-                return new ResponeResult<string>(message: "Tạo thành công");
+                return new ResponseResult<string>(message: "Tạo thành công");
             }
             else
             {
-                return new ResponeResult<string>(message: "Tạo thất bại");
+                return new ResponseResult<string>(message: "Tạo thất bại");
             }
         }
     }

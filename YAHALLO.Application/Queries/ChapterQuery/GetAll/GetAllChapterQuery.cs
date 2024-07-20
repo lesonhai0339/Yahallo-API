@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Queries.ChapterQuery.GetAll
 {
-    public class GetAllChapterQuery: IRequest<ResponeResult<ChapterDto>>
+    public class GetAllChapterQuery: IRequest<ResponseResult<ChapterDto>>
     {
         public GetAllChapterQuery() { }
     }

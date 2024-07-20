@@ -15,9 +15,12 @@ namespace YAHALLO.Infrastructure.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x=> x.Data)
+            builder.Property(x=> x.Message)
                 .IsUnicode(true);
 
+            builder.HasOne(x => x.Parent)
+                .WithMany(x => x.entities)
+                .HasForeignKey(x => x.Id);
             builder.HasOne(x => x.UserEntity)
                 .WithMany(x => x.CommentEntities)
                 .HasForeignKey(x => x.UserId)

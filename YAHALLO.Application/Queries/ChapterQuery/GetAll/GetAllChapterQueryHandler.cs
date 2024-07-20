@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.ChapterQuery.GetAll
 {
-    public class GetAllChapterQueryHandler : IRequestHandler<GetAllChapterQuery, ResponeResult<ChapterDto>>
+    public class GetAllChapterQueryHandler : IRequestHandler<GetAllChapterQuery, ResponseResult<ChapterDto>>
     {
         private readonly IChapterRepository _chapterRepository;
         private readonly IMapper _mapper;
@@ -20,8 +20,7 @@ namespace YAHALLO.Application.Queries.ChapterQuery.GetAll
             _chapterRepository = chapterRepository;
             _mapper = mapper;
         }
-
-        public async Task<ResponeResult<ChapterDto>> Handle(GetAllChapterQuery request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<ChapterDto>> Handle(GetAllChapterQuery request, CancellationToken cancellationToken)
         {
             var checkChapterExists = await _chapterRepository
                 .FindAllAsync(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
@@ -29,7 +28,7 @@ namespace YAHALLO.Application.Queries.ChapterQuery.GetAll
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ chương truyện nào");
             }
-            return new ResponeResult<ChapterDto>(entities: checkChapterExists.MapFullToChapterDtoToList(_mapper));
+            return new ResponseResult<ChapterDto>(entities: checkChapterExists.MapFullToChapterDtoToList(_mapper));
         }
     }
 }

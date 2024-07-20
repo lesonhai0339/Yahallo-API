@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Domain.Common.Interfaces
 {
-    public class ResponeResult<T>
+    public class ResponseResult<T>
     {
-        public ResponeResult() { }
-        public ResponeResult(string? message) 
+        public ResponseResult() { }
+        public ResponseResult(string? message) 
         {
             Message = message;
         }
-        public ResponeResult(List<T>? entities) 
+        public ResponseResult(List<T>? entities) 
         {
             ListEntity = entities;
         }
 
-        public ResponeResult(
+        public ResponseResult(
             string? id,
             string? name,
             string? message,

@@ -32,78 +32,78 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("chapter/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> CreateChapter(
+        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> CreateChapter(
           [FromForm] CreateChapterCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult<string>>(result));
+            return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
         [HttpPost]
         [Route("chapter/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> RestoreChapter(
+        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> RestoreChapter(
        [FromBody] RestoreChapterCommand command,
        CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult<string>>(result));
+            return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
         [HttpPut]
         [Route("chapter/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> UpdateChapter(
+        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> UpdateChapter(
          [FromForm] UpdateChapterCommand command,
          CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult<string>>(result));
+            return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
         [HttpDelete]
         [Route("chapter/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult<string>>>> DeleteChapter(
+        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> DeleteChapter(
        [FromBody] DeleteChapterCommand command,
        CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponeResult<string>>(result));
+            return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
         [HttpGet]
         [Route("chapter/get-all")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult<ChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<ChapterDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult<ChapterDto>>>> GetAllChapter(
+        public async Task<ActionResult<JsonResponse<ResponseResult<ChapterDto>>>> GetAllChapter(
         CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(new GetAllChapterQuery(), cancellationToken);
-            return Ok(new JsonResponse<ResponeResult<ChapterDto>>(result));
+            return Ok(new JsonResponse<ResponseResult<ChapterDto>>(result));
         }
         [HttpGet]
         [Route("chapter/get-all-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponeResult<ChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<ChapterDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponeResult<ChapterDto>>>> GetAllChapterDeleted(
+        public async Task<ActionResult<JsonResponse<ResponseResult<ChapterDto>>>> GetAllChapterDeleted(
        CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(new GetAllDeletedChapterQuery(), cancellationToken);
-            return Ok(new JsonResponse<ResponeResult<ChapterDto>>(result));
+            return Ok(new JsonResponse<ResponseResult<ChapterDto>>(result));
         }
         [HttpGet]
         [Route("chapter/get-all-pagination")]

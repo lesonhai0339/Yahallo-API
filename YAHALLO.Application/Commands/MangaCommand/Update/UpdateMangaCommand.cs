@@ -13,7 +13,7 @@ using YAHALLO.Domain.Enums.MangaEnums;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Update
 {
-    public class UpdateMangaCommand: IRequest<ResponeResult<string>>
+    public class UpdateMangaCommand: IRequest<ResponseResult<string>>
     {
         public UpdateMangaCommand() { }
         public UpdateMangaCommand(

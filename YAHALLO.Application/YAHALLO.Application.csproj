@@ -30,13 +30,10 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Commands\CommentCommand\" />
-	  <Folder Include="Commands\MangaSeasonCommand\" />
 	  <Folder Include="Commands\UserCommand\Moderator\" />
 	  <Folder Include="Commands\UserCommand\Admin\" />
 	  <Folder Include="Queries\AuthorQuery\GetById\" />
 	  <Folder Include="Queries\AuthorQuery\GetByIdDeleted\" />
-	  <Folder Include="Queries\CommentQuery\" />
 	  <Folder Include="Queries\UserQuery\Admin\GetAll\" />
 	  <Folder Include="Queries\UserQuery\Moderator\" />
 	</ItemGroup>

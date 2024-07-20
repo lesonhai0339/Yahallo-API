@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Queries.ChapterQuery.GetAllDeleted
 {
-    public class GetAllDeletedChapterQuery: IRequest<ResponeResult<ChapterDto>>
+    public class GetAllDeletedChapterQuery: IRequest<ResponseResult<ChapterDto>>
     {
         public GetAllDeletedChapterQuery() { }  
     }

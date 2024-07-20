@@ -12,7 +12,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Restore
 {
-    public class RestoreMangaRatingCommandHandler : IRequestHandler<RestoreMangaRatingCommand, ResponeResult<string>>
+    public class RestoreMangaRatingCommandHandler : IRequestHandler<RestoreMangaRatingCommand, ResponseResult<string>>
     {
         private readonly IMangaRatingRepository _mangaRatingRepository;
         private readonly ICurrentUserService _currentUser;
@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Restore
             _currentUser = currentUser;
         }
 
-        public async Task<ResponeResult<string>> Handle(RestoreMangaRatingCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult<string>> Handle(RestoreMangaRatingCommand request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExist = await _mangaRatingRepository
                 .FindAsync(x => x.MangaId == request.MangaId && x.UserId == request.UserId && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
@@ -38,11 +38,11 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Restore
             var result = await _mangaRatingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (result > 0)
             {
-                return new ResponeResult<string>("Phục hồi thành công");
+                return new ResponseResult<string>("Phục hồi thành công");
             }
             else
             {
-                return new ResponeResult<string>("Phục hồi thất bại");
+                return new ResponseResult<string>("Phục hồi thất bại");
             }
         }
     }

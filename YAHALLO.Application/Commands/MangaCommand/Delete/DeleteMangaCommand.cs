@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Delete
 {
-    public class DeleteMangaCommand: IRequest<ResponeResult<string>>
+    public class DeleteMangaCommand: IRequest<ResponseResult<string>>
     {
         public string? Id { get; set; }
         public DeleteMangaCommand(

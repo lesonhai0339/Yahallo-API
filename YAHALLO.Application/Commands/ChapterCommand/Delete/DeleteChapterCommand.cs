@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Delete
 {
-    public class DeleteChapterCommand: IRequest<ResponeResult<string>>
+    public class DeleteChapterCommand: IRequest<ResponseResult<string>>
     {
         public DeleteChapterCommand(string id)
         {
