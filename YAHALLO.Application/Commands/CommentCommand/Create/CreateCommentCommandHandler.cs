@@ -1,13 +1,16 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Exceptions;
+using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.CommentCommand.Create
@@ -18,21 +21,29 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         private readonly IMangaRepository _mangaRepository;
         private readonly ICommentRepository _commentRepository;
         private readonly IChapterRepository _chapterRepository;
+        private readonly IFiles<IFormFile> _files;
+        private readonly ICurrentUserService _currentUser;
         private CommentEntity? _parent;
         private MangaEntity? _manga;
         private ChapterEntity? _chapter;
-        public CreateCommentCommandHandler(IUserRepository userRepository, IMangaRepository mangaRepository, ICommentRepository commentRepository,IChapterRepository chapterRepository)
+        public CreateCommentCommandHandler(IUserRepository userRepository, IMangaRepository mangaRepository, ICommentRepository commentRepository,
+            IChapterRepository chapterRepository, IFiles<IFormFile> files, ICurrentUserService currentUser)
         {
             _userRepository = userRepository;
             _mangaRepository = mangaRepository;
             _commentRepository = commentRepository;
             _chapterRepository= chapterRepository;
+            _currentUser = currentUser; 
+            _files = files;
             _parent = null;
             _manga = null;  
             _chapter = null;
         }
         public async Task<ResponseResult<string>> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
+            string? url_1 = request.Url1;
+            string? url_2 = request.Url2;
+            string? url_3 = request.Url3;
             var checkUserExist= await _userRepository.FindAsync(x=> x.Id==request.UserId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken); 
             if( checkUserExist == null )
             {
@@ -78,10 +89,33 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
                 MangaId = this._manga?.Id,
                 MangaEntity = this._manga,
                 ChapterEntity = this._chapter,
-                ChapterId = this._chapter?.Id
+                ChapterId = this._chapter?.Id,
+                CreateDate = DateTime.Now,
+                IdUserCreate = _currentUser.UserId
             };
             if(request.IsHaveMedia == true)
             {
+                if(request.MediaFile != null) 
+                {
+                    string? parent_folder = _manga?.Id ?? _chapter?.Id;
+                    if (parent_folder != null)
+                    {
+                        try
+                        {
+                            var path = $"Data\\Comments\\{parent_folder}";
+                            _files.CreateFolder(path);
+                            bool check = await _files.UpLoadimage(request.MediaFile, path);
+                            if (check)
+                            {
+                                url_1 = Path.Combine(path, request.MediaFile.FileName);
+                            }
+                        }
+                        catch (IOException e)
+                        {
+                            throw new IOException("Lỗi trong quá trình ghi data: ", e);
+                        }
+                    }              
+                }
                 CommentAttechment attechment = new CommentAttechment
                 {
                     Description = request.Description,

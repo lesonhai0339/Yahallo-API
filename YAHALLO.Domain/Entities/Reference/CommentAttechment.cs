@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities.Base;
+using YAHALLO.Domain.Enums.UserEnums;
 
 namespace YAHALLO.Domain.Entities.Reference
 {
     public class CommentAttechment: BaseEntity
     {
         public string? Description { get;set; }
-        public string? MediaType { get; set; } = null!;
+        public CommentMediaType? MediaType { get; set; } = null!;
         public string? Title { get;set; }    
         public string? Url1 { get;set; }
         public string? Url2 { get;set;}

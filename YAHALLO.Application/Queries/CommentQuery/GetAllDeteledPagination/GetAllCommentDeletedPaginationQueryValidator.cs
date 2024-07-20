@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Application.Queries.CommentQuery.GetAllDeteledPagination
 {
-    public class GetAllDeletedPaginationQueryValidator: AbstractValidator<GetAllDeletedPaginationQuery> 
+    public class GetAllCommentDeletedPaginationQueryValidator: AbstractValidator<GetAllCommentDeletedPaginationQuery> 
     {
-        public GetAllDeletedPaginationQueryValidator() 
+        public GetAllCommentDeletedPaginationQueryValidator() 
         {
             RuleFor(x => x.PageNumber).NotNull().NotEmpty().WithMessage("Page Number không được bỏ trống");
             RuleFor(x => x.PageSize).NotEmpty().NotNull().WithMessage("Page Size không được bỏ trống");
