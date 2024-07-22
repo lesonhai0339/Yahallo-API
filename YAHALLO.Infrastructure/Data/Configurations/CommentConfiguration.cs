@@ -32,11 +32,7 @@ namespace YAHALLO.Infrastructure.Data.Configurations
             builder.HasOne(x => x.ChapterEntity)
                 .WithMany(x => x.CommentEntities)
                 .HasForeignKey(x => x.ChapterId)
-                .OnDelete(DeleteBehavior.Restrict);
-            builder.HasOne(x => x.UserReply)
-                .WithMany(x => x.ReplyComment)
-                .HasForeignKey(x => x.UserReplyId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict);       
             builder.ToTable("Comment");
         }
     }
