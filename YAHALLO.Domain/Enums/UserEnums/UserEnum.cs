@@ -65,4 +65,11 @@ namespace YAHALLO.Domain.Enums.UserEnums
         /// </summary>
         Nine = 9,
     }
+    public enum CommentMediaType
+    {
+        Image = 1,
+        Gif = 2,
+        Video = 3,
+        Link = 4,
+    }
 }

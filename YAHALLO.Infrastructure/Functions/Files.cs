@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -13,6 +14,19 @@ namespace YAHALLO.Domain.Functions
     public class Files<TDomain>: IFiles<TDomain>
         where TDomain : class, IFormFile
     {
+        public bool CreateFolder(string fullPath)
+        {
+            if (Directory.Exists(fullPath))
+            {
+                return false;
+            }
+            else
+            {
+                Directory.CreateDirectory(fullPath);
+                return true;
+            }
+        }
+
         public bool CreateFolder(string path, string folderName)
         {
             var srcpath = Path.Combine(path, folderName); 

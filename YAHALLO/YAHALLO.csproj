@@ -35,6 +35,7 @@
 	  <Folder Include="Controllers\Moderator\" />
 	  <Folder Include="Controllers\Uploader\" />
 	  <Folder Include="Data\Manga\" />
+	  <Folder Include="Data\Comments\" />
 	  <Folder Include="Data\Thumbnail\" />
 	  <Folder Include="Data\User\" />
 	  <Folder Include="Logs\Mangas\" />

@@ -42,7 +42,7 @@ namespace YAHALLO.Domain.Entities
         public int LikeCount { get;set; }
         public int DisLikeCount { get; set; }
         public string? Message { get; set;}
-        public CommentAttechment? MetaData { get; set; }
+        public virtual CommentAttechment? MetaData { get; set; }
         public MangaCommentType CommentType { get; set; }
         public string? ParentId { get; set; }
         public virtual CommentEntity? Parent { get; set; }
