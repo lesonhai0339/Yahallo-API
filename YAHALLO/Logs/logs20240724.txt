@@ -63,3 +63,19 @@ WHERE [Id] = @p9;
 2024-07-24 15:36:43.133 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
 2024-07-24 15:36:43.134 +07:00 [INF] HTTP POST /user/login responded 200 in 14839.0416 ms
 2024-07-24 15:36:43.155 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 14874.3282ms
+2024-07-24 16:34:10.895 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-24 16:34:12.835 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-24 16:34:12.838 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-24 16:34:12.842 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-24 16:34:12.843 +07:00 [INF] Hosting environment: Development
+2024-07-24 16:34:12.845 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-07-24 16:34:42.790 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-24 16:34:44.313 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 1213.9481 ms
+2024-07-24 16:34:44.331 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 1546.6612ms
+2024-07-24 16:34:44.407 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-24 16:34:44.407 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-24 16:34:44.431 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 23.7025ms
+2024-07-24 16:34:44.539 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 132.0591ms
+2024-07-24 16:34:44.711 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-24 16:34:45.736 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1022.5674 ms
+2024-07-24 16:34:45.741 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1031.0291ms
