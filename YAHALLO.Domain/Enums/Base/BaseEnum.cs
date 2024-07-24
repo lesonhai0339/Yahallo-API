@@ -29,4 +29,11 @@ namespace YAHALLO.Domain.Enums.Base
         Alive = 1,
         Dead = 2,
     }
+    public enum CommonStatus
+    {
+        Active = 1,
+        Stopped = 2,
+        Locked = 3,
+        Hidden = 4,
+    }
 }
