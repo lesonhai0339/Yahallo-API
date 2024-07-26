@@ -19,19 +19,8 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         public string? ChapterId { get; set; }
         public string? ParentId { get;set; }
         public CommentType Type { get; set; }
-        public string Message { get; set; }
-        //CommentAttechment
-        public bool IsHaveMedia { get; set; }   
-        public string? Description { get; set; }
-        public CommentMediaType? MediaType { get; set; }
-        public IFormFile? MediaFile { get; set; }
-        public string? Title { get; set; }
-        public string? Url1 { get; set; }
-        public string? Url2 { get; set; }
-        public string? Url3 { get; set; }
-        public CreateCommentCommand() { }
-        public CreateCommentCommand(string userid, string? mangaid,string? chapterid,string? parentid, CommentType type, string message,
-            string? description, CommentMediaType? mediatype, string? title, string? url1, string? url2, string? url3)
+        public string Message { get; set; }     
+        public CreateCommentCommand(string userid, string? mangaid,string? chapterid,string? parentid, CommentType type, string message)
         {
             UserId = userid;
             MangaId = mangaid;
@@ -39,12 +28,6 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
             ParentId = parentid;
             Type = type;
             Message = message;
-            Description = description;
-            MediaType = mediatype;
-            Title = title;  
-            Url1 = url1;
-            Url2 = url2;
-            Url3 = url3;
         }
     }
 }

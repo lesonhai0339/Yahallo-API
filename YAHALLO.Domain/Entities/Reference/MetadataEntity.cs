@@ -7,7 +7,7 @@ using YAHALLO.Domain.Entities.Base;
 
 namespace YAHALLO.Domain.Entities.Reference
 {
-    public class Metadata : BaseEntity
+    public class MetadataEntity : BaseEntity
     {
         public required string ParentId { get; set; }
         public virtual object Parent { get; set; } = null!;

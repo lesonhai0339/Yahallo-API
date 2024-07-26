@@ -53,6 +53,7 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IMangaSeasonRepository, MangaSeasonRepository>();
             services.AddTransient<IMangaViewRepository, MangaViewRepository>();
             services.AddTransient<IUserTokenRepository, UserTokenRepository>();
+            services.AddTransient<IAttechmentRepository, AttechmentRepository>();
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
             return services;

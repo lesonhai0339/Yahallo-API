@@ -19,7 +19,7 @@ namespace YAHALLO.Infrastructure.Data.Configurations
                 .IsUnicode(true);
 
             builder.HasOne(x => x.Parent)
-                .WithMany(x => x.entities)
+                .WithMany(x => x.Entities)
                 .HasForeignKey(x => x.Id);
             builder.HasOne(x => x.UserEntity)
                 .WithMany(x => x.CommentEntities)
@@ -37,6 +37,9 @@ namespace YAHALLO.Infrastructure.Data.Configurations
                 .WithMany(x=> x.Comments)
                 .HasForeignKey(x => x.BlogId)
                 .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.MetaDatas)
+                .WithOne()
+                .HasForeignKey("ParentId");
             builder.ToTable("Comment");
         }
     }

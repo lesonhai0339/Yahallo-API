@@ -19,7 +19,6 @@ namespace YAHALLO.Domain.Entities
         public required string Title { get; set; }
         public string Description { get; set; } = "None";
         public string Content { get; set; } = "No Content";
-        public ICollection<IFormFile>? Medias { get; set; }
         public int ViewCount { get; set; }
         public int Like { get; set; }
         public int DisLike { get; set; }
@@ -28,15 +27,15 @@ namespace YAHALLO.Domain.Entities
         public BlogEnumType Type { get; set; }    
 
         // write list user visit this blog by date, data has been write to .txt file
-        public ICollection<Metadata>? ViewCountMetadataByDate { get; set; }
+        public virtual ICollection<MetadataEntity>? ViewCountMetadataByDate { get; set; }
         // write list user like blog  into .txt by date
-        public ICollection<Metadata>? LikeMetadataByteDate { get; set; }
+        public virtual ICollection<MetadataEntity>? LikeMetadataByteDate { get; set; }
         // write list user dislike blog into .txt by date
-        public ICollection<Metadata>? DisLikeMetadataByDate { get; set; }    
+        public virtual ICollection<MetadataEntity>? DisLikeMetadataByDate { get; set; }    
         // it look like category for manga, example : school, animal,v.v......
         public virtual ICollection<ThreadOfBlogEntity>? ThreadOfBlogEntities { get;set; }   
         public virtual ICollection<ReactionEntity>? Reactions { get;set; }     
         public virtual ICollection<CommentEntity>? Comments { get; set; }
-
+        public ICollection<AttechmentEntity>? Medias { get; set; }
     }
 }

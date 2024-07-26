@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities.Base;
+using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Enums.UserEnums;
 
 namespace YAHALLO.Domain.Entities.Reference
 {
-    public class CommentAttechment: BaseEntity
+    public class AttechmentEntity: BaseEntity
     {
         public string? Description { get;set; }
         public CommentMediaType? MediaType { get; set; } = null!;
@@ -19,6 +20,6 @@ namespace YAHALLO.Domain.Entities.Reference
         public string? Url3 { get;set;}
 
         public required string ParentId { get;set; }
-        public virtual CommentEntity Parent { get; set; } = null!;
+        public virtual object Parent { get; set; } = null!;
     }
 }
