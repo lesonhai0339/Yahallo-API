@@ -54,6 +54,14 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IMangaViewRepository, MangaViewRepository>();
             services.AddTransient<IUserTokenRepository, UserTokenRepository>();
             services.AddTransient<IAttechmentRepository, AttechmentRepository>();
+            services.AddTransient<IBlogRepository, BlogRepository>();
+            services.AddTransient<IUserOldPasswordRepository, UserOldPasswordRepository>();
+            services.AddTransient<IThreadRepository, ThreadRepository>();
+            services.AddTransient<IThreadOfBlogRepository, ThreadOfBlogRepository>();
+            services.AddTransient<IReactionRepository, ReactionRepository>();
+            services.AddTransient<ICountingRepository, CountingRepository>();
+
+
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
             return services;
