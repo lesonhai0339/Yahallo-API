@@ -14,6 +14,7 @@ namespace YAHALLO.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<BlogEntity> builder)
         {
             builder.HasKey(x=> x.Id);
+            
 
             builder.HasMany(x => x.DisLikeMetadataByDate)
                 .WithOne()
