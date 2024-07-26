@@ -72,7 +72,7 @@ namespace YAHALLO.Domain.Enums.MangaEnums
     /// <summary>
     /// Represents the type of the comment for manga or chapter
     /// </summary>
-    public enum MangaCommentType
+    public enum CommentType
     {
         Manga = 1,
         Chapter = 2,

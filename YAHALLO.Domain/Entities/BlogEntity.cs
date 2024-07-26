@@ -35,7 +35,8 @@ namespace YAHALLO.Domain.Entities
         public ICollection<Metadata>? DisLikeMetadataByDate { get; set; }    
         // it look like category for manga, example : school, animal,v.v......
         public virtual ICollection<ThreadOfBlogEntity>? ThreadOfBlogEntities { get;set; }   
-        public virtual ICollection<ReactionEntity>? Reactions { get;set; }       
+        public virtual ICollection<ReactionEntity>? Reactions { get;set; }     
+        public virtual ICollection<CommentEntity>? Comments { get; set; }
 
     }
 }
