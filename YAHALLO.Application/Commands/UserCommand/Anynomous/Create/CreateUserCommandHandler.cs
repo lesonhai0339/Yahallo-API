@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Services.MailService.Service;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Enums.UserEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
@@ -51,7 +52,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
             {
                 throw new NotFoundException("Số điện thoại này đã được sử đụng");
             }
-            var User = new UserEntity
+            var user = new UserEntity
             {
                 DisplayName = (request.FirstName + " " + request.LastName).ToString(),
                 FirstName = request.FirstName,
@@ -65,19 +66,22 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
                 Status = UserStatus.None,
                 Level = UserLevel.One
             };
-            _userRepository.Add(User);
+            var oldPassword= new UserOldPasswordEntity(user);
+            oldPassword.AddNew(request.Password);
+            user.OldPasswords = oldPassword;
+            _userRepository.Add(user);
             var role = await _roleRepository.FindAsync(x => x.RoleCode == 2, cancellationToken);
-            var userRole = new UserRoleEntity { UserId = User.Id, RoleId = role!.Id};
+            var userRole = new UserRoleEntity { UserId = user.Id, RoleId = role!.Id};
             _userRoleRepository.Add(userRole);
             var result = await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (result > 0)
             {
-                List<string> listSender= new List<string>() {User.Email };
-                var token= _emailServices.GenerateEmailToken(User.Id);
-                var route = _context.HttpContext + $"services/confirm-email?token={token}&userid={User.Id}";
+                List<string> listSender= new List<string>() { user.Email };
+                var token= _emailServices.GenerateEmailToken(user.Id);
+                var route = _context.HttpContext + $"services/confirm-email?token={token}&userid={user.Id}";
                 _emailServices.SendEmailWithCSS(new Services.MailService.Models.Message(listSender, "Xác Thực Email",
                     "Yêu cầu xác thực cho việc đăng ký tài khoản", route));
-                return $"Một Emaill xac thực đã được gửi đến email {User.Email}. Vui lòng xác nhận để kích hoạt tài khoản";
+                return $"Một Emaill xác thực đã được gửi đến email {user.Email}. Vui lòng xác nhận để kích hoạt tài khoản";
             }
             else
             {

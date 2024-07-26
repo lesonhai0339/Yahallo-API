@@ -38,20 +38,7 @@ namespace YAHALLO.Domain.Entities
         public bool PhoneConfirmed { get; set; } = false;
 
         public string UserName { get; set; } = null!;
-        private string _password { get; set; }   
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                if (_password != value && !string.IsNullOrEmpty(_password))
-                {
-                    OldPasswords.AddNew(value);
-                }
-                _password = value;
-               
-            }
-        }
+        public string Password { get; set; }
 
         public virtual ImageEntity? Avatar { get; set; }
         public virtual UserTokenEntity? UserToken { get; set; }

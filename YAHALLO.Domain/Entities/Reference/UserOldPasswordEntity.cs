@@ -9,8 +9,21 @@ namespace YAHALLO.Domain.Entities.Reference
 {
     public class UserOldPasswordEntity: RelationEntity
     {
-        public required string UserId { get; set; }
-        public virtual required UserEntity UserEntity { get; set; }
+        public UserOldPasswordEntity() { }
+        public UserOldPasswordEntity(UserEntity userEntity)
+        {
+            UserId = userEntity.Id;
+            UserEntity = userEntity;
+        }
+        public UserOldPasswordEntity(string userId, UserEntity userEntity, string? oldPasswords)
+        {
+            UserId = userId;
+            UserEntity = userEntity;
+            OldPasswords = oldPasswords;
+        }
+
+        public string? UserId { get; set; }
+        public virtual UserEntity? UserEntity { get; set; }
         public string? OldPasswords { get; set; }
         public void AddNew(string newpsd)
         {
