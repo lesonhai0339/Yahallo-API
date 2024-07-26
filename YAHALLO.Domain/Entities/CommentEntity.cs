@@ -44,14 +44,15 @@ namespace YAHALLO.Domain.Entities
         public string? Message { get; set;}
         public virtual CommentAttechment? MetaData { get; set; }
         public MangaCommentType CommentType { get; set; }
-        public string? ParentId { get; set; }
-        public virtual CommentEntity? Parent { get; set; }
         public string UserId { get; set; } = null!;
         public virtual UserEntity? UserEntity { get; set; }=null!;
         public string? MangaId { get; set;}
         public virtual MangaEntity? MangaEntity { get; set; }
         public string? ChapterId { get; set; }
         public virtual ChapterEntity? ChapterEntity { get; set; }
+
+        public string? ParentId { get; set; }
+        public virtual CommentEntity? Parent { get; set; }
         public virtual ICollection<CommentEntity>? entities { get; set; }
     }
 }
