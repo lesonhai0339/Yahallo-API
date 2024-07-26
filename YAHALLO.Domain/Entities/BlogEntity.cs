@@ -14,8 +14,6 @@ namespace YAHALLO.Domain.Entities
     public class BlogEntity: BaseEntity
     {
         public string? ParentId { get; set; }
-        public virtual object? Parent { get; set; }
-
         public required string Title { get; set; }
         public string Description { get; set; } = "None";
         public string Content { get; set; } = "No Content";

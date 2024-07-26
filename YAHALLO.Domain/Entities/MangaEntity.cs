@@ -35,6 +35,5 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<CommentEntity>? CommentEntities { get; set; }
         public virtual ICollection<FollowEntity>? FollowEntities { get; set; }  
         public virtual ICollection<MangaRatingEntity>? RatingEntities { get; set;}
-        public virtual ICollection<BlogEntity>? Blogs { get; set; } 
     }
 }
