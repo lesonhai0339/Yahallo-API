@@ -27,7 +27,10 @@ namespace YAHALLO.Infrastructure.Data.Configurations
             builder.HasOne(x=> x.UserEntity)
                 .WithMany(x=> x.MangaEntities)
                 .HasForeignKey(x => x.UserId);
-
+            builder.HasMany(x=> x.Blogs)
+                .WithOne()
+                .HasForeignKey("ParentId")
+                .OnDelete(DeleteBehavior.Restrict);
             builder.ToTable("Manga");
         }
     }

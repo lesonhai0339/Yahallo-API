@@ -1,4 +1,4 @@
-﻿Add-Migration -Name v1 -StartupProject "YAHALLO" -Project "YAHALLO.Infrastructure"
+﻿Add-Migration -Name v4 -StartupProject "YAHALLO" -Project "YAHALLO.Infrastructure"
 Update-Database -StartupProject "YAHALLO" -Project "YAHALLO.Infrastructure"
 
 Config cho entity

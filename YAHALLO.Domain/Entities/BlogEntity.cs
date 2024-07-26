@@ -36,6 +36,6 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<ThreadOfBlogEntity>? ThreadOfBlogEntities { get;set; }   
         public virtual ICollection<ReactionEntity>? Reactions { get;set; }     
         public virtual ICollection<CommentEntity>? Comments { get; set; }
-        public ICollection<AttechmentEntity>? Medias { get; set; }
+        public virtual ICollection<AttechmentEntity>? Medias { get; set; }
     }
 }
