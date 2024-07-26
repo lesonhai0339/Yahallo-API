@@ -76,6 +76,7 @@ namespace YAHALLO.Domain.Enums.MangaEnums
     {
         Manga = 1,
         Chapter = 2,
+        Blog = 3,
     }
 
 }

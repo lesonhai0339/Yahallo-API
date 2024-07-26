@@ -59,7 +59,7 @@ namespace YAHALLO.Domain.Entities
         public UserStatus Status { get; set; }
         public UserLevel Level { get; set; }
 
-        public UserOldPasswordEntity OldPasswords { get; set; }
+        public virtual UserOldPasswordEntity OldPasswords { get; set; }
 
         public virtual ICollection<UserRoleEntity> UserRoleEntities { get; set; }=null!;
         public virtual ICollection<MangaEntity>? MangaEntities { get;set; }
@@ -67,5 +67,6 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<CommentEntity>? ReplyComment { get; set; }
         public virtual ICollection<FollowEntity>? FollowEntities { get; set;}
         public virtual ICollection<MangaRatingEntity>? MangaRatingEntities { get; set; }
+        public virtual ICollection<ReactionEntity>? Reactions { get; set; }
     }
 }
