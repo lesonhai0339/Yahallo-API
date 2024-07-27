@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Data.Configurations
 {
@@ -37,9 +38,10 @@ namespace YAHALLO.Infrastructure.Data.Configurations
                 .WithMany(x=> x.Comments)
                 .HasForeignKey(x => x.BlogId)
                 .OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(x => x.MetaDatas)
-                .WithOne()
-                .HasForeignKey("ParentId");
+            builder.HasOne(x => x.ViewCount)
+                .WithOne(x => x.Comment)
+                .HasForeignKey<CountingEntitity>(x => x.CommentId)
+                .OnDelete(DeleteBehavior.Restrict);
             builder.ToTable("Comment");
         }
     }

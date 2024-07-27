@@ -19,7 +19,9 @@ namespace YAHALLO.Domain.Entities.Reference
         public string? Url2 { get;set;}
         public string? Url3 { get;set;}
 
-        public required string ParentId { get;set; }
-        public virtual object Parent { get; set; } = null!;
+        public string? CommentId { get;set; }
+        public virtual CommentEntity? Comment { get; set; }
+        public string? BlogId { get; set; }
+        public virtual BlogEntity? Blog { get; set; }
     }
 }

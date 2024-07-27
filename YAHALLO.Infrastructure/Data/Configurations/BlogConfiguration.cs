@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Data.Configurations
 {
@@ -15,22 +16,9 @@ namespace YAHALLO.Infrastructure.Data.Configurations
         {
             builder.HasKey(x=> x.Id);
             
-
-            builder.HasMany(x => x.DisLikeMetadataByDate)
-                .WithOne()
-                .HasForeignKey("ParentId")
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.HasMany(x=> x.LikeMetadataByteDate)
-                .WithOne()
-                .HasForeignKey("ParentId")
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.HasMany(x => x.ViewCountMetadataByDate)
-                .WithOne()
-                .HasForeignKey("ParentId")
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.HasMany(x=> x.Medias)
-                .WithOne()
-                .HasForeignKey("ParentId")
+            builder.HasOne(x => x.ViewCount)
+                .WithOne(x => x.Blog)
+                .HasForeignKey<CountingEntitity>(x => x.BlogId)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.ToTable("Blogs");
         }

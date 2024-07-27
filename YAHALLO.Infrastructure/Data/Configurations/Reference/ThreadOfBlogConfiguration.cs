@@ -13,7 +13,7 @@ namespace YAHALLO.Infrastructure.Data.Configurations.Reference
     {
         public void Configure(EntityTypeBuilder<ThreadOfBlogEntity> builder)
         {
-            builder.HasKey(x=> new { x.Thread, x.BlogId });
+            builder.HasKey(x=> new { x.ThreadId, x.BlogId });
 
             builder.HasOne(x=> x.Thread)
                 .WithMany(x=> x.ThreadOfBlogEntities)

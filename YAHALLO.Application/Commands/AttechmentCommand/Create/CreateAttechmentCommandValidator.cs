@@ -11,7 +11,19 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
     {
         public CreateAttechmentCommandValidator()
         {
-            RuleFor(x => x.ParentId).NotNull().NotEmpty().WithMessage("Comment Id không được bỏ trống");
+            RuleFor(x => x).Must(CheckValid).WithMessage("Không được bỏ trống cả 2 CommentId và BlogId hoặc điền cả 2");
+        }
+        public bool CheckValid(CreateAttechmentCommand command)
+        {
+            if(command.BlogId == null && command.CommentId == null)
+            {
+                return false;
+            }
+            else if(command.BlogId != null && command.CommentId != null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

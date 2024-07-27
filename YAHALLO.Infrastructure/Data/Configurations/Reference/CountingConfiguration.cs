@@ -5,16 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Data.Configurations.Reference
 {
-    public class MetadataConfiguration : IEntityTypeConfiguration<MetadataEntity>
+    public class CountingConfiguration : IEntityTypeConfiguration<CountingEntitity>
     {
-        public void Configure(EntityTypeBuilder<MetadataEntity> builder)
+        public void Configure(EntityTypeBuilder<CountingEntitity> builder)
         {
-            builder.HasKey(x=> x.Id);
+            builder.HasKey(x => x.ParentId);
+
+            builder.ToTable("Counting");
         }
     }
 }

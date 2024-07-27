@@ -13,9 +13,10 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
 {
     public class CreateAttechmentCommand: IRequest<ResponseResult<string>>
     {
-        public CreateAttechmentCommand(string parentid,bool isHaveMedia, string? description, CommentMediaType? mediaType, IFormFile? mediaFile, string? title, string? url1, string? url2, string? url3)
+        public CreateAttechmentCommand(string? blogid, string? commentid,bool isHaveMedia, string? description, CommentMediaType? mediaType, IFormFile? mediaFile, string? title, string? url1, string? url2, string? url3)
         {
-            ParentId = parentid;    
+            BlogId = blogid;
+            CommentId = commentid;
             IsHaveMedia = isHaveMedia;
             Description = description;
             MediaType = mediaType;
@@ -25,7 +26,8 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
             Url2 = url2;
             Url3 = url3;
         }
-        public required string ParentId { get; set; }   
+        public string? BlogId { get; set; }
+        public string? CommentId { get;set; }
         public bool IsHaveMedia { get; set; }
         public string? Description { get; set; }
         public CommentMediaType? MediaType { get; set; }

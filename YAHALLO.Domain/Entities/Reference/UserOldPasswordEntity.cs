@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace YAHALLO.Domain.Entities.Reference
 
         public string? UserId { get; set; }
         public virtual UserEntity? UserEntity { get; set; }
+
         public string? OldPasswords { get; set; }
         public void AddNew(string newpsd)
         {

@@ -15,12 +15,6 @@ namespace YAHALLO.Infrastructure.Data.Configurations.Reference
         public void Configure(EntityTypeBuilder<UserOldPasswordEntity> builder)
         {
             builder.HasKey(x=> x.UserId);
-
-            builder.HasOne(x => x.UserEntity)
-                .WithOne(x => x.OldPasswords)
-                .HasForeignKey<UserOldPasswordEntity>(x => x.UserId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Cascade);
             builder.ToTable("OldPassword");
         }
     }

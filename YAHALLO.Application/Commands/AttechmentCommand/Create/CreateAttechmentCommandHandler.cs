@@ -22,14 +22,16 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
         private readonly IFiles<IFormFile> _files;
         private readonly ICurrentUserService _currentUser;
         private readonly IAttechmentRepository _attechmentRepository;
+        private readonly IBlogRepository _blogRepository;
         private MangaEntity? _manga;
         private ChapterEntity? _chapter;
         public CreateAttechmentCommandHandler(ICommentRepository commentRepository,
-            IFiles<IFormFile> files, ICurrentUserService currentUser, IAttechmentRepository attechmentRepository)
+            IFiles<IFormFile> files, ICurrentUserService currentUser, IAttechmentRepository attechmentRepository, IBlogRepository blogRepository)
         {
             _commentRepository = commentRepository;
             _currentUser = currentUser;
             _attechmentRepository = attechmentRepository;
+            _blogRepository = blogRepository;
             _files = files;
             _manga = null;
             _chapter = null;
@@ -39,10 +41,21 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
             string? url_1 = request.Url1;
             string? url_2 = request.Url2;
             string? url_3 = request.Url3;
-            var checkCommentExist = await _commentRepository.FindAsync(x => x.Id == request.ParentId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
-            if(checkCommentExist == null)
+            Tuple<string,string>? entity = new Tuple<string, string>("","");
+            if(request.CommentId != null)
             {
-                throw new NotFoundException($"Comment với Id {request.ParentId} không tồn tại");
+                entity = new Tuple<string,string>("Comment", request.CommentId);
+            }
+            else
+            {
+                entity = new Tuple<string, string>("Blog", request.BlogId!);
+            }
+            object? checkEntityExist = (entity.Item1 == "Comment")
+                ? await _commentRepository.FindAsync(x => x.Id == entity.Item2 && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken)
+                : await _blogRepository.FindAsync(x => x.Id == entity.Item2 && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
+            if(checkEntityExist == null)
+            {
+                throw new NotFoundException($"{entity.Item1} với Id {entity.Item2} không tồn tại");
             }
             AttechmentEntity attechment = new AttechmentEntity
             {
@@ -52,10 +65,12 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
                 Url1 = request.Url1,
                 Url2 = request.Url2,
                 Url3 = request.Url3,
-                Parent = checkCommentExist,
-                ParentId = checkCommentExist.Id,
                 IdUserCreate = _currentUser.UserId,
                 CreateDate = DateTime.Now,
+                CommentId = (entity.Item1 =="Comment") ? entity.Item2 : null,
+                Comment = (entity.Item1 == "Comment") ? (CommentEntity)checkEntityExist : null,
+                BlogId = (entity.Item1 == "Blog") ? entity.Item2 : null,
+                Blog = (entity.Item1 == "Blog") ? (BlogEntity)checkEntityExist : null,
             };
             if (request.IsHaveMedia == true)
             {
