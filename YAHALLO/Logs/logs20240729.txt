@@ -1,0 +1,402 @@
+2024-07-29 09:40:08.059 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:40:09.283 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:40:09.284 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:40:09.361 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:40:09.363 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:40:09.363 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:40:10.063 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:40:10.412 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 180.0953 ms
+2024-07-29 09:40:10.420 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 357.9066ms
+2024-07-29 09:40:10.432 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:40:10.436 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:40:10.441 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 9.2125ms
+2024-07-29 09:40:10.495 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 58.5868ms
+2024-07-29 09:40:10.670 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:40:10.857 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 184.8230 ms
+2024-07-29 09:40:10.860 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 190.2138ms
+2024-07-29 09:40:37.139 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:40:37.608 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:40:37.609 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:40:37.688 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:40:37.689 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:40:37.691 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:40:38.131 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:40:38.375 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 133.9651 ms
+2024-07-29 09:40:38.383 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:40:38.384 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 254.2836ms
+2024-07-29 09:40:38.388 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.4669ms
+2024-07-29 09:40:38.398 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:40:38.431 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.8535ms
+2024-07-29 09:40:38.643 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:40:38.871 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 225.8295 ms
+2024-07-29 09:40:38.873 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 229.4549ms
+2024-07-29 09:41:13.837 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryJgh0N77rpfdPNvAC 105818
+2024-07-29 09:41:13.850 +07:00 [INF] CORS policy execution successful.
+2024-07-29 09:41:13.857 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:41:13.882 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 09:41:55.317 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:41:55.905 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:41:55.906 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:41:55.983 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:41:55.985 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:41:55.986 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:41:56.631 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:41:56.867 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 127.8897 ms
+2024-07-29 09:41:56.876 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 245.9057ms
+2024-07-29 09:41:56.879 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:41:56.888 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 8.8870ms
+2024-07-29 09:41:56.893 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:41:56.938 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 45.2949ms
+2024-07-29 09:41:57.036 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:41:57.223 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 186.0148 ms
+2024-07-29 09:41:57.225 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 189.4901ms
+2024-07-29 09:42:09.064 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundarywiSBB4VyGvDCThI1 516
+2024-07-29 09:42:09.067 +07:00 [INF] CORS policy execution successful.
+2024-07-29 09:42:09.075 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:42:09.102 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 09:45:34.067 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:45:34.555 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:45:34.556 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:45:34.628 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:45:34.630 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:45:34.631 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:45:35.076 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:45:35.307 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 129.0679 ms
+2024-07-29 09:45:35.314 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 238.4211ms
+2024-07-29 09:45:35.326 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:45:35.332 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 6.4265ms
+2024-07-29 09:45:35.334 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:45:35.367 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 32.6701ms
+2024-07-29 09:45:35.476 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:45:35.684 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 206.5814 ms
+2024-07-29 09:45:35.686 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 210.4047ms
+2024-07-29 09:45:50.935 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryukWnlgtjqXMNIqEe 517
+2024-07-29 09:45:50.938 +07:00 [INF] CORS policy execution successful.
+2024-07-29 09:45:50.943 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:45:50.967 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 09:48:16.272 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateReportCommand {"Title":"1111","Description":null,"Content":null,"Target":null,"Type":"UserEntity","Media":null,"$type":"CreateReportCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy đối tượng report
+   at YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommandHandler.Handle(CreateReportCommand request, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Commands\ReportCommand\Create\CreateReportCommandHandler.cs:line 43
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.<>c__DisplayClass1_0.<Handle>g__Handler|0()
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-07-29 09:48:16.522 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-07-29 09:48:16.530 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO) in 145556.6985ms
+2024-07-29 09:48:16.531 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:48:16.532 +07:00 [INF] HTTP POST /Create responded 404 in 145593.0917 ms
+2024-07-29 09:48:16.535 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryukWnlgtjqXMNIqEe 517 - 404 - application/problem+json;+charset=utf-8 145600.4062ms
+2024-07-29 09:48:54.829 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:48:55.307 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:48:55.309 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:48:55.399 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:48:55.400 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:48:55.401 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:48:55.861 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:48:56.096 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 128.4831 ms
+2024-07-29 09:48:56.105 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 246.5545ms
+2024-07-29 09:48:56.112 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:48:56.118 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:48:56.118 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 6.3048ms
+2024-07-29 09:48:56.152 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.7524ms
+2024-07-29 09:48:56.266 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:48:56.501 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 234.1300 ms
+2024-07-29 09:48:56.503 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 237.1456ms
+2024-07-29 09:49:04.895 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundary5hjDN4jm1YN6yggx 515
+2024-07-29 09:49:04.898 +07:00 [INF] CORS policy execution successful.
+2024-07-29 09:49:04.908 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:49:04.935 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 09:49:11.860 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateReportCommand {"Title":"11","Description":null,"Content":null,"Target":null,"Type":"MangaEntity","Media":null,"$type":"CreateReportCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy đối tượng report
+   at YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommandHandler.Handle(CreateReportCommand request, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Commands\ReportCommand\Create\CreateReportCommandHandler.cs:line 43
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.<>c__DisplayClass1_0.<Handle>g__Handler|0()
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-07-29 09:49:12.039 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-07-29 09:49:12.047 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO) in 7105.6566ms
+2024-07-29 09:49:12.048 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:49:12.048 +07:00 [INF] HTTP POST /Create responded 404 in 7145.1414 ms
+2024-07-29 09:49:12.051 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundary5hjDN4jm1YN6yggx 515 - 404 - application/problem+json;+charset=utf-8 7155.8126ms
+2024-07-29 09:51:10.528 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:51:11.116 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:51:11.118 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:51:11.220 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:51:11.221 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:51:11.222 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:51:11.648 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:51:11.882 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 133.7823 ms
+2024-07-29 09:51:11.891 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 245.0045ms
+2024-07-29 09:51:11.899 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:51:11.905 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 6.3016ms
+2024-07-29 09:51:11.909 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:51:11.946 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 36.7429ms
+2024-07-29 09:51:12.050 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:51:12.266 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 214.2261 ms
+2024-07-29 09:51:12.267 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 217.3441ms
+2024-07-29 09:51:21.244 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundarysMMvs33AM7dnBjDf 516
+2024-07-29 09:51:21.248 +07:00 [INF] CORS policy execution successful.
+2024-07-29 09:51:21.257 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:51:21.283 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 09:51:23.459 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateReportCommand {"Title":"123","Description":null,"Content":null,"Target":null,"Type":"UserEntity","Media":null,"$type":"CreateReportCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy đối tượng report
+   at YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommandHandler.Handle(CreateReportCommand request, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Commands\ReportCommand\Create\CreateReportCommandHandler.cs:line 43
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.<>c__DisplayClass1_0.<Handle>g__Handler|0()
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-07-29 09:51:23.739 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-07-29 09:51:23.746 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO) in 2458.8098ms
+2024-07-29 09:51:23.748 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:51:23.749 +07:00 [INF] HTTP POST /Create responded 404 in 2497.2136 ms
+2024-07-29 09:51:23.752 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundarysMMvs33AM7dnBjDf 516 - 404 - application/problem+json;+charset=utf-8 2508.5866ms
+2024-07-29 09:53:16.219 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:53:17.301 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:53:17.302 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:53:17.375 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:53:17.377 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:53:17.377 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:53:17.851 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:53:18.155 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 149.1861 ms
+2024-07-29 09:53:18.163 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 313.7212ms
+2024-07-29 09:53:18.168 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:53:18.172 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.2931ms
+2024-07-29 09:53:18.186 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:53:18.225 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.5954ms
+2024-07-29 09:53:18.337 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:53:18.521 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 183.0447 ms
+2024-07-29 09:53:18.524 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 186.4697ms
+2024-07-29 09:53:27.044 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryXBjJCDkKJBeYVHdp 519
+2024-07-29 09:53:27.048 +07:00 [INF] CORS policy execution successful.
+2024-07-29 09:53:27.056 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:53:27.083 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 09:53:45.203 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateReportCommand {"Title":"123123","Description":null,"Content":null,"Target":null,"Type":"UserEntity","Media":null,"$type":"CreateReportCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy đối tượng report
+   at YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommandHandler.Handle(CreateReportCommand request, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Commands\ReportCommand\Create\CreateReportCommandHandler.cs:line 43
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.<>c__DisplayClass1_0.<Handle>g__Handler|0()
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-07-29 09:53:45.432 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-07-29 09:53:45.439 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO) in 18351.643ms
+2024-07-29 09:53:45.441 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:53:45.442 +07:00 [INF] HTTP POST /Create responded 404 in 18392.3071 ms
+2024-07-29 09:53:45.444 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryXBjJCDkKJBeYVHdp 519 - 404 - application/problem+json;+charset=utf-8 18400.4269ms
+2024-07-29 09:57:27.533 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:57:27.553 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 8.5232 ms
+2024-07-29 09:57:27.559 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 26.7450ms
+2024-07-29 09:57:27.579 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:57:27.580 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:57:27.585 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 3.5456ms
+2024-07-29 09:57:27.600 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.5813ms
+2024-07-29 09:57:27.763 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:57:27.765 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - -
+2024-07-29 09:57:27.777 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-07-29 09:57:27.778 +07:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 11.5036 ms
+2024-07-29 09:57:27.781 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - - - 200 628 image/png 15.5660ms
+2024-07-29 09:57:27.868 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 104.0041 ms
+2024-07-29 09:57:27.870 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 106.7200ms
+2024-07-29 09:57:47.990 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:57:48.444 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:57:48.445 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:57:48.533 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:57:48.534 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:57:48.535 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:57:49.059 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:57:49.301 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 149.7463 ms
+2024-07-29 09:57:49.310 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 252.8626ms
+2024-07-29 09:57:49.322 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:57:49.322 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:57:49.329 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 6.1042ms
+2024-07-29 09:57:49.357 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.0921ms
+2024-07-29 09:57:49.484 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:57:49.683 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 197.8079 ms
+2024-07-29 09:57:49.686 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 201.7261ms
+2024-07-29 09:57:59.317 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundarynNSnvnQkqqBrA0TN 519
+2024-07-29 09:57:59.322 +07:00 [INF] CORS policy execution successful.
+2024-07-29 09:57:59.331 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:57:59.357 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 09:59:09.160 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 09:59:09.636 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 09:59:09.637 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 09:59:09.711 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 09:59:09.713 +07:00 [INF] Hosting environment: Development
+2024-07-29 09:59:09.714 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 09:59:10.204 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 09:59:10.446 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 139.2897 ms
+2024-07-29 09:59:10.457 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 254.9429ms
+2024-07-29 09:59:10.459 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 09:59:10.465 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 6.1677ms
+2024-07-29 09:59:10.477 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 09:59:10.510 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 32.8747ms
+2024-07-29 09:59:10.643 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 09:59:10.844 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 199.4610 ms
+2024-07-29 09:59:10.846 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 202.4713ms
+2024-07-29 09:59:23.015 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundary2c6B98naOhyeEf21 516
+2024-07-29 09:59:23.018 +07:00 [INF] CORS policy execution successful.
+2024-07-29 09:59:23.029 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:59:23.060 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 09:59:27.656 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateReportCommand {"Title":"111","Description":null,"Content":null,"Target":null,"Type":"UserEntity","Media":null,"$type":"CreateReportCommand"}
+System.NotImplementedException: The method or operation is not implemented.
+   at YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommandHandler.Handle(CreateReportCommand request, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Commands\ReportCommand\Create\CreateReportCommandHandler.cs:line 47
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.<>c__DisplayClass1_0.<Handle>g__Handler|0()
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2024-07-29 09:59:27.859 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO) in 4793.7827ms
+2024-07-29 09:59:27.893 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 09:59:27.940 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NotImplementedException: The method or operation is not implemented.
+   at YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommandHandler.Handle(CreateReportCommand request, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Commands\ReportCommand\Create\CreateReportCommandHandler.cs:line 47
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.<>c__DisplayClass1_0.<Handle>g__Handler|0()
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport(CreateReportCommand command, CancellationToken cancellationToken) in C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO\Controllers\Anonymous\ReportComtroller.cs:line 28
+   at lambda_method7(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2024-07-29 09:59:27.967 +07:00 [ERR] HTTP POST /Create responded 500 in 4943.3465 ms
+2024-07-29 09:59:27.969 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundary2c6B98naOhyeEf21 516 - 500 - application/problem+json 4955.2588ms
+2024-07-29 10:01:16.076 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 10:01:16.600 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 10:01:16.601 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 10:01:16.813 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 10:01:16.815 +07:00 [INF] Hosting environment: Development
+2024-07-29 10:01:16.816 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 10:01:16.900 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 10:01:17.117 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 119.1719 ms
+2024-07-29 10:01:17.127 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 228.2488ms
+2024-07-29 10:01:17.137 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 10:01:17.143 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.4989ms
+2024-07-29 10:01:17.152 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 10:01:17.192 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 39.9633ms
+2024-07-29 10:01:17.342 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 10:01:17.548 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 204.4527 ms
+2024-07-29 10:01:17.550 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 214.8901ms
+2024-07-29 10:01:29.777 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryzMpZ0F0Q3047nCOt 515
+2024-07-29 10:01:29.780 +07:00 [INF] CORS policy execution successful.
+2024-07-29 10:01:29.786 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 10:01:29.813 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 11:36:42.710 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 11:36:43.235 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 11:36:43.236 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 11:36:43.492 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 11:36:43.493 +07:00 [INF] Hosting environment: Development
+2024-07-29 11:36:43.495 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 11:36:43.495 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 11:36:43.731 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 128.8927 ms
+2024-07-29 11:36:43.738 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 244.7742ms
+2024-07-29 11:36:43.748 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 11:36:43.753 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.4364ms
+2024-07-29 11:36:43.759 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 11:36:43.791 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 32.3217ms
+2024-07-29 11:36:43.887 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 11:36:44.111 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 222.5676 ms
+2024-07-29 11:36:44.114 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 226.4943ms
+2024-07-29 11:36:55.761 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryPZkHAldkYNAGHmF8 519
+2024-07-29 11:36:55.768 +07:00 [INF] CORS policy execution successful.
+2024-07-29 11:36:55.777 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 11:36:55.809 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 11:39:35.135 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 11:39:35.598 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 11:39:35.600 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 11:39:35.684 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 11:39:35.685 +07:00 [INF] Hosting environment: Development
+2024-07-29 11:39:35.686 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 11:39:36.061 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 11:39:36.271 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 119.2672 ms
+2024-07-29 11:39:36.279 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 219.1336ms
+2024-07-29 11:39:36.288 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 11:39:36.288 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 11:39:36.295 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.6705ms
+2024-07-29 11:39:36.322 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.1346ms
+2024-07-29 11:39:36.436 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 11:39:36.616 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 177.9965 ms
+2024-07-29 11:39:36.617 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 181.4712ms
+2024-07-29 11:39:45.694 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryBfEgBpYghzknGsob 518
+2024-07-29 11:39:45.698 +07:00 [INF] CORS policy execution successful.
+2024-07-29 11:39:45.707 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 11:39:45.730 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 11:40:47.294 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 11:40:47.751 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 11:40:47.752 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 11:40:47.826 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 11:40:47.827 +07:00 [INF] Hosting environment: Development
+2024-07-29 11:40:47.828 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 11:40:48.489 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 11:40:48.692 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 116.5848 ms
+2024-07-29 11:40:48.701 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 211.8866ms
+2024-07-29 11:40:48.709 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 11:40:48.714 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.0691ms
+2024-07-29 11:40:48.722 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 11:40:48.758 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.2188ms
+2024-07-29 11:40:48.867 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 11:40:49.088 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 218.1805 ms
+2024-07-29 11:40:49.090 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 222.8590ms
+2024-07-29 11:40:57.099 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundary0hlQWa9IJABbBGDg 516
+2024-07-29 11:40:57.102 +07:00 [INF] CORS policy execution successful.
+2024-07-29 11:40:57.113 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 11:40:57.137 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 14:00:53.673 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 14:00:54.161 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 14:00:54.162 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 14:00:54.247 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 14:00:54.248 +07:00 [INF] Hosting environment: Development
+2024-07-29 14:00:54.250 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 14:00:54.744 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 14:00:55.011 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 145.5789 ms
+2024-07-29 14:00:55.020 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 278.4715ms
+2024-07-29 14:00:55.028 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 14:00:55.035 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 14:00:55.035 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 6.9263ms
+2024-07-29 14:00:55.074 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.9467ms
+2024-07-29 14:00:55.194 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 14:00:55.404 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 209.4006 ms
+2024-07-29 14:00:55.406 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 212.4850ms
+2024-07-29 14:01:29.010 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryigcbpWLkWKlNkXn7 515
+2024-07-29 14:01:29.022 +07:00 [INF] CORS policy execution successful.
+2024-07-29 14:01:29.028 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 14:01:29.056 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).
+2024-07-29 14:01:58.022 +07:00 [INF] User profile is available. Using 'C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 14:01:58.593 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-29 14:01:58.594 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-29 14:01:58.691 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 14:01:58.692 +07:00 [INF] Hosting environment: Development
+2024-07-29 14:01:58.693 +07:00 [INF] Content root path: C:\Users\DELL\Source\Repos\Yahallo-Clean-Architecture\YAHALLO
+2024-07-29 14:01:59.054 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-29 14:01:59.283 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 134.1766 ms
+2024-07-29 14:01:59.293 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 240.0313ms
+2024-07-29 14:01:59.313 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 14:01:59.313 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-29 14:01:59.319 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 6.1848ms
+2024-07-29 14:01:59.353 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 39.8213ms
+2024-07-29 14:01:59.458 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-29 14:01:59.660 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 200.1679 ms
+2024-07-29 14:01:59.661 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 203.5957ms
+2024-07-29 14:02:08.628 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/Create multipart/form-data;+boundary=----WebKitFormBoundaryBBQyTVEGjjTpHcAD 515
+2024-07-29 14:02:08.633 +07:00 [INF] CORS policy execution successful.
+2024-07-29 14:02:08.644 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ReportComtroller.CreateReport (YAHALLO)'
+2024-07-29 14:02:08.674 +07:00 [INF] Route matched with {action = "CreateReport", controller = "ReportComtroller"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[System.String]]]] CreateReport(YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ReportComtroller (YAHALLO).

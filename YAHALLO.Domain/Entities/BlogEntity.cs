@@ -13,10 +13,28 @@ namespace YAHALLO.Domain.Entities
 {
     public class BlogEntity: BaseEntity
     {
+        public BlogEntity() { }
+        public BlogEntity(string? parentId, string title, string description, string content, int like, int disLike, CommonStatus status, BlogEnumType type, CountingEntitity? viewCount, ICollection<ThreadOfBlogEntity>? threadOfBlogEntities, ICollection<ReactionEntity>? reactions, ICollection<CommentEntity>? comments, ICollection<AttechmentEntity>? attechments)
+        {
+            ParentId = parentId;
+            Title = title;
+            Description = description;
+            Content = content;
+            Like = like;
+            DisLike = disLike;
+            Status = status;
+            Type = type;
+            ViewCount = viewCount;
+            ThreadOfBlogEntities = threadOfBlogEntities;
+            Reactions = reactions;
+            Comments = comments;
+            Attechments = attechments;
+        }
+
         public string? ParentId { get; set; }
-        public required string Title { get; set; }
-        public string Description { get; set; } = "None";
-        public string Content { get; set; } = "No Content";
+        public string? Title { get; set; }
+        public string? Description { get; set; } = "None";
+        public string? Content { get; set; } = "No Content";
         public int Like { get; set; }
         public int DisLike { get; set; }
 
