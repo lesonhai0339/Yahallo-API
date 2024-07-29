@@ -61,8 +61,8 @@ namespace YAHALLO.Domain.Entities
         public UserEntity? ConvertFromString(string classname)
         {
             var local = typeof(UserEntity);
-            var type = Type.GetType(string.Format($"{local.Namespace}.{0}", classname);
-            return (UserEntity?)Activator.CreateInstance(type);
+            var type = Type.GetType(string.Format($"{local.Namespace}.{0}", classname));
+            return (UserEntity?)Activator.CreateInstance(type!);
         }
     }
 }
