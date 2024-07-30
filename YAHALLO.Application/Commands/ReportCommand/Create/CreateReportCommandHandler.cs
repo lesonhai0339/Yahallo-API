@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Pkcs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
@@ -16,6 +19,7 @@ using YAHALLO.Domain.Enums.ReportEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using static YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommandHandler;
 
 namespace YAHALLO.Application.Commands.ReportCommand.Create
 {
@@ -27,9 +31,10 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
         private readonly IMangaRepository _mangaRepository;
         private readonly IChapterRepository _chapterRepository;
         private readonly IBlogRepository _blogRepository;
+        private readonly IEFRepository _ef;
         private readonly IEnums _enums;
         public CreateReportCommandHandler(IReportRepository reportRepository, ICurrentUserService currentUser, IUserRepository userRepository, IMangaRepository mangaRepository, 
-            IChapterRepository chapterRepository, IBlogRepository blogRepository, IEnums enums)
+            IChapterRepository chapterRepository, IBlogRepository blogRepository, IEnums enums, IEFRepository ef)
         {
             _reportRepository = reportRepository;
             _currentUser = currentUser;
@@ -38,37 +43,17 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
             _chapterRepository = chapterRepository;
             _blogRepository = blogRepository;
             _enums = enums;
+            _ef = ef;
         }
 
         public async Task<ResponseResult<string>> Handle(CreateReportCommand request, CancellationToken cancellationToken)
         {
-            object? parent= new object();
-            var classEntity = _enums.GetClassFromEnum(request.Type);
+            Type? classEntity = _enums.GetClassFromEnum(request.Type);
             if (classEntity == null) 
             {
                 throw new NotFoundException($"Không tìm thấy đối tượng report");
             }
-            if(request.Type == ReportEnumType.MangaEntity)
-            {
-                parent = await _mangaRepository.FindAsync(x=> x.Id == request.Target && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue , cancellationToken);
-            }
-            else if (request.Type == ReportEnumType.UserEntity)
-            {
-                parent = await _userRepository.FindAsync(x => x.Id == request.Target && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
-            }
-            else if (request.Type == ReportEnumType.ChapterEntity)
-            {
-                parent = await _chapterRepository.FindAsync(x => x.Id == request.Target && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
-            }
-            else if (request.Type == ReportEnumType.BlogEntity)
-            {
-                parent = await _blogRepository.FindAsync(x => x.Id == request.Target && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
-            }
-            if(parent == null) 
-            {
-                throw new NotFoundException($"Không tìm thấy đối tượng report");
-            }
-            
+            _ef.FromSql()
             throw new NotImplementedException();
         }
         /*public async Task<ResponseResult<string>> Handle(CreateReportCommand request, CancellationToken cancellationToken)
