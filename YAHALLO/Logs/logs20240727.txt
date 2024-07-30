@@ -1077,3 +1077,170 @@ INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20240727040451_v4', N'7.0.0');
 2024-07-27 11:20:03.274 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
 2024-07-27 11:20:04.134 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 13:41:31.297 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-27 13:41:32.899 +07:00 [INF] Now listening on: https://localhost:7181
+2024-07-27 13:41:32.900 +07:00 [INF] Now listening on: http://localhost:5213
+2024-07-27 13:41:32.902 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-27 13:41:32.902 +07:00 [INF] Hosting environment: Development
+2024-07-27 13:41:32.904 +07:00 [INF] Content root path: D:\LapTrinh\ASP.NET\YAHALLO\YAHALLO\YAHALLO
+2024-07-27 13:41:36.491 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2024-07-27 13:41:37.194 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 451.4844 ms
+2024-07-27 13:41:37.204 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 716.7484ms
+2024-07-27 13:41:37.246 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2024-07-27 13:41:37.247 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2024-07-27 13:41:37.259 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 12.5077ms
+2024-07-27 13:41:37.497 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 250.1155ms
+2024-07-27 13:41:37.546 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2024-07-27 13:41:37.934 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 385.3767 ms
+2024-07-27 13:41:37.935 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 388.7307ms
+2024-07-27 13:42:57.148 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 181
+2024-07-27 13:42:57.154 +07:00 [INF] CORS policy execution successful.
+2024-07-27 13:42:57.165 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-07-27 13:42:57.217 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-07-27 13:42:59.124 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 13:43:01.780 +07:00 [INF] Executed DbCommand (197ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2024-07-27 13:43:02.187 +07:00 [INF] Executed DbCommand (119ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2024-07-27 13:43:02.655 +07:00 [INF] Executed DbCommand (153ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (DbType = DateTime2), @p20='?' (DbType = DateTime2), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2), @p26='?' (Size = 450), @p27='?' (Size = 450), @p28='?' (DbType = DateTime2), @p29='?' (DbType = DateTime2), @p30='?' (Size = 4000), @p31='?' (Size = 4000), @p32='?' (Size = 4000), @p33='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [OldPassword] ([UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [OldPasswords], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33);
+2024-07-27 13:43:06.497 +07:00 [WRN] Yahallo Long Running Request: CreateUserCommand (9023 milliseconds)  {"FirstName":"Sơn","LastName":"Thủy","Email":"haileds939@gmail.com","PhoneNumber":"0384539162","UserName":"haileds939@gmail.com","Password":"Hai@119067","$type":"CreateUserCommand"}
+2024-07-27 13:43:06.515 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-27 13:43:06.526 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 9303.0815ms
+2024-07-27 13:43:06.528 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2024-07-27 13:43:06.529 +07:00 [INF] HTTP POST /user/create responded 200 in 9373.1120 ms
+2024-07-27 13:43:06.546 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 181 - 200 - application/json;+charset=utf-8 9398.2709ms
+2024-07-27 13:44:21.156 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/confirm-email?token=236A72BF785C6CD341CCB5FF8818BCF919AA2DF49D33387D9AB1F7283234808C&userid=eb15e14610264127bdebd2aa1d715198 - -
+2024-07-27 13:44:21.164 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ServicesController.ConfirmEmail (YAHALLO)'
+2024-07-27 13:44:21.170 +07:00 [INF] Route matched with {action = "ConfirmEmail", controller = "Services"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] ConfirmEmail(System.String, System.String, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ServicesController (YAHALLO).
+2024-07-27 13:44:21.473 +07:00 [INF] Executed DbCommand (104ms) [Parameters=[@__request_UserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_UserId_0 AND (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-07-27 13:44:21.579 +07:00 [INF] Executed DbCommand (89ms) [Parameters=[@p17='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 450), @p4='?' (DbType = Boolean), @p5='?' (Size = 200), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 200), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 8000) (DbType = AnsiString), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreateDate] = @p0, [DeleteDate] = @p1, [DisplayName] = @p2, [Email] = @p3, [EmailConfirm] = @p4, [FirstName] = @p5, [IdUserCreate] = @p6, [IdUserDelete] = @p7, [IdUserUpdate] = @p8, [LastName] = @p9, [Level] = @p10, [Password] = @p11, [PhoneConfirmed] = @p12, [PhoneNumber] = @p13, [Status] = @p14, [UpdateDate] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17;
+2024-07-27 13:44:21.585 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-27 13:44:21.587 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ServicesController.ConfirmEmail (YAHALLO) in 415.7661ms
+2024-07-27 13:44:21.588 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ServicesController.ConfirmEmail (YAHALLO)'
+2024-07-27 13:44:21.590 +07:00 [INF] HTTP GET /services/confirm-email responded 200 in 426.9964 ms
+2024-07-27 13:44:21.593 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/confirm-email?token=236A72BF785C6CD341CCB5FF8818BCF919AA2DF49D33387D9AB1F7283234808C&userid=eb15e14610264127bdebd2aa1d715198 - - - 200 - application/json;+charset=utf-8 469.8395ms
+2024-07-27 13:44:21.895 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/favicon.ico - -
+2024-07-27 13:44:21.897 +07:00 [INF] HTTP GET /favicon.ico responded 404 in 1.0259 ms
+2024-07-27 13:44:21.899 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/favicon.ico - - - 404 0 - 3.4538ms
+2024-07-27 13:44:55.117 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 68
+2024-07-27 13:44:55.124 +07:00 [INF] CORS policy execution successful.
+2024-07-27 13:44:55.129 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-07-27 13:44:55.136 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-07-27 13:44:55.327 +07:00 [INF] Executed DbCommand (88ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2024-07-27 13:44:55.450 +07:00 [INF] Executed DbCommand (95ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2024-07-27 13:44:55.578 +07:00 [INF] Executed DbCommand (80ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-07-27 13:44:55.690 +07:00 [INF] Executed DbCommand (92ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__p_0
+2024-07-27 13:44:56.240 +07:00 [INF] Executed DbCommand (86ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([Id], [AccessToken], [CreateDate], [DeleteDate], [ExpiredRefeshToken], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RefeshToken], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2024-07-27 13:44:56.243 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (1029 milliseconds)  {"UserName":"haileds939@gmail.com","Password":"Hai@119067","$type":"LoginCommand"}
+2024-07-27 13:44:56.246 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-07-27 13:44:56.250 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 1111.8342ms
+2024-07-27 13:44:56.251 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2024-07-27 13:44:56.252 +07:00 [INF] HTTP POST /user/login responded 200 in 1126.8653 ms
+2024-07-27 13:44:56.253 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 68 - 200 - application/json;+charset=utf-8 1136.4752ms
+2024-07-27 13:45:29.892 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/forgot-password application/json 37
+2024-07-27 13:45:29.893 +07:00 [INF] CORS policy execution successful.
+2024-07-27 13:45:29.893 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.ForgotPassword (YAHALLO)'
+2024-07-27 13:45:29.899 +07:00 [INF] Route matched with {action = "ForgotPassword", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] ForgotPassword(YAHALLO.Application.Commands.UserCommand.Anynomous.ForgotPassword.ForgotPasswordCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-07-27 13:45:30.083 +07:00 [INF] Executed DbCommand (98ms) [Parameters=[@__request_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 AND (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-07-27 13:45:30.182 +07:00 [INF] Executed DbCommand (92ms) [Parameters=[@p17='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 450), @p4='?' (DbType = Boolean), @p5='?' (Size = 200), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 200), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 8000) (DbType = AnsiString), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreateDate] = @p0, [DeleteDate] = @p1, [DisplayName] = @p2, [Email] = @p3, [EmailConfirm] = @p4, [FirstName] = @p5, [IdUserCreate] = @p6, [IdUserDelete] = @p7, [IdUserUpdate] = @p8, [LastName] = @p9, [Level] = @p10, [Password] = @p11, [PhoneConfirmed] = @p12, [PhoneNumber] = @p13, [Status] = @p14, [UpdateDate] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17;
+2024-07-27 13:45:33.409 +07:00 [WRN] Yahallo Long Running Request: ForgotPasswordCommand (3435 milliseconds)  {"Email":"haileds939@gmail.com","$type":"ForgotPasswordCommand"}
+2024-07-27 13:45:33.412 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-27 13:45:33.413 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.ForgotPassword (YAHALLO) in 3512.6138ms
+2024-07-27 13:45:33.414 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.ForgotPassword (YAHALLO)'
+2024-07-27 13:45:33.415 +07:00 [INF] HTTP POST /user/forgot-password responded 200 in 3521.9604 ms
+2024-07-27 13:45:33.418 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/forgot-password application/json 37 - 200 - application/json;+charset=utf-8 3526.6153ms
+2024-07-27 13:46:32.247 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/change-password application/json 139
+2024-07-27 13:46:32.254 +07:00 [INF] CORS policy execution successful.
+2024-07-27 13:46:32.255 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.ChangePassword (YAHALLO)'
+2024-07-27 13:46:32.263 +07:00 [INF] Route matched with {action = "ChangePassword", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] ChangePassword(YAHALLO.Application.Commands.UserCommand.Anynomous.ChangePassword.ChangePasswordCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-07-27 13:46:32.447 +07:00 [INF] Executed DbCommand (82ms) [Parameters=[@__request_Id_0='?' (Size = 450), @__request_Email_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL) AND [u].[Id] = @__request_Id_0 AND [u].[Email] = @__request_Email_1
+2024-07-27 13:46:32.573 +07:00 [INF] Executed DbCommand (116ms) [Parameters=[@p17='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 450), @p4='?' (DbType = Boolean), @p5='?' (Size = 200), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 200), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 8000) (DbType = AnsiString), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreateDate] = @p0, [DeleteDate] = @p1, [DisplayName] = @p2, [Email] = @p3, [EmailConfirm] = @p4, [FirstName] = @p5, [IdUserCreate] = @p6, [IdUserDelete] = @p7, [IdUserUpdate] = @p8, [LastName] = @p9, [Level] = @p10, [Password] = @p11, [PhoneConfirmed] = @p12, [PhoneNumber] = @p13, [Status] = @p14, [UpdateDate] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17;
+2024-07-27 13:46:32.576 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-27 13:46:32.578 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.ChangePassword (YAHALLO) in 312.0024ms
+2024-07-27 13:46:32.582 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.ChangePassword (YAHALLO)'
+2024-07-27 13:46:32.584 +07:00 [INF] HTTP POST /user/change-password responded 200 in 329.1900 ms
+2024-07-27 13:46:32.586 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/change-password application/json 139 - 200 - application/json;+charset=utf-8 338.0693ms
+2024-07-27 13:46:41.025 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/user/get-all - -
+2024-07-27 13:46:41.026 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2024-07-27 13:46:41.031 +07:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2024-07-27 13:46:41.186 +07:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2024-07-27 13:46:41.322 +07:00 [INF] Executed DbCommand (88ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-07-27 13:46:41.453 +07:00 [INF] Executed DbCommand (80ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-07-27 13:46:41.537 +07:00 [INF] Executed DbCommand (81ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2024-07-27 13:46:41.539 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-27 13:46:41.545 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO) in 512.5426ms
+2024-07-27 13:46:41.545 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2024-07-27 13:46:41.546 +07:00 [INF] HTTP GET /user/get-all responded 200 in 520.8812 ms
+2024-07-27 13:46:41.547 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/user/get-all - - - 200 - application/json;+charset=utf-8 522.7973ms
+2024-07-27 13:47:18.740 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/Data/User/934486-guilty-crown-wallpaper-1920x1080-1920x1080-pc.jpg - -
+2024-07-27 13:47:18.761 +07:00 [INF] HTTP GET /Data/User/934486-guilty-crown-wallpaper-1920x1080-1920x1080-pc.jpg responded 404 in 1.4109 ms
+2024-07-27 13:47:18.762 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/Data/User/934486-guilty-crown-wallpaper-1920x1080-1920x1080-pc.jpg - - - 404 0 - 22.4068ms
+2024-07-27 13:47:49.210 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all - -
+2024-07-27 13:47:49.238 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-27 13:47:49.246 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-27 13:47:49.247 +07:00 [INF] HTTP GET /manga/get-all responded 401 in 36.4239 ms
+2024-07-27 13:47:49.248 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all - - - 401 0 - 38.6349ms
