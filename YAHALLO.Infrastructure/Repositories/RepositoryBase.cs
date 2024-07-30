@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Org.BouncyCastle.Asn1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +18,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Infrastructure.Repositories
 {
-    public class RepositoryBase<TDomain, TPersistence, TDbContext> : IEFRepository<TDomain, TPersistence>
+    public class RepositoryBase<TDomain, TPersistence, TDbContext> : IEFRepository<TDomain, TPersistence>, IEFRepository
        where TDbContext : DbContext, IUnitOfWork
        where TPersistence : class, TDomain
        where TDomain : class
@@ -404,5 +407,36 @@ namespace YAHALLO.Infrastructure.Repositories
         {
             return queryOptions;
         }
+        public virtual void FromSql(string tableName, string id)
+        {
+            // Tạo câu lệnh SQL với tham số đầu vào
+            string sqlQuery = $"SELECT * FROM {tableName} WHERE Id = @Id";
+
+            // Tạo đối tượng truy vấn
+            using (var connection = new SqlConnection("YourConnectionString"))
+            {
+                // Tạo đối tượng Command
+                using (var command = new SqlCommand(sqlQuery, connection))
+                {
+                    // Thêm tham số vào câu lệnh SQL
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    // Mở kết nối
+                    connection.Open();
+
+                    // Thực thi câu lệnh và đọc kết quả
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Xử lý kết quả đọc được
+                        // Giả sử TPersistence có thể khởi tạo từ dữ liệu đọc được
+                        if (reader.Read())
+                        {
+                            Console.WriteLine("Hello world");
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
