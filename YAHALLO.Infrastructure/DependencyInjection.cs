@@ -60,7 +60,8 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IThreadOfBlogRepository, ThreadOfBlogRepository>();
             services.AddTransient<IReactionRepository, ReactionRepository>();
             services.AddTransient<ICountingRepository, CountingRepository>();
-
+            services.AddTransient<IReportRepository, ReportRepository>();
+            services.AddTransient<IEnums, Enums>();
 
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
