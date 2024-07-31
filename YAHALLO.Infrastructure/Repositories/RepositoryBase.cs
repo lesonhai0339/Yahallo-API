@@ -360,6 +360,11 @@ namespace YAHALLO.Infrastructure.Repositories
                 return null;
             }
         }
+        // Idea to using this func
+        //Func<Expression, Expression, BinaryExpression> equalityExpression =
+        //    (property, constant) => Expression.Equal(property, constant);
+        //object xx = new object();
+        //Expression<Func<UserEntity, bool>>? x = IExpressionMultiple(typeof(UserEntity).GetProperty("Id"), xx, equalityExpression);
         public Expression<Func<TPersistence, bool>>? IExpressionMultiple
             (PropertyInfo pro, 
             object value,

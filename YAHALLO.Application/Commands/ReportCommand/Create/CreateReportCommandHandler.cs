@@ -37,7 +37,7 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
         private readonly IChapterRepository _chapterRepository;
         private readonly IBlogRepository _blogRepository;
         private readonly IEnums _enums;
-        private readonly IFiles<IFormFile> _files
+        private readonly IFiles<IFormFile> _files;
         public CreateReportCommandHandler(IReportRepository reportRepository, ICurrentUserService currentUser, IUserRepository userRepository, IMangaRepository mangaRepository, 
             IChapterRepository chapterRepository, IBlogRepository blogRepository, IEnums enums, IFiles<IFormFile> files)
         {
