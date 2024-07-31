@@ -8,6 +8,6 @@ namespace YAHALLO.Domain.Functions
 {
     public interface IEnums
     {
-        public Type? GetClassFromEnum(Enum enumValue);
+        public object? GetClassFromEnum(Enum enumValue);
     }
 }

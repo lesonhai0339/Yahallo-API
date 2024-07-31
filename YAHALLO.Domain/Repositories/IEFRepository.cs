@@ -8,10 +8,6 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Domain.Repositories
 {
-    public interface IEFRepository
-    {
-        void FromSql(string tableName, string id);
-    }
     public interface IEFRepository<TDomain, TPersistence> : IRepository<TDomain>
     {
         IUnitOfWork UnitOfWork { get; }

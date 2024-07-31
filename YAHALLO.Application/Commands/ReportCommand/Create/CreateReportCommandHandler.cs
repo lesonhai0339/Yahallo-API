@@ -1,5 +1,8 @@
-﻿using MediatR;
+﻿using LinqKit;
+using MediatR;
 using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Pkcs;
 using System;
@@ -9,12 +12,14 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Enums.ReportEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
@@ -31,10 +36,10 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
         private readonly IMangaRepository _mangaRepository;
         private readonly IChapterRepository _chapterRepository;
         private readonly IBlogRepository _blogRepository;
-        private readonly IEFRepository _ef;
         private readonly IEnums _enums;
+        private readonly IFiles<IFormFile> _files
         public CreateReportCommandHandler(IReportRepository reportRepository, ICurrentUserService currentUser, IUserRepository userRepository, IMangaRepository mangaRepository, 
-            IChapterRepository chapterRepository, IBlogRepository blogRepository, IEnums enums, IEFRepository ef)
+            IChapterRepository chapterRepository, IBlogRepository blogRepository, IEnums enums, IFiles<IFormFile> files)
         {
             _reportRepository = reportRepository;
             _currentUser = currentUser;
@@ -43,18 +48,71 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
             _chapterRepository = chapterRepository;
             _blogRepository = blogRepository;
             _enums = enums;
-            _ef = ef;
+            _files = files;
         }
 
         public async Task<ResponseResult<string>> Handle(CreateReportCommand request, CancellationToken cancellationToken)
         {
-            Type? classEntity = _enums.GetClassFromEnum(request.Type);
+            var classEntity = _enums.GetClassFromEnum(request.Type);
             if (classEntity == null) 
             {
                 throw new NotFoundException($"Không tìm thấy đối tượng report");
             }
-            _ef.FromSql()
-            throw new NotImplementedException();
+            var reportEntity = new ReportEntity(); 
+            if (classEntity is UserEntity)
+            {
+                classEntity =await _userRepository.FindAsync(x=> x.Id == request.Target && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
+                reportEntity.Type = ReportEnumType.UserEntity;
+            }
+            else if (classEntity is MangaEntity)
+            {
+                classEntity = await _mangaRepository.FindAsync(x => x.Id == request.Target && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
+                reportEntity.Type = ReportEnumType.MangaEntity;
+            }
+            else if (classEntity is ChapterEntity)
+            {
+                classEntity = await _chapterRepository.FindAsync(x => x.Id == request.Target && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
+                reportEntity.Type = ReportEnumType.ChapterEntity;
+            }
+            else if (classEntity is BlogEntity)
+            {
+                classEntity = await _blogRepository.FindAsync(x => x.Id == request.Target && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
+                reportEntity.Type = ReportEnumType.BlogEntity;
+            }
+            if (classEntity == null)
+            {
+                throw new NotFoundException($"Không tìm thấy đối tượng report");
+            }
+            reportEntity.Title = request.Title ??"";
+            reportEntity.Content = request.Content ?? "";
+            reportEntity.Description = request.Description ?? "";
+            reportEntity.IdUserCreate = _currentUser.UserId;
+            reportEntity.CreateDate = DateTime.Now;
+            reportEntity.IdUserReport = _currentUser.UserId;
+            reportEntity.Attechments = request.Media!.Select(x =>
+            {
+                //Add media to dicrectory (not finish)
+                //.....................(code)
+                //
+                AttechmentEntity attech = new AttechmentEntity
+                {
+                    Description = "Report",
+                    MediaType = Domain.Enums.UserEnums.CommentMediaType.Image,
+                    Title = "Report media",
+                    Url1 = "Not",
+                };
+                return attech;
+            }).ToList();
+            _reportRepository.Add(reportEntity);
+            var result = await _reportRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+            if(result > 0)
+            {
+                return new ResponseResult<string>("Thành công");
+            }
+            else
+            {
+                return new ResponseResult<string>("Thất bại");
+            }
         }
         /*public async Task<ResponseResult<string>> Handle(CreateReportCommand request, CancellationToken cancellationToken)
         {

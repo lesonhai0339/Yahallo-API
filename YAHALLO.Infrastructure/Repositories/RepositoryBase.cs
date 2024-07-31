@@ -18,7 +18,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Infrastructure.Repositories
 {
-    public class RepositoryBase<TDomain, TPersistence, TDbContext> : IEFRepository<TDomain, TPersistence>, IEFRepository
+    public class RepositoryBase<TDomain, TPersistence, TDbContext> : IEFRepository<TDomain, TPersistence>
        where TDbContext : DbContext, IUnitOfWork
        where TPersistence : class, TDomain
        where TDomain : class

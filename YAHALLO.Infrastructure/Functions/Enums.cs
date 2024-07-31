@@ -12,7 +12,7 @@ namespace YAHALLO.Infrastructure.Functions
     {
         //Lấy lớp từ enum có gí trị trùng với tên lớp
         //Get class from enum have same namse with class
-        public Type? GetClassFromEnum(Enum enumValue)
+        public object? GetClassFromEnum(Enum enumValue)
         {
             // Lấy tên lớp tương ứng với giá trị Enum
             // Get class name match with enum value
@@ -27,8 +27,8 @@ namespace YAHALLO.Infrastructure.Functions
                 {
                     if (type.Name.Equals(className, StringComparison.OrdinalIgnoreCase))
                     {
-                        //var instance = Activator.CreateInstance(type);
-                        return type;
+                        var instance = Activator.CreateInstance(type);
+                        return instance;
                     }
                 }
             }

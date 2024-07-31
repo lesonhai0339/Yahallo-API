@@ -20,7 +20,7 @@ namespace YAHALLO.Domain.Entities
 
         public virtual ICollection<AttechmentEntity>? Attechments { get; set; }
 
-        public string IdUserReport { get; set; } = null!;
-        public virtual UserEntity User { get; set; } = null!;
+        public string? IdUserReport { get; set; }
+        public virtual UserEntity? User { get; set; }
     }
 }
