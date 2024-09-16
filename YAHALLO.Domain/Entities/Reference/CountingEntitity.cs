@@ -40,10 +40,10 @@ namespace YAHALLO.Domain.Entities.Reference
             }
         }
         public CountingEnumType Type { get; set; }
-        public int ViewCount { get;set; }
-        public float Rating { get; set; }
-        public int NumberOfVisit { get; set; }
-        public string? Description { get;set; }
+        public int ViewCount { get; set; } = 0;
+        public float Rating { get; set; } = 0;
+        public int NumberOfVisit { get; set; } = 0;
+        public string? Description { get; set; } = string.Empty;
         private string? _userVisit;
         public string? UserVisit
         {

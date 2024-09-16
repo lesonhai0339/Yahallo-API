@@ -47,7 +47,12 @@ namespace YAHALLO.Infrastructure.Repositories
         {
             GetSet().Update((TPersistence)entity);
         }
-
+        public virtual async Task<TDomain?> WhenAll(
+            Expression<Func<TPersistence, bool>> filterExpression,
+            CancellationToken cancellationToken = default)
+        {
+            return await QueryInternal(filterExpression).SingleOrDefaultAsync<TDomain>(cancellationToken);
+        }
         public virtual async Task<TDomain?> FindAsync(
             Expression<Func<TPersistence, bool>> filterExpression,
             CancellationToken cancellationToken = default)
@@ -195,7 +200,6 @@ namespace YAHALLO.Infrastructure.Repositories
             }
             return queryable;
         }
-
         protected virtual IQueryable<TResult> QueryInternal<TResult>(
             Expression<Func<TPersistence, bool>> filterExpression,
             Func<IQueryable<TPersistence>, IQueryable<TResult>> queryOptions)

@@ -35,13 +35,13 @@ namespace YAHALLO.Domain.Entities
         public string? Title { get; set; }
         public string? Description { get; set; } = "None";
         public string? Content { get; set; } = "No Content";
-        public int Like { get; set; }
-        public int DisLike { get; set; }
+        public int Like { get; set; } = 0;
+        public int DisLike { get; set; } = 0;
 
-        public CommonStatus Status { get; set; }
-        public BlogEnumType Type { get; set; }    
+        public CommonStatus Status { get; set; } = CommonStatus.Active;
+        public BlogEnumType Type { get; set; }  = BlogEnumType.None;
 
-        public virtual CountingEntitity? ViewCount { get; set; }
+        public virtual CountingEntitity? ViewCount { get; set; } 
 
         public virtual ICollection<ThreadOfBlogEntity>? ThreadOfBlogEntities { get;set; }   
         public virtual ICollection<ReactionEntity>? Reactions { get;set; }     
