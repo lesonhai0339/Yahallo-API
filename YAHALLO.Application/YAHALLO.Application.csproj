@@ -30,8 +30,6 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Commands\BlogCommand\Restore\" />
-	  <Folder Include="Commands\BlogCommand\Update\" />
 	  <Folder Include="Commands\ReportCommand\Delete\" />
 	  <Folder Include="Commands\ReportCommand\Restore\" />
 	  <Folder Include="Commands\ReportCommand\Update\" />
