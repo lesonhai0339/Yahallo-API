@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Common.Interfaces;
 
-namespace YAHALLO.Application.Commands.BlogCommand.Update
+namespace YAHALLO.Application.Commands.AttechmentCommand.Update
 {
-    public class UpdateBlogCommand: IRequest<ResponseResult<string>>
+    public class UpdateAttechmentCommand: IRequest<ResponseResult<string>>
     {
-        public UpdateBlogCommand() { }
     }
 }

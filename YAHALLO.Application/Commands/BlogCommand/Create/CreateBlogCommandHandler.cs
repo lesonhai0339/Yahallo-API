@@ -34,14 +34,14 @@ namespace YAHALLO.Application.Commands.BlogCommand.Create
         public async Task<ResponseResult<string>> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
         {
             var checkAttachmentExists = new List<AttechmentEntity>();
-            var checkThreadExists = await _threadRepository.FindAllAsync(x => x.Id.Equals(request.ThreadIds), cancellationToken);
+            var checkThreadExists = await _threadRepository.FindAllAsync(x => request.ThreadIds.Any(y=> y == x.Id), cancellationToken);
             if(checkThreadExists.Count != request.ThreadIds?.Count)
             {
                 throw new NotFoundException("Some Thread Id incorrect");
             }
             if(request.AttechmentIds != null)
             {
-                checkAttachmentExists = await _attechmentRepository.FindAllAsync(x=> x.Id.Equals(request.AttechmentIds), cancellationToken);
+                checkAttachmentExists = await _attechmentRepository.FindAllAsync(x=> request.AttechmentIds.Any(y => y == x.Id), cancellationToken);
                 if(checkAttachmentExists == null)
                 {
                     throw new NotFoundException("AttachmentIds incorrect");
