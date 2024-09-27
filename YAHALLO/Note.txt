@@ -1,0 +1,10 @@
+﻿Add-Migration -Name v4 -StartupProject "YAHALLO" -Project "YAHALLO.Infrastructure"
+Update-Database -StartupProject "YAHALLO" -Project "YAHALLO.Infrastructure"
+
+Config cho entity
+	1.nếu phía con để đối tượng cha là object thì khi config cần config bên phía cha chứ không phải con vd: metadata và blog bên metadata để parent là object thì không thể config bên này do không biết object là gì
+	nhưng bên blog thì có để chính xác metadata nên lúc này nên config ở phía blog còn key thì phải ánh xạ chính xác với key của metadata
+
+1. Attechment-Update chưa làm
+2. BlogDto chưa làm
+3. AttechDto chưa làm

@@ -4,10 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Infrastructure.Data.Configurations;
+using YAHALLO.Infrastructure.Data.Configurations.Reference;
 
 namespace YAHALLO.Infrastructure.Data
 {
@@ -31,6 +34,14 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<MangaArtistEntity> MangaArtistEntities { get; set; }
         public DbSet<MangaAuthorEntity> MangaAuthorEntities { get; set; }
         public DbSet<UserTokenEntity> UserTokens { get; set; }
+        public DbSet<CountingEntitity> Counting { get; set; }
+        public DbSet<ReactionEntity> Reactions { get; set; }
+        public DbSet<ThreadEntity> Threads { get; set; }
+        public DbSet<ThreadOfBlogEntity> ThreadOfBlogs { get; set; }
+        public DbSet<UserOldPasswordEntity> UserOldPasswords { get;set; }
+        public DbSet<AttechmentEntity> Attechments { get; set; }
+        public DbSet<CommentEntity> Comments { get; set; }
+        public DbSet<BlogEntity> Blogs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -51,8 +62,18 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new MangaArtistConfiguration());
             modelBuilder.ApplyConfiguration(new MangaAuthorConfiguration());
             modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
-            //CreateData(modelBuilder);
-        }
+
+            modelBuilder.ApplyConfiguration(new CountingConfiguration());
+            modelBuilder.ApplyConfiguration(new ReactionConfiguration());
+            modelBuilder.ApplyConfiguration(new ThreadConfiguration());
+            modelBuilder.ApplyConfiguration(new ThreadOfBlogConfiguration());
+            modelBuilder.ApplyConfiguration(new UserOldPasswordConfiguration());
+            modelBuilder.ApplyConfiguration(new AttechmentConfiguration());
+            modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            modelBuilder.ApplyConfiguration(new BlogConfiguration());
+
+        //CreateData(modelBuilder);
+    }
         protected void CreateData(ModelBuilder builder)
         {
             builder.Entity<RoleEntity>().HasData(

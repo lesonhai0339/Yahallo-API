@@ -30,8 +30,14 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Commands\ReportCommand\Delete\" />
+	  <Folder Include="Commands\ReportCommand\Restore\" />
+	  <Folder Include="Commands\ReportCommand\Update\" />
 	  <Folder Include="Commands\UserCommand\Moderator\" />
 	  <Folder Include="Commands\UserCommand\Admin\" />
+	  <Folder Include="Queries\AttechmentQuery\GetAllPagination\" />
+	  <Folder Include="Queries\AttechmentQuery\GetAllDeletedPagination\" />
+	  <Folder Include="Queries\AttechmentQuery\FilterAttechment\" />
 	  <Folder Include="Queries\AuthorQuery\GetById\" />
 	  <Folder Include="Queries\AuthorQuery\GetByIdDeleted\" />
 	  <Folder Include="Queries\UserQuery\Admin\GetAll\" />

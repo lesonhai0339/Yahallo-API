@@ -1,0 +1,1079 @@
+2024-07-27 09:02:27.262 +07:00 [WRN] There are multiple relationships between 'MetadataEntity' and 'BlogEntity' without configured foreign key properties. This will cause Entity Framework to create shadow properties on 'MetadataEntity' with names dependent on the discovery order. Consider configuring the foreign key properties using the [ForeignKey] attribute or in 'OnModelCreating'.
+2024-07-27 10:49:22.688 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:49:23.961 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:52:51.766 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:52:52.629 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:53:24.976 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:54:13.588 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:58:25.026 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:58:26.456 +07:00 [INF] Executed DbCommand (88ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 10:58:26.644 +07:00 [INF] Executed DbCommand (173ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 10:58:26.797 +07:00 [INF] Executed DbCommand (152ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 10:58:26.950 +07:00 [INF] Executed DbCommand (152ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 10:58:27.103 +07:00 [INF] Executed DbCommand (138ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 10:58:27.120 +07:00 [INF] Applying migration '20240720064704_v3'.
+2024-07-27 10:58:27.412 +07:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] DROP CONSTRAINT [FK_Comment_Users_UserReplyId];
+2024-07-27 10:58:27.518 +07:00 [INF] Executed DbCommand (105ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_Comment_UserReplyId] ON [Comment];
+2024-07-27 10:58:27.727 +07:00 [INF] Executed DbCommand (209ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Comment]') AND [c].[name] = N'UserReplyId');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Comment] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Comment] DROP COLUMN [UserReplyId];
+2024-07-27 10:58:28.226 +07:00 [INF] Executed DbCommand (498ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[Comment].[Data]', N'Message', N'COLUMN';
+2024-07-27 10:58:28.300 +07:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MangaSeason] ADD [Description] nvarchar(max) NULL;
+2024-07-27 10:58:28.364 +07:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MangaSeason] ADD [Season] float NOT NULL DEFAULT 0.0E0;
+2024-07-27 10:58:28.441 +07:00 [INF] Executed DbCommand (77ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanComment] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 10:58:28.519 +07:00 [INF] Executed DbCommand (77ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanHide] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 10:58:28.603 +07:00 [INF] Executed DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanLike] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 10:58:28.856 +07:00 [INF] Executed DbCommand (253ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanRemove] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 10:58:28.921 +07:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanReply] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 10:58:28.984 +07:00 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CommentCount] int NOT NULL DEFAULT 0;
+2024-07-27 10:58:29.044 +07:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [DisLikeCount] int NOT NULL DEFAULT 0;
+2024-07-27 10:58:29.104 +07:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [LikeCount] int NOT NULL DEFAULT 0;
+2024-07-27 10:58:29.164 +07:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [ParentId] nvarchar(max) NULL;
+2024-07-27 10:58:29.224 +07:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [UserEntityId] nvarchar(450) NULL;
+2024-07-27 10:58:29.295 +07:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [CommentAttechment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [MediaType] int NULL,
+    [Title] nvarchar(max) NULL,
+    [Url1] nvarchar(max) NULL,
+    [Url2] nvarchar(max) NULL,
+    [Url3] nvarchar(max) NULL,
+    [ParentId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_CommentAttechment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_CommentAttechment_Comment_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [Comment] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 10:58:29.353 +07:00 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserEntityId] ON [Comment] ([UserEntityId]);
+2024-07-27 10:58:29.427 +07:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_CommentAttechment_ParentId] ON [CommentAttechment] ([ParentId]);
+2024-07-27 10:58:29.508 +07:00 [INF] Executed DbCommand (80ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]);
+2024-07-27 10:58:29.602 +07:00 [INF] Executed DbCommand (94ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240720064704_v3', N'7.0.0');
+2024-07-27 10:58:29.703 +07:00 [INF] Applying migration '20240727035253_v4'.
+2024-07-27 10:58:29.973 +07:00 [ERR] Failed executing DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Counting] ADD [UserVisit] nvarchar(max) NULL;
+2024-07-27 10:59:36.223 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:59:37.169 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:59:47.134 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 10:59:48.723 +07:00 [INF] Executed DbCommand (102ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 10:59:48.819 +07:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 10:59:48.890 +07:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 10:59:48.969 +07:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 10:59:49.061 +07:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 10:59:49.074 +07:00 [INF] Applying migration '20240727035937_v4'.
+2024-07-27 10:59:49.408 +07:00 [INF] Executed DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240727035937_v4', N'7.0.0');
+2024-07-27 11:00:38.345 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:00:39.231 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:00:39.255 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:00:39.257 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:00:39.258 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:00:39.273 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 11:00:39.287 +07:00 [INF] Applying migration '20240720064704_v3'.
+2024-07-27 11:00:39.552 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] DROP CONSTRAINT [FK_Comment_Users_UserReplyId];
+2024-07-27 11:00:39.555 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_Comment_UserReplyId] ON [Comment];
+2024-07-27 11:00:39.583 +07:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Comment]') AND [c].[name] = N'UserReplyId');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Comment] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Comment] DROP COLUMN [UserReplyId];
+2024-07-27 11:00:39.814 +07:00 [INF] Executed DbCommand (231ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[Comment].[Data]', N'Message', N'COLUMN';
+2024-07-27 11:00:39.816 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MangaSeason] ADD [Description] nvarchar(max) NULL;
+2024-07-27 11:00:39.817 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MangaSeason] ADD [Season] float NOT NULL DEFAULT 0.0E0;
+2024-07-27 11:00:39.818 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanComment] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 11:00:39.820 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanHide] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 11:00:39.821 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanLike] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 11:00:39.821 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanRemove] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 11:00:39.822 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanReply] bit NOT NULL DEFAULT CAST(0 AS bit);
+2024-07-27 11:00:39.823 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CommentCount] int NOT NULL DEFAULT 0;
+2024-07-27 11:00:39.824 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [DisLikeCount] int NOT NULL DEFAULT 0;
+2024-07-27 11:00:39.825 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [LikeCount] int NOT NULL DEFAULT 0;
+2024-07-27 11:00:39.826 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [ParentId] nvarchar(max) NULL;
+2024-07-27 11:00:39.827 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [UserEntityId] nvarchar(450) NULL;
+2024-07-27 11:00:39.829 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [CommentAttechment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [MediaType] int NULL,
+    [Title] nvarchar(max) NULL,
+    [Url1] nvarchar(max) NULL,
+    [Url2] nvarchar(max) NULL,
+    [Url3] nvarchar(max) NULL,
+    [ParentId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_CommentAttechment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_CommentAttechment_Comment_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [Comment] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:00:39.830 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserEntityId] ON [Comment] ([UserEntityId]);
+2024-07-27 11:00:39.831 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_CommentAttechment_ParentId] ON [CommentAttechment] ([ParentId]);
+2024-07-27 11:00:39.832 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]);
+2024-07-27 11:00:39.834 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240720064704_v3', N'7.0.0');
+2024-07-27 11:00:39.840 +07:00 [INF] Applying migration '20240727035937_v4'.
+2024-07-27 11:00:39.990 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240727035937_v4', N'7.0.0');
+2024-07-27 11:02:44.291 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:02:45.129 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:03:10.893 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:03:11.619 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:03:11.642 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:03:11.644 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:03:11.645 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:03:11.663 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 11:03:11.679 +07:00 [INF] Applying migration '20240727040245_v4_1'.
+2024-07-27 11:03:11.906 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240727040245_v4_1', N'7.0.0');
+2024-07-27 11:04:50.526 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:04:51.309 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:05:21.361 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:05:22.685 +07:00 [INF] Executed DbCommand (90ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:05:22.796 +07:00 [INF] Executed DbCommand (95ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:05:22.863 +07:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:05:22.939 +07:00 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:05:23.037 +07:00 [INF] Executed DbCommand (76ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 11:05:23.054 +07:00 [INF] Applying migration '20240727040451_v4'.
+2024-07-27 11:05:23.659 +07:00 [ERR] Failed executing DbCommand (95ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Artist] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Artist] PRIMARY KEY ([Id])
+);
+2024-07-27 11:07:14.938 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:07:16.317 +07:00 [INF] Executed DbCommand (89ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:07:16.410 +07:00 [INF] Executed DbCommand (82ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:07:16.483 +07:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:07:16.568 +07:00 [INF] Executed DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:07:16.668 +07:00 [INF] Executed DbCommand (86ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 11:07:16.682 +07:00 [INF] Applying migration '20240727040451_v4'.
+2024-07-27 11:07:17.049 +07:00 [INF] Executed DbCommand (83ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Blogs] (
+    [Id] nvarchar(450) NOT NULL,
+    [ParentId] nvarchar(max) NULL,
+    [Title] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [Like] int NOT NULL,
+    [DisLike] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Blogs] PRIMARY KEY ([Id])
+);
+2024-07-27 11:07:17.129 +07:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Threads] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Threads] PRIMARY KEY ([Id])
+);
+2024-07-27 11:07:17.212 +07:00 [INF] Executed DbCommand (83ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ThreadOfBlog] (
+    [BlogId] nvarchar(450) NOT NULL,
+    [ThreadId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_ThreadOfBlog] PRIMARY KEY ([ThreadId], [BlogId]),
+    CONSTRAINT [FK_ThreadOfBlog_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ThreadOfBlog_Threads_ThreadId] FOREIGN KEY ([ThreadId]) REFERENCES [Threads] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:07:17.290 +07:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OldPassword] (
+    [UserId] nvarchar(450) NOT NULL,
+    [OldPasswords] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_OldPassword] PRIMARY KEY ([UserId]),
+    CONSTRAINT [FK_OldPassword_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:07:17.362 +07:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Reaction] (
+    [UserId] nvarchar(450) NOT NULL,
+    [BlogId] nvarchar(450) NOT NULL,
+    [IsLike] bit NOT NULL,
+    [IsDisLike] bit NOT NULL,
+    [VisitCount] int NOT NULL,
+    [IsSaved] bit NOT NULL,
+    [Rating] real NOT NULL,
+    [IsRecommend] bit NOT NULL,
+    [IsFavorite] bit NOT NULL,
+    [Note] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Reaction] PRIMARY KEY ([UserId], [BlogId]),
+    CONSTRAINT [FK_Reaction_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Reaction_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:07:17.449 +07:00 [ERR] Failed executing DbCommand (86ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [CanComment] bit NOT NULL,
+    [CanRemove] bit NOT NULL,
+    [CanHide] bit NOT NULL,
+    [CanLike] bit NOT NULL,
+    [CanReply] bit NOT NULL,
+    [CommentCount] int NOT NULL,
+    [LikeCount] int NOT NULL,
+    [DisLikeCount] int NOT NULL,
+    [Message] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [ParentId] nvarchar(max) NULL,
+    [UserEntityId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]),
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:10:41.160 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:10:42.581 +07:00 [INF] Executed DbCommand (82ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:10:42.682 +07:00 [INF] Executed DbCommand (89ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:10:42.756 +07:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:10:42.823 +07:00 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:10:42.913 +07:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 11:10:42.928 +07:00 [INF] Applying migration '20240727040451_v4'.
+2024-07-27 11:10:43.286 +07:00 [INF] Executed DbCommand (76ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Blogs] (
+    [Id] nvarchar(450) NOT NULL,
+    [ParentId] nvarchar(max) NULL,
+    [Title] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [Like] int NOT NULL,
+    [DisLike] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Blogs] PRIMARY KEY ([Id])
+);
+2024-07-27 11:10:43.373 +07:00 [INF] Executed DbCommand (86ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Threads] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Threads] PRIMARY KEY ([Id])
+);
+2024-07-27 11:10:43.447 +07:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ThreadOfBlog] (
+    [BlogId] nvarchar(450) NOT NULL,
+    [ThreadId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_ThreadOfBlog] PRIMARY KEY ([ThreadId], [BlogId]),
+    CONSTRAINT [FK_ThreadOfBlog_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ThreadOfBlog_Threads_ThreadId] FOREIGN KEY ([ThreadId]) REFERENCES [Threads] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:10:43.514 +07:00 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OldPassword] (
+    [UserId] nvarchar(450) NOT NULL,
+    [OldPasswords] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_OldPassword] PRIMARY KEY ([UserId]),
+    CONSTRAINT [FK_OldPassword_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:10:43.602 +07:00 [INF] Executed DbCommand (87ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Reaction] (
+    [UserId] nvarchar(450) NOT NULL,
+    [BlogId] nvarchar(450) NOT NULL,
+    [IsLike] bit NOT NULL,
+    [IsDisLike] bit NOT NULL,
+    [VisitCount] int NOT NULL,
+    [IsSaved] bit NOT NULL,
+    [Rating] real NOT NULL,
+    [IsRecommend] bit NOT NULL,
+    [IsFavorite] bit NOT NULL,
+    [Note] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Reaction] PRIMARY KEY ([UserId], [BlogId]),
+    CONSTRAINT [FK_Reaction_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Reaction_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:10:43.692 +07:00 [INF] Executed DbCommand (89ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [CanComment] bit NOT NULL,
+    [CanRemove] bit NOT NULL,
+    [CanHide] bit NOT NULL,
+    [CanLike] bit NOT NULL,
+    [CanReply] bit NOT NULL,
+    [CommentCount] int NOT NULL,
+    [LikeCount] int NOT NULL,
+    [DisLikeCount] int NOT NULL,
+    [Message] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [ParentId] nvarchar(max) NULL,
+    [UserEntityId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]),
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:10:43.766 +07:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Attechment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [MediaType] int NULL,
+    [Title] nvarchar(max) NULL,
+    [Url1] nvarchar(max) NULL,
+    [Url2] nvarchar(max) NULL,
+    [Url3] nvarchar(max) NULL,
+    [CommentId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Attechment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Attechment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Attechment_Comment_CommentId] FOREIGN KEY ([CommentId]) REFERENCES [Comment] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:10:43.849 +07:00 [INF] Executed DbCommand (83ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Counting] (
+    [ParentId] nvarchar(450) NOT NULL,
+    [Type] int NOT NULL,
+    [ViewCount] int NOT NULL,
+    [Rating] real NOT NULL,
+    [NumberOfVisit] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [UserVisit] nvarchar(max) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [CommentId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Counting] PRIMARY KEY ([ParentId]),
+    CONSTRAINT [FK_Counting_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Counting_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]),
+    CONSTRAINT [FK_Counting_Comment_CommentId] FOREIGN KEY ([CommentId]) REFERENCES [Comment] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Counting_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:10:45.379 +07:00 [ERR] Failed executing DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AssociateName_MangaId] ON [AssociateName] ([MangaId]);
+2024-07-27 11:13:07.436 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:13:08.846 +07:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:13:08.930 +07:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:13:09.002 +07:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:13:09.072 +07:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:13:09.152 +07:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 11:13:09.168 +07:00 [INF] Applying migration '20240727040451_v4'.
+2024-07-27 11:13:09.532 +07:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Blogs] (
+    [Id] nvarchar(450) NOT NULL,
+    [ParentId] nvarchar(max) NULL,
+    [Title] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [Like] int NOT NULL,
+    [DisLike] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Blogs] PRIMARY KEY ([Id])
+);
+2024-07-27 11:13:09.611 +07:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Threads] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Threads] PRIMARY KEY ([Id])
+);
+2024-07-27 11:13:09.683 +07:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ThreadOfBlog] (
+    [BlogId] nvarchar(450) NOT NULL,
+    [ThreadId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_ThreadOfBlog] PRIMARY KEY ([ThreadId], [BlogId]),
+    CONSTRAINT [FK_ThreadOfBlog_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ThreadOfBlog_Threads_ThreadId] FOREIGN KEY ([ThreadId]) REFERENCES [Threads] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:13:09.774 +07:00 [INF] Executed DbCommand (91ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OldPassword] (
+    [UserId] nvarchar(450) NOT NULL,
+    [OldPasswords] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_OldPassword] PRIMARY KEY ([UserId]),
+    CONSTRAINT [FK_OldPassword_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:13:09.849 +07:00 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Reaction] (
+    [UserId] nvarchar(450) NOT NULL,
+    [BlogId] nvarchar(450) NOT NULL,
+    [IsLike] bit NOT NULL,
+    [IsDisLike] bit NOT NULL,
+    [VisitCount] int NOT NULL,
+    [IsSaved] bit NOT NULL,
+    [Rating] real NOT NULL,
+    [IsRecommend] bit NOT NULL,
+    [IsFavorite] bit NOT NULL,
+    [Note] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Reaction] PRIMARY KEY ([UserId], [BlogId]),
+    CONSTRAINT [FK_Reaction_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Reaction_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:13:09.931 +07:00 [INF] Executed DbCommand (82ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [CanComment] bit NOT NULL,
+    [CanRemove] bit NOT NULL,
+    [CanHide] bit NOT NULL,
+    [CanLike] bit NOT NULL,
+    [CanReply] bit NOT NULL,
+    [CommentCount] int NOT NULL,
+    [LikeCount] int NOT NULL,
+    [DisLikeCount] int NOT NULL,
+    [Message] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [ParentId] nvarchar(max) NULL,
+    [UserEntityId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]),
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:13:10.012 +07:00 [INF] Executed DbCommand (81ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Attechment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [MediaType] int NULL,
+    [Title] nvarchar(max) NULL,
+    [Url1] nvarchar(max) NULL,
+    [Url2] nvarchar(max) NULL,
+    [Url3] nvarchar(max) NULL,
+    [CommentId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Attechment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Attechment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Attechment_Comment_CommentId] FOREIGN KEY ([CommentId]) REFERENCES [Comment] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:13:10.615 +07:00 [INF] Executed DbCommand (98ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Counting] (
+    [ParentId] nvarchar(450) NOT NULL,
+    [Type] int NOT NULL,
+    [ViewCount] int NOT NULL,
+    [Rating] real NOT NULL,
+    [NumberOfVisit] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [UserVisit] nvarchar(max) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [CommentId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Counting] PRIMARY KEY ([ParentId]),
+    CONSTRAINT [FK_Counting_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Counting_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]),
+    CONSTRAINT [FK_Counting_Comment_CommentId] FOREIGN KEY ([CommentId]) REFERENCES [Comment] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Counting_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:13:10.683 +07:00 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Attechment_BlogId] ON [Attechment] ([BlogId]);
+2024-07-27 11:13:10.754 +07:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Attechment_CommentId] ON [Attechment] ([CommentId]);
+2024-07-27 11:13:10.824 +07:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_BlogId] ON [Comment] ([BlogId]);
+2024-07-27 11:13:10.893 +07:00 [INF] Executed DbCommand (69ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_ChapterId] ON [Comment] ([ChapterId]);
+2024-07-27 11:13:10.953 +07:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_MangaId] ON [Comment] ([MangaId]);
+2024-07-27 11:13:11.021 +07:00 [INF] Executed DbCommand (68ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserEntityId] ON [Comment] ([UserEntityId]);
+2024-07-27 11:13:11.084 +07:00 [INF] Executed DbCommand (63ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserId] ON [Comment] ([UserId]);
+2024-07-27 11:13:11.150 +07:00 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_BlogId] ON [Counting] ([BlogId]) WHERE [BlogId] IS NOT NULL;
+2024-07-27 11:13:11.228 +07:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_ChapterId] ON [Counting] ([ChapterId]) WHERE [ChapterId] IS NOT NULL;
+2024-07-27 11:13:11.300 +07:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_CommentId] ON [Counting] ([CommentId]) WHERE [CommentId] IS NOT NULL;
+2024-07-27 11:13:11.364 +07:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_MangaId] ON [Counting] ([MangaId]) WHERE [MangaId] IS NOT NULL;
+2024-07-27 11:13:11.423 +07:00 [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Reaction_BlogId] ON [Reaction] ([BlogId]);
+2024-07-27 11:13:11.483 +07:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ThreadOfBlog_BlogId] ON [ThreadOfBlog] ([BlogId]);
+2024-07-27 11:13:14.346 +07:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240727040451_v4', N'7.0.0');
+2024-07-27 11:13:34.551 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:13:35.280 +07:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:13:35.305 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:13:35.307 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:13:35.308 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:13:35.321 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 11:13:35.334 +07:00 [INF] Applying migration '20240727040451_v4'.
+2024-07-27 11:13:35.573 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Blogs] (
+    [Id] nvarchar(450) NOT NULL,
+    [ParentId] nvarchar(max) NULL,
+    [Title] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [Like] int NOT NULL,
+    [DisLike] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Blogs] PRIMARY KEY ([Id])
+);
+2024-07-27 11:13:35.576 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Threads] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Threads] PRIMARY KEY ([Id])
+);
+2024-07-27 11:13:35.579 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ThreadOfBlog] (
+    [BlogId] nvarchar(450) NOT NULL,
+    [ThreadId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_ThreadOfBlog] PRIMARY KEY ([ThreadId], [BlogId]),
+    CONSTRAINT [FK_ThreadOfBlog_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ThreadOfBlog_Threads_ThreadId] FOREIGN KEY ([ThreadId]) REFERENCES [Threads] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:13:35.581 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OldPassword] (
+    [UserId] nvarchar(450) NOT NULL,
+    [OldPasswords] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_OldPassword] PRIMARY KEY ([UserId]),
+    CONSTRAINT [FK_OldPassword_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:13:35.583 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Reaction] (
+    [UserId] nvarchar(450) NOT NULL,
+    [BlogId] nvarchar(450) NOT NULL,
+    [IsLike] bit NOT NULL,
+    [IsDisLike] bit NOT NULL,
+    [VisitCount] int NOT NULL,
+    [IsSaved] bit NOT NULL,
+    [Rating] real NOT NULL,
+    [IsRecommend] bit NOT NULL,
+    [IsFavorite] bit NOT NULL,
+    [Note] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Reaction] PRIMARY KEY ([UserId], [BlogId]),
+    CONSTRAINT [FK_Reaction_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Reaction_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:13:35.589 +07:00 [ERR] Failed executing DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [CanComment] bit NOT NULL,
+    [CanRemove] bit NOT NULL,
+    [CanHide] bit NOT NULL,
+    [CanLike] bit NOT NULL,
+    [CanReply] bit NOT NULL,
+    [CommentCount] int NOT NULL,
+    [LikeCount] int NOT NULL,
+    [DisLikeCount] int NOT NULL,
+    [Message] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [ParentId] nvarchar(max) NULL,
+    [UserEntityId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]),
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:14:02.756 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:14:03.611 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:14:03.634 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:14:03.637 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-27 11:14:03.638 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-27 11:14:03.650 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-27 11:14:03.662 +07:00 [INF] Applying migration '20240727040451_v4'.
+2024-07-27 11:14:03.886 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Blogs] (
+    [Id] nvarchar(450) NOT NULL,
+    [ParentId] nvarchar(max) NULL,
+    [Title] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [Like] int NOT NULL,
+    [DisLike] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Blogs] PRIMARY KEY ([Id])
+);
+2024-07-27 11:14:03.889 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Threads] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Threads] PRIMARY KEY ([Id])
+);
+2024-07-27 11:14:03.891 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ThreadOfBlog] (
+    [BlogId] nvarchar(450) NOT NULL,
+    [ThreadId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_ThreadOfBlog] PRIMARY KEY ([ThreadId], [BlogId]),
+    CONSTRAINT [FK_ThreadOfBlog_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ThreadOfBlog_Threads_ThreadId] FOREIGN KEY ([ThreadId]) REFERENCES [Threads] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:14:03.893 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OldPassword] (
+    [UserId] nvarchar(450) NOT NULL,
+    [OldPasswords] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_OldPassword] PRIMARY KEY ([UserId]),
+    CONSTRAINT [FK_OldPassword_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:14:03.895 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Reaction] (
+    [UserId] nvarchar(450) NOT NULL,
+    [BlogId] nvarchar(450) NOT NULL,
+    [IsLike] bit NOT NULL,
+    [IsDisLike] bit NOT NULL,
+    [VisitCount] int NOT NULL,
+    [IsSaved] bit NOT NULL,
+    [Rating] real NOT NULL,
+    [IsRecommend] bit NOT NULL,
+    [IsFavorite] bit NOT NULL,
+    [Note] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Reaction] PRIMARY KEY ([UserId], [BlogId]),
+    CONSTRAINT [FK_Reaction_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Reaction_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:14:03.898 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [CanComment] bit NOT NULL,
+    [CanRemove] bit NOT NULL,
+    [CanHide] bit NOT NULL,
+    [CanLike] bit NOT NULL,
+    [CanReply] bit NOT NULL,
+    [CommentCount] int NOT NULL,
+    [LikeCount] int NOT NULL,
+    [DisLikeCount] int NOT NULL,
+    [Message] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [ParentId] nvarchar(max) NULL,
+    [UserEntityId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]),
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:14:04.031 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Attechment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [MediaType] int NULL,
+    [Title] nvarchar(max) NULL,
+    [Url1] nvarchar(max) NULL,
+    [Url2] nvarchar(max) NULL,
+    [Url3] nvarchar(max) NULL,
+    [CommentId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Attechment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Attechment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Attechment_Comment_CommentId] FOREIGN KEY ([CommentId]) REFERENCES [Comment] ([Id]) ON DELETE NO ACTION
+);
+2024-07-27 11:14:04.034 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Counting] (
+    [ParentId] nvarchar(450) NOT NULL,
+    [Type] int NOT NULL,
+    [ViewCount] int NOT NULL,
+    [Rating] real NOT NULL,
+    [NumberOfVisit] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [UserVisit] nvarchar(max) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [CommentId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Counting] PRIMARY KEY ([ParentId]),
+    CONSTRAINT [FK_Counting_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Counting_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]),
+    CONSTRAINT [FK_Counting_Comment_CommentId] FOREIGN KEY ([CommentId]) REFERENCES [Comment] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Counting_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE CASCADE
+);
+2024-07-27 11:14:04.035 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Attechment_BlogId] ON [Attechment] ([BlogId]);
+2024-07-27 11:14:04.036 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Attechment_CommentId] ON [Attechment] ([CommentId]);
+2024-07-27 11:14:04.037 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_BlogId] ON [Comment] ([BlogId]);
+2024-07-27 11:14:04.037 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_ChapterId] ON [Comment] ([ChapterId]);
+2024-07-27 11:14:04.038 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_MangaId] ON [Comment] ([MangaId]);
+2024-07-27 11:14:04.039 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserEntityId] ON [Comment] ([UserEntityId]);
+2024-07-27 11:14:07.407 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserId] ON [Comment] ([UserId]);
+2024-07-27 11:14:07.409 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_BlogId] ON [Counting] ([BlogId]) WHERE [BlogId] IS NOT NULL;
+2024-07-27 11:14:07.410 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_ChapterId] ON [Counting] ([ChapterId]) WHERE [ChapterId] IS NOT NULL;
+2024-07-27 11:14:07.411 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_CommentId] ON [Counting] ([CommentId]) WHERE [CommentId] IS NOT NULL;
+2024-07-27 11:14:07.412 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_MangaId] ON [Counting] ([MangaId]) WHERE [MangaId] IS NOT NULL;
+2024-07-27 11:14:07.413 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Reaction_BlogId] ON [Reaction] ([BlogId]);
+2024-07-27 11:14:07.414 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ThreadOfBlog_BlogId] ON [ThreadOfBlog] ([BlogId]);
+2024-07-27 11:14:07.415 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240727040451_v4', N'7.0.0');
+2024-07-27 11:20:03.274 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2024-07-27 11:20:04.134 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.

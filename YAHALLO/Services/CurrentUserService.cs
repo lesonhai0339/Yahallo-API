@@ -1,7 +1,10 @@
 ﻿using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq.Expressions;
 using System.Security.Claims;
 using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Domain.Common;
+using YAHALLO.Domain.Enums.UserEnums;
 
 namespace YAHALLO.Services
 {
@@ -17,7 +20,7 @@ namespace YAHALLO.Services
         }
 
         public string? UserId => _claimsPrincipal?.FindFirst(JwtClaimTypes.Subject)?.Value;
-
+        public string? Level => _claimsPrincipal?.FindFirst("UserLevel")?.Value;
         public async Task<bool> AuthorizeAsync(string policy)
         {
             if (_claimsPrincipal == null) return false;
@@ -27,6 +30,16 @@ namespace YAHALLO.Services
         public async Task<bool> IsInRoleAsync(string role)
         {
             return await Task.FromResult(_claimsPrincipal?.IsInRole(role) ?? false);
+        }
+        public bool CheckLevel(UserLevel level)
+        {
+            if(Level == null) return false;
+            UserLevel curLevel= (UserLevel) Enum.Parse(typeof(UserLevel), Level, true); 
+            if(curLevel < level)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -17,7 +17,8 @@ namespace YAHALLO.Application.Queries.ChapterQuery
 
         public string MangaId { get; set; } = null!;
         public string? MangaName { get; set; }   
-        public static ChapterDto CreateMap(string id, string? title, int index, string mangaid, string manganame)
+        public ICollection<string>? Images { get; set; }
+        public static ChapterDto CreateMap(string id, string? title, int index, string mangaid, string manganame, ICollection<string>? images)
         {
             return new ChapterDto
             {
@@ -25,7 +26,8 @@ namespace YAHALLO.Application.Queries.ChapterQuery
                 Title = title,  
                 Index = index,
                 MangaId = mangaid,
-                MangaName = manganame
+                MangaName = manganame,
+                Images = images
             };
         }
         public void Mapping(Profile profile)

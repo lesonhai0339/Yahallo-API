@@ -94,5 +94,6 @@ namespace YAHALLO.Domain.Repositories
         Task<TDomain?> FindAsync(
             IQueryable<TPersistence> iqueryable,
             CancellationToken cancellationToken = default);
+
     }
 }

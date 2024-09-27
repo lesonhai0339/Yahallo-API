@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Data.Configurations
 {
@@ -24,6 +25,9 @@ namespace YAHALLO.Infrastructure.Data.Configurations
                 .WithMany(x => x.ChaptersEntities)
                 .HasForeignKey(x => x.MangaId)
                 .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.ViewCount)
+                .WithOne(x => x.Chapter)
+                .HasForeignKey<CountingEntitity>(x=> x.ChapterId);
             builder.ToTable("Chapter");
         }
     }

@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Org.BouncyCastle.Asn1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,7 +47,12 @@ namespace YAHALLO.Infrastructure.Repositories
         {
             GetSet().Update((TPersistence)entity);
         }
-
+        public virtual async Task<TDomain?> WhenAll(
+            Expression<Func<TPersistence, bool>> filterExpression,
+            CancellationToken cancellationToken = default)
+        {
+            return await QueryInternal(filterExpression).SingleOrDefaultAsync<TDomain>(cancellationToken);
+        }
         public virtual async Task<TDomain?> FindAsync(
             Expression<Func<TPersistence, bool>> filterExpression,
             CancellationToken cancellationToken = default)
@@ -192,7 +200,6 @@ namespace YAHALLO.Infrastructure.Repositories
             }
             return queryable;
         }
-
         protected virtual IQueryable<TResult> QueryInternal<TResult>(
             Expression<Func<TPersistence, bool>> filterExpression,
             Func<IQueryable<TPersistence>, IQueryable<TResult>> queryOptions)
@@ -357,6 +364,11 @@ namespace YAHALLO.Infrastructure.Repositories
                 return null;
             }
         }
+        // Idea to using this func
+        //Func<Expression, Expression, BinaryExpression> equalityExpression =
+        //    (property, constant) => Expression.Equal(property, constant);
+        //object xx = new object();
+        //Expression<Func<UserEntity, bool>>? x = IExpressionMultiple(typeof(UserEntity).GetProperty("Id"), xx, equalityExpression);
         public Expression<Func<TPersistence, bool>>? IExpressionMultiple
             (PropertyInfo pro, 
             object value,
@@ -404,5 +416,36 @@ namespace YAHALLO.Infrastructure.Repositories
         {
             return queryOptions;
         }
+        public virtual void FromSql(string tableName, string id)
+        {
+            // Tạo câu lệnh SQL với tham số đầu vào
+            string sqlQuery = $"SELECT * FROM {tableName} WHERE Id = @Id";
+
+            // Tạo đối tượng truy vấn
+            using (var connection = new SqlConnection("YourConnectionString"))
+            {
+                // Tạo đối tượng Command
+                using (var command = new SqlCommand(sqlQuery, connection))
+                {
+                    // Thêm tham số vào câu lệnh SQL
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    // Mở kết nối
+                    connection.Open();
+
+                    // Thực thi câu lệnh và đọc kết quả
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Xử lý kết quả đọc được
+                        // Giả sử TPersistence có thể khởi tạo từ dữ liệu đọc được
+                        if (reader.Read())
+                        {
+                            Console.WriteLine("Hello world");
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

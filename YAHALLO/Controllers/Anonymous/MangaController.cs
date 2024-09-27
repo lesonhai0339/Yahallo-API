@@ -83,14 +83,14 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpGet]
         [Route("manga/get-all")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<MangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<MangaDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<MangaDto>>>> GetAllManga(
+        public async Task<ActionResult<JsonResponse<ResponseResult<MangaDto>>>> GetAllManga(
          CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(new GetAllMangaQuery(), cancellationToken);
-            return Ok(new JsonResponse<List<MangaDto>>(result));
+            return Ok(new JsonResponse<ResponseResult<MangaDto>>(result));
         }
         [HttpGet]
         [Route("manga/get-all-deleted")]

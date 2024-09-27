@@ -21,29 +21,24 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         private readonly IMangaRepository _mangaRepository;
         private readonly ICommentRepository _commentRepository;
         private readonly IChapterRepository _chapterRepository;
-        private readonly IFiles<IFormFile> _files;
         private readonly ICurrentUserService _currentUser;
         private CommentEntity? _parent;
         private MangaEntity? _manga;
         private ChapterEntity? _chapter;
         public CreateCommentCommandHandler(IUserRepository userRepository, IMangaRepository mangaRepository, ICommentRepository commentRepository,
-            IChapterRepository chapterRepository, IFiles<IFormFile> files, ICurrentUserService currentUser)
+            IChapterRepository chapterRepository,ICurrentUserService currentUser)
         {
             _userRepository = userRepository;
             _mangaRepository = mangaRepository;
             _commentRepository = commentRepository;
             _chapterRepository= chapterRepository;
             _currentUser = currentUser; 
-            _files = files;
             _parent = null;
             _manga = null;  
             _chapter = null;
         }
         public async Task<ResponseResult<string>> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
-        {
-            string? url_1 = request.Url1;
-            string? url_2 = request.Url2;
-            string? url_3 = request.Url3;
+        { 
             var checkUserExist= await _userRepository.FindAsync(x=> x.Id==request.UserId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken); 
             if( checkUserExist == null )
             {
@@ -81,7 +76,6 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
                 LikeCount = 0,
                 DisLikeCount = 0,
                 Message = request.Message,
-                MetaData = null,
                 Parent = this._parent,
                 ParentId = this._parent?.Id ?? null,
                 UserEntity = checkUserExist,
@@ -93,51 +87,15 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
                 CreateDate = DateTime.Now,
                 IdUserCreate = _currentUser.UserId
             };
-            if(request.IsHaveMedia == true)
-            {
-                if(request.MediaFile != null) 
-                {
-                    string? parent_folder = _manga?.Id ?? _chapter?.Id;
-                    if (parent_folder != null)
-                    {
-                        try
-                        {
-                            var path = $"Data\\Comments\\{parent_folder}";
-                            _files.CreateFolder(path);
-                            bool check = await _files.UpLoadimage(request.MediaFile, path);
-                            if (check)
-                            {
-                                url_1 = Path.Combine(path, request.MediaFile.FileName);
-                            }
-                        }
-                        catch (IOException e)
-                        {
-                            throw new IOException("Lỗi trong quá trình ghi data: ", e);
-                        }
-                    }              
-                }
-                CommentAttechment attechment = new CommentAttechment
-                {
-                    Description = request.Description,
-                    MediaType = request.MediaType,
-                    Title = request.Title,
-                    Url1 = request.Url1,
-                    Url2 = request.Url2,
-                    Url3 = request.Url3,
-                    Parent = comment,
-                    ParentId = comment.Id,
-                };
-                comment.MetaData = attechment;
-            }
             _commentRepository.Add(comment);
             int result = await _commentRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result> 0)
             {
-                return new ResponseResult<string>("Tạo thành công");
+                return new ResponseResult<string>(comment.Id);
             }
             else
             {
-                return new ResponseResult<string>("Tạo thất bại");
+                return new ResponseResult<string>(comment.Id);
             }
             //if paramenter parentid not null the parent comment entity need to update commentCount. this comment is considers as a reply comment
             //neu tham so parentid khong rong thi ta can phai cap nhat commentCount cho parent comment vi binh luan nay la mot binh luan tra loi cho binh luan parent

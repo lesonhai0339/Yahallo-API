@@ -22,7 +22,6 @@ namespace YAHALLO.Application.Commands.CommentCommand.Update
             CanReply = canReply;
         }
         public string Id {  get; set; } 
-        public IFormFile? MediaFile { get; set; }
         public string? Message { get; set; }
         public bool? CanComment { get; set; }
         public bool? CanRemove { get; set; }
