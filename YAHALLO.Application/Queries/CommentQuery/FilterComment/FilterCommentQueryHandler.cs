@@ -41,7 +41,7 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
             }
             if (!string.IsNullOrEmpty(request.MangaId))
             {
-                query = query.Where(x => x.CommentType == Domain.Enums.MangaEnums.MangaCommentType.Manga && x.MangaId!.Equals(request.MangaId));
+                query = query.Where(x => x.CommentType == Domain.Enums.MangaEnums.CommentType.Manga && x.MangaId!.Equals(request.MangaId));
             }
             if(request.DateTime != null)
             {

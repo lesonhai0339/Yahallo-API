@@ -13,7 +13,7 @@ namespace YAHALLO.Domain.Entities
     public class CommentEntity: BaseEntity
     {
         public CommentEntity() { }  
-        public CommentEntity(bool canComment, bool canRemove, bool canHide, bool canLike, bool canReply, int commentCount, int likeCount, int disLikeCount, string message, CommentAttechment? metaData, MangaCommentType commentType, string? parentId,string userId, UserEntity? userEntity, string? mangaId, string? chapterId)
+        public CommentEntity(bool canComment, bool canRemove, bool canHide, bool canLike, bool canReply, int commentCount, int likeCount, int disLikeCount, string message, CommentType commentType, string? parentId,string userId, UserEntity? userEntity, string? mangaId, string? chapterId)
         {
             CanComment = canComment;
             CanRemove = canRemove;
@@ -24,7 +24,6 @@ namespace YAHALLO.Domain.Entities
             LikeCount = likeCount;
             DisLikeCount = disLikeCount;
             Message = message;
-            MetaData = metaData;
             CommentType = commentType;
             ParentId = parentId;
             UserId = userId;
@@ -42,16 +41,21 @@ namespace YAHALLO.Domain.Entities
         public int LikeCount { get;set; }
         public int DisLikeCount { get; set; }
         public string? Message { get; set;}
-        public virtual CommentAttechment? MetaData { get; set; }
-        public MangaCommentType CommentType { get; set; }
-        public string? ParentId { get; set; }
-        public virtual CommentEntity? Parent { get; set; }
+        public CommentType CommentType { get; set; }
+        public virtual CountingEntitity? ViewCount { get; set; }
+
         public string UserId { get; set; } = null!;
         public virtual UserEntity? UserEntity { get; set; }=null!;
         public string? MangaId { get; set;}
         public virtual MangaEntity? MangaEntity { get; set; }
         public string? ChapterId { get; set; }
         public virtual ChapterEntity? ChapterEntity { get; set; }
-        public virtual ICollection<CommentEntity>? entities { get; set; }
+        public string? BlogId { get; set; }
+        public virtual BlogEntity? BlogEntity { get; set; }
+
+        public string? ParentId { get; set; }
+        public virtual CommentEntity? Parent { get; set; }
+        public virtual ICollection<CommentEntity>? Entities { get; set; }
+        public virtual ICollection<AttechmentEntity>? Attechments { get; set; } 
     }
 }

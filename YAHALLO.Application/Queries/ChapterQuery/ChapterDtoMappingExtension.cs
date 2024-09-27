@@ -16,6 +16,11 @@ namespace YAHALLO.Application.Queries.ChapterQuery
         {
             var map= mapper.Map<ChapterDto>(entity);
             map.MangaName = entity.MangaEntity != null ? entity.MangaEntity.Name : "";
+            if(entity.ImagesEntities != null) 
+            {
+                map.Images = entity.ImagesEntities.Where(x => x.TypeImage == Domain.Enums.Base.TypeImage.Chapter && x.ChapterId != null
+                && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue).Select(y => (y.BaseUrl) != null ? y.BaseUrl.ToString() : (y.CloudUrl?.ToString() ?? "None")).ToList();
+            }
             return map;
         }
         public static List<ChapterDto> MapToChapterDtoToList(this ICollection<ChapterEntity> entities, IMapper mapper)

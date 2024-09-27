@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Data.Configurations
 {
@@ -25,7 +26,10 @@ namespace YAHALLO.Infrastructure.Data.Configurations
                 .IsUnicode(true);
             builder.Property(x => x.PhoneNumber)
                 .IsUnicode(false);
-
+            builder.HasOne(x => x.OldPasswords)
+               .WithOne(x => x.UserEntity)
+               .HasForeignKey<UserOldPasswordEntity>(x => x.UserId)
+               .OnDelete(DeleteBehavior.Cascade);
             builder.ToTable("Users");
         }
     }

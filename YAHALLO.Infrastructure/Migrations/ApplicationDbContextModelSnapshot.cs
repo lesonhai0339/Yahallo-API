@@ -121,6 +121,61 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.ToTable("Author", (string)null);
                 });
 
+            modelBuilder.Entity("YAHALLO.Domain.Entities.BlogEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DisLike")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IdUserCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserDelete")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserUpdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Like")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ParentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs", (string)null);
+                });
+
             modelBuilder.Entity("YAHALLO.Domain.Entities.ChapterEntity", b =>
                 {
                     b.Property<string>("Id")
@@ -167,6 +222,9 @@ namespace YAHALLO.Infrastructure.Migrations
             modelBuilder.Entity("YAHALLO.Domain.Entities.CommentEntity", b =>
                 {
                     b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BlogId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("CanComment")
@@ -235,6 +293,8 @@ namespace YAHALLO.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
 
                     b.HasIndex("ChapterId");
 
@@ -616,9 +676,15 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.ToTable("MangaView", (string)null);
                 });
 
-            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.CommentAttechment", b =>
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.AttechmentEntity", b =>
                 {
                     b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BlogId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CommentId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("CreateDate")
@@ -642,10 +708,6 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Property<int?>("MediaType")
                         .HasColumnType("int");
 
-                    b.Property<string>("ParentId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -663,10 +725,207 @@ namespace YAHALLO.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParentId")
-                        .IsUnique();
+                    b.HasIndex("BlogId");
 
-                    b.ToTable("CommentAttechment");
+                    b.HasIndex("CommentId");
+
+                    b.ToTable("Attechment", (string)null);
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.CountingEntitity", b =>
+                {
+                    b.Property<string>("ParentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BlogId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ChapterId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CommentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserDelete")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserUpdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MangaId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("NumberOfVisit")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserVisit")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("ParentId");
+
+                    b.HasIndex("BlogId")
+                        .IsUnique()
+                        .HasFilter("[BlogId] IS NOT NULL");
+
+                    b.HasIndex("ChapterId")
+                        .IsUnique()
+                        .HasFilter("[ChapterId] IS NOT NULL");
+
+                    b.HasIndex("CommentId")
+                        .IsUnique()
+                        .HasFilter("[CommentId] IS NOT NULL");
+
+                    b.HasIndex("MangaId")
+                        .IsUnique()
+                        .HasFilter("[MangaId] IS NOT NULL");
+
+                    b.ToTable("Counting", (string)null);
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.ReactionEntity", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BlogId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IdUserCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserDelete")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserUpdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDisLike")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFavorite")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsLike")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRecommend")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSaved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("real");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VisitCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "BlogId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("Reaction", (string)null);
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.ThreadOfBlogEntity", b =>
+                {
+                    b.Property<string>("ThreadId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BlogId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IdUserCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserDelete")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserUpdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ThreadId", "BlogId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("ThreadOfBlog", (string)null);
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.UserOldPasswordEntity", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IdUserCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserDelete")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserUpdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OldPasswords")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("OldPassword", (string)null);
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.RoleEntity", b =>
@@ -712,6 +971,42 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.HasIndex("Id");
 
                     b.ToTable("Roles", (string)null);
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.ThreadEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserDelete")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserUpdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Threads", (string)null);
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.UserEntity", b =>
@@ -872,13 +1167,18 @@ namespace YAHALLO.Infrastructure.Migrations
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.CommentEntity", b =>
                 {
+                    b.HasOne("YAHALLO.Domain.Entities.BlogEntity", "BlogEntity")
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("YAHALLO.Domain.Entities.ChapterEntity", "ChapterEntity")
                         .WithMany("CommentEntities")
                         .HasForeignKey("ChapterId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("YAHALLO.Domain.Entities.CommentEntity", "Parent")
-                        .WithMany("entities")
+                        .WithMany("Entities")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -897,6 +1197,8 @@ namespace YAHALLO.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("BlogEntity");
 
                     b.Navigation("ChapterEntity");
 
@@ -1044,15 +1346,100 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Navigation("Manga");
                 });
 
-            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.CommentAttechment", b =>
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.AttechmentEntity", b =>
                 {
-                    b.HasOne("YAHALLO.Domain.Entities.CommentEntity", "Parent")
-                        .WithOne("MetaData")
-                        .HasForeignKey("YAHALLO.Domain.Entities.Reference.CommentAttechment", "ParentId")
+                    b.HasOne("YAHALLO.Domain.Entities.BlogEntity", "Blog")
+                        .WithMany("Attechments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("YAHALLO.Domain.Entities.CommentEntity", "Comment")
+                        .WithMany("Attechments")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("Comment");
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.CountingEntitity", b =>
+                {
+                    b.HasOne("YAHALLO.Domain.Entities.BlogEntity", "Blog")
+                        .WithOne("ViewCount")
+                        .HasForeignKey("YAHALLO.Domain.Entities.Reference.CountingEntitity", "BlogId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("YAHALLO.Domain.Entities.ChapterEntity", "Chapter")
+                        .WithOne("ViewCount")
+                        .HasForeignKey("YAHALLO.Domain.Entities.Reference.CountingEntitity", "ChapterId");
+
+                    b.HasOne("YAHALLO.Domain.Entities.CommentEntity", "Comment")
+                        .WithOne("ViewCount")
+                        .HasForeignKey("YAHALLO.Domain.Entities.Reference.CountingEntitity", "CommentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("YAHALLO.Domain.Entities.MangaEntity", "Manga")
+                        .WithOne("ViewCount")
+                        .HasForeignKey("YAHALLO.Domain.Entities.Reference.CountingEntitity", "MangaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("Chapter");
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Manga");
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.ReactionEntity", b =>
+                {
+                    b.HasOne("YAHALLO.Domain.Entities.BlogEntity", "Blog")
+                        .WithMany("Reactions")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("YAHALLO.Domain.Entities.UserEntity", "User")
+                        .WithMany("Reactions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.ThreadOfBlogEntity", b =>
+                {
+                    b.HasOne("YAHALLO.Domain.Entities.BlogEntity", "Blog")
+                        .WithMany("ThreadOfBlogEntities")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("YAHALLO.Domain.Entities.ThreadEntity", "Thread")
+                        .WithMany("ThreadOfBlogEntities")
+                        .HasForeignKey("ThreadId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("Thread");
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.UserOldPasswordEntity", b =>
+                {
+                    b.HasOne("YAHALLO.Domain.Entities.UserEntity", "UserEntity")
+                        .WithOne("OldPasswords")
+                        .HasForeignKey("YAHALLO.Domain.Entities.Reference.UserOldPasswordEntity", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Parent");
+                    b.Navigation("UserEntity");
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.UserRoleEntity", b =>
@@ -1095,18 +1482,35 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Navigation("AuthorEntities");
                 });
 
+            modelBuilder.Entity("YAHALLO.Domain.Entities.BlogEntity", b =>
+                {
+                    b.Navigation("Attechments");
+
+                    b.Navigation("Comments");
+
+                    b.Navigation("Reactions");
+
+                    b.Navigation("ThreadOfBlogEntities");
+
+                    b.Navigation("ViewCount");
+                });
+
             modelBuilder.Entity("YAHALLO.Domain.Entities.ChapterEntity", b =>
                 {
                     b.Navigation("CommentEntities");
 
                     b.Navigation("ImagesEntities");
+
+                    b.Navigation("ViewCount");
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.CommentEntity", b =>
                 {
-                    b.Navigation("MetaData");
+                    b.Navigation("Attechments");
 
-                    b.Navigation("entities");
+                    b.Navigation("Entities");
+
+                    b.Navigation("ViewCount");
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.MangaEntity", b =>
@@ -1128,6 +1532,8 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Navigation("RatingEntities");
 
                     b.Navigation("Thumbnail");
+
+                    b.Navigation("ViewCount");
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.MangaSeasonEntity", b =>
@@ -1138,6 +1544,11 @@ namespace YAHALLO.Infrastructure.Migrations
             modelBuilder.Entity("YAHALLO.Domain.Entities.RoleEntity", b =>
                 {
                     b.Navigation("UserRoleEntities");
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.ThreadEntity", b =>
+                {
+                    b.Navigation("ThreadOfBlogEntities");
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.UserEntity", b =>
@@ -1151,6 +1562,11 @@ namespace YAHALLO.Infrastructure.Migrations
                     b.Navigation("MangaEntities");
 
                     b.Navigation("MangaRatingEntities");
+
+                    b.Navigation("OldPasswords")
+                        .IsRequired();
+
+                    b.Navigation("Reactions");
 
                     b.Navigation("ReplyComment");
 

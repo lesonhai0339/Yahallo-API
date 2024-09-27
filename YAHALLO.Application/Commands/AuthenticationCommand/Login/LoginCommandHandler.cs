@@ -46,7 +46,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     }
                     else
                     {
-                        var newtoken = _token.CreateToken(checkUserExist.Id, checkUserExist.UserRoleEntities.Select(x => x.RoleEntity.RoleCode.ToString()).ToList());
+                        var newtoken = _token.CreateToken(checkUserExist.Id,checkUserExist.Level, checkUserExist.UserRoleEntities.Select(x => x.RoleEntity.RoleCode.ToString()).ToList());
                         if (newtoken != null)
                         {
                             checkExistToken.AccessToken = newtoken;

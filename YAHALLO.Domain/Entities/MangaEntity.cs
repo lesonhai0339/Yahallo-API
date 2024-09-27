@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities.Base;
+using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Enums;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
@@ -27,6 +28,7 @@ namespace YAHALLO.Domain.Entities
         public virtual UserEntity UserEntity { get; set; } = null!;
         public virtual MangaViewEntity? MangaView { get; set; }
         public virtual ImageEntity? Thumbnail { get; set; }
+        public virtual CountingEntitity? ViewCount { get; set; }
 
         public virtual ICollection<MangaAssociateNameEntity>? AssociateNameEntities {get;set;}
         public virtual ICollection<MangaArtistEntity> ArtistEntities { get; set; } = null!;

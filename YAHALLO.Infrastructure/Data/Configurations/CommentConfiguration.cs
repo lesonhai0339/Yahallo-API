@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Data.Configurations
 {
@@ -19,7 +20,7 @@ namespace YAHALLO.Infrastructure.Data.Configurations
                 .IsUnicode(true);
 
             builder.HasOne(x => x.Parent)
-                .WithMany(x => x.entities)
+                .WithMany(x => x.Entities)
                 .HasForeignKey(x => x.Id);
             builder.HasOne(x => x.UserEntity)
                 .WithMany(x => x.CommentEntities)
@@ -32,7 +33,15 @@ namespace YAHALLO.Infrastructure.Data.Configurations
             builder.HasOne(x => x.ChapterEntity)
                 .WithMany(x => x.CommentEntities)
                 .HasForeignKey(x => x.ChapterId)
-                .OnDelete(DeleteBehavior.Restrict);       
+                .OnDelete(DeleteBehavior.Restrict);  
+            builder.HasOne(x=> x.BlogEntity)
+                .WithMany(x=> x.Comments)
+                .HasForeignKey(x => x.BlogId)
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.ViewCount)
+                .WithOne(x => x.Comment)
+                .HasForeignKey<CountingEntitity>(x => x.CommentId)
+                .OnDelete(DeleteBehavior.Restrict);
             builder.ToTable("Comment");
         }
     }
