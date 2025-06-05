@@ -22,7 +22,7 @@ namespace YAHALLO.Infrastructure
         public static IServiceCollection Infrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             DotEnv.Load();
-            var sqlConnection = Environment.GetEnvironmentVariable("Cloud_Server");
+            var sqlConnection = Environment.GetEnvironmentVariable("Server");
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
                 options.UseSqlServer(
@@ -32,6 +32,10 @@ namespace YAHALLO.Infrastructure
                     {
                         b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
                         b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+                        b.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null);
                     });
                 options.UseLazyLoadingProxies();
             });

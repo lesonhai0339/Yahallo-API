@@ -28,7 +28,8 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Delete
             {
                 throw new NotFoundException($"Does not exist Attechment with Id {request.Id}");
             }
-            if (checkAttechmentExist.IdUserCreate !=  _currentUser.UserId || !await _currentUser.IsInRoleAsync("Admin"){
+            if (checkAttechmentExist.IdUserCreate !=  _currentUser.UserId || !await _currentUser.IsInRoleAsync("Admin"))
+            {
                 throw new UnAuthorizeException("You don't have permission to use this method");
             }
             if (string.IsNullOrEmpty(checkAttechmentExist.IdUserDelete) && checkAttechmentExist.DeleteDate.HasValue)

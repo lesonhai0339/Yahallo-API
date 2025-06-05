@@ -12,7 +12,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.BlogQuery.GetAllPagination
 {
-    public class GetAllBlogPaginationQueryHandler : IRequestHandler<GetAllBlogPaginationQuery, PagedResult<BlogDto>
+    public class GetAllBlogPaginationQueryHandler : IRequestHandler<GetAllBlogPaginationQuery, PagedResult<BlogDto>>
     {
         private readonly IBlogRepository _blogRepository;
         private readonly IMapper _mapper;
