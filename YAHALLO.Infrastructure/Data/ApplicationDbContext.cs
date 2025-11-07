@@ -72,7 +72,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
 
-        //CreateData(modelBuilder);
+        CreateData(modelBuilder);
     }
         protected void CreateData(ModelBuilder builder)
         {

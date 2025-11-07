@@ -1,0 +1,2103 @@
+2025-10-27 21:27:58.349 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:27:58.906 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:29:56.042 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 21:29:56.134 +07:00 [INF] Creating key {1b5dce56-86e4-42ac-a96c-bf5fb61b143b} with creation date 2025-10-27 14:29:56Z, activation date 2025-10-27 14:29:56Z, and expiration date 2026-01-25 14:29:56Z.
+2025-10-27 21:29:56.165 +07:00 [INF] Writing data to file 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys\key-1b5dce56-86e4-42ac-a96c-bf5fb61b143b.xml'.
+2025-10-27 21:29:56.914 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 21:29:56.915 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 21:29:57.030 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 21:29:57.031 +07:00 [INF] Hosting environment: Development
+2025-10-27 21:29:57.032 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 21:29:57.624 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger - -
+2025-10-27 21:29:57.848 +07:00 [INF] HTTP GET /swagger responded 301 in 75.5314 ms
+2025-10-27 21:29:57.854 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger - - - 301 0 - 233.0190ms
+2025-10-27 21:29:57.863 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 21:29:57.923 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 56.1745 ms
+2025-10-27 21:29:57.927 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 63.6663ms
+2025-10-27 21:29:57.940 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/swagger-ui.css - -
+2025-10-27 21:29:57.941 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 21:29:57.941 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/swagger-ui-standalone-preset.js - -
+2025-10-27 21:29:57.941 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/swagger-ui-bundle.js - -
+2025-10-27 21:29:57.950 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 21:29:57.956 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 15.2682ms
+2025-10-27 21:29:57.993 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-10-27 21:29:57.993 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-10-27 21:29:57.997 +07:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 53.4557 ms
+2025-10-27 21:29:57.996 +07:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 51.6805 ms
+2025-10-27 21:29:58.001 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/swagger-ui.css - - - 200 144929 text/css 60.4616ms
+2025-10-27 21:29:58.002 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/swagger-ui-standalone-preset.js - - - 200 312163 text/javascript 61.7358ms
+2025-10-27 21:29:58.018 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-10-27 21:29:58.022 +07:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 76.8159 ms
+2025-10-27 21:29:58.025 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/swagger-ui-bundle.js - - - 200 1061536 text/javascript 84.3372ms
+2025-10-27 21:29:58.034 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 83.5239ms
+2025-10-27 21:29:58.154 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 21:29:58.169 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - -
+2025-10-27 21:29:58.172 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-10-27 21:29:58.179 +07:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 7.8803 ms
+2025-10-27 21:29:58.184 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - - - 200 628 image/png 14.9512ms
+2025-10-27 21:29:58.271 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 115.5991 ms
+2025-10-27 21:29:58.275 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 121.1715ms
+2025-10-27 21:30:27.060 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:30:27.560 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:31:26.454 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:31:27.086 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:31:27.286 +07:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Yahallo];
+2025-10-27 21:31:27.328 +07:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Yahallo] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2025-10-27 21:31:27.340 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-10-27 21:31:27.375 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2025-10-27 21:31:27.376 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-10-27 21:31:27.385 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-10-27 21:31:27.391 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-10-27 21:31:27.399 +07:00 [INF] Applying migration '20240401171442_v1'.
+2025-10-27 21:31:27.506 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Artist] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Artist] PRIMARY KEY ([Id])
+);
+2025-10-27 21:31:27.507 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Author] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Author] PRIMARY KEY ([Id])
+);
+2025-10-27 21:31:27.508 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaSeason] (
+    [Id] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaSeason] PRIMARY KEY ([Id])
+);
+2025-10-27 21:31:27.509 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Roles] (
+    [Id] nvarchar(450) NOT NULL,
+    [RoleCode] int NOT NULL,
+    [RoleName] nvarchar(450) NOT NULL,
+    [RoleDescription] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+2025-10-27 21:31:27.510 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [Id] nvarchar(450) NOT NULL,
+    [DisplayName] nvarchar(max) NULL,
+    [FirstName] nvarchar(200) NULL,
+    [LastName] nvarchar(200) NULL,
+    [Email] nvarchar(450) NOT NULL,
+    [PhoneNumber] varchar(max) NULL,
+    [EmailConfirm] bit NOT NULL,
+    [PhoneConfirmed] bit NOT NULL,
+    [UserName] nvarchar(max) NOT NULL,
+    [Password] nvarchar(max) NOT NULL,
+    [Status] int NOT NULL,
+    [Level] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+);
+2025-10-27 21:31:27.512 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Manga] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Level] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [Countries] int NOT NULL,
+    [Season] int NOT NULL,
+    [MangaSeasonId] nvarchar(450) NULL,
+    [UserId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Manga] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Manga_MangaSeason_MangaSeasonId] FOREIGN KEY ([MangaSeasonId]) REFERENCES [MangaSeason] ([Id]),
+    CONSTRAINT [FK_Manga_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id])
+);
+2025-10-27 21:31:27.513 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserRole] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserRole] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_UserRole_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_UserRole_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:28.034 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserToken] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessToken] nvarchar(max) NOT NULL,
+    [RefeshToken] nvarchar(max) NOT NULL,
+    [ExpiredRefeshToken] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserToken] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserToken_Users_Id] FOREIGN KEY ([Id]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:28.035 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AssociateName] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_AssociateName] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AssociateName_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:28.037 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Chapter] (
+    [Id] nvarchar(450) NOT NULL,
+    [Title] nvarchar(255) NULL,
+    [Index] int NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Chapter] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Chapter_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:28.039 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Follow] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Follow] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Follow_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Follow_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:28.041 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaArtist] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [ArtistId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaArtist] PRIMARY KEY ([MangaId], [ArtistId]),
+    CONSTRAINT [FK_MangaArtist_Artist_ArtistId] FOREIGN KEY ([ArtistId]) REFERENCES [Artist] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaArtist_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:28.043 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaAuthor] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [AuthorId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaAuthor] PRIMARY KEY ([MangaId], [AuthorId]),
+    CONSTRAINT [FK_MangaAuthor_Author_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Author] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaAuthor_Manga_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:31.675 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaView] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [View] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaView] PRIMARY KEY ([MangaId]),
+    CONSTRAINT [FK_MangaView_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:31.678 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Rating] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [Rating] int NOT NULL,
+    [Id] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Rating] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Rating_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Rating_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:31.681 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Data] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [UserReplyId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserReplyId] FOREIGN KEY ([UserReplyId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:31.683 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Image] (
+    [Id] nvarchar(450) NOT NULL,
+    [Index] int NOT NULL,
+    [BaseUrl] nvarchar(max) NOT NULL,
+    [CloudUrl] nvarchar(max) NULL,
+    [TypeImage] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Image] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Image_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:31:35.637 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AssociateName_MangaId] ON [AssociateName] ([MangaId]);
+2025-10-27 21:31:35.639 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Chapter_MangaId] ON [Chapter] ([MangaId]);
+2025-10-27 21:31:35.640 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_ChapterId] ON [Comment] ([ChapterId]);
+2025-10-27 21:31:35.641 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_MangaId] ON [Comment] ([MangaId]);
+2025-10-27 21:31:35.642 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserId] ON [Comment] ([UserId]);
+2025-10-27 21:31:35.643 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserReplyId] ON [Comment] ([UserReplyId]);
+2025-10-27 21:31:35.644 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Follow_MangaId] ON [Follow] ([MangaId]);
+2025-10-27 21:31:35.645 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Image_ChapterId] ON [Image] ([ChapterId]);
+2025-10-27 21:31:35.646 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_MangaId] ON [Image] ([MangaId]) WHERE [MangaId] IS NOT NULL;
+2025-10-27 21:31:35.647 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_UserId] ON [Image] ([UserId]) WHERE [UserId] IS NOT NULL;
+2025-10-27 21:31:35.647 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_Id] ON [Manga] ([Id]);
+2025-10-27 21:31:35.648 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_MangaSeasonId] ON [Manga] ([MangaSeasonId]);
+2025-10-27 21:31:35.648 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_UserId] ON [Manga] ([UserId]);
+2025-10-27 21:31:35.649 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaArtist_ArtistId] ON [MangaArtist] ([ArtistId]);
+2025-10-27 21:31:35.650 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaAuthor_AuthorId] ON [MangaAuthor] ([AuthorId]);
+2025-10-27 21:31:35.651 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Rating_MangaId] ON [Rating] ([MangaId]);
+2025-10-27 21:31:35.652 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Roles_Id] ON [Roles] ([Id]);
+2025-10-27 21:31:35.652 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_RoleId] ON [UserRole] ([RoleId]);
+2025-10-27 21:31:35.652 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_UserId] ON [UserRole] ([UserId]);
+2025-10-27 21:31:35.653 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_Email] ON [Users] ([Email]);
+2025-10-27 21:31:35.655 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240401171442_v1', N'7.0.0');
+2025-10-27 21:31:35.659 +07:00 [INF] Applying migration '20240401171715_v2'.
+2025-10-27 21:31:35.810 +07:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (N'478b5e9aba1c42cb814b26ed47412760', NULL, NULL, NULL, NULL, NULL, 3, N'Role for Moderator', N'Mod', NULL),
+(N'4e5add13a3874804b73484b3311cc422', NULL, NULL, NULL, NULL, NULL, 4, N'If User has this role then User can use Create, Update, Delete Manga', N'Upload', NULL),
+(N'96c85d7acc6a416c9e33cdd8e7629c87', NULL, NULL, NULL, NULL, NULL, 2, N'Normal User or New User has this Role', N'User', NULL),
+(N'f25aa70593ee4d9f9fba524a52b7173c', NULL, NULL, NULL, NULL, NULL, 1, N'Only Admin has this Role', N'Admin', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] OFF;
+2025-10-27 21:31:38.704 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240401171715_v2', N'7.0.0');
+2025-10-27 21:31:38.704 +07:00 [INF] Applying migration '20240720064704_v3'.
+2025-10-27 21:31:38.775 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] DROP CONSTRAINT [FK_Comment_Users_UserReplyId];
+2025-10-27 21:31:38.775 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_Comment_UserReplyId] ON [Comment];
+2025-10-27 21:31:38.804 +07:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Comment]') AND [c].[name] = N'UserReplyId');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Comment] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Comment] DROP COLUMN [UserReplyId];
+2025-10-27 21:31:38.934 +07:00 [INF] Executed DbCommand (130ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[Comment].[Data]', N'Message', N'COLUMN';
+2025-10-27 21:31:38.935 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MangaSeason] ADD [Description] nvarchar(max) NULL;
+2025-10-27 21:31:38.936 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MangaSeason] ADD [Season] float NOT NULL DEFAULT 0.0E0;
+2025-10-27 21:31:38.936 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanComment] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:31:38.937 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanHide] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:31:38.938 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanLike] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:31:38.938 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanRemove] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:31:38.939 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanReply] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:31:38.939 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CommentCount] int NOT NULL DEFAULT 0;
+2025-10-27 21:31:38.940 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [DisLikeCount] int NOT NULL DEFAULT 0;
+2025-10-27 21:31:38.940 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [LikeCount] int NOT NULL DEFAULT 0;
+2025-10-27 21:31:38.940 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [ParentId] nvarchar(max) NULL;
+2025-10-27 21:31:38.941 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [UserEntityId] nvarchar(450) NULL;
+2025-10-27 21:31:38.942 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [CommentAttechment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [MediaType] int NULL,
+    [Title] nvarchar(max) NULL,
+    [Url1] nvarchar(max) NULL,
+    [Url2] nvarchar(max) NULL,
+    [Url3] nvarchar(max) NULL,
+    [ParentId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_CommentAttechment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_CommentAttechment_Comment_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [Comment] ([Id]) ON DELETE CASCADE
+);
+2025-10-27 21:31:40.368 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserEntityId] ON [Comment] ([UserEntityId]);
+2025-10-27 21:31:40.371 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_CommentAttechment_ParentId] ON [CommentAttechment] ([ParentId]);
+2025-10-27 21:31:40.373 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]);
+2025-10-27 21:31:40.373 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240720064704_v3', N'7.0.0');
+2025-10-27 21:31:40.374 +07:00 [INF] Applying migration '20251027142759_yahallo'.
+2025-10-27 21:31:40.482 +07:00 [ERR] Failed executing DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Blogs]') AND [c].[name] = N'Title');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Blogs] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [Blogs] ALTER COLUMN [Title] nvarchar(max) NULL;
+2025-10-27 21:34:21.348 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:34:22.006 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:34:22.168 +07:00 [INF] Executed DbCommand (52ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Yahallo];
+2025-10-27 21:34:22.193 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Yahallo] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2025-10-27 21:34:22.204 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-10-27 21:34:22.241 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2025-10-27 21:34:22.242 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-10-27 21:34:22.251 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-10-27 21:34:22.256 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-10-27 21:34:22.265 +07:00 [INF] Applying migration '20240401171442_v1'.
+2025-10-27 21:34:22.359 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Artist] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Artist] PRIMARY KEY ([Id])
+);
+2025-10-27 21:34:22.360 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Author] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Author] PRIMARY KEY ([Id])
+);
+2025-10-27 21:34:22.361 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaSeason] (
+    [Id] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaSeason] PRIMARY KEY ([Id])
+);
+2025-10-27 21:34:22.361 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Roles] (
+    [Id] nvarchar(450) NOT NULL,
+    [RoleCode] int NOT NULL,
+    [RoleName] nvarchar(450) NOT NULL,
+    [RoleDescription] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+2025-10-27 21:34:22.363 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [Id] nvarchar(450) NOT NULL,
+    [DisplayName] nvarchar(max) NULL,
+    [FirstName] nvarchar(200) NULL,
+    [LastName] nvarchar(200) NULL,
+    [Email] nvarchar(450) NOT NULL,
+    [PhoneNumber] varchar(max) NULL,
+    [EmailConfirm] bit NOT NULL,
+    [PhoneConfirmed] bit NOT NULL,
+    [UserName] nvarchar(max) NOT NULL,
+    [Password] nvarchar(max) NOT NULL,
+    [Status] int NOT NULL,
+    [Level] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+);
+2025-10-27 21:34:22.364 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Manga] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Level] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [Countries] int NOT NULL,
+    [Season] int NOT NULL,
+    [MangaSeasonId] nvarchar(450) NULL,
+    [UserId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Manga] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Manga_MangaSeason_MangaSeasonId] FOREIGN KEY ([MangaSeasonId]) REFERENCES [MangaSeason] ([Id]),
+    CONSTRAINT [FK_Manga_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id])
+);
+2025-10-27 21:34:22.445 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserRole] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserRole] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_UserRole_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_UserRole_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:22.446 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserToken] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessToken] nvarchar(max) NOT NULL,
+    [RefeshToken] nvarchar(max) NOT NULL,
+    [ExpiredRefeshToken] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserToken] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserToken_Users_Id] FOREIGN KEY ([Id]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:22.448 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AssociateName] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_AssociateName] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AssociateName_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:22.449 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Chapter] (
+    [Id] nvarchar(450) NOT NULL,
+    [Title] nvarchar(255) NULL,
+    [Index] int NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Chapter] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Chapter_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:22.450 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Follow] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Follow] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Follow_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Follow_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:22.451 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaArtist] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [ArtistId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaArtist] PRIMARY KEY ([MangaId], [ArtistId]),
+    CONSTRAINT [FK_MangaArtist_Artist_ArtistId] FOREIGN KEY ([ArtistId]) REFERENCES [Artist] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaArtist_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:26.068 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaAuthor] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [AuthorId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaAuthor] PRIMARY KEY ([MangaId], [AuthorId]),
+    CONSTRAINT [FK_MangaAuthor_Author_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Author] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaAuthor_Manga_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:26.069 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaView] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [View] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaView] PRIMARY KEY ([MangaId]),
+    CONSTRAINT [FK_MangaView_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:26.072 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Rating] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [Rating] int NOT NULL,
+    [Id] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Rating] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Rating_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Rating_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:26.074 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Data] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [UserReplyId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserReplyId] FOREIGN KEY ([UserReplyId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:26.076 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Image] (
+    [Id] nvarchar(450) NOT NULL,
+    [Index] int NOT NULL,
+    [BaseUrl] nvarchar(max) NOT NULL,
+    [CloudUrl] nvarchar(max) NULL,
+    [TypeImage] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Image] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Image_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:34:29.651 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AssociateName_MangaId] ON [AssociateName] ([MangaId]);
+2025-10-27 21:34:29.653 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Chapter_MangaId] ON [Chapter] ([MangaId]);
+2025-10-27 21:34:29.655 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_ChapterId] ON [Comment] ([ChapterId]);
+2025-10-27 21:34:29.655 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_MangaId] ON [Comment] ([MangaId]);
+2025-10-27 21:34:29.656 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserId] ON [Comment] ([UserId]);
+2025-10-27 21:34:29.656 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserReplyId] ON [Comment] ([UserReplyId]);
+2025-10-27 21:34:29.657 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Follow_MangaId] ON [Follow] ([MangaId]);
+2025-10-27 21:34:29.657 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Image_ChapterId] ON [Image] ([ChapterId]);
+2025-10-27 21:34:29.658 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_MangaId] ON [Image] ([MangaId]) WHERE [MangaId] IS NOT NULL;
+2025-10-27 21:34:29.658 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_UserId] ON [Image] ([UserId]) WHERE [UserId] IS NOT NULL;
+2025-10-27 21:34:29.658 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_Id] ON [Manga] ([Id]);
+2025-10-27 21:34:29.659 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_MangaSeasonId] ON [Manga] ([MangaSeasonId]);
+2025-10-27 21:34:29.659 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_UserId] ON [Manga] ([UserId]);
+2025-10-27 21:34:29.659 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaArtist_ArtistId] ON [MangaArtist] ([ArtistId]);
+2025-10-27 21:34:29.660 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaAuthor_AuthorId] ON [MangaAuthor] ([AuthorId]);
+2025-10-27 21:34:29.660 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Rating_MangaId] ON [Rating] ([MangaId]);
+2025-10-27 21:34:29.660 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Roles_Id] ON [Roles] ([Id]);
+2025-10-27 21:34:29.661 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_RoleId] ON [UserRole] ([RoleId]);
+2025-10-27 21:34:29.661 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_UserId] ON [UserRole] ([UserId]);
+2025-10-27 21:34:29.661 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_Email] ON [Users] ([Email]);
+2025-10-27 21:34:29.663 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240401171442_v1', N'7.0.0');
+2025-10-27 21:34:32.599 +07:00 [INF] Applying migration '20240401171715_v2'.
+2025-10-27 21:34:32.680 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (N'478b5e9aba1c42cb814b26ed47412760', NULL, NULL, NULL, NULL, NULL, 3, N'Role for Moderator', N'Mod', NULL),
+(N'4e5add13a3874804b73484b3311cc422', NULL, NULL, NULL, NULL, NULL, 4, N'If User has this role then User can use Create, Update, Delete Manga', N'Upload', NULL),
+(N'96c85d7acc6a416c9e33cdd8e7629c87', NULL, NULL, NULL, NULL, NULL, 2, N'Normal User or New User has this Role', N'User', NULL),
+(N'f25aa70593ee4d9f9fba524a52b7173c', NULL, NULL, NULL, NULL, NULL, 1, N'Only Admin has this Role', N'Admin', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] OFF;
+2025-10-27 21:34:32.680 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240401171715_v2', N'7.0.0');
+2025-10-27 21:34:32.681 +07:00 [INF] Applying migration '20240720064704_v3'.
+2025-10-27 21:34:32.749 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] DROP CONSTRAINT [FK_Comment_Users_UserReplyId];
+2025-10-27 21:34:32.750 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_Comment_UserReplyId] ON [Comment];
+2025-10-27 21:34:32.780 +07:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Comment]') AND [c].[name] = N'UserReplyId');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Comment] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Comment] DROP COLUMN [UserReplyId];
+2025-10-27 21:34:32.893 +07:00 [INF] Executed DbCommand (113ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[Comment].[Data]', N'Message', N'COLUMN';
+2025-10-27 21:34:32.893 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MangaSeason] ADD [Description] nvarchar(max) NULL;
+2025-10-27 21:34:32.895 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MangaSeason] ADD [Season] float NOT NULL DEFAULT 0.0E0;
+2025-10-27 21:34:32.896 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanComment] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:34:32.897 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanHide] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:34:32.897 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanLike] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:34:32.898 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanRemove] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:34:32.899 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CanReply] bit NOT NULL DEFAULT CAST(0 AS bit);
+2025-10-27 21:34:32.900 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [CommentCount] int NOT NULL DEFAULT 0;
+2025-10-27 21:34:34.391 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [DisLikeCount] int NOT NULL DEFAULT 0;
+2025-10-27 21:34:34.392 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [LikeCount] int NOT NULL DEFAULT 0;
+2025-10-27 21:34:34.392 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [ParentId] nvarchar(max) NULL;
+2025-10-27 21:34:34.393 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD [UserEntityId] nvarchar(450) NULL;
+2025-10-27 21:34:34.394 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [CommentAttechment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [MediaType] int NULL,
+    [Title] nvarchar(max) NULL,
+    [Url1] nvarchar(max) NULL,
+    [Url2] nvarchar(max) NULL,
+    [Url3] nvarchar(max) NULL,
+    [ParentId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_CommentAttechment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_CommentAttechment_Comment_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [Comment] ([Id]) ON DELETE CASCADE
+);
+2025-10-27 21:34:34.394 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserEntityId] ON [Comment] ([UserEntityId]);
+2025-10-27 21:34:34.394 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_CommentAttechment_ParentId] ON [CommentAttechment] ([ParentId]);
+2025-10-27 21:34:34.395 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Comment] ADD CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]);
+2025-10-27 21:34:34.395 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240720064704_v3', N'7.0.0');
+2025-10-27 21:34:34.395 +07:00 [INF] Applying migration '20251027142759_yahallo'.
+2025-10-27 21:34:34.499 +07:00 [ERR] Failed executing DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Blogs]') AND [c].[name] = N'Title');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Blogs] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [Blogs] ALTER COLUMN [Title] nvarchar(max) NULL;
+2025-10-27 21:40:57.236 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:40:57.766 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:43:24.611 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:43:25.136 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:43:40.826 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:43:41.449 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:43:41.605 +07:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Yahallo];
+2025-10-27 21:43:41.628 +07:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Yahallo] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2025-10-27 21:43:41.638 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-10-27 21:43:41.670 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2025-10-27 21:43:41.670 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-10-27 21:43:41.678 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-10-27 21:43:41.684 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-10-27 21:43:41.691 +07:00 [INF] Applying migration '20251027144325_yahallo'.
+2025-10-27 21:43:41.826 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Artist] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Artist] PRIMARY KEY ([Id])
+);
+2025-10-27 21:43:41.827 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Author] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Author] PRIMARY KEY ([Id])
+);
+2025-10-27 21:43:41.828 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Blogs] (
+    [Id] nvarchar(450) NOT NULL,
+    [ParentId] nvarchar(max) NULL,
+    [Title] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    [Content] nvarchar(max) NULL,
+    [Like] int NOT NULL,
+    [DisLike] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Blogs] PRIMARY KEY ([Id])
+);
+2025-10-27 21:43:41.829 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaSeason] (
+    [Id] nvarchar(450) NOT NULL,
+    [Season] float NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaSeason] PRIMARY KEY ([Id])
+);
+2025-10-27 21:43:41.830 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Roles] (
+    [Id] nvarchar(450) NOT NULL,
+    [RoleCode] int NOT NULL,
+    [RoleName] nvarchar(450) NOT NULL,
+    [RoleDescription] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+2025-10-27 21:43:41.831 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Threads] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Threads] PRIMARY KEY ([Id])
+);
+2025-10-27 21:43:41.832 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [Id] nvarchar(450) NOT NULL,
+    [DisplayName] nvarchar(max) NULL,
+    [FirstName] nvarchar(200) NULL,
+    [LastName] nvarchar(200) NULL,
+    [Email] nvarchar(450) NOT NULL,
+    [PhoneNumber] varchar(max) NULL,
+    [EmailConfirm] bit NOT NULL,
+    [PhoneConfirmed] bit NOT NULL,
+    [UserName] nvarchar(max) NOT NULL,
+    [Password] nvarchar(max) NOT NULL,
+    [Status] int NOT NULL,
+    [Level] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+);
+2025-10-27 21:43:42.464 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ThreadOfBlog] (
+    [BlogId] nvarchar(450) NOT NULL,
+    [ThreadId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_ThreadOfBlog] PRIMARY KEY ([ThreadId], [BlogId]),
+    CONSTRAINT [FK_ThreadOfBlog_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ThreadOfBlog_Threads_ThreadId] FOREIGN KEY ([ThreadId]) REFERENCES [Threads] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:42.465 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Manga] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Level] int NOT NULL,
+    [Status] int NOT NULL,
+    [Type] int NOT NULL,
+    [Countries] int NOT NULL,
+    [Season] int NOT NULL,
+    [MangaSeasonId] nvarchar(450) NULL,
+    [UserId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Manga] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Manga_MangaSeason_MangaSeasonId] FOREIGN KEY ([MangaSeasonId]) REFERENCES [MangaSeason] ([Id]),
+    CONSTRAINT [FK_Manga_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id])
+);
+2025-10-27 21:43:42.466 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OldPassword] (
+    [UserId] nvarchar(450) NOT NULL,
+    [OldPasswords] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_OldPassword] PRIMARY KEY ([UserId]),
+    CONSTRAINT [FK_OldPassword_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2025-10-27 21:43:42.468 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Reaction] (
+    [UserId] nvarchar(450) NOT NULL,
+    [BlogId] nvarchar(450) NOT NULL,
+    [IsLike] bit NOT NULL,
+    [IsDisLike] bit NOT NULL,
+    [VisitCount] int NOT NULL,
+    [IsSaved] bit NOT NULL,
+    [Rating] real NOT NULL,
+    [IsRecommend] bit NOT NULL,
+    [IsFavorite] bit NOT NULL,
+    [Note] nvarchar(max) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Reaction] PRIMARY KEY ([UserId], [BlogId]),
+    CONSTRAINT [FK_Reaction_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Reaction_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:42.469 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ReportEntity] (
+    [Id] nvarchar(450) NOT NULL,
+    [Title] nvarchar(max) NOT NULL,
+    [Type] int NOT NULL,
+    [Target] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    [Content] nvarchar(max) NULL,
+    [IdUserReport] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_ReportEntity] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ReportEntity_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id])
+);
+2025-10-27 21:43:45.944 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserRole] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserRole] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_UserRole_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_UserRole_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:45.945 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserToken] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessToken] nvarchar(max) NOT NULL,
+    [RefeshToken] nvarchar(max) NOT NULL,
+    [ExpiredRefeshToken] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserToken] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserToken_Users_Id] FOREIGN KEY ([Id]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:45.946 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AssociateName] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_AssociateName] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AssociateName_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:45.947 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Chapter] (
+    [Id] nvarchar(450) NOT NULL,
+    [Title] nvarchar(255) NULL,
+    [Index] int NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Chapter] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Chapter_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:45.948 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Follow] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Follow] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Follow_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Follow_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:45.949 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaArtist] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [ArtistId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaArtist] PRIMARY KEY ([MangaId], [ArtistId]),
+    CONSTRAINT [FK_MangaArtist_Artist_ArtistId] FOREIGN KEY ([ArtistId]) REFERENCES [Artist] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaArtist_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:49.294 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaAuthor] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [AuthorId] nvarchar(450) NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaAuthor] PRIMARY KEY ([MangaId], [AuthorId]),
+    CONSTRAINT [FK_MangaAuthor_Author_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Author] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_MangaAuthor_Manga_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:49.299 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaView] (
+    [MangaId] nvarchar(450) NOT NULL,
+    [View] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaView] PRIMARY KEY ([MangaId]),
+    CONSTRAINT [FK_MangaView_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:49.304 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Rating] (
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NOT NULL,
+    [Rating] int NOT NULL,
+    [Id] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Rating] PRIMARY KEY ([UserId], [MangaId]),
+    CONSTRAINT [FK_Rating_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Rating_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:49.307 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comment] (
+    [Id] nvarchar(450) NOT NULL,
+    [CanComment] bit NOT NULL,
+    [CanRemove] bit NOT NULL,
+    [CanHide] bit NOT NULL,
+    [CanLike] bit NOT NULL,
+    [CanReply] bit NOT NULL,
+    [CommentCount] int NOT NULL,
+    [LikeCount] int NOT NULL,
+    [DisLikeCount] int NOT NULL,
+    [Message] nvarchar(max) NULL,
+    [CommentType] int NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [ParentId] nvarchar(max) NULL,
+    [UserEntityId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Comment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Comment_Users_UserEntityId] FOREIGN KEY ([UserEntityId]) REFERENCES [Users] ([Id]),
+    CONSTRAINT [FK_Comment_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:49.309 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Image] (
+    [Id] nvarchar(450) NOT NULL,
+    [Index] int NOT NULL,
+    [BaseUrl] nvarchar(max) NOT NULL,
+    [CloudUrl] nvarchar(max) NULL,
+    [TypeImage] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Image] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Image_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Image_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2025-10-27 21:43:52.306 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Attechment] (
+    [Id] nvarchar(450) NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [MediaType] int NULL,
+    [Title] nvarchar(max) NULL,
+    [Url1] nvarchar(max) NULL,
+    [Url2] nvarchar(max) NULL,
+    [Url3] nvarchar(max) NULL,
+    [CommentId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [ReportEntityId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Attechment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Attechment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Attechment_Comment_CommentId] FOREIGN KEY ([CommentId]) REFERENCES [Comment] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Attechment_ReportEntity_ReportEntityId] FOREIGN KEY ([ReportEntityId]) REFERENCES [ReportEntity] ([Id])
+);
+2025-10-27 21:43:52.307 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Counting] (
+    [ParentId] nvarchar(450) NOT NULL,
+    [Type] int NOT NULL,
+    [ViewCount] int NOT NULL,
+    [Rating] real NOT NULL,
+    [NumberOfVisit] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [UserVisit] nvarchar(max) NULL,
+    [MangaId] nvarchar(450) NULL,
+    [ChapterId] nvarchar(450) NULL,
+    [CommentId] nvarchar(450) NULL,
+    [BlogId] nvarchar(450) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Counting] PRIMARY KEY ([ParentId]),
+    CONSTRAINT [FK_Counting_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Counting_Chapter_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapter] ([Id]),
+    CONSTRAINT [FK_Counting_Comment_CommentId] FOREIGN KEY ([CommentId]) REFERENCES [Comment] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Counting_Manga_MangaId] FOREIGN KEY ([MangaId]) REFERENCES [Manga] ([Id]) ON DELETE CASCADE
+);
+2025-10-27 21:43:52.308 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AssociateName_MangaId] ON [AssociateName] ([MangaId]);
+2025-10-27 21:43:52.308 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Attechment_BlogId] ON [Attechment] ([BlogId]);
+2025-10-27 21:43:52.308 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Attechment_CommentId] ON [Attechment] ([CommentId]);
+2025-10-27 21:43:52.309 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Attechment_ReportEntityId] ON [Attechment] ([ReportEntityId]);
+2025-10-27 21:43:52.309 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Chapter_MangaId] ON [Chapter] ([MangaId]);
+2025-10-27 21:43:52.309 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_BlogId] ON [Comment] ([BlogId]);
+2025-10-27 21:43:52.310 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_ChapterId] ON [Comment] ([ChapterId]);
+2025-10-27 21:43:55.620 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_MangaId] ON [Comment] ([MangaId]);
+2025-10-27 21:43:55.621 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserEntityId] ON [Comment] ([UserEntityId]);
+2025-10-27 21:43:55.622 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comment_UserId] ON [Comment] ([UserId]);
+2025-10-27 21:43:55.624 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_BlogId] ON [Counting] ([BlogId]) WHERE [BlogId] IS NOT NULL;
+2025-10-27 21:43:55.625 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_ChapterId] ON [Counting] ([ChapterId]) WHERE [ChapterId] IS NOT NULL;
+2025-10-27 21:43:55.626 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_CommentId] ON [Counting] ([CommentId]) WHERE [CommentId] IS NOT NULL;
+2025-10-27 21:43:55.626 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Counting_MangaId] ON [Counting] ([MangaId]) WHERE [MangaId] IS NOT NULL;
+2025-10-27 21:43:55.627 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Follow_MangaId] ON [Follow] ([MangaId]);
+2025-10-27 21:43:55.627 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Image_ChapterId] ON [Image] ([ChapterId]);
+2025-10-27 21:43:55.628 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_MangaId] ON [Image] ([MangaId]) WHERE [MangaId] IS NOT NULL;
+2025-10-27 21:43:55.628 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Image_UserId] ON [Image] ([UserId]) WHERE [UserId] IS NOT NULL;
+2025-10-27 21:43:55.629 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_Id] ON [Manga] ([Id]);
+2025-10-27 21:43:55.629 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_MangaSeasonId] ON [Manga] ([MangaSeasonId]);
+2025-10-27 21:43:55.630 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_UserId] ON [Manga] ([UserId]);
+2025-10-27 21:43:55.630 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaArtist_ArtistId] ON [MangaArtist] ([ArtistId]);
+2025-10-27 21:43:55.631 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MangaAuthor_AuthorId] ON [MangaAuthor] ([AuthorId]);
+2025-10-27 21:43:55.631 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Rating_MangaId] ON [Rating] ([MangaId]);
+2025-10-27 21:43:55.632 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Reaction_BlogId] ON [Reaction] ([BlogId]);
+2025-10-27 21:43:55.632 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ReportEntity_UserId] ON [ReportEntity] ([UserId]);
+2025-10-27 21:43:55.633 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Roles_Id] ON [Roles] ([Id]);
+2025-10-27 21:43:55.634 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ThreadOfBlog_BlogId] ON [ThreadOfBlog] ([BlogId]);
+2025-10-27 21:43:55.634 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_RoleId] ON [UserRole] ([RoleId]);
+2025-10-27 21:43:55.635 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRole_UserId] ON [UserRole] ([UserId]);
+2025-10-27 21:43:55.635 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_Email] ON [Users] ([Email]);
+2025-10-27 21:43:58.431 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20251027144325_yahallo', N'7.0.0');
+2025-10-27 21:44:09.409 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 21:44:09.697 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 21:44:09.699 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 21:44:09.759 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 21:44:09.760 +07:00 [INF] Hosting environment: Development
+2025-10-27 21:44:09.760 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 21:44:10.223 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 21:44:10.378 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 83.5237 ms
+2025-10-27 21:44:10.383 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 161.4889ms
+2025-10-27 21:44:10.408 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 21:44:10.408 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 21:44:10.419 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 10.6613ms
+2025-10-27 21:44:10.443 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.2812ms
+2025-10-27 21:44:10.530 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 21:44:10.592 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 60.9764 ms
+2025-10-27 21:44:10.594 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 64.2446ms
+2025-10-27 21:44:21.197 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/get-all - -
+2025-10-27 21:44:21.205 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-10-27 21:44:21.209 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-27 21:44:21.210 +07:00 [INF] HTTP GET /author/get-all responded 401 in 11.8375 ms
+2025-10-27 21:44:21.211 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/get-all - - - 401 0 - 14.8439ms
+2025-10-27 21:45:10.543 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 175
+2025-10-27 21:45:10.546 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:45:10.556 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 21:45:10.577 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 21:45:10.794 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateUserCommand {"FirstName":"Lê","LastName":"Hải","Email":"haileds939@gmail.com","PhoneNumber":"0384539162","UserName":"lesonhai0339","Password":"hai09871825460","$type":"CreateUserCommand"}
+FluentValidation.ValidationException: Validation failed: 
+ -- Password: Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character Severity: Error
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 31
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 21:45:10.866 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-27 21:45:10.874 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 292.5862ms
+2025-10-27 21:45:10.876 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 21:45:10.880 +07:00 [INF] HTTP POST /user/create responded 400 in 326.8716 ms
+2025-10-27 21:45:10.886 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 175 - 400 - application/problem+json;+charset=utf-8 342.5621ms
+2025-10-27 21:45:22.763 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 171
+2025-10-27 21:45:22.764 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:45:22.766 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 21:45:22.767 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 21:45:23.497 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:45:24.515 +07:00 [INF] Executed DbCommand (34ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2025-10-27 21:45:24.659 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2025-10-27 21:47:17.730 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 21:47:18.016 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 21:47:18.018 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 21:47:18.079 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 21:47:18.080 +07:00 [INF] Hosting environment: Development
+2025-10-27 21:47:18.081 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 21:47:18.534 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 21:47:18.694 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 90.4889 ms
+2025-10-27 21:47:18.702 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 168.6893ms
+2025-10-27 21:47:18.723 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 21:47:18.723 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 21:47:18.728 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 5.0852ms
+2025-10-27 21:47:18.754 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 30.7514ms
+2025-10-27 21:47:18.806 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 21:47:18.861 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 52.6448 ms
+2025-10-27 21:47:18.863 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 56.4663ms
+2025-10-27 21:47:41.617 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/create application/json 80
+2025-10-27 21:47:41.625 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:47:41.631 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:47:41.659 +07:00 [INF] Route matched with {action = "CreateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateRole(YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2025-10-27 21:47:41.884 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateRoleCommand {"RoleCode":0,"RoleName":"Admin","RoleDescription":"Administrator","$type":"CreateRoleCommand"}
+FluentValidation.ValidationException: Validation failed: 
+ -- RoleCode: Role Code không thể bỏ trống Severity: Error
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 31
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 21:47:41.954 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-27 21:47:41.963 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO) in 297.5964ms
+2025-10-27 21:47:41.996 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:47:41.998 +07:00 [INF] HTTP POST /role/create responded 400 in 371.6509 ms
+2025-10-27 21:47:42.001 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/create application/json 80 - 400 - application/problem+json;+charset=utf-8 384.6724ms
+2025-10-27 21:47:49.866 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/create application/json 80
+2025-10-27 21:47:49.867 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:47:49.871 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:47:49.872 +07:00 [INF] Route matched with {action = "CreateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateRole(YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2025-10-27 21:47:51.050 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:47:52.283 +07:00 [INF] Executed DbCommand (43ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = @__request_RoleCode_0
+2025-10-27 21:47:52.345 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 1 AND [r].[RoleName] = N'Admin' AND [r].[RoleDescription] = N'Administrator'
+2025-10-27 21:47:52.513 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 450), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-10-27 21:47:52.530 +07:00 [WRN] Yahallo Long Running Request: CreateRoleCommand (2652 milliseconds)  {"RoleCode":1,"RoleName":"Admin","RoleDescription":"Administrator","$type":"CreateRoleCommand"}
+2025-10-27 21:47:52.538 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-27 21:47:52.541 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO) in 2666.8961ms
+2025-10-27 21:47:52.543 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:47:52.544 +07:00 [INF] HTTP POST /role/create responded 200 in 2676.2624 ms
+2025-10-27 21:47:52.552 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/create application/json 80 - 200 - application/json;+charset=utf-8 2685.9953ms
+2025-10-27 21:48:36.272 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/create application/json 74
+2025-10-27 21:48:36.273 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:48:36.274 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:48:36.276 +07:00 [INF] Route matched with {action = "CreateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateRole(YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2025-10-27 21:48:36.343 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = @__request_RoleCode_0
+2025-10-27 21:48:36.358 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2 AND [r].[RoleName] = N'Mod' AND [r].[RoleDescription] = N'Moderator'
+2025-10-27 21:48:36.363 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 450), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-10-27 21:48:36.369 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-27 21:48:36.376 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO) in 99.1249ms
+2025-10-27 21:48:36.387 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:48:36.389 +07:00 [INF] HTTP POST /role/create responded 200 in 115.0521 ms
+2025-10-27 21:48:36.394 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/create application/json 74 - 200 - application/json;+charset=utf-8 123.1417ms
+2025-10-27 21:49:39.057 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/create application/json 77
+2025-10-27 21:49:39.061 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:49:39.062 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:49:39.065 +07:00 [INF] Route matched with {action = "CreateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateRole(YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2025-10-27 21:49:39.094 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = @__request_RoleCode_0
+2025-10-27 21:49:39.104 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 3 AND [r].[RoleName] = N'Trans' AND [r].[RoleDescription] = N'Translator'
+2025-10-27 21:49:39.108 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 450), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-10-27 21:49:39.110 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-27 21:49:39.112 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO) in 42.771ms
+2025-10-27 21:49:39.114 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:49:39.115 +07:00 [INF] HTTP POST /role/create responded 200 in 52.8304 ms
+2025-10-27 21:49:39.117 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/create application/json 77 - 200 - application/json;+charset=utf-8 61.0030ms
+2025-10-27 21:49:44.725 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/create application/json 77
+2025-10-27 21:49:44.726 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:49:44.726 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:49:44.727 +07:00 [INF] Route matched with {action = "CreateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateRole(YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2025-10-27 21:49:44.732 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = @__request_RoleCode_0
+2025-10-27 21:49:44.940 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateRoleCommand {"RoleCode":3,"RoleName":"Trans","RoleDescription":"Translator","$type":"CreateRoleCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Đã tồn tại rolecode trên
+   at YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommandHandler.Handle(CreateRoleCommand request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Commands\RoleCommand\Create\CreateRoleCommandHandler.cs:line 29
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 21:49:45.014 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-10-27 21:49:45.016 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO) in 287.3154ms
+2025-10-27 21:49:45.017 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:49:45.018 +07:00 [INF] HTTP POST /role/create responded 404 in 291.3749 ms
+2025-10-27 21:49:45.019 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/create application/json 77 - 404 - application/problem+json;+charset=utf-8 294.3624ms
+2025-10-27 21:49:58.463 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/role/create application/json 70
+2025-10-27 21:49:58.466 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:49:58.468 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:49:58.469 +07:00 [INF] Route matched with {action = "CreateRole", controller = "Role"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateRole(YAHALLO.Application.Commands.RoleCommand.Create.CreateRoleCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.RoleController (YAHALLO).
+2025-10-27 21:49:58.474 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_RoleCode_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = @__request_RoleCode_0
+2025-10-27 21:49:58.484 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 4 AND [r].[RoleName] = N'User' AND [r].[RoleDescription] = N'User'
+2025-10-27 21:49:58.487 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (Size = 450), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-10-27 21:49:58.489 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-27 21:49:58.491 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO) in 20.3638ms
+2025-10-27 21:49:58.492 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.RoleController.CreateRole (YAHALLO)'
+2025-10-27 21:49:58.493 +07:00 [INF] HTTP POST /role/create responded 200 in 25.4438 ms
+2025-10-27 21:49:58.494 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/role/create application/json 70 - 200 - application/json;+charset=utf-8 31.1477ms
+2025-10-27 21:50:37.801 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 21:50:38.113 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 21:50:38.114 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 21:50:38.170 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 21:50:38.172 +07:00 [INF] Hosting environment: Development
+2025-10-27 21:50:38.172 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 21:50:38.765 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 21:50:38.916 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 80.8353 ms
+2025-10-27 21:50:38.922 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 158.5212ms
+2025-10-27 21:50:38.950 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 21:50:38.950 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 21:50:38.963 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 12.8625ms
+2025-10-27 21:50:38.990 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 40.2732ms
+2025-10-27 21:50:39.045 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 21:50:39.104 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 57.1304 ms
+2025-10-27 21:50:39.105 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 59.7906ms
+2025-10-27 21:51:18.358 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 171
+2025-10-27 21:51:18.366 +07:00 [INF] CORS policy execution successful.
+2025-10-27 21:51:18.372 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 21:51:18.397 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 21:51:19.634 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 21:51:20.950 +07:00 [INF] Executed DbCommand (44ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2025-10-27 21:51:21.173 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2025-10-27 21:51:21.369 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (DbType = DateTime2), @p20='?' (DbType = DateTime2), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2), @p26='?' (Size = 450), @p27='?' (Size = 450), @p28='?' (DbType = DateTime2), @p29='?' (DbType = DateTime2), @p30='?' (Size = 4000), @p31='?' (Size = 4000), @p32='?' (Size = 4000), @p33='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [OldPassword] ([UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [OldPasswords], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33);
+2025-10-27 21:52:44.430 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateUserCommand {"FirstName":"Lê","LastName":"Hải","Email":"haileds939@gmail.com","PhoneNumber":"0384539162","UserName":"lesonhai0339","Password":"Hai@119067","$type":"CreateUserCommand"}
+MailKit.Security.SslHandshakeException: An error occurred while attempting to establish an SSL or TLS connection.
+
+The server's SSL certificate could not be validated for the following reasons:
+• An intermediate certificate has the following errors:
+  • The revocation function was unable to check revocation for the certificate.
+  • The revocation function was unable to check revocation because the revocation server was offline.
+• An intermediate certificate has the following errors:
+  • The revocation function was unable to check revocation for the certificate.
+  • The revocation function was unable to check revocation because the revocation server was offline.
+
+ ---> System.Security.Authentication.AuthenticationException: The remote certificate was rejected by the provided RemoteCertificateValidationCallback.
+   at System.Net.Security.SslStream.CompleteHandshake(SslAuthenticationOptions sslAuthenticationOptions)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)
+   at MailKit.Net.Smtp.SmtpClient.SslHandshake(SslStream ssl, String host, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.Connect(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MailKit.Net.Smtp.SmtpClient.Connect(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   at MailKit.MailService.Connect(String host, Int32 port, Boolean useSsl, CancellationToken cancellationToken)
+   at YAHALLO.Application.Services.MailService.Service.EmailService.Send(MimeMessage emailMessage) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 131
+   at YAHALLO.Application.Services.MailService.Service.EmailService.SendEmailWithCSS(Message mess) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 36
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 82
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 21:52:44.512 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 86106.6596ms
+2025-10-27 21:52:44.514 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 21:52:44.517 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+MailKit.Security.SslHandshakeException: An error occurred while attempting to establish an SSL or TLS connection.
+
+The server's SSL certificate could not be validated for the following reasons:
+• An intermediate certificate has the following errors:
+  • The revocation function was unable to check revocation for the certificate.
+  • The revocation function was unable to check revocation because the revocation server was offline.
+• An intermediate certificate has the following errors:
+  • The revocation function was unable to check revocation for the certificate.
+  • The revocation function was unable to check revocation because the revocation server was offline.
+
+ ---> System.Security.Authentication.AuthenticationException: The remote certificate was rejected by the provided RemoteCertificateValidationCallback.
+   at System.Net.Security.SslStream.CompleteHandshake(SslAuthenticationOptions sslAuthenticationOptions)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.AuthenticateAsClient(SslClientAuthenticationOptions sslClientAuthenticationOptions)
+   at MailKit.Net.Smtp.SmtpClient.SslHandshake(SslStream ssl, String host, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.Connect(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MailKit.Net.Smtp.SmtpClient.Connect(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   at MailKit.MailService.Connect(String host, Int32 port, Boolean useSsl, CancellationToken cancellationToken)
+   at YAHALLO.Application.Services.MailService.Service.EmailService.Send(MimeMessage emailMessage) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 131
+   at YAHALLO.Application.Services.MailService.Service.EmailService.SendEmailWithCSS(Message mess) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Services\MailService\Service\EmailService.cs:line 36
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 82
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.UserController.CreateUser(CreateUserCommand command, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO\Controllers\Anonymous\UserController.cs:line 99
+   at lambda_method7(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2025-10-27 21:52:44.540 +07:00 [ERR] HTTP POST /user/create responded 500 in 86173.4076 ms
+2025-10-27 21:52:44.548 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 171 - 500 - application/problem+json 86189.6996ms
+2025-10-27 21:55:09.620 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 21:55:09.925 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 21:55:09.925 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 21:55:09.982 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 21:55:09.984 +07:00 [INF] Hosting environment: Development
+2025-10-27 21:55:09.985 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 21:55:10.652 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 21:55:10.820 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 84.4165 ms
+2025-10-27 21:55:10.825 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 174.3410ms
+2025-10-27 21:55:10.853 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 21:55:10.853 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 21:55:10.859 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 5.4780ms
+2025-10-27 21:55:10.885 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 31.5618ms
+2025-10-27 21:55:10.940 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 21:55:11.012 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 70.8204 ms
+2025-10-27 21:55:11.014 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 73.6952ms
+2025-10-27 22:03:34.939 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 22:03:35.124 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 22:03:35.126 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 22:03:35.177 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 22:03:35.179 +07:00 [INF] Hosting environment: Development
+2025-10-27 22:03:35.179 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 22:03:40.433 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 22:03:40.729 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 22:03:40.730 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 22:03:40.799 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 22:03:40.800 +07:00 [INF] Hosting environment: Development
+2025-10-27 22:03:40.801 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 22:03:41.121 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 22:03:41.272 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 77.2158 ms
+2025-10-27 22:03:41.277 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 157.3152ms
+2025-10-27 22:03:41.300 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 22:03:41.300 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 22:03:41.307 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 6.8819ms
+2025-10-27 22:03:41.334 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.8155ms
+2025-10-27 22:03:41.392 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 22:03:41.437 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 44.1016 ms
+2025-10-27 22:03:41.440 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 48.3410ms
+2025-10-27 22:03:47.844 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 171
+2025-10-27 22:03:47.851 +07:00 [INF] CORS policy execution successful.
+2025-10-27 22:03:47.861 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 22:03:47.897 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 22:03:49.437 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 22:03:51.040 +07:00 [INF] Executed DbCommand (64ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2025-10-27 22:03:51.310 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateUserCommand {"FirstName":"Lê","LastName":"Hải","Email":"haileds939@gmail.com","PhoneNumber":"0384539162","UserName":"lesonhai0339","Password":"Hai@119067","$type":"CreateUserCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Email này đã được sử đụng
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 45
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 22:03:51.396 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-10-27 22:03:51.416 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 3502.789ms
+2025-10-27 22:03:51.419 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 22:03:51.420 +07:00 [INF] HTTP POST /user/create responded 404 in 3566.5941 ms
+2025-10-27 22:03:51.430 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 171 - 404 - application/problem+json;+charset=utf-8 3586.5768ms
+2025-10-27 22:04:31.578 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 22:04:31.750 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 22:04:31.751 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 22:04:31.801 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 22:04:31.804 +07:00 [INF] Hosting environment: Development
+2025-10-27 22:04:31.805 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 22:04:35.039 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 22:04:35.386 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 22:04:35.387 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 22:04:35.448 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 22:04:35.449 +07:00 [INF] Hosting environment: Development
+2025-10-27 22:04:35.450 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 22:04:35.995 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 22:04:36.154 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 84.3975 ms
+2025-10-27 22:04:36.163 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 168.6392ms
+2025-10-27 22:04:36.180 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 22:04:36.182 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 22:04:36.191 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 10.4534ms
+2025-10-27 22:04:36.214 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 32.3063ms
+2025-10-27 22:04:36.270 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 22:04:36.329 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 58.5210 ms
+2025-10-27 22:04:36.331 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 61.3690ms
+2025-10-27 22:05:16.508 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 171
+2025-10-27 22:05:16.517 +07:00 [INF] CORS policy execution successful.
+2025-10-27 22:05:16.525 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 22:05:16.549 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 22:05:21.039 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 22:05:22.420 +07:00 [INF] Executed DbCommand (42ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2025-10-27 22:05:29.003 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request CreateUserCommand {"FirstName":"Lê","LastName":"Hải","Email":"haileds939@gmail.com","PhoneNumber":"0384539162","UserName":"lesonhai0339","Password":"Hai@119067","$type":"CreateUserCommand"}
+YAHALLO.Domain.Exceptions.NotFoundException: Email này đã được sử đụng
+   at YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommandHandler.Handle(CreateUserCommand request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Commands\UserCommand\Anynomous\Create\CreateUserCommandHandler.cs:line 45
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 22:05:29.099 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-10-27 22:05:29.112 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 12555.8965ms
+2025-10-27 22:05:29.115 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 22:05:29.116 +07:00 [INF] HTTP POST /user/create responded 404 in 12597.6026 ms
+2025-10-27 22:05:29.127 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 171 - 404 - application/problem+json;+charset=utf-8 12618.8132ms
+2025-10-27 22:08:27.288 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 22:08:27.588 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 22:08:27.589 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 22:08:27.651 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 22:08:27.652 +07:00 [INF] Hosting environment: Development
+2025-10-27 22:08:27.652 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 22:08:28.037 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 22:08:28.194 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 83.1004 ms
+2025-10-27 22:08:28.200 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 163.9986ms
+2025-10-27 22:08:28.227 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 22:08:28.227 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 22:08:28.233 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 6.1287ms
+2025-10-27 22:08:28.255 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 28.8857ms
+2025-10-27 22:08:28.309 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 22:08:28.362 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 51.5014 ms
+2025-10-27 22:08:28.364 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 54.4378ms
+2025-10-27 22:08:56.333 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create application/json 171
+2025-10-27 22:08:56.339 +07:00 [INF] CORS policy execution successful.
+2025-10-27 22:08:56.346 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 22:08:56.371 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 22:08:58.243 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 22:08:59.633 +07:00 [INF] Executed DbCommand (45ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2025-10-27 22:08:59.898 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[RoleCode] = 2
+2025-10-27 22:09:00.123 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (Size = 200), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 200), @p11='?' (DbType = Int32), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 8000) (DbType = AnsiString), @p15='?' (DbType = Int32), @p16='?' (DbType = DateTime2), @p17='?' (Size = 4000), @p18='?' (Size = 450), @p19='?' (DbType = DateTime2), @p20='?' (DbType = DateTime2), @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (DbType = DateTime2), @p26='?' (Size = 450), @p27='?' (Size = 450), @p28='?' (DbType = DateTime2), @p29='?' (DbType = DateTime2), @p30='?' (Size = 4000), @p31='?' (Size = 4000), @p32='?' (Size = 4000), @p33='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([Id], [CreateDate], [DeleteDate], [DisplayName], [Email], [EmailConfirm], [FirstName], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [LastName], [Level], [Password], [PhoneConfirmed], [PhoneNumber], [Status], [UpdateDate], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+INSERT INTO [OldPassword] ([UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [OldPasswords], [UpdateDate])
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+INSERT INTO [UserRole] ([RoleId], [UserId], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [UpdateDate])
+VALUES (@p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33);
+2025-10-27 22:09:25.040 +07:00 [WRN] Yahallo Long Running Request: CreateUserCommand (28587 milliseconds)  {"FirstName":"Lê","LastName":"Hải","Email":"haileds939@gmail.com","PhoneNumber":"0384539162","UserName":"lesonhai0339","Password":"Hai@119067","$type":"CreateUserCommand"}
+2025-10-27 22:09:25.071 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-27 22:09:25.080 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO) in 28701.6869ms
+2025-10-27 22:09:25.082 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2025-10-27 22:09:25.083 +07:00 [INF] HTTP POST /user/create responded 200 in 28741.9367 ms
+2025-10-27 22:09:25.090 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/create application/json 171 - 200 - application/json;+charset=utf-8 28757.0405ms
+2025-10-27 22:09:55.436 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/services/confirm-email?token=CCBBFF9FDD4500B392BA833607C4074F2355AD15DBD7CF1C0ABDAF17BC4E79CF&userid=7fb4e587d50f4c73a5ed29f706eb94e1 - -
+2025-10-27 22:09:55.453 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ServicesController.ConfirmEmail (YAHALLO)'
+2025-10-27 22:09:55.460 +07:00 [INF] Route matched with {action = "ConfirmEmail", controller = "Services"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] ConfirmEmail(System.String, System.String, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ServicesController (YAHALLO).
+2025-10-27 22:09:55.548 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__request_UserId_0 AND (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2025-10-27 22:09:55.570 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@p17='?' (Size = 450), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 450), @p4='?' (DbType = Boolean), @p5='?' (Size = 200), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 200), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 8000) (DbType = AnsiString), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreateDate] = @p0, [DeleteDate] = @p1, [DisplayName] = @p2, [Email] = @p3, [EmailConfirm] = @p4, [FirstName] = @p5, [IdUserCreate] = @p6, [IdUserDelete] = @p7, [IdUserUpdate] = @p8, [LastName] = @p9, [Level] = @p10, [Password] = @p11, [PhoneConfirmed] = @p12, [PhoneNumber] = @p13, [Status] = @p14, [UpdateDate] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17;
+2025-10-27 22:09:55.576 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-27 22:09:55.578 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ServicesController.ConfirmEmail (YAHALLO) in 114.8882ms
+2025-10-27 22:09:55.580 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ServicesController.ConfirmEmail (YAHALLO)'
+2025-10-27 22:09:55.584 +07:00 [INF] HTTP GET /services/confirm-email responded 200 in 131.7425 ms
+2025-10-27 22:09:55.594 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/services/confirm-email?token=CCBBFF9FDD4500B392BA833607C4074F2355AD15DBD7CF1C0ABDAF17BC4E79CF&userid=7fb4e587d50f4c73a5ed29f706eb94e1 - - - 200 - application/json;+charset=utf-8 158.5651ms
+2025-10-27 22:09:55.691 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/favicon.ico - -
+2025-10-27 22:09:55.693 +07:00 [INF] HTTP GET /favicon.ico responded 404 in 1.1840 ms
+2025-10-27 22:09:55.695 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/favicon.ico - - - 404 0 - 4.4494ms
+2025-10-27 22:10:33.723 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2025-10-27 22:10:33.725 +07:00 [INF] CORS policy execution successful.
+2025-10-27 22:10:33.730 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-10-27 22:10:33.736 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 22:10:33.778 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2025-10-27 22:10:33.804 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2025-10-27 22:10:33.856 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[UserId] = @__p_0
+2025-10-27 22:10:33.875 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__p_0
+2025-10-27 22:10:34.020 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [UserToken] ([Id], [AccessToken], [CreateDate], [DeleteDate], [ExpiredRefeshToken], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RefeshToken], [UpdateDate])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-10-27 22:10:34.024 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-27 22:10:34.027 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 288.7785ms
+2025-10-27 22:10:34.029 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-10-27 22:10:34.030 +07:00 [INF] HTTP POST /user/login responded 200 in 303.8109 ms
+2025-10-27 22:10:34.032 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 309.1208ms
+2025-10-27 22:10:53.777 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - -
+2025-10-27 22:10:53.798 +07:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+2025-10-27 22:10:53.802 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:10:53.807 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2025-10-27 22:10:53.850 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2025-10-27 22:10:54.032 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request GetAllArtistQuery {"$type":"GetAllArtistQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ họa sĩ nào
+   at YAHALLO.Application.Queries.ArtistQuery.GetAll.GetAllArtistQueryhandler.Handle(GetAllArtistQuery request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Queries\ArtistQuery\GetAll\GetAllArtistQueryHandler.cs:line 28
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 22:10:54.115 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-10-27 22:10:54.118 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 308.7194ms
+2025-10-27 22:10:54.119 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:10:54.120 +07:00 [INF] HTTP GET /artist/get-all responded 404 in 334.6398 ms
+2025-10-27 22:10:54.122 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - - - 404 - application/problem+json;+charset=utf-8 344.1878ms
+2025-10-27 22:11:04.448 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - -
+2025-10-27 22:11:04.456 +07:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+2025-10-27 22:11:04.458 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:11:04.459 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2025-10-27 22:11:04.467 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2025-10-27 22:11:04.614 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request GetAllArtistQuery {"$type":"GetAllArtistQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ họa sĩ nào
+   at YAHALLO.Application.Queries.ArtistQuery.GetAll.GetAllArtistQueryhandler.Handle(GetAllArtistQuery request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Queries\ArtistQuery\GetAll\GetAllArtistQueryHandler.cs:line 28
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 22:11:04.681 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-10-27 22:11:04.683 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 222.2712ms
+2025-10-27 22:11:04.685 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:11:04.686 +07:00 [INF] HTTP GET /artist/get-all responded 404 in 232.1202 ms
+2025-10-27 22:11:04.688 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - - - 404 - application/problem+json;+charset=utf-8 241.7304ms
+2025-10-27 22:11:06.205 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - -
+2025-10-27 22:11:06.206 +07:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+2025-10-27 22:11:06.213 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:11:06.215 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2025-10-27 22:11:06.223 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2025-10-27 22:11:06.355 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request GetAllArtistQuery {"$type":"GetAllArtistQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ họa sĩ nào
+   at YAHALLO.Application.Queries.ArtistQuery.GetAll.GetAllArtistQueryhandler.Handle(GetAllArtistQuery request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Queries\ArtistQuery\GetAll\GetAllArtistQueryHandler.cs:line 28
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 22:11:06.434 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-10-27 22:11:06.436 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 219.8497ms
+2025-10-27 22:11:06.437 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:11:06.438 +07:00 [INF] HTTP GET /artist/get-all responded 404 in 232.5440 ms
+2025-10-27 22:11:06.440 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - - - 404 - application/problem+json;+charset=utf-8 235.1718ms
+2025-10-27 22:11:07.436 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - -
+2025-10-27 22:11:07.440 +07:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+2025-10-27 22:11:07.443 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:11:07.445 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2025-10-27 22:11:07.452 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2025-10-27 22:11:07.592 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request GetAllArtistQuery {"$type":"GetAllArtistQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ họa sĩ nào
+   at YAHALLO.Application.Queries.ArtistQuery.GetAll.GetAllArtistQueryhandler.Handle(GetAllArtistQuery request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Queries\ArtistQuery\GetAll\GetAllArtistQueryHandler.cs:line 28
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 22:11:07.668 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-10-27 22:11:07.671 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 222.6997ms
+2025-10-27 22:11:07.672 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:11:07.673 +07:00 [INF] HTTP GET /artist/get-all responded 404 in 233.7191 ms
+2025-10-27 22:11:07.674 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - - - 404 - application/problem+json;+charset=utf-8 238.7522ms
+2025-10-27 22:11:08.797 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - -
+2025-10-27 22:11:08.799 +07:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+2025-10-27 22:11:08.803 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:11:08.805 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2025-10-27 22:11:08.812 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE (([a].[IdUserDelete] IS NULL) OR ([a].[IdUserDelete] LIKE N'')) AND ([a].[DeleteDate] IS NULL)
+2025-10-27 22:11:09.008 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request GetAllArtistQuery {"$type":"GetAllArtistQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy bất kỳ họa sĩ nào
+   at YAHALLO.Application.Queries.ArtistQuery.GetAll.GetAllArtistQueryhandler.Handle(GetAllArtistQuery request, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Queries\ArtistQuery\GetAll\GetAllArtistQueryHandler.cs:line 28
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2025-10-27 22:11:09.081 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-10-27 22:11:09.084 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 276.2811ms
+2025-10-27 22:11:09.085 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2025-10-27 22:11:09.087 +07:00 [INF] HTTP GET /artist/get-all responded 404 in 287.9693 ms
+2025-10-27 22:11:09.089 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - - - 404 - application/problem+json;+charset=utf-8 291.4073ms
+2025-10-27 22:45:06.678 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-27 22:45:07.016 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-27 22:45:07.017 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-27 22:45:07.075 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-27 22:45:07.077 +07:00 [INF] Hosting environment: Development
+2025-10-27 22:45:07.077 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-10-27 22:45:07.795 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-27 22:45:07.943 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 80.4541 ms
+2025-10-27 22:45:07.947 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 153.3926ms
+2025-10-27 22:45:07.974 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-27 22:45:07.974 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-27 22:45:07.994 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 19.4532ms
+2025-10-27 22:45:08.020 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 45.4670ms
+2025-10-27 22:45:08.072 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-27 22:45:08.131 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 57.1714 ms
+2025-10-27 22:45:08.132 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 60.2707ms
+2025-10-27 22:45:26.442 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2025-10-27 22:45:26.446 +07:00 [INF] CORS policy execution successful.
+2025-10-27 22:45:26.453 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-10-27 22:45:26.479 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 22:45:27.751 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-27 22:45:29.101 +07:00 [INF] Executed DbCommand (64ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2025-10-27 22:45:29.259 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2025-10-27 22:45:29.310 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (2775 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2025-10-27 22:45:29.327 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-27 22:45:29.337 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 2852.9188ms
+2025-10-27 22:45:29.340 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-10-27 22:45:29.342 +07:00 [INF] HTTP POST /user/login responded 200 in 2893.7274 ms
+2025-10-27 22:45:29.352 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 2910.1328ms
+2025-10-27 22:45:40.964 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2025-10-27 22:45:40.965 +07:00 [INF] CORS policy execution successful.
+2025-10-27 22:45:40.970 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-10-27 22:45:40.971 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 22:45:41.029 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2025-10-27 22:45:41.037 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2025-10-27 22:45:41.040 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-27 22:45:41.041 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 68.0573ms
+2025-10-27 22:45:41.042 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-10-27 22:45:41.043 +07:00 [INF] HTTP POST /user/login responded 200 in 76.6578 ms
+2025-10-27 22:45:41.044 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 81.2450ms
+2025-10-27 22:45:53.451 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/user/get-all - -
+2025-10-27 22:45:53.453 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2025-10-27 22:45:53.458 +07:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.UserQuery.UserDto]]]] GetAll(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-27 22:45:53.547 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE (([u].[IdUserDelete] IS NULL) OR ([u].[IdUserDelete] LIKE N'')) AND ([u].[DeleteDate] IS NULL)
+2025-10-27 22:45:53.641 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[UserId] = @__p_0
+2025-10-27 22:45:53.647 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.UserQuery.UserDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-27 22:45:53.652 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO) in 192.0551ms
+2025-10-27 22:45:53.654 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.GetAll (YAHALLO)'
+2025-10-27 22:45:53.655 +07:00 [INF] HTTP GET /user/get-all responded 200 in 202.1777 ms
+2025-10-27 22:45:53.657 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/user/get-all - - - 200 - application/json;+charset=utf-8 205.3763ms
