@@ -1,4 +1,5 @@
 ﻿using dotenv.net;
+using Elastic.Clients.Elasticsearch;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,9 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Data;
-using YAHALLO.Infrastructure.Functions;
-using YAHALLO.Infrastructure.Repositories;
+using YAHALLO.Infrastructure.Files.Functions;
+using YAHALLO.Infrastructure.Persistence.Data;
+using YAHALLO.Infrastructure.Persistence.Repositories;
 
 namespace YAHALLO.Infrastructure
 {
@@ -38,6 +39,17 @@ namespace YAHALLO.Infrastructure
                             errorNumbersToAdd: null);
                     });
                 options.UseLazyLoadingProxies();
+            });
+            services.AddSingleton<ElasticsearchClient>(sp =>
+            {
+                var elasticUri = Environment.GetEnvironmentVariable("Elastic_Url")!;
+                var elasticApiKey = Environment.GetEnvironmentVariable("Elastic_Key");
+                var elasticIndex = Environment.GetEnvironmentVariable("Elastic_DefaultIndex")!;
+
+                var setting = new ElasticsearchClientSettings(new Uri(elasticUri))
+                .DefaultIndex(elasticIndex);
+
+                return new ElasticsearchClient(setting);
             });
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
             services.AddTransient<IUserRepository, UserRepository>();

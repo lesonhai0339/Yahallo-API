@@ -1,0 +1,43 @@
+2025-10-23 13:34:21.130 +07:00 [INF] User profile is available. Using 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-23 13:34:21.536 +07:00 [INF] Creating key {9fe23ae7-5d6c-40af-a148-acffd25cd2b9} with creation date 2025-10-23 06:34:21Z, activation date 2025-10-23 06:34:21Z, and expiration date 2026-01-21 06:34:21Z.
+2025-10-23 13:34:21.572 +07:00 [INF] Writing data to file 'C:\Users\haile\AppData\Local\ASP.NET\DataProtection-Keys\key-9fe23ae7-5d6c-40af-a148-acffd25cd2b9.xml'.
+2025-10-23 13:34:22.586 +07:00 [INF] Now listening on: https://localhost:7181
+2025-10-23 13:34:22.588 +07:00 [INF] Now listening on: http://localhost:5213
+2025-10-23 13:34:22.783 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-23 13:34:22.784 +07:00 [INF] Hosting environment: Development
+2025-10-23 13:34:22.786 +07:00 [INF] Content root path: C:\Users\haile\Source\Repos\lesonhai0339\Yahallo-API\YAHALLO
+2025-10-23 13:34:23.652 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger - -
+2025-10-23 13:34:24.101 +07:00 [INF] HTTP GET /swagger responded 301 in 138.0770 ms
+2025-10-23 13:34:24.112 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger - - - 301 0 - 465.6386ms
+2025-10-23 13:34:24.135 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-10-23 13:34:24.260 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 119.2453 ms
+2025-10-23 13:34:24.272 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 136.8786ms
+2025-10-23 13:34:24.733 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/swagger-ui.css - -
+2025-10-23 13:34:24.733 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/swagger-ui-bundle.js - -
+2025-10-23 13:34:24.733 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-10-23 13:34:24.733 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-10-23 13:34:24.734 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/swagger-ui-standalone-preset.js - -
+2025-10-23 13:34:24.792 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 58.3903ms
+2025-10-23 13:34:24.844 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-10-23 13:34:24.851 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-10-23 13:34:24.907 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 173.2851ms
+2025-10-23 13:34:24.911 +07:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 161.9947 ms
+2025-10-23 13:34:24.905 +07:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 168.3498 ms
+2025-10-23 13:34:24.932 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/swagger-ui-standalone-preset.js - - - 200 312163 text/javascript 198.1179ms
+2025-10-23 13:34:24.933 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-10-23 13:34:24.936 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/swagger-ui.css - - - 200 144929 text/css 202.7941ms
+2025-10-23 13:34:24.942 +07:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 204.1086 ms
+2025-10-23 13:34:24.949 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/swagger-ui-bundle.js - - - 200 1061536 text/javascript 216.0384ms
+2025-10-23 13:34:25.294 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-10-23 13:34:25.351 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - -
+2025-10-23 13:34:25.377 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-10-23 13:34:25.415 +07:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 38.9889 ms
+2025-10-23 13:34:25.420 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - - - 200 628 image/png 68.4667ms
+2025-10-23 13:34:25.839 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 539.6312 ms
+2025-10-23 13:34:25.850 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 555.5171ms
+2025-10-23 13:35:05.185 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 48
+2025-10-23 13:35:05.190 +07:00 [INF] CORS policy execution successful.
+2025-10-23 13:35:05.200 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-10-23 13:35:05.258 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-10-23 13:35:07.024 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-10-23 13:35:15.242 +07:00 [ERR] An error occurred using the connection to database 'Yahallo' on server 'ASUSTUF\LESONHAI'.
