@@ -15,7 +15,7 @@ using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Repositories;
+using YAHALLO.Infrastructure.Persistence.Repositories;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Update
 {

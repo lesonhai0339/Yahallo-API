@@ -9,7 +9,7 @@ using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Data;
+using YAHALLO.Infrastructure.Persistence.Data;
 
 namespace YAHALLO.Application.Queries.FollowQuery.Filter
 {

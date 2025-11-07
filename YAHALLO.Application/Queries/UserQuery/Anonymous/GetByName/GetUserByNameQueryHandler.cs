@@ -13,7 +13,7 @@ using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Data;
+using YAHALLO.Infrastructure.Persistence.Data;
 
 namespace YAHALLO.Application.Queries.UserQuery.Anonymous.GetByName
 {
