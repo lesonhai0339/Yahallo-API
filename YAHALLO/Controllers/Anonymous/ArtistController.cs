@@ -19,7 +19,7 @@ using YAHALLO.Services;
 namespace YAHALLO.Controllers.Anonymous
 {
     [Authorize]
-    [Authorize(Policy = "Admin")]
+    //[Authorize(Policy = "Admin")]
     public class ArtistController : ControllerBase
     {
         private readonly IMediator _sender;

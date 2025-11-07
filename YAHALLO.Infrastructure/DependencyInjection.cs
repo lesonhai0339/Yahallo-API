@@ -1,4 +1,5 @@
 ﻿using dotenv.net;
+using Elastic.Clients.Elasticsearch;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,9 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Data;
-using YAHALLO.Infrastructure.Functions;
-using YAHALLO.Infrastructure.Repositories;
+using YAHALLO.Infrastructure.Files.Functions;
+using YAHALLO.Infrastructure.Persistence.Data;
+using YAHALLO.Infrastructure.Persistence.Repositories;
 
 namespace YAHALLO.Infrastructure
 {
@@ -22,7 +23,7 @@ namespace YAHALLO.Infrastructure
         public static IServiceCollection Infrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             DotEnv.Load();
-            var sqlConnection = Environment.GetEnvironmentVariable("Cloud_Server");
+            var sqlConnection = Environment.GetEnvironmentVariable("Server");
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
                 options.UseSqlServer(
@@ -32,8 +33,23 @@ namespace YAHALLO.Infrastructure
                     {
                         b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
                         b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+                        b.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null);
                     });
                 options.UseLazyLoadingProxies();
+            });
+            services.AddSingleton<ElasticsearchClient>(sp =>
+            {
+                var elasticUri = Environment.GetEnvironmentVariable("Elastic_Url")!;
+                var elasticApiKey = Environment.GetEnvironmentVariable("Elastic_Key");
+                var elasticIndex = Environment.GetEnvironmentVariable("Elastic_DefaultIndex")!;
+
+                var setting = new ElasticsearchClientSettings(new Uri(elasticUri))
+                .DefaultIndex(elasticIndex);
+
+                return new ElasticsearchClient(setting);
             });
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
             services.AddTransient<IUserRepository, UserRepository>();
@@ -62,7 +78,6 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<ICountingRepository, CountingRepository>();
             services.AddTransient<IReportRepository, ReportRepository>();
             services.AddTransient<IEnums, Enums>();
-
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
             return services;

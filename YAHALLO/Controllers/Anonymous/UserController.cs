@@ -1,8 +1,5 @@
-﻿using dotenv.net;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken;
 using YAHALLO.Application.Commands.AuthenticationCommand.Login;
