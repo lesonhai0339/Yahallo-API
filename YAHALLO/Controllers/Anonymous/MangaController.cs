@@ -20,7 +20,7 @@ using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
 {
-    [Authorize]
+    [Authorize(Policy = "Admin")]   
     public class MangaController : ControllerBase
     {
         private readonly IMediator _sender;

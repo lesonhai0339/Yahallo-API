@@ -1716,3 +1716,60 @@ WHERE [u].[RefeshToken] = @__request_Refeshtoken_0
 2025-11-07 16:47:35.057 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
 2025-11-07 16:47:35.422 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 363.2953 ms
 2025-11-07 16:47:35.424 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 367.9197ms
+2025-11-07 20:33:43.677 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-07 20:33:44.149 +07:00 [INF] Now listening on: https://localhost:7181
+2025-11-07 20:33:44.152 +07:00 [INF] Now listening on: http://localhost:5213
+2025-11-07 20:33:44.260 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-07 20:33:44.289 +07:00 [INF] Hosting environment: Development
+2025-11-07 20:33:44.294 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2025-11-07 20:33:45.060 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2025-11-07 20:33:45.318 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 121.2008 ms
+2025-11-07 20:33:45.330 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2025-11-07 20:33:45.340 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2025-11-07 20:33:45.343 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 283.8525ms
+2025-11-07 20:33:45.350 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 20.2028ms
+2025-11-07 20:33:45.412 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 71.7573ms
+2025-11-07 20:33:45.488 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2025-11-07 20:33:45.556 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 66.8123 ms
+2025-11-07 20:33:45.559 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 71.1040ms
+2025-11-07 20:34:11.170 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/login application/json 60
+2025-11-07 20:34:11.179 +07:00 [INF] CORS policy execution successful.
+2025-11-07 20:34:11.186 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-11-07 20:34:11.223 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.ResponeTypes.LoginRespone]]] Login(YAHALLO.Application.Commands.AuthenticationCommand.Login.LoginCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2025-11-07 20:34:12.726 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2025-11-07 20:34:14.396 +07:00 [INF] Executed DbCommand (55ms) [Parameters=[@__request_UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__request_UserName_0
+2025-11-07 20:34:14.594 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__checkUserExist_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessToken], [u].[CreateDate], [u].[DeleteDate], [u].[ExpiredRefeshToken], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[RefeshToken], [u].[UpdateDate]
+FROM [UserToken] AS [u]
+WHERE [u].[Id] = @__checkUserExist_Id_0
+2025-11-07 20:34:14.721 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [u].[CreateDate], [u].[DeleteDate], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[UpdateDate]
+FROM [UserRole] AS [u]
+WHERE [u].[UserId] = @__p_0
+2025-11-07 20:34:14.784 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[CreateDate], [r].[DeleteDate], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[RoleCode], [r].[RoleDescription], [r].[RoleName], [r].[UpdateDate]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__p_0
+2025-11-07 20:34:15.023 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@p9='?' (Size = 450), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [UserToken] SET [AccessToken] = @p0, [CreateDate] = @p1, [DeleteDate] = @p2, [ExpiredRefeshToken] = @p3, [IdUserCreate] = @p4, [IdUserDelete] = @p5, [IdUserUpdate] = @p6, [RefeshToken] = @p7, [UpdateDate] = @p8
+OUTPUT 1
+WHERE [Id] = @p9;
+2025-11-07 20:34:15.043 +07:00 [WRN] Yahallo Long Running Request: LoginCommand (3730 milliseconds)  {"UserName":"lesonhai0339","Password":"Hai@119067","$type":"LoginCommand"}
+2025-11-07 20:34:15.058 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.ResponeTypes.LoginRespone, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-07 20:34:15.070 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO) in 3841.094ms
+2025-11-07 20:34:15.073 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.UserController.Login (YAHALLO)'
+2025-11-07 20:34:15.075 +07:00 [INF] HTTP POST /user/login responded 200 in 3894.1299 ms
+2025-11-07 20:34:15.085 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/user/login application/json 60 - 200 - application/json;+charset=utf-8 3915.1602ms
+2025-11-07 20:34:52.549 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all - -
+2025-11-07 20:34:52.621 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO)'
+2025-11-07 20:34:52.627 +07:00 [INF] Route matched with {action = "GetAllManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllManga(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2025-11-07 20:34:52.640 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Domain.Common.Interfaces.ResponseResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-07 20:34:52.653 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO) in 24.4153ms
+2025-11-07 20:34:52.654 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllManga (YAHALLO)'
+2025-11-07 20:34:52.656 +07:00 [INF] HTTP GET /manga/get-all responded 200 in 103.4559 ms
+2025-11-07 20:34:52.657 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all - - - 200 - application/json;+charset=utf-8 107.8586ms

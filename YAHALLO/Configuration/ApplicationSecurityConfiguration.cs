@@ -55,9 +55,9 @@ namespace YAHALLO.Configuration
         private static void ConfigureAuthorization(AuthorizationOptions options)
         {
             //Configure policies and other authorization options here. For example:
-            options.AddPolicy("Any", policy => policy.RequireRole("role", "2"));
-            options.AddPolicy("Admin", policy => policy.RequireRole("role", "1"));
-            options.AddPolicy("Mod", policy => policy.RequireRole("role", "4"));
+            options.AddPolicy("Any", policy => policy.RequireRole("UserLevel", "2"));
+            options.AddPolicy("Admin", policy => policy.RequireRole("UserLevel", "1"));
+            options.AddPolicy("Mod", policy => policy.RequireRole("UserLevel", "4"));
 
         }
     }

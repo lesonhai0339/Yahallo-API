@@ -61,7 +61,7 @@ namespace YAHALLO.Services
             {
 
                 new(JwtRegisteredClaimNames.Sub, ID),
-                new Claim("UserLevel", level.ToString())
+                //new Claim("UserLevel", level.ToString())
             };
             foreach (var role in roles)
             {
