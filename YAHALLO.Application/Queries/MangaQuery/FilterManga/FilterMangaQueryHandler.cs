@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LinqKit;
 using MediatR;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Domain.Repositories.Elastic;
 
 namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
 {
@@ -21,15 +23,27 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         private readonly IMangaRepository _mangaRepository;
         private readonly IMapper _mapper;
         private readonly IFilters _filters;
-        public FilterMangaQueryHandler(IMangaRepository mangaRepository, IMapper mapper, IFilters filters)
+        private readonly IMangaSearchRepository _mangaSearchRepository;
+        public FilterMangaQueryHandler(IMangaRepository mangaRepository, IMapper mapper, IFilters filters, IMangaSearchRepository mangaSearchRepository)
         {
             _mangaRepository = mangaRepository;
             _mapper = mapper;
             _filters = filters;
+            _mangaSearchRepository = mangaSearchRepository; 
         }
 
         public async Task<PagedResult<MangaDto>> Handle(FilterMangaQuery request, CancellationToken cancellationToken)
         {
+
+            try
+            {
+                var response = await _mangaSearchRepository.Search(request.Name, cancellationToken);
+            }
+            catch(Exception ex)
+            {
+                Log.Error(ex, "Elastic search engine error");
+            }
+
             var query = _mangaRepository.CreateQueryable();
             query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
             if (!string.IsNullOrEmpty(request.Id))

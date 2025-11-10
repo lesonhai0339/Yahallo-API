@@ -1,0 +1,4 @@
+09:09:20 08/11/2025 [INF] Create success manga with Id: 3b319e0d5d3f4e99bf42d652d218f7d1 - Name: Sakurasou
+10:18:23 08/11/2025 [INF] Create success manga with Id: 6e4a1d93070947fd9b85d2b945e56e95 - Name: Tokyo Goul
+10:32:05 08/11/2025 [INF] Create success manga with Id: 73d41e5db621414aadbe5769174acf1c - Name: 1
+10:40:22 08/11/2025 [INF] Create success manga with Id: 9356149da90a4f7b9c4964e0379350cb - Name: asd

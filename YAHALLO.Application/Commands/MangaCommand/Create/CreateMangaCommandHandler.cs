@@ -13,6 +13,7 @@ using YAHALLO.Domain.Enums.Base;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Domain.Repositories.Elastic;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Create
 {
@@ -24,13 +25,17 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
         private readonly IFiles<IFormFile> _files;
         private readonly IImageRepository _imageRepository;
         private readonly ILogger _logger;
+
+        private readonly IMangaSearchRepository _mangaSearchRepository;
+
         public CreateMangaCommandHandler(
             IMangaRepository mangaRepository,
             IMangaSeasonRepository mangaSeasonRepository,
             ICurrentUserService currentUser,
             IFiles<IFormFile> files,
             IImageRepository imageRepository,
-            ILoggerExtension logger)
+            ILoggerExtension logger,
+            IMangaSearchRepository mangaSearchRepository)
         {
             _mangaRepository = mangaRepository;
             _mangaSeasonRepository = mangaSeasonRepository;
@@ -38,6 +43,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
             _files = files;
             _imageRepository = imageRepository;
             _logger = logger.CreateLogger("Logs/Mangas", "Create_manga");
+            _mangaSearchRepository = mangaSearchRepository;
         }
         public async Task<string> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
         {
@@ -103,6 +109,15 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                         throw new Exception("đã xảy ra lỗi");
                     }
                 }
+                //Elastic
+                try
+                {
+                    await _mangaSearchRepository.Add(newManga, cancellationToken);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error($"Elastic index failed for manga {newManga.Id}: {ex.Message}");
+                }
                 var path= $"Data\\Thumbnail";
                 if(request.Thumbnail != null)
                 {
@@ -121,6 +136,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                     throw new NotFoundException("Đã gặp lỗi trong quá trình cập nhật dữ liệu");
                 }
                 _logger.Information($"Create success manga with Id: {newManga.Id} - Name: {newManga.Name}");
+                //return
                 return "Thêm thành công";
             }
             else

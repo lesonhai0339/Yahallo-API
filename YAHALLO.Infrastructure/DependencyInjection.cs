@@ -1,5 +1,6 @@
 ﻿using dotenv.net;
 using Elastic.Clients.Elasticsearch;
+using Elastic.Transport;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,9 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Domain.Repositories.Elastic;
+using YAHALLO.Infrastructure.Elastic.Repositories;
+using YAHALLO.Infrastructure.Elastic1.Options;
 using YAHALLO.Infrastructure.Files.Functions;
 using YAHALLO.Infrastructure.Persistence.Data;
 using YAHALLO.Infrastructure.Persistence.Repositories;
@@ -40,13 +44,18 @@ namespace YAHALLO.Infrastructure
                     });
                 options.UseLazyLoadingProxies();
             });
+            services.Configure<IndexNameOptions>(opt =>
+            {
+                opt.IndexName = Environment.GetEnvironmentVariable("Elastic_DefaultIndex")!;
+            });
             services.AddSingleton<ElasticsearchClient>(sp =>
             {
                 var elasticUri = Environment.GetEnvironmentVariable("Elastic_Url")!;
-                var elasticApiKey = Environment.GetEnvironmentVariable("Elastic_Key");
+                var elasticApiKey = Environment.GetEnvironmentVariable("Elastic_Key")!;
                 var elasticIndex = Environment.GetEnvironmentVariable("Elastic_DefaultIndex")!;
 
                 var setting = new ElasticsearchClientSettings(new Uri(elasticUri))
+                .Authentication(new ApiKey(elasticApiKey))
                 .DefaultIndex(elasticIndex);
 
                 return new ElasticsearchClient(setting);
@@ -81,6 +90,11 @@ namespace YAHALLO.Infrastructure
 
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
+
+            //elastic
+            services.AddTransient<IMangaSearchRepository, MangaSearchRepository>();
+
+
             return services;
         }
     }
