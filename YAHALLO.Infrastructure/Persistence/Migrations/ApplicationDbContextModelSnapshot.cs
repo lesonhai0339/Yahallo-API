@@ -127,7 +127,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreateDate")
@@ -137,7 +136,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DisLike")
@@ -162,7 +160,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Type")
@@ -708,6 +705,9 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<int?>("MediaType")
                         .HasColumnType("int");
 
+                    b.Property<string>("ReportEntityId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -728,6 +728,8 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.HasIndex("BlogId");
 
                     b.HasIndex("CommentId");
+
+                    b.HasIndex("ReportEntityId");
 
                     b.ToTable("Attechment", (string)null);
                 });
@@ -926,6 +928,58 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("OldPassword", (string)null);
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.ReportEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserDelete")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserReport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdUserUpdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Target")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ReportEntity");
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.RoleEntity", b =>
@@ -1358,6 +1412,10 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasForeignKey("CommentId")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("YAHALLO.Domain.Entities.ReportEntity", null)
+                        .WithMany("Attechments")
+                        .HasForeignKey("ReportEntityId");
+
                     b.Navigation("Blog");
 
                     b.Navigation("Comment");
@@ -1440,6 +1498,15 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("UserEntity");
+                });
+
+            modelBuilder.Entity("YAHALLO.Domain.Entities.ReportEntity", b =>
+                {
+                    b.HasOne("YAHALLO.Domain.Entities.UserEntity", "User")
+                        .WithMany("Reports")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.UserRoleEntity", b =>
@@ -1541,6 +1608,11 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Navigation("MangaEntities");
                 });
 
+            modelBuilder.Entity("YAHALLO.Domain.Entities.ReportEntity", b =>
+                {
+                    b.Navigation("Attechments");
+                });
+
             modelBuilder.Entity("YAHALLO.Domain.Entities.RoleEntity", b =>
                 {
                     b.Navigation("UserRoleEntities");
@@ -1563,12 +1635,13 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.Navigation("MangaRatingEntities");
 
-                    b.Navigation("OldPasswords")
-                        .IsRequired();
+                    b.Navigation("OldPasswords");
 
                     b.Navigation("Reactions");
 
                     b.Navigation("ReplyComment");
+
+                    b.Navigation("Reports");
 
                     b.Navigation("UserRoleEntities");
 

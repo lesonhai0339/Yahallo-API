@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Persistence.Data.Configurations;
-using YAHALLO.Infrastructure.Persistence.Data.Configurations.Reference;
+using YAHALLO.Infrastructure.Data.Configurations;
+using YAHALLO.Infrastructure.Data.Configurations.Reference;
 
-namespace YAHALLO.Infrastructure.Persistence.Data
+namespace YAHALLO.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext, IUnitOfWork
+    public class ApplicationDbContext: DbContext, IUnitOfWork
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public DbSet<AuthorEntity>? AuthorEntities { get; set; }
+        public DbSet<AuthorEntity>? AuthorEntities { get; set; } 
         public DbSet<ArtistEntity>? ArtistsEntities { get; set; }
         public DbSet<MangaAssociateNameEntity>? MangaAssociateNames { get; set; }
         public DbSet<ChapterEntity>? ChaptersEntities { get; set; }
         public DbSet<CommentEntity>? CommentEntities { get; set; }
         public DbSet<FollowEntity>? FollowEntities { get; set; }
-        public DbSet<ImageEntity>? ImageEntities { get; set; }
+        public DbSet<ImageEntity>? ImageEntities { get; set; }   
         public DbSet<MangaEntity>? MangaEntities { get; set; }
         public DbSet<MangaRatingEntity>? MangaRatingEntities { get; set; }
         public DbSet<MangaSeasonEntity>? MangaSeasonEntities { get; set; }
@@ -38,7 +38,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data
         public DbSet<ReactionEntity> Reactions { get; set; }
         public DbSet<ThreadEntity> Threads { get; set; }
         public DbSet<ThreadOfBlogEntity> ThreadOfBlogs { get; set; }
-        public DbSet<UserOldPasswordEntity> UserOldPasswords { get; set; }
+        public DbSet<UserOldPasswordEntity> UserOldPasswords { get;set; }
         public DbSet<AttechmentEntity> Attechments { get; set; }
         public DbSet<CommentEntity> Comments { get; set; }
         public DbSet<BlogEntity> Blogs { get; set; }
@@ -72,8 +72,8 @@ namespace YAHALLO.Infrastructure.Persistence.Data
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
 
-            //CreateData(modelBuilder);
-        }
+        CreateData(modelBuilder);
+    }
         protected void CreateData(ModelBuilder builder)
         {
             builder.Entity<RoleEntity>().HasData(
