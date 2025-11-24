@@ -40,7 +40,6 @@ namespace YAHALLO.Infrastructure.Elastic1.Repositories
                 .Indices(_indexName.IndexName)
                 .Query(q =>
                 {
-                    q.Match()
                     query.Apply(q);
                 })
                 , token);

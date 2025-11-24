@@ -118,7 +118,7 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IEnums, Enums>();
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
-
+            services.AddTransient<IMangaSearchRepository, MangaSearchRepository>();
             return services;
         }
     }
