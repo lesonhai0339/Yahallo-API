@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Domain.Repositories.Elastic
 {
-    public interface IElasticRepository<TDomain, TSearch, TQuery>
+    public interface IElasticRepository<TDomain, TSearch>
     {
-        Task<TSearch> Search(TQuery query, CancellationToken token);
+        Task<TSearch> Search(IQuery<TSearch> query, CancellationToken token);
         Task Add(TDomain domain, CancellationToken token);
     }
 }

@@ -8,12 +8,14 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Elastic;
+using YAHALLO.Infrastructure.Data;
 using YAHALLO.Infrastructure.Elastic.Repositories;
 using YAHALLO.Infrastructure.Elastic1.Options;
 using YAHALLO.Infrastructure.Files.Functions;
@@ -60,6 +62,7 @@ namespace YAHALLO.Infrastructure
 
                 return new ElasticsearchClient(setting);
             });
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Repositories.Elastic
 {
-    public interface IMangaSearchRepository : IElasticRepository<MangaEntity, MangaEntity>
+    public interface IQuery<TSearch>
     {
+        void Apply(object queryContext);
     }
 }

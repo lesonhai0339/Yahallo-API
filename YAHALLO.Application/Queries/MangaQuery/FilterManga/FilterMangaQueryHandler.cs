@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Elastic.Clients.Elasticsearch.QueryDsl;
 using LinqKit;
 using MediatR;
 using Serilog;
@@ -37,7 +38,14 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
 
             try
             {
-                var response = await _mangaSearchRepository.Search(request.Name, cancellationToken);
+                Action<QueryDescriptor<MangaEntity>> action = new Action<QueryDescriptor<MangaEntity>>((q) =>
+                {
+                    q.Match(m =>
+                    {
+                        m.Field(f => f.Name).Query(request.Name!);
+                    });
+                });
+                IQuery<MangaEntity> queryable;
             }
             catch(Exception ex)
             {

@@ -31,8 +31,19 @@ namespace YAHALLO.Infrastructure.Elastic.Indexes
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<MangaEntity, MangaIndex>();
-            profile.CreateMap<MangaIndex, MangaEntity>();
+            profile.CreateMap<MangaEntity, MangaIndex>()
+                .ForMember(dest => dest.MangaSeasonEntity,
+                           opt => opt.MapFrom(src => src.MangaSeasonEntity != null
+                               ? new[] { src.MangaSeasonEntity.Id }
+                               : null))
+                .ForMember(dest => dest.UserEntity,
+                           opt => opt.MapFrom(src => src.UserEntity != null
+                               ? src.UserEntity.UserName
+                               : null))
+                .ForMember(dest => dest.Level, opt => opt.MapFrom(src => (int)src.Level))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => (int)src.Status))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => (int)src.Type))
+                .ForMember(dest => dest.Countries, opt => opt.MapFrom(src => (int)src.Countries));
         }
     }
 }

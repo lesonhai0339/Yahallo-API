@@ -246,6 +246,7 @@ paket-files/
 *.sln.iml
 
 #Add newer
+/YAHALLO/.env
 .env
 appsettings.json
 appsettings.Development.json

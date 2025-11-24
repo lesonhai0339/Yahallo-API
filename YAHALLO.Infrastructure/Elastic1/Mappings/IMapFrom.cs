@@ -10,5 +10,6 @@ namespace YAHALLO.Infrastructure.Elastic1.Mappings
     interface IMapFrom<T>
     {
         void Mapping(Profile profile);
+
     }
 }

@@ -12,6 +12,7 @@ using YAHALLO.Domain.Enums.MangaEnums;
 
 namespace YAHALLO.Domain.Entities
 {
+    [Serializable]
     public class MangaEntity : BaseEntity
     {
         public string Name { get; set; } = null!;

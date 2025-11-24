@@ -40,5 +40,10 @@
 	  <Folder Include="Data\User\" />
 	  <Folder Include="Logs\Mangas\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Update=".env">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 
 </Project>
