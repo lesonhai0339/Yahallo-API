@@ -13,10 +13,9 @@ using YAHALLO.Infrastructure.Elastic1.Options;
 
 namespace YAHALLO.Infrastructure.Elastic1.Repositories
 {
-    public class ElasticRepositoryBase<TDomain, TSearch , TQuery> : IElasticRepository<TDomain, TSearch, TQuery>
+    public class ElasticRepositoryBase<TDomain, TSearch> : IElasticRepository<TDomain, TSearch>
         where TDomain : class
         where TSearch : class
-        where TQuery : Action<QueryDescriptor<TSearch>>
     {
         private readonly IndexNameOptions _indexName;
         private readonly ElasticsearchClient _client;
@@ -43,12 +42,24 @@ namespace YAHALLO.Infrastructure.Elastic1.Repositories
             await _client.IndexAsync(doc, i => i.Index(_indexName.IndexName), token);
         }
 
-        public Task<Action<QueryDescriptor<TSearch>>> Search(TSearch query, CancellationToken token)
+        public async Task<IEnumerable<TDomain>> Search(IElasticQueryBuilder<TDomain> query, CancellationToken token)
+        {
+            var response = await query.ExecuteAsync(token);
+
+            return response;
+        }
+
+        public Task<bool> Update(string docId, TDomain domain, CancellationToken token)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TSearch> Search(TQuery query, CancellationToken token)
+        public Task<bool> Update(string docId, Dictionary<string, object> keyValuePair, CancellationToken token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Delete(string docId, CancellationToken token)
         {
             throw new NotImplementedException();
         }

@@ -16,7 +16,10 @@ namespace YAHALLO.Application.Queries.MangaQuery
         public static MangaDto MapFullToMangaDto(this MangaEntity entity, IMapper mapper)
         {
             var map = mapper.Map<MangaDto>(entity);
-            map.Thumbnail = entity.Thumbnail!.BaseUrl ?? entity.Thumbnail.CloudUrl;
+            map.Thumbnail = (entity.Thumbnail == null) ? "" :
+                (!string.IsNullOrEmpty(entity.Thumbnail.BaseUrl)) ? entity.Thumbnail.BaseUrl :
+                (!string.IsNullOrEmpty(entity.Thumbnail.CloudUrl)) ? entity.Thumbnail.CloudUrl :
+                "";
             map.UserID = entity.UserEntity.Id ?? "";
             map.Level = entity.Level.GetDescription();
             map.Status = entity.Status.GetDescription();

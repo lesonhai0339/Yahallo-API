@@ -5,6 +5,7 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
@@ -15,6 +16,7 @@ using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Elastic;
+using YAHALLO.Infrastructure.Elastic1.Repositories;
 
 namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
 {
@@ -23,13 +25,13 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         private readonly IMangaRepository _mangaRepository;
         private readonly IMapper _mapper;
         private readonly IFilters _filters;
-        private readonly IMangaSearchRepository _mangaSearchRepository;
-        public FilterMangaQueryHandler(IMangaRepository mangaRepository, IMapper mapper, IFilters filters, IMangaSearchRepository mangaSearchRepository)
+        private readonly IElasticQueryBuilder<MangaEntity> _elasticQueryBuilder;    
+        public FilterMangaQueryHandler(IMangaRepository mangaRepository, IMapper mapper, IFilters filters, IElasticQueryBuilder<MangaEntity> elasticQueryBuilder)
         {
             _mangaRepository = mangaRepository;
             _mapper = mapper;
             _filters = filters;
-            _mangaSearchRepository = mangaSearchRepository; 
+            _elasticQueryBuilder = elasticQueryBuilder;
         }
 
         public async Task<PagedResult<MangaDto>> Handle(FilterMangaQuery request, CancellationToken cancellationToken)
@@ -37,7 +39,12 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
 
             try
             {
-                var response = await _mangaSearchRepository.Search(request.Name, cancellationToken);
+                Expression<Func<MangaEntity, object>> querySearch = m => new
+                {
+                    m.Name
+                };
+                _elasticQueryBuilder.Match(querySearch, request.Name!);
+                var result = await _elasticQueryBuilder.SearchAsync(cancellationToken);
             }
             catch(Exception ex)
             {

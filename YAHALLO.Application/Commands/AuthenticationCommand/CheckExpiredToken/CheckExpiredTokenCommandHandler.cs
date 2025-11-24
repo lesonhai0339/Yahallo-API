@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
-using YAHALLO.Application.ResponeTypes;
+using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Services;
 
 namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
 {
-    public class CheckExpiredTokenCommandHandler : IRequestHandler<CheckExpiredTokenCommand, LoginRespone>
+    public class CheckExpiredTokenCommandHandler : IRequestHandler<CheckExpiredTokenCommand, LoginResponse>
     {
         private readonly IUserTokenRepository _userTokenRepository;
         private readonly IJwtService _jwtService;
@@ -27,31 +27,31 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
             _userRoleRepository = userRoleRepository;
         }
 
-        public async Task<LoginRespone> Handle(CheckExpiredTokenCommand request, CancellationToken cancellationToken)
+        public async Task<LoginResponse> Handle(CheckExpiredTokenCommand request, CancellationToken cancellationToken)
         {
-            var checkRefeshToken = await _userTokenRepository.FindAsync(x => x.RefeshToken == request.Refeshtoken, cancellationToken);
-            if (checkRefeshToken != null)
+            var checkRefreshToken = await _userTokenRepository.FindAsync(x => x.RefeshToken == request.Refeshtoken, cancellationToken);
+            if (checkRefreshToken != null)
             {
-                if (DateTime.TryParse(checkRefeshToken.ExpiredRefeshToken, out DateTime expired))
+                if (DateTime.TryParse(checkRefreshToken.ExpiredRefeshToken, out DateTime expired))
                 {
                     if (expired > DateTime.UtcNow)
                     {
-                        return new LoginRespone(checkRefeshToken.Id, checkRefeshToken.AccessToken, checkRefeshToken.RefeshToken);
+                        return new LoginResponse(checkRefreshToken.Id, checkRefreshToken?.UserEntity.Avatar?.BaseUrl, checkRefreshToken?.UserEntity.DisplayName, checkRefreshToken.AccessToken, checkRefreshToken.RefeshToken);
                     }
                     else
                     {
-                        var roles = await _userRoleRepository.FindAllAsync(x => x.UserId == checkRefeshToken.Id, cancellationToken);
-                        var newToken = _jwtService.CreateToken(checkRefeshToken.Id, roles.Select(x => x.RoleId).ToList());
+                        var roles = await _userRoleRepository.FindAllAsync(x => x.UserId == checkRefreshToken.Id, cancellationToken);
+                        var newToken = _jwtService.CreateToken(checkRefreshToken.Id, roles.Select(x => x.RoleId).ToList());
                         if (newToken == null) throw new Exception("Tạo token thất bại");
                         var newRefeshToken = _jwtService.GenerateRefreshToken();
-                        checkRefeshToken.AccessToken = newToken;
-                        checkRefeshToken.RefeshToken = newRefeshToken;
-                        checkRefeshToken.ExpiredRefeshToken = DateTime.Now.AddDays(1).ToString();
-                        _userTokenRepository.Update(checkRefeshToken);
+                        checkRefreshToken.AccessToken = newToken;
+                        checkRefreshToken.RefeshToken = newRefeshToken;
+                        checkRefreshToken.ExpiredRefeshToken = DateTime.Now.AddDays(1).ToString();
+                        _userTokenRepository.Update(checkRefreshToken);
                         var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                         if (result > 0)
                         {
-                            return new LoginRespone(checkRefeshToken.Id, checkRefeshToken.AccessToken, checkRefeshToken.RefeshToken);
+                            return new LoginResponse(checkRefreshToken.Id, checkRefreshToken?.UserEntity.Avatar?.BaseUrl, checkRefreshToken?.UserEntity.DisplayName, checkRefreshToken!.AccessToken, checkRefreshToken.RefeshToken);
                         }
                         else
                         {

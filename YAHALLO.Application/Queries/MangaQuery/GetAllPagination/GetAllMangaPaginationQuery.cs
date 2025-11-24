@@ -11,12 +11,12 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetAllPagination
     public class GetAllMangaPaginationQuery: IRequest<PagedResult<MangaDto>>
     {
         public int PageNumber { get; set; }
-        public int PageSizee { get;set; }
+        public int PageSize { get;set; }
         public GetAllMangaPaginationQuery() { } 
-        public GetAllMangaPaginationQuery(int pageNumber, int pageSizee)
+        public GetAllMangaPaginationQuery(int pageNumber, int pageSize)
         {
             PageNumber = pageNumber;
-            PageSizee = pageSizee;
+            PageSize = pageSize;
         }   
     }
 }

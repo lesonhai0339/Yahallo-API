@@ -7,9 +7,7 @@ using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Repositories.Elastic
 {
-    public interface IMangaSearchRepository
+    public interface IMangaSearchRepository: IElasticRepository<MangaEntity, MangaEntity>
     {
-        Task<MangaEntity> Search(string name, CancellationToken token = default);
-        Task Add(MangaEntity entity, CancellationToken token = default);
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Infrastructure.Data;
 using YAHALLO.Infrastructure.Persistence.Data;
 
 namespace YAHALLO.Infrastructure.Persistence.Repositories

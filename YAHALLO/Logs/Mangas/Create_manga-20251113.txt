@@ -1,0 +1,2 @@
+16:44:47 13/11/2025 [INF] Create success manga with Id: 8082672a12794c4caa811a2db48d89d5 - Name: Guilty Crown
+16:47:32 13/11/2025 [INF] Create success manga with Id: dabf1fcb4f1a4ce9ae7107507eb2527a - Name: Sakurasou no pet na kanojo

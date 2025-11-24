@@ -19,7 +19,7 @@ using YAHALLO.Application.Queries.UserQuery.Anonymous.GetAllPagination;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetById;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetByIdDeleted;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetByName;
-using YAHALLO.Application.ResponeTypes;
+using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
@@ -34,15 +34,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("user/check-token-expired")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<LoginRespone>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<LoginResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<LoginRespone>>> CheckToken(
+        public async Task<ActionResult<JsonResponse<LoginResponse>>> CheckToken(
           [FromBody] CheckExpiredTokenCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<LoginRespone>(result));
+            return Ok(new JsonResponse<LoginResponse>(result));
         }
         [HttpPost]
         [Route("user/forgot-password")]
@@ -73,15 +73,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("user/login")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<LoginRespone>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<LoginResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<LoginRespone>>> Login(
+        public async Task<ActionResult<JsonResponse<LoginResponse>>> Login(
           [FromBody] LoginCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<LoginRespone>(result));
+            return Ok(new JsonResponse<LoginResponse>(result));
         }
         [HttpPost]
         [Route("user/create")]
