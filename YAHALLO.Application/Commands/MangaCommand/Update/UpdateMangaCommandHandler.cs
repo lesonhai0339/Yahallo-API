@@ -5,15 +5,18 @@ using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
+using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Domain.Repositories.Elastic;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Update
 {
@@ -23,16 +26,20 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
         private readonly IFiles<IFormFile> _files;
         private readonly ICurrentUserService _currentUser;
         private readonly IImageRepository _imageRepository;
+        private readonly IElasticQueryBuilder<MangaEntity> _elasticQueryBuilder;
+
         public UpdateMangaCommandHandler(
             IMangaRepository mangaRepository, 
             IFiles<IFormFile> files, 
             ICurrentUserService currentUser,
-            IImageRepository imageRepository)
+            IImageRepository imageRepository,
+            IElasticQueryBuilder<MangaEntity> elasticQueryBuilder)
         {
             _mangaRepository = mangaRepository;
             _files = files;
             _currentUser = currentUser;
             _imageRepository = imageRepository; 
+            _elasticQueryBuilder = elasticQueryBuilder; 
         }
         public async Task<ResponseResult<string>> Handle(UpdateMangaCommand request, CancellationToken cancellationToken)
         {
@@ -98,6 +105,19 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                         }
                     }
                 }
+
+                //Elastic
+                try
+                {
+                    _elasticQueryBuilder.Match(x => x.Id, request.Id);
+                    await _elasticQueryBuilder.Update(checkMangaExist, cancellationToken);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
                 return new ResponseResult<string>(message: "Cập nhật thành công");
             }
             else

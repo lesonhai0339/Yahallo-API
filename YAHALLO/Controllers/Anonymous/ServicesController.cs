@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.ComfirmEmail;
-using YAHALLO.Application.ResponeTypes;
+using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous

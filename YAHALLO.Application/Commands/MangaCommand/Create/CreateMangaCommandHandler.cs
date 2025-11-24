@@ -25,9 +25,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
         private readonly IFiles<IFormFile> _files;
         private readonly IImageRepository _imageRepository;
         private readonly ILogger _logger;
-
-        private readonly IMangaSearchRepository _mangaSearchRepository;
-
+        private readonly IElasticQueryBuilder<MangaEntity> _queryBuilder;
         public CreateMangaCommandHandler(
             IMangaRepository mangaRepository,
             IMangaSeasonRepository mangaSeasonRepository,
@@ -35,7 +33,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
             IFiles<IFormFile> files,
             IImageRepository imageRepository,
             ILoggerExtension logger,
-            IMangaSearchRepository mangaSearchRepository)
+            IElasticQueryBuilder<MangaEntity> queryBuilder)
         {
             _mangaRepository = mangaRepository;
             _mangaSeasonRepository = mangaSeasonRepository;
@@ -43,7 +41,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
             _files = files;
             _imageRepository = imageRepository;
             _logger = logger.CreateLogger("Logs/Mangas", "Create_manga");
-            _mangaSearchRepository = mangaSearchRepository;
+            _queryBuilder = queryBuilder;
         }
         public async Task<string> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
         {
@@ -102,8 +100,8 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                 {
                     checkMangaSeasonExist.MangaEntities.Add(newManga);
                     _mangaSeasonRepository.Update(checkMangaSeasonExist);
-                    var retuls = await _mangaSeasonRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-                    if (result <= 0)
+                    var rs = await _mangaSeasonRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+                    if (rs <= 0)
                     {
                         _logger.Error($"Error when create manga");
                         throw new Exception("đã xảy ra lỗi");
@@ -112,7 +110,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                 //Elastic
                 try
                 {
-                    await _mangaSearchRepository.Add(newManga, cancellationToken);
+                    var isSuccess = await _queryBuilder.AddAsync(newManga, cancellationToken);
                 }
                 catch (Exception ex)
                 {

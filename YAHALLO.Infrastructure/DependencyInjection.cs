@@ -1,31 +1,43 @@
 ﻿using dotenv.net;
 using Elastic.Clients.Elasticsearch;
+using Elastic.Clients.Elasticsearch.Serialization;
 using Elastic.Transport;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Elastic;
+using YAHALLO.Domain.Repositories.Security;
 using YAHALLO.Infrastructure.Data;
 using YAHALLO.Infrastructure.Elastic.Repositories;
 using YAHALLO.Infrastructure.Elastic1.Options;
+using YAHALLO.Infrastructure.Elastic1.Repositories;
 using YAHALLO.Infrastructure.Files.Functions;
 using YAHALLO.Infrastructure.Persistence.Data;
 using YAHALLO.Infrastructure.Persistence.Repositories;
+using YAHALLO.Infrastructure.Security;
 
 namespace YAHALLO.Infrastructure
 {
     public static class DependencyInjection
     {
+        static void ConfigureOptions(JsonSerializerOptions o)
+        {
+            o.PropertyNamingPolicy = null;
+            o.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+            o.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        }
         public static IServiceCollection Infrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             DotEnv.Load();
@@ -52,17 +64,31 @@ namespace YAHALLO.Infrastructure
             });
             services.AddSingleton<ElasticsearchClient>(sp =>
             {
+    
                 var elasticUri = Environment.GetEnvironmentVariable("Elastic_Url")!;
                 var elasticApiKey = Environment.GetEnvironmentVariable("Elastic_Key")!;
                 var elasticIndex = Environment.GetEnvironmentVariable("Elastic_DefaultIndex")!;
 
-                var setting = new ElasticsearchClientSettings(new Uri(elasticUri))
+                var nodePool = new SingleNodePool(new Uri(elasticUri));
+                var setting = new ElasticsearchClientSettings(nodePool,
+                    sourceSerializer: (defaultSerializer, settings) =>
+        new DefaultSourceSerializer(settings, ConfigureOptions))
                 .Authentication(new ApiKey(elasticApiKey))
                 .DefaultIndex(elasticIndex);
-
+                
                 return new ElasticsearchClient(setting);
             });
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            //elastic
+            services.AddSingleton(typeof(IElasticQueryBuilder<>), typeof(ElasticQueryBuilder<>));
+
+            //security
+            services.AddSingleton<IKeypairGenerate, KeypairGenerate>(sp =>
+            {
+                var ops = Environment.GetEnvironmentVariable("Encrypt_Context")!;
+                return new KeypairGenerate(ops);
+            });
+
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
@@ -92,10 +118,6 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IEnums, Enums>();
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
-
-            //elastic
-            services.AddTransient<IMangaSearchRepository, MangaSearchRepository>();
-
 
             return services;
         }

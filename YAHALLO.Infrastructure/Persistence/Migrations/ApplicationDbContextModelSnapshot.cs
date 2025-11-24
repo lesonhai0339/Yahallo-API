@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YAHALLO.Infrastructure.Data;
 using YAHALLO.Infrastructure.Persistence.Data;
+using YAHALLO.Infrastructure.Data;
 
 #nullable disable
 

@@ -13,7 +13,7 @@ using YAHALLO.Application.Queries.ArtistQuery.GetAll;
 using YAHALLO.Application.Queries.ArtistQuery.GetAllDeleted;
 using YAHALLO.Application.Queries.ArtistQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.ArtistQuery.GetAllPagination;
-using YAHALLO.Application.ResponeTypes;
+using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous

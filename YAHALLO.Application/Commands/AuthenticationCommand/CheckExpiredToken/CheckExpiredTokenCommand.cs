@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YAHALLO.Application.ResponeTypes;
+using YAHALLO.Application.ResponseTypes;
 
 namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
 {
-    public class CheckExpiredTokenCommand: IRequest<LoginRespone>
+    public class CheckExpiredTokenCommand: IRequest<LoginResponse>
     {
         public CheckExpiredTokenCommand(string refeshtoken)
         {

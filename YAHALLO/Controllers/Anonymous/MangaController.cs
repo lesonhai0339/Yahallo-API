@@ -14,13 +14,12 @@ using YAHALLO.Application.Queries.MangaQuery.GetAll;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeleted;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetAllPagination;
-using YAHALLO.Application.ResponeTypes;
+using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
 {
-    [Authorize]
     public class MangaController : ControllerBase
     {
         private readonly IMediator _sender;
