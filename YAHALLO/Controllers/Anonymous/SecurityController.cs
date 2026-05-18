@@ -9,10 +9,10 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace YAHALLO.Controllers.Anonymous
 {
-    public class Security : Controller
+    public class SecurityController : Controller
     {
         private readonly IMediator _sender;
-        public Security(IMediator sender)
+        public SecurityController(IMediator sender)
         {
             _sender = sender;
         }
