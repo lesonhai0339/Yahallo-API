@@ -1,0 +1,34 @@
+//AI generated
+using AutoMapper;
+using YAHALLO.Application.Common.Mappings;
+using YAHALLO.Application.Queries.TagQuery;
+using YAHALLO.Domain.Entities;
+
+namespace YAHALLO.Application.Queries.MangaQuery
+{
+    public class MangaDetailDto : IMapFrom<MangaEntity>
+    {
+        public required string Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string? Description { get; set; }
+        public string? Level { get; set; }
+        public string? Status { get; set; }
+        public string? Type { get; set; }
+        public string? Countries { get; set; }
+        public int Season { get; set; }
+        public string? Thumbnail { get; set; }
+        public string? UserId { get; set; }
+
+        // Aggregated
+        public double AverageRating { get; set; }
+        public int TotalFollows { get; set; }
+        public int TotalViews { get; set; }
+        public int TotalChapters { get; set; }
+        public List<TagDto> Tags { get; set; } = new();
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<MangaEntity, MangaDetailDto>();
+        }
+    }
+}

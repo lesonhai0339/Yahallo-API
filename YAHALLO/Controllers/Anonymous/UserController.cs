@@ -1,6 +1,9 @@
-﻿using MediatR;
+﻿//AI generated - added rate limiting
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using System.Net.Mime;
+using YAHALLO.Configuration;
 using YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken;
 using YAHALLO.Application.Commands.AuthenticationCommand.Login;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.ChangePassword;
@@ -46,6 +49,7 @@ namespace YAHALLO.Controllers.Anonymous
         }
         [HttpPost]
         [Route("user/forgot-password")]
+        [EnableRateLimiting(RateLimitingConfiguration.AuthPolicy)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -72,6 +76,7 @@ namespace YAHALLO.Controllers.Anonymous
         }
         [HttpPost]
         [Route("user/login")]
+        [EnableRateLimiting(RateLimitingConfiguration.AuthPolicy)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<LoginResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

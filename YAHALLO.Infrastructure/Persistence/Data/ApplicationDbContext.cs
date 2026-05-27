@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//AI generated
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,15 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<AttechmentEntity> Attechments { get; set; }
         public DbSet<CommentEntity> Comments { get; set; }
         public DbSet<BlogEntity> Blogs { get; set; }
+
+        // AI generated — new tables
+        public DbSet<TagEntity> Tags { get; set; }
+        public DbSet<MangaTagEntity> MangaTags { get; set; }
+        public DbSet<ReadingProgressEntity> ReadingProgresses { get; set; }
+        public DbSet<NotificationEntity> Notifications { get; set; }
+        public DbSet<UserMangaViewEntity> UserMangaViews { get; set; }
+        public DbSet<SubscriptionEntity> Subscriptions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -71,6 +81,14 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new AttechmentConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
+
+            // AI generated — new configurations
+            modelBuilder.ApplyConfiguration(new TagConfiguration());
+            modelBuilder.ApplyConfiguration(new MangaTagConfiguration());
+            modelBuilder.ApplyConfiguration(new ReadingProgressConfiguration());
+            modelBuilder.ApplyConfiguration(new NotificationConfiguration());
+            modelBuilder.ApplyConfiguration(new UserMangaViewConfiguration());
+            modelBuilder.ApplyConfiguration(new SubscriptionConfiguration());
 
         CreateData(modelBuilder);
     }

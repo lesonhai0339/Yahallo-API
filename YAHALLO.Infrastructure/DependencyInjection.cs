@@ -1,4 +1,5 @@
-﻿using dotenv.net;
+﻿//AI generated
+using dotenv.net;
 using Elastic.Clients.Elasticsearch;
 using Elastic.Clients.Elasticsearch.Serialization;
 using Elastic.Transport;
@@ -15,11 +16,15 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Domain.Repositories.Cache;
 using YAHALLO.Domain.Repositories.Elastic;
 using YAHALLO.Domain.Repositories.Security;
 using YAHALLO.Infrastructure.Data;
+using YAHALLO.Infrastructure.Jobs;
+using YAHALLO.Infrastructure.Redis;
 using YAHALLO.Infrastructure.Elastic.Repositories;
 using YAHALLO.Infrastructure.Elastic1.Options;
 using YAHALLO.Infrastructure.Elastic1.Repositories;
@@ -119,6 +124,30 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
             services.AddTransient<IMangaSearchRepository, MangaSearchRepository>();
+
+            // AI generated — new repositories
+            services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IMangaTagRepository, MangaTagRepository>();
+            services.AddTransient<IReadingProgressRepository, ReadingProgressRepository>();
+            services.AddTransient<INotificationRepository, NotificationRepository>();
+            services.AddTransient<IUserMangaViewRepository, UserMangaViewRepository>();
+            services.AddTransient<ISubscriptionRepository, SubscriptionRepository>();
+
+            // AI generated — Redis cache
+            var redisConnection = Environment.GetEnvironmentVariable("Redis_Connection");
+            if (!string.IsNullOrEmpty(redisConnection))
+            {
+                services.AddStackExchangeRedisCache(opt => opt.Configuration = redisConnection);
+            }
+            else
+            {
+                services.AddDistributedMemoryCache();
+            }
+            services.AddSingleton<ICacheService, RedisCacheService>();
+
+            // AI generated — Background job service (Hangfire DI moved to Startup.cs)
+            services.AddScoped<IBackgroundJobService, BackgroundJobService>();
+
             return services;
         }
     }
