@@ -1,0 +1,45 @@
+2026-05-26 23:12:09.110 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-05-26 23:12:09.665 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-05-26 23:12:17.120 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-05-26 23:12:17.655 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-05-26 23:12:17.669 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-05-26 23:12:17.671 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-05-26 23:12:17.671 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-05-26 23:12:17.685 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-05-26 23:12:17.694 +07:00 [INF] Applying migration '20260526161209_v1'.
+2026-05-26 23:12:17.865 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] ON;
+INSERT INTO [Roles] ([Id], [CreateDate], [DeleteDate], [IdUserCreate], [IdUserDelete], [IdUserUpdate], [RoleCode], [RoleDescription], [RoleName], [UpdateDate])
+VALUES (N'57845090ee7c43ce829eaa2a6a728ca2', NULL, NULL, NULL, NULL, NULL, 4, N'If User has this role then User can use Create, Update, Delete Manga', N'Upload', NULL),
+(N'b83869e557514c6bb6faebb35316095e', NULL, NULL, NULL, NULL, NULL, 2, N'Normal User or New User has this Role', N'User', NULL),
+(N'd8876ea6abf742c09fb0dda27122f8a9', NULL, NULL, NULL, NULL, NULL, 3, N'Role for Moderator', N'Mod', NULL),
+(N'de0ada2dd2fc4345aecc2626776dc3b6', NULL, NULL, NULL, NULL, NULL, 1, N'Only Admin has this Role', N'Admin', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreateDate', N'DeleteDate', N'IdUserCreate', N'IdUserDelete', N'IdUserUpdate', N'RoleCode', N'RoleDescription', N'RoleName', N'UpdateDate') AND [object_id] = OBJECT_ID(N'[Roles]'))
+    SET IDENTITY_INSERT [Roles] OFF;
+2026-05-26 23:12:17.866 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260526161209_v1', N'7.0.0');
+2026-05-26 23:12:37.826 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-26 23:12:38.452 +07:00 [INF] Now listening on: https://localhost:7181
+2026-05-26 23:12:38.454 +07:00 [INF] Now listening on: http://localhost:5213
+2026-05-26 23:12:38.594 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-26 23:12:38.595 +07:00 [INF] Hosting environment: Development
+2026-05-26 23:12:38.600 +07:00 [INF] Content root path: C:\Users\admin\Source\Repos\Yahallo-API\YAHALLO
+2026-05-26 23:12:39.421 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2026-05-26 23:12:39.659 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 103.2935 ms
+2026-05-26 23:12:39.666 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 246.5782ms
+2026-05-26 23:12:39.685 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2026-05-26 23:12:39.691 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2026-05-26 23:12:39.694 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 16499 application/javascript;+charset=utf-8 8.3452ms
+2026-05-26 23:12:39.738 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 47.6796ms
+2026-05-26 23:12:39.853 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2026-05-26 23:12:39.895 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 41.5115 ms
+2026-05-26 23:12:39.898 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 45.0342ms
