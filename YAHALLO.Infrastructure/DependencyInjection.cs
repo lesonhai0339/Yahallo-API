@@ -12,9 +12,11 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Infrastructure.Kafka;
 using YAHALLO.Infrastructure.Files.Functions;
 using YAHALLO.Infrastructure.Persistence.Data;
 using YAHALLO.Infrastructure.Persistence.Repositories;
+using YAHALLO.Infrastructure.Redis;
 
 namespace YAHALLO.Infrastructure
 {
@@ -80,6 +82,8 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<IEnums, Enums>();
             services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
             services.AddTransient<IFilters, Filters>();
+            services.AddKafka(configuration);
+            services.AddRedis(configuration);
             return services;
         }
     }

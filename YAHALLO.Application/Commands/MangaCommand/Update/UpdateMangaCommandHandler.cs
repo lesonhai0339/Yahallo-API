@@ -8,12 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Application.Common.Caching;
+using YAHALLO.Application.Common.Events;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Infrastructure.Kafka;
+using YAHALLO.Infrastructure.Redis;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Update
 {
@@ -23,16 +27,22 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
         private readonly IFiles<IFormFile> _files;
         private readonly ICurrentUserService _currentUser;
         private readonly IImageRepository _imageRepository;
+        private readonly IRedisCacheService _cache;
+        private readonly IKafkaProducer _kafkaProducer;
         public UpdateMangaCommandHandler(
             IMangaRepository mangaRepository, 
             IFiles<IFormFile> files, 
             ICurrentUserService currentUser,
-            IImageRepository imageRepository)
+            IImageRepository imageRepository,
+            IRedisCacheService cache,
+            IKafkaProducer kafkaProducer)
         {
             _mangaRepository = mangaRepository;
             _files = files;
             _currentUser = currentUser;
             _imageRepository = imageRepository; 
+            _cache = cache;
+            _kafkaProducer = kafkaProducer;
         }
         public async Task<ResponseResult<string>> Handle(UpdateMangaCommand request, CancellationToken cancellationToken)
         {
@@ -85,6 +95,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                             var check= await _files.UpLoadimage(request.Thumbnail, newImagePath);
                             if(check == true)
                             {
+                                await PublishMangaChangedAsync(checkMangaExist.Id, "Updated", cancellationToken);
                                 return new ResponseResult<string>(message: "Cập nhật thành công");
                             }
                             else
@@ -98,12 +109,26 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                         }
                     }
                 }
+                await PublishMangaChangedAsync(checkMangaExist.Id, "Updated", cancellationToken);
                 return new ResponseResult<string>(message: "Cập nhật thành công");
             }
             else
             {
                 return new ResponseResult<string>(message: "Cập nhật thất bại");
             }
+        }
+
+        private async Task PublishMangaChangedAsync(string mangaId, string changeType, CancellationToken cancellationToken)
+        {
+            await _cache.RemoveByPrefixAsync(MangaCacheKeys.CatalogPrefix, cancellationToken);
+
+            var changedEvent = new MangaChangedEvent(
+                mangaId,
+                changeType,
+                _currentUser.UserId,
+                DateTime.UtcNow);
+
+            await _kafkaProducer.PublishAsync("yahallo.manga.changed", mangaId, changedEvent, cancellationToken);
         }
     }
 }

@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Logger;
+using YAHALLO.Application.Common.Caching;
+using YAHALLO.Application.Common.Events;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.Base;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Infrastructure.Kafka;
+using YAHALLO.Infrastructure.Redis;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Create
 {
@@ -23,6 +27,8 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
         private readonly ICurrentUserService _currentUser;
         private readonly IFiles<IFormFile> _files;
         private readonly IImageRepository _imageRepository;
+        private readonly IRedisCacheService _cache;
+        private readonly IKafkaProducer _kafkaProducer;
         private readonly ILogger _logger;
         public CreateMangaCommandHandler(
             IMangaRepository mangaRepository,
@@ -30,6 +36,8 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
             ICurrentUserService currentUser,
             IFiles<IFormFile> files,
             IImageRepository imageRepository,
+            IRedisCacheService cache,
+            IKafkaProducer kafkaProducer,
             ILoggerExtension logger)
         {
             _mangaRepository = mangaRepository;
@@ -37,6 +45,8 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
             _currentUser = currentUser;
             _files = files;
             _imageRepository = imageRepository;
+            _cache = cache;
+            _kafkaProducer = kafkaProducer;
             _logger = logger.CreateLogger("Logs/Mangas", "Create_manga");
         }
         public async Task<string> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
@@ -114,12 +124,14 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                         var upfiles = await _files.UpLoadimage(request.Thumbnail, path);
                         if (upfiles == true)
                         {
+                            await PublishMangaChangedAsync(newManga.Id, "Created", cancellationToken);
                             _logger.Information($"Create success manga with Id: {newManga.Id} - Name: {newManga.Name}");
                             return "Thêm thành công";
                         }
                     }
                     throw new NotFoundException("Đã gặp lỗi trong quá trình cập nhật dữ liệu");
                 }
+                await PublishMangaChangedAsync(newManga.Id, "Created", cancellationToken);
                 _logger.Information($"Create success manga with Id: {newManga.Id} - Name: {newManga.Name}");
                 return "Thêm thành công";
             }
@@ -128,6 +140,19 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                 _logger.Error($"Create failed manga with Id: {newManga.Id} - Name: {newManga.Name}");
                 return "Đã gặp lỗi trong quá trình thêm dữ liệu";
             }
+        }
+
+        private async Task PublishMangaChangedAsync(string mangaId, string changeType, CancellationToken cancellationToken)
+        {
+            await _cache.RemoveByPrefixAsync(MangaCacheKeys.CatalogPrefix, cancellationToken);
+
+            var changedEvent = new MangaChangedEvent(
+                mangaId,
+                changeType,
+                _currentUser.UserId,
+                DateTime.UtcNow);
+
+            await _kafkaProducer.PublishAsync("yahallo.manga.changed", mangaId, changedEvent, cancellationToken);
         }
     }
 }

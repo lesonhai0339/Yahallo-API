@@ -10,6 +10,7 @@ using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.MangaQuery;
 using YAHALLO.Application.Queries.MangaQuery.FilterManga;
+using YAHALLO.Application.Queries.MangaQuery.GetCatalog;
 using YAHALLO.Application.Queries.MangaQuery.GetAll;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeleted;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination;
@@ -138,6 +139,19 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> FilterManga(
           [FromQuery] FilterMangaQuery query,
+          CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
+        }
+        [HttpGet]
+        [Route("manga/catalog")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> GetMangaCatalog(
+          [FromQuery] GetMangaCatalogQuery query,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
