@@ -42,7 +42,6 @@ namespace YAHALLO
             services.ConfigureRateLimiting();
             services.AddSignalR();
 
-            // AI generated — Hangfire
             var hangfireConn = Environment.GetEnvironmentVariable("Server");
             services.AddHangfire(config => config
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)

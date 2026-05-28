@@ -70,9 +70,9 @@ namespace YAHALLO.Infrastructure
             services.AddSingleton<ElasticsearchClient>(sp =>
             {
     
-                var elasticUri = Environment.GetEnvironmentVariable("Elastic_Url")!;
-                var elasticApiKey = Environment.GetEnvironmentVariable("Elastic_Key")!;
-                var elasticIndex = Environment.GetEnvironmentVariable("Elastic_DefaultIndex")!;
+                var elasticUri = Environment.GetEnvironmentVariable("Elastic_Url") ?? "";
+                var elasticApiKey = Environment.GetEnvironmentVariable("Elastic_Key") ?? "";
+                var elasticIndex = Environment.GetEnvironmentVariable("Elastic_DefaultIndex") ?? "";
 
                 var nodePool = new SingleNodePool(new Uri(elasticUri));
                 var setting = new ElasticsearchClientSettings(nodePool,

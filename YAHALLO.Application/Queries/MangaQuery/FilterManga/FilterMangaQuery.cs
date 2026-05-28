@@ -16,9 +16,10 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         public FilterMangaQuery() { }
         public FilterMangaQuery(
             int pageNumber, 
-            int pageSizee, 
+            int pageSize, 
             string? id, 
             string? name, 
+            string? tagId,
             MangaLevel? level, 
             MangaStatus? status, 
             MangaType? type, 
@@ -28,9 +29,10 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             DateTime? dateUpdate)
         {
             PageNumber = pageNumber;
-            PageSizee = pageSizee;
+            PageSize = pageSize;
             Id = id;
             Name = name;
+            TagId = tagId;  
             Level = level;
             Status = status;
             Type = type;
@@ -41,9 +43,10 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         }
 
         public int PageNumber { get; set; }
-        public int PageSizee { get; set; }
+        public int PageSize { get; set; }
         public string? Id { get; set; }
         public string? Name { get; set; }
+        public string? TagId { get; set; }  
         public MangaLevel? Level { get; set; }
         public MangaStatus? Status { get; set; }
         public MangaType? Type { get; set; }
