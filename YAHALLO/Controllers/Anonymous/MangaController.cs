@@ -20,6 +20,7 @@ using YAHALLO.Application.Queries.MangaQuery.GetDetail;
 using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
+using YAHALLO.Application.Queries.MangaQuery.FilterMangaByTag;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -141,6 +142,19 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> FilterManga(
           [FromQuery] FilterMangaQuery query,
           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
+        }
+        [HttpGet]
+        [Route("manga/filter-manga-by-tags")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> FilterMangaByTags(
+        [FromQuery] FilterMangaByTagQuery query,
+        CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<MangaDto>>(result));

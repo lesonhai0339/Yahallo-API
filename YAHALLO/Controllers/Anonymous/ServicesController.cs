@@ -24,6 +24,10 @@ namespace YAHALLO.Controllers.Anonymous
         [Produces(MediaTypeNames.Image.Jpeg, MediaTypeNames.Image.Gif)]
         public IActionResult Image([FromQuery] string filepath)
         {
+            if (string.IsNullOrEmpty(filepath))
+            {
+                return BadRequest("filepath is required"); // 400
+            }
             var path = Path.Combine(_evn.ContentRootPath, filepath);
             return PhysicalFile(path, "image/jpeg");
         }

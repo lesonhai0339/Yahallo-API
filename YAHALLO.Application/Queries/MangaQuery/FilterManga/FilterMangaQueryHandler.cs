@@ -24,13 +24,20 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         private readonly IMangaRepository _mangaRepository;
         private readonly IMapper _mapper;
         private readonly IFilters _filters;
-        private readonly IMangaSearchRepository _mangaSearchRepository;
-        public FilterMangaQueryHandler(IMangaRepository mangaRepository, IMapper mapper, IFilters filters, IMangaSearchRepository mangaSearchRepository)
+        //private readonly IMangaSearchRepository _mangaSearchRepository;
+        private readonly IMangaTagRepository _mangaTagRepository;    
+        public FilterMangaQueryHandler(
+            IMangaRepository mangaRepository,
+            IMapper mapper,
+            IFilters filters, 
+            //IMangaSearchRepository mangaSearchRepository, 
+            IMangaTagRepository mangaTagRepository)
         {
             _mangaRepository = mangaRepository;
             _mapper = mapper;
             _filters = filters;
-            _mangaSearchRepository = mangaSearchRepository; 
+            //_mangaSearchRepository = mangaSearchRepository;
+            _mangaTagRepository = mangaTagRepository;
         }
 
         public async Task<PagedResult<MangaDto>> Handle(FilterMangaQuery request, CancellationToken cancellationToken)
@@ -97,12 +104,22 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
                 query = query.Where(x => x.UserId == request.UserId);
             }
             var listMangaExists = await _mangaRepository
-                .FindAllAsync(query, request.PageNumber, request.PageSizee, cancellationToken);
-            if(listMangaExists.Count() == 0)
+                .FindAllAsync(query, request.PageNumber, request.PageSize, cancellationToken);
+            if (listMangaExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy manga phù hợp yêu cầu");
             }
-            return listMangaExists.MapToPagedResult(x => x.MapFullToMangaDto(_mapper));
+            var tagMatched = await _mangaTagRepository.FindAllAsync(x => x.TagId == request.TagId, cancellationToken: cancellationToken);
+            var allMatched = listMangaExists.Where( x=> tagMatched.Any(tag => tag.MangaId == x.Id));    
+            PagedResult<MangaDto> result = new PagedResult<MangaDto>
+            {
+                PageCount = allMatched.Count(),
+                PageNumber = 1,
+                TotalCount = allMatched.Count(),
+                PageSize = allMatched.Count(),
+                Data = allMatched.Select(x => x.MapFullToMangaDto(_mapper))
+            };
+            return result;
         }
     }
 }
