@@ -42,7 +42,12 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                 {
                     if(expired > DateTime.Now)
                     {
-                        return new LoginResponse(checkExistToken.Id, checkExistToken.UserEntity.Avatar?.BaseUrl, checkExistToken.UserEntity.DisplayName, checkExistToken.AccessToken, checkExistToken.RefeshToken);
+                        return new LoginResponse(
+                            checkExistToken.Id,
+                            checkUserExist.AvatarThumbnail,
+                            checkUserExist.DisplayName, 
+                            checkExistToken.AccessToken, 
+                            checkExistToken.RefeshToken);
                     }
                     else
                     {
@@ -56,11 +61,16 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                             var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                             if (result > 0)
                             {
-                                return new LoginResponse(checkExistToken.Id, checkExistToken.UserEntity.Avatar?.BaseUrl, checkExistToken.UserEntity.DisplayName, checkExistToken.AccessToken, checkExistToken.RefeshToken);
+                                return new LoginResponse(
+                                   id: checkExistToken.Id,
+                                   avatarUri: checkUserExist.AvatarThumbnail,
+                                   name: checkUserExist.DisplayName,
+                                   accessToken: checkExistToken.AccessToken,
+                                   refreshToken: checkExistToken.RefeshToken);
                             }
                             else
                             {
-                                throw new UnAuthorizeException("Đăng nhập thất bại");
+                                throw new UnAuthorizeException("Đăng nhập thất bại");
                             }
                         }
                     }
@@ -84,7 +94,12 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (result > 0)
                     {
-                        return new LoginResponse(checkUserExist.Id, checkExistToken?.UserEntity.Avatar?.BaseUrl, checkExistToken?.UserEntity.DisplayName, token, refreshToken);
+                        return new LoginResponse(
+                            id: checkUserExist.Id,
+                            avatarUri: checkUserExist.AvatarThumbnail,
+                            name: checkUserExist.DisplayName,
+                            accessToken: token,
+                            refreshToken: refreshToken);
                     }
                     else
                     {

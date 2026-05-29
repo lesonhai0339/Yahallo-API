@@ -1,7 +1,10 @@
 //AI generated
 using AutoMapper;
 using MediatR;
+using YAHALLO.Application.Queries.ArtistQuery;
+using YAHALLO.Application.Queries.CommentQuery;
 using YAHALLO.Application.Queries.TagQuery;
+using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
@@ -15,19 +18,33 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
         private readonly IMangaTagRepository _mangaTagRepository;
         private readonly IMapper _mapper;
         private readonly ICacheService _cache;
+        private readonly IChapterRepository _chapterRepository;
+        private readonly ICommentRepository _commentRepository;
+        private readonly IMangaAuthorRepository _mangaAuthorRepository;
+        private readonly IMangaArtistRepository _mangaArtistRepository;
+        private readonly IMangaRatingRepository _mangaRatingRepository;
 
         public GetMangaDetailQueryHandler(
             IMangaRepository mangaRepository,
             IMangaTagRepository mangaTagRepository,
             IMapper mapper,
+            IChapterRepository chapterRepository,
+            ICommentRepository commentRepository,
+            IMangaAuthorRepository mangaAuthorRepository,
+            IMangaArtistRepository mangaArtistRepository,
+            IMangaRatingRepository mangaRatingRepository,
             ICacheService cache)
         {
             _mangaRepository = mangaRepository;
             _mangaTagRepository = mangaTagRepository;
+            _chapterRepository = chapterRepository;
+            _commentRepository = commentRepository;
+            _mangaAuthorRepository = mangaAuthorRepository;
+            _mangaArtistRepository = mangaArtistRepository;
+            _mangaRatingRepository = mangaRatingRepository;
             _mapper = mapper;
             _cache = cache;
         }
-
         public async Task<MangaDetailDto> Handle(GetMangaDetailQuery request, CancellationToken cancellationToken)
         {
             var cacheKey = $"manga:detail:{request.Id}";
@@ -65,6 +82,24 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
                         .Select(mt => new TagDto { Id = mt.TagId, Name = mt.Tag?.Name ?? "" })
                         .ToList();
 
+                    //Chapters
+                    var chapters = await _chapterRepository.FindAllAsync(x => x.MangaId == dto.Id, cancellationToken);
+                    dto.Chapters = chapters.Select(c => _mapper.Map<ChapterDto>(c)).ToList();
+
+                    //Comments
+                    var comments = await _commentRepository.FindAllAsync(x => x.MangaId == dto.Id, cancellationToken);
+                    dto.Comments = comments.Select(c => _mapper.Map<CommentDto>(c)).ToList();
+
+                    //Author
+                    var authors = await _mangaAuthorRepository.FindAllAsync(x => x.MangaId == dto.Id, cancellationToken);
+                    dto.Authors = authors.Select(c => _mapper.Map<AuthorDto>(c)).ToList();
+                    //Artist
+                    var artists = await _mangaArtistRepository.FindAllAsync(x => x.MangaId == dto.Id, cancellationToken);
+                    dto.Artists = artists.Select(c => _mapper.Map<ArtistDto>(c)).ToList();
+
+
+                    //Rating
+                    var rating = await _mangaRatingRepository.FindAllAsync(x => x.MangaId == dto.Id, cancellationToken);    
                     return dto;
                 },
                 TimeSpan.FromMinutes(10),

@@ -1,6 +1,9 @@
 //AI generated
 using AutoMapper;
 using YAHALLO.Application.Common.Mappings;
+using YAHALLO.Application.Queries.ArtistQuery;
+using YAHALLO.Application.Queries.CommentQuery;
+using YAHALLO.Application.Queries.MangaQuery.GetDetail;
 using YAHALLO.Application.Queries.TagQuery;
 using YAHALLO.Domain.Entities;
 
@@ -25,6 +28,10 @@ namespace YAHALLO.Application.Queries.MangaQuery
         public int TotalViews { get; set; }
         public int TotalChapters { get; set; }
         public List<TagDto> Tags { get; set; } = new();
+        public List<ArtistDto> Artists { get; internal set; } = new();
+        public List<ChapterDto> Chapters { get; internal set; } = new();
+        public List<CommentDto> Comments { get; internal set; } = new();
+        internal List<AuthorDto> Authors { get; set; } = new();
 
         public void Mapping(Profile profile)
         {
