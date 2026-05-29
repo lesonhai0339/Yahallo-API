@@ -2,6 +2,8 @@
 using AutoMapper;
 using MediatR;
 using YAHALLO.Application.Queries.ArtistQuery;
+using YAHALLO.Application.Queries.AuthorQuery;
+using YAHALLO.Application.Queries.ChapterQuery;
 using YAHALLO.Application.Queries.CommentQuery;
 using YAHALLO.Application.Queries.TagQuery;
 using YAHALLO.Domain.Entities;
@@ -61,7 +63,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
 
                     var dto = _mapper.Map<MangaDetailDto>(manga);
 
-                    dto.Thumbnail = manga.Thumbnail?.BaseUrl ?? manga.Thumbnail?.CloudUrl ?? "";
+                    dto.Thumbnail = Path.Combine("thumbnails", manga.Thumbnail!.BaseUrl) ?? manga.Thumbnail?.CloudUrl ?? "";
                     dto.Level = manga.Level.GetDescription();
                     dto.Status = manga.Status.GetDescription();
                     dto.Type = manga.Type.GetDescription();

@@ -2,6 +2,8 @@
 using AutoMapper;
 using YAHALLO.Application.Common.Mappings;
 using YAHALLO.Application.Queries.ArtistQuery;
+using YAHALLO.Application.Queries.AuthorQuery;
+using YAHALLO.Application.Queries.ChapterQuery;
 using YAHALLO.Application.Queries.CommentQuery;
 using YAHALLO.Application.Queries.MangaQuery.GetDetail;
 using YAHALLO.Application.Queries.TagQuery;

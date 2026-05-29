@@ -38,14 +38,15 @@ namespace YAHALLO.Domain.Enums.MangaEnums
         /// Only one chapter
         /// </summary>
         Oneshot = 1,
-        /// <summary>
-        /// Multiple Chapter
-        /// </summary>
-        Series = 2,
+        Ova = 2,
         /// <summary>
         /// Non-professional author
         /// </summary>
         Dojinshi = 3,
+        /// <summary>
+        /// Multiple Chapter
+        /// </summary>
+        Series = 4,
     }
     /// <summary>
     ///  Users need a certain level to access or use coin to unlock manga

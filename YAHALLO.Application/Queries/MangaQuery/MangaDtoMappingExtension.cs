@@ -17,10 +17,10 @@ namespace YAHALLO.Application.Queries.MangaQuery
         {
             var map = mapper.Map<MangaDto>(entity);
             map.Thumbnail = (entity.Thumbnail == null) ? "" :
-                (!string.IsNullOrEmpty(entity.Thumbnail.BaseUrl)) ? entity.Thumbnail.BaseUrl :
+                (!string.IsNullOrEmpty(entity.Thumbnail.BaseUrl)) ? Path.Combine("thumbnails", entity.Thumbnail.BaseUrl) :
                 (!string.IsNullOrEmpty(entity.Thumbnail.CloudUrl)) ? entity.Thumbnail.CloudUrl :
                 "";
-            map.UserID = entity.UserEntity.Id ?? "";
+            map.UserID = entity.IdUserCreate ?? "";
             map.Level = entity.Level.GetDescription();
             map.Status = entity.Status.GetDescription();
             map.Type = entity.Type.GetDescription();

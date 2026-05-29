@@ -28,7 +28,9 @@ namespace YAHALLO.Controllers.Anonymous
             {
                 return BadRequest("filepath is required"); // 400
             }
-            var path = Path.Combine(_evn.ContentRootPath, filepath);
+            var p = @"D:\Coding\repos\manga\resources";
+            var path = Path.Combine(p, filepath);
+            //var path = Path.Combine(_evn.ContentRootPath, filepath);
             return PhysicalFile(path, "image/jpeg");
         }
         [HttpGet]

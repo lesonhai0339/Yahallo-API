@@ -1,39 +1,36 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//AI generated
+using AutoMapper;
 using YAHALLO.Application.Common.Mappings;
+using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.Base;
 using YAHALLO.Domain.Enums.CountryEnums;
 
 namespace YAHALLO.Application.Queries.AuthorQuery
 {
-    public class AuthorDto : IMapFrom<AuthorEntity>
+    public class AuthorDto: IMapFrom<AuthorEntity>
     {
         public string Id { get; set; } = null!;
         public string? Name { get; set; }
-        public CountriesEnum? Countries { get; set; }
+        public CountriesEnum Countries { get; set; }
         public string? Depscription { get; set; }
-        public DateTime? Birth { get; set; }
-        public LifeStatus? LifeStatus { get; set; }
-        public AuthorDto Create(string id, string? name, CountriesEnum? countries, string? depsctiption, DateTime? birth, LifeStatus? lifeStatus)
+        public DateTime Birth { get; set; }
+        public LifeStatus LifeStatus { get; set; }
+        public static AuthorDto Create(string id, string? name, CountriesEnum countries, string depscription, DateTime birth, LifeStatus lifestatus)
         {
             return new AuthorDto
             {
                 Id = id,
                 Name = name,
                 Countries = countries,
-                Depscription = depsctiption,
+                Depscription = depscription,
                 Birth = birth,
-                LifeStatus = lifeStatus
+                LifeStatus = lifestatus
             };
         }
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<AuthorEntity, AuthorDto>();
+            profile.CreateMap<AuthorDto, AuthorEntity>();
         }
     }
 }
