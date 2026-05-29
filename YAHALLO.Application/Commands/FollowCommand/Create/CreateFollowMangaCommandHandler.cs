@@ -29,6 +29,25 @@ namespace YAHALLO.Application.Commands.FollowCommand.Create
 
         public async Task<ResponseResult<string>> Handle(CreateFollowMangaCommand request, CancellationToken cancellationToken)
         {
+            var followExist = await _followRepository
+                .FindAsync(x => x.UserId == request.UserId && x.MangaId == request.MangaId, cancellationToken);
+            //Exist but deleted => restore  
+            if (followExist != null)
+            {
+                followExist.DeleteDate = null;
+                followExist.IdUserDelete = null;    
+                _followRepository.Update(followExist);
+                var rs = await _followRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+                if (rs > 0)
+                {
+                    return new ResponseResult<string>(message: "Tạo thành công");
+                }
+                else
+                {
+                    return new ResponseResult<string>(message: "Tạo thất bại");
+                }
+            }
+
             var checkUserExist = await _userRepository
                 .FindAsync(x => x.Id == request.UserId, cancellationToken);
             if(checkUserExist == null || !string.IsNullOrEmpty(checkUserExist.IdUserDelete) && checkUserExist.DeleteDate.HasValue)

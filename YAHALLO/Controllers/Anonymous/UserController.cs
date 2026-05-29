@@ -95,7 +95,7 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> CreateUser(
-           [FromBody] CreateUserCommand command,
+           [FromForm] CreateUserCommand command,
            CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(command, cancellationToken);

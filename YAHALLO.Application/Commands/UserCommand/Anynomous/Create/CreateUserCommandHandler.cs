@@ -1,4 +1,7 @@
 ﻿using MediatR;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Processing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +42,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
         }
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var checkExists = await _userRepository.FindAllAsync(x => x.Email.Equals(request.Email) || x.UserName == request.UserName, cancellationToken);
+            var checkExists = await _userRepository.FindAllAsync(x => x.Email == request.Email || x.UserName == request.UserName, cancellationToken);
             if (checkExists.Any(x => x.Email == request.Email))
             {
                 throw new NotFoundException("Email này đã được sử đụng");
@@ -51,6 +54,15 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
             if (checkExists.Any(x => x.PhoneNumber == request.PhoneNumber))
             {
                 throw new NotFoundException("Số điện thoại này đã được sử đụng");
+            }
+            string avatarBase64 = string.Empty; 
+            if(request.Avatar != null)
+            {
+                using var image = Image.Load(request.Avatar.OpenReadStream());
+                image.Mutate(x => x.Resize(200, 200));
+                using var ms = new MemoryStream();
+                image.Save(ms, new JpegEncoder { Quality = 80 });
+                avatarBase64 = Convert.ToBase64String(ms.ToArray());
             }
             var user = new UserEntity
             {
@@ -64,7 +76,8 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
                 IdUserCreate = _currentUser.UserId,
                 CreateDate = DateTime.Now,
                 Status = UserStatus.None,
-                Level = UserLevel.One
+                Level = UserLevel.One,
+                AvatarThumbnail = avatarBase64  
             };
             var oldPassword= new UserOldPasswordEntity(user);
             oldPassword.AddNew(request.Password);

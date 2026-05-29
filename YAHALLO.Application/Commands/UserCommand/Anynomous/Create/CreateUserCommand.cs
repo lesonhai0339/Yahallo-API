@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,28 +12,13 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
 {
     public class CreateUserCommand : IRequest<string>
     {
-        public CreateUserCommand(
-            string firstname,
-            string lastname,
-            string email,
-            string? phonenumber,
-            string username,
-            string password
-            )
-        {
-            FirstName = firstname;
-            LastName = lastname;
-            Email = email;
-            PhoneNumber = phonenumber;
-            UserName = username;
-            Password = password;
-        }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
         public string Email { get; set; } = null!;
         public string? PhoneNumber { get; set; }
 
         public string UserName { get; set; } = null!;
         public string Password { get; set; } = null!;
+        public IFormFile? Avatar { get; set; }   
     }
 }

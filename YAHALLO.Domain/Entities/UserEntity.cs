@@ -20,7 +20,8 @@ namespace YAHALLO.Domain.Entities
             string email,
             string? phone,
             string username,
-            string password)
+            string password,
+            string? avatarThumbnail)
         {
             DisplayName = displayname;
             FirstName = firstname;
@@ -29,6 +30,7 @@ namespace YAHALLO.Domain.Entities
             PhoneNumber = phone;
             UserName = username;
             Password = password;
+            AvatarThumbnail = avatarThumbnail ?? string.Empty;
         }
         public string? DisplayName { get; set; }
         public string? FirstName { get; set; }
@@ -41,6 +43,7 @@ namespace YAHALLO.Domain.Entities
         public string UserName { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
 
+        public string? AvatarThumbnail { get; set; } = string.Empty; 
         public virtual ImageEntity? Avatar { get; set; }
         public virtual UserTokenEntity? UserToken { get; set; }
 
