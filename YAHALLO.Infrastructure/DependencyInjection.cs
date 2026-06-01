@@ -1,13 +1,17 @@
 ﻿//AI generated
+using Amazon.S3;
 using dotenv.net;
 using Elastic.Clients.Elasticsearch;
 using Elastic.Clients.Elasticsearch.Serialization;
 using Elastic.Transport;
+using Hangfire.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Org.BouncyCastle.Asn1.X509.Qualified;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,21 +20,22 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;
 using YAHALLO.Domain.Repositories.Elastic;
 using YAHALLO.Domain.Repositories.Security;
+using YAHALLO.Domain.Repositories.Storage;
 using YAHALLO.Infrastructure.Data;
-using YAHALLO.Infrastructure.Jobs;
-using YAHALLO.Infrastructure.Redis;
 using YAHALLO.Infrastructure.Elastic.Repositories;
 using YAHALLO.Infrastructure.Elastic1.Options;
 using YAHALLO.Infrastructure.Elastic1.Repositories;
 using YAHALLO.Infrastructure.Files.Functions;
+using YAHALLO.Infrastructure.Jobs;
 using YAHALLO.Infrastructure.Persistence.Data;
 using YAHALLO.Infrastructure.Persistence.Repositories;
+using YAHALLO.Infrastructure.Redis;
+using YAHALLO.Infrastructure.S3;
 using YAHALLO.Infrastructure.Security;
 
 namespace YAHALLO.Infrastructure
@@ -46,6 +51,9 @@ namespace YAHALLO.Infrastructure
         public static IServiceCollection Infrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             DotEnv.Load();
+
+            services.Configure<AwsS3Options>(configuration.GetSection(nameof(AwsS3Options)));
+
             var sqlConnection = Environment.GetEnvironmentVariable("Server");
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
@@ -94,6 +102,10 @@ namespace YAHALLO.Infrastructure
                 return new KeypairGenerate(ops);
             });
 
+            services.AddDefaultAWSOptions(configuration.GetAWSOptions());
+            services.AddAWSService<IAmazonS3>();
+            services.AddTransient(typeof(IStorageService<>), typeof(AwsS3Service<>));
+
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
@@ -121,7 +133,7 @@ namespace YAHALLO.Infrastructure
             services.AddTransient<ICountingRepository, CountingRepository>();
             services.AddTransient<IReportRepository, ReportRepository>();
             services.AddTransient<IEnums, Enums>();
-            services.AddTransient<IFiles<IFormFile>, Files<IFormFile>>();
+            services.AddTransient(typeof(IFiles<>), typeof(Files<>));
             services.AddTransient<IFilters, Filters>();
             services.AddTransient<IMangaSearchRepository, MangaSearchRepository>();
 

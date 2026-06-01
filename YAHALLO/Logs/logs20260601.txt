@@ -1,0 +1,181 @@
+2026-06-01 16:40:30.382 +07:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-01 16:40:30.720 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-01 16:40:31.439 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-01 16:40:32.152 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-01 16:40:32.153 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-01 16:40:32.235 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@Yahallo'
+2026-06-01 16:40:32.237 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-01 16:40:32.238 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-01 16:40:32.254 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-01 16:40:32.256 +07:00 [INF] Hosting environment: Development
+2026-06-01 16:40:32.257 +07:00 [INF] Content root path: C:\Users\PC\source\repos\Yahallo-API\YAHALLO
+2026-06-01 16:40:32.283 +07:00 [INF] Server laptop-kbhrm1q7:4688:ace8c814 successfully announced in 28.5965 ms
+2026-06-01 16:40:32.288 +07:00 [INF] Server laptop-kbhrm1q7:4688:ace8c814 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-01 16:40:32.444 +07:00 [INF] Server laptop-kbhrm1q7:4688:ace8c814 all the dispatchers started
+2026-06-01 16:40:33.367 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-01 16:40:33.689 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2026-06-01 16:40:34.051 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 172.9780 ms
+2026-06-01 16:40:34.062 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 372.8587ms
+2026-06-01 16:40:34.100 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2026-06-01 16:40:34.100 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2026-06-01 16:40:34.116 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 14919 application/javascript;+charset=utf-8 15.8848ms
+2026-06-01 16:40:34.346 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 245.9248ms
+2026-06-01 16:40:34.438 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2026-06-01 16:40:34.537 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 97.8386 ms
+2026-06-01 16:40:34.540 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 102.4168ms
+2026-06-01 16:40:34.788 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [s].[Id], [s].[CreateDate], [s].[DeleteDate], [s].[EndDate], [s].[IdUserCreate], [s].[IdUserDelete], [s].[IdUserUpdate], [s].[Plan], [s].[StartDate], [s].[Status], [s].[UpdateDate], [s].[UserId]
+FROM [Subscription] AS [s]
+WHERE [s].[Status] = 1 AND [s].[EndDate] < GETDATE()
+2026-06-01 16:40:34.788 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='0']
+SELECT [n].[Id], [n].[CreateDate], [n].[CreatedAt], [n].[DeleteDate], [n].[IdUserCreate], [n].[IdUserDelete], [n].[IdUserUpdate], [n].[Message], [n].[ReadAt], [n].[ReferenceId], [n].[Status], [n].[Title], [n].[Type], [n].[UpdateDate], [n].[UserId]
+FROM [Notification] AS [n]
+WHERE ([n].[DeleteDate] IS NOT NULL) AND [n].[DeleteDate] < @__cutoff_0
+2026-06-01 16:40:34.840 +07:00 [INF] Expired 0 subscriptions
+2026-06-01 16:40:34.840 +07:00 [INF] Cleanup removed 0 soft-deleted notifications older than 30 days
+2026-06-01 16:48:57.004 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create multipart/form-data;+boundary=----WebKitFormBoundaryOXTcuOcSNUYgC3sT 171023
+2026-06-01 16:48:57.016 +07:00 [INF] CORS policy execution successful.
+2026-06-01 16:48:57.024 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2026-06-01 16:48:57.100 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2026-06-01 16:48:57.331 +07:00 [INF] Found credentials using the AWS SDK's default credential search
+2026-06-01 16:48:58.167 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='0']
+SELECT [u].[Id], [u].[AvatarThumbnail], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2026-06-01 16:50:14.214 +07:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-01 16:50:14.235 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-01 16:50:14.727 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-01 16:50:15.005 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-01 16:50:15.007 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-01 16:50:15.078 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@Yahallo'
+2026-06-01 16:50:15.080 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-01 16:50:15.081 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-01 16:50:15.088 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-01 16:50:15.090 +07:00 [INF] Hosting environment: Development
+2026-06-01 16:50:15.093 +07:00 [INF] Content root path: C:\Users\PC\source\repos\Yahallo-API\YAHALLO
+2026-06-01 16:50:15.109 +07:00 [INF] Server laptop-kbhrm1q7:24592:de645a1d successfully announced in 21.6188 ms
+2026-06-01 16:50:15.112 +07:00 [INF] Server laptop-kbhrm1q7:24592:de645a1d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-01 16:50:15.118 +07:00 [INF] Server laptop-kbhrm1q7:24592:de645a1d all the dispatchers started
+2026-06-01 16:50:46.359 +07:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-01 16:50:46.400 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-01 16:50:47.044 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-01 16:50:47.447 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-01 16:50:47.448 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-01 16:50:47.532 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@Yahallo'
+2026-06-01 16:50:47.535 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-01 16:50:47.536 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-01 16:50:47.551 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-01 16:50:47.552 +07:00 [INF] Hosting environment: Development
+2026-06-01 16:50:47.553 +07:00 [INF] Content root path: C:\Users\PC\source\repos\Yahallo-API\YAHALLO
+2026-06-01 16:50:47.571 +07:00 [INF] Server laptop-kbhrm1q7:25824:f8d4a9b3 successfully announced in 19.7108 ms
+2026-06-01 16:50:47.576 +07:00 [INF] Server laptop-kbhrm1q7:25824:f8d4a9b3 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-01 16:50:47.642 +07:00 [INF] Server laptop-kbhrm1q7:25824:f8d4a9b3 all the dispatchers started
+2026-06-01 16:50:48.390 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2026-06-01 16:50:48.595 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 97.2031 ms
+2026-06-01 16:50:48.602 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 213.0364ms
+2026-06-01 16:50:48.630 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2026-06-01 16:50:48.630 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2026-06-01 16:50:48.637 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 14919 application/javascript;+charset=utf-8 6.2298ms
+2026-06-01 16:50:48.662 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 32.1180ms
+2026-06-01 16:50:48.763 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2026-06-01 16:50:48.805 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 40.2718 ms
+2026-06-01 16:50:48.807 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 44.8536ms
+2026-06-01 16:51:07.926 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create multipart/form-data;+boundary=----WebKitFormBoundaryNeeB2ptDIPaNBOtA 171023
+2026-06-01 16:51:07.932 +07:00 [INF] CORS policy execution successful.
+2026-06-01 16:51:07.940 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2026-06-01 16:51:07.975 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2026-06-01 16:51:08.344 +07:00 [INF] Found credentials using the AWS SDK's default credential search
+2026-06-01 16:51:09.245 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-01 16:51:10.330 +07:00 [INF] Executed DbCommand (28ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='0']
+SELECT [u].[Id], [u].[AvatarThumbnail], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2026-06-01 16:52:10.230 +07:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-01 16:52:10.270 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-01 16:52:10.789 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-01 16:52:11.191 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-01 16:52:11.192 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-01 16:52:11.269 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@Yahallo'
+2026-06-01 16:52:11.271 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-01 16:52:11.272 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-01 16:52:11.284 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-01 16:52:11.285 +07:00 [INF] Hosting environment: Development
+2026-06-01 16:52:11.287 +07:00 [INF] Content root path: C:\Users\PC\source\repos\Yahallo-API\YAHALLO
+2026-06-01 16:52:11.306 +07:00 [INF] Server laptop-kbhrm1q7:24648:c20b0ce8 successfully announced in 21.7399 ms
+2026-06-01 16:52:11.311 +07:00 [INF] Server laptop-kbhrm1q7:24648:c20b0ce8 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-01 16:52:11.372 +07:00 [INF] Server laptop-kbhrm1q7:24648:c20b0ce8 all the dispatchers started
+2026-06-01 16:52:12.574 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2026-06-01 16:52:12.792 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 121.1749 ms
+2026-06-01 16:52:12.804 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 230.5134ms
+2026-06-01 16:52:12.820 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2026-06-01 16:52:12.838 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2026-06-01 16:52:12.843 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 14919 application/javascript;+charset=utf-8 5.4704ms
+2026-06-01 16:52:12.856 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.6077ms
+2026-06-01 16:52:12.903 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2026-06-01 16:52:12.959 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 54.9056 ms
+2026-06-01 16:52:12.961 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 58.9040ms
+2026-06-01 16:52:23.548 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create multipart/form-data;+boundary=----WebKitFormBoundaryjblz0kMXLQzSB4nH 171023
+2026-06-01 16:52:23.552 +07:00 [INF] CORS policy execution successful.
+2026-06-01 16:52:23.557 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2026-06-01 16:52:23.586 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2026-06-01 16:52:23.918 +07:00 [INF] Found credentials using the AWS SDK's default credential search
+2026-06-01 16:52:24.802 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-01 16:52:25.720 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='0']
+SELECT [u].[Id], [u].[AvatarThumbnail], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1
+2026-06-01 16:59:29.546 +07:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-01 16:59:29.596 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-01 16:59:30.145 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-01 16:59:30.602 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-01 16:59:30.603 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-01 16:59:30.700 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@Yahallo'
+2026-06-01 16:59:30.709 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-01 16:59:30.713 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-01 16:59:30.734 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-01 16:59:30.735 +07:00 [INF] Hosting environment: Development
+2026-06-01 16:59:30.737 +07:00 [INF] Content root path: C:\Users\PC\source\repos\Yahallo-API\YAHALLO
+2026-06-01 16:59:30.756 +07:00 [INF] Server laptop-kbhrm1q7:7776:dcb847e6 successfully announced in 21.5019 ms
+2026-06-01 16:59:30.764 +07:00 [INF] Server laptop-kbhrm1q7:7776:dcb847e6 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-01 16:59:30.805 +07:00 [INF] 4 servers were removed due to timeout
+2026-06-01 16:59:30.860 +07:00 [INF] Server laptop-kbhrm1q7:7776:dcb847e6 all the dispatchers started
+2026-06-01 16:59:31.854 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2026-06-01 16:59:32.101 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 137.3107 ms
+2026-06-01 16:59:32.112 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 258.6508ms
+2026-06-01 16:59:32.148 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - -
+2026-06-01 16:59:32.148 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2026-06-01 16:59:32.160 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 14919 application/javascript;+charset=utf-8 12.4764ms
+2026-06-01 16:59:32.187 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 39.2912ms
+2026-06-01 16:59:32.239 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2026-06-01 16:59:32.326 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 85.6890 ms
+2026-06-01 16:59:32.328 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 89.8889ms
+2026-06-01 16:59:42.509 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/user/create multipart/form-data;+boundary=----WebKitFormBoundarybyBBFtMFbpadQSFa 171023
+2026-06-01 16:59:42.512 +07:00 [INF] CORS policy execution successful.
+2026-06-01 16:59:42.520 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.UserController.CreateUser (YAHALLO)'
+2026-06-01 16:59:42.547 +07:00 [INF] Route matched with {action = "CreateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.String]]] CreateUser(YAHALLO.Application.Commands.UserCommand.Anynomous.Create.CreateUserCommand, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.UserController (YAHALLO).
+2026-06-01 16:59:42.918 +07:00 [INF] Found credentials using the AWS SDK's default credential search
+2026-06-01 16:59:43.847 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-01 16:59:44.789 +07:00 [INF] Executed DbCommand (25ms) [Parameters=[@__request_Email_0='?' (Size = 450), @__request_UserName_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='0']
+SELECT [u].[Id], [u].[AvatarThumbnail], [u].[CreateDate], [u].[DeleteDate], [u].[DisplayName], [u].[Email], [u].[EmailConfirm], [u].[FirstName], [u].[IdUserCreate], [u].[IdUserDelete], [u].[IdUserUpdate], [u].[LastName], [u].[Level], [u].[Password], [u].[PhoneConfirmed], [u].[PhoneNumber], [u].[Status], [u].[UpdateDate], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__request_Email_0 OR [u].[UserName] = @__request_UserName_1

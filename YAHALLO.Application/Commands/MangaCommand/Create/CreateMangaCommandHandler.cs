@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Logger;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.S3;
 using YAHALLO.Domain.Enums.Base;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Elastic;
+using YAHALLO.Domain.Repositories.Storage;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Create
 {

@@ -11,9 +11,11 @@ using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Services.MailService.Service;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Entities.Reference;
+using YAHALLO.Domain.Entities.S3;
 using YAHALLO.Domain.Enums.UserEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Domain.Repositories.Storage;
 
 namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
 {
@@ -25,13 +27,18 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
         private readonly IRoleRepository _roleRepository;
         private readonly IEmailService _emailServices;
         private readonly ICurrentContextService _context;
+        private readonly IStorageService<UserAvatar> _avatarStorage;
+        private readonly IStorageService<UserBackground> _backgrondStorage;
         public CreateUserCommandHandler(
             IUserRepository userRepository,
             ICurrentUserService currentUser,
             IUserRoleRepository userRole,
             IRoleRepository roleRepository,
             IEmailService emailService,
-            ICurrentContextService context)
+            ICurrentContextService context,
+            IStorageService<UserAvatar> avatarStorage,
+            IStorageService<UserBackground> backgrondStorage
+            )
         {
             _userRepository = userRepository;
             _currentUser = currentUser;
@@ -39,6 +46,8 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
             _roleRepository = roleRepository;
             _emailServices = emailService;
             _context = context;
+            _avatarStorage = avatarStorage;
+            _backgrondStorage = backgrondStorage;
         }
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
@@ -58,6 +67,16 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
             string avatarBase64 = string.Empty; 
             if(request.Avatar != null)
             {
+                //test for upload to s3
+                var signedUrl = await _avatarStorage.CreateSignedURL(new UserAvatar
+                {
+                    FileName = request.Avatar.FileName,
+                    ContentType = request.Avatar.ContentType,
+                    FileSize = request.Avatar.Length,
+                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
+                });
+
+
                 using var image = Image.Load(request.Avatar.OpenReadStream());
                 image.Mutate(x => x.Resize(200, 200));
                 using var ms = new MemoryStream();
