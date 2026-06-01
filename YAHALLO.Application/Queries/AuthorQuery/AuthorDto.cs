@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Queries.AuthorQuery
         }
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<AuthorDto, AuthorEntity>();
+            profile.CreateMap<AuthorEntity,AuthorDto>();
         }
     }
 }

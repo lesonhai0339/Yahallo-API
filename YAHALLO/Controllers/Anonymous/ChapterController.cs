@@ -21,7 +21,6 @@ using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
 {
-    [Authorize]
     public class ChapterController : ControllerBase
     {
         private readonly IMediator _sender;

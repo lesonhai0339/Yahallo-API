@@ -81,7 +81,12 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
                     // Tags
                     var mangaTags = await _mangaTagRepository.FindAllAsync(x => x.MangaId == request.Id, cancellationToken);
                     dto.Tags = mangaTags
-                        .Select(mt => new TagDto { Id = mt.TagId, Name = mt.Tag?.Name ?? "" })
+                        .Select(mt => 
+                        new TagDto { 
+                            Id = mt.TagId, 
+                            Description = mt.Tag?.Description,
+                            Name = mt.Tag?.Name ?? "" 
+                        })
                         .ToList();
 
                     //Chapters
