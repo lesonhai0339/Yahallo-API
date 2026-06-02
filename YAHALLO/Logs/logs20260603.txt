@@ -1,0 +1,998 @@
+2026-06-03 00:00:03.886 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - -
+2026-06-03 00:00:03.895 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/trending?take=10 - -
+2026-06-03 00:00:03.900 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=1 - -
+2026-06-03 00:00:03.895 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - -
+2026-06-03 00:00:03.907 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:03.907 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:03.908 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:03.909 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:03.918 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:03.918 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO)'
+2026-06-03 00:00:03.918 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:03.921 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:03.953 +07:00 [INF] Route matched with {action = "GetTrendingManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetTrendingManga(YAHALLO.Application.Queries.MangaQuery.GetTrending.GetTrendingMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:03.954 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:03.954 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-03 00:00:03.954 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:05.541 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-03 00:00:06.641 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?' (DbType = Int32), @__since_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [u].[MangaId]
+FROM [UserMangaView] AS [u]
+WHERE [u].[ViewedAt] >= @__since_0
+GROUP BY [u].[MangaId]
+ORDER BY COUNT(*) DESC
+2026-06-03 00:00:06.647 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2026-06-03 00:00:06.647 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2026-06-03 00:00:06.733 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-03 00:00:06.736 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-03 00:00:06.807 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE ([t].[IdUserDelete] IS NULL) OR ([t].[IdUserDelete] LIKE N'')
+2026-06-03 00:00:06.811 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-03 00:00:06.815 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-03 00:00:06.823 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE 0 = 1
+2026-06-03 00:00:06.842 +07:00 [WRN] Yahallo Long Running Request: GetTrendingMangaQuery (2821 milliseconds)  {"DaysWindow":7,"Take":10,"$type":"GetTrendingMangaQuery"}
+2026-06-03 00:00:06.873 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:06.886 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO) in 2926.5043ms
+2026-06-03 00:00:06.892 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO)'
+2026-06-03 00:00:06.892 +07:00 [INF] HTTP GET /manga/trending responded 200 in 2981.9389 ms
+2026-06-03 00:00:06.902 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/trending?take=10 - - - 200 - application/json;+charset=utf-8 3007.0198ms
+2026-06-03 00:00:06.905 +07:00 [WRN] Yahallo Long Running Request: GetAllTagQuery (2888 milliseconds)  {"$type":"GetAllTagQuery"}
+2026-06-03 00:00:06.907 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:06.913 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - -
+2026-06-03 00:00:06.913 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 2949.6757ms
+2026-06-03 00:00:06.914 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:06.915 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:06.918 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:06.919 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 3007.4422 ms
+2026-06-03 00:00:06.921 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-03 00:00:06.923 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - - - 200 - application/json;+charset=utf-8 3037.6439ms
+2026-06-03 00:00:06.940 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:06.962 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 37.3242ms
+2026-06-03 00:00:06.963 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:06.964 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 47.9254 ms
+2026-06-03 00:00:06.966 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - - - 200 - application/json;+charset=utf-8 53.6209ms
+2026-06-03 00:00:07.007 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.007 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.060 +07:00 [WRN] Yahallo Long Running Request: GetAllMangaPaginationQuery (3032 milliseconds)  {"PageNumber":1,"PageSize":1,"$type":"GetAllMangaPaginationQuery"}
+2026-06-03 00:00:07.060 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.064 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:07.068 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.072 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.074 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 3115.8462ms
+2026-06-03 00:00:07.075 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.075 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:07.079 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 3164.0050 ms
+2026-06-03 00:00:07.079 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.081 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=1 - - - 200 - application/json;+charset=utf-8 3181.4341ms
+2026-06-03 00:00:07.086 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.090 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.093 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.095 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.099 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.103 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.106 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.110 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.114 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.118 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.121 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.123 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.125 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.128 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:07.129 +07:00 [WRN] Yahallo Long Running Request: GetAllMangaPaginationQuery (3102 milliseconds)  {"PageNumber":1,"PageSize":20,"$type":"GetAllMangaPaginationQuery"}
+2026-06-03 00:00:07.132 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:07.137 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 3144.7264ms
+2026-06-03 00:00:07.138 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:07.138 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 3217.6476 ms
+2026-06-03 00:00:07.139 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - - - 200 - application/json;+charset=utf-8 3244.1032ms
+2026-06-03 00:00:15.494 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/detail/01c7b136-1ecf-442e-b3a0-017a2ed1dbbf - -
+2026-06-03 00:00:15.494 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=01c7b136-1ecf-442e-b3a0-017a2ed1dbbf - -
+2026-06-03 00:00:15.495 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:15.495 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:15.496 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-03 00:00:15.497 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-03 00:00:15.502 +07:00 [INF] Route matched with {action = "GetMangaDetail", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto]]] GetMangaDetail(System.String, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:15.503 +07:00 [INF] Route matched with {action = "FilterChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ChapterQuery.ChapterDto]]]] FilterChapter(YAHALLO.Application.Queries.ChapterQuery.FilterChapter.FilterChapterQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2026-06-03 00:00:15.572 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Chapter] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[MangaId] = @__request_MangaId_0
+2026-06-03 00:00:15.575 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE [m].[Id] = @__request_Id_0 AND (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N''))
+2026-06-03 00:00:15.577 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-03 00:00:15.579 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-03 00:00:15.592 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:15.622 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-03 00:00:15.639 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[UserId], [f].[MangaId], [f].[CreateDate], [f].[DeleteDate], [f].[IdUserCreate], [f].[IdUserDelete], [f].[IdUserUpdate], [f].[UpdateDate]
+FROM [Follow] AS [f]
+WHERE [f].[MangaId] = @__p_0
+2026-06-03 00:00:15.650 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE [c].[MangaId] = @__p_0
+2026-06-03 00:00:15.694 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE [m].[Id] = @__p_0
+2026-06-03 00:00:15.701 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ParentId], [c].[BlogId], [c].[ChapterId], [c].[CommentId], [c].[CreateDate], [c].[DeleteDate], [c].[Description], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[MangaId], [c].[NumberOfVisit], [c].[Rating], [c].[Type], [c].[UpdateDate], [c].[UserVisit], [c].[ViewCount]
+FROM [Counting] AS [c]
+WHERE [c].[MangaId] = @__p_0
+2026-06-03 00:00:15.707 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:15.726 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:15.733 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[UserId], [r].[MangaId], [r].[CreateDate], [r].[DeleteDate], [r].[Id], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[Rating], [r].[UpdateDate]
+FROM [Rating] AS [r]
+WHERE [r].[MangaId] = @__p_0
+2026-06-03 00:00:15.733 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:15.740 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:15.752 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:15.755 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ChapterQuery.ChapterDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:15.758 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MangaId], [m].[TagId], [m].[CreateDate], [m].[DeleteDate], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[UpdateDate]
+FROM [MangaTag] AS [m]
+WHERE [m].[MangaId] = @__request_Id_0
+2026-06-03 00:00:15.761 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO) in 254.116ms
+2026-06-03 00:00:15.761 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-03 00:00:15.762 +07:00 [INF] HTTP GET /chapter/filter-chapter responded 200 in 265.4615 ms
+2026-06-03 00:00:15.763 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=01c7b136-1ecf-442e-b3a0-017a2ed1dbbf - - - 200 - application/json;+charset=utf-8 269.6590ms
+2026-06-03 00:00:15.790 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:15.796 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:15.799 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:15.808 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE [c].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:15.872 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[BlogId], [c].[CanComment], [c].[CanHide], [c].[CanLike], [c].[CanRemove], [c].[CanReply], [c].[ChapterId], [c].[CommentCount], [c].[CommentType], [c].[CreateDate], [c].[DeleteDate], [c].[DisLikeCount], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[LikeCount], [c].[MangaId], [c].[Message], [c].[ParentId], [c].[UpdateDate], [c].[UserEntityId], [c].[UserId]
+FROM [Comment] AS [c]
+WHERE [c].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:15.899 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MangaId], [m].[AuthorId], [m].[CreateDate], [m].[DeleteDate], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[UpdateDate]
+FROM [MangaAuthor] AS [m]
+WHERE [m].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:15.921 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MangaId], [m].[ArtistId], [m].[CreateDate], [m].[DeleteDate], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[UpdateDate]
+FROM [MangaArtist] AS [m]
+WHERE [m].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:15.931 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[UserId], [r].[MangaId], [r].[CreateDate], [r].[DeleteDate], [r].[Id], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[Rating], [r].[UpdateDate]
+FROM [Rating] AS [r]
+WHERE [r].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:15.955 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:15.959 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO) in 455.1914ms
+2026-06-03 00:00:15.960 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-03 00:00:15.961 +07:00 [INF] HTTP GET /manga/detail/01c7b136-1ecf-442e-b3a0-017a2ed1dbbf responded 200 in 465.0475 ms
+2026-06-03 00:00:15.962 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/detail/01c7b136-1ecf-442e-b3a0-017a2ed1dbbf - - - 200 - application/json;+charset=utf-8 468.8483ms
+2026-06-03 00:00:15.965 +07:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/01c7b136-1ecf-442e-b3a0-017a2ed1dbbf - -
+2026-06-03 00:00:15.966 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:15.968 +07:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/01c7b136-1ecf-442e-b3a0-017a2ed1dbbf - - - 204 - - 2.3194ms
+2026-06-03 00:00:15.968 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=50&MangaId=01c7b136-1ecf-442e-b3a0-017a2ed1dbbf - -
+2026-06-03 00:00:15.969 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/services/CapNhatView/01c7b136-1ecf-442e-b3a0-017a2ed1dbbf application/json 2
+2026-06-03 00:00:15.970 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:15.970 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:15.971 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-03 00:00:15.972 +07:00 [INF] HTTP POST /services/CapNhatView/01c7b136-1ecf-442e-b3a0-017a2ed1dbbf responded 404 in 0.7485 ms
+2026-06-03 00:00:15.973 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/services/CapNhatView/01c7b136-1ecf-442e-b3a0-017a2ed1dbbf application/json 2 - 404 0 - 3.7517ms
+2026-06-03 00:00:15.975 +07:00 [INF] Route matched with {action = "FilterComment", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.CommentQuery.CommentDto]]]] FilterComment(YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.CommentController (YAHALLO).
+2026-06-03 00:00:15.997 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Comment] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+2026-06-03 00:00:16.000 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-03 00:00:16.000 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-03 00:00:16.013 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[BlogId], [c].[CanComment], [c].[CanHide], [c].[CanLike], [c].[CanRemove], [c].[CanReply], [c].[ChapterId], [c].[CommentCount], [c].[CommentType], [c].[CreateDate], [c].[DeleteDate], [c].[DisLikeCount], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[LikeCount], [c].[MangaId], [c].[Message], [c].[ParentId], [c].[UpdateDate], [c].[UserEntityId], [c].[UserId]
+FROM [Comment] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-03 00:00:16.198 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterCommentQuery {"PageNumber":1,"PageSize":50,"Id":null,"UserId":null,"MangaId":"01c7b136-1ecf-442e-b3a0-017a2ed1dbbf","DateTime":null,"IsDateTimeReverser":null,"IsLikeReserver":null,"IsNumberChildrenCommentReserver":null,"$type":"FilterCommentQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy comment phù hợp yêu cầu
+   at YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQueryHandler.Handle(FilterCommentQuery request, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Queries\CommentQuery\FilterComment\FilterCommentQueryHandler.cs:line 86
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2026-06-03 00:00:16.284 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-06-03 00:00:16.287 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO) in 310.5746ms
+2026-06-03 00:00:16.288 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-03 00:00:16.289 +07:00 [INF] HTTP GET /comment/filter-comment responded 404 in 317.8725 ms
+2026-06-03 00:00:16.290 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=50&MangaId=01c7b136-1ecf-442e-b3a0-017a2ed1dbbf - - - 404 - application/problem+json;+charset=utf-8 321.7492ms
+2026-06-03 00:00:19.728 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - -
+2026-06-03 00:00:19.729 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/trending?take=10 - -
+2026-06-03 00:00:19.729 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - -
+2026-06-03 00:00:19.729 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=1 - -
+2026-06-03 00:00:19.730 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:19.730 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:19.731 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:19.732 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:19.733 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:19.734 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO)'
+2026-06-03 00:00:19.738 +07:00 [INF] Route matched with {action = "GetTrendingManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetTrendingManga(YAHALLO.Application.Queries.MangaQuery.GetTrending.GetTrendingMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:19.736 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:19.737 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:19.735 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:19.744 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-03 00:00:19.742 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:19.747 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO) in 7.4038ms
+2026-06-03 00:00:19.741 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:19.750 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2026-06-03 00:00:19.754 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2026-06-03 00:00:19.751 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:19.751 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO)'
+2026-06-03 00:00:19.759 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-03 00:00:19.759 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-03 00:00:19.762 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 16.301ms
+2026-06-03 00:00:19.762 +07:00 [INF] HTTP GET /manga/trending responded 200 in 28.5226 ms
+2026-06-03 00:00:19.767 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:19.768 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.768 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.769 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/trending?take=10 - - - 200 - application/json;+charset=utf-8 40.4119ms
+2026-06-03 00:00:19.770 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 35.0494 ms
+2026-06-03 00:00:19.772 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:19.775 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.776 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - - - 200 - application/json;+charset=utf-8 47.6094ms
+2026-06-03 00:00:19.778 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 26.5125ms
+2026-06-03 00:00:19.782 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.782 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:19.785 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 49.5833 ms
+2026-06-03 00:00:19.785 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.787 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=1 - - - 200 - application/json;+charset=utf-8 58.2115ms
+2026-06-03 00:00:19.790 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.793 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.796 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.798 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.801 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.803 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.805 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.807 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.810 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.812 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.814 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.817 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.819 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.822 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.824 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.827 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:19.829 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:19.830 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 87.6955ms
+2026-06-03 00:00:19.831 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:19.832 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 99.0964 ms
+2026-06-03 00:00:19.833 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - - - 200 - application/json;+charset=utf-8 105.3537ms
+2026-06-03 00:00:20.904 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/detail/01986a0b-636e-48b9-a227-53393102ed9c - -
+2026-06-03 00:00:20.904 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=01986a0b-636e-48b9-a227-53393102ed9c - -
+2026-06-03 00:00:20.905 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:20.906 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:20.907 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-03 00:00:20.909 +07:00 [INF] Route matched with {action = "GetMangaDetail", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto]]] GetMangaDetail(System.String, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:20.910 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-03 00:00:20.912 +07:00 [INF] Route matched with {action = "FilterChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ChapterQuery.ChapterDto]]]] FilterChapter(YAHALLO.Application.Queries.ChapterQuery.FilterChapter.FilterChapterQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2026-06-03 00:00:20.916 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE [m].[Id] = @__request_Id_0 AND (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N''))
+2026-06-03 00:00:20.922 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Chapter] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[MangaId] = @__request_MangaId_0
+2026-06-03 00:00:20.923 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:20.927 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-03 00:00:20.928 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[UserId], [f].[MangaId], [f].[CreateDate], [f].[DeleteDate], [f].[IdUserCreate], [f].[IdUserDelete], [f].[IdUserUpdate], [f].[UpdateDate]
+FROM [Follow] AS [f]
+WHERE [f].[MangaId] = @__p_0
+2026-06-03 00:00:20.931 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE [m].[Id] = @__p_0
+2026-06-03 00:00:20.933 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE [c].[MangaId] = @__p_0
+2026-06-03 00:00:20.936 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:20.938 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ParentId], [c].[BlogId], [c].[ChapterId], [c].[CommentId], [c].[CreateDate], [c].[DeleteDate], [c].[Description], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[MangaId], [c].[NumberOfVisit], [c].[Rating], [c].[Type], [c].[UpdateDate], [c].[UserVisit], [c].[ViewCount]
+FROM [Counting] AS [c]
+WHERE [c].[MangaId] = @__p_0
+2026-06-03 00:00:20.940 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:20.942 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[UserId], [r].[MangaId], [r].[CreateDate], [r].[DeleteDate], [r].[Id], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[Rating], [r].[UpdateDate]
+FROM [Rating] AS [r]
+WHERE [r].[MangaId] = @__p_0
+2026-06-03 00:00:20.944 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:20.947 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MangaId], [m].[TagId], [m].[CreateDate], [m].[DeleteDate], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[UpdateDate]
+FROM [MangaTag] AS [m]
+WHERE [m].[MangaId] = @__request_Id_0
+2026-06-03 00:00:20.949 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:20.951 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:20.952 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:20.954 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:20.956 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ChapterQuery.ChapterDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:20.959 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:20.960 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO) in 44.3498ms
+2026-06-03 00:00:20.966 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:20.966 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-03 00:00:20.968 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:20.969 +07:00 [INF] HTTP GET /chapter/filter-chapter responded 200 in 60.9218 ms
+2026-06-03 00:00:20.971 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:20.971 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=01986a0b-636e-48b9-a227-53393102ed9c - - - 200 - application/json;+charset=utf-8 67.8641ms
+2026-06-03 00:00:20.974 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:20.976 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[Id] = @__p_0
+2026-06-03 00:00:20.979 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE [c].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:20.982 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[BlogId], [c].[CanComment], [c].[CanHide], [c].[CanLike], [c].[CanRemove], [c].[CanReply], [c].[ChapterId], [c].[CommentCount], [c].[CommentType], [c].[CreateDate], [c].[DeleteDate], [c].[DisLikeCount], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[LikeCount], [c].[MangaId], [c].[Message], [c].[ParentId], [c].[UpdateDate], [c].[UserEntityId], [c].[UserId]
+FROM [Comment] AS [c]
+WHERE [c].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:20.985 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MangaId], [m].[AuthorId], [m].[CreateDate], [m].[DeleteDate], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[UpdateDate]
+FROM [MangaAuthor] AS [m]
+WHERE [m].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:20.988 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MangaId], [m].[ArtistId], [m].[CreateDate], [m].[DeleteDate], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[UpdateDate]
+FROM [MangaArtist] AS [m]
+WHERE [m].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:20.990 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[UserId], [r].[MangaId], [r].[CreateDate], [r].[DeleteDate], [r].[Id], [r].[IdUserCreate], [r].[IdUserDelete], [r].[IdUserUpdate], [r].[Rating], [r].[UpdateDate]
+FROM [Rating] AS [r]
+WHERE [r].[MangaId] = @__dto_Id_0
+2026-06-03 00:00:20.992 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:20.993 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO) in 82.026ms
+2026-06-03 00:00:20.994 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-03 00:00:20.995 +07:00 [INF] HTTP GET /manga/detail/01986a0b-636e-48b9-a227-53393102ed9c responded 200 in 87.6844 ms
+2026-06-03 00:00:20.996 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/detail/01986a0b-636e-48b9-a227-53393102ed9c - - - 200 - application/json;+charset=utf-8 92.4933ms
+2026-06-03 00:00:20.998 +07:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c - -
+2026-06-03 00:00:20.999 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:21.000 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=50&MangaId=01986a0b-636e-48b9-a227-53393102ed9c - -
+2026-06-03 00:00:21.000 +07:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c - - - 204 - - 2.3093ms
+2026-06-03 00:00:21.001 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:21.003 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c application/json 2
+2026-06-03 00:00:21.004 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:21.005 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-03 00:00:21.005 +07:00 [INF] HTTP POST /services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c responded 404 in 0.7506 ms
+2026-06-03 00:00:21.006 +07:00 [INF] Route matched with {action = "FilterComment", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.CommentQuery.CommentDto]]]] FilterComment(YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.CommentController (YAHALLO).
+2026-06-03 00:00:21.007 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c application/json 2 - 404 0 - 4.7123ms
+2026-06-03 00:00:21.013 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Comment] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+2026-06-03 00:00:21.019 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[BlogId], [c].[CanComment], [c].[CanHide], [c].[CanLike], [c].[CanRemove], [c].[CanReply], [c].[ChapterId], [c].[CommentCount], [c].[CommentType], [c].[CreateDate], [c].[DeleteDate], [c].[DisLikeCount], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[LikeCount], [c].[MangaId], [c].[Message], [c].[ParentId], [c].[UpdateDate], [c].[UserEntityId], [c].[UserId]
+FROM [Comment] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-03 00:00:21.178 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterCommentQuery {"PageNumber":1,"PageSize":50,"Id":null,"UserId":null,"MangaId":"01986a0b-636e-48b9-a227-53393102ed9c","DateTime":null,"IsDateTimeReverser":null,"IsLikeReserver":null,"IsNumberChildrenCommentReserver":null,"$type":"FilterCommentQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy comment phù hợp yêu cầu
+   at YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQueryHandler.Handle(FilterCommentQuery request, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Queries\CommentQuery\FilterComment\FilterCommentQueryHandler.cs:line 86
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2026-06-03 00:00:21.259 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-06-03 00:00:21.260 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO) in 252.078ms
+2026-06-03 00:00:21.262 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-03 00:00:21.263 +07:00 [INF] HTTP GET /comment/filter-comment responded 404 in 260.6109 ms
+2026-06-03 00:00:21.265 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=50&MangaId=01986a0b-636e-48b9-a227-53393102ed9c - - - 404 - application/problem+json;+charset=utf-8 265.3520ms
+2026-06-03 00:00:22.015 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - -
+2026-06-03 00:00:22.016 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - -
+2026-06-03 00:00:22.016 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/trending?take=10 - -
+2026-06-03 00:00:22.016 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=1 - -
+2026-06-03 00:00:22.017 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:22.017 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:22.018 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:22.019 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:22.023 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:22.022 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:22.022 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO)'
+2026-06-03 00:00:22.021 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:22.024 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:22.025 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-03 00:00:22.027 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:22.026 +07:00 [INF] Route matched with {action = "GetTrendingManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetTrendingManga(YAHALLO.Application.Queries.MangaQuery.GetTrending.GetTrendingMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:22.034 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:22.037 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2026-06-03 00:00:22.031 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2026-06-03 00:00:22.044 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 11.9654ms
+2026-06-03 00:00:22.051 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-03 00:00:22.046 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:22.054 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:22.053 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-03 00:00:22.057 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO) in 17.4997ms
+2026-06-03 00:00:22.058 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.058 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 36.5805 ms
+2026-06-03 00:00:22.061 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.061 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO)'
+2026-06-03 00:00:22.064 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.065 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - - - 200 - application/json;+charset=utf-8 49.4080ms
+2026-06-03 00:00:22.067 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:22.068 +07:00 [INF] HTTP GET /manga/trending responded 200 in 45.6170 ms
+2026-06-03 00:00:22.071 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.072 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 43.1003ms
+2026-06-03 00:00:22.074 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/trending?take=10 - - - 200 - application/json;+charset=utf-8 58.2324ms
+2026-06-03 00:00:22.077 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:22.077 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.078 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 55.3456 ms
+2026-06-03 00:00:22.081 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.082 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=1 - - - 200 - application/json;+charset=utf-8 66.0751ms
+2026-06-03 00:00:22.085 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.088 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.092 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.095 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.099 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.102 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.106 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.109 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.113 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.116 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.119 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.122 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.124 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.126 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.128 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:22.129 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:22.131 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 96.2365ms
+2026-06-03 00:00:22.132 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:22.133 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 112.3661 ms
+2026-06-03 00:00:22.134 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - - - 200 - application/json;+charset=utf-8 119.0704ms
+2026-06-03 00:00:38.764 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - -
+2026-06-03 00:00:38.774 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:38.770 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/trending?take=10 - -
+2026-06-03 00:00:38.770 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=1 - -
+2026-06-03 00:00:38.777 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:38.777 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:38.778 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:38.770 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - -
+2026-06-03 00:00:38.784 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:38.786 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:38.776 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:38.785 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2026-06-03 00:00:38.775 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:38.798 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-03 00:00:38.805 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:38.797 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-03 00:00:38.819 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 15.1493ms
+2026-06-03 00:00:38.787 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO)'
+2026-06-03 00:00:38.830 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.787 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:38.824 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - -
+2026-06-03 00:00:38.829 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:38.831 +07:00 [INF] Route matched with {action = "GetTrendingManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetTrendingManga(YAHALLO.Application.Queries.MangaQuery.GetTrending.GetTrendingMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:38.834 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 59.3866 ms
+2026-06-03 00:00:38.834 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+2026-06-03 00:00:38.832 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:38.838 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - - - 200 - application/json;+charset=utf-8 73.7771ms
+2026-06-03 00:00:38.833 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:38.837 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:38.840 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE (([m].[IdUserDelete] IS NULL) OR ([m].[IdUserDelete] LIKE N'')) AND ([m].[DeleteDate] IS NULL)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-03 00:00:38.841 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 61.2462ms
+2026-06-03 00:00:38.842 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:38.843 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO) in 6.5254ms
+2026-06-03 00:00:38.846 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:38.847 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-03 00:00:38.847 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.848 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetTrendingManga (YAHALLO)'
+2026-06-03 00:00:38.852 +07:00 [INF] HTTP GET /manga/trending responded 200 in 64.4592 ms
+2026-06-03 00:00:38.850 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-03 00:00:38.848 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 70.9163 ms
+2026-06-03 00:00:38.853 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/trending?take=10 - - - 200 - application/json;+charset=utf-8 82.8293ms
+2026-06-03 00:00:38.852 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.863 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 13.951ms
+2026-06-03 00:00:38.876 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=1 - - - 200 - application/json;+charset=utf-8 105.9318ms
+2026-06-03 00:00:38.880 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.880 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-03 00:00:38.883 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 40.9493 ms
+2026-06-03 00:00:38.883 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.884 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - - - 200 - application/json;+charset=utf-8 60.1597ms
+2026-06-03 00:00:38.889 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.893 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.897 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.900 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.904 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.907 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.909 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.913 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.914 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.918 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.921 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.923 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.926 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.928 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.930 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.933 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[MangaId] = @__p_0
+2026-06-03 00:00:38.934 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:38.937 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 104.1079ms
+2026-06-03 00:00:38.938 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-03 00:00:38.939 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 153.2305 ms
+2026-06-03 00:00:38.941 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - - - 200 - application/json;+charset=utf-8 171.2399ms
+2026-06-03 00:00:54.352 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/detail/01986a0b-636e-48b9-a227-53393102ed9c - -
+2026-06-03 00:00:54.354 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:54.355 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-03 00:00:54.357 +07:00 [INF] Route matched with {action = "GetMangaDetail", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto]]] GetMangaDetail(System.String, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-03 00:00:54.366 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:54.369 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO) in 9.8291ms
+2026-06-03 00:00:54.370 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-03 00:00:54.372 +07:00 [INF] HTTP GET /manga/detail/01986a0b-636e-48b9-a227-53393102ed9c responded 200 in 17.1942 ms
+2026-06-03 00:00:54.374 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/detail/01986a0b-636e-48b9-a227-53393102ed9c - - - 200 - application/json;+charset=utf-8 21.4950ms
+2026-06-03 00:00:55.469 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=01986a0b-636e-48b9-a227-53393102ed9c - -
+2026-06-03 00:00:55.471 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:00:55.473 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-03 00:00:55.474 +07:00 [INF] Route matched with {action = "FilterChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ChapterQuery.ChapterDto]]]] FilterChapter(YAHALLO.Application.Queries.ChapterQuery.FilterChapter.FilterChapterQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2026-06-03 00:00:55.485 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Chapter] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[MangaId] = @__request_MangaId_0
+2026-06-03 00:00:55.489 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-03 00:00:55.493 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[Level], [m].[MangaSeasonId], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE [m].[Id] = @__p_0
+2026-06-03 00:00:55.498 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:55.501 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:55.504 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:55.507 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:55.509 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE [i].[ChapterId] = @__p_0
+2026-06-03 00:00:55.511 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ChapterQuery.ChapterDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-03 00:00:55.512 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO) in 35.8202ms
+2026-06-03 00:00:55.513 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-03 00:00:55.514 +07:00 [INF] HTTP GET /chapter/filter-chapter responded 200 in 41.2770 ms
+2026-06-03 00:00:55.515 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=01986a0b-636e-48b9-a227-53393102ed9c - - - 200 - application/json;+charset=utf-8 46.6488ms
+2026-06-03 00:01:09.777 +07:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c - -
+2026-06-03 00:01:09.780 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:01:09.781 +07:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c - - - 204 - - 4.0384ms
+2026-06-03 00:01:09.783 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c application/json 2
+2026-06-03 00:01:09.784 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:01:09.786 +07:00 [INF] HTTP POST /services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c responded 404 in 0.3286 ms
+2026-06-03 00:01:09.790 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=50&MangaId=01986a0b-636e-48b9-a227-53393102ed9c - -
+2026-06-03 00:01:09.793 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/services/CapNhatView/01986a0b-636e-48b9-a227-53393102ed9c application/json 2 - 404 0 - 10.6955ms
+2026-06-03 00:01:09.796 +07:00 [INF] CORS policy execution successful.
+2026-06-03 00:01:09.797 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-03 00:01:09.798 +07:00 [INF] Route matched with {action = "FilterComment", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.CommentQuery.CommentDto]]]] FilterComment(YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.CommentController (YAHALLO).
+2026-06-03 00:01:09.806 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Comment] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+2026-06-03 00:01:09.811 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[BlogId], [c].[CanComment], [c].[CanHide], [c].[CanLike], [c].[CanRemove], [c].[CanReply], [c].[ChapterId], [c].[CommentCount], [c].[CommentType], [c].[CreateDate], [c].[DeleteDate], [c].[DisLikeCount], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[LikeCount], [c].[MangaId], [c].[Message], [c].[ParentId], [c].[UpdateDate], [c].[UserEntityId], [c].[UserId]
+FROM [Comment] AS [c]
+WHERE (([c].[IdUserDelete] IS NULL) OR ([c].[IdUserDelete] LIKE N'')) AND ([c].[DeleteDate] IS NULL) AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-03 00:01:10.044 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterCommentQuery {"PageNumber":1,"PageSize":50,"Id":null,"UserId":null,"MangaId":"01986a0b-636e-48b9-a227-53393102ed9c","DateTime":null,"IsDateTimeReverser":null,"IsLikeReserver":null,"IsNumberChildrenCommentReserver":null,"$type":"FilterCommentQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy comment phù hợp yêu cầu
+   at YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQueryHandler.Handle(FilterCommentQuery request, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Queries\CommentQuery\FilterComment\FilterCommentQueryHandler.cs:line 86
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2026-06-03 00:01:10.152 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-06-03 00:01:10.157 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO) in 358.3072ms
+2026-06-03 00:01:10.159 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-03 00:01:10.160 +07:00 [INF] HTTP GET /comment/filter-comment responded 404 in 363.1572 ms
+2026-06-03 00:01:10.164 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=50&MangaId=01986a0b-636e-48b9-a227-53393102ed9c - - - 404 - application/problem+json;+charset=utf-8 374.7251ms

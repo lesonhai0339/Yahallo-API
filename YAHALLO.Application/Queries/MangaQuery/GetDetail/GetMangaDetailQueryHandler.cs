@@ -63,7 +63,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
 
                     var dto = _mapper.Map<MangaDetailDto>(manga);
 
-                    dto.Thumbnail = Path.Combine("thumbnails", manga.Thumbnail!.BaseUrl) ?? manga.Thumbnail?.CloudUrl ?? "";
+                    dto.Thumbnail = manga.Thumbnail?.CloudUrl ?? "";
                     dto.Level = manga.Level.GetDescription();
                     dto.Status = manga.Status.GetDescription();
                     dto.Type = manga.Type.GetDescription();
