@@ -90,7 +90,6 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new UserMangaViewConfiguration());
             modelBuilder.ApplyConfiguration(new SubscriptionConfiguration());
 
-        CreateData(modelBuilder);
     }
         protected void CreateData(ModelBuilder builder)
         {

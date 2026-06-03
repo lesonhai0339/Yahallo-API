@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Mappings;
+using YAHALLO.Application.Queries.ChapterQuery;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
@@ -23,7 +24,7 @@ namespace YAHALLO.Application.Queries.MangaQuery
         public int Season { get; set; }
         public string? Thumbnail { get; set; }
         public string? UserID { get; set; }
-
+        public ChapterDto? LatestChapter { get; set; } 
         public static MangaDto Createmap(
             string id,
             string name,
@@ -47,7 +48,7 @@ namespace YAHALLO.Application.Queries.MangaQuery
                 Countries = country,
                 Season = season,
                 Thumbnail = thumbnail,
-                UserID = userid
+                UserID = userid,
             };
         }
         public void Mapping(Profile profile)

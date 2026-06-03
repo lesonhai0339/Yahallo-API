@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Domain.Common;
 using YAHALLO.Domain.Enums;
 
 namespace YAHALLO.Domain.Entities.Base
@@ -13,7 +14,7 @@ namespace YAHALLO.Domain.Entities.Base
     {
         protected BaseEntity()
         {
-            Id = Guid.NewGuid().ToString("N");
+            Id = SequentialGuid.NewId();
         }
         [Key]
         public string Id { get; private set; }

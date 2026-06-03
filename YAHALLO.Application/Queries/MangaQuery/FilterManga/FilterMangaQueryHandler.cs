@@ -58,68 +58,79 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             {
                 Log.Error(ex, "Elastic search engine error");
             }
-
+            int filerCount = 0;
             var query = _mangaRepository.CreateQueryable();
             query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
             if (!string.IsNullOrEmpty(request.Id))
             {
                 query = query.Where(x => x.Id == request.Id);
+                filerCount++;
             }
             if (!string.IsNullOrEmpty(request.Name))
             {
-                var filters = _filters.CheckString(request.Name);
-                var predicate = PredicateBuilder.New<MangaEntity>();
-                foreach(var filter in filters)
-                {
-                    predicate = predicate.Or(x => x.Name.Contains(filter));
-                }
-                query = query.Where(predicate);
+                query = query.Where(x => x.Name.Trim().ToLower().Contains(request.Name.Trim().ToLower()));
+                filerCount++;
             }
-            if(request.Level != null)
+            if (request.Level != null)
             {
                 query = query.Where(x=> x.Level == request.Level);
+                filerCount++;
             }
             if(request.Status != null)
             {
                 query = query.Where(x => x.Status == request.Status);
+                filerCount++;
             }
             if(request.Type != null)
             {
                 query = query.Where(x=> x.Type == request.Type);
+                filerCount++;
             }
             if(request.Countries != null)
             {
                 query = query.Where(x => x.Countries == request.Countries);
+                filerCount++;
             }
             if(request.Season != null)
             {
                 query = query.Where(x => x.Season == request.Season);
+                filerCount++;
             }
             if(request.DateUpdate != null)
             {
                 query = query.Where(x=> x.UpdateDate == request.DateUpdate);
+                filerCount++;
             }
             if(request.UserId != null)
             {
                 query = query.Where(x => x.UserId == request.UserId);
+                filerCount++;
             }
+            if(filerCount == 0)
+                throw new NotFoundException("Không tìm thấy manga phù hợp yêu cầu");
+
             var listMangaExists = await _mangaRepository
                 .FindAllAsync(query, request.PageNumber, request.PageSize, cancellationToken);
             if (listMangaExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy manga phù hợp yêu cầu");
             }
-            var tagMatched = await _mangaTagRepository.FindAllAsync(x => x.TagId == request.TagId, cancellationToken: cancellationToken);
-            var allMatched = listMangaExists.Where( x=> tagMatched.Any(tag => tag.MangaId == x.Id));    
-            PagedResult<MangaDto> result = new PagedResult<MangaDto>
+            if (request.TagId != null)
             {
-                PageCount = allMatched.Count(),
-                PageNumber = 1,
-                TotalCount = allMatched.Count(),
-                PageSize = allMatched.Count(),
-                Data = allMatched.Select(x => x.MapFullToMangaDto(_mapper))
-            };
-            return result;
+                var tagMatched = await _mangaTagRepository.FindAllAsync(x => x.TagId == request.TagId, cancellationToken: cancellationToken);
+                var allMatched = listMangaExists.Where(x => tagMatched.Any(tag => tag.MangaId == x.Id));
+                PagedResult<MangaDto> result = new PagedResult<MangaDto>
+                {
+                    PageCount = allMatched.Count(),
+                    PageNumber = 1,
+                    TotalCount = allMatched.Count(),
+                    PageSize = allMatched.Count(),
+                    Data = allMatched.Select(x => x.MapFullToMangaDto(_mapper))
+                };
+                return result;;
+            }
+           
+            return listMangaExists.MapToPagedResult(x => x.MapFullToMangaDto(_mapper));
         }
     }
 }

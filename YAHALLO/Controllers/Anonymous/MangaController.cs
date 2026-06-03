@@ -21,6 +21,7 @@ using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 using YAHALLO.Application.Queries.MangaQuery.FilterMangaByTag;
+using YAHALLO.Application.Queries.MangaQuery.GetNewestUpdateMangaPagination;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -116,6 +117,19 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> GetAllMangaPagination(
             [FromQuery] GetAllMangaPaginationQuery query,
             CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
+        }
+        [HttpGet]
+        [Route("manga/get-newest-update-pagination")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> GetNewestUpdateMangaPagination(
+          [FromQuery] GetNewestUpdateMangaPaginationQuery query,
+          CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<MangaDto>>(result));

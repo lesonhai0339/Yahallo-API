@@ -416,6 +416,15 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
         {
             return queryOptions;
         }
+        public async Task<List<T>> QueryRaw<T>(
+    string query,
+    CancellationToken cancellationToken = default,
+    params object[] parameters) where T : class
+        {
+            return await _dbContext.Database
+                .SqlQueryRaw<T>(query, parameters)  
+                .ToListAsync(cancellationToken);
+        }
         public virtual void FromSql(string tableName, string id)
         {
             // Tạo câu lệnh SQL với tham số đầu vào

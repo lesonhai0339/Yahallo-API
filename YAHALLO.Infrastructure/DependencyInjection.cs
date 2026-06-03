@@ -54,7 +54,7 @@ namespace YAHALLO.Infrastructure
 
             services.Configure<AwsS3Options>(configuration.GetSection(nameof(AwsS3Options)));
 
-            var sqlConnection = Environment.GetEnvironmentVariable("Server");
+            var sqlConnection = Environment.GetEnvironmentVariable("Cloud_Server");
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
                 options.UseSqlServer(
@@ -69,7 +69,7 @@ namespace YAHALLO.Infrastructure
                             maxRetryDelay: TimeSpan.FromSeconds(30),
                             errorNumbersToAdd: null);
                     });
-                options.UseLazyLoadingProxies();
+                options.UseLazyLoadingProxies(false);
             });
             services.Configure<IndexNameOptions>(opt =>
             {

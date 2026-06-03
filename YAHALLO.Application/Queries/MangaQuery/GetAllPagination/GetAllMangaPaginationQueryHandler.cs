@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,11 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetAllPagination
         public async Task<PagedResult<MangaDto>> Handle(GetAllMangaPaginationQuery request, CancellationToken cancellationToken)
         {
             var listMangaExists = await _mangaRepository
-                .FindAllAsync(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken);
+                .FindAllAsync(
+                filterExpression: x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, 
+                pageNo: request.PageNumber, 
+                pageSize: request.PageSize,
+                cancellationToken: cancellationToken);
             if(listMangaExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ manga nào");

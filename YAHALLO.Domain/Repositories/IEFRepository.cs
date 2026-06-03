@@ -94,6 +94,6 @@ namespace YAHALLO.Domain.Repositories
         Task<TDomain?> FindAsync(
             IQueryable<TPersistence> iqueryable,
             CancellationToken cancellationToken = default);
-
+        Task<List<T>> QueryRaw<T>(string query, CancellationToken cancellationToken = default, params object[] parameters) where T : class;
     }
 }
