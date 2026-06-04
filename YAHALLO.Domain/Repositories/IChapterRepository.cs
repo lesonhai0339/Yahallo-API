@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Views;
 
 namespace YAHALLO.Domain.Repositories
 {
-    public interface IChapterRepository: IEFRepository<ChapterEntity, ChapterEntity>
+    public interface IChapterRepository : IEFRepository<ChapterEntity, ChapterEntity>
     {
     }
 }

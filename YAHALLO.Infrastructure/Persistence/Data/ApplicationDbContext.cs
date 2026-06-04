@@ -40,7 +40,7 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<ThreadEntity> Threads { get; set; }
         public DbSet<ThreadOfBlogEntity> ThreadOfBlogs { get; set; }
         public DbSet<UserOldPasswordEntity> UserOldPasswords { get;set; }
-        public DbSet<AttechmentEntity> Attechments { get; set; }
+        public DbSet<AttachmentEntity> Attechments { get; set; }
         public DbSet<CommentEntity> Comments { get; set; }
         public DbSet<BlogEntity> Blogs { get; set; }
 

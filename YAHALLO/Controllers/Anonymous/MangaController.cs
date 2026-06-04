@@ -1,8 +1,6 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
-using YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken;
 using YAHALLO.Application.Commands.MangaCommand.Create;
 using YAHALLO.Application.Commands.MangaCommand.Delete;
 using YAHALLO.Application.Commands.MangaCommand.Restore;
@@ -10,18 +8,16 @@ using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.MangaQuery;
 using YAHALLO.Application.Queries.MangaQuery.FilterManga;
+using YAHALLO.Application.Queries.MangaQuery.FilterMangaByTag;
 using YAHALLO.Application.Queries.MangaQuery.GetAll;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeleted;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetAllPagination;
-using YAHALLO.Application.Queries.MangaQuery.GetTrending;
-using YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated;
 using YAHALLO.Application.Queries.MangaQuery.GetDetail;
-using YAHALLO.Application.ResponseTypes;
+using YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated;
+using YAHALLO.Application.Queries.MangaQuery.GetTrending;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
-using YAHALLO.Application.Queries.MangaQuery.FilterMangaByTag;
-using YAHALLO.Application.Queries.MangaQuery.GetNewestUpdateMangaPagination;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -117,19 +113,6 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> GetAllMangaPagination(
             [FromQuery] GetAllMangaPaginationQuery query,
             CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
-        }
-        [HttpGet]
-        [Route("manga/get-newest-update-pagination")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> GetNewestUpdateMangaPagination(
-          [FromQuery] GetNewestUpdateMangaPaginationQuery query,
-          CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<MangaDto>>(result));

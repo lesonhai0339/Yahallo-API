@@ -22,6 +22,10 @@ namespace YAHALLO.Infrastructure.S3
             _s3Client = s3Client;
             _logger = logger;
         }   
+        public async Task<IEnumerable<string>> CreateSignedURL(IEnumerable<T> files)
+        {
+            return await Task.WhenAll(files.Select(async fileInfo => await CreateSignedURL(fileInfo)));
+        }
         public async Task<string> CreateSignedURL(T fileInfo)
         {
             var request = new GetPreSignedUrlRequest

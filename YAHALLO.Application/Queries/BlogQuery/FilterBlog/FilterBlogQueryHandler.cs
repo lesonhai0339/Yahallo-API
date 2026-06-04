@@ -1,17 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Org.BouncyCastle.Math.EC.Rfc7748;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Domain.Entities;
-using YAHALLO.Domain.Enums.Base;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 

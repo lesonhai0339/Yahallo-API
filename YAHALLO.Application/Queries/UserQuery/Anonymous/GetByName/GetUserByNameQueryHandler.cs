@@ -1,19 +1,8 @@
 ﻿using AutoMapper;
-using LinqKit;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Persistence.Data;
 
 namespace YAHALLO.Application.Queries.UserQuery.Anonymous.GetByName
 {

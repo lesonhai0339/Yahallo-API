@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace YAHALLO.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class yahallo : Migration
+    public partial class v1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -120,6 +120,25 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Tag",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserUpdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserDelete = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tag", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Threads",
                 columns: table => new
                 {
@@ -152,6 +171,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     PhoneConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AvatarThumbnail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     Level = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -208,6 +228,11 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     Type = table.Column<int>(type: "int", nullable: false),
                     Countries = table.Column<int>(type: "int", nullable: false),
                     Season = table.Column<int>(type: "int", nullable: false),
+                    MangaThumbnail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MangaBackground = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastChapterIndex = table.Column<int>(type: "int", nullable: true),
+                    LastChapterId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastChapterUpdate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MangaSeasonId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -230,6 +255,37 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notification",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    ReferenceId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReadAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserUpdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserDelete = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notification", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notification_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -321,6 +377,34 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subscription",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Plan = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserUpdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserDelete = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subscription", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Subscription_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -521,6 +605,68 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MangaRating",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MangaId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserUpdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserDelete = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MangaRating", x => new { x.UserId, x.MangaId });
+                    table.ForeignKey(
+                        name: "FK_MangaRating_Manga_MangaId",
+                        column: x => x.MangaId,
+                        principalTable: "Manga",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_MangaRating_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MangaTag",
+                columns: table => new
+                {
+                    MangaId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TagId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserUpdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserDelete = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MangaTag", x => new { x.MangaId, x.TagId });
+                    table.ForeignKey(
+                        name: "FK_MangaTag_Manga_MangaId",
+                        column: x => x.MangaId,
+                        principalTable: "Manga",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MangaTag_Tag_TagId",
+                        column: x => x.TagId,
+                        principalTable: "Tag",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MangaView",
                 columns: table => new
                 {
@@ -545,13 +691,12 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rating",
+                name: "UserMangaView",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MangaId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ViewedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -561,19 +706,19 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rating", x => new { x.UserId, x.MangaId });
+                    table.PrimaryKey("PK_UserMangaView", x => new { x.UserId, x.MangaId });
                     table.ForeignKey(
-                        name: "FK_Rating_Manga_MangaId",
+                        name: "FK_UserMangaView_Manga_MangaId",
                         column: x => x.MangaId,
                         principalTable: "Manga",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Rating_Users_UserId",
+                        name: "FK_UserMangaView_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -649,7 +794,8 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     TypeImage = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ChapterId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    MangaId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    MangaId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MangaEntityId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -667,17 +813,54 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Image_Manga_MangaId",
-                        column: x => x.MangaId,
+                        name: "FK_Image_Manga_MangaEntityId",
+                        column: x => x.MangaEntityId,
                         principalTable: "Manga",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Image_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ReadingProgress",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MangaId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ChapterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LastPage = table.Column<int>(type: "int", nullable: false),
+                    LastReadAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserUpdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IdUserDelete = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReadingProgress", x => new { x.UserId, x.MangaId, x.ChapterId });
+                    table.ForeignKey(
+                        name: "FK_ReadingProgress_Chapter_ChapterId",
+                        column: x => x.ChapterId,
+                        principalTable: "Chapter",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ReadingProgress_Manga_MangaId",
+                        column: x => x.MangaId,
+                        principalTable: "Manga",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ReadingProgress_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -862,11 +1045,9 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 column: "ChapterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Image_MangaId",
+                name: "IX_Image_MangaEntityId",
                 table: "Image",
-                column: "MangaId",
-                unique: true,
-                filter: "[MangaId] IS NOT NULL");
+                column: "MangaEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Image_UserId",
@@ -901,14 +1082,39 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rating_MangaId",
-                table: "Rating",
+                name: "IX_MangaRating_MangaId",
+                table: "MangaRating",
                 column: "MangaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MangaTag_TagId",
+                table: "MangaTag",
+                column: "TagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notification_Status",
+                table: "Notification",
+                column: "Status");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notification_UserId",
+                table: "Notification",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reaction_BlogId",
                 table: "Reaction",
                 column: "BlogId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReadingProgress_ChapterId",
+                table: "ReadingProgress",
+                column: "ChapterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReadingProgress_MangaId",
+                table: "ReadingProgress",
+                column: "MangaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ReportEntity_UserId",
@@ -921,9 +1127,29 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 column: "Id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Subscription_UserId",
+                table: "Subscription",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Subscription_UserId_Status",
+                table: "Subscription",
+                columns: new[] { "UserId", "Status" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tag_Id",
+                table: "Tag",
+                column: "Id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ThreadOfBlog_BlogId",
                 table: "ThreadOfBlog",
                 column: "BlogId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserMangaView_MangaId",
+                table: "UserMangaView",
+                column: "MangaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRole_RoleId",
@@ -966,19 +1192,34 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 name: "MangaAuthor");
 
             migrationBuilder.DropTable(
+                name: "MangaRating");
+
+            migrationBuilder.DropTable(
+                name: "MangaTag");
+
+            migrationBuilder.DropTable(
                 name: "MangaView");
+
+            migrationBuilder.DropTable(
+                name: "Notification");
 
             migrationBuilder.DropTable(
                 name: "OldPassword");
 
             migrationBuilder.DropTable(
-                name: "Rating");
-
-            migrationBuilder.DropTable(
                 name: "Reaction");
 
             migrationBuilder.DropTable(
+                name: "ReadingProgress");
+
+            migrationBuilder.DropTable(
+                name: "Subscription");
+
+            migrationBuilder.DropTable(
                 name: "ThreadOfBlog");
+
+            migrationBuilder.DropTable(
+                name: "UserMangaView");
 
             migrationBuilder.DropTable(
                 name: "UserRole");
@@ -997,6 +1238,9 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Author");
+
+            migrationBuilder.DropTable(
+                name: "Tag");
 
             migrationBuilder.DropTable(
                 name: "Threads");

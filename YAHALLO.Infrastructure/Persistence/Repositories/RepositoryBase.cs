@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
@@ -417,13 +418,23 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             return queryOptions;
         }
         public async Task<List<T>> QueryRaw<T>(
-    string query,
-    CancellationToken cancellationToken = default,
-    params object[] parameters) where T : class
+            string query,
+            CancellationToken cancellationToken = default,
+            params object[] parameters)
         {
-            return await _dbContext.Database
-                .SqlQueryRaw<T>(query, parameters)  
-                .ToListAsync(cancellationToken);
+            var connection = _dbContext.Database.GetDbConnection();
+
+            // Build parameters cho Dapper
+            var dynamicParams = new DynamicParameters();
+            for (int i = 0; i < parameters.Length; i++)
+                dynamicParams.Add($"p{i}", parameters[i]);
+
+            // Replace {0}, {1} với @p0, @p1
+            for (int i = 0; i < parameters.Length; i++)
+                query = query.Replace($"{{{i}}}", $"@p{i}");
+
+            var result = await connection.QueryAsync<T>(query, dynamicParams);
+            return result.ToList();
         }
         public virtual void FromSql(string tableName, string id)
         {

@@ -1,17 +1,7 @@
 ﻿using AutoMapper;
-using LinqKit;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Domain.Common.Interfaces;
-using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
@@ -54,7 +44,7 @@ namespace YAHALLO.Application.Queries.ChapterQuery.FilterChapter
                     chapter => chapter.MangaId,
                     manga => manga.Id,
                     (chapter, manga) => new { Chapter = chapter, Manga = manga })
-                    .Where(x => EF.Functions.Like(x.Manga.Name, request.MangaName))
+                    .Where(x => x.Manga.Name.Equals(request.MangaName))
                     .Select(x => x.Chapter);
             }
             var checkChapterExists = await _chapterRepository

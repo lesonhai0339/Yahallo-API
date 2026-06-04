@@ -22,9 +22,11 @@ namespace YAHALLO.Application.Queries.MangaQuery
         public string? Type { get; set; }
         public string? Countries { get; set; }
         public int Season { get; set; }
-        public string? Thumbnail { get; set; }
+        public string? MangaThumbnail { get; set; }
+        public string? MangaBackground{ get; set; }
+
         public string? UserID { get; set; }
-        public ChapterDto? LatestChapter { get; set; } 
+        public ChapterDto? LastestChapter { get; set; } 
         public static MangaDto Createmap(
             string id,
             string name,
@@ -35,6 +37,7 @@ namespace YAHALLO.Application.Queries.MangaQuery
             string country,
             int season,
             string thumbnail,
+            string background,  
             string userid)
         {
             return new MangaDto
@@ -47,7 +50,8 @@ namespace YAHALLO.Application.Queries.MangaQuery
                 Type = type,
                 Countries = country,
                 Season = season,
-                Thumbnail = thumbnail,
+                MangaThumbnail = thumbnail,
+                MangaBackground = background,   
                 UserID = userid,
             };
         }

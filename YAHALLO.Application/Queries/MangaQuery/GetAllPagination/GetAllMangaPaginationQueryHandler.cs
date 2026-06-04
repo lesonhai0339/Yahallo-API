@@ -1,13 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Application.Queries.ChapterQuery;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
@@ -30,12 +24,32 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetAllPagination
                 filterExpression: x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, 
                 pageNo: request.PageNumber, 
                 pageSize: request.PageSize,
+                queryOptions: x => x.OrderByDescending(m => m.LastChapterUpdate),
                 cancellationToken: cancellationToken);
             if(listMangaExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ manga nào");
             }
-            return listMangaExists.MapToPagedResult(x => x.MapFullToMangaDto(_mapper));
+            return new PagedResult<MangaDto>
+            {
+                PageNumber = request.PageNumber,
+                PageSize = request.PageSize,
+                TotalCount = listMangaExists.TotalCount,
+                PageCount = listMangaExists.PageCount,
+                Data = listMangaExists.Select(m =>
+                {
+                    var manga = m.MapFullToMangaDto(_mapper);
+                    manga.LastestChapter = new ChapterDto
+                    {
+                        Id = m.LastChapterId ?? "",
+                        Index = m.LastChapterIndex,
+                        CreateDate = m.LastChapterUpdate,
+                        MangaId = m.Id,
+                        MangaName = m.Name,
+                    };
+                    return manga;
+                })
+            };
         }
     }
 }

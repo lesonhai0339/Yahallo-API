@@ -9,7 +9,7 @@ using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Application.Queries.AttechmentQuery
 {
-    public class AttechmentDto : IMapFrom<AttechmentEntity>
+    public class AttechmentDto : IMapFrom<AttachmentEntity>
     {
 
 
@@ -19,7 +19,7 @@ namespace YAHALLO.Application.Queries.AttechmentQuery
         }
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<AttechmentEntity, AttechmentDto>();   
+            profile.CreateMap<AttachmentEntity, AttechmentDto>();   
         }
     }
 }

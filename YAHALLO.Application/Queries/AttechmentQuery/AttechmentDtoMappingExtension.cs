@@ -10,17 +10,17 @@ namespace YAHALLO.Application.Queries.AttechmentQuery
 {
     public static class AttechmentDtoMappingExtension
     {
-        public static AttechmentDto MapToAttechmentDto(this AttechmentEntity entity, IMapper mapper)
+        public static AttechmentDto MapToAttechmentDto(this AttachmentEntity entity, IMapper mapper)
             => mapper.Map<AttechmentDto>(entity);  
-        public static IEnumerable<AttechmentDto> MapToAttechmentDtoToList(this IEnumerable<AttechmentEntity> entities, IMapper mapper)
+        public static IEnumerable<AttechmentDto> MapToAttechmentDtoToList(this IEnumerable<AttachmentEntity> entities, IMapper mapper)
             => entities.Select(x=> x.MapToAttechmentDto(mapper)).ToList();
-        public static AttechmentDto MapFullToAttechmentDto(this AttechmentEntity entity, IMapper mapper)
+        public static AttechmentDto MapFullToAttechmentDto(this AttachmentEntity entity, IMapper mapper)
         {
             var map = mapper.Map<AttechmentDto>(entity);
             //some properties
             return map;
         }
-        public static IEnumerable<AttechmentDto> MapFullToAttechmentDtoToList(this IEnumerable<AttechmentEntity> entities, IMapper mapper)
+        public static IEnumerable<AttechmentDto> MapFullToAttechmentDtoToList(this IEnumerable<AttachmentEntity> entities, IMapper mapper)
             => entities.Select(x=> x.MapFullToAttechmentDto(mapper)).ToList();
     }
 }

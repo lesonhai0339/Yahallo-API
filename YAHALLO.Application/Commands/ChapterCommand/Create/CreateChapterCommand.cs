@@ -24,7 +24,5 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
         public string? Title { get; set; }
         public required int Index { get; set; }
         public required string MangaId { get; set; }
-        public ICollection<IFormFile>? Images { get; set; }
-        public ICollection<string>? ImageUrls { get;set; }  
     }
 }

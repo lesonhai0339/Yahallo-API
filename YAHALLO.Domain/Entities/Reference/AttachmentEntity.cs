@@ -10,7 +10,7 @@ using YAHALLO.Domain.Enums.UserEnums;
 
 namespace YAHALLO.Domain.Entities.Reference
 {
-    public class AttechmentEntity: BaseEntity
+    public class AttachmentEntity: BaseEntity
     {
         public string? Description { get;set; }
         public CommentMediaType? MediaType { get; set; } = null!;

@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Repositories
 {
@@ -94,6 +95,6 @@ namespace YAHALLO.Domain.Repositories
         Task<TDomain?> FindAsync(
             IQueryable<TPersistence> iqueryable,
             CancellationToken cancellationToken = default);
-        Task<List<T>> QueryRaw<T>(string query, CancellationToken cancellationToken = default, params object[] parameters) where T : class;
+        Task<List<T>> QueryRaw<T>(string query, CancellationToken cancellationToken = default, params object[] parameters);
     }
 }

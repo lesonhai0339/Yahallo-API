@@ -9,9 +9,9 @@ using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 {
-    public class AttechmentConfiguration : IEntityTypeConfiguration<AttechmentEntity>
+    public class AttechmentConfiguration : IEntityTypeConfiguration<AttachmentEntity>
     {
-        public void Configure(EntityTypeBuilder<AttechmentEntity> builder)
+        public void Configure(EntityTypeBuilder<AttachmentEntity> builder)
         {
             builder.HasKey(x => x.Id);
 

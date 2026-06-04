@@ -1,14 +1,6 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Enums.MangaEnums;
-using YAHALLO.Domain.Enums.UserEnums;
 
 namespace YAHALLO.Application.Commands.CommentCommand.Create
 {

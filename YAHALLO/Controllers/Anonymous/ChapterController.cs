@@ -14,6 +14,7 @@ using YAHALLO.Application.Queries.ChapterQuery.FilterChapter;
 using YAHALLO.Application.Queries.ChapterQuery.GetAll;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllDeleted;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.ChapterQuery.GetAllImage;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllPagination;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Repositories;
@@ -142,6 +143,19 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<ChapterDto>>(result));
+        }
+        [HttpGet]
+        [Route("chapter/get-image")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<ChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<List<ChapterImageDto>>>> GetAllImage(
+         [FromQuery] GetImageQuery query,
+       CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<List<ChapterImageDto>>(result));
         }
     }
 }

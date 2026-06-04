@@ -1,16 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Persistence.Data;
 
 namespace YAHALLO.Application.Queries.UserRoleQuery.FilterUserRole
 {

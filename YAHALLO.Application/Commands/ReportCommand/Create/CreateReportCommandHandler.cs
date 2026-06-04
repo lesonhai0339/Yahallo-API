@@ -1,21 +1,5 @@
-﻿using LinqKit;
-using MediatR;
-using Microsoft.AspNetCore.Hosting.Server;
+﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Pkcs;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Runtime.Remoting;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
@@ -24,7 +8,6 @@ using YAHALLO.Domain.Enums.ReportEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
-using static YAHALLO.Application.Commands.ReportCommand.Create.CreateReportCommandHandler;
 
 namespace YAHALLO.Application.Commands.ReportCommand.Create
 {
@@ -94,7 +77,7 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
                 //Add media to dicrectory (not finish)
                 //.....................(code)
                 //
-                AttechmentEntity attech = new AttechmentEntity
+                AttachmentEntity attech = new AttachmentEntity
                 {
                     Description = "Report",
                     MediaType = Domain.Enums.UserEnums.CommentMediaType.Image,

@@ -1,12 +1,6 @@
 ﻿using AutoMapper;
 using LinqKit;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Domain.Entities;
@@ -50,7 +44,7 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating
                 var predicate = PredicateBuilder.New<MangaRatingEntity>();
                 foreach(var filter in filters)
                 {
-                    predicate = predicate.Or(x => EF.Functions.Contains(filters, x.Manga.Name));
+                    predicate = predicate.Or(x => filters.Contains(x.Manga.Name));
                 }
                 query = query.Where(predicate);
             }

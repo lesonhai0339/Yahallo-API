@@ -18,14 +18,17 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.Property(x => x.Index)
                 .IsUnicode(false)
                 .IsRequired();
+
             builder.HasOne(x => x.UserEntity)
                 .WithOne(x => x.Avatar)
                 .HasForeignKey<ImageEntity>(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
-            builder.HasOne(x => x.MangaEntity)
-               .WithOne(x => x.Thumbnail)
-               .HasForeignKey<ImageEntity>(x => x.MangaId)
-               .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.ChapterEntity)
+                .WithMany(x => x.ImagesEntities)
+                .HasForeignKey(x => x.ChapterId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(x => x.ChapterEntity)
                 .WithMany(x => x.ImagesEntities)
                 .HasForeignKey(x => x.ChapterId)

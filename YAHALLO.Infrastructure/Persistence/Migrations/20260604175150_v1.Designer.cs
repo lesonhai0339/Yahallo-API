@@ -12,8 +12,8 @@ using YAHALLO.Infrastructure.Data;
 namespace YAHALLO.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260529050124_update user")]
-    partial class updateuser
+    [Migration("20260604175150_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,9 +21,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -374,8 +371,11 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .IsUnicode(false)
                         .HasColumnType("int");
 
-                    b.Property<string>("MangaId")
+                    b.Property<string>("MangaEntityId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MangaId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeImage")
                         .HasColumnType("int");
@@ -390,9 +390,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("ChapterId");
 
-                    b.HasIndex("MangaId")
-                        .IsUnique()
-                        .HasFilter("[MangaId] IS NOT NULL");
+                    b.HasIndex("MangaEntityId");
 
                     b.HasIndex("UserId")
                         .IsUnique()
@@ -534,11 +532,26 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<string>("IdUserUpdate")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LastChapterId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LastChapterIndex")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastChapterUpdate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
+                    b.Property<string>("MangaBackground")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MangaSeasonId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MangaThumbnail")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -608,7 +621,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("MangaId");
 
-                    b.ToTable("Rating", (string)null);
+                    b.ToTable("MangaRating", (string)null);
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.MangaSeasonEntity", b =>
@@ -815,7 +828,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.ToTable("ReadingProgress", (string)null);
                 });
 
-            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.AttechmentEntity", b =>
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.AttachmentEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -1167,36 +1180,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.HasIndex("Id");
 
                     b.ToTable("Roles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "bbad5ec3dd004884a5f36587234ea32f",
-                            RoleCode = 1,
-                            RoleDescription = "Only Admin has this Role",
-                            RoleName = "Admin"
-                        },
-                        new
-                        {
-                            Id = "49813fb8f73946cc90ecfee661cfa934",
-                            RoleCode = 2,
-                            RoleDescription = "Normal User or New User has this Role",
-                            RoleName = "User"
-                        },
-                        new
-                        {
-                            Id = "9da0a58d614548bd8eaa257ee61b537d",
-                            RoleCode = 3,
-                            RoleDescription = "Role for Moderator",
-                            RoleName = "Mod"
-                        },
-                        new
-                        {
-                            Id = "4ccf75accf2d401399a93d07b68e0dab",
-                            RoleCode = 4,
-                            RoleDescription = "If User has this role then User can use Create, Update, Delete Manga",
-                            RoleName = "Upload"
-                        });
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.SubscriptionEntity", b =>
@@ -1329,7 +1312,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AvatarThumbnail")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreateDate")
@@ -1590,9 +1572,8 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("YAHALLO.Domain.Entities.MangaEntity", "MangaEntity")
-                        .WithOne("Thumbnail")
-                        .HasForeignKey("YAHALLO.Domain.Entities.ImageEntity", "MangaId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany()
+                        .HasForeignKey("MangaEntityId");
 
                     b.HasOne("YAHALLO.Domain.Entities.UserEntity", "UserEntity")
                         .WithOne("Avatar")
@@ -1757,7 +1738,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.AttechmentEntity", b =>
+            modelBuilder.Entity("YAHALLO.Domain.Entities.Reference.AttachmentEntity", b =>
                 {
                     b.HasOne("YAHALLO.Domain.Entities.BlogEntity", "Blog")
                         .WithMany("Attechments")
@@ -1984,8 +1965,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Navigation("MangaView");
 
                     b.Navigation("RatingEntities");
-
-                    b.Navigation("Thumbnail");
 
                     b.Navigation("ViewCount");
                 });

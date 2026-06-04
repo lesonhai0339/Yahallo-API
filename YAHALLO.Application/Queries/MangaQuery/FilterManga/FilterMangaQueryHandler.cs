@@ -1,17 +1,9 @@
 ﻿using AutoMapper;
-using Elastic.Clients.Elasticsearch.QueryDsl;
-using LinqKit;
 using MediatR;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Domain.Entities;
-using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
@@ -43,21 +35,21 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         public async Task<PagedResult<MangaDto>> Handle(FilterMangaQuery request, CancellationToken cancellationToken)
         {
 
-            try
-            {
-                Action<QueryDescriptor<MangaEntity>> action = new Action<QueryDescriptor<MangaEntity>>((q) =>
-                {
-                    q.Match(m =>
-                    {
-                        m.Field(f => f.Name).Query(request.Name!);
-                    });
-                });
-                IQuery<MangaEntity> queryable;
-            }
-            catch(Exception ex)
-            {
-                Log.Error(ex, "Elastic search engine error");
-            }
+            //try
+            //{
+            //    Action<QueryDescriptor<MangaEntity>> action = new Action<QueryDescriptor<MangaEntity>>((q) =>
+            //    {
+            //        q.Match(m =>
+            //        {
+            //            m.Field(f => f.Name).Query(request.Name!);
+            //        });
+            //    });
+            //    IQuery<MangaEntity> queryable;
+            //}
+            //catch(Exception ex)
+            //{
+            //    Log.Error(ex, "Elastic search engine error");
+            //}
             int filerCount = 0;
             var query = _mangaRepository.CreateQueryable();
             query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);

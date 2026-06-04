@@ -7,7 +7,8 @@ using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Repositories
 {
-    public interface IMangaRepository: IEFRepository<MangaEntity, MangaEntity>
+    public interface IMangaRepository : IEFRepository<MangaEntity, MangaEntity>
     {
+        Task<MangaEntity?> FindById(string mangaId, CancellationToken token);
     }
 }

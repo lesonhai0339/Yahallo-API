@@ -9,7 +9,7 @@ namespace YAHALLO.Application.Queries.ChapterQuery
     {
         public required string Id { get; set; }
         public string? Title { get; set; }
-        public int Index { get; set; }
+        public int? Index { get; set; }
 
         public string MangaId { get; set; } = null!;
         public string? MangaName { get; set; }

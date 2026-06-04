@@ -11,13 +11,9 @@ using YAHALLO.Domain.Enums;
 namespace YAHALLO.Domain.Entities.Base
 {
     public class BaseEntity
-    {
-        protected BaseEntity()
-        {
-            Id = SequentialGuid.NewId();
-        }
+    {  
         [Key]
-        public string Id { get; private set; }
+        public string Id { get; set; } = SequentialGuid.NewId();
         public DateTime? CreateDate { get; set; }
         public string? IdUserCreate { get; set; }
         public DateTime? UpdateDate { get; set; }

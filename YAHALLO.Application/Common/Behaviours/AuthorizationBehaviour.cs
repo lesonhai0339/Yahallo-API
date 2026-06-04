@@ -54,7 +54,7 @@ namespace YAHALLO.Application.Common.Behaviours
                         // Must be a member of at least one role in roles
                         if (!authorized)
                         {
-                            throw new ForbiddenAccessException();
+                            throw new ForbiddenAccessException("");
                         }
                     }
                 }
@@ -69,7 +69,7 @@ namespace YAHALLO.Application.Common.Behaviours
 
                         if (!authorized)
                         {
-                            throw new ForbiddenAccessException();
+                            throw new ForbiddenAccessException("");
                         }
                     }
                 }

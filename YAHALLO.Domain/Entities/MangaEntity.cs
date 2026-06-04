@@ -22,14 +22,23 @@ namespace YAHALLO.Domain.Entities
         public MangaType Type { get; set; }
         public CountriesEnum Countries { get; set; }
         public int Season { get; set; }
+        public string? MangaThumbnail { get; set; }
+        public string? MangaBackground { get;set; }  
+
+
+        //Newest chapter
+        public int? LastChapterIndex { get; set; }  
+        public string? LastChapterId { get; set; }  
+        public DateTime? LastChapterUpdate { get;set; } 
+
 
         public string? MangaSeasonId { get; set; }
-        public virtual MangaSeasonEntity MangaSeasonEntity { get; set; } = null!;
         public string? UserId { get; set; }
+
         public virtual UserEntity UserEntity { get; set; } = null!;
         public virtual MangaViewEntity? MangaView { get; set; }
-        public virtual ImageEntity? Thumbnail { get; set; }
         public virtual CountingEntitity? ViewCount { get; set; }
+        public virtual MangaSeasonEntity MangaSeasonEntity { get; set; } = null!;
 
         public virtual ICollection<MangaAssociateNameEntity>? AssociateNameEntities {get;set;}
         public virtual ICollection<MangaArtistEntity> ArtistEntities { get; set; } = null!;

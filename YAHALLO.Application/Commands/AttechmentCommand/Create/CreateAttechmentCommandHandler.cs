@@ -57,7 +57,7 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
             {
                 throw new NotFoundException($"{entity.Item1} với Id {entity.Item2} không tồn tại");
             }
-            AttechmentEntity attechment = new AttechmentEntity
+            AttachmentEntity attechment = new AttachmentEntity
             {
                 Description = request.Description,
                 MediaType = request.MediaType,

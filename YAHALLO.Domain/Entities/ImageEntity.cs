@@ -45,6 +45,5 @@ namespace YAHALLO.Domain.Entities
         public string? ChapterId { get; set; }
         public virtual ChapterEntity? ChapterEntity { get; set; }
         public string? MangaId { get; set; }
-        public virtual MangaEntity? MangaEntity { get; set; }
     }
 }

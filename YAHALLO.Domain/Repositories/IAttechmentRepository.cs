@@ -8,7 +8,7 @@ using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Domain.Repositories
 {
-    public interface IAttechmentRepository : IEFRepository<AttechmentEntity, AttechmentEntity>
+    public interface IAttechmentRepository : IEFRepository<AttachmentEntity, AttachmentEntity>
     {
     }
 }

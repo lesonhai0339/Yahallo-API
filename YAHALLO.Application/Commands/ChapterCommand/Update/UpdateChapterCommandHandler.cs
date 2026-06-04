@@ -1,21 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
-using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.Base;
-using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Infrastructure.Persistence.Repositories;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Update
 {
@@ -142,7 +132,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
                                 return new ResponseResult<string>(message: "Cập nhật thất bại");
                             }
                         }
-                        catch(SqlException ex)
+                        catch(Exception ex)
                         {
                             throw new Exception($"Đã xảy ra lỗi tronng quá trình cập nhật dữ liệu: {ex}");
                         }

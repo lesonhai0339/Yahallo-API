@@ -12,7 +12,7 @@ using YAHALLO.Infrastructure.Persistence.Data;
 
 namespace YAHALLO.Infrastructure.Persistence.Repositories
 {
-    public class AttechmentRepository : RepositoryBase<AttechmentEntity, AttechmentEntity, ApplicationDbContext>, IAttechmentRepository
+    public class AttechmentRepository : RepositoryBase<AttachmentEntity, AttachmentEntity, ApplicationDbContext>, IAttechmentRepository
     {
         public AttechmentRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {

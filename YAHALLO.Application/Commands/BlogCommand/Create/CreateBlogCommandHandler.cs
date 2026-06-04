@@ -33,7 +33,7 @@ namespace YAHALLO.Application.Commands.BlogCommand.Create
 
         public async Task<ResponseResult<string>> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
         {
-            var checkAttachmentExists = new List<AttechmentEntity>();
+            var checkAttachmentExists = new List<AttachmentEntity>();
             var checkThreadExists = await _threadRepository.FindAllAsync(x => request.ThreadIds.Any(y=> y == x.Id), cancellationToken);
             if(checkThreadExists.Count != request.ThreadIds?.Count)
             {

@@ -10,6 +10,8 @@ namespace YAHALLO.Domain.Repositories.Storage
     public interface IStorageService<T> where T : S3FileBase
     {
         Task<string> CreateSignedURL(T fileInfo);
+        Task<IEnumerable<string>> CreateSignedURL(IEnumerable<T> files);
+
         /// <summary>
         /// Return object GetObjectMetadataResponse(AWS object)
         /// </summary>

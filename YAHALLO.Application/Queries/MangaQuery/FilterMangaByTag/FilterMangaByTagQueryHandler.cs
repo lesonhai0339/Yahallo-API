@@ -1,15 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Domain.Common.Interfaces;
-using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.MangaQuery.FilterMangaByTag

@@ -23,7 +23,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .WithMany(x => x.RatingEntities)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.ToTable("Rating");
+            builder.ToTable("MangaRating");
         }
     }
 }

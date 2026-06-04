@@ -21,7 +21,8 @@ namespace YAHALLO.Application.Queries.MangaQuery
         public string? Type { get; set; }
         public string? Countries { get; set; }
         public int Season { get; set; }
-        public string? Thumbnail { get; set; }
+        public string? MangaThumbnail { get; set; }
+        public string? MangaBackground { get; set; }
         public string? UserId { get; set; }
 
         // Aggregated
@@ -30,10 +31,10 @@ namespace YAHALLO.Application.Queries.MangaQuery
         public int TotalViews { get; set; }
         public int TotalChapters { get; set; }
         public List<TagDto> Tags { get; set; } = new();
-        public List<ArtistDto> Artists { get; internal set; } = new();
-        public List<ChapterDto> Chapters { get; internal set; } = new();
-        public List<CommentDto> Comments { get; internal set; } = new();
-        internal List<AuthorDto> Authors { get; set; } = new();
+        public List<ArtistDto> Artists { get; set; } = new();
+        public List<ChapterDto> Chapters { get; set; } = new();
+        public List<CommentDto> Comments { get; set; } = new();
+        public List<AuthorDto> Authors { get; set; } = new();
 
         public void Mapping(Profile profile)
         {

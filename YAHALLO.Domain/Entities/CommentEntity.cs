@@ -56,6 +56,6 @@ namespace YAHALLO.Domain.Entities
         public string? ParentId { get; set; }
         public virtual CommentEntity? Parent { get; set; }
         public virtual ICollection<CommentEntity>? Entities { get; set; }
-        public virtual ICollection<AttechmentEntity>? Attechments { get; set; } 
+        public virtual ICollection<AttachmentEntity>? Attechments { get; set; } 
     }
 }
