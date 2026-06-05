@@ -9,6 +9,8 @@ using YAHALLO.Domain.Repositories;
 using System.Security.Cryptography;
 using YAHALLO.Infrastructure.Persistence.Data;
 using YAHALLO.Infrastructure.Data;
+using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace YAHALLO.Infrastructure.Persistence.Repositories
 {
@@ -16,6 +18,15 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
     {
         public UserRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
+        }
+        public override Task<UserEntity?> FindAsync(Expression<Func<UserEntity, bool>> filterExpression, CancellationToken cancellationToken = default)
+        {
+            return base.FindAsync(
+                filterExpression: filterExpression, 
+                queryOptions: x =>
+                    x.Include(u => u.UserRoleEntities)
+                     .ThenInclude(ur => ur.RoleEntity),
+                cancellationToken: cancellationToken);
         }
         public string HashPassword(string password)
         {

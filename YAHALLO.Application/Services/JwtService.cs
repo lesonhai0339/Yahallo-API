@@ -43,7 +43,7 @@ namespace YAHALLO.Services
                 issuer: validIssuer,
                 audience: validAudience,
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.UtcNow.AddDays(1),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -61,7 +61,7 @@ namespace YAHALLO.Services
             {
 
                 new(JwtRegisteredClaimNames.Sub, ID),
-                new Claim("UserLevel", level.ToString())
+                new Claim("UserLevel", ((int)level).ToString())
             };
             foreach (var role in roles)
             {
@@ -74,7 +74,7 @@ namespace YAHALLO.Services
                 issuer: validIssuer,
                 audience: validAudience,
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.UtcNow.AddDays(1),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,57 +25,38 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
         }
         public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var checkUserExist= await _userRepository.FindAsync(x=> x.UserName == request.UserName, cancellationToken); 
-            if(checkUserExist == null)
+            var checkUserExist = await _userRepository.FindAsync(x => x.UserName == request.UserName, cancellationToken);
+            if (checkUserExist == null)
             {
-                throw new NotFoundException("Tên đăng nhập không chính xác");
+                throw new NotFoundException("Tên đăng nhập không chính xác");
             }
             var checkPassword = _userRepository.VerifyPassword(checkUserExist.Password, request.Password);
-            if(checkPassword == false)
+            if (checkPassword == false)
             {
-                throw new NotFoundException("Mật khẩu không chính xác");
+                throw new NotFoundException("Mật khẩu không chính xác");
             }
             var checkExistToken = await _userTokenRepository.FindAsync(x => x.Id == checkUserExist.Id, cancellationToken);
-            if(checkExistToken != null)
+            if (checkExistToken != null)
             {
-                if(DateTime.TryParse(checkExistToken.ExpiredRefeshToken, out DateTime expired))
+                var newToken = _token.CreateToken(checkUserExist.Id, checkUserExist.Level, checkUserExist.UserRoleEntities.Select(x => x.RoleEntity.RoleCode.ToString()).ToList());
+                if (newToken != null)
                 {
-                    if(expired > DateTime.Now)
+                    checkExistToken.AccessToken = newToken;
+                    checkExistToken.RefeshToken = _token.GenerateRefreshToken();
+                    checkExistToken.ExpiredRefeshToken = DateTime.UtcNow.AddDays(1).ToString();
+                    _userTokenRepository.Update(checkExistToken);
+                    var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+                    if (result > 0)
                     {
                         return new LoginResponse(
-                            checkExistToken.Id,
-                            checkUserExist.AvatarThumbnail,
-                            checkUserExist.DisplayName, 
-                            checkExistToken.AccessToken, 
-                            checkExistToken.RefeshToken);
-                    }
-                    else
-                    {
-                        var newToken = _token.CreateToken(checkUserExist.Id,checkUserExist.Level, checkUserExist.UserRoleEntities.Select(x => x.RoleEntity.RoleCode.ToString()).ToList());
-                        if (newToken != null)
-                        {
-                            checkExistToken.AccessToken = newToken;
-                            checkExistToken.RefeshToken = _token.GenerateRefreshToken();
-                            checkExistToken.ExpiredRefeshToken = DateTime.Now.AddDays(1).ToString();                        
-                            _userTokenRepository.Update(checkExistToken);
-                            var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-                            if (result > 0)
-                            {
-                                return new LoginResponse(
-                                   id: checkExistToken.Id,
-                                   avatarUri: checkUserExist.AvatarThumbnail,
-                                   name: checkUserExist.DisplayName,
-                                   accessToken: checkExistToken.AccessToken,
-                                   refreshToken: checkExistToken.RefeshToken);
-                            }
-                            else
-                            {
-                                throw new UnAuthorizeException("Đăng nhập thất bại");
-                            }
-                        }
+                           id: checkExistToken.Id,
+                           avatarUri: checkUserExist.AvatarThumbnail,
+                           name: checkUserExist.DisplayName,
+                           accessToken: checkExistToken.AccessToken,
+                           refreshToken: checkExistToken.RefeshToken);
                     }
                 }
-                throw new UnAuthorizeException("Đăng nhập thất bại");
+                throw new UnAuthorizeException("Đăng nhập thất bại");
             }
             else
             {
@@ -88,7 +69,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                         Id = checkUserExist.Id,
                         AccessToken = token,
                         RefeshToken = refreshToken,
-                        ExpiredRefeshToken = DateTime.Now.AddDays(1).ToString()
+                        ExpiredRefeshToken = DateTime.UtcNow.AddDays(1).ToString()
                     };
                     _userTokenRepository.Add(userToken);
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
@@ -103,10 +84,10 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     }
                     else
                     {
-                        throw new UnAuthorizeException("Đăng nhập thất bại");
+                        throw new UnAuthorizeException("Đăng nhập thất bại");
                     }
                 }
-                throw new UnAuthorizeException("Đăng nhập thất bại");
+                throw new UnAuthorizeException("Đăng nhập thất bại");
             }
         }
     }

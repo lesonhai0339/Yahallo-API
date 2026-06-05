@@ -41,12 +41,12 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                     else
                     {
                         var roles = await _userRoleRepository.FindAllAsync(x => x.UserId == checkRefreshToken.Id, cancellationToken);
-                        var newToken = _jwtService.CreateToken(checkRefreshToken.Id, roles.Select(x => x.RoleId).ToList());
+                        var newToken = _jwtService.CreateToken(checkRefreshToken.Id, checkRefreshToken.UserEntity.Level, roles.Select(x => x.RoleEntity.RoleCode.ToString()).ToList());
                         if (newToken == null) throw new Exception("Tạo token thất bại");
                         var newRefeshToken = _jwtService.GenerateRefreshToken();
                         checkRefreshToken.AccessToken = newToken;
                         checkRefreshToken.RefeshToken = newRefeshToken;
-                        checkRefreshToken.ExpiredRefeshToken = DateTime.Now.AddDays(1).ToString();
+                        checkRefreshToken.ExpiredRefeshToken = DateTime.UtcNow.AddDays(1).ToString();
                         _userTokenRepository.Update(checkRefreshToken);
                         var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                         if (result > 0)

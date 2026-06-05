@@ -76,7 +76,6 @@ namespace YAHALLO
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            app.UseRouting();
             app.UseCors("CorsPolicy");
             app.UseSerilogRequestLogging();
             app.UseExceptionHandler();
