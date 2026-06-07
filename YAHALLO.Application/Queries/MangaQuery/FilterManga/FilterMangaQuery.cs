@@ -19,7 +19,9 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             int pageSize, 
             string? id, 
             string? name, 
-            string? tagId,
+            string? tagIds,
+            string? authorId,
+            string? artistId,
             MangaLevel? level, 
             MangaStatus? status, 
             MangaType? type, 
@@ -32,7 +34,9 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             PageSize = pageSize;
             Id = id;
             Name = name;
-            TagId = tagId;  
+            TagIds = tagIds;
+            AuthorId = authorId;
+            ArtistId = artistId;
             Level = level;
             Status = status;
             Type = type;
@@ -46,7 +50,9 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         public int PageSize { get; set; }
         public string? Id { get; set; }
         public string? Name { get; set; }
-        public string? TagId { get; set; }  
+        public string? TagIds { get; set; }  
+        public string? AuthorId { get; set; }    
+        public string? ArtistId { get; set; }   
         public MangaLevel? Level { get; set; }
         public MangaStatus? Status { get; set; }
         public MangaType? Type { get; set; }

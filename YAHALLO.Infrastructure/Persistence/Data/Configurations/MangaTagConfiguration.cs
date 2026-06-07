@@ -12,7 +12,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasKey(e => new { e.MangaId, e.TagId });
 
             builder.HasOne(e => e.Manga)
-                .WithMany()
+                .WithMany(t => t.TagEntities)
                 .HasForeignKey(e => e.MangaId)
                 .OnDelete(DeleteBehavior.Cascade);
 

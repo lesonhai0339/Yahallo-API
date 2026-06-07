@@ -17,7 +17,7 @@ namespace YAHALLO.Application.Queries.UserQuery
         {
             var map = mapper.Map<UserDto>(Entity);
             map.DisplayName = Entity.FirstName + " " + Entity.LastName;
-            map.Avatar = Entity.Avatar?.BaseUrl ?? Entity.Avatar?.CloudUrl ?? "";
+            map.Avatar = Entity.AvatarThumbnail;
             map.Status = Entity.Status.GetDescription();
             map.Level = Entity.Level.GetDescription();
             return map;

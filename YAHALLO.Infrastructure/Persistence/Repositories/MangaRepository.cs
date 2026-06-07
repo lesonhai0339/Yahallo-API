@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Application.Queries.AuthorQuery;
 using YAHALLO.Application.Queries.ChapterQuery;
@@ -39,6 +40,55 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
                                             .Include(m => m.ViewCount)
                                             .Include(m => m.RatingEntities),
                         token);
+        }
+        public async Task<List<MangaSumaryDto>> GetLastUpdateManga(int pageNo, int pageSize, CancellationToken token)
+        {
+            var connection = _dbContext.Database.GetDbConnection();
+
+            var sql = @"
+             SELECT m.Id, m.Name, m.MangaThumbnail, m.MangaBackground, m.LastChapterIndex, m.LastChapterId, m.LastChapterUpdate,
+                     ISNULL(v.ViewCount, 0) AS TotalViews,
+                     (SELECT CAST(AVG(CAST(r.Rating AS FLOAT)) AS FLOAT) FROM MangaRating r WHERE r.MangaId = m.Id) AS  AverageRating
+                      FROM Manga m
+                      LEFT JOIN Counting v ON v.MangaId = m.Id
+                      WHERE m.IdUserDelete IS NULL
+                      ORDER BY m.LastChapterUpdate DESC
+                      OFFSET @PageNo ROWS FETCH NEXT @PageSize ROWS ONLY
+
+            SELECT mt.MangaId, t.Id, t.Name, t.Description
+                    FROM MangaTag mt
+                    INNER JOIN Tag t ON t.Id = mt.TagId
+                    WHERE mt.MangaId IN (
+                        SELECT m.Id FROM Manga m
+                        LEFT JOIN Counting v ON v.MangaId = m.Id
+                        WHERE m.IdUserDelete IS NULL
+                        ORDER BY m.LastChapterUpdate DESC
+                        OFFSET @PageNo ROWS FETCH NEXT @PageSize ROWS ONLY);
+            ";
+
+            using var multi = await connection.QueryMultipleAsync(sql, new { PageNo = pageNo, PageSize = pageSize });
+
+            var mangaList = (await multi.ReadAsync<MangaSumaryDto>()).ToList();
+
+            if (!mangaList.Any()) return new List<MangaSumaryDto>();
+
+            var tags = (await multi.ReadAsync<(string MangaId, string Id, string Name, string Description)>()).ToList();
+
+            var tagsByMangaId = tags
+                .GroupBy(x => x.MangaId)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Select(x => new TagDto { Id = x.Id, Name = x.Name, Description = x.Description }).ToList()
+                );
+
+            foreach (var manga in mangaList)
+            {
+                manga.Tags = tagsByMangaId.TryGetValue(manga.Id, out var mangaTags)
+                    ? mangaTags
+                    : new List<TagDto>();
+            }
+
+            return mangaList;
         }
         public async Task<MangaDetailDto?> GetMangaDetail(string mangaId, CancellationToken token)
         {
@@ -98,6 +148,19 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
 
             return manga;
         }
+        public override Task<IPagedResult<MangaEntity>> FindAllAsync(IQueryable<MangaEntity> filterExpression, int pageNo, int pageSize, CancellationToken cancellationToken = default)
+        {
+            return  base.FindAllAsync(
+              filterExpression
+                .OrderBy(t => t.Id)
+                .Include(t => t.TagEntities)
+                .Include(t => t.ArtistEntities)
+                .Include(t => t.AuthorEntities),
+              pageNo,
+              pageSize,
+              cancellationToken);
+        }
+      
         //public async Task<IPagedResult<MangaEntity>> GetLastUpdateMangaPagination(int pageNo, int pageSize, CancellationToken cancellationToken = default)
         //{
 

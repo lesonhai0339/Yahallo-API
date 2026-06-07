@@ -9,6 +9,7 @@ namespace YAHALLO.Application.Repositories
 {
     public interface IMangaQueryRepository
     {
+        Task<List<MangaSumaryDto>> GetLastUpdateManga(int pageNo, int pageSize, CancellationToken token);
         Task<MangaDetailDto?> GetMangaDetail(string mangaId, CancellationToken token);
     }
 }

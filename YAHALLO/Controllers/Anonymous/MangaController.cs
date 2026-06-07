@@ -171,15 +171,15 @@ namespace YAHALLO.Controllers.Anonymous
         }
 
         [HttpGet]
-        [Route("manga/latest-updated")]
+        [Route("manga/lastest-updated")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> GetLatestUpdatedManga(
+        public async Task<ActionResult<JsonResponse<PagedResult<MangaSumaryDto>>>> GetLatestUpdatedManga(
             [FromQuery] GetLatestUpdatedMangaQuery query,
             CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
+            return Ok(new JsonResponse<PagedResult<MangaSumaryDto>>(result));
         }
 
         [HttpGet]

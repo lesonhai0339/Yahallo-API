@@ -17,7 +17,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 
             builder.HasOne(x => x.Manga)
                 .WithMany(x => x.AuthorEntities)
-                .HasForeignKey(x => x.AuthorId)
+                .HasForeignKey(x => x.MangaId)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.Author)
                 .WithMany(x => x.AuthorEntities)

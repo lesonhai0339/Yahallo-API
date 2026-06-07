@@ -39,7 +39,7 @@ namespace YAHALLO.Domain.Entities
         public virtual MangaViewEntity? MangaView { get; set; }
         public virtual CountingEntitity? ViewCount { get; set; }
         public virtual MangaSeasonEntity MangaSeasonEntity { get; set; } = null!;
-
+        public virtual ICollection<MangaTagEntity>? TagEntities { get; set; }
         public virtual ICollection<MangaAssociateNameEntity>? AssociateNameEntities {get;set;}
         public virtual ICollection<MangaArtistEntity> ArtistEntities { get; set; } = null!;
         public virtual ICollection<MangaAuthorEntity> AuthorEntities { get; set; } = null!;

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YAHALLO.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using YAHALLO.Infrastructure.Data;
 namespace YAHALLO.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260606201306_FixMangaAuthorFK")]
+    partial class FixMangaAuthorFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -673,10 +676,15 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<string>("IdUserUpdate")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MangaEntityId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("MangaId", "TagId");
+
+                    b.HasIndex("MangaEntityId");
 
                     b.HasIndex("TagId");
 
@@ -1658,8 +1666,12 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.MangaTagEntity", b =>
                 {
-                    b.HasOne("YAHALLO.Domain.Entities.MangaEntity", "Manga")
+                    b.HasOne("YAHALLO.Domain.Entities.MangaEntity", null)
                         .WithMany("TagEntities")
+                        .HasForeignKey("MangaEntityId");
+
+                    b.HasOne("YAHALLO.Domain.Entities.MangaEntity", "Manga")
+                        .WithMany()
                         .HasForeignKey("MangaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

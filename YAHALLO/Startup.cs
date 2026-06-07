@@ -65,7 +65,7 @@ namespace YAHALLO
                 );
             });
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-
+            services.ConfigureHealthChecks(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,7 +86,7 @@ namespace YAHALLO
             app.UseRateLimiter();
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapDefaultHealthChecks();
+                endpoints.MapDefaultHealthChecks();
                 endpoints.MapControllers();
                 endpoints.MapHub<NotificationHub>("/hubs/notification");
             });

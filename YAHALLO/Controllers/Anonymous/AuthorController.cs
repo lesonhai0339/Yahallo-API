@@ -79,6 +79,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<string>(result));
         }
         [HttpGet]
+        [AllowAnonymous]
         [Route("author/get-all")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<List<AuthorDto>>), StatusCodes.Status201Created)]
@@ -91,6 +92,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<List<AuthorDto>>(result));
         }
         [HttpGet]
+        [AllowAnonymous]
         [Route("author/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<AuthorDto>>), StatusCodes.Status201Created)]
@@ -129,6 +131,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<PagedResult<AuthorDto>>(result));
         }
         [HttpGet]
+        [AllowAnonymous]
         [Route("author/filter-author")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<AuthorDto>>), StatusCodes.Status201Created)]
