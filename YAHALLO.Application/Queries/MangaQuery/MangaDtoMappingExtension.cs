@@ -14,7 +14,7 @@ namespace YAHALLO.Application.Queries.MangaQuery
     {
         public static MangaDto MapToMangaDto(this MangaEntity entity, IMapper mapper)
             => mapper.Map<MangaDto>(entity);
-        public static MangaDto MapFullToMangaDto(this MangaEntity entity, IMapper mapper, ChapterEntity? latestChapter = null)
+        public static MangaDto MapFullToMangaDto(this MangaEntity entity, IMapper mapper)
         {
             var map = mapper.Map<MangaDto>(entity);
             map.MangaThumbnail = entity.MangaThumbnail;
@@ -24,10 +24,8 @@ namespace YAHALLO.Application.Queries.MangaQuery
             map.Status = entity.Status.GetDescription();
             map.Type = entity.Type.GetDescription();
             map.Countries = entity.Countries.GetDescription();
-            if (latestChapter != null)
-            {
-                map.LastestChapter = latestChapter.MapFullToChapterDto(mapper);
-            }
+            map.LastestChapter = mapper.Map<ChapterDto>(entity.LastChapter);
+
             return map;
         }
         public static List<MangaDto> MapToMangaDtoToList(this ICollection<MangaEntity> entitiess, IMapper mapper)

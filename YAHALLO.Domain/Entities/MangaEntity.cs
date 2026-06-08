@@ -30,6 +30,7 @@ namespace YAHALLO.Domain.Entities
         public int? LastChapterIndex { get; set; }  
         public string? LastChapterId { get; set; }  
         public DateTime? LastChapterUpdate { get;set; } 
+        public virtual ChapterEntity? LastChapter { get; set; }
 
 
         public string? MangaSeasonId { get; set; }

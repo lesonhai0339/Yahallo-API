@@ -28,7 +28,10 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             CountriesEnum? countries, 
             int? season, 
             string? userId, 
-            DateTime? dateUpdate)
+            DateTime? dateUpdate,
+            MangaSortBy sortby,
+            bool reverserSort
+            )
         {
             PageNumber = pageNumber;
             PageSize = pageSize;
@@ -60,5 +63,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         public int? Season { get; set; }
         public string? UserId { get; set; }
         public DateTime? DateUpdate { get; set; }
+        public MangaSortBy? SortBy { get; set; }
+        public bool ReverserSort { get; set; } 
     }
 }

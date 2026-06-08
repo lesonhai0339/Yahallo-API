@@ -2,6 +2,7 @@
 using Dapper;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Application.Queries.AuthorQuery;
 using YAHALLO.Application.Queries.ChapterQuery;
@@ -150,69 +151,11 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
         }
         public override Task<IPagedResult<MangaEntity>> FindAllAsync(IQueryable<MangaEntity> filterExpression, int pageNo, int pageSize, CancellationToken cancellationToken = default)
         {
-            return  base.FindAllAsync(
-              filterExpression
-                .OrderBy(t => t.Id)
-                .Include(t => t.TagEntities)
-                .Include(t => t.ArtistEntities)
-                .Include(t => t.AuthorEntities),
-              pageNo,
-              pageSize,
-              cancellationToken);
+            return base.FindAllAsync(
+               filterExpression.Include(x => x.LastChapter),
+               pageNo,
+               pageSize,
+               cancellationToken);
         }
-      
-        //public async Task<IPagedResult<MangaEntity>> GetLastUpdateMangaPagination(int pageNo, int pageSize, CancellationToken cancellationToken = default)
-        //{
-
-        //    var connection = _dbContext.Database.GetDbConnection();
-
-        //    // Query 1: Lấy manga latest update
-        //    var mangas = await base.FindAllAsync(
-        //        filterExpression: x => string.IsNullOrEmpty(x.IdUserDelete)
-        //                             && !x.DeleteDate.HasValue,
-        //        pageNo: pageNo,
-        //        pageSize: pageSize,
-        //        queryOptions: x => x
-        //            .OrderByDescending(m => m.UpdateDate)
-        //            .Include(m => m.MangaThumbnail),
-        //        cancellationToken: cancellationToken);
-
-        //    // Query 2: Lấy latest chapter cho từng manga
-        //    var mangaIds = mangas.Select(x => x.Id).ToList();
-
-        //    var chapters = await connection.QueryAsync<ChapterRaw>(
-        //        @"SELECT c.Id, c.MangaId, c.Title, c.[Index], c.CreateDate
-        //  FROM Chapter c
-        //  WHERE c.MangaId IN @MangaIds
-        //    AND c.DeleteDate IS NULL
-        //    AND (c.IdUserDelete IS NULL OR c.IdUserDelete LIKE '')
-        //    AND c.Id = (
-        //        SELECT TOP 1 c2.Id
-        //        FROM Chapter c2
-        //        WHERE c2.MangaId = c.MangaId
-        //          AND c2.DeleteDate IS NULL
-        //        ORDER BY c2.CreateDate DESC
-        //    )",
-        //        new { MangaIds = mangaIds });
-
-        //    // Map chapter vào manga in-memory
-        //    var chapterLookup = chapters.ToDictionary(x => x.MangaId);
-        //    foreach (var manga in mangas)
-        //        manga.ChaptersEntities = chapterLookup.TryGetValue(manga.Id, out var chapter)
-        //            ? new List<ChapterEntity>
-        //            {
-        //        new ChapterEntity
-        //        {
-        //            Id = chapter.Id,
-        //            MangaId = chapter.MangaId,
-        //            Title = chapter.Title,
-        //            Index = chapter.Index,
-        //            CreateDate = chapter.CreateDate
-        //        }
-        //            }
-        //            : new List<ChapterEntity>();
-
-        //    return mangas;
-        //}
     }
 }

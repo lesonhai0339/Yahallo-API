@@ -32,6 +32,11 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                .WithOne(x => x.Manga)
                .HasForeignKey<CountingEntitity>(x => x.MangaId)
                .OnDelete(DeleteBehavior.Cascade);
+
+            builder
+    .HasOne(x => x.LastChapter)
+    .WithMany()
+    .HasForeignKey(x => x.LastChapterId);
             builder.ToTable("Manga");
         }
     }
