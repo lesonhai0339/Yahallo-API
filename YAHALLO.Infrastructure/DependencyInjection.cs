@@ -39,7 +39,7 @@ namespace YAHALLO.Infrastructure
         }
         public static IServiceCollection Infrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            DotEnv.Load();
+            DotEnv.Load(new DotEnvOptions(ignoreExceptions: true, overwriteExistingVars: false));
 
             services.Configure<AwsS3Options>(configuration.GetSection(nameof(AwsS3Options)));
 

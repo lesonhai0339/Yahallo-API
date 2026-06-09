@@ -101,3 +101,1143 @@ ORDER BY [t].[LastChapterUpdate] DESC
 2026-06-09 00:01:55.898 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
 2026-06-09 00:01:55.898 +07:00 [INF] HTTP GET /manga/filter-manga responded 200 in 3162.7996 ms
 2026-06-09 00:01:55.904 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/filter-manga?PageNumber=1&PageSize=20&SortBy=0&ReverserSort=true - 200 null application/json; charset=utf-8 3173.4958ms
+2026-06-09 08:40:00.019 +07:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-09 08:40:00.678 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-09 08:40:01.466 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-09 08:40:02.372 +07:00 [WRN] The WebRootPath was not found: C:\Users\PC\source\repos\Yahallo-API\YAHALLO\wwwroot. Static files may be unavailable.
+2026-06-09 08:40:02.564 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-09 08:40:02.564 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-09 08:40:02.651 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .@Yahallo'
+2026-06-09 08:40:02.668 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-09 08:40:02.670 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-09 08:40:02.689 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-09 08:40:02.691 +07:00 [INF] Hosting environment: Development
+2026-06-09 08:40:02.694 +07:00 [INF] Content root path: C:\Users\PC\source\repos\Yahallo-API\YAHALLO
+2026-06-09 08:40:02.720 +07:00 [INF] Server laptop-kbhrm1q7:23488:6a8d14ba successfully announced in 31.0512 ms
+2026-06-09 08:40:02.728 +07:00 [INF] Server laptop-kbhrm1q7:23488:6a8d14ba is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-09 08:40:02.751 +07:00 [INF] 1 servers were removed due to timeout
+2026-06-09 08:40:02.876 +07:00 [INF] Server laptop-kbhrm1q7:23488:6a8d14ba all the dispatchers started
+2026-06-09 08:40:03.837 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-06-09 08:40:03.840 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 08:40:03.880 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 14919 application/javascript; charset=utf-8 39.626ms
+2026-06-09 08:40:04.138 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 163.3698 ms
+2026-06-09 08:40:04.145 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 315.697ms
+2026-06-09 08:40:04.218 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 08:40:04.218 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-06-09 08:40:04.224 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 14919 application/javascript; charset=utf-8 5.7108ms
+2026-06-09 08:40:04.273 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 55.2988ms
+2026-06-09 08:40:04.418 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-06-09 08:40:04.532 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 109.0949 ms
+2026-06-09 08:40:04.535 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 117.9504ms
+2026-06-09 08:40:04.943 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-09 08:40:06.720 +07:00 [INF] Executed DbCommand (107ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [s].[Id], [s].[CreateDate], [s].[DeleteDate], [s].[EndDate], [s].[IdUserCreate], [s].[IdUserDelete], [s].[IdUserUpdate], [s].[Plan], [s].[StartDate], [s].[Status], [s].[UpdateDate], [s].[UserId]
+FROM [Subscription] AS [s]
+WHERE [s].[Status] = 1 AND [s].[EndDate] < GETDATE()
+2026-06-09 08:40:06.764 +07:00 [INF] Expired 0 subscriptions
+2026-06-09 08:45:08.681 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - null null
+2026-06-09 08:45:08.682 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/get-all - null null
+2026-06-09 08:45:08.688 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - null null
+2026-06-09 08:45:08.703 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:08.701 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:08.711 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 08:45:08.708 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:08.709 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - null null
+2026-06-09 08:45:08.745 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:08.728 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - null null
+2026-06-09 08:45:08.749 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO)'
+2026-06-09 08:45:08.749 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 08:45:08.749 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2026-06-09 08:45:08.751 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:08.753 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:08.757 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:08.765 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:08.766 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:08.785 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-09 08:45:08.785 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 08:45:08.785 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2026-06-09 08:45:08.785 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 08:45:08.785 +07:00 [INF] Route matched with {action = "GetAllAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] GetAllAuthor(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2026-06-09 08:45:08.785 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 08:45:09.445 +07:00 [INF] Executed DbCommand (110ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-09 08:45:09.462 +07:00 [INF] Executed DbCommand (127ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-09 08:45:09.467 +07:00 [INF] Executed DbCommand (132ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [t].[Id], [t].[CreateDate], [t].[DeleteDate], [t].[Description], [t].[IdUserCreate], [t].[IdUserDelete], [t].[IdUserUpdate], [t].[Name], [t].[UpdateDate]
+FROM [Tag] AS [t]
+WHERE [t].[IdUserDelete] IS NULL OR [t].[IdUserDelete] LIKE N''
+2026-06-09 08:45:09.588 +07:00 [WRN] Yahallo Long Running Request: GetAllAuthorQuery (745 milliseconds)  {"$type":"GetAllAuthorQuery"}
+2026-06-09 08:45:09.588 +07:00 [WRN] Yahallo Long Running Request: GetAllArtistQuery (745 milliseconds)  {"$type":"GetAllArtistQuery"}
+2026-06-09 08:45:09.590 +07:00 [WRN] Yahallo Long Running Request: GetAllTagQuery (752 milliseconds)  {"$type":"GetAllTagQuery"}
+2026-06-09 08:45:09.603 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 08:45:09.603 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 08:45:09.603 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 08:45:09.626 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - null null
+2026-06-09 08:45:09.631 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:09.632 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 840.0685ms
+2026-06-09 08:45:09.632 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO) in 821.8469ms
+2026-06-09 08:45:09.632 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 837.4061ms
+2026-06-09 08:45:09.633 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 08:45:09.634 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 08:45:09.635 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO)'
+2026-06-09 08:45:09.636 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2026-06-09 08:45:09.638 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-09 08:45:09.638 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 906.9649 ms
+2026-06-09 08:45:09.639 +07:00 [INF] HTTP GET /author/get-all responded 200 in 907.7971 ms
+2026-06-09 08:45:09.640 +07:00 [INF] HTTP GET /artist/get-all responded 200 in 894.3054 ms
+2026-06-09 08:45:09.644 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - 200 null application/json; charset=utf-8 966.2372ms
+2026-06-09 08:45:09.646 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/get-all - 200 null application/json; charset=utf-8 964.498ms
+2026-06-09 08:45:09.648 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 08:45:09.648 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - 200 null application/json; charset=utf-8 960.9027ms
+2026-06-09 08:45:09.663 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 20.8679ms
+2026-06-09 08:45:09.665 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 08:45:09.666 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 34.0875 ms
+2026-06-09 08:45:09.668 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - 200 null application/json; charset=utf-8 42.6182ms
+2026-06-09 08:45:09.674 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (835 milliseconds)  {"PageNumber":1,"PageSize":12,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 08:45:09.674 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (835 milliseconds)  {"PageNumber":1,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 08:45:09.674 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (835 milliseconds)  {"PageNumber":2,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 08:45:09.679 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 08:45:09.683 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 08:45:09.688 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 08:45:09.706 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 914.8415ms
+2026-06-09 08:45:09.707 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 909.4058ms
+2026-06-09 08:45:09.707 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 892.7405ms
+2026-06-09 08:45:09.709 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:09.710 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:09.712 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:09.714 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 947.9329 ms
+2026-06-09 08:45:09.716 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 953.0225 ms
+2026-06-09 08:45:09.717 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 964.8739 ms
+2026-06-09 08:45:09.720 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - 200 null application/json; charset=utf-8 992.8038ms
+2026-06-09 08:45:09.723 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - 200 null application/json; charset=utf-8 1014.061ms
+2026-06-09 08:45:09.725 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 1015.699ms
+2026-06-09 08:45:24.399 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - null null
+2026-06-09 08:45:24.403 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:24.404 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-09 08:45:24.411 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 08:45:25.094 +07:00 [INF] Executed DbCommand (91ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-09 08:45:25.588 +07:00 [INF] Executed DbCommand (67ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[Level], [m].[MangaBackground], [m].[MangaSeasonId], [m].[MangaThumbnail], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY [m].[LastChapterUpdate] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-09 08:45:25.657 +07:00 [WRN] Yahallo Long Running Request: GetAllMangaPaginationQuery (1223 milliseconds)  {"PageNumber":1,"PageSize":20,"$type":"GetAllMangaPaginationQuery"}
+2026-06-09 08:45:25.663 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 08:45:25.685 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 1272.3535ms
+2026-06-09 08:45:25.688 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-09 08:45:25.689 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 1285.7213 ms
+2026-06-09 08:45:25.692 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - 200 null application/json; charset=utf-8 1294.0824ms
+2026-06-09 08:45:26.392 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - null null
+2026-06-09 08:45:26.393 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - null null
+2026-06-09 08:45:26.393 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 08:45:26.395 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:26.397 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:26.399 +07:00 [INF] CORS policy execution successful.
+2026-06-09 08:45:26.400 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:26.400 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:26.402 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:26.404 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 08:45:26.405 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 08:45:26.407 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 08:45:26.861 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 08:45:26.865 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 450.5544ms
+2026-06-09 08:45:26.867 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:26.869 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 466.4703 ms
+2026-06-09 08:45:26.871 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 478.5769ms
+2026-06-09 08:45:26.872 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 08:45:26.878 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 466.2052ms
+2026-06-09 08:45:26.880 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:26.881 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 480.6023 ms
+2026-06-09 08:45:26.883 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - 200 null application/json; charset=utf-8 490.5769ms
+2026-06-09 08:45:26.892 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 08:45:26.895 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 485.8817ms
+2026-06-09 08:45:26.897 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 08:45:26.898 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 498.6157 ms
+2026-06-09 08:45:26.901 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - 200 null application/json; charset=utf-8 509.0521ms
+2026-06-09 09:17:53.375 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - null null
+2026-06-09 09:17:53.382 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:17:53.383 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-09 09:17:53.385 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:17:54.073 +07:00 [INF] Executed DbCommand (188ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-09 09:17:54.646 +07:00 [INF] Executed DbCommand (102ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[Level], [m].[MangaBackground], [m].[MangaSeasonId], [m].[MangaThumbnail], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY [m].[LastChapterUpdate] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-09 09:17:54.666 +07:00 [WRN] Yahallo Long Running Request: GetAllMangaPaginationQuery (1276 milliseconds)  {"PageNumber":1,"PageSize":20,"$type":"GetAllMangaPaginationQuery"}
+2026-06-09 09:17:54.676 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:17:54.679 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 1292.5461ms
+2026-06-09 09:17:54.682 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-09 09:17:54.683 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 1299.5196 ms
+2026-06-09 09:17:54.685 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - 200 null application/json; charset=utf-8 1310.0909ms
+2026-06-09 09:18:01.908 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/filter-manga?tagIds=59291e2f-31c3-4fbf-b212-d57325dcf295&pageNumber=1&pageSize=10 - null null
+2026-06-09 09:18:01.912 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:18:01.914 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
+2026-06-09 09:18:01.918 +07:00 [INF] Route matched with {action = "FilterManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] FilterManga(YAHALLO.Application.Queries.MangaQuery.FilterManga.FilterMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:18:02.981 +07:00 [INF] Executed DbCommand (299ms) [Parameters=[@__tags_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL AND NOT EXISTS (
+    SELECT 1
+    FROM OPENJSON(@__tags_0) WITH ([value] nvarchar(450) '$') AS [t]
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM [MangaTag] AS [m0]
+        WHERE [m].[Id] = [m0].[MangaId] AND LTRIM(RTRIM([m0].[TagId])) = [t].[value]))
+2026-06-09 09:18:02.998 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-09 09:18:02.999 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-09 09:18:03.803 +07:00 [INF] Executed DbCommand (104ms) [Parameters=[@__tags_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [t0].[Id], [t0].[Countries], [t0].[CreateDate], [t0].[DeleteDate], [t0].[Description], [t0].[IdUserCreate], [t0].[IdUserDelete], [t0].[IdUserUpdate], [t0].[LastChapterId], [t0].[LastChapterIndex], [t0].[LastChapterUpdate], [t0].[Level], [t0].[MangaBackground], [t0].[MangaSeasonId], [t0].[MangaThumbnail], [t0].[Name], [t0].[Season], [t0].[Status], [t0].[Type], [t0].[UpdateDate], [t0].[UserId], [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM (
+    SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[Level], [m].[MangaBackground], [m].[MangaSeasonId], [m].[MangaThumbnail], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL AND NOT EXISTS (
+        SELECT 1
+        FROM OPENJSON(@__tags_0) WITH ([value] nvarchar(450) '$') AS [t]
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM [MangaTag] AS [m0]
+            WHERE [m].[Id] = [m0].[MangaId] AND LTRIM(RTRIM([m0].[TagId])) = [t].[value]))
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+LEFT JOIN [Chapter] AS [c] ON [t0].[LastChapterId] = [c].[Id]
+2026-06-09 09:18:03.871 +07:00 [WRN] Yahallo Long Running Request: FilterMangaQuery (1941 milliseconds)  {"PageNumber":1,"PageSize":10,"Id":null,"Name":null,"TagIds":"59291e2f-31c3-4fbf-b212-d57325dcf295","AuthorId":null,"ArtistId":null,"Level":null,"Status":null,"Type":null,"Countries":null,"Season":null,"UserId":null,"DateUpdate":null,"SortBy":null,"ReverserSort":false,"$type":"FilterMangaQuery"}
+2026-06-09 09:18:03.881 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:18:03.884 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO) in 1963.1945ms
+2026-06-09 09:18:03.888 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
+2026-06-09 09:18:03.891 +07:00 [INF] HTTP GET /manga/filter-manga responded 200 in 1977.2897 ms
+2026-06-09 09:18:03.893 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/filter-manga?tagIds=59291e2f-31c3-4fbf-b212-d57325dcf295&pageNumber=1&pageSize=10 - 200 null application/json; charset=utf-8 1984.9265ms
+2026-06-09 09:18:07.803 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - null null
+2026-06-09 09:18:07.803 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:18:07.803 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - null null
+2026-06-09 09:18:07.805 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:18:07.808 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:18:07.811 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:18:07.814 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:18:07.815 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:18:07.816 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:18:07.816 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:18:07.817 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:18:07.819 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:18:08.308 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:18:08.309 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:18:08.312 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 485.292ms
+2026-06-09 09:18:08.318 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:18:08.320 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 499.7905ms
+2026-06-09 09:18:08.323 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 501.5425ms
+2026-06-09 09:18:08.325 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:18:08.321 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:18:08.330 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:18:08.331 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 517.5262 ms
+2026-06-09 09:18:08.332 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 516.1198 ms
+2026-06-09 09:18:08.332 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 517.7160 ms
+2026-06-09 09:18:08.334 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - 200 null application/json; charset=utf-8 531.48ms
+2026-06-09 09:18:08.335 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - 200 null application/json; charset=utf-8 531.9144ms
+2026-06-09 09:18:08.337 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 533.5985ms
+2026-06-09 09:34:22.550 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/detail/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - null null
+2026-06-09 09:34:22.551 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - null null
+2026-06-09 09:34:22.557 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:22.559 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:22.560 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-09 09:34:22.561 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-09 09:34:22.564 +07:00 [INF] Route matched with {action = "FilterChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ChapterQuery.ChapterDto]]]] FilterChapter(YAHALLO.Application.Queries.ChapterQuery.FilterChapter.FilterChapterQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2026-06-09 09:34:22.564 +07:00 [INF] Route matched with {action = "GetMangaDetail", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto]]] GetMangaDetail(System.String, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:34:25.891 +07:00 [INF] Executed DbCommand (992ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Chapter] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[MangaId] = @__request_MangaId_0
+2026-06-09 09:34:25.895 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-09 09:34:25.895 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-09 09:34:26.611 +07:00 [WRN] Yahallo Long Running Request: GetMangaDetailQuery (4040 milliseconds)  {"Id":"1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2","$type":"GetMangaDetailQuery"}
+2026-06-09 09:34:26.616 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:26.619 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO) in 4051.4795ms
+2026-06-09 09:34:26.622 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-09 09:34:26.623 +07:00 [INF] HTTP GET /manga/detail/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 responded 200 in 4063.3419 ms
+2026-06-09 09:34:26.626 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/detail/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - 200 null application/json; charset=utf-8 4076.3049ms
+2026-06-09 09:34:26.630 +07:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - null null
+2026-06-09 09:34:26.631 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:34:26.634 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:26.636 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=10&MangaId=1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - null null
+2026-06-09 09:34:26.638 +07:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - 204 null null 7.6548ms
+2026-06-09 09:34:26.645 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/services/CapNhatView/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - application/json 2
+2026-06-09 09:34:26.643 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:26.636 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:26.649 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:26.650 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-09 09:34:26.650 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:26.652 +07:00 [INF] HTTP POST /services/CapNhatView/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 responded 404 in 0.7866 ms
+2026-06-09 09:34:26.653 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:34:26.654 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/services/CapNhatView/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - 404 0 null 9.6026ms
+2026-06-09 09:34:26.655 +07:00 [INF] Route matched with {action = "FilterComment", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.CommentQuery.CommentDto]]]] FilterComment(YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.CommentController (YAHALLO).
+2026-06-09 09:34:26.663 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7181/services/CapNhatView/1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2, Response status code: 404
+2026-06-09 09:34:30.569 +07:00 [INF] Executed DbCommand (335ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Comment] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+2026-06-09 09:34:30.574 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-09 09:34:30.574 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-09 09:34:32.115 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (5459 milliseconds)  {"PageNumber":1,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:34:32.119 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:32.122 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 5465.5928ms
+2026-06-09 09:34:32.123 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:32.123 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 5472.9837 ms
+2026-06-09 09:34:32.124 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 5493.3008ms
+2026-06-09 09:34:35.505 +07:00 [INF] Executed DbCommand (7,723ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-09 09:34:35.509 +07:00 [WRN] Yahallo Long Running Request: FilterChapterQuery (12901 milliseconds)  {"PageNumber":1,"PageSize":1000,"Id":null,"Index":null,"MangaId":"1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2","MangaName":null,"$type":"FilterChapterQuery"}
+2026-06-09 09:34:35.513 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ChapterQuery.ChapterDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:35.514 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO) in 12947.6271ms
+2026-06-09 09:34:35.516 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-09 09:34:35.516 +07:00 [INF] HTTP GET /chapter/filter-chapter responded 200 in 12955.5669 ms
+2026-06-09 09:34:35.517 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - 200 null application/json; charset=utf-8 12966.0717ms
+2026-06-09 09:34:36.373 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - null null
+2026-06-09 09:34:36.373 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:34:36.374 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - null null
+2026-06-09 09:34:36.375 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:36.378 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:36.380 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:36.380 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:36.381 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:36.382 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:36.382 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:34:36.385 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:34:36.386 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:34:44.231 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (7839 milliseconds)  {"PageNumber":1,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:34:44.231 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (7834 milliseconds)  {"PageNumber":2,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:34:44.235 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:44.238 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:44.240 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 7850.0969ms
+2026-06-09 09:34:44.243 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 7846.8458ms
+2026-06-09 09:34:44.244 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:44.245 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:44.245 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 7864.2400 ms
+2026-06-09 09:34:44.246 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 7864.5370 ms
+2026-06-09 09:34:44.249 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 7874.8655ms
+2026-06-09 09:34:44.250 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - 200 null application/json; charset=utf-8 7876.5273ms
+2026-06-09 09:34:44.263 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (7874 milliseconds)  {"PageNumber":1,"PageSize":12,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:34:44.267 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:44.269 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 7880.6814ms
+2026-06-09 09:34:44.271 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:44.272 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 7891.8432 ms
+2026-06-09 09:34:44.274 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - 200 null application/json; charset=utf-8 7901.0719ms
+2026-06-09 09:34:45.379 +07:00 [ERR] An error occurred using the connection to database 'Yahallo_dev' on server 'yahallo.cnwuqkgwes99.ap-southeast-1.rds.amazonaws.com,1433'.
+2026-06-09 09:34:45.397 +07:00 [ERR] An exception occurred while iterating over the results of a query for context type 'YAHALLO.Infrastructure.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=1487; handshake=7211; [Login] initialization=0; authentication=0; [Post-Login] complete=6010; 
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.<>c__DisplayClass48_0.<CreateReplaceConnectionContinuation>b__0(Task`1 _)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c2c966bc-a597-456e-bef9-786afe7d58dc
+Error Number:-2,State:0,Class:11
+Microsoft.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=1487; handshake=7211; [Login] initialization=0; authentication=0; [Post-Login] complete=6010; 
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.<>c__DisplayClass48_0.<CreateReplaceConnectionContinuation>b__0(Task`1 _)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c2c966bc-a597-456e-bef9-786afe7d58dc
+Error Number:-2,State:0,Class:11
+2026-06-09 09:34:45.653 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterCommentQuery {"PageNumber":1,"PageSize":10,"Id":null,"UserId":null,"MangaId":"1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2","DateTime":null,"IsDateTimeReverser":null,"IsLikeReserver":null,"IsNumberChildrenCommentReserver":null,"$type":"FilterCommentQuery"}
+Microsoft.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=1487; handshake=7211; [Login] initialization=0; authentication=0; [Post-Login] complete=6010; 
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.<>c__DisplayClass48_0.<CreateReplaceConnectionContinuation>b__0(Task`1 _)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at YAHALLO.Infrastructure.Persistence.Repositories.PagedList`1.CreateAsync(IQueryable`1 source, Int32 pageNo, Int32 pageSize, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Infrastructure\Persistence\Repositories\PageList.cs:line 61
+   at YAHALLO.Infrastructure.Persistence.Repositories.RepositoryBase`3.FindAllAsync(IQueryable`1 filterExpression, Int32 pageNo, Int32 pageSize, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Infrastructure\Persistence\Repositories\RepositoryBase.cs:line 404
+   at YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQueryHandler.Handle(FilterCommentQuery request, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Queries\CommentQuery\FilterComment\FilterCommentQueryHandler.cs:line 83
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+ClientConnectionId:c2c966bc-a597-456e-bef9-786afe7d58dc
+Error Number:-2,State:0,Class:11
+2026-06-09 09:34:45.778 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO) in 19112.6846ms
+2026-06-09 09:34:45.780 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-09 09:34:45.783 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=1487; handshake=7211; [Login] initialization=0; authentication=0; [Post-Login] complete=6010; 
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.<>c__DisplayClass48_0.<CreateReplaceConnectionContinuation>b__0(Task`1 _)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at YAHALLO.Infrastructure.Persistence.Repositories.PagedList`1.CreateAsync(IQueryable`1 source, Int32 pageNo, Int32 pageSize, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Infrastructure\Persistence\Repositories\PageList.cs:line 61
+   at YAHALLO.Infrastructure.Persistence.Repositories.RepositoryBase`3.FindAllAsync(IQueryable`1 filterExpression, Int32 pageNo, Int32 pageSize, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Infrastructure\Persistence\Repositories\RepositoryBase.cs:line 404
+   at YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQueryHandler.Handle(FilterCommentQuery request, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Queries\CommentQuery\FilterComment\FilterCommentQueryHandler.cs:line 83
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at YAHALLO.Controllers.Anonymous.CommentController.FilterComment(FilterCommentQuery query, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO\Controllers\Anonymous\CommentController.cs:line 140
+   at lambda_method756(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+ClientConnectionId:c2c966bc-a597-456e-bef9-786afe7d58dc
+Error Number:-2,State:0,Class:11
+2026-06-09 09:34:45.853 +07:00 [ERR] HTTP GET /comment/filter-comment responded 500 in 19202.8801 ms
+2026-06-09 09:34:45.857 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=10&MangaId=1c2b3d7f-e1b5-46d2-82a4-dd05600efbb2 - 500 null application/problem+json 19220.2555ms
+2026-06-09 09:34:45.860 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/hc - null null
+2026-06-09 09:34:45.862 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:45.863 +07:00 [INF] Executing endpoint 'Health checks'
+2026-06-09 09:34:45.999 +07:00 [INF] Executed endpoint 'Health checks'
+2026-06-09 09:34:46.001 +07:00 [INF] HTTP GET /hc responded 200 in 137.7676 ms
+2026-06-09 09:34:46.002 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/hc - 200 null application/json 142.7538ms
+2026-06-09 09:34:46.873 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/detail/176c4dcc-f11e-4e86-b12f-12a27b559d5c - null null
+2026-06-09 09:34:46.873 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=176c4dcc-f11e-4e86-b12f-12a27b559d5c - null null
+2026-06-09 09:34:46.876 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:46.878 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:46.879 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-09 09:34:46.880 +07:00 [INF] Route matched with {action = "GetMangaDetail", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto]]] GetMangaDetail(System.String, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:34:46.880 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-09 09:34:46.883 +07:00 [INF] Route matched with {action = "FilterChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ChapterQuery.ChapterDto]]]] FilterChapter(YAHALLO.Application.Queries.ChapterQuery.FilterChapter.FilterChapterQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2026-06-09 09:34:52.043 +07:00 [INF] Executed DbCommand (624ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Chapter] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[MangaId] = @__request_MangaId_0
+2026-06-09 09:34:55.979 +07:00 [WRN] Yahallo Long Running Request: GetMangaDetailQuery (9095 milliseconds)  {"Id":"176c4dcc-f11e-4e86-b12f-12a27b559d5c","$type":"GetMangaDetailQuery"}
+2026-06-09 09:34:55.983 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:55.984 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO) in 9101.8699ms
+2026-06-09 09:34:55.985 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-09 09:34:55.986 +07:00 [INF] HTTP GET /manga/detail/176c4dcc-f11e-4e86-b12f-12a27b559d5c responded 200 in 9107.0008 ms
+2026-06-09 09:34:55.987 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/detail/176c4dcc-f11e-4e86-b12f-12a27b559d5c - 200 null application/json; charset=utf-8 9113.4279ms
+2026-06-09 09:34:55.989 +07:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/176c4dcc-f11e-4e86-b12f-12a27b559d5c - null null
+2026-06-09 09:34:55.990 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:34:55.991 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:55.992 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:55.992 +07:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/176c4dcc-f11e-4e86-b12f-12a27b559d5c - 204 null null 2.9006ms
+2026-06-09 09:34:55.997 +07:00 [INF] Executed DbCommand (1,374ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-09 09:34:55.994 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/services/CapNhatView/176c4dcc-f11e-4e86-b12f-12a27b559d5c - application/json 2
+2026-06-09 09:34:55.994 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=10&MangaId=176c4dcc-f11e-4e86-b12f-12a27b559d5c - null null
+2026-06-09 09:34:55.993 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:56.005 +07:00 [WRN] Yahallo Long Running Request: FilterChapterQuery (9114 milliseconds)  {"PageNumber":1,"PageSize":1000,"Id":null,"Index":null,"MangaId":"176c4dcc-f11e-4e86-b12f-12a27b559d5c","MangaName":null,"$type":"FilterChapterQuery"}
+2026-06-09 09:34:56.006 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:56.007 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:34:56.007 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:34:56.011 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ChapterQuery.ChapterDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:56.012 +07:00 [INF] HTTP POST /services/CapNhatView/176c4dcc-f11e-4e86-b12f-12a27b559d5c responded 404 in 0.6506 ms
+2026-06-09 09:34:56.015 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO) in 9128.9421ms
+2026-06-09 09:34:56.013 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-09 09:34:56.020 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/services/CapNhatView/176c4dcc-f11e-4e86-b12f-12a27b559d5c - 404 0 null 26.2518ms
+2026-06-09 09:34:56.021 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-09 09:34:56.021 +07:00 [INF] Route matched with {action = "FilterComment", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.CommentQuery.CommentDto]]]] FilterComment(YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.CommentController (YAHALLO).
+2026-06-09 09:34:56.024 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7181/services/CapNhatView/176c4dcc-f11e-4e86-b12f-12a27b559d5c, Response status code: 404
+2026-06-09 09:34:56.025 +07:00 [INF] HTTP GET /chapter/filter-chapter responded 200 in 9144.8464 ms
+2026-06-09 09:34:56.029 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=176c4dcc-f11e-4e86-b12f-12a27b559d5c - 200 null application/json; charset=utf-8 9155.6213ms
+2026-06-09 09:34:57.155 +07:00 [INF] Executed DbCommand (234ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Comment] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+2026-06-09 09:34:58.315 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (2300 milliseconds)  {"PageNumber":1,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:34:58.326 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:34:58.328 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 2315.2561ms
+2026-06-09 09:34:58.329 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:34:58.330 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 2337.0639 ms
+2026-06-09 09:34:58.331 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 2340.5365ms
+2026-06-09 09:35:02.789 +07:00 [INF] Executed DbCommand (248ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [c].[Id], [c].[BlogId], [c].[CanComment], [c].[CanHide], [c].[CanLike], [c].[CanRemove], [c].[CanReply], [c].[ChapterId], [c].[CommentCount], [c].[CommentType], [c].[CreateDate], [c].[DeleteDate], [c].[DisLikeCount], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[LikeCount], [c].[MangaId], [c].[Message], [c].[ParentId], [c].[UpdateDate], [c].[UserEntityId], [c].[UserId]
+FROM [Comment] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-09 09:35:02.940 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterCommentQuery {"PageNumber":1,"PageSize":10,"Id":null,"UserId":null,"MangaId":"176c4dcc-f11e-4e86-b12f-12a27b559d5c","DateTime":null,"IsDateTimeReverser":null,"IsLikeReserver":null,"IsNumberChildrenCommentReserver":null,"$type":"FilterCommentQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy comment phù hợp yêu cầu
+   at YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQueryHandler.Handle(FilterCommentQuery request, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Queries\CommentQuery\FilterComment\FilterCommentQueryHandler.cs:line 86
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2026-06-09 09:35:03.013 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-06-09 09:35:03.016 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO) in 6989.7287ms
+2026-06-09 09:35:03.018 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-09 09:35:03.019 +07:00 [INF] HTTP GET /comment/filter-comment responded 404 in 7006.4967 ms
+2026-06-09 09:35:03.020 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=10&MangaId=176c4dcc-f11e-4e86-b12f-12a27b559d5c - 404 null application/problem+json; charset=utf-8 7025.6538ms
+2026-06-09 09:35:03.156 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - null null
+2026-06-09 09:35:03.157 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:35:03.157 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - null null
+2026-06-09 09:35:03.159 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:35:03.161 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:35:03.163 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:35:03.164 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:35:03.165 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:35:03.165 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:35:03.166 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:35:03.167 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:35:03.168 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:35:03.480 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:35:03.482 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:35:03.483 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 311.2639ms
+2026-06-09 09:35:03.485 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 309.4753ms
+2026-06-09 09:35:03.488 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:35:03.489 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:35:03.492 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 327.1037 ms
+2026-06-09 09:35:03.493 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 327.3988 ms
+2026-06-09 09:35:03.493 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:35:03.495 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 338.1033ms
+2026-06-09 09:35:03.496 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - 200 null application/json; charset=utf-8 339.4438ms
+2026-06-09 09:35:03.499 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 329.5724ms
+2026-06-09 09:35:03.505 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:35:03.506 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 342.5219 ms
+2026-06-09 09:35:03.508 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - 200 null application/json; charset=utf-8 352.0135ms
+2026-06-09 09:37:01.073 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - null null
+2026-06-09 09:37:01.075 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - null null
+2026-06-09 09:37:01.079 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:37:01.074 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/get-all - null null
+2026-06-09 09:37:01.083 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:37:01.084 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 09:37:01.086 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:37:01.087 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-09 09:37:01.088 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2026-06-09 09:37:01.089 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO)'
+2026-06-09 09:37:01.091 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2026-06-09 09:37:01.092 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:37:01.092 +07:00 [INF] Route matched with {action = "GetAllAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] GetAllAuthor(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2026-06-09 09:37:01.098 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 7.6809ms
+2026-06-09 09:37:01.100 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - null null
+2026-06-09 09:37:01.115 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:37:01.122 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:37:01.107 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 09:37:01.110 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - null null
+2026-06-09 09:37:01.122 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - null null
+2026-06-09 09:37:01.130 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:37:01.130 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 09:37:01.131 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 47.7124 ms
+2026-06-09 09:37:01.134 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:37:01.136 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:37:01.136 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:37:01.137 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-09 09:37:01.139 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - 200 null application/json; charset=utf-8 66.4052ms
+2026-06-09 09:37:01.139 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:37:01.140 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:37:01.141 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:37:01.143 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:37:01.148 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:37:01.153 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 10.495ms
+2026-06-09 09:37:01.149 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:37:01.162 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 09:37:01.169 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 38.9185 ms
+2026-06-09 09:37:01.175 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - 200 null application/json; charset=utf-8 75.0189ms
+2026-06-09 09:37:01.650 +07:00 [INF] Executed DbCommand (111ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-09 09:37:01.747 +07:00 [WRN] Yahallo Long Running Request: GetAllAuthorQuery (642 milliseconds)  {"$type":"GetAllAuthorQuery"}
+2026-06-09 09:37:01.751 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:37:01.753 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO) in 653.0139ms
+2026-06-09 09:37:01.755 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO)'
+2026-06-09 09:37:01.756 +07:00 [INF] HTTP GET /author/get-all responded 200 in 668.3605 ms
+2026-06-09 09:37:01.758 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/get-all - 200 null application/json; charset=utf-8 684.0123ms
+2026-06-09 09:37:02.046 +07:00 [INF] Executed DbCommand (507ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-09 09:37:02.102 +07:00 [WRN] Yahallo Long Running Request: GetAllArtistQuery (1006 milliseconds)  {"$type":"GetAllArtistQuery"}
+2026-06-09 09:37:02.104 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (952 milliseconds)  {"PageNumber":1,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:37:02.104 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (945 milliseconds)  {"PageNumber":1,"PageSize":12,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:37:02.105 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:37:02.109 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:37:02.113 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:37:02.117 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (948 milliseconds)  {"PageNumber":2,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:37:02.119 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 968.4457ms
+2026-06-09 09:37:02.116 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 1021.876ms
+2026-06-09 09:37:02.127 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 969.6158ms
+2026-06-09 09:37:02.128 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:37:02.129 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:37:02.130 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2026-06-09 09:37:02.132 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:37:02.134 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 966.5688ms
+2026-06-09 09:37:02.135 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 998.4765 ms
+2026-06-09 09:37:02.136 +07:00 [INF] HTTP GET /artist/get-all responded 200 in 1049.2374 ms
+2026-06-09 09:37:02.137 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 997.1562 ms
+2026-06-09 09:37:02.138 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:37:02.139 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 1024.7936ms
+2026-06-09 09:37:02.141 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - 200 null application/json; charset=utf-8 1065.5293ms
+2026-06-09 09:37:02.143 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - 200 null application/json; charset=utf-8 1033.2734ms
+2026-06-09 09:37:02.144 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 1004.2342 ms
+2026-06-09 09:37:02.155 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - 200 null application/json; charset=utf-8 1033.9115ms
+2026-06-09 09:38:20.516 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - null null
+2026-06-09 09:38:20.516 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/author/get-all - null null
+2026-06-09 09:38:20.516 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - null null
+2026-06-09 09:38:20.523 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:38:20.525 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:38:20.528 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:38:20.529 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2026-06-09 09:38:20.529 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO)'
+2026-06-09 09:38:20.530 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 09:38:20.532 +07:00 [INF] Route matched with {action = "GetAllAuthor", controller = "Author"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.AuthorQuery.AuthorDto]]]] GetAllAuthor(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.AuthorController (YAHALLO).
+2026-06-09 09:38:20.531 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2026-06-09 09:38:20.533 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-09 09:38:20.533 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - null null
+2026-06-09 09:38:20.550 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:38:20.556 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:38:20.534 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - null null
+2026-06-09 09:38:20.561 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 13.7289ms
+2026-06-09 09:38:20.561 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:38:20.566 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:38:20.540 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:38:20.563 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/tag/get-all - null null
+2026-06-09 09:38:20.569 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 09:38:20.570 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:38:20.571 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:38:20.573 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:38:20.576 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 45.8530 ms
+2026-06-09 09:38:20.579 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:38:20.581 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:38:20.575 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:38:20.585 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - 200 null application/json; charset=utf-8 69.17ms
+2026-06-09 09:38:20.587 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:38:20.589 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 09:38:20.597 +07:00 [INF] Route matched with {action = "GetAllTags", controller = "Tag"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.TagQuery.TagDto]]]] GetAllTags(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.TagController (YAHALLO).
+2026-06-09 09:38:20.603 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.TagQuery.TagDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:38:20.606 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO) in 3.5757ms
+2026-06-09 09:38:20.608 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.TagController.GetAllTags (YAHALLO)'
+2026-06-09 09:38:20.609 +07:00 [INF] HTTP GET /tag/get-all responded 200 in 19.7370 ms
+2026-06-09 09:38:20.611 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/tag/get-all - 200 null application/json; charset=utf-8 47.4366ms
+2026-06-09 09:38:20.847 +07:00 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-09 09:38:20.850 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:38:20.850 +07:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Author] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-09 09:38:20.853 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 266.4725ms
+2026-06-09 09:38:20.856 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.AuthorQuery.AuthorDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:38:20.856 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:38:20.858 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO) in 320.4718ms
+2026-06-09 09:38:20.859 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 288.3401 ms
+2026-06-09 09:38:20.860 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.AuthorController.GetAllAuthor (YAHALLO)'
+2026-06-09 09:38:20.862 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - 200 null application/json; charset=utf-8 327.7879ms
+2026-06-09 09:38:20.863 +07:00 [INF] HTTP GET /author/get-all responded 200 in 333.3111 ms
+2026-06-09 09:38:20.866 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/author/get-all - 200 null application/json; charset=utf-8 350.3434ms
+2026-06-09 09:38:20.879 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:38:20.881 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 303.3768ms
+2026-06-09 09:38:20.881 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:38:20.882 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:38:20.882 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:38:20.884 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 287.6177ms
+2026-06-09 09:38:20.886 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 342.1222ms
+2026-06-09 09:38:20.886 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 325.5179 ms
+2026-06-09 09:38:20.887 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:38:20.888 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2026-06-09 09:38:20.890 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - 200 null application/json; charset=utf-8 356.4181ms
+2026-06-09 09:38:20.891 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 310.8663 ms
+2026-06-09 09:38:20.892 +07:00 [INF] HTTP GET /artist/get-all responded 200 in 363.6079 ms
+2026-06-09 09:38:20.896 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 356.2943ms
+2026-06-09 09:38:20.898 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - 200 null application/json; charset=utf-8 382.8116ms
+2026-06-09 09:39:19.573 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - null null
+2026-06-09 09:39:19.581 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:39:19.582 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-09 09:39:19.582 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:39:22.256 +07:00 [INF] Executed DbCommand (287ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-09 09:39:23.085 +07:00 [INF] Executed DbCommand (79ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[Level], [m].[MangaBackground], [m].[MangaSeasonId], [m].[MangaThumbnail], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY [m].[LastChapterUpdate] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-09 09:39:23.089 +07:00 [WRN] Yahallo Long Running Request: GetAllMangaPaginationQuery (3502 milliseconds)  {"PageNumber":1,"PageSize":20,"$type":"GetAllMangaPaginationQuery"}
+2026-06-09 09:39:23.092 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:39:23.094 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 3510.3909ms
+2026-06-09 09:39:23.096 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-09 09:39:23.097 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 3515.1181 ms
+2026-06-09 09:39:23.099 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - 200 null application/json; charset=utf-8 3525.5028ms
+2026-06-09 09:39:28.820 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - null null
+2026-06-09 09:39:28.820 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - null null
+2026-06-09 09:39:28.821 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:39:28.823 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:39:28.826 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:39:28.829 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:39:28.830 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:39:28.831 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:39:28.831 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:39:28.833 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:39:28.834 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:39:28.835 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:39:34.238 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (5397 milliseconds)  {"PageNumber":2,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:39:34.238 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (5388 milliseconds)  {"PageNumber":1,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:39:34.238 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (5400 milliseconds)  {"PageNumber":1,"PageSize":12,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:39:34.253 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:39:34.255 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:39:34.263 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 5423.7994ms
+2026-06-09 09:39:34.266 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 5418.0445ms
+2026-06-09 09:39:34.260 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:39:34.267 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:39:34.271 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 5434.1254ms
+2026-06-09 09:39:34.268 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:39:34.272 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 5440.6711 ms
+2026-06-09 09:39:34.273 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:39:34.274 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 5442.4546 ms
+2026-06-09 09:39:34.276 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=2&PageSize=6 - 200 null application/json; charset=utf-8 5455.2945ms
+2026-06-09 09:39:34.277 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 5447.0251 ms
+2026-06-09 09:39:34.279 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 5457.964ms
+2026-06-09 09:39:34.285 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=12 - 200 null application/json; charset=utf-8 5464.9403ms
+2026-06-09 09:40:22.217 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/filter-manga?tagIds=a2000002-0000-4000-8000-000000000015&pageNumber=1&pageSize=10 - null null
+2026-06-09 09:40:22.220 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:22.221 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
+2026-06-09 09:40:22.222 +07:00 [INF] Route matched with {action = "FilterManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] FilterManga(YAHALLO.Application.Queries.MangaQuery.FilterManga.FilterMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:40:25.337 +07:00 [INF] Executed DbCommand (840ms) [Parameters=[@__tags_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL AND NOT EXISTS (
+    SELECT 1
+    FROM OPENJSON(@__tags_0) WITH ([value] nvarchar(450) '$') AS [t]
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM [MangaTag] AS [m0]
+        WHERE [m].[Id] = [m0].[MangaId] AND LTRIM(RTRIM([m0].[TagId])) = [t].[value]))
+2026-06-09 09:40:28.072 +07:00 [INF] Executed DbCommand (1,193ms) [Parameters=[@__tags_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [t0].[Id], [t0].[Countries], [t0].[CreateDate], [t0].[DeleteDate], [t0].[Description], [t0].[IdUserCreate], [t0].[IdUserDelete], [t0].[IdUserUpdate], [t0].[LastChapterId], [t0].[LastChapterIndex], [t0].[LastChapterUpdate], [t0].[Level], [t0].[MangaBackground], [t0].[MangaSeasonId], [t0].[MangaThumbnail], [t0].[Name], [t0].[Season], [t0].[Status], [t0].[Type], [t0].[UpdateDate], [t0].[UserId], [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM (
+    SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[Level], [m].[MangaBackground], [m].[MangaSeasonId], [m].[MangaThumbnail], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL AND NOT EXISTS (
+        SELECT 1
+        FROM OPENJSON(@__tags_0) WITH ([value] nvarchar(450) '$') AS [t]
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM [MangaTag] AS [m0]
+            WHERE [m].[Id] = [m0].[MangaId] AND LTRIM(RTRIM([m0].[TagId])) = [t].[value]))
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+LEFT JOIN [Chapter] AS [c] ON [t0].[LastChapterId] = [c].[Id]
+2026-06-09 09:40:28.235 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterMangaQuery {"PageNumber":1,"PageSize":10,"Id":null,"Name":null,"TagIds":"a2000002-0000-4000-8000-000000000015","AuthorId":null,"ArtistId":null,"Level":null,"Status":null,"Type":null,"Countries":null,"Season":null,"UserId":null,"DateUpdate":null,"SortBy":null,"ReverserSort":false,"$type":"FilterMangaQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy manga phù hợp yêu cầu
+   at YAHALLO.Application.Queries.MangaQuery.FilterManga.FilterMangaQueryHandler.Handle(FilterMangaQuery request, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Queries\MangaQuery\FilterManga\FilterMangaQueryHandler.cs:line 58
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2026-06-09 09:40:28.322 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-06-09 09:40:28.324 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO) in 6098.8264ms
+2026-06-09 09:40:28.325 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
+2026-06-09 09:40:28.326 +07:00 [INF] HTTP GET /manga/filter-manga responded 404 in 6105.0678 ms
+2026-06-09 09:40:28.328 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/filter-manga?tagIds=a2000002-0000-4000-8000-000000000015&pageNumber=1&pageSize=10 - 404 null application/problem+json; charset=utf-8 6110.9846ms
+2026-06-09 09:40:32.998 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/filter-manga?tagIds=59291e2f-31c3-4fbf-b212-d57325dcf295&pageNumber=1&pageSize=10 - null null
+2026-06-09 09:40:33.001 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:33.002 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
+2026-06-09 09:40:33.003 +07:00 [INF] Route matched with {action = "FilterManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] FilterManga(YAHALLO.Application.Queries.MangaQuery.FilterManga.FilterMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:40:34.866 +07:00 [INF] Executed DbCommand (700ms) [Parameters=[@__tags_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL AND NOT EXISTS (
+    SELECT 1
+    FROM OPENJSON(@__tags_0) WITH ([value] nvarchar(450) '$') AS [t]
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM [MangaTag] AS [m0]
+        WHERE [m].[Id] = [m0].[MangaId] AND LTRIM(RTRIM([m0].[TagId])) = [t].[value]))
+2026-06-09 09:40:36.735 +07:00 [INF] Executed DbCommand (556ms) [Parameters=[@__tags_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [t0].[Id], [t0].[Countries], [t0].[CreateDate], [t0].[DeleteDate], [t0].[Description], [t0].[IdUserCreate], [t0].[IdUserDelete], [t0].[IdUserUpdate], [t0].[LastChapterId], [t0].[LastChapterIndex], [t0].[LastChapterUpdate], [t0].[Level], [t0].[MangaBackground], [t0].[MangaSeasonId], [t0].[MangaThumbnail], [t0].[Name], [t0].[Season], [t0].[Status], [t0].[Type], [t0].[UpdateDate], [t0].[UserId], [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM (
+    SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[Level], [m].[MangaBackground], [m].[MangaSeasonId], [m].[MangaThumbnail], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL AND NOT EXISTS (
+        SELECT 1
+        FROM OPENJSON(@__tags_0) WITH ([value] nvarchar(450) '$') AS [t]
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM [MangaTag] AS [m0]
+            WHERE [m].[Id] = [m0].[MangaId] AND LTRIM(RTRIM([m0].[TagId])) = [t].[value]))
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+LEFT JOIN [Chapter] AS [c] ON [t0].[LastChapterId] = [c].[Id]
+2026-06-09 09:40:36.739 +07:00 [WRN] Yahallo Long Running Request: FilterMangaQuery (3732 milliseconds)  {"PageNumber":1,"PageSize":10,"Id":null,"Name":null,"TagIds":"59291e2f-31c3-4fbf-b212-d57325dcf295","AuthorId":null,"ArtistId":null,"Level":null,"Status":null,"Type":null,"Countries":null,"Season":null,"UserId":null,"DateUpdate":null,"SortBy":null,"ReverserSort":false,"$type":"FilterMangaQuery"}
+2026-06-09 09:40:36.750 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:40:36.752 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO) in 3747.7973ms
+2026-06-09 09:40:36.754 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
+2026-06-09 09:40:36.755 +07:00 [INF] HTTP GET /manga/filter-manga responded 200 in 3752.6651 ms
+2026-06-09 09:40:36.756 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/filter-manga?tagIds=59291e2f-31c3-4fbf-b212-d57325dcf295&pageNumber=1&pageSize=10 - 200 null application/json; charset=utf-8 3757.9226ms
+2026-06-09 09:40:40.588 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/filter-manga?tagIds=59291e2f-31c3-4fbf-b212-d57325dcf295&pageNumber=6&pageSize=10 - null null
+2026-06-09 09:40:40.590 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:40.591 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
+2026-06-09 09:40:40.591 +07:00 [INF] Route matched with {action = "FilterManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] FilterManga(YAHALLO.Application.Queries.MangaQuery.FilterManga.FilterMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:40:47.712 +07:00 [INF] Executed DbCommand (1,362ms) [Parameters=[@__tags_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL AND NOT EXISTS (
+    SELECT 1
+    FROM OPENJSON(@__tags_0) WITH ([value] nvarchar(450) '$') AS [t]
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM [MangaTag] AS [m0]
+        WHERE [m].[Id] = [m0].[MangaId] AND LTRIM(RTRIM([m0].[TagId])) = [t].[value]))
+2026-06-09 09:40:52.091 +07:00 [INF] Executed DbCommand (542ms) [Parameters=[@__tags_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [t0].[Id], [t0].[Countries], [t0].[CreateDate], [t0].[DeleteDate], [t0].[Description], [t0].[IdUserCreate], [t0].[IdUserDelete], [t0].[IdUserUpdate], [t0].[LastChapterId], [t0].[LastChapterIndex], [t0].[LastChapterUpdate], [t0].[Level], [t0].[MangaBackground], [t0].[MangaSeasonId], [t0].[MangaThumbnail], [t0].[Name], [t0].[Season], [t0].[Status], [t0].[Type], [t0].[UpdateDate], [t0].[UserId], [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM (
+    SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[Level], [m].[MangaBackground], [m].[MangaSeasonId], [m].[MangaThumbnail], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL AND NOT EXISTS (
+        SELECT 1
+        FROM OPENJSON(@__tags_0) WITH ([value] nvarchar(450) '$') AS [t]
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM [MangaTag] AS [m0]
+            WHERE [m].[Id] = [m0].[MangaId] AND LTRIM(RTRIM([m0].[TagId])) = [t].[value]))
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+LEFT JOIN [Chapter] AS [c] ON [t0].[LastChapterId] = [c].[Id]
+2026-06-09 09:40:52.097 +07:00 [WRN] Yahallo Long Running Request: FilterMangaQuery (11503 milliseconds)  {"PageNumber":6,"PageSize":10,"Id":null,"Name":null,"TagIds":"59291e2f-31c3-4fbf-b212-d57325dcf295","AuthorId":null,"ArtistId":null,"Level":null,"Status":null,"Type":null,"Countries":null,"Season":null,"UserId":null,"DateUpdate":null,"SortBy":null,"ReverserSort":false,"$type":"FilterMangaQuery"}
+2026-06-09 09:40:52.107 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:40:52.109 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO) in 11515.7606ms
+2026-06-09 09:40:52.110 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.FilterManga (YAHALLO)'
+2026-06-09 09:40:52.112 +07:00 [INF] HTTP GET /manga/filter-manga responded 200 in 11520.6735 ms
+2026-06-09 09:40:52.113 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/filter-manga?tagIds=59291e2f-31c3-4fbf-b212-d57325dcf295&pageNumber=6&pageSize=10 - 200 null application/json; charset=utf-8 11525.4295ms
+2026-06-09 09:40:54.665 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/detail/1d1e3210-fec8-49c9-acec-9ee34c507dfe - null null
+2026-06-09 09:40:54.666 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=1d1e3210-fec8-49c9-acec-9ee34c507dfe - null null
+2026-06-09 09:40:54.669 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:54.672 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:54.673 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-09 09:40:54.674 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-09 09:40:54.675 +07:00 [INF] Route matched with {action = "GetMangaDetail", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto]]] GetMangaDetail(System.String, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:40:54.676 +07:00 [INF] Route matched with {action = "FilterChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ChapterQuery.ChapterDto]]]] FilterChapter(YAHALLO.Application.Queries.ChapterQuery.FilterChapter.FilterChapterQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2026-06-09 09:40:56.146 +07:00 [INF] Executed DbCommand (90ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Chapter] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[MangaId] = @__request_MangaId_0
+2026-06-09 09:40:56.274 +07:00 [WRN] Yahallo Long Running Request: GetMangaDetailQuery (1594 milliseconds)  {"Id":"1d1e3210-fec8-49c9-acec-9ee34c507dfe","$type":"GetMangaDetailQuery"}
+2026-06-09 09:40:56.282 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Queries.MangaQuery.MangaDetailDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:40:56.283 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO) in 1605.1593ms
+2026-06-09 09:40:56.285 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetMangaDetail (YAHALLO)'
+2026-06-09 09:40:56.286 +07:00 [INF] HTTP GET /manga/detail/1d1e3210-fec8-49c9-acec-9ee34c507dfe responded 200 in 1612.8451 ms
+2026-06-09 09:40:56.286 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/detail/1d1e3210-fec8-49c9-acec-9ee34c507dfe - 200 null application/json; charset=utf-8 1621.2486ms
+2026-06-09 09:40:56.289 +07:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/1d1e3210-fec8-49c9-acec-9ee34c507dfe - null null
+2026-06-09 09:40:56.290 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - null null
+2026-06-09 09:40:56.298 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=10&MangaId=1d1e3210-fec8-49c9-acec-9ee34c507dfe - null null
+2026-06-09 09:40:56.298 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:56.301 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:56.303 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:56.304 +07:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7181/services/CapNhatView/1d1e3210-fec8-49c9-acec-9ee34c507dfe - 204 null null 14.7636ms
+2026-06-09 09:40:56.305 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:40:56.305 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7181/services/CapNhatView/1d1e3210-fec8-49c9-acec-9ee34c507dfe - application/json 2
+2026-06-09 09:40:56.306 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-09 09:40:56.309 +07:00 [INF] Route matched with {action = "GetLatestUpdatedManga", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto]]]] GetLatestUpdatedManga(YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated.GetLatestUpdatedMangaQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 09:40:56.311 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:40:56.312 +07:00 [INF] Route matched with {action = "FilterComment", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.CommentQuery.CommentDto]]]] FilterComment(YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.CommentController (YAHALLO).
+2026-06-09 09:40:56.314 +07:00 [INF] HTTP POST /services/CapNhatView/1d1e3210-fec8-49c9-acec-9ee34c507dfe responded 404 in 0.2779 ms
+2026-06-09 09:40:56.322 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7181/services/CapNhatView/1d1e3210-fec8-49c9-acec-9ee34c507dfe - 404 0 null 16.3226ms
+2026-06-09 09:40:56.326 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7181/services/CapNhatView/1d1e3210-fec8-49c9-acec-9ee34c507dfe, Response status code: 404
+2026-06-09 09:40:58.718 +07:00 [INF] Executed DbCommand (884ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-09 09:40:58.718 +07:00 [INF] Executed DbCommand (879ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Comment] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+2026-06-09 09:40:58.718 +07:00 [WRN] Yahallo Long Running Request: GetLatestUpdatedMangaQuery (2404 milliseconds)  {"PageNumber":1,"PageSize":6,"$type":"GetLatestUpdatedMangaQuery"}
+2026-06-09 09:40:58.721 +07:00 [WRN] Yahallo Long Running Request: FilterChapterQuery (4040 milliseconds)  {"PageNumber":1,"PageSize":1000,"Id":null,"Index":null,"MangaId":"1d1e3210-fec8-49c9-acec-9ee34c507dfe","MangaName":null,"$type":"FilterChapterQuery"}
+2026-06-09 09:40:58.728 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaSumaryDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:40:58.732 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ChapterQuery.ChapterDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:40:58.734 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO) in 2421.0085ms
+2026-06-09 09:40:58.735 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO) in 4056.2582ms
+2026-06-09 09:40:58.739 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetLatestUpdatedManga (YAHALLO)'
+2026-06-09 09:40:58.741 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-09 09:40:58.742 +07:00 [INF] HTTP GET /manga/lastest-updated responded 200 in 2437.5464 ms
+2026-06-09 09:40:58.743 +07:00 [INF] HTTP GET /chapter/filter-chapter responded 200 in 4069.1562 ms
+2026-06-09 09:40:58.744 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/lastest-updated?PageNumber=1&PageSize=6 - 200 null application/json; charset=utf-8 2454.3332ms
+2026-06-09 09:40:58.746 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=1d1e3210-fec8-49c9-acec-9ee34c507dfe - 200 null application/json; charset=utf-8 4079.3763ms
+2026-06-09 09:41:04.593 +07:00 [INF] Executed DbCommand (989ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [c].[Id], [c].[BlogId], [c].[CanComment], [c].[CanHide], [c].[CanLike], [c].[CanRemove], [c].[CanReply], [c].[ChapterId], [c].[CommentCount], [c].[CommentType], [c].[CreateDate], [c].[DeleteDate], [c].[DisLikeCount], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[LikeCount], [c].[MangaId], [c].[Message], [c].[ParentId], [c].[UpdateDate], [c].[UserEntityId], [c].[UserId]
+FROM [Comment] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-09 09:41:04.807 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterCommentQuery {"PageNumber":1,"PageSize":10,"Id":null,"UserId":null,"MangaId":"1d1e3210-fec8-49c9-acec-9ee34c507dfe","DateTime":null,"IsDateTimeReverser":null,"IsLikeReserver":null,"IsNumberChildrenCommentReserver":null,"$type":"FilterCommentQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy comment phù hợp yêu cầu
+   at YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQueryHandler.Handle(FilterCommentQuery request, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Queries\CommentQuery\FilterComment\FilterCommentQueryHandler.cs:line 86
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2026-06-09 09:41:04.898 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-06-09 09:41:04.900 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO) in 8579.454ms
+2026-06-09 09:41:04.901 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-09 09:41:04.902 +07:00 [INF] HTTP GET /comment/filter-comment responded 404 in 8596.2750 ms
+2026-06-09 09:41:04.904 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=10&MangaId=1d1e3210-fec8-49c9-acec-9ee34c507dfe - 404 null application/problem+json; charset=utf-8 8605.3307ms
+2026-06-09 09:41:10.703 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/chapter/get-image?ChapterId=fc29dec2-05dd-4a2f-b2d9-022952d73d68 - null null
+2026-06-09 09:41:10.703 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=1d1e3210-fec8-49c9-acec-9ee34c507dfe - null null
+2026-06-09 09:41:10.706 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:41:10.709 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:41:10.710 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.GetAllImage (YAHALLO)'
+2026-06-09 09:41:10.710 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-09 09:41:10.713 +07:00 [INF] Route matched with {action = "FilterChapter", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.ChapterQuery.ChapterDto]]]] FilterChapter(YAHALLO.Application.Queries.ChapterQuery.FilterChapter.FilterChapterQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2026-06-09 09:41:10.715 +07:00 [INF] Route matched with {action = "GetAllImage", controller = "Chapter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ChapterQuery.ChapterImageDto]]]] GetAllImage(YAHALLO.Application.Queries.ChapterQuery.GetAllImage.GetImageQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ChapterController (YAHALLO).
+2026-06-09 09:41:11.305 +07:00 [INF] Executed DbCommand (103ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Chapter] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[MangaId] = @__request_MangaId_0
+2026-06-09 09:41:11.515 +07:00 [INF] Executed DbCommand (314ms) [Parameters=[@__request_ChapterId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT [i].[Id], [i].[BaseUrl], [i].[ChapterId], [i].[CloudUrl], [i].[CreateDate], [i].[DeleteDate], [i].[IdUserCreate], [i].[IdUserDelete], [i].[IdUserUpdate], [i].[Index], [i].[MangaId], [i].[TypeImage], [i].[UpdateDate], [i].[UserId]
+FROM [Image] AS [i]
+WHERE ([i].[IdUserDelete] IS NULL OR [i].[IdUserDelete] LIKE N'') AND [i].[DeleteDate] IS NULL AND [i].[ChapterId] = @__request_ChapterId_0
+2026-06-09 09:41:11.819 +07:00 [INF] Executed DbCommand (102ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [c].[Id], [c].[CreateDate], [c].[DeleteDate], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[Index], [c].[MangaId], [c].[Title], [c].[UpdateDate]
+FROM [Chapter] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-09 09:41:11.822 +07:00 [WRN] Yahallo Long Running Request: FilterChapterQuery (1106 milliseconds)  {"PageNumber":1,"PageSize":1000,"Id":null,"Index":null,"MangaId":"1d1e3210-fec8-49c9-acec-9ee34c507dfe","MangaName":null,"$type":"FilterChapterQuery"}
+2026-06-09 09:41:11.828 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.ChapterQuery.ChapterDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 09:41:11.830 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO) in 1114.7323ms
+2026-06-09 09:41:11.831 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.FilterChapter (YAHALLO)'
+2026-06-09 09:41:11.832 +07:00 [INF] HTTP GET /chapter/filter-chapter responded 200 in 1121.6501 ms
+2026-06-09 09:41:11.834 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/chapter/filter-chapter?PageNumber=1&PageSize=1000&MangaId=1d1e3210-fec8-49c9-acec-9ee34c507dfe - 200 null application/json; charset=utf-8 1130.5913ms
+2026-06-09 09:41:12.162 +07:00 [WRN] Yahallo Long Running Request: GetImageQuery (1431 milliseconds)  {"ChapterId":"fc29dec2-05dd-4a2f-b2d9-022952d73d68","$type":"GetImageQuery"}
+2026-06-09 09:41:12.164 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.ChapterQuery.ChapterImageDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-09 09:41:12.167 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ChapterController.GetAllImage (YAHALLO) in 1448.5396ms
+2026-06-09 09:41:12.169 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ChapterController.GetAllImage (YAHALLO)'
+2026-06-09 09:41:12.169 +07:00 [INF] HTTP GET /chapter/get-image responded 200 in 1459.5817 ms
+2026-06-09 09:41:12.170 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/chapter/get-image?ChapterId=fc29dec2-05dd-4a2f-b2d9-022952d73d68 - 200 null application/json; charset=utf-8 1466.786ms
+2026-06-09 09:41:12.174 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=50&MangaId=1d1e3210-fec8-49c9-acec-9ee34c507dfe - null null
+2026-06-09 09:41:12.175 +07:00 [INF] CORS policy execution successful.
+2026-06-09 09:41:12.176 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-09 09:41:12.177 +07:00 [INF] Route matched with {action = "FilterComment", controller = "Comment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.CommentQuery.CommentDto]]]] FilterComment(YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.CommentController (YAHALLO).
+2026-06-09 09:41:12.492 +07:00 [INF] Executed DbCommand (59ms) [Parameters=[@__request_MangaId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Comment] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+2026-06-09 09:41:13.360 +07:00 [INF] Executed DbCommand (42ms) [Parameters=[@__request_MangaId_0='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [c].[Id], [c].[BlogId], [c].[CanComment], [c].[CanHide], [c].[CanLike], [c].[CanRemove], [c].[CanReply], [c].[ChapterId], [c].[CommentCount], [c].[CommentType], [c].[CreateDate], [c].[DeleteDate], [c].[DisLikeCount], [c].[IdUserCreate], [c].[IdUserDelete], [c].[IdUserUpdate], [c].[LikeCount], [c].[MangaId], [c].[Message], [c].[ParentId], [c].[UpdateDate], [c].[UserEntityId], [c].[UserId]
+FROM [Comment] AS [c]
+WHERE ([c].[IdUserDelete] IS NULL OR [c].[IdUserDelete] LIKE N'') AND [c].[DeleteDate] IS NULL AND [c].[CommentType] = 1 AND [c].[MangaId] = @__request_MangaId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-06-09 09:41:13.492 +07:00 [ERR] Yahallo Request: Unhandled Exception for Request FilterCommentQuery {"PageNumber":1,"PageSize":50,"Id":null,"UserId":null,"MangaId":"1d1e3210-fec8-49c9-acec-9ee34c507dfe","DateTime":null,"IsDateTimeReverser":null,"IsLikeReserver":null,"IsNumberChildrenCommentReserver":null,"$type":"FilterCommentQuery"}
+YAHALLO.Domain.Exceptions.NotFoundException: Không tìm thấy comment phù hợp yêu cầu
+   at YAHALLO.Application.Queries.CommentQuery.FilterComment.FilterCommentQueryHandler.Handle(FilterCommentQuery request, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Queries\CommentQuery\FilterComment\FilterCommentQueryHandler.cs:line 86
+   at YAHALLO.Application.Common.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\ValidationBehaviour.cs:line 33
+   at YAHALLO.Application.Common.Behaviours.AuthorizationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\AuthorizationBehaviour.cs:line 79
+   at YAHALLO.Application.Common.Behaviours.PerformanceBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\PerformanceBehaviour.cs:line 34
+   at YAHALLO.Application.Common.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\PC\source\repos\Yahallo-API\YAHALLO.Application\Common\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2026-06-09 09:41:13.545 +07:00 [INF] Executing NotFoundObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-06-09 09:41:13.548 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO) in 1370.173ms
+2026-06-09 09:41:13.551 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.CommentController.FilterComment (YAHALLO)'
+2026-06-09 09:41:13.553 +07:00 [INF] HTTP GET /comment/filter-comment responded 404 in 1376.1291 ms
+2026-06-09 09:41:13.555 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/comment/filter-comment?PageNumber=1&PageSize=50&MangaId=1d1e3210-fec8-49c9-acec-9ee34c507dfe - 404 null application/problem+json; charset=utf-8 1380.6883ms
+2026-06-09 11:33:09.255 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - null null
+2026-06-09 11:33:09.262 +07:00 [INF] CORS policy execution successful.
+2026-06-09 11:33:09.263 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-09 11:33:09.264 +07:00 [INF] Route matched with {action = "GetAllMangaPagination", controller = "Manga"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[YAHALLO.Application.Common.Pagination.PagedResult`1[YAHALLO.Application.Queries.MangaQuery.MangaDto]]]] GetAllMangaPagination(YAHALLO.Application.Queries.MangaQuery.GetAllPagination.GetAllMangaPaginationQuery, System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.MangaController (YAHALLO).
+2026-06-09 11:33:10.171 +07:00 [INF] Executed DbCommand (108ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-09 11:33:10.574 +07:00 [INF] Executed DbCommand (94ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='0']
+SELECT [m].[Id], [m].[Countries], [m].[CreateDate], [m].[DeleteDate], [m].[Description], [m].[IdUserCreate], [m].[IdUserDelete], [m].[IdUserUpdate], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[Level], [m].[MangaBackground], [m].[MangaSeasonId], [m].[MangaThumbnail], [m].[Name], [m].[Season], [m].[Status], [m].[Type], [m].[UpdateDate], [m].[UserId]
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY [m].[LastChapterUpdate] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-09 11:33:10.577 +07:00 [WRN] Yahallo Long Running Request: GetAllMangaPaginationQuery (1310 milliseconds)  {"PageNumber":1,"PageSize":20,"$type":"GetAllMangaPaginationQuery"}
+2026-06-09 11:33:10.581 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[YAHALLO.Application.Common.Pagination.PagedResult`1[[YAHALLO.Application.Queries.MangaQuery.MangaDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-09 11:33:10.584 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO) in 1318.682ms
+2026-06-09 11:33:10.588 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
+2026-06-09 11:33:10.591 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 1328.3298 ms
+2026-06-09 11:33:10.594 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=20 - 200 null application/json; charset=utf-8 1339.3358ms
+2026-06-09 14:58:57.981 +07:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-09 14:58:58.464 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-09 14:59:00.448 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-09 14:59:03.095 +07:00 [WRN] The WebRootPath was not found: C:\Users\PC\source\repos\Yahallo-API\YAHALLO\wwwroot. Static files may be unavailable.
+2026-06-09 14:59:03.200 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-09 14:59:03.201 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-09 14:59:03.279 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: yahallo.cnwuqkgwes99.ap-southeast-1.rds.amazonaws.com,1433@Yahallo_dev'
+2026-06-09 14:59:03.280 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-09 14:59:03.281 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-09 14:59:03.299 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-09 14:59:03.301 +07:00 [INF] Hosting environment: Development
+2026-06-09 14:59:03.302 +07:00 [INF] Content root path: C:\Users\PC\source\repos\Yahallo-API\YAHALLO
+2026-06-09 14:59:04.371 +07:00 [INF] Server laptop-kbhrm1q7:7620:c49912cb successfully announced in 1072.4384 ms
+2026-06-09 14:59:04.379 +07:00 [INF] Server laptop-kbhrm1q7:7620:c49912cb is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-09 14:59:04.518 +07:00 [INF] Server laptop-kbhrm1q7:7620:c49912cb all the dispatchers started
+2026-06-09 14:59:04.583 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 14:59:04.583 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-06-09 14:59:04.614 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 14919 application/javascript; charset=utf-8 38.5213ms
+2026-06-09 14:59:04.933 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 197.3307 ms
+2026-06-09 14:59:04.941 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 366.0333ms
+2026-06-09 14:59:04.985 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-06-09 14:59:04.985 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 14:59:04.993 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 14919 application/javascript; charset=utf-8 8.5099ms
+2026-06-09 14:59:05.050 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 65.2887ms
+2026-06-09 14:59:05.102 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-06-09 14:59:05.140 +07:00 [INF] 2 servers were removed due to timeout
+2026-06-09 14:59:05.202 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 96.8981 ms
+2026-06-09 14:59:05.205 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 103.8745ms
+2026-06-09 14:59:08.274 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-09 14:59:09.473 +07:00 [INF] Executed DbCommand (69ms) [Parameters=[], CommandType='"Text"', CommandTimeout='0']
+SELECT [s].[Id], [s].[CreateDate], [s].[DeleteDate], [s].[EndDate], [s].[IdUserCreate], [s].[IdUserDelete], [s].[IdUserUpdate], [s].[Plan], [s].[StartDate], [s].[Status], [s].[UpdateDate], [s].[UserId]
+FROM [Subscription] AS [s]
+WHERE [s].[Status] = 1 AND [s].[EndDate] < GETDATE()
+2026-06-09 14:59:09.473 +07:00 [INF] Executed DbCommand (96ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='0']
+SELECT [n].[Id], [n].[CreateDate], [n].[CreatedAt], [n].[DeleteDate], [n].[IdUserCreate], [n].[IdUserDelete], [n].[IdUserUpdate], [n].[Message], [n].[ReadAt], [n].[ReferenceId], [n].[Status], [n].[Title], [n].[Type], [n].[UpdateDate], [n].[UserId]
+FROM [Notification] AS [n]
+WHERE [n].[DeleteDate] IS NOT NULL AND [n].[DeleteDate] < @__cutoff_0
+2026-06-09 14:59:09.517 +07:00 [INF] Cleanup removed 0 soft-deleted notifications older than 30 days
+2026-06-09 14:59:09.517 +07:00 [INF] Expired 0 subscriptions

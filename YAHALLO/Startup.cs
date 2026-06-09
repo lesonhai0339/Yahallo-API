@@ -1,4 +1,5 @@
 ﻿//AI generated
+using dotenv.net;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -26,6 +27,7 @@ namespace YAHALLO
 
         public void ConfigureServices(IServiceCollection services)
         {
+            DotEnv.Load(new DotEnvOptions(ignoreExceptions: true, overwriteExistingVars: false));
             services.AddControllers(
                 opt =>
                 {
@@ -42,7 +44,10 @@ namespace YAHALLO
             services.ConfigureRateLimiting();
             services.AddSignalR();
 
-            var hangfireConn = Environment.GetEnvironmentVariable("Server");
+            var hangfireConn = Environment.GetEnvironmentVariable("Cloud_Server");
+            Log.Information("Cloud_Server env var is {Status}", hangfireConn != null ? "SET" : "NULL");
+            if (string.IsNullOrEmpty(hangfireConn))
+                throw new InvalidOperationException("Cloud_Server environment variable is not set. Check ECS task definition.");
             services.AddHangfire(config => config
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
                 .UseSimpleAssemblyNameTypeSerializer()
