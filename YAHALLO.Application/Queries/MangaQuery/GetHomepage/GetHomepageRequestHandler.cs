@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +16,18 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
         private readonly IMangaRepository _mangaRepository;
         private readonly ICacheService _cache;
         private readonly CacheSettings _settings;
-        public GetHomepageRequestHandler(IMangaRepository mangaRepository, ICacheService cache, CacheSettings settings)
+        public GetHomepageRequestHandler(
+            IOptions<CacheSettings> options,
+            IMangaRepository mangaRepository,
+            ICacheService cache)
         {
+            _settings = options.Value;
             _mangaRepository = mangaRepository;
             _cache = cache;
-            _settings = settings;
         }
-
         public Task<HomePageDto> Handle(GetHomepageRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

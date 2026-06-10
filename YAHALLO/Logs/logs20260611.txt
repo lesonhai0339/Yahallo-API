@@ -1,0 +1,54 @@
+2026-06-11 00:38:09.820 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-11 00:38:10.323 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-11 00:38:11.751 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-11 00:38:12.514 +07:00 [WRN] The WebRootPath was not found: D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO\wwwroot. Static files may be unavailable.
+2026-06-11 00:38:12.626 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-11 00:38:12.627 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-11 00:38:12.681 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: yahallo.cnwuqkgwes99.ap-southeast-1.rds.amazonaws.com,1433@Yahallo_dev'
+2026-06-11 00:38:12.682 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-11 00:38:12.682 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-11 00:38:12.695 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-11 00:38:12.696 +07:00 [INF] Hosting environment: Development
+2026-06-11 00:38:12.697 +07:00 [INF] Content root path: D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO
+2026-06-11 00:38:12.764 +07:00 [INF] Server gc:3180:3922d488 successfully announced in 68.8761 ms
+2026-06-11 00:38:12.775 +07:00 [INF] Server gc:3180:3922d488 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-11 00:38:12.860 +07:00 [INF] Server gc:3180:3922d488 all the dispatchers started
+2026-06-11 00:38:13.366 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-06-11 00:38:13.936 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 493.3100 ms
+2026-06-11 00:38:13.940 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 577.2999ms
+2026-06-11 00:38:13.989 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-06-11 00:38:13.989 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-11 00:38:13.995 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 7.0265ms
+2026-06-11 00:38:14.017 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 28.9513ms
+2026-06-11 00:38:14.071 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-06-11 00:38:14.144 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 70.5271 ms
+2026-06-11 00:38:14.146 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.8483ms
+2026-06-11 00:38:18.169 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/artist/get-all - null null
+2026-06-11 00:38:18.177 +07:00 [INF] Executing endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2026-06-11 00:38:18.194 +07:00 [INF] Route matched with {action = "GetallArtist", controller = "Artist"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[YAHALLO.Services.JsonResponse`1[System.Collections.Generic.List`1[YAHALLO.Application.Queries.ArtistQuery.ArtistDto]]]] GetallArtist(System.Threading.CancellationToken) on controller YAHALLO.Controllers.Anonymous.ArtistController (YAHALLO).
+2026-06-11 00:38:19.486 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-11 00:38:20.146 +07:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Birth], [a].[Countries], [a].[CreateDate], [a].[DeleteDate], [a].[Depscription], [a].[IdUserCreate], [a].[IdUserDelete], [a].[IdUserUpdate], [a].[LifeStatus], [a].[Name], [a].[UpdateDate]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL AND ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-11 00:38:20.218 +07:00 [WRN] Yahallo Long Running Request: GetAllArtistQuery (1998 milliseconds)  {"$type":"GetAllArtistQuery"}
+2026-06-11 00:38:20.224 +07:00 [INF] Executing OkObjectResult, writing value of type 'YAHALLO.Services.JsonResponse`1[[System.Collections.Generic.List`1[[YAHALLO.Application.Queries.ArtistQuery.ArtistDto, YAHALLO.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-11 00:38:20.240 +07:00 [INF] Executed action YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO) in 2042.0194ms
+2026-06-11 00:38:20.241 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.ArtistController.GetallArtist (YAHALLO)'
+2026-06-11 00:38:20.242 +07:00 [INF] HTTP GET /artist/get-all responded 200 in 2070.7384 ms
+2026-06-11 00:38:20.247 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/artist/get-all - 200 null application/json; charset=utf-8 2078.9736ms
+2026-06-11 00:38:22.739 +07:00 [WRN] Stopping the server due to DomainUnload or ProcessExit event...
+2026-06-11 00:38:22.740 +07:00 [INF] Server gc:3180:3922d488 caught stopping signal...
+2026-06-11 00:38:22.742 +07:00 [FTL] Execution loop ExpirationManager:0f63f6ef was unable to wait for '00:00:09' delay due to an exception. Execution will be stopped.
+System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Threading.CancellationToken.ThrowIfCancellationRequested()
+   at Hangfire.Processing.TaskExtensions.WaitOne(WaitHandle waitHandle, TimeSpan timeout, CancellationToken token)
+   at Hangfire.Processing.BackgroundExecution.HandleDelay(Guid executionId, TimeSpan delay)
+2026-06-11 00:38:22.743 +07:00 [INF] Server gc:3180:3922d488 caught stopped signal...
+2026-06-11 00:38:22.758 +07:00 [INF] Server gc:3180:3922d488 All dispatchers stopped
+2026-06-11 00:38:22.759 +07:00 [WRN] Server gc:3180:3922d488 caught shutdown signal...

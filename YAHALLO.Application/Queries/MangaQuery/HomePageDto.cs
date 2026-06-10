@@ -8,5 +8,6 @@ namespace YAHALLO.Application.Queries.MangaQuery
 {
     public class HomePageDto
     {
+        public int Id { get; set; } 
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
 {
-    internal class GetHomepageRequestValidator: AbstractValidator<GetHomepageRequest>
+    public class GetHomepageRequestValidator: AbstractValidator<GetHomepageRequest>
     {
         public GetHomepageRequestValidator() { }    
     }
