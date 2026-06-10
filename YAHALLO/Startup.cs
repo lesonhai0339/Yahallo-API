@@ -64,9 +64,14 @@ namespace YAHALLO
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                builder => builder.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
+                builder => builder.WithOrigins(
+                        "https://www.yahallo.online",
+                        "https://yahallo.online",
+                        "https://localhost:4200"
+                    )
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
                 );
             });
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
