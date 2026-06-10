@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Queries.UserQuery.Anonymous.GetAllDeleted
 
         public async Task<List<UserDto>> Handle(GetAllUserDeletedQuery request, CancellationToken cancellationToken)
         {
-            var listUsers = await _userRepository.FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+            var listUsers = await _userRepository.FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (listUsers == null)
             {
                 throw new NotFoundException("Không tìm thấy thành viên nào");

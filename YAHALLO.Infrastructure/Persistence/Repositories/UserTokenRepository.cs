@@ -19,12 +19,5 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
         public UserTokenRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
-        public override Task<UserTokenEntity?> FindAsync(Expression<Func<UserTokenEntity, bool>> filterExpression, CancellationToken cancellationToken = default)
-        {
-            return base.FindAsync(
-                filterExpression, 
-                x => x.Include(x => x.UserEntity),
-                cancellationToken);
-        }
     }
 }

@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.UserQuery.Anonymous.GetAllDeletedPaginatio
         public async Task<PagedResult<UserDto>> Handle(GetAllUserDeletedPaginationQuery request, CancellationToken cancellationToken)
         {
             var listUsers = await _userRepository
-                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken);
+                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken, ignoreQueryFilters: true);
             if (!listUsers.Any())
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ thành viên nào");

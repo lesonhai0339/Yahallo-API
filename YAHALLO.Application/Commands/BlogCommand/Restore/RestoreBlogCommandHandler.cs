@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Commands.BlogCommand.Restore
         }
         public async Task<ResponseResult<string>> Handle(RestoreBlogCommand request, CancellationToken cancellationToken)
         {
-            var checkBlogExist = await _blogRepository.FindAsync(x => x.Id.Equals(request.BlogId) && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+            var checkBlogExist = await _blogRepository.FindAsync(x => x.Id.Equals(request.BlogId) && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (checkBlogExist == null) 
             {
                 throw new NotFoundException($"Cannot found Blog with Id {request.BlogId}");

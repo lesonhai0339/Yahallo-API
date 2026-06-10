@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Queries.AuthorQuery.GetAllDeleted
         public async Task<List<AuthorDto>> Handle(GetAllAuthorDeletedQuery request, CancellationToken cancellationToken)
         {
             var listAuthors = await _authorReoisitory
-                            .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                            .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (!listAuthors.Any())
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ họa sĩ nào");

@@ -19,7 +19,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Restore
         public async Task<ResponseResult<string>> Handle(RestoreMangaRatingCommand request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExist = await _mangaRatingRepository
-                .FindAsync(x => x.MangaId == request.MangaId && x.UserId == request.UserId && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAsync(x => x.MangaId == request.MangaId && x.UserId == request.UserId && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkMangaRatingExist == null)
             {
                 throw new NotFoundException("Không tìm thấy với các thông tin trên bị xóa");

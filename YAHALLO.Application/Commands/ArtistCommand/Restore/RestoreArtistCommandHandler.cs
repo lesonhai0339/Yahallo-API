@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Restore
         public async Task<string> Handle(RestoreArtistCommand request, CancellationToken cancellationToken)
         {
             var checkArtistExists = await _artistRepository
-                .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkArtistExists == null)
             {
                 throw new NotFoundException($"Không tìm thấy tác giả với Id {request.Id}");

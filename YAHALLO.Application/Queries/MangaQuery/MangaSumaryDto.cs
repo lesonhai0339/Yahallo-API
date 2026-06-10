@@ -24,8 +24,8 @@ namespace YAHALLO.Application.Queries.MangaQuery
 
         //last chapter
         public string? LastChapterId { get; set; }
-        public string? LastChapterIndex { get; set; }   
-        public DateTime LastChapterUpdate { get; set; }  
+        public int? LastChapterIndex { get; set; }   
+        public DateTime? LastChapterUpdate { get; set; }  
         public void Mapping(Profile profile)
         {
             profile.CreateMap<MangaEntity, MangaSumaryDto>();

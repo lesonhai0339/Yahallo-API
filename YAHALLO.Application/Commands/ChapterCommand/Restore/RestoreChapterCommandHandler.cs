@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Restore
         {
             var checkRole = await _currentUser.IsInRoleAsync("1");
             var checkChapterExist = await _chapterRepository
-                .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (checkChapterExist == null)
             {
                 throw new NotFoundException($"Không có chương truyện nào với Id {request.Id}");

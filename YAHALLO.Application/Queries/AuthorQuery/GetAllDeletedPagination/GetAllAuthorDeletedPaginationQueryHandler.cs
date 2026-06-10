@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.AuthorQuery.GetAllDeletedPagination
         public async Task<PagedResult<AuthorDto>> Handle(GetAllAuthorDeletedPaginationQuery request, CancellationToken cancellationToken)
         {
             var listAuthors = await _authorRepository
-                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken);
+                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken, ignoreQueryFilters: true);
             if (!listAuthors.Any())
             {
                 throw new NotFoundException("Không tìm thất bất kỳ tác giả nảo");

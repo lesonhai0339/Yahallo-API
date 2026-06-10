@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetAllDeleted
         public async Task<List<MangaDto>> Handle(GetAllMangaDeletedQuery request, CancellationToken cancellationToken)
         {
             var listMangaExists = await _mangaRepository
-                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(listMangaExists.Count() == 0)
             {
                 throw new NotFoundException("Không có bất kỳ manga nào");

@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Restore
     
         public async Task<ResponseResult<string>> Handle(RestoreAttechmentCommand request, CancellationToken cancellationToken)
         {
-            var checkAttechmentExist= await _attechmentRepository.FindAsync(x=> x.Id == request.Id, cancellationToken);
+            var checkAttechmentExist= await _attechmentRepository.FindAsync(x=> x.Id == request.Id, cancellationToken, ignoreQueryFilters: true);
             if (checkAttechmentExist == null)
             {
                 throw new NotFoundException($"Does not exist attechment with Id {request.Id}");

@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Queries.ChapterQuery.GetAllDeletedPagination
         public async Task<PagedResult<ChapterDto>> Handle(GetAllDeletedChapterPaginationQuery request, CancellationToken cancellationToken)
         {
             var checkChapterExists = await _chapterRepository
-                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken);
+                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken, ignoreQueryFilters: true);
             if(checkChapterExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ chương truyện nào");

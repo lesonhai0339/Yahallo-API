@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Queries.AttechmentQuery.GetAllDeleted
 
         public async Task<ResponseResult<AttechmentDto>> Handle(GetAllAttechmentDeletedQuery request, CancellationToken cancellationToken)
         {
-            var chechAttechmentExist = await _attechmentRepository.FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+            var chechAttechmentExist = await _attechmentRepository.FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (chechAttechmentExist.Count() == 0)
             {
                 throw new NotFoundException("Do not have any attechment");

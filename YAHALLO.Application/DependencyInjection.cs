@@ -1,8 +1,10 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SixLabors.ImageSharp;
 using System.Reflection;
 using YAHALLO.Application.Common.Behaviours;
+using YAHALLO.Application.Common.Caching;
 using YAHALLO.Application.Common.Logger;
 using YAHALLO.Application.Common.Validation;
 using YAHALLO.Application.Services.MailService.Service;

@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.UserRoleQuery.GetAllDeletedPagination
         public async Task<PagedResult<UserRoleDto>> Handle(GetAllUserRoleDeletedPaginationQuery request, CancellationToken cancellationToken)
         {
             var listUserRoleExists = await _userRoleRepository
-                            .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken);
+                            .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken, ignoreQueryFilters: true);
             if (listUserRoleExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ UserRole nào");

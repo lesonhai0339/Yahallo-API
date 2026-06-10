@@ -26,7 +26,7 @@ namespace YAHALLO.Application.Queries.RoleQuery.GetAllDeletedPagination
         {
             var listRoleExists = await _roleRepository
                             .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue,
-                             request.PageNumber, request.PageSize, cancellationToken);
+                             request.PageNumber, request.PageSize, cancellationToken, ignoreQueryFilters: true);
             if (!listRoleExists.Any())
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ role nào");

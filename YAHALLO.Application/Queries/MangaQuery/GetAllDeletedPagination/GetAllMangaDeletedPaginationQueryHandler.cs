@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination
         public async Task<PagedResult<MangaDto>> Handle(GetAllMangaDeletedPaginationQuery request, CancellationToken cancellationToken)
         {
             var listMangaExists = await _mangaRepository
-                           .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSizee, cancellationToken);
+                           .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSizee, cancellationToken, ignoreQueryFilters: true);
             if (listMangaExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ manga nào");

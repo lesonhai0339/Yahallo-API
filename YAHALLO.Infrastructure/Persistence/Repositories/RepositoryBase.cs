@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
@@ -56,9 +57,10 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
         }
         public virtual async Task<TDomain?> FindAsync(
             Expression<Func<TPersistence, bool>> filterExpression,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default,
+            bool ignoreQueryFilters = false)
         {
-            return await QueryInternal(filterExpression).SingleOrDefaultAsync<TDomain>(cancellationToken);
+            return await QueryInternal(filterExpression, ignoreQueryFilters).SingleOrDefaultAsync<TDomain>(cancellationToken);
         }
 
         public virtual async Task<TDomain?> FindAsync(
@@ -76,9 +78,10 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
 
         public virtual async Task<List<TDomain>> FindAllAsync(
             Expression<Func<TPersistence, bool>> filterExpression,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default,
+            bool ignoreQueryFilters = false)
         {
-            return await QueryInternal(filterExpression).ToListAsync<TDomain>(cancellationToken);
+            return await QueryInternal(filterExpression, ignoreQueryFilters).ToListAsync<TDomain>(cancellationToken);
         }
 
         public virtual async Task<List<TDomain>> FindAllAsync(
@@ -106,9 +109,10 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             Expression<Func<TPersistence, bool>> filterExpression,
             int pageNo,
             int pageSize,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default,
+            bool ignoreQueryFilters = false)
         {
-            var query = QueryInternal(filterExpression);
+            var query = QueryInternal(filterExpression, ignoreQueryFilters);
             return await PagedList<TDomain>.CreateAsync(
                 query,
                 pageNo,
@@ -192,9 +196,9 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             return await QueryInternal(queryOptions).AnyAsync(cancellationToken);
         }
 
-        protected virtual IQueryable<TPersistence> QueryInternal(Expression<Func<TPersistence, bool>>? filterExpression)
+        protected virtual IQueryable<TPersistence> QueryInternal(Expression<Func<TPersistence, bool>>? filterExpression, bool ignoreQueryFilters = false)
         {
-            var queryable = CreateQuery();
+            var queryable = CreateQuery(ignoreQueryFilters);
             if (filterExpression != null)
             {
                 queryable = queryable.Where(filterExpression);
@@ -220,9 +224,10 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             }
             return queryable;
         }
-        protected virtual IQueryable<TPersistence> CreateQuery()
+        protected virtual IQueryable<TPersistence> CreateQuery(bool ignoreQueryFilters = false)
         {
-            return GetSet();
+            IQueryable<TPersistence> query = GetSet();
+            return ignoreQueryFilters ? query.IgnoreQueryFilters() : query;
         }
 
         protected virtual DbSet<TPersistence> GetSet()
@@ -394,6 +399,34 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
         {
             return GetSet();
         }
+        public async Task<TResult?> FindSelectAsync<TResult>(
+           Func<IQueryable<TPersistence>, IQueryable<TResult>> selector,
+           CancellationToken cancellationToken = default,
+           bool ignoreQueryFilters = false)
+        {
+            return await selector(CreateQuery(ignoreQueryFilters)).FirstOrDefaultAsync(cancellationToken);
+        }
+        public async Task<List<TResult>> FindAllSelectAsync<TResult>(
+            Func<IQueryable<TPersistence>, IQueryable<TResult>> selector,
+            CancellationToken cancellationToken = default,
+            bool ignoreQueryFilters = false)
+        {
+            return await selector(CreateQuery(ignoreQueryFilters)).ToListAsync(cancellationToken);
+        }
+        public async Task<IPagedResult<TResult>> FindAllSelectAsync<TResult>(
+            int pageNo, int pageSize,
+            Func<IQueryable<TPersistence>, IQueryable<TResult>> selector,
+            CancellationToken cancellation = default,
+            bool ignoreQueryFilters = false)
+        {
+
+            return await PagedList<TResult>.CreateAsync(
+                selector(CreateQuery(ignoreQueryFilters)),
+                pageNo,
+                pageSize,
+                cancellation
+                );
+        }
         public virtual async Task<IPagedResult<TDomain>> FindAllAsync(
             IQueryable<TPersistence> filterExpression,
             int pageNo,
@@ -418,53 +451,11 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             return queryOptions;
         }
         public async Task<List<T>> QueryRaw<T>(
-            string query,
-            CancellationToken cancellationToken = default,
-            params object[] parameters)
+     string sql, object? param = null, CancellationToken ct = default)
         {
             var connection = _dbContext.Database.GetDbConnection();
-
-            // Build parameters cho Dapper
-            var dynamicParams = new DynamicParameters();
-            for (int i = 0; i < parameters.Length; i++)
-                dynamicParams.Add($"p{i}", parameters[i]);
-
-            // Replace {0}, {1} với @p0, @p1
-            for (int i = 0; i < parameters.Length; i++)
-                query = query.Replace($"{{{i}}}", $"@p{i}");
-
-            var result = await connection.QueryAsync<T>(query, dynamicParams);
-            return result.ToList();
-        }
-        public virtual void FromSql(string tableName, string id)
-        {
-            // Tạo câu lệnh SQL với tham số đầu vào
-            string sqlQuery = $"SELECT * FROM {tableName} WHERE Id = @Id";
-
-            // Tạo đối tượng truy vấn
-            using (var connection = new SqlConnection("YourConnectionString"))
-            {
-                // Tạo đối tượng Command
-                using (var command = new SqlCommand(sqlQuery, connection))
-                {
-                    // Thêm tham số vào câu lệnh SQL
-                    command.Parameters.AddWithValue("@Id", id);
-
-                    // Mở kết nối
-                    connection.Open();
-
-                    // Thực thi câu lệnh và đọc kết quả
-                    using (var reader = command.ExecuteReader())
-                    {
-                        // Xử lý kết quả đọc được
-                        // Giả sử TPersistence có thể khởi tạo từ dữ liệu đọc được
-                        if (reader.Read())
-                        {
-                            Console.WriteLine("Hello world");
-                        }
-                    }
-                }
-            }
+            var cmd = new CommandDefinition(sql, param, cancellationToken: ct);
+            return (await connection.QueryAsync<T>(cmd)).ToList();
         }
 
     }

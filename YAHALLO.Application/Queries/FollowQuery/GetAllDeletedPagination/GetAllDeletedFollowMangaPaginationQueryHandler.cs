@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Queries.FollowQuery.GetAllDeletedPagination
         {
             var listFollowMangaExists = await _followRepository
                             .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue,
-                            request.PageNumber, request.PageSize, cancellationToken);
+                            request.PageNumber, request.PageSize, cancellationToken, ignoreQueryFilters: true);
             if (listFollowMangaExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ bản ghi nào");

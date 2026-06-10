@@ -1,13 +1,17 @@
 //AI generated
 using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Options;
 using System;
+using YAHALLO.Application.Common.Caching;
+using YAHALLO.Application.Common.Keys;
 using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Application.Queries.AuthorQuery;
 using YAHALLO.Application.Queries.ChapterQuery;
 using YAHALLO.Application.Queries.CommentQuery;
 using YAHALLO.Application.Queries.TagQuery;
 using YAHALLO.Application.Repositories;
+using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
@@ -17,30 +21,86 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
 {
     public class GetMangaDetailQueryHandler : IRequestHandler<GetMangaDetailQuery, MangaDetailDto>
     {
-        private readonly IMangaQueryRepository _mangaQueryRepository;
+        private readonly IMangaRepository _mangaRepository;
         private readonly ICacheService _cache;
-
+        private readonly CacheSettings _settings;
         public GetMangaDetailQueryHandler(
-            IMangaQueryRepository mangaQueryRepository,
+            IOptions<CacheSettings> options,
+            IMangaRepository mangaRepository,
             ICacheService cache)
         {
-            _mangaQueryRepository = mangaQueryRepository;
+            _settings = options.Value;
+            _mangaRepository = mangaRepository;
             _cache = cache;
         }
         public async Task<MangaDetailDto> Handle(GetMangaDetailQuery request, CancellationToken cancellationToken)
         {
-            var cacheKey = $"manga:detail:{request.Id}";
-            return await _cache.GetOrSetAsync(
-                cacheKey,
-                async () =>
+            var manga = await _mangaRepository.FindSelectAsync(e => e
+                .Where(x => x.Id == request.Id)
+                .Select(t => new MangaDetailDto
                 {
-                    var manga = await _mangaQueryRepository.GetMangaDetail(request.Id, cancellationToken);
-                    if(manga == null)
-                        throw new NotFoundException("Manga not found"); 
-                    return manga;
-                },
-                TimeSpan.FromMinutes(10),
+                    Id = t.Id,
+                    Name = t.Name,
+                    Description = t.Description,
+                    Level = t.Level,
+                    Status = t.Status,
+                    Type = t.Type,
+                    Countries = t.Countries,
+                    Season = t.Season,
+                    MangaThumbnail = t.MangaThumbnail,
+                    MangaBackground = t.MangaBackground,
+                    UserId = t.UserId,
+                    TotalViews = t.ViewCount == null ? 0 : t.ViewCount.ViewCount,
+                    TotalFollows = t.FollowEntities.Count(),
+                    TotalChapters = t.ChaptersEntities.Count(),
+                    AverageRating = t.RatingEntities.Select(r => (double?)r.Rating).Average() ?? 0,
+                    Tags = t.TagEntities
+                    .Select(x => new TagDto
+                    {
+                        Id = x.TagId,
+                        Name = x.Tag.Name,
+                        Description = x.Tag.Description,    
+                    }) .ToList(),
+                    Chapters = t.ChaptersEntities
+                    .OrderByDescending(x => x.Index)
+                    .Select(c => new ChapterDto
+                    {
+                        Id = c.Id,
+                        Title = c.Title,
+                        Index = c.Index,
+                        CreateDate = c.CreateDate
+                    }).Take(5).ToList(),
+                    Authors = t.AuthorEntities
+                    .Select(a => new AuthorDto
+                    {
+                        Id = a.AuthorId,
+                        Name = a.Author.Name,
+                        Birth = a.Author.Birth,
+                        Countries = a.Author.Countries,
+                        Depscription = a.Author.Depscription,
+                        LifeStatus = a.Author.LifeStatus,   
+                    }).ToList(),
+                    Artists = t.ArtistEntities
+                    .Select(a => new ArtistDto
+                    {
+                        Id = a.ArtistId,
+                        Name = a.Artist.Name,
+                        Birth = a.Artist.Birth,
+                        Countries = a.Artist.Countries,
+                        Depscription = a.Artist.Depscription,
+                        LifeStatus = a.Artist.LifeStatus,
+                    }).ToList()
+                }), cancellationToken);
+            if(manga == null)
+                throw new NotFoundException($"Manga detail for id {request.Id} not found");
+
+            await _cache.SetAsync(
+                key: CacheKeys.MangaDetail(request.Id),
+                value: manga,
+                TimeSpan.FromMinutes(_settings.MangaDetailTtlMinutes),
                 cancellationToken);
+
+            return manga;
         }
     }
 }

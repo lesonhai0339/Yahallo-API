@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Queries.RoleQuery.GetAllDeleted
         public async Task<List<RoleDto>> Handle(GetAllRoleDeletedQuery request, CancellationToken cancellationToken)
         {
             var listRoleExists = await _roleRepository
-                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (!listRoleExists.Any())
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ role nào");

@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Queries.BlogQuery.GetAllDeletedPagination
         }
         public async Task<PagedResult<BlogDto>> Handle(GetAllBlogDeletedPaginationQuery request, CancellationToken cancellationToken)
         {
-            var checkBlogExists = await _blogRepository.FindAllAsync(x => !string.IsNullOrWhiteSpace(x.IdUserDelete) && x.DeleteDate.HasValue,request.PageNumber, request.PageSize, cancellationToken);
+            var checkBlogExists = await _blogRepository.FindAllAsync(x => !string.IsNullOrWhiteSpace(x.IdUserDelete) && x.DeleteDate.HasValue,request.PageNumber, request.PageSize, cancellationToken, ignoreQueryFilters: true);
             if(checkBlogExists.Count() == 0)
             {
                 throw new NotFoundException("Does not any blog have deleted");

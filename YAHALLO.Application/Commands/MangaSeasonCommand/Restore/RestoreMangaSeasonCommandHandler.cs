@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Commands.MangaSeasonCommand.Restore
         public async Task<ResponseResult<string>> Handle(RestoreMangaSeasonCommand request, CancellationToken cancellationToken)
         {
             var checkMangaSeasonExist= await _mangaSeasonRepository
-                .FindAsync(x=> x.Id.Equals(request.Id) && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken );
+                .FindAsync(x=> x.Id.Equals(request.Id) && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true );
             if(checkMangaSeasonExist == null )
             {
                 throw new NotFoundException($"Không có Manga season nào với Id: {request.Id} bị xóa");

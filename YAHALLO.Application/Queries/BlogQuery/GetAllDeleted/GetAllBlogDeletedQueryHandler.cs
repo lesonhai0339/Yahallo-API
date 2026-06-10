@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Queries.BlogQuery.GetAllDeleted
     
         public async Task<ResponseResult<BlogDto>> Handle(GetAllBlogDeletedQuery request, CancellationToken cancellationToken)
         {
-            var checkBlogExists = await _blogRepository.FindAllAsync(x=> !string.IsNullOrWhiteSpace(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+            var checkBlogExists = await _blogRepository.FindAllAsync(x=> !string.IsNullOrWhiteSpace(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkBlogExists.Count() == 0)
             {
                 throw new NotFoundException("Does not exist any blog have deleted");

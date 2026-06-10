@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Queries.FollowQuery.GetAllDeleted
         public async Task<List<FollowMangaDto>> Handle(GetAllDeletedFollowMangaQuery request, CancellationToken cancellationToken)
         {
             var listFollowMangaExists = await _followrepository
-                            .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                            .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (listFollowMangaExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ bản ghi nào");

@@ -2,11 +2,10 @@
 using dotenv.net;
 using Hangfire;
 using Hangfire.SqlServer;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Routing;
 using Serilog;
+using SixLabors.ImageSharp;
 using YAHALLO.Application;
-using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Application.Common.Caching;
 using YAHALLO.Application.Services.MailService;
 using YAHALLO.Configuration;
 using YAHALLO.Filters;
@@ -28,6 +27,9 @@ namespace YAHALLO
         public void ConfigureServices(IServiceCollection services)
         {
             DotEnv.Load(new DotEnvOptions(ignoreExceptions: true, overwriteExistingVars: false));
+
+            services.Configure<CacheSettings>(Configuration.GetSection(nameof(CacheSettings)));
+
             services.AddControllers(
                 opt =>
                 {
@@ -67,6 +69,7 @@ namespace YAHALLO
                 builder => builder.WithOrigins(
                         "https://www.yahallo.online",
                         "https://yahallo.online",
+                        "http://localhost:4200",
                         "https://localhost:4200"
                     )
                     .AllowAnyMethod()

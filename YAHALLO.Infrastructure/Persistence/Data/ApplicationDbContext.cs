@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -55,6 +56,20 @@ namespace YAHALLO.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            foreach (var et in modelBuilder.Model.GetEntityTypes())
+            {
+                if (typeof(ISoftDelete).IsAssignableFrom(et.ClrType))
+                {
+                    var p = Expression.Parameter(et.ClrType, "e");
+                    var body = Expression.AndAlso(
+                        Expression.Call(typeof(string), nameof(string.IsNullOrEmpty), null,
+                            Expression.Property(p, nameof(ISoftDelete.IdUserDelete))),
+                        Expression.Equal(
+                            Expression.Property(p, nameof(ISoftDelete.DeleteDate)),
+                            Expression.Constant(null)));
+                    modelBuilder.Entity(et.ClrType).HasQueryFilter(Expression.Lambda(body, p));
+                }
+            }
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
             modelBuilder.ApplyConfiguration(new ArtistConfiguration());
             modelBuilder.ApplyConfiguration(new AssociateNameConfiguration());

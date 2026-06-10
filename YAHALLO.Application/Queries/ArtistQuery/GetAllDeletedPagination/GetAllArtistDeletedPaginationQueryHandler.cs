@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.ArtistQuery.GetAllDeletedPagination
         public async Task<PagedResult<ArtistDto>> Handle(GetAllArtistDeletedPaginationQuery request, CancellationToken cancellationToken)
         {
             var listArtists = await _artistRepository
-                           .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken);
+                           .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, request.PageNumber, request.PageSize, cancellationToken, ignoreQueryFilters: true);
             if (!listArtists.Any())
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ họa sĩ nào");

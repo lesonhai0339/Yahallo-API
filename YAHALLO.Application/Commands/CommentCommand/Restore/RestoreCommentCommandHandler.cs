@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Commands.CommentCommand.Restore
         }
         public async Task<ResponseResult<string>> Handle(RestoreCommentCommand request, CancellationToken cancellationToken)
         {
-            var checkCommentExist = await _commentRepository.FindAsync(x => x.Id.Equals(request.Id), cancellationToken);
+            var checkCommentExist = await _commentRepository.FindAsync(x => x.Id.Equals(request.Id), cancellationToken, ignoreQueryFilters: true);
             if( checkCommentExist == null) 
             {
                 throw new NotFoundException("Không tìm thấy comment với Id này");

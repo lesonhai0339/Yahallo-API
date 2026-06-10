@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Queries.ChapterQuery.GetAllDeleted
         public async Task<ResponseResult<ChapterDto>> Handle(GetAllDeletedChapterQuery request, CancellationToken cancellationToken)
         {
             var checkChapterExists = await _chapterRepository
-                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkChapterExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ chương truyện nào");

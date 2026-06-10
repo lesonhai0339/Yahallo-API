@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Commands.UserRoleCommand.Restore
         {
             var checkUserRoleExist = await _userRoleRepository
                 .FindAsync(x => x.UserId == request.UserId && x.RoleId == request.RoleId
-                && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkUserRoleExist == null)
             {
                 throw new NotFoundException("Không tìm thấy UserRole này");

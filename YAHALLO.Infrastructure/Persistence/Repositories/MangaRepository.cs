@@ -46,28 +46,52 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
         {
             var connection = _dbContext.Database.GetDbConnection();
 
+            int offset = (pageNo - 1) * pageSize;
+
             var sql = @"
-             SELECT m.Id, m.Name, m.MangaThumbnail, m.MangaBackground, m.LastChapterIndex, m.LastChapterId, m.LastChapterUpdate,
-                     ISNULL(v.ViewCount, 0) AS TotalViews,
-                     (SELECT CAST(AVG(CAST(r.Rating AS FLOAT)) AS FLOAT) FROM MangaRating r WHERE r.MangaId = m.Id) AS  AverageRating
-                      FROM Manga m
-                      LEFT JOIN Counting v ON v.MangaId = m.Id
-                      WHERE m.IdUserDelete IS NULL
-                      ORDER BY m.LastChapterUpdate DESC
-                      OFFSET @PageNo ROWS FETCH NEXT @PageSize ROWS ONLY
+            SELECT m.Id, m.Name, m.MangaThumbnail, m.MangaBackground, m.LastChapterIndex,
+                   m.LastChapterId, m.LastChapterUpdate,
+                   ISNULL(v.ViewCount,0) AS TotalViews,
+                   (SELECT AVG(CAST(r.Rating AS FLOAT)) FROM MangaRating r WHERE r.MangaId=m.Id) AS AverageRating
+            INTO #paged
+            FROM Manga m
+            LEFT JOIN Counting v ON v.MangaId = m.Id
+            WHERE m.IdUserDelete IS NULL AND m.DeleteDate IS NULL
+            ORDER BY m.LastChapterUpdate DESC, m.Id DESC
+            OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY;
+
+            SELECT * FROM #paged
+            ORDER BY LastChapterUpdate DESC, Id DESC;
 
             SELECT mt.MangaId, t.Id, t.Name, t.Description
-                    FROM MangaTag mt
-                    INNER JOIN Tag t ON t.Id = mt.TagId
-                    WHERE mt.MangaId IN (
-                        SELECT m.Id FROM Manga m
-                        LEFT JOIN Counting v ON v.MangaId = m.Id
-                        WHERE m.IdUserDelete IS NULL
-                        ORDER BY m.LastChapterUpdate DESC
-                        OFFSET @PageNo ROWS FETCH NEXT @PageSize ROWS ONLY);
-            ";
+            FROM MangaTag mt
+            INNER JOIN Tag t ON t.Id = mt.TagId
+            WHERE mt.MangaId IN (SELECT Id FROM #paged);
 
-            using var multi = await connection.QueryMultipleAsync(sql, new { PageNo = pageNo, PageSize = pageSize });
+            DROP TABLE #paged;
+            ";
+            //var sql = @"
+            // SELECT m.Id, m.Name, m.MangaThumbnail, m.MangaBackground, m.LastChapterIndex, m.LastChapterId, m.LastChapterUpdate,
+            //         ISNULL(v.ViewCount, 0) AS TotalViews,
+            //         (SELECT CAST(AVG(CAST(r.Rating AS FLOAT)) AS FLOAT) FROM MangaRating r WHERE r.MangaId = m.Id) AS  AverageRating
+            //          FROM Manga m
+            //          LEFT JOIN Counting v ON v.MangaId = m.Id
+            //          WHERE m.IdUserDelete IS NULL
+            //          ORDER BY m.LastChapterUpdate DESC, m.Id DESC.
+            //          OFFSET @PageNo ROWS FETCH NEXT @PageSize ROWS ONLY
+
+            //SELECT mt.MangaId, t.Id, t.Name, t.Description
+            //        FROM MangaTag mt
+            //        INNER JOIN Tag t ON t.Id = mt.TagId
+            //        WHERE mt.MangaId IN (
+            //            SELECT m.Id FROM Manga m
+            //            LEFT JOIN Counting v ON v.MangaId = m.Id
+            //            WHERE m.IdUserDelete IS NULL  AND m.DeleteDate IS NULL
+            //            ORDER BY m.LastChapterUpdate DESC
+            //            OFFSET @PageNo ROWS FETCH NEXT @PageSize ROWS ONLY);
+            //";
+
+            using var multi = await connection.QueryMultipleAsync(sql, new { Offset = offset, PageSize = pageSize });
 
             var mangaList = (await multi.ReadAsync<MangaSumaryDto>()).ToList();
 
@@ -143,7 +167,6 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
 
             manga.Tags = (await multi.ReadAsync<TagDto>()).ToList();
             manga.Chapters = (await multi.ReadAsync<ChapterDto>()).ToList();
-            manga.Comments = (await multi.ReadAsync<CommentDto>()).ToList();
             manga.Authors = (await multi.ReadAsync<AuthorDto>()).ToList();
             manga.Artists = (await multi.ReadAsync<ArtistDto>()).ToList();
 

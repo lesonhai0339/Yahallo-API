@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.MangaCommand.Create;
 using YAHALLO.Application.Commands.MangaCommand.Delete;
@@ -14,10 +16,12 @@ using YAHALLO.Application.Queries.MangaQuery.GetAllDeleted;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetAllPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetDetail;
+using YAHALLO.Application.Queries.MangaQuery.GetHomepage;
 using YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated;
 using YAHALLO.Application.Queries.MangaQuery.GetTrending;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -28,6 +32,19 @@ namespace YAHALLO.Controllers.Anonymous
         {
             _sender = sender;
         }
+        [HttpGet]
+        [Route("manga/homepage")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<HomePageDto>>> GetHomePage(
+            CancellationToken cancellationToken= default)
+        {
+            var result = await _sender.Send(new GetHomepageRequest { } , cancellationToken);
+            return Ok(new JsonResponse<HomePageDto>(result));
+        }
+
         [HttpPost]
         [Route("manga/create")]
         [Produces(MediaTypeNames.Application.Json)]

@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.GetAllDeleted
         public async Task<ResponseResult<MangaRatingDto>> Handle(GetAllDeletedMangaRatingQuery request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExists = await _mangaRatingRepository
-                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (checkMangaRatingExists.Count() == 0)
             {
                 throw new NotFoundException("Không tìm thấy bất kỳ MangaRating nào");

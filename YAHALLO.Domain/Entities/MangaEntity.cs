@@ -40,13 +40,13 @@ namespace YAHALLO.Domain.Entities
         public virtual MangaViewEntity? MangaView { get; set; }
         public virtual CountingEntitity? ViewCount { get; set; }
         public virtual MangaSeasonEntity MangaSeasonEntity { get; set; } = null!;
-        public virtual ICollection<MangaTagEntity>? TagEntities { get; set; }
-        public virtual ICollection<MangaAssociateNameEntity>? AssociateNameEntities {get;set;}
-        public virtual ICollection<MangaArtistEntity> ArtistEntities { get; set; } = null!;
-        public virtual ICollection<MangaAuthorEntity> AuthorEntities { get; set; } = null!;
-        public virtual ICollection<ChapterEntity>? ChaptersEntities { get; set; }
-        public virtual ICollection<CommentEntity>? CommentEntities { get; set; }
-        public virtual ICollection<FollowEntity>? FollowEntities { get; set; }  
-        public virtual ICollection<MangaRatingEntity>? RatingEntities { get; set;}
+        public virtual ICollection<MangaTagEntity> TagEntities { get; set; } = new List<MangaTagEntity>();
+        public virtual ICollection<MangaAssociateNameEntity> AssociateNameEntities {get;set;} = new List<MangaAssociateNameEntity>();   
+        public virtual ICollection<MangaArtistEntity> ArtistEntities { get; set; } = new List<MangaArtistEntity>(); 
+        public virtual ICollection<MangaAuthorEntity> AuthorEntities { get; set; } = new List<MangaAuthorEntity>();
+        public virtual ICollection<ChapterEntity> ChaptersEntities { get; set; } = new List<ChapterEntity>();
+        public virtual ICollection<CommentEntity> CommentEntities { get; set; } = new List<CommentEntity>();
+        public virtual ICollection<FollowEntity> FollowEntities { get; set; } = new List<FollowEntity>();
+        public virtual ICollection<MangaRatingEntity> RatingEntities { get; set;} = new List<MangaRatingEntity>();
     }
 }

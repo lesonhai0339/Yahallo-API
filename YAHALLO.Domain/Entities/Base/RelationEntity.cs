@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Domain.Entities.Base
 {
-    public class RelationEntity
+    public class RelationEntity : ISoftDelete
     {
         public DateTime? CreateDate { get; set; }
         public string? IdUserCreate { get; set; }

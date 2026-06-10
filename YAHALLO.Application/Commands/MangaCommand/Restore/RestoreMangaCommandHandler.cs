@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Restore
         {
             var checkRole =await _currentUser.IsInRoleAsync("1");
             var checkMangaExist = await _mangaRepository
-                .FindAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkMangaExist == null)
             {
                 throw new NotFoundException($"Không tìm thấy manga nào có Id {request.Id} bị xóa");

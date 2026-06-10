@@ -7,11 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Common;
 using YAHALLO.Domain.Enums;
+using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Domain.Entities.Base
 {
-    public class BaseEntity
-    {  
+    public class BaseEntity : ISoftDelete
+    {
         [Key]
         public string Id { get; set; } = SequentialGuid.NewId();
         public DateTime? CreateDate { get; set; }

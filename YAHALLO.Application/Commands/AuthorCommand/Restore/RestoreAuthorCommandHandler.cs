@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Restore
         public async Task<string> Handle(RestoreAuthorCommand request, CancellationToken cancellationToken)
         {
             var checkAuthorExist = await _authorRepository
-                .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken);
+                .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkAuthorExist == null)
             {
                 throw new NotFoundException($"Không tồn tại tác giả với Id {request.Id}");
