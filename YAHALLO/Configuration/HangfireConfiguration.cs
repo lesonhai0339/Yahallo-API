@@ -1,5 +1,7 @@
 //AI generated
 using Hangfire;
+using MediatR;
+using YAHALLO.Application.Queries.MangaQuery.GetHomepage;
 using YAHALLO.Infrastructure.Jobs;
 
 namespace YAHALLO.Configuration
@@ -13,6 +15,12 @@ namespace YAHALLO.Configuration
                 // Restrict dashboard to local requests in production
                 Authorization = new[] { new HangfireLocalRequestFilter() }
             });
+
+            //reload homepage
+            RecurringJob.AddOrUpdate<IMediator>(
+            "homepage-cache-warmup",
+            mediator => mediator.Send(new GetHomepageRequest(), CancellationToken.None),
+            "*/1 * * * *");
 
             // Register recurring jobs
             RecurringJob.AddOrUpdate<IBackgroundJobService>(

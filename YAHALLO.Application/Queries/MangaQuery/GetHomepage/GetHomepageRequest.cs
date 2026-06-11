@@ -10,6 +10,5 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
 {
     public class GetHomepageRequest: IRequest<HomePageDto>
     {
-        public GetHomepageRequest() { }
     }
 }

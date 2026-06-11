@@ -35,6 +35,10 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
         }
         public async Task<MangaDetailDto> Handle(GetMangaDetailQuery request, CancellationToken cancellationToken)
         {
+            var cache = await _cache.GetAsync<MangaDetailDto>(CacheKeys.MangaDetail(request.Id), cancellationToken);
+            if (cache != null)
+                return cache;
+
             var manga = await _mangaRepository.FindSelectAsync(e => e
                 .Where(x => x.Id == request.Id)
                 .Select(t => new MangaDetailDto

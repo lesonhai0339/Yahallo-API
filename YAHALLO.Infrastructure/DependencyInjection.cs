@@ -60,6 +60,23 @@ namespace YAHALLO.Infrastructure
                     });
                 options.UseLazyLoadingProxies(false);
             });
+            //services.AddDbContextFactory<ApplicationDbContext>(options =>
+            //{
+            //    options.UseSqlServer(
+            //       sqlConnection,
+            //       b =>
+            //       {
+            //           b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
+            //           b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+            //           b.EnableRetryOnFailure(
+            //               maxRetryCount: 5,
+            //               maxRetryDelay: TimeSpan.FromSeconds(30),
+            //               errorNumbersToAdd: null);
+            //       });
+            //    options.UseLazyLoadingProxies(false);
+            //});
+
+
             services.Configure<IndexNameOptions>(opt =>
             {
                 opt.IndexName = Environment.GetEnvironmentVariable("Elastic_DefaultIndex")!;

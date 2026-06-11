@@ -41,7 +41,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<HomePageDto>>> GetHomePage(
             CancellationToken cancellationToken= default)
         {
-            var result = await _sender.Send(new GetHomepageRequest { } , cancellationToken);
+            var result = await _sender.Send(new GetHomepageRequest() , cancellationToken);
             return Ok(new JsonResponse<HomePageDto>(result));
         }
 
