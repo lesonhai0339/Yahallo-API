@@ -2,6 +2,7 @@
 using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.MangaQuery.FilterMangaByTag

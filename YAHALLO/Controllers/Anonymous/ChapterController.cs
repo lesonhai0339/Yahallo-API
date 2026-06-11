@@ -1,23 +1,19 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.ChapterCommand.Create;
 using YAHALLO.Application.Commands.ChapterCommand.Delete;
 using YAHALLO.Application.Commands.ChapterCommand.Restore;
 using YAHALLO.Application.Commands.ChapterCommand.Update;
-using YAHALLO.Application.Commands.RoleCommand.Create;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.ChapterQuery;
-using YAHALLO.Application.Queries.ChapterQuery.FilterChapter;
+using YAHALLO.Application.Queries.ChapterQuery.Filter;
 using YAHALLO.Application.Queries.ChapterQuery.GetAll;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllDeleted;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllImage;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllPagination;
 using YAHALLO.Domain.Common.Interfaces;
-using YAHALLO.Domain.Repositories;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous

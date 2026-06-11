@@ -16,9 +16,12 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(e => e.Id);
             builder.HasIndex(x => x.Id);
+
             builder.Property(x => x.Name)
                 .IsUnicode(true)
-                .HasMaxLength(256);
+                .HasMaxLength(256)
+                .UseCollation("Latin1_General_CI_AI");
+
             builder.Property(x => x.Description)
                 .IsUnicode(true);
 

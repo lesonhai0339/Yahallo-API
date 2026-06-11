@@ -7,7 +7,7 @@ using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Application.Queries.AuthorQuery;
 using YAHALLO.Application.Queries.TagQuery;
 
-namespace YAHALLO.Application.Queries.MangaQuery
+namespace YAHALLO.Application.Queries.MangaQuery.DTOs
 {
     public class HomePageDto
     {

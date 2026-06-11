@@ -8,7 +8,7 @@ using YAHALLO.Application.Queries.ChapterQuery;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums;
 
-namespace YAHALLO.Application.Queries.MangaQuery
+namespace YAHALLO.Application.Queries.MangaQuery.DTOs
 {
     public static class MangaDtoMappingExtension
     {
@@ -20,10 +20,10 @@ namespace YAHALLO.Application.Queries.MangaQuery
             map.MangaThumbnail = entity.MangaThumbnail;
             map.MangaBackground = entity.MangaBackground;   
             map.UserID = entity.IdUserCreate ?? "";
-            map.Level = entity.Level.GetDescription();
-            map.Status = entity.Status.GetDescription();
-            map.Type = entity.Type.GetDescription();
-            map.Countries = entity.Countries.GetDescription();
+            map.Level = entity.Level;
+            map.Status = entity.Status;
+            map.Type = entity.Type;
+            map.Countries = entity.Countries;
             map.LastestChapter = mapper.Map<ChapterDto>(entity.LastChapter);
 
             return map;

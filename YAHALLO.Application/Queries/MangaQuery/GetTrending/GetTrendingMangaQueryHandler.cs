@@ -1,6 +1,7 @@
 //AI generated
 using AutoMapper;
 using MediatR;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;
 

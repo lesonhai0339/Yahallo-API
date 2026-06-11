@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
@@ -17,7 +18,6 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         public FilterMangaQuery(
             int pageNumber, 
             int pageSize, 
-            string? id, 
             string? name, 
             string? tagIds,
             string? authorId,
@@ -35,7 +35,6 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         {
             PageNumber = pageNumber;
             PageSize = pageSize;
-            Id = id;
             Name = name;
             TagIds = tagIds;
             AuthorId = authorId;
@@ -51,7 +50,6 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
 
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public string? Id { get; set; }
         public string? Name { get; set; }
         public string? TagIds { get; set; }  
         public string? AuthorId { get; set; }    

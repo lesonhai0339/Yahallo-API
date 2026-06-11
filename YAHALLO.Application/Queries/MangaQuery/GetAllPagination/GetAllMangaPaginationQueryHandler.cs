@@ -2,6 +2,7 @@
 using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.ChapterQuery;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Enums.Chappter;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.ChapterQuery.Filter
@@ -18,20 +19,24 @@ namespace YAHALLO.Application.Queries.ChapterQuery.Filter
             int pagesize,
             int? index,
             string? mangaid,
-            string? manganame)
+            string? manganame,
+            ChapterSortBy? sortby,
+            bool reverseSort)
         {
             PageNumber = pagenumber;
             PageNumber = pagesize;
             Index = index;
             MangaId = mangaid;
-            MangaName = manganame;  
+            MangaName = manganame;
+            SortBy = sortby;
+            ReverseSort = reverseSort;
         }
         public int PageNumber { get;set; }
         public int PageSize { get;set; }
-
-        public string? Id { get; set; }
         public int? Index { get; set; }
         public string? MangaId { get; set; }
-        public string? MangaName { get; set; }   
+        public string? MangaName { get; set; }
+        public ChapterSortBy? SortBy { get; set; }
+        public bool ReverseSort { get; set; } = false;
     }
 }

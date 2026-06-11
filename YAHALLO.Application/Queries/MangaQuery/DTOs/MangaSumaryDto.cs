@@ -8,7 +8,7 @@ using YAHALLO.Application.Common.Mappings;
 using YAHALLO.Application.Queries.TagQuery;
 using YAHALLO.Domain.Entities;
 
-namespace YAHALLO.Application.Queries.MangaQuery
+namespace YAHALLO.Application.Queries.MangaQuery.DTOs
 {
     public class MangaSumaryDto : IMapFrom<MangaEntity>
     {

@@ -17,7 +17,8 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.Property(x => x.Name)
                 .IsUnicode(true)
                 .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(255)
+                .UseCollation("Latin1_General_CI_AI");
             builder.Property(x => x.Depscription)
                 .IsUnicode(true);
             builder.ToTable("Artist");

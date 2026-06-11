@@ -11,7 +11,7 @@ using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
 
-namespace YAHALLO.Application.Queries.MangaQuery
+namespace YAHALLO.Application.Queries.MangaQuery.DTOs
 {
     public class MangaDetailDto : IMapFrom<MangaEntity>
     {
@@ -27,14 +27,8 @@ namespace YAHALLO.Application.Queries.MangaQuery
         public string? MangaBackground { get; set; }
         public string? UserId { get; set; }
 
-        // Aggregated
-        public double AverageRating { get; set; }
-        public int TotalFollows { get; set; }
-        public int TotalViews { get; set; }
-        public int TotalChapters { get; set; }
         public List<TagDto> Tags { get; set; } = new();
         public List<ArtistDto> Artists { get; set; } = new();
-        public List<ChapterDto> Chapters { get; set; } = new();
         public List<AuthorDto> Authors { get; set; } = new();
 
         public void Mapping(Profile profile)

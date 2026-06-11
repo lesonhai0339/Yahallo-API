@@ -17,19 +17,31 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Email)
                 .IsRequired();
+
             builder.HasIndex(x => x.Email);
             builder.Property(x => x.FirstName)
                 .HasMaxLength(200)
-                .IsUnicode(true);
+                .IsUnicode(true)
+                .UseCollation("Latin1_General_CI_AI");
+
             builder.Property(x => x.LastName)
                 .HasMaxLength(200)
-                .IsUnicode(true);
+                .IsUnicode(true)
+                .UseCollation("Latin1_General_CI_AI");
+
+            builder.Property(x => x.DisplayName)
+                .HasMaxLength(200)
+                .IsUnicode(true)
+                .UseCollation("Latin1_General_CI_AI");
+
             builder.Property(x => x.PhoneNumber)
                 .IsUnicode(false);
+
             builder.HasOne(x => x.OldPasswords)
                .WithOne(x => x.UserEntity)
                .HasForeignKey<UserOldPasswordEntity>(x => x.UserId)
                .OnDelete(DeleteBehavior.Cascade);
+
             builder.ToTable("Users");
         }
     }

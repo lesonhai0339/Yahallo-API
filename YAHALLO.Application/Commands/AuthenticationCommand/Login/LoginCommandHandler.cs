@@ -25,7 +25,20 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
         }
         public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var checkUserExist = await _userRepository.FindAsync(x => x.UserName == request.UserName, cancellationToken);
+            var checkUserExist = await _userRepository.FindSelectAsync(x => x
+                .Where(u => u.UserName == request.UserName)
+                .Select(t => new
+                {
+                    Id = t.Id,
+                    DisplayName = t.DisplayName,
+                    AvatarThumbnail = t.AvatarThumbnail,
+                    Password = t.Password,  
+                    Level = t.Level,
+                    UserRoleEntities = t.UserRoleEntities.Select(r => new UserRoleEntity
+                    { 
+                        RoleEntity = r.RoleEntity
+                    }).ToList(),
+                }));
             if (checkUserExist == null)
             {
                 throw new NotFoundException("Tên đăng nhập không chính xác");

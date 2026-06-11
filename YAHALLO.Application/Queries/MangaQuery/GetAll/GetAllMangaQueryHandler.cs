@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Enums.UserEnums;
 using YAHALLO.Domain.Exceptions;

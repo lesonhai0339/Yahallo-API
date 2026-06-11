@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using YAHALLO.Application.Common.Mappings;
 using YAHALLO.Domain.Entities;
 
-namespace YAHALLO.Application.Queries.MangaQuery
+namespace YAHALLO.Application.Queries.MangaQuery.DTOs
 {
     public class TopMangaDto: IMapFrom<MangaEntity>
     {

@@ -1,14 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.MangaCommand.Create;
 using YAHALLO.Application.Commands.MangaCommand.Delete;
 using YAHALLO.Application.Commands.MangaCommand.Restore;
 using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.MangaQuery;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Application.Queries.MangaQuery.FilterManga;
 using YAHALLO.Application.Queries.MangaQuery.FilterMangaByTag;
 using YAHALLO.Application.Queries.MangaQuery.GetAll;
@@ -17,11 +15,9 @@ using YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetAllPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetDetail;
 using YAHALLO.Application.Queries.MangaQuery.GetHomepage;
-using YAHALLO.Application.Queries.MangaQuery.GetLatestUpdated;
 using YAHALLO.Application.Queries.MangaQuery.GetTrending;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -186,19 +182,6 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<List<MangaDto>>(result));
         }
-
-        [HttpGet]
-        [Route("manga/lastest-updated")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<JsonResponse<PagedResult<MangaSumaryDto>>>> GetLatestUpdatedManga(
-            [FromQuery] GetLatestUpdatedMangaQuery query,
-            CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<MangaSumaryDto>>(result));
-        }
-
         [HttpGet]
         [Route("manga/detail/{id}")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -208,7 +191,7 @@ namespace YAHALLO.Controllers.Anonymous
             string id,
             CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetMangaDetailQuery { Id = id }, cancellationToken);
+            var result = await _sender.Send(new GetMangaDetailRequest { Id = id }, cancellationToken);
             return Ok(new JsonResponse<MangaDetailDto>(result));
         }
     }

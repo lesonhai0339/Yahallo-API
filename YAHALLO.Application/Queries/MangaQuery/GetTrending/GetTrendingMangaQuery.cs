@@ -1,5 +1,6 @@
 //AI generated
 using MediatR;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 
 namespace YAHALLO.Application.Queries.MangaQuery.GetTrending
 {

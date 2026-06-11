@@ -10,6 +10,7 @@ using YAHALLO.Application.Common.Keys;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Application.Queries.AuthorQuery;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Application.Queries.TagQuery;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;

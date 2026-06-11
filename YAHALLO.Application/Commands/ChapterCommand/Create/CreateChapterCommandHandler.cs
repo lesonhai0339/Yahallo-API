@@ -1,22 +1,10 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
-using YAHALLO.Domain.Entities.S3;
-using YAHALLO.Domain.Enums.Base;
 using YAHALLO.Domain.Exceptions;
-using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Domain.Repositories.Storage;
-using NotMappedAttribute = YAHALLO.Domain.Exceptions.NotMappedAttribute;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Create
 {
@@ -25,16 +13,14 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
         private IChapterRepository _chapterRepository;
         private IMangaRepository _mangaRepository;
         private ICurrentUserService _currentUser;
-        private readonly IFiles<IFormFile> _files;
-        private readonly IStorageService<ChapterImage> _chapterStorageService;
-        public CreateChapterCommandHandler(IChapterRepository chapterRepository, IMangaRepository mangaRepository, ICurrentUserService currentUser,
-            IStorageService<ChapterImage> chapterStorageService
-            , IFiles<IFormFile> files)
+        public CreateChapterCommandHandler(
+            IChapterRepository chapterRepository, 
+            IMangaRepository mangaRepository, 
+            ICurrentUserService currentUser)
         {
             _chapterRepository = chapterRepository;
             _mangaRepository = mangaRepository;
             _currentUser = currentUser;
-            _files = files;
             _chapterRepository = chapterRepository; 
         }
 
@@ -81,6 +67,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
             checkMangaExist.LastChapterId = chapter.Id;
             checkMangaExist.LastChapterIndex = chapter.Index;
             checkMangaExist.LastChapterUpdate = chapter.CreateDate;
+            checkMangaExist.LastChapter = chapter;
 
             var chapterState = await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (chapterState == 0)

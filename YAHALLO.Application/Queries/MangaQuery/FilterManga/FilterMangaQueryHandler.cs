@@ -2,11 +2,12 @@
 using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Application.Queries.ChapterQuery;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Domain.Common.Helper;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Exceptions;
-using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
@@ -15,49 +16,54 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
     {
         private readonly IMangaRepository _mangaRepository;
         private readonly IMapper _mapper;
-        //private readonly IMangaSearchRepository _mangaSearchRepository;
         public FilterMangaQueryHandler(
             IMangaRepository mangaRepository,
             IMapper mapper
-            //IMangaSearchRepository mangaSearchRepository,
             )
         {
             _mangaRepository = mangaRepository;
             _mapper = mapper;
-            //_mangaSearchRepository = mangaSearchRepository;
         }
 
         public async Task<PagedResult<MangaDto>> Handle(FilterMangaQuery request, CancellationToken cancellationToken)
         {
-
-            //try
-            //{
-            //    Action<QueryDescriptor<MangaEntity>> action = new Action<QueryDescriptor<MangaEntity>>((q) =>
-            //    {
-            //        q.Match(m =>
-            //        {
-            //            m.Field(f => f.Name).Query(request.Name!);
-            //        });
-            //    });
-            //    IQuery<MangaEntity> queryable;
-            //}
-            //catch(Exception ex)
-            //{
-            //    Log.Error(ex, "Elastic search engine error");
-            //}
-
             var query = _mangaRepository.CreateQueryable();
-            query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
-
             query = ApplyFilter(query, request);
             query = ApplySorting(query, request);
 
-            var listMangaExists = await _mangaRepository.FindAllAsync(query, request.PageNumber, request.PageSize, cancellationToken);
+            var listMangaExists = await _mangaRepository.FindAllSelectAsync(
+                pageNo: request.PageNumber,
+                pageSize: request.PageSize,
+                selector: _ => query
+                    .OrderBy(x => x.Id)
+                    .Select(m => new MangaDto
+                    {
+                        Id = m.Id,
+                        Name = m.Name,
+                        Description = m.Description,
+                        Level = m.Level,
+                        Status = m.Status,
+                        Type = m.Type,
+                        Countries = m.Countries,
+                        Season = m.Season,
+                        MangaThumbnail = m.MangaThumbnail,
+                        MangaBackground = m.MangaBackground,
+                        UserID = m.UserId,
+                        LastestChapter = m.LastChapter == null ? null : new ChapterDto
+                        {
+                            Id = m.LastChapter.Id,
+                            Index = m.LastChapter.Index,
+                            CreateDate = m.LastChapter.CreateDate,
+                            Title = m.LastChapter.Title,
+                            MangaId = m.Id,
+                            MangaName = m.Name
+                        }
+                    }),
+                cancellation: cancellationToken);
 
             if (listMangaExists.Count() == 0)
                 throw new NotFoundException("Không tìm thấy manga phù hợp yêu cầu");
-
-            return listMangaExists.MapToPagedResult(x => x.MapFullToMangaDto(_mapper));
+            return listMangaExists.MapToPagedResult(x => x);
         }
         private IQueryable<MangaEntity> ApplySorting(IQueryable<MangaEntity> filter, FilterMangaQuery request)
         {
@@ -73,7 +79,16 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         }
         private IQueryable<MangaEntity> ApplyFilter(IQueryable<MangaEntity> query, FilterMangaQuery request)
         {
-            if (!string.IsNullOrEmpty(request.Name)) query = query.Where(x => x.Name.Trim().ToLower().Contains(request.Name.Trim().ToLower()));
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                var name = request.Name.Trim();
+                query = query.Where(x =>
+                    x.Name.Trim().Contains(name)
+                    || x.AuthorEntities.Any(a => a.Author.Name.Contains(name))
+                    || x.ArtistEntities.Any(a => a.Artist.Name.Contains(name))
+                    || x.TagEntities.Any(t => t.Tag.Name.Contains(name)));
+            }
+            if (!string.IsNullOrEmpty(request.Name)) query = query.Where(x => x.Name.Trim().Contains(request.Name.Trim()));
             if (request.Level != null) query = query.Where(x => x.Level == request.Level);
             if (request.Status != null)  query = query.Where(x => x.Status == request.Status);
             if (request.Type != null)query = query.Where(x => x.Type == request.Type);
@@ -81,7 +96,6 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             if (request.Season != null)query = query.Where(x => x.Season == request.Season);
             if (request.DateUpdate != null) query = query.Where(x => x.UpdateDate == request.DateUpdate);
             if (request.UserId != null) query = query.Where(x => x.UserId == request.UserId);
-            if (!string.IsNullOrEmpty(request.Id))query = query.Where(x => x.Id == request.Id);
             if (!string.IsNullOrEmpty(request.AuthorId)) query = query.Where(x => x.AuthorEntities.Any(a => a.AuthorId == request.AuthorId));
             if (!string.IsNullOrEmpty(request.ArtistId))query = query.Where(x => x.ArtistEntities.Any(a => a.ArtistId == request.ArtistId));
             if (!string.IsNullOrEmpty(request.TagIds))

@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using YAHALLO.Application.Repositories;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;
@@ -117,9 +116,7 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 
-            services.AddScoped<MangaRepository>();
-            services.AddScoped<IMangaRepository>(sp => sp.GetRequiredService<MangaRepository>());
-            services.AddScoped<IMangaQueryRepository>(sp => sp.GetRequiredService<MangaRepository>());
+            services.AddScoped<IMangaRepository, MangaRepository>();
 
             services.AddScoped<IChapterRepository, ChapterRepository>();
 

@@ -1,30 +1,25 @@
 //AI generated
-using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Options;
-using System;
 using YAHALLO.Application.Common.Caching;
 using YAHALLO.Application.Common.Keys;
 using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Application.Queries.AuthorQuery;
 using YAHALLO.Application.Queries.ChapterQuery;
-using YAHALLO.Application.Queries.CommentQuery;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Application.Queries.TagQuery;
-using YAHALLO.Application.Repositories;
-using YAHALLO.Domain.Entities;
-using YAHALLO.Domain.Enums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;
 
 namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
 {
-    public class GetMangaDetailQueryHandler : IRequestHandler<GetMangaDetailQuery, MangaDetailDto>
+    public class GetMangaDetailRequestHandler : IRequestHandler<GetMangaDetailRequest, MangaDetailDto>
     {
         private readonly IMangaRepository _mangaRepository;
         private readonly ICacheService _cache;
         private readonly CacheSettings _settings;
-        public GetMangaDetailQueryHandler(
+        public GetMangaDetailRequestHandler(
             IOptions<CacheSettings> options,
             IMangaRepository mangaRepository,
             ICacheService cache)
@@ -33,7 +28,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
             _mangaRepository = mangaRepository;
             _cache = cache;
         }
-        public async Task<MangaDetailDto> Handle(GetMangaDetailQuery request, CancellationToken cancellationToken)
+        public async Task<MangaDetailDto> Handle(GetMangaDetailRequest request, CancellationToken cancellationToken)
         {
             var cache = await _cache.GetAsync<MangaDetailDto>(CacheKeys.MangaDetail(request.Id), cancellationToken);
             if (cache != null)
@@ -54,10 +49,6 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
                     MangaThumbnail = t.MangaThumbnail,
                     MangaBackground = t.MangaBackground,
                     UserId = t.UserId,
-                    TotalViews = t.ViewCount == null ? 0 : t.ViewCount.ViewCount,
-                    TotalFollows = t.FollowEntities.Count(),
-                    TotalChapters = t.ChaptersEntities.Count(),
-                    AverageRating = t.RatingEntities.Select(r => (double?)r.Rating).Average() ?? 0,
                     Tags = t.TagEntities
                     .Select(x => new TagDto
                     {
@@ -65,15 +56,6 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
                         Name = x.Tag.Name,
                         Description = x.Tag.Description,    
                     }) .ToList(),
-                    Chapters = t.ChaptersEntities
-                    .OrderByDescending(x => x.Index)
-                    .Select(c => new ChapterDto
-                    {
-                        Id = c.Id,
-                        Title = c.Title,
-                        Index = c.Index,
-                        CreateDate = c.CreateDate
-                    }).Take(5).ToList(),
                     Authors = t.AuthorEntities
                     .Select(a => new AuthorDto
                     {

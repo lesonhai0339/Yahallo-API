@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
-using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Application.Queries.AuthorQuery;
 using YAHALLO.Application.Queries.ChapterQuery;
-using YAHALLO.Application.Queries.CommentQuery;
-using YAHALLO.Application.Queries.MangaQuery;
+using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Application.Queries.TagQuery;
-using YAHALLO.Application.Repositories;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;
@@ -17,7 +13,7 @@ using YAHALLO.Infrastructure.Data;
 
 namespace YAHALLO.Infrastructure.Persistence.Repositories
 {
-    public class MangaRepository : RepositoryBase<MangaEntity, MangaEntity, ApplicationDbContext>, IMangaRepository, IMangaQueryRepository
+    public class MangaRepository : RepositoryBase<MangaEntity, MangaEntity, ApplicationDbContext>, IMangaRepository
     {
         private readonly ICacheService _cache;
         private readonly IMapper _mapper;
@@ -30,17 +26,6 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             _mapper = mapper;
             _dbContext = dbContext;
             _cache = cache;
-        }
-        public async Task<MangaEntity?> FindById(string mangaId, CancellationToken token)
-        {
-            return await FindAsync(
-                        x => x.Id == mangaId && string.IsNullOrEmpty(x.IdUserDelete),
-                        queryOptions => queryOptions
-                                            .Include(m => m.FollowEntities)
-                                            .Include(m => m.ChaptersEntities)
-                                            .Include(m => m.ViewCount)
-                                            .Include(m => m.RatingEntities),
-                        token);
         }
         public async Task<List<MangaSumaryDto>> GetLastUpdateManga(int pageNo, int pageSize, CancellationToken token)
         {
@@ -166,19 +151,10 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             if (manga == null) return null;
 
             manga.Tags = (await multi.ReadAsync<TagDto>()).ToList();
-            manga.Chapters = (await multi.ReadAsync<ChapterDto>()).ToList();
             manga.Authors = (await multi.ReadAsync<AuthorDto>()).ToList();
             manga.Artists = (await multi.ReadAsync<ArtistDto>()).ToList();
 
             return manga;
-        }
-        public override Task<IPagedResult<MangaEntity>> FindAllAsync(IQueryable<MangaEntity> filterExpression, int pageNo, int pageSize, CancellationToken cancellationToken = default)
-        {
-            return base.FindAllAsync(
-               filterExpression.Include(x => x.LastChapter),
-               pageNo,
-               pageSize,
-               cancellationToken);
         }
     }
 }

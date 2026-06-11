@@ -14,7 +14,8 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.Property(e => e.Name)
                 .IsUnicode(true)
                 .HasMaxLength(128)
-                .IsRequired();
+                .IsRequired()
+                .UseCollation("Latin1_General_CI_AI");
             builder.Property(e => e.Description)
                 .IsUnicode(true);
             builder.ToTable("Tag");
