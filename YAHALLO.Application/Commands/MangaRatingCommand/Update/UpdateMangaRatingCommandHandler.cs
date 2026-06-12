@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Update
 {
-    public class UpdateMangaRatingCommandHandler : IRequestHandler<UpdateMangaRatingCommand, ResponseResult<string>>
+    public class UpdateMangaRatingCommandHandler : IRequestHandler<UpdateMangaRatingCommand, bool>
     {
         private readonly IMangaRatingRepository _mangaRatingRepository;
         private readonly ICurrentUserService _currentUser;
@@ -21,27 +21,19 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Update
             _currentUser = currentUser;
         }
 
-        public async Task<ResponseResult<string>> Handle(UpdateMangaRatingCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(UpdateMangaRatingCommand request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExist = await _mangaRatingRepository
-                .FindAsync(x => x.MangaId == request.MangaId && x.UserId == request.UserId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
+                .FindAsync(x => x.MangaId == request.MangaId && x.UserId == request.UserId, cancellationToken);
             if(checkMangaRatingExist == null)
-            {
                 throw new NotFoundException("Không tìm thấy MangaRating theo yêu cầu");
-            }
+
             checkMangaRatingExist.Rating = (request.Rating==0) ? request.Rating : checkMangaRatingExist.Rating;
             checkMangaRatingExist.UpdateDate = DateTime.Now;
             checkMangaRatingExist.IdUserUpdate = _currentUser.UserId;
             _mangaRatingRepository.Update(checkMangaRatingExist);
             var result = await _mangaRatingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-            if(result> 0)
-            {
-                return new ResponseResult<string>("Cập nhật thành công");
-            }
-            else
-            {
-                return new ResponseResult<string>("Cập nhật thất bại");
-            }
+            return result > 0;
         }
     }
 }

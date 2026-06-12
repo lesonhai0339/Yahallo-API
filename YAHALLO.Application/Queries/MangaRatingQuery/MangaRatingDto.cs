@@ -12,19 +12,22 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery
 {
     public class MangaRatingDto : IMapFrom<MangaRatingEntity>
     {
-        public required string MangaId { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string MangaId { get; set; } = string.Empty;
         public string? MangaName { get; set; }
         public required string Userid {get;set;}
         public string? UserName { get;set; } 
-
-        public static MangaRatingDto CreateMap(string mangaid,string manganame, string userid, string username)
+        public int ? Rating { get; set; }   
+        public static MangaRatingDto CreateMap(string id, string mangaid,string manganame, string userid, string username, int rating)
         {
             return new MangaRatingDto
             {
+                Id = id,
                 MangaId = mangaid,
                 Userid = userid,
                 UserName = username,
                 MangaName = manganame,
+                Rating = rating 
             };
         }
         public void Mapping(Profile profile)

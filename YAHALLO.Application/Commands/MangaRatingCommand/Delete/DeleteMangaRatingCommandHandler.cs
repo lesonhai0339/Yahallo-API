@@ -11,7 +11,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
 {
-    public class DeleteMangaRatingCommandHandler : IRequestHandler<DeleteMangaRatingCommand, ResponseResult<string>>
+    public class DeleteMangaRatingCommandHandler : IRequestHandler<DeleteMangaRatingCommand, bool>
     {
         private readonly IMangaRatingRepository _mangaRatingRepository;
         private readonly ICurrentUserService _currentUser;
@@ -21,30 +21,21 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
             _currentUser = curreentUser;
         }
 
-        public async Task<ResponseResult<string>> Handle(DeleteMangaRatingCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(DeleteMangaRatingCommand request, CancellationToken cancellationToken)
         {
             var checkMangaRatingExist = await _mangaRatingRepository
-                .FindAsync(x => x.MangaId == request.Mangaid && x.UserId == request.UserId, cancellationToken);
+                .FindAsync(x => x.MangaId == request.MangaId && x.UserId == request.UserId, cancellationToken);
             if(checkMangaRatingExist == null)
-            {
                 throw new NotFoundException("Không tìm thấy MangaRating với thông tin trên");
-            }
-            if(!string.IsNullOrEmpty(checkMangaRatingExist.IdUserDelete) && checkMangaRatingExist.DeleteDate.HasValue)
-            {
+
+            if (!string.IsNullOrEmpty(checkMangaRatingExist.IdUserDelete) && checkMangaRatingExist.DeleteDate.HasValue)
                 throw new DuplicateException("Đã tồn tại MangaRating nhưng đã bị xóa trước đó");
-            }
+
             checkMangaRatingExist.DeleteDate = DateTime.Now;
             checkMangaRatingExist.IdUserDelete = _currentUser.UserId;
             _mangaRatingRepository.Update(checkMangaRatingExist);
             var result = await _mangaRatingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-            if(result>0)
-            {
-                return new ResponseResult<string>("Xóa thành công");
-            }
-            else
-            {
-                return new ResponseResult<string>("Xóa thất bại");
-            }
+            return result > 0;
         }
     }
 }

@@ -8,16 +8,10 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
 {
-    public class CreateMangaRatingCommand: IRequest<ResponseResult<string>>
+    public class CreateMangaRatingCommand: IRequest<bool>
     {
-        public string MangaId { get; set; }
-        public string UserId { get; set; }
+        public string MangaId { get; set; }  = string.Empty;
+        public string UserId { get; set; } = string.Empty;  
         public int Rating { get; set; }
-        public CreateMangaRatingCommand(string mangaId, string userId, int rating)
-        {
-            MangaId = mangaId;
-            UserId = userId;
-            Rating = rating;
-        }
     }
 }

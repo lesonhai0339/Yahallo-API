@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Domain.Enums.MangaRating;
 
 namespace YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating
 {
@@ -15,16 +16,8 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating
         public string? MangaId { get;set; }
         public string? MangaName { get; set; }
         public string? UserId { get;set; }
-        public string? UserName { get; set; }
-        public FilterMangaRatingQuery() { }
-        public FilterMangaRatingQuery(int pageNumber, int pageSize, string? mangaId, string? mangaName, string? userId, string? userName)
-        {
-            PageNumber = pageNumber;
-            PageSize = pageSize;
-            MangaId = mangaId;
-            MangaName = mangaName;
-            UserId = userId;
-            UserName = userName;
-        }   
+        public string? UserName { get; set; } 
+        public MangaRatingSortBy SortBy { get; set; }
+        public bool ReverserSort { get; set; }   
     }
 }

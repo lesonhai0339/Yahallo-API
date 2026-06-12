@@ -8,13 +8,13 @@ using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Application.Queries.MangaQuery.FilterManga;
-using YAHALLO.Application.Queries.MangaQuery.FilterMangaByTag;
 using YAHALLO.Application.Queries.MangaQuery.GetAll;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeleted;
 using YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetAllPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetDetail;
 using YAHALLO.Application.Queries.MangaQuery.GetHomepage;
+using YAHALLO.Application.Queries.MangaQuery.GetStatus;
 using YAHALLO.Application.Queries.MangaQuery.GetTrending;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
@@ -157,21 +157,6 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
         }
         [HttpGet]
-        [Route("manga/filter-manga-by-tags")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> FilterMangaByTags(
-        [FromQuery] FilterMangaByTagQuery query,
-        CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
-        }
-
-        // AI generated — new endpoints
-        [HttpGet]
         [Route("manga/trending")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<List<MangaDto>>), StatusCodes.Status200OK)]
@@ -183,16 +168,28 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<List<MangaDto>>(result));
         }
         [HttpGet]
-        [Route("manga/detail/{id}")]
+        [Route("manga/detail")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<MangaDetailDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<JsonResponse<MangaDetailDto>>> GetMangaDetail(
-            string id,
+            [FromQuery] GetMangaDetailRequest query,
             CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetMangaDetailRequest { Id = id }, cancellationToken);
+            var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<MangaDetailDto>(result));
+        }
+        [HttpGet]
+        [Route("manga/status")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<MangaStatusDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<JsonResponse<MangaStatusDto>>> GetMangaStatus(
+            [FromQuery] GetMangaStatusRequest query,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<MangaStatusDto>(result));
         }
     }
 }

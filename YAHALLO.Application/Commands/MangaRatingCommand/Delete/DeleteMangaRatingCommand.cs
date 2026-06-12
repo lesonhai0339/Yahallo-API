@@ -8,14 +8,9 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
 {
-    public class DeleteMangaRatingCommand: IRequest<ResponseResult<string>>
+    public class DeleteMangaRatingCommand: IRequest<bool>
     {
-        public string Mangaid { get; set; }
-        public string UserId { get; set; }
-        public DeleteMangaRatingCommand(string mangaid, string userId)
-        {
-            Mangaid = mangaid;
-            UserId = userId;
-        }
+        public string MangaId { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;  
     }
 }

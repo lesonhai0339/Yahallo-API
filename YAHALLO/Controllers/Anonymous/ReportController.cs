@@ -8,10 +8,10 @@ using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
 {
-    public class ReportComtroller : ControllerBase
+    public class ReportController : ControllerBase
     {
         private readonly IMediator _sender;
-        public ReportComtroller(IMediator sender)
+        public ReportController(IMediator sender)
         {
             _sender = sender;
         }

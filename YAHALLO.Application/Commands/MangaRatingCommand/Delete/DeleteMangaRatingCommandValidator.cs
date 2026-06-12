@@ -11,8 +11,8 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
     {
         public DeleteMangaRatingCommandValidator()
         {
-            RuleFor(x => x.Mangaid).NotNull().NotEmpty().WithMessage("MangaId không thể bỏ trống");
-            RuleFor(x => x.UserId).NotNull().NotEmpty().WithMessage("UserId không thể bỏ trống");
+            RuleFor(x => x.MangaId).NotNull().NotEmpty().WithMessage("MangaId không được bỏ trống");
+            RuleFor(x => x.UserId).NotNull().NotEmpty().WithMessage("UserId không được bỏ trống");
         }
     }
 }

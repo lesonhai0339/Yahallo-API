@@ -8,14 +8,9 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Restore
 {
-    public class RestoreMangaRatingCommand: IRequest<ResponseResult<string>>
+    public class RestoreMangaRatingCommand: IRequest<bool>
     {
-        public string MangaId { get;set; }
-        public string UserId { get;set; }
-        public RestoreMangaRatingCommand(string mangaId, string userId)
-        {
-            MangaId= mangaId;
-            UserId= userId; 
-        }
+        public string MangaId { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
     }
 }
