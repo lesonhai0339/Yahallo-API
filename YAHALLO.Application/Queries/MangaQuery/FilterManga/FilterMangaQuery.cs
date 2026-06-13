@@ -26,11 +26,11 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             MangaStatus? status, 
             MangaType? type, 
             CountriesEnum? countries, 
-            int? season, 
+            int season, 
             string? userId, 
             DateTime? dateUpdate,
             MangaSortBy sortby,
-            bool reverserSort
+            bool reverseSort
             )
         {
             PageNumber = pageNumber;
@@ -58,10 +58,10 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         public MangaStatus? Status { get; set; }
         public MangaType? Type { get; set; }
         public CountriesEnum? Countries { get; set; }
-        public int? Season { get; set; }
+        public int Season { get; set; }
         public string? UserId { get; set; }
         public DateTime? DateUpdate { get; set; }
         public MangaSortBy? SortBy { get; set; }
-        public bool ReverserSort { get; set; } 
+        public bool ReverseSort { get; set; } 
     }
 }

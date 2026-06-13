@@ -69,11 +69,11 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
         {
             return request.SortBy switch
             {
-                MangaSortBy.LastUpdate => OrderHelper.ApplyOrder(filter, x => x.LastChapterUpdate, request.ReverserSort),
-                MangaSortBy.Rating => OrderHelper.ApplyOrder(filter, x => x.RatingEntities == null ? 0 : x.RatingEntities.Average(x => x.Rating), request.ReverserSort),
-                MangaSortBy.ViewCount => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.ViewCount, request.ReverserSort),
-                MangaSortBy.CommentCount => OrderHelper.ApplyOrder(filter, x => x.CommentEntities == null ? 0 : x.CommentEntities.Count, request.ReverserSort),
-                MangaSortBy.ChapterCount => OrderHelper.ApplyOrder(filter, x => x.ChaptersEntities == null ? 0 : x.ChaptersEntities.Count, request.ReverserSort),
+                MangaSortBy.LastUpdate => OrderHelper.ApplyOrder(filter, x => x.LastChapterUpdate, request.ReverseSort),
+                MangaSortBy.Rating => OrderHelper.ApplyOrder(filter, x => x.RatingEntities == null ? 0 : x.RatingEntities.Average(x => x.Rating), request.ReverseSort),
+                MangaSortBy.ViewCount => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.ViewCount, request.ReverseSort),
+                MangaSortBy.CommentCount => OrderHelper.ApplyOrder(filter, x => x.CommentEntities == null ? 0 : x.CommentEntities.Count, request.ReverseSort),
+                MangaSortBy.ChapterCount => OrderHelper.ApplyOrder(filter, x => x.ChaptersEntities == null ? 0 : x.ChaptersEntities.Count, request.ReverseSort),
                 _=> filter
             };
         }
@@ -93,9 +93,14 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             if (request.Status != null)  query = query.Where(x => x.Status == request.Status);
             if (request.Type != null)query = query.Where(x => x.Type == request.Type);
             if (request.Countries != null) query = query.Where(x => x.Countries == request.Countries);
-            if (request.Season != null)query = query.Where(x => x.Season == request.Season);
             if (request.DateUpdate != null) query = query.Where(x => x.UpdateDate == request.DateUpdate);
             if (request.UserId != null) query = query.Where(x => x.UserId == request.UserId);
+            if(request.Season > 0)
+            {
+                var startYear = new DateTime(request.Season, 1, 1);
+                var endYear = new DateTime(request.Season + 1, 1, 1);
+                query = query.Where(x => x.CreateDate >= startYear && x.CreateDate < endYear);
+            }
             if (!string.IsNullOrEmpty(request.AuthorId)) query = query.Where(x => x.AuthorEntities.Any(a => a.AuthorId == request.AuthorId));
             if (!string.IsNullOrEmpty(request.ArtistId))query = query.Where(x => x.ArtistEntities.Any(a => a.ArtistId == request.ArtistId));
             if (!string.IsNullOrEmpty(request.TagIds))
