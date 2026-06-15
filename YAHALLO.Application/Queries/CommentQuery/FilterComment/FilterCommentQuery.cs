@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Domain.Enums.Comment;
 
 namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
 {
@@ -15,9 +16,8 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
         public string? Id { get; set; }
         public string? UserId { get; set; } 
         public string? MangaId { get; set; }
-        public DateTime? DateTime { get; set; }
-        public bool? IsDateTimeReverser { get; set; }
-        public bool? IsLikeReserver { get; set; }
-        public bool? IsNumberChildrenCommentReserver { get;set; }
+        public string? ChapterId { get; set; }      
+        public CommentSortBy? SortBy { get; set;  }
+        public bool ReverseSort { get; set; } = false;   
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.ChapterCommand.Create;
@@ -25,6 +26,7 @@ namespace YAHALLO.Controllers.Anonymous
         {
             _sender = sender;
         }
+        [Authorize]
         [HttpPost]
         [Route("comment/create")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -38,6 +40,8 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
+        [Authorize]
+
         [HttpPost]
         [Route("comment/restore")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -51,6 +55,8 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
+        [Authorize]
+
         [HttpPut]
         [Route("comment/update")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -64,6 +70,8 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
+        [Authorize]
+
         [HttpDelete]
         [Route("comment/delete")]
         [Produces(MediaTypeNames.Application.Json)]

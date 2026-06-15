@@ -8,8 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Application.Queries.UserQuery;
+using YAHALLO.Domain.Common.Helper;
+using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Enums.Comment;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
+using YAHALLO.Domain.Repositories.Elastic;
 
 namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
 {
@@ -30,62 +35,53 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
         public async Task<PagedResult<CommentDto>> Handle(FilterCommentQuery request, CancellationToken cancellationToken)
         {
             var query = _commentRepository.CreateQueryable();
-            query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
-            if (!string.IsNullOrEmpty(request.Id))
-            {
-                query =query.Where(x=> x.Id.Equals(request.Id));
-            }
-            if (!string.IsNullOrEmpty(request.UserId))
-            {
-                query = query.Where(x=> x.UserId.Equals(request.UserId));   
-            }
-            if (!string.IsNullOrEmpty(request.MangaId))
-            {
-                query = query.Where(x => x.CommentType == Domain.Enums.MangaEnums.CommentType.Manga && x.MangaId!.Equals(request.MangaId));
-            }
-            if(request.DateTime != null)
-            {
-                query = query.Where(x => x.CreateDate == request.DateTime);
-            }
-            if (request.IsDateTimeReverser != null)
-            {
-                if (request.IsDateTimeReverser == true)
+
+            query = ApplyFilter(query, request);
+            query = ApplySorting(query, request);
+
+            var comments = await _commentRepository.FindAllSelectAsync(
+                pageNo: request.PageNumber,
+                pageSize: request.PageSize,
+                selector: _=> query.Select(x => new CommentDto
                 {
-                    query = query.OrderByDescending(x => x.CreateDate);
-                }
-                else
-                {
-                    query = query.OrderBy(x => x.CreateDate);
-                }
-            }
-            if(request.IsLikeReserver != null)
+                    Id = x.Id,
+                    Like = x.LikeCount,
+                    Dislike = x.DisLikeCount,
+                    DateTime = x.CreateDate,
+                    MangaId = x.MangaId,
+                    Message = x.Message,
+                    UserId = x.UserId,
+                    UserCommentTo = x.CommentToUser == null ? null : new UserDto
+                    {
+                        Id = x.CommentToUser.Id,
+                        DisplayName = x.CommentToUser.DisplayName,
+                        Avatar = x.CommentToUser.AvatarThumbnail
+                    }
+                }),
+                cancellation: cancellationToken);
+
+            if (!comments.Any())
+                throw new InvalidDataException("No Data");
+            return comments.MapToPagedResult(x => x);
+        }
+
+        private IQueryable<CommentEntity> ApplyFilter(IQueryable<CommentEntity> query, FilterCommentQuery request)
+        {
+            return request.SortBy switch
             {
-                if(request.IsLikeReserver == true)
-                {
-                    query =query.OrderByDescending(x=> x.LikeCount);
-                }
-                else
-                {
-                    query = query.OrderBy(x => x.LikeCount);
-                }
-            }
-            if(request.IsNumberChildrenCommentReserver != null)
-            {
-                if(request.IsNumberChildrenCommentReserver == true)
-                {
-                    query =query.OrderByDescending(x=> x.CommentCount);
-                }
-                else
-                {
-                    query = query.OrderBy(x=> x.CommentCount);
-                }
-            }
-            var listCommentExists= await _commentRepository.FindAllAsync(query, request.PageNumber, request.PageSize, cancellationToken);
-            if(! listCommentExists.Any() )
-            {
-                throw new NotFoundException("Không tìm thấy comment phù hợp yêu cầu");
-            }
-            return listCommentExists.MapToPagedResult(x => x.MapToCommentDto(_mapper));
+                CommentSortBy.Time => OrderHelper.ApplyOrder(query, x => x.CreateDate, request.ReverseSort),
+                CommentSortBy.Like => OrderHelper.ApplyOrder(query, x => x.LikeCount, request.ReverseSort),
+                CommentSortBy.Dislike => OrderHelper.ApplyOrder(query, x => x.DisLikeCount, request.ReverseSort),
+                _ => query.OrderBy(x => x.Id)
+            };
+        }
+        private IQueryable<CommentEntity> ApplySorting(IQueryable<CommentEntity> query, FilterCommentQuery request)
+        {
+            if (!string.IsNullOrEmpty(request.Id)) query = query.Where(x => x.Id.Equals(request.Id));
+            if (!string.IsNullOrEmpty(request.UserId)) query = query.Where(x => x.UserId.Equals(request.UserId));
+            if(!string.IsNullOrEmpty(request.ChapterId)) query = query.Where(x => x.ChapterId == request.ChapterId);
+            if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.MangaId == request.MangaId);
+            return query;
         }
     }
 }

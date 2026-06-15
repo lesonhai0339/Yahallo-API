@@ -41,8 +41,9 @@ namespace YAHALLO.Infrastructure
             DotEnv.Load(new DotEnvOptions(ignoreExceptions: true, overwriteExistingVars: false));
 
             services.Configure<AwsS3Options>(configuration.GetSection(nameof(AwsS3Options)));
-            var sqlConnection = Environment.GetEnvironmentVariable("Server");    
+
             //var sqlConnection = Environment.GetEnvironmentVariable("Cloud_Server");
+            var sqlConnection = Environment.GetEnvironmentVariable("Server");
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
                 options.UseSqlServer(
