@@ -63,11 +63,10 @@ namespace YAHALLO.Application.Commands.BlogCommand.Create
             blogEntity.ThreadOfBlogEntities = request.ThreadIds.Select(x => 
                                                                 new ThreadOfBlogEntity(blogId: blogEntity.Id, blog: blogEntity, threadId: x, thread: checkThreadExists.FirstOrDefault(y => y.Id.Equals(x))!)).ToList();
             blogEntity.Attechments = checkAttachmentExists;
-            var countingEntity = new CountingEntitity()
+            var countingEntity = new ViewCountEntity
             {
                 BlogId = blogEntity.Id,
-                Blog = blogEntity,
-                Type = Domain.Enums.CountingEnums.CountingEnumType.Blog
+                Blog = blogEntity
             };
             blogEntity.ViewCount = countingEntity;
             _blogRepository.Add(blogEntity);

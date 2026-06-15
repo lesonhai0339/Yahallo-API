@@ -120,6 +120,7 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IMangaRepository, MangaRepository>();
 
             services.AddScoped<IChapterRepository, ChapterRepository>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
 
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IAuthorRepository, AuthorRepository>();
@@ -129,7 +130,6 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IFollowRepository, FollowRepository>();
             services.AddScoped<IMangaAssociateNameRepository, MangaAssociateNameRepository>();
-            services.AddScoped<IMangaRatingRepository, MangaRatingRepository>(); 
             services.AddScoped<IMangaSeasonRepository, MangaSeasonRepository>();
             services.AddScoped<IMangaViewRepository, MangaViewRepository>();
             services.AddScoped<IUserTokenRepository, UserTokenRepository>();
@@ -139,7 +139,7 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IThreadRepository, ThreadRepository>();
             services.AddScoped<IThreadOfBlogRepository, ThreadOfBlogRepository>();
             services.AddScoped<IReactionRepository, ReactionRepository>();
-            services.AddScoped<ICountingRepository, CountingRepository>();
+            services.AddScoped<IViewCountRepository, ViewCountRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IEnums, Enums>();
             services.AddTransient(typeof(IFiles<>), typeof(Files<>));

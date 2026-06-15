@@ -14,7 +14,7 @@ namespace YAHALLO.Domain.Entities
     public class BlogEntity: BaseEntity
     {
         public BlogEntity() { }
-        public BlogEntity(string? parentId, string title, string description, string content, int like, int disLike, CommonStatus status, BlogEnumType type, CountingEntitity? viewCount, ICollection<ThreadOfBlogEntity>? threadOfBlogEntities, ICollection<ReactionEntity>? reactions, ICollection<CommentEntity>? comments, ICollection<AttachmentEntity>? attechments)
+        public BlogEntity(string? parentId, string title, string description, string content, int like, int disLike, CommonStatus status, BlogEnumType type, ViewCountEntity? viewCount, ICollection<ThreadOfBlogEntity>? threadOfBlogEntities, ICollection<ReactionEntity>? reactions, ICollection<CommentEntity>? comments, ICollection<AttachmentEntity>? attechments)
         {
             ParentId = parentId;
             Title = title;
@@ -41,7 +41,7 @@ namespace YAHALLO.Domain.Entities
         public CommonStatus Status { get; set; } = CommonStatus.Active;
         public BlogEnumType Type { get; set; }  = BlogEnumType.None;
 
-        public virtual CountingEntitity? ViewCount { get; set; } 
+        public virtual ViewCountEntity? ViewCount { get; set; } 
 
         public virtual ICollection<ThreadOfBlogEntity>? ThreadOfBlogEntities { get;set; }   
         public virtual ICollection<ReactionEntity>? Reactions { get;set; }     

@@ -19,9 +19,11 @@ namespace YAHALLO.Domain.Entities
 
         public string MangaId { get; set; } = null!;
         public virtual MangaEntity MangaEntity { get; set; } = null!;
-        public virtual CountingEntitity? ViewCount { get;set; }  
+        public virtual ViewCountEntity? ViewCount { get;set; }  
         
         public virtual ICollection<ImageEntity>? ImagesEntities { get; set; }
         public virtual ICollection<CommentEntity>? CommentEntities { get; set; }
+        public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
+
     }
 }

@@ -38,8 +38,8 @@ namespace YAHALLO.Application.Queries.ChapterQuery.Filter
             {
                 ChapterSortBy.Index => OrderHelper.ApplyOrder(filter, x => x.Index, request.ReverseSort),
                 ChapterSortBy.LastUpdate => OrderHelper.ApplyOrder(filter, x => x.CreateDate, request.ReverseSort),
-                ChapterSortBy.Rating => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.Rating, request.ReverseSort),
-                ChapterSortBy.ViewCount => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.ViewCount, request.ReverseSort),
+                ChapterSortBy.Rating => OrderHelper.ApplyOrder(filter, x => x.RatingEntities.Select(x => (double?)x.Rating).Average(), request.ReverseSort),
+                ChapterSortBy.ViewCount => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.TotalCount, request.ReverseSort),
                 ChapterSortBy.CommentCount => OrderHelper.ApplyOrder(filter, x => x.CommentEntities == null ? 0 : x.CommentEntities.Count, request.ReverseSort),
                 _ => filter
             };

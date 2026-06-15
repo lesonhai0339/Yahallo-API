@@ -8,7 +8,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
 {
     public class MangaStatusDto
     {
-        public int? TotalViews { get; set; } 
+        public long? TotalViews { get; set; } 
         public double? AverageRating { get; set; }
         public int? TotalFollows { get; set; }   
         public int? TotalChapters { get; set; }  

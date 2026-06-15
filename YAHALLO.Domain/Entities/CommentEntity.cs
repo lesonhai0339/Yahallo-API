@@ -42,7 +42,7 @@ namespace YAHALLO.Domain.Entities
         public int DisLikeCount { get; set; }
         public string? Message { get; set;}
         public CommentType CommentType { get; set; }
-        public virtual CountingEntitity? ViewCount { get; set; }
+        public virtual ViewCountEntity? ViewCount { get; set; }
 
         public string UserId { get; set; } = null!;
         public virtual UserEntity? UserEntity { get; set; }=null!;

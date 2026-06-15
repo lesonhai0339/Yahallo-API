@@ -27,7 +27,7 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<FollowEntity>? FollowEntities { get; set; }
         public DbSet<ImageEntity>? ImageEntities { get; set; }   
         public DbSet<MangaEntity>? MangaEntities { get; set; }
-        public DbSet<MangaRatingEntity>? MangaRatingEntities { get; set; }
+        public DbSet<RatingEntity>? RatingEntities { get; set; }
         public DbSet<MangaSeasonEntity>? MangaSeasonEntities { get; set; }
         public DbSet<MangaViewEntity>? MangaViewEntities { get; set; }
         public DbSet<RoleEntity>? RoleEntities { get; set; }
@@ -36,7 +36,7 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<MangaArtistEntity> MangaArtistEntities { get; set; }
         public DbSet<MangaAuthorEntity> MangaAuthorEntities { get; set; }
         public DbSet<UserTokenEntity> UserTokens { get; set; }
-        public DbSet<CountingEntitity> Counting { get; set; }
+        public DbSet<ViewCountEntity> ViewCount { get; set; }
         public DbSet<ReactionEntity> Reactions { get; set; }
         public DbSet<ThreadEntity> Threads { get; set; }
         public DbSet<ThreadOfBlogEntity> ThreadOfBlogs { get; set; }
@@ -78,7 +78,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new FollowConfiguration());
             modelBuilder.ApplyConfiguration(new ImageConfiguration());
             modelBuilder.ApplyConfiguration(new MangaConfiguration());
-            modelBuilder.ApplyConfiguration(new MangaRatingConfiguration());
+            modelBuilder.ApplyConfiguration(new RatingConfiguration());
             modelBuilder.ApplyConfiguration(new MangaViewConfiguration());
             modelBuilder.ApplyConfiguration(new MangaSeasonConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
@@ -88,7 +88,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new MangaAuthorConfiguration());
             modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
 
-            modelBuilder.ApplyConfiguration(new CountingConfiguration());
+            modelBuilder.ApplyConfiguration(new ViewCountConfiguration());
             modelBuilder.ApplyConfiguration(new ReactionConfiguration());
             modelBuilder.ApplyConfiguration(new ThreadConfiguration());
             modelBuilder.ApplyConfiguration(new ThreadOfBlogConfiguration());

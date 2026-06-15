@@ -33,7 +33,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .HasForeignKey(x => x.UserId);
             builder.HasOne(x => x.ViewCount)
                .WithOne(x => x.Manga)
-               .HasForeignKey<CountingEntitity>(x => x.MangaId)
+               .HasForeignKey<ViewCountEntity>(x => x.MangaId)
                .OnDelete(DeleteBehavior.Cascade);
 
             builder

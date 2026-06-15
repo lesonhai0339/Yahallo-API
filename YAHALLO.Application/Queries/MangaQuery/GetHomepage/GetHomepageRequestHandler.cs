@@ -61,7 +61,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
                     LastChapterId = m.LastChapterId,
                     LastChapterIndex = m.LastChapterIndex,
                     LastChapterUpdate = m.LastChapterUpdate ?? default,
-                    TotalViews = m.ViewCount == null ? 0 : m.ViewCount.ViewCount,
+                    TotalViews = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
                     AverageRating = m.RatingEntities.Select(r => (double?)r.Rating).Average() ?? 0,
                     Tags = m.TagEntities.Select(t => new TagDto
                     {
@@ -77,7 +77,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
                 pageNo: 1,
                 pageSize: 6,
                 selector: x => x
-               .OrderByDescending(m => m.ViewCount == null ? 0 : m.ViewCount.ViewCount).ThenByDescending(m => m.Id)
+               .OrderByDescending(m => m.ViewCount == null ? 0 : m.ViewCount.TotalCount).ThenByDescending(m => m.Id)
                .Select(m => new MangaSumaryDto
                {
                    Id = m.Id,
@@ -87,7 +87,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
                    LastChapterId = m.LastChapterId,
                    LastChapterIndex = m.LastChapterIndex,
                    LastChapterUpdate = m.LastChapterUpdate ?? default,
-                   TotalViews = m.ViewCount == null ? 0 : m.ViewCount.ViewCount,
+                   TotalViews = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
                    AverageRating = m.RatingEntities.Select(r => (double?)r.Rating).Average() ?? 0,
                    Tags = m.TagEntities.Select(t => new TagDto
                    {
@@ -135,13 +135,13 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
                 pageNo: 1,
                 pageSize: 5,
                 selector: x => x
-                    .OrderByDescending(m => m.ViewCount == null ? 0 : m.ViewCount.ViewCount).ThenByDescending(m => m.Id)
+                    .OrderByDescending(m => m.ViewCount == null ? 0 : m.ViewCount.TotalCount).ThenByDescending(m => m.Id)
                     .Select(m => new TopMangaDto
                     {
                         Id = m.Id,
                         Name = m.Name,
                         MangaThumbnail = m.MangaThumbnail ?? "",
-                        View = m.ViewCount == null ? 0 : m.ViewCount.ViewCount
+                        View = m.ViewCount == null ? 0 : m.ViewCount.TotalCount
                     }),
                 cancellation: cancellationToken
                 );

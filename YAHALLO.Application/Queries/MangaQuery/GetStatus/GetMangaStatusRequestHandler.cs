@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetStatus
                 .Select(t => new MangaStatusDto
                 {
                     TotalChapters = t.ChaptersEntities.Count(),
-                    TotalViews = t.ViewCount == null ? 0 : t.ViewCount.ViewCount,
+                    TotalViews = t.ViewCount == null ? 0 : t.ViewCount.TotalCount,
                     AverageRating = t.RatingEntities.Select(t => (int?)t.Rating).Average(),
                     TotalFollows = t.FollowEntities.Count()
                 }),

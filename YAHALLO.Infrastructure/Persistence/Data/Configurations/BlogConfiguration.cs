@@ -18,7 +18,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 
             builder.HasOne(x => x.ViewCount)
                 .WithOne(x => x.Blog)
-                .HasForeignKey<CountingEntitity>(x => x.BlogId)
+                .HasForeignKey<ViewCountEntity>(x => x.BlogId)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.ToTable("Blogs");
         }

@@ -16,7 +16,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
         public static TopMangaDto MapFullToTopMangaDto(this MangaEntity entity, IMapper mapper)
         {
             var map = mapper.Map<TopMangaDto>(entity);
-            map.View = entity.ViewCount == null ? 0 : entity.ViewCount.ViewCount;
+            map.View = entity.ViewCount == null ? 0 : entity.ViewCount.TotalCount;
             return map;
         }
         public static List<TopMangaDto> MapToTopMangaDtoToList(this ICollection<MangaEntity> entitiess, IMapper mapper)

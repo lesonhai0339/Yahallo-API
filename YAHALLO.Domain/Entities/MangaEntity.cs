@@ -38,7 +38,7 @@ namespace YAHALLO.Domain.Entities
 
         public virtual UserEntity UserEntity { get; set; } = null!;
         public virtual MangaViewEntity? MangaView { get; set; }
-        public virtual CountingEntitity? ViewCount { get; set; }
+        public virtual ViewCountEntity? ViewCount { get; set; }
         public virtual MangaSeasonEntity MangaSeasonEntity { get; set; } = null!;
         public virtual ICollection<MangaTagEntity> TagEntities { get; set; } = new List<MangaTagEntity>();
         public virtual ICollection<MangaAssociateNameEntity> AssociateNameEntities {get;set;} = new List<MangaAssociateNameEntity>();   
@@ -47,6 +47,7 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<ChapterEntity> ChaptersEntities { get; set; } = new List<ChapterEntity>();
         public virtual ICollection<CommentEntity> CommentEntities { get; set; } = new List<CommentEntity>();
         public virtual ICollection<FollowEntity> FollowEntities { get; set; } = new List<FollowEntity>();
-        public virtual ICollection<MangaRatingEntity> RatingEntities { get; set;} = new List<MangaRatingEntity>();
+        public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
+
     }
 }

@@ -22,10 +22,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasOne(x => x.Parent)
                 .WithMany(x => x.Entities)
                 .HasForeignKey(x => x.Id);
-            builder.HasOne(x => x.UserEntity)
-                .WithMany(x => x.CommentEntities)
-                .HasForeignKey(x => x.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+          
             builder.HasOne(x => x.MangaEntity)
                 .WithMany(x => x.CommentEntities)
                 .HasForeignKey(x => x.MangaId)
@@ -40,8 +37,19 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.ViewCount)
                 .WithOne(x => x.Comment)
-                .HasForeignKey<CountingEntitity>(x => x.CommentId)
+                .HasForeignKey<ViewCountEntity>(x => x.CommentId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+              builder.HasOne(x => x.UserEntity)
+                .WithMany(x => x.CommentEntities)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.CommentToUser)
+                .WithMany(x => x.ReplyComment)
+                .HasForeignKey(x => x.CommentToUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.ToTable("Comment");
         }
     }
