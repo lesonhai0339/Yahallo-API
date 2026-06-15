@@ -22,9 +22,6 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         private readonly ICommentRepository _commentRepository;
         private readonly IChapterRepository _chapterRepository;
         private readonly ICurrentUserService _currentUser;
-        private CommentEntity? _parent;
-        private MangaEntity? _manga;
-        private ChapterEntity? _chapter;
         public CreateCommentCommandHandler(IUserRepository userRepository, IMangaRepository mangaRepository, ICommentRepository commentRepository,
             IChapterRepository chapterRepository,ICurrentUserService currentUser)
         {
@@ -33,38 +30,31 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
             _commentRepository = commentRepository;
             _chapterRepository= chapterRepository;
             _currentUser = currentUser; 
-            _parent = null;
-            _manga = null;  
-            _chapter = null;
         }
         public async Task<ResponseResult<string>> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
-        { 
-            var checkUserExist= await _userRepository.FindAsync(x=> x.Id==request.UserId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken); 
-            if( checkUserExist == null )
-            {
+        {
+            ArgumentNullException.ThrowIfNullOrEmpty(request.UserId);
+
+            var commentUser= await _userRepository.FindAsync(x=> x.Id == request.UserId, cancellationToken); 
+            if( commentUser == null )
                 throw new NotFoundException($"Không tồn tại tài khoản với Id {request.UserId}");
-            }
-            if(request.ParentId != null)
-            {
-                var checkParentExist= await _commentRepository.FindAsync(x=> x.Id == request.ParentId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken );
-                if( checkParentExist != null ) 
-                {
-                    this._parent = checkParentExist;
-                }
-            }
-            if(request.MangaId != null || request.ChapterId != null )
-            {
-                if(request.MangaId != null)
-                {
-                    var checkMangaExist= await _mangaRepository.FindAsync(x=> x.Id == request.MangaId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
-                    this._manga = checkMangaExist;
-                }
-                if(request.ChapterId != null)
-                {
-                    var checkChapterExist = await _chapterRepository.FindAsync(x => x.Id == request.ChapterId && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
-                    this._chapter = checkChapterExist;
-                }
-            }
+
+            var userReplyTo = !string.IsNullOrEmpty(request.CommentToUserId)
+                ? await _userRepository.FindAsync(x => x.Id == request.CommentToUserId, cancellationToken):
+                null;   
+
+            var commentRoot = !string.IsNullOrEmpty(request.ParentId) 
+                ? await _commentRepository.FindAsync(x => x.Id == request.ParentId, cancellationToken) 
+                : null;
+
+            var manga = !string.IsNullOrEmpty(request.MangaId)
+                ? await _mangaRepository.FindAsync(x => x.Id == request.MangaId, cancellationToken)
+                : null;
+
+            var chapter = !string.IsNullOrEmpty(request.ChapterId)
+               ? await _chapterRepository.FindAsync(x => x.Id == request.ChapterId, cancellationToken)
+               : null;
+
             CommentEntity comment = new CommentEntity
             {
                 CanComment = true,
@@ -76,15 +66,17 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
                 LikeCount = 0,
                 DisLikeCount = 0,
                 Message = request.Message,
-                Parent = this._parent,
-                ParentId = this._parent?.Id ?? null,
-                UserEntity = checkUserExist,
-                UserId = checkUserExist.Id,
-                MangaId = this._manga?.Id,
-                MangaEntity = this._manga,
-                ChapterEntity = this._chapter,
-                ChapterId = this._chapter?.Id,
-                CreateDate = DateTime.Now,
+                Parent = commentRoot,
+                ParentId = commentRoot?.Id,
+                UserEntity = commentUser,
+                UserId = commentUser.Id,
+                MangaId = manga?.Id,
+                MangaEntity = manga,
+                ChapterId = chapter?.Id,
+                ChapterEntity = chapter,
+                CommentToUserId = commentUser?.Id,  
+                CommentToUser = commentUser,        
+                CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId
             };
             _commentRepository.Add(comment);

@@ -42,7 +42,8 @@ namespace YAHALLO.Infrastructure
 
             services.Configure<AwsS3Options>(configuration.GetSection(nameof(AwsS3Options)));
 
-            var sqlConnection = Environment.GetEnvironmentVariable("Cloud_Server");
+            //var sqlConnection = Environment.GetEnvironmentVariable("Cloud_Server");
+            var sqlConnection = Environment.GetEnvironmentVariable("Server");
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
                 options.UseSqlServer(

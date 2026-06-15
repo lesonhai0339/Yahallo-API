@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Mappings;
+using YAHALLO.Application.Queries.UserQuery;
 using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Application.Queries.CommentQuery
@@ -18,7 +19,8 @@ namespace YAHALLO.Application.Queries.CommentQuery
         public DateTime? DateTime { get;set; } 
         public int Like { get;set; }
         public int Dislike { get;set; }
-        public static CommentDto Create(string id, string userid, string mangaid, string message,DateTime datetime, int like, int dislike)
+        public UserDto? UserCommentTo { get; set;  }    
+        public static CommentDto Create(string id, string userid, string mangaid, string message,DateTime datetime, int like, int dislike, UserDto? userCommentTo = null)
         {
             return new CommentDto
             {
@@ -28,7 +30,8 @@ namespace YAHALLO.Application.Queries.CommentQuery
                 Message = message,  
                 DateTime = datetime,
                 Like = like,
-                Dislike = dislike
+                Dislike = dislike,
+                UserCommentTo = userCommentTo       
             };
         }
         public void Mapping(Profile profile)
