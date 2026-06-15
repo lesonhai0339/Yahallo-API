@@ -244,6 +244,9 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<int>("CommentCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("CommentToUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("CommentType")
                         .HasColumnType("int");
 
@@ -281,9 +284,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserEntityId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -294,9 +294,9 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("ChapterId");
 
-                    b.HasIndex("MangaId");
+                    b.HasIndex("CommentToUserId");
 
-                    b.HasIndex("UserEntityId");
+                    b.HasIndex("MangaId");
 
                     b.HasIndex("UserId");
 
@@ -584,10 +584,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.MangaRatingEntity", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("MangaId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("CreateDate")
@@ -595,9 +592,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdUserCreate")
                         .HasColumnType("nvarchar(max)");
@@ -608,15 +602,26 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<string>("IdUserUpdate")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MangaId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("UserId", "MangaId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("MangaId");
+
+                    b.HasIndex("UserId", "MangaId")
+                        .IsUnique();
 
                     b.ToTable("MangaRating", (string)null);
                 });
@@ -1516,6 +1521,10 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasForeignKey("ChapterId")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("YAHALLO.Domain.Entities.UserEntity", "CommentToUser")
+                        .WithMany("ReplyComment")
+                        .HasForeignKey("CommentToUserId");
+
                     b.HasOne("YAHALLO.Domain.Entities.CommentEntity", "Parent")
                         .WithMany("Entities")
                         .HasForeignKey("Id")
@@ -1527,10 +1536,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasForeignKey("MangaId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("YAHALLO.Domain.Entities.UserEntity", null)
-                        .WithMany("ReplyComment")
-                        .HasForeignKey("UserEntityId");
-
                     b.HasOne("YAHALLO.Domain.Entities.UserEntity", "UserEntity")
                         .WithMany("CommentEntities")
                         .HasForeignKey("UserId")
@@ -1540,6 +1545,8 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Navigation("BlogEntity");
 
                     b.Navigation("ChapterEntity");
+
+                    b.Navigation("CommentToUser");
 
                     b.Navigation("MangaEntity");
 
@@ -1637,7 +1644,8 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 {
                     b.HasOne("YAHALLO.Domain.Entities.ChapterEntity", "LastChapter")
                         .WithMany()
-                        .HasForeignKey("LastChapterId");
+                        .HasForeignKey("LastChapterId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("YAHALLO.Domain.Entities.MangaSeasonEntity", "MangaSeasonEntity")
                         .WithMany("MangaEntities")

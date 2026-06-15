@@ -39,7 +39,9 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder
     .HasOne(x => x.LastChapter)
     .WithMany()
-    .HasForeignKey(x => x.LastChapterId);
+    .HasForeignKey(x => x.LastChapterId)
+    .OnDelete(DeleteBehavior.NoAction);
+
             builder.ToTable("Manga");
         }
     }

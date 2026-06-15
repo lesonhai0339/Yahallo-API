@@ -46,7 +46,8 @@ namespace YAHALLO
             services.ConfigureRateLimiting();
             services.AddSignalR();
 
-            var hangfireConn = Environment.GetEnvironmentVariable("Cloud_Server");
+            //var hangfireConn = Environment.GetEnvironmentVariable("Cloud_Server");
+            var hangfireConn = Environment.GetEnvironmentVariable("Server");
             Log.Information("Cloud_Server env var is {Status}", hangfireConn != null ? "SET" : "NULL");
             if (string.IsNullOrEmpty(hangfireConn))
                 throw new InvalidOperationException("Cloud_Server environment variable is not set. Check ECS task definition.");
