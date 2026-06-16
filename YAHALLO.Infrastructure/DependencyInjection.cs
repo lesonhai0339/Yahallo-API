@@ -130,7 +130,7 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IFollowRepository, FollowRepository>();
             services.AddScoped<IMangaAssociateNameRepository, MangaAssociateNameRepository>();
-            services.AddScoped<IMangaSeasonRepository, MangaSeasonRepository>();
+            services.AddScoped<IMangaGroupRepository, MangaGroupRepository>();
             services.AddScoped<IMangaViewRepository, MangaViewRepository>();
             services.AddScoped<IUserTokenRepository, UserTokenRepository>();
             services.AddScoped<IAttechmentRepository, AttechmentRepository>();

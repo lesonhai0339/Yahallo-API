@@ -15,14 +15,16 @@ namespace YAHALLO.Application.Queries.UserRoleQuery
         public string? UserName { get; set; }
         public string RoleId { get; set; } = null!;
         public string? RoleName { get; set; }
-        public static UserRoleDto CreateUserRoleDto(string userrid, string? username, string roleid, string? rolename)
+        public int RoleCode { get; set; }  
+        public static UserRoleDto CreateUserRoleDto(string userrid, string? username, string roleid, string? rolename, int roleCode)
         {
             return new UserRoleDto
             {
                 UserId = userrid,
                 RoleId = roleid,
                 UserName = username,
-                RoleName = rolename
+                RoleName = rolename,
+                RoleCode = roleCode
             };
         }
         public void Mapping(Profile profile)

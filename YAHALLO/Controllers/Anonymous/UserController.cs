@@ -24,6 +24,7 @@ using YAHALLO.Application.Queries.UserQuery.Anonymous.GetByIdDeleted;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetByName;
 using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Services;
+using YAHALLO.Application.Commands.UserCommand.DTOs;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -91,15 +92,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("user/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<CreateUserResponseDto>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<string>>> CreateUser(
+        public async Task<ActionResult<JsonResponse<CreateUserResponseDto>>> CreateUser(
            [FromForm] CreateUserCommand command,
            CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<string>(result));
+            return Ok(new JsonResponse<CreateUserResponseDto>(result));
         }
         [HttpPost]
         [Route("user/restore")]
@@ -117,15 +118,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPut]
         [Route("user/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UpdateUserResponseDto>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<string>>> UpdateUser(
+        public async Task<ActionResult<JsonResponse<UpdateUserResponseDto>>> UpdateUser(
            [FromForm] UpdateUserCommand command,
            CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<string>(result));
+            return Ok(new JsonResponse<UpdateUserResponseDto>(result));
         }
         [HttpDelete]
         [Route("user/delete")]

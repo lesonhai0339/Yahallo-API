@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Commands.UserCommand.DTOs;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Services.MailService.Service;
 using YAHALLO.Domain.Entities;
@@ -19,7 +20,7 @@ using YAHALLO.Domain.Repositories.Storage;
 
 namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, CreateUserResponseDto>
     {
         private readonly IUserRepository _userRepository;
         private readonly ICurrentUserService _currentUser;
@@ -49,40 +50,42 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
             _avatarStorage = avatarStorage;
             _backgrondStorage = backgrondStorage;
         }
-        public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<CreateUserResponseDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var checkExists = await _userRepository.FindAllAsync(x => x.Email == request.Email || x.UserName == request.UserName, cancellationToken);
             if (checkExists.Any(x => x.Email == request.Email))
-            {
                 throw new NotFoundException("Email này đã được sử đụng");
-            }
+
             if (checkExists.Any(x => x.UserName == request.UserName))
-            {
                 throw new NotFoundException("Tên đăng nhập này đã được sử đụng");
-            }
+
             if (checkExists.Any(x => x.PhoneNumber == request.PhoneNumber))
-            {
                 throw new NotFoundException("Số điện thoại này đã được sử đụng");
-            }
-            string avatarBase64 = string.Empty; 
+
+            string avatarUploadUrl = string.Empty; 
             if(request.Avatar != null)
             {
-                //test for upload to s3
-                var signedUrl = await _avatarStorage.CreateSignedURL(new UserAvatar
+                avatarUploadUrl = await _avatarStorage.CreateSignedURL(new UserAvatar
                 {
                     FileName = request.Avatar.FileName,
                     ContentType = request.Avatar.ContentType,
                     FileSize = request.Avatar.Length,
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
-
-
-                using var image = Image.Load(request.Avatar.OpenReadStream());
-                image.Mutate(x => x.Resize(200, 200));
-                using var ms = new MemoryStream();
-                image.Save(ms, new JpegEncoder { Quality = 80 });
-                avatarBase64 = Convert.ToBase64String(ms.ToArray());
             }
+            string backgroundUploadUrl = string.Empty;
+            if (request.Background != null)
+            {
+                //test for upload to s3
+                backgroundUploadUrl = await _backgrondStorage.CreateSignedURL(new UserBackground
+                {
+                    FileName = request.Background.FileName,
+                    ContentType = request.Background.ContentType,
+                    FileSize = request.Background.Length,
+                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
+                });
+            }
+
             var user = new UserEntity
             {
                 DisplayName = (request.FirstName + " " + request.LastName).ToString(),
@@ -95,17 +98,26 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
                 IdUserCreate = _currentUser.UserId,
                 CreateDate = DateTime.Now,
                 Status = UserStatus.None,
-                Level = UserLevel.One,
-                AvatarThumbnail = avatarBase64  
+                Level = UserLevel.One
             };
+
             var oldPassword= new UserOldPasswordEntity(user);
             oldPassword.AddNew(request.Password);
             user.OldPasswords = oldPassword;
             _userRepository.Add(user);
+
             var role = await _roleRepository.FindAsync(x => x.RoleCode == 2, cancellationToken);
             var userRole = new UserRoleEntity { UserId = user.Id, RoleId = role!.Id};
             _userRoleRepository.Add(userRole);
+
             var result = await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+
+            var response = new CreateUserResponseDto
+            {
+                Message = $"Tạo tài khỏa thất bại",
+                AvatarUrl = avatarUploadUrl,
+                BackgroundUrl = backgroundUploadUrl,
+            };
             if (result > 0)
             {
                 List<string> listSender= new List<string>() { user.Email };
@@ -113,12 +125,9 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
                 var route = _context.HttpContext + $"services/confirm-email?token={token}&userid={user.Id}";
                 _emailServices.SendEmailWithCSS(new Services.MailService.Models.Message(listSender, "Xác Thực Email",
                     "Yêu cầu xác thực cho việc đăng ký tài khoản", route));
-                return $"Một Emaill xác thực đã được gửi đến email {user.Email}. Vui lòng xác nhận để kích hoạt tài khoản";
+                response.Message = $"Một Emaill xác thực đã được gửi đến email {user.Email}. Vui lòng xác nhận để kích hoạt tài khoản";
             }
-            else
-            {
-                return "Đã xảy ra lỗi trong quá trình đăng ký thành viên";
-            }
+           return response; 
         }
     }
 }

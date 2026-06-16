@@ -44,7 +44,7 @@ namespace YAHALLO.Domain.Entities
         public string Password { get; set; } = string.Empty;
 
         public string? AvatarThumbnail { get; set; } = string.Empty; 
-        public virtual ImageEntity? Avatar { get; set; }
+        public string? BackgroundThumbnail { get; set; } = string.Empty;    
         public virtual UserTokenEntity? UserToken { get; set; }
 
         public UserStatus Status { get; set; }

@@ -27,12 +27,12 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.ForgotPassword
             var checkUserExists = await _userRepository
                 .FindAsync(x => x.Email == request.Email && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
             if (checkUserExists == null)
-            {
                 throw new NotFoundException($"Không tìm thấy thành viên với Email {request.Email}");
-            }
+
             var newPassword = Guid.NewGuid().ToString("N").Substring(0, 6);
             checkUserExists.Password = _userRepository.HashPassword(newPassword);
             _userRepository.Update(checkUserExists);
+
             var result = await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (result > 0)
             {

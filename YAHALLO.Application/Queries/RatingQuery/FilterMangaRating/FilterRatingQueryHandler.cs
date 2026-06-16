@@ -43,7 +43,7 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating
                         Manga = t.ToManga == null ? null : new MangaDto
                         {
                             Id = t.ToManga.Id,
-                            Name = t.ToManga.Name,
+                            DisplayName = t.ToManga.Name,
                             MangaThumbnail = t.ToManga.MangaThumbnail,
                             MangaBackground = t.ToManga.MangaBackground,
                             Countries = (CountriesEnum)t.ToManga.Countries,

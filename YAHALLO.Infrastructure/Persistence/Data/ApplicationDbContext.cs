@@ -28,7 +28,6 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<ImageEntity>? ImageEntities { get; set; }   
         public DbSet<MangaEntity>? MangaEntities { get; set; }
         public DbSet<RatingEntity>? RatingEntities { get; set; }
-        public DbSet<MangaSeasonEntity>? MangaSeasonEntities { get; set; }
         public DbSet<MangaViewEntity>? MangaViewEntities { get; set; }
         public DbSet<RoleEntity>? RoleEntities { get; set; }
         public DbSet<UserRoleEntity>? UserRoles { get; set; }
@@ -44,6 +43,9 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<AttachmentEntity> Attechments { get; set; }
         public DbSet<CommentEntity> Comments { get; set; }
         public DbSet<BlogEntity> Blogs { get; set; }
+
+        public DbSet<MangaGroupEntity>? MangaGroup { get; set; }
+
 
         // AI generated — new tables
         public DbSet<TagEntity> Tags { get; set; }
@@ -80,7 +82,6 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new MangaConfiguration());
             modelBuilder.ApplyConfiguration(new RatingConfiguration());
             modelBuilder.ApplyConfiguration(new MangaViewConfiguration());
-            modelBuilder.ApplyConfiguration(new MangaSeasonConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
@@ -96,6 +97,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new AttechmentConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
+            modelBuilder.ApplyConfiguration(new MangaGroupConfiguration());
 
             // AI generated — new configurations
             modelBuilder.ApplyConfiguration(new TagConfiguration());

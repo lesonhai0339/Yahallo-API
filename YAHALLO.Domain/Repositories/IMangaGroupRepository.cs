@@ -7,7 +7,8 @@ using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Repositories
 {
-    public interface IMangaSeasonRepository: IEFRepository<MangaSeasonEntity, MangaSeasonEntity>
+    public interface IMangaGroupRepository: IEFRepository<MangaGroupEntity, MangaGroupEntity>
     {
     }
 }
+    

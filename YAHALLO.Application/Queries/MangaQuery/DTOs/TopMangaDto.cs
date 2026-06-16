@@ -12,7 +12,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
     public class TopMangaDto: IMapFrom<MangaEntity>
     {
         public string Id { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public string DisplayName { get; set; } = string.Empty;
         public string MangaThumbnail { get; set; } = string.Empty;
         public long View { get; set;  }
 

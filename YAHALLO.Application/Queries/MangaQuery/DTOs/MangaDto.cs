@@ -10,7 +10,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
     public class MangaDto : IMapFrom<MangaEntity>
     {
         public required string Id { get; set; }
-        public string Name { get; set; } = null!;
+        public string DisplayName { get; set; } = null!;
         public string? Description { get; set; }
         public MangaLevel? Level { get; set; }
         public MangaStatus? Status { get; set; }
@@ -38,7 +38,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
             return new MangaDto
             {
                 Id = id,
-                Name = name,
+                DisplayName = name,
                 Description = description,
                 Level = level,
                 Status = status,

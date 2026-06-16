@@ -24,9 +24,8 @@ namespace YAHALLO.Application.Queries.UserQuery.Anonymous.GetById
             var checkUserExists = await _userRepository
                 .FindAsync(x => x.Id == request.Id && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
             if (checkUserExists == null)
-            {
                 throw new NotFoundException($"Không tìm thấy Thành viên với Id {request.Id}");
-            }
+
             return checkUserExists.MapToUserDto(_mapper);
         }
     }

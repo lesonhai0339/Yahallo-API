@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Infrastructure.Data;
-using YAHALLO.Infrastructure.Persistence.Data;
-using YAHALLO.Infrastructure.Data;
 
 namespace YAHALLO.Infrastructure.Persistence.Repositories
 {
-    public class MangaSeasonRepository : RepositoryBase<MangaSeasonEntity, MangaSeasonEntity, ApplicationDbContext>, IMangaSeasonRepository
+    public class MangaGroupRepository : RepositoryBase<MangaGroupEntity, MangaGroupEntity, ApplicationDbContext>, IMangaGroupRepository
     {
-        public MangaSeasonRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public MangaGroupRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
     }

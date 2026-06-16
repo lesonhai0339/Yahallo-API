@@ -16,10 +16,10 @@ namespace YAHALLO.Application.Queries.UserQuery
         public static UserDto MapToUserDto(this UserEntity Entity, IMapper mapper)
         {
             var map = mapper.Map<UserDto>(Entity);
-            map.DisplayName = Entity.FirstName + " " + Entity.LastName;
+            map.DisplayName = Entity.DisplayName;
             map.Avatar = Entity.AvatarThumbnail;
-            map.Status = Entity.Status.GetDescription();
-            map.Level = Entity.Level.GetDescription();
+            map.Status = Entity.Status;
+            map.Level = Entity.Level;
             return map;
         }
         public static List<UserDto> MapToUserDtoToList(this List<UserEntity> Entities, IMapper mapper) =>

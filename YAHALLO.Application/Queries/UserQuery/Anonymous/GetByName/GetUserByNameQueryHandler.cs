@@ -25,26 +25,11 @@ namespace YAHALLO.Application.Queries.UserQuery.Anonymous.GetByName
         [Obsolete]
         public async Task<List<UserDto>> Handle(GetUserByNameQuery request, CancellationToken cancellationToken)
         {
-            //var listDuplicate = _filters.CheckString(request.Name);
-            //Func<IQueryable<UserEntity>, IQueryable<UserEntity>> options = query =>
-            //{
-            //    query = query.Where(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue);
-            //    var predicate = PredicateBuilder.False<UserEntity>();
-            //    foreach (var item in listDuplicate)
-            //    {
-            //        predicate = predicate.Or(x => x.DisplayName!.Contains(item) || (x.FirstName + x.LastName).Contains(item));
-            //    }
-            //    query = query.Where(predicate);
-            //    return query;
-            //};  
-            //var listUsers = await _userRepository
-            //    .FindAllAsync(options, cancellationToken);
             var resut = await _userRepository.FindAllAsync(x => string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
             var listUsers = resut.Where(x => _filters.CheckString(x.DisplayName, request.Name)).ToList();
             if (!listUsers.Any())
-            {
                 throw new NotFoundException($"Không tìm thấy thành viên nào có tên {request.Name}");
-            }
+
             return listUsers.MapToUserDtoToList(_mapper);
         }
     }

@@ -5081,3 +5081,188 @@ OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
 2026-06-16 16:52:47.961 +07:00 [INF] Executed endpoint 'YAHALLO.Controllers.Anonymous.MangaController.GetAllMangaPagination (YAHALLO)'
 2026-06-16 16:52:47.961 +07:00 [INF] HTTP GET /manga/get-all-pagination responded 200 in 1864.1336 ms
 2026-06-16 16:52:47.967 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/manga/get-all-pagination?PageNumber=1&PageSize=5 - 200 null application/json; charset=utf-8 1872.6886ms
+2026-06-16 23:27:41.648 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-16 23:27:42.083 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-16 23:27:42.676 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-16 23:27:43.251 +07:00 [WRN] The WebRootPath was not found: D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO\wwwroot. Static files may be unavailable.
+2026-06-16 23:27:43.347 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-16 23:27:43.349 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-16 23:27:43.417 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: GC\SQLEXPRESS@Yahallo_dev'
+2026-06-16 23:27:43.418 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-16 23:27:43.419 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-16 23:27:43.434 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-16 23:27:43.435 +07:00 [INF] Hosting environment: Development
+2026-06-16 23:27:43.436 +07:00 [INF] Content root path: D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO
+2026-06-16 23:27:43.440 +07:00 [INF] Server gc:32004:cc5f4f1e successfully announced in 6.8481 ms
+2026-06-16 23:27:43.445 +07:00 [INF] Server gc:32004:cc5f4f1e is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-16 23:27:43.462 +07:00 [INF] 1 servers were removed due to timeout
+2026-06-16 23:27:43.523 +07:00 [INF] Server gc:32004:cc5f4f1e all the dispatchers started
+2026-06-16 23:27:44.378 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-06-16 23:27:45.005 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:27:45.036 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 545.4853 ms
+2026-06-16 23:27:45.042 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 670.3978ms
+2026-06-16 23:27:45.056 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-16 23:27:45.062 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 6.4271ms
+2026-06-16 23:27:45.074 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-06-16 23:27:45.167 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 93.188ms
+2026-06-16 23:27:45.230 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-06-16 23:27:45.336 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 102.6780 ms
+2026-06-16 23:27:45.338 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 107.7514ms
+2026-06-16 23:27:45.726 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-16 23:27:45.732 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CreateDate], [s].[DeleteDate], [s].[EndDate], [s].[IdUserCreate], [s].[IdUserDelete], [s].[IdUserUpdate], [s].[Plan], [s].[StartDate], [s].[Status], [s].[UpdateDate], [s].[UserId]
+FROM [Subscription] AS [s]
+WHERE ([s].[IdUserDelete] IS NULL OR [s].[IdUserDelete] LIKE N'') AND [s].[DeleteDate] IS NULL AND [s].[Status] = 1 AND [s].[EndDate] < GETDATE()
+2026-06-16 23:27:45.758 +07:00 [INF] Expired 0 subscriptions
+2026-06-16 23:27:45.845 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[MangaThumbnail], [t].[MangaBackground], [t].[LastChapterId], [t].[LastChapterIndex], COALESCE([t].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t0].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t0].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [t].[Id] = [r].[ToMangaId]), 0.0E0), [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[MangaBackground], [m].[MangaThumbnail], [m].[Name]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-16 23:27:45.870 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t].[Id], [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterUpdate]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t].[Id] = [t1].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-16 23:27:45.887 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-16 23:27:45.909 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Name], [m].[MangaThumbnail], [m].[MangaBackground], [m].[LastChapterId], [m].[LastChapterIndex], COALESCE([m].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [m].[Id] = [r].[ToMangaId]), 0.0E0), [t].[Id]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC, [t].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-16 23:27:45.919 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [m].[Id], [t].[Id] AS [Id0], CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END AS [c]
+    FROM [Manga] AS [m]
+    LEFT JOIN (
+        SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+        FROM [ViewCount] AS [v]
+        WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+    ) AS [t] ON [m].[Id] = [t].[MangaId]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t0].[Id] = [t1].[MangaId]
+ORDER BY [t0].[c] DESC, [t0].[Id] DESC, [t0].[Id0]
+2026-06-16 23:27:45.926 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[Description]
+FROM [Tag] AS [t]
+WHERE ([t].[IdUserDelete] IS NULL OR [t].[IdUserDelete] LIKE N'') AND [t].[DeleteDate] IS NULL
+2026-06-16 23:27:45.936 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Author] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-16 23:27:45.946 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-16 23:27:45.958 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-16 23:27:45.969 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], [m].[Name], COALESCE([m].[MangaThumbnail], N'') AS [MangaThumbnail], CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END AS [View]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-16 23:27:46.010 +07:00 [WRN] Yahallo Long Running Request: GetHomepageRequest (2218 milliseconds)  {"$type":"GetHomepageRequest"}

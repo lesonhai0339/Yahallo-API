@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Commands.UserCommand.DTOs;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.UserEnums;
 
 namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
 {
-    public class CreateUserCommand : IRequest<string>
+    public class CreateUserCommand : IRequest<CreateUserResponseDto>
     {
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
@@ -20,5 +21,6 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
         public string UserName { get; set; } = null!;
         public string Password { get; set; } = null!;
         public IFormFile? Avatar { get; set; }   
+        public IFormFile? Background { get; set; }  
     }
 }

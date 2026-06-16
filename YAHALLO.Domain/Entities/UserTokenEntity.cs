@@ -12,11 +12,11 @@ namespace YAHALLO.Domain.Entities
         public string Id { get; set; } = null!;
         public virtual UserEntity UserEntity { get; set; } = null!;
         public string AccessToken { get; set; } = null!;
-        public string RefeshToken { get; set; } = null!;
-        public string? ExpiredRefeshToken { get;set; }
+        public string RefreshToken { get; set; } = null!;
+        public string? ExpiredRefreshToken { get;set; }
         public void SetExpiredTime(DateTime date)
         {
-            this.ExpiredRefeshToken= date.ToShortDateString();
+            this.ExpiredRefreshToken= date.ToShortDateString();
         }
     }
 }

@@ -1,119 +1,116 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using YAHALLO.Application.Commands.MangaCommand.DTOs;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
+using YAHALLO.Domain.Entities.S3;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Elastic;
+using YAHALLO.Domain.Repositories.Storage;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Update
 {
-    public class UpdateMangaCommandHandler : IRequestHandler<UpdateMangaCommand, ResponseResult<string>>
+    public class UpdateMangaCommandHandler : IRequestHandler<UpdateMangaCommand, UpdateMangaResponseDto>
     {
         private readonly IMangaRepository _mangaRepository;
-        private readonly IFiles<IFormFile> _files;
         private readonly ICurrentUserService _currentUser;
-        private readonly IImageRepository _imageRepository;
-        private readonly IElasticQueryBuilder<MangaEntity> _elasticQueryBuilder;
-
+        private readonly IStorageService<MangaThumbnail> _avatarStorage;
+        private readonly IStorageService<MangaBackground> _backgroundStorage;
         public UpdateMangaCommandHandler(
             IMangaRepository mangaRepository, 
-            IFiles<IFormFile> files, 
             ICurrentUserService currentUser,
-            IImageRepository imageRepository,
-            IElasticQueryBuilder<MangaEntity> elasticQueryBuilder)
+            IStorageService<MangaThumbnail> avatarStorage,
+            IStorageService<MangaBackground> backgroundStorage)
         {
             _mangaRepository = mangaRepository;
-            _files = files;
             _currentUser = currentUser;
-            _imageRepository = imageRepository; 
-            _elasticQueryBuilder = elasticQueryBuilder; 
+            _avatarStorage = avatarStorage;
+            _backgroundStorage = backgroundStorage;
         }
-        public async Task<ResponseResult<string>> Handle(UpdateMangaCommand request, CancellationToken cancellationToken)
+        public async Task<UpdateMangaResponseDto> Handle(UpdateMangaCommand request, CancellationToken cancellationToken)
         {
             var checkRole = await _currentUser.IsInRoleAsync("1");
-            var checkMangaExist = await _mangaRepository
-                .FindAsync(x => x.Id == request.Id && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
-            if (checkMangaExist == null)
-            {
-                throw new NotFoundException($"Không tồn tại manga với Id {request.Id}");
-            }
-            if(checkMangaExist.UserId != _currentUser.UserId || checkRole == false && checkMangaExist.UserId != _currentUser.UserId)
-            {
-                throw new UnAuthorizeException("Tài khoản hiện tại không có quyền thực hiện chức năng này");
-            }
-            var checkDuplicateSeason = await _mangaRepository
-                .FindAllAsync(x => x.MangaSeasonEntity.Id == checkMangaExist.MangaSeasonEntity.Id && x.Season == request.Season, cancellationToken);
-            if(checkDuplicateSeason.Count() > 1)
-            {
-                throw new DuplicateException("Đã tồn tại season tương tữ cho bộ truyện này");
-            }
-            checkMangaExist.Name = request.Name ?? checkMangaExist.Name;
-            checkMangaExist.Description = request.Description ?? checkMangaExist.Description;
-            checkMangaExist.Level = request.Level ?? checkMangaExist.Level;
-            checkMangaExist.Status = request.Status ?? checkMangaExist.Status;
-            checkMangaExist.Type = request.Type ?? checkMangaExist.Type;
-            checkMangaExist.Countries = request.Countries ?? checkMangaExist.Countries;
-            checkMangaExist.Season = request.Season ?? checkMangaExist.Season;
-            checkMangaExist.UpdateDate = DateTime.Now;
-            checkMangaExist.IdUserUpdate = _currentUser.UserId;
-            _mangaRepository.Update(checkMangaExist);
-            var result= await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-            if(result > 0)
-            {
-                if(request.Thumbnail != null)
+
+            var manga = await _mangaRepository.FindSelectAsync(x => x
+                .Where(x => x.Id == request.Id)
+                .Select(m => new MangaEntity
                 {
-                    var mangaThumbnail = await _imageRepository
-                        .FindAsync(x => x.UserId == checkMangaExist.Id && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
-                    var path = $"Data\\Thumbnail";
-                    if (mangaThumbnail != null)
+                    Id = m.Id,
+                    Name = m.Name,
+                    Description = m.Description,
+                    Level = m.Level,
+                    Status = m.Status,
+                    Type = m.Type,
+                    Countries = m.Countries,
+                    Season = m.Season,
+                    UpdateDate = m.UpdateDate,
+                    IdUserUpdate = m.IdUserUpdate,
+                    MangaGroup = m.MangaGroup == null ? null : new MangaGroupEntity
                     {
-                        var newImagePath= $"{path}\\{request.Thumbnail.FileName}";
-                        mangaThumbnail.BaseUrl = newImagePath;
-                        mangaThumbnail.UpdateDate = DateTime.Now;
-                        mangaThumbnail.IdUserUpdate= _currentUser.UserId;
-                        _imageRepository.Update(mangaThumbnail);
-                        var resultsecond = await _imageRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-                        if(resultsecond > 0)
-                        {
-                            _files.DeleteImage(mangaThumbnail.BaseUrl);
-                            var check= await _files.UpLoadimage(request.Thumbnail, newImagePath);
-                            if(check == true)
-                            {
-                                return new ResponseResult<string>(message: "Cập nhật thành công");
-                            }
-                            else
-                            {
-                                return new ResponseResult<string>(message: "Cập nhật thất bại");
-                            }
-                        }
-                        else
-                        {
-                            return new ResponseResult<string>(message: "Đã xảy ra lỗi");
-                        }
+                        Id = m.MangaGroup.Id,
+                        MangaEntities = m.MangaGroup.MangaEntities.Select(x => x).ToList()
                     }
-                }
+                })
+                , cancellationToken);
+            if (manga == null)
+                throw new NotFoundException($"Không tồn tại manga với Id {request.Id}");
 
-                //Elastic
-                try
-                {
-                    _elasticQueryBuilder.Match(x => x.Id, request.Id);
-                    await _elasticQueryBuilder.Update(checkMangaExist, cancellationToken);
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+            if (manga.UserId != _currentUser.UserId || checkRole == false && manga.UserId != _currentUser.UserId)
+                throw new UnAuthorizeException("Tài khoản hiện tại không có quyền thực hiện chức năng này");
 
 
-                return new ResponseResult<string>(message: "Cập nhật thành công");
-            }
-            else
+            string avatarUploadUrl = string.Empty;
+            if (request.Avatar != null)
             {
-                return new ResponseResult<string>(message: "Cập nhật thất bại");
+                avatarUploadUrl = await _avatarStorage.CreateSignedURL(new MangaThumbnail
+                {
+                    FileName = request.Avatar.FileName,
+                    ContentType = request.Avatar.ContentType,
+                    FileSize = request.Avatar.Length,
+                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
+                });
             }
+            string backgroundUploadUrl = string.Empty;
+            if (request.Background != null)
+            {
+                //test for upload to s3
+                backgroundUploadUrl = await _backgroundStorage.CreateSignedURL(new MangaBackground
+                {
+                    FileName = request.Background.FileName,
+                    ContentType = request.Background.ContentType,
+                    FileSize = request.Background.Length,
+                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
+                });
+            }
+
+            if (manga.MangaGroup != null && manga.MangaGroup.MangaEntities.All(x => x.Season != request.Season))
+                manga.Season = request.Season;
+
+            manga.Name = request.Name ?? manga.Name;
+            manga.Description = request.Description ?? manga.Description;
+            manga.Level = request.Level ?? manga.Level;
+            manga.Status = request.Status ?? manga.Status;
+            manga.Type = request.Type ?? manga.Type;
+            manga.Countries = request.Countries ?? manga.Countries;
+            manga.UpdateDate = DateTime.Now;
+            manga.IdUserUpdate = _currentUser.UserId;
+
+
+            var response = new UpdateMangaResponseDto
+            {
+                Message = "Cập nhật manga thất bại",
+                AvatarUrl = backgroundUploadUrl,
+                BackgroundUrl = backgroundUploadUrl
+            };
+            _mangaRepository.Update(manga);
+            var result= await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+            if (result > 0)
+                response.Message = "Cập nhật thành công";
+
+            return response;
         }
     }
 }

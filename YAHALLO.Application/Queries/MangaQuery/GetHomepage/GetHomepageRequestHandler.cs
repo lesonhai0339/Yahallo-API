@@ -55,7 +55,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
                 .Select(m => new MangaSumaryDto
                 {
                     Id = m.Id,
-                    Name = m.Name,
+                    DisplayName = (m.Name + " " + m.SeasonName).Trim(),
                     MangaThumbnail = m.MangaThumbnail,
                     MangaBackground = m.MangaBackground,
                     LastChapterId = m.LastChapterId,
@@ -81,7 +81,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
                .Select(m => new MangaSumaryDto
                {
                    Id = m.Id,
-                   Name = m.Name,
+                   DisplayName = (m.Name + " " + m.SeasonName).Trim(),
                    MangaThumbnail = m.MangaThumbnail,
                    MangaBackground = m.MangaBackground,
                    LastChapterId = m.LastChapterId,
@@ -139,7 +139,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetHomepage
                     .Select(m => new TopMangaDto
                     {
                         Id = m.Id,
-                        Name = m.Name,
+                        DisplayName = (m.Name + " " + m.SeasonName).Trim(),
                         MangaThumbnail = m.MangaThumbnail ?? "",
                         View = m.ViewCount == null ? 0 : m.ViewCount.TotalCount
                     }),

@@ -10,22 +10,22 @@ namespace YAHALLO.Application.ResponseTypes
     {
         public LoginResponse() { }
         public LoginResponse(
-            string id, 
+            string? id, 
             string? avatarUri,
             string? name,
-            string accessToken,
-            string refreshToken)
+            string? accessToken,
+            string? refreshToken)
         { 
             Id= id;
-            AvatarUri = avatarUri ?? ""; 
-            Name= name ?? "";
+            AvatarUri = avatarUri; 
+            Name= name;
             AccessToken = accessToken;
             RefreshToken = refreshToken;  
         }
-        public string Id { get; set; } = null!;
-        public string AccessToken { get; set; }= null!;
-        public string RefreshToken { get; set; } = null!;
-        public string AvatarUri { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public string? Id { get; set; }
+        public string? AccessToken { get; set; }
+        public string? RefreshToken { get; set; }
+        public string? AvatarUri { get; set; } 
+        public string? Name { get; set; }
     }
 }

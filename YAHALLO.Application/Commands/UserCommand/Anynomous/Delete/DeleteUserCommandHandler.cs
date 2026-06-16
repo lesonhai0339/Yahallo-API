@@ -25,21 +25,14 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Delete
         {
             var checkUserExist = await _userRepository.FindAsync(x => x.Id == request.Id && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
             if (checkUserExist == null)
-            {
-                throw new NotFoundException("KHông tìm thấy thành viên");
-            }
+                throw new NotFoundException($"KHông tìm thấy thành viên với id {request.Id}");
+
             checkUserExist.DeleteDate = DateTime.Now;
             checkUserExist.IdUserDelete = _currentUser.UserId;
             _userRepository.Update(checkUserExist);
             var result = await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-            if (result > 0)
-            {
-                return "Xóa thành công";
-            }
-            else
-            {
-                return "Xóa thất bại";
-            }
+
+            return result > 0 ? "Xóa thành công" : "Xóa thất bại";
         }
     }
 }

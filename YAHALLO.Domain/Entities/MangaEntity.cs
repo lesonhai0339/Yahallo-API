@@ -16,6 +16,8 @@ namespace YAHALLO.Domain.Entities
     public class MangaEntity : BaseEntity
     {
         public string Name { get; set; } = null!;
+        public string SeasonName { get; set; } = null!;
+
         public string? Description { get; set; }
         public MangaLevel Level { get; set; }
         public MangaStatus Status { get; set; }
@@ -35,11 +37,12 @@ namespace YAHALLO.Domain.Entities
 
         public string? MangaSeasonId { get; set; }
         public string? UserId { get; set; }
+        public string? MangaGroupId { get; set; }   
 
         public virtual UserEntity UserEntity { get; set; } = null!;
         public virtual MangaViewEntity? MangaView { get; set; }
         public virtual ViewCountEntity? ViewCount { get; set; }
-        public virtual MangaSeasonEntity MangaSeasonEntity { get; set; } = null!;
+        public virtual MangaGroupEntity? MangaGroup { get; set; } = null!;
         public virtual ICollection<MangaTagEntity> TagEntities { get; set; } = new List<MangaTagEntity>();
         public virtual ICollection<MangaAssociateNameEntity> AssociateNameEntities {get;set;} = new List<MangaAssociateNameEntity>();   
         public virtual ICollection<MangaArtistEntity> ArtistEntities { get; set; } = new List<MangaArtistEntity>(); 

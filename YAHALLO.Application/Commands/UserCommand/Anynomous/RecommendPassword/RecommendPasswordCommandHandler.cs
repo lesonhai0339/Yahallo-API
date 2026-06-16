@@ -23,16 +23,14 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.RecommendPassword
         public async Task<ResponseResult<string>> Handle(RecommendPasswordCommand request, CancellationToken cancellationToken)
         {
             var checkUserExist= await _userRepository.FindAsync(x=> x.UserName == request.UserName || x.Email == request.Email, cancellationToken);
-            if(checkUserExist == null) 
-            {
+            if(checkUserExist == null)
                 throw new NotFoundException("Không tồn tại thành viên");
-            }
-            if(!string.IsNullOrEmpty(checkUserExist.IdUserDelete) && checkUserExist.DeleteDate.HasValue)
-            {
+
+            if (!string.IsNullOrEmpty(checkUserExist.IdUserDelete) && checkUserExist.DeleteDate.HasValue)
                 throw new NotFoundException("Thành viên này đã bị khóa");
-            }
-            var listOldPassword = checkUserExist.OldPasswords.OldPasswordList();
-            listOldPassword = listOldPassword.Select(x => x.Substring(0 , x.Length /2 )).ToList();
+
+            var listOldPassword = checkUserExist?.OldPasswords?.OldPasswordList();
+            listOldPassword = listOldPassword?.Select(x => x.Substring(0 , x.Length /2 )).ToList();
             return new ResponseResult<string>(listOldPassword);
         }
     }

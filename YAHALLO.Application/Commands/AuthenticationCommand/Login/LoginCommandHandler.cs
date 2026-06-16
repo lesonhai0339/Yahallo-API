@@ -55,8 +55,8 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                 if (newToken != null)
                 {
                     checkExistToken.AccessToken = newToken;
-                    checkExistToken.RefeshToken = _token.GenerateRefreshToken();
-                    checkExistToken.ExpiredRefeshToken = DateTime.UtcNow.AddDays(1).ToString();
+                    checkExistToken.RefreshToken = _token.GenerateRefreshToken();
+                    checkExistToken.ExpiredRefreshToken = DateTime.UtcNow.AddDays(1).ToString();
                     _userTokenRepository.Update(checkExistToken);
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (result > 0)
@@ -66,7 +66,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                            avatarUri: checkUserExist.AvatarThumbnail,
                            name: checkUserExist.DisplayName,
                            accessToken: checkExistToken.AccessToken,
-                           refreshToken: checkExistToken.RefeshToken);
+                           refreshToken: checkExistToken.RefreshToken);
                     }
                 }
                 throw new UnAuthorizeException("Đăng nhập thất bại");
@@ -81,8 +81,8 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     {
                         Id = checkUserExist.Id,
                         AccessToken = token,
-                        RefeshToken = refreshToken,
-                        ExpiredRefeshToken = DateTime.UtcNow.AddDays(1).ToString()
+                        RefreshToken = refreshToken,
+                        ExpiredRefreshToken = DateTime.UtcNow.AddDays(1).ToString()
                     };
                     _userTokenRepository.Add(userToken);
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

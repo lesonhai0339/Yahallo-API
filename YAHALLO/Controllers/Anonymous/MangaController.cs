@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.MangaCommand.Create;
 using YAHALLO.Application.Commands.MangaCommand.Delete;
+using YAHALLO.Application.Commands.MangaCommand.DTOs;
 using YAHALLO.Application.Commands.MangaCommand.Restore;
 using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Pagination;
@@ -44,15 +45,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("manga/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<CreateMangaResponseDto>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<string>>> CreateManga(
+        public async Task<ActionResult<JsonResponse<CreateMangaResponseDto>>> CreateManga(
           [FromForm] CreateMangaCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<string>(result));
+            return Ok(new JsonResponse<CreateMangaResponseDto>(result));
         }
         [HttpPost]
         [Route("manga/restore")]
@@ -70,15 +71,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPut]
         [Route("manga/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UpdateMangaResponseDto>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> UpdateManga(
+        public async Task<ActionResult<JsonResponse<UpdateMangaResponseDto>>> UpdateManga(
          [FromForm] UpdateMangaCommand command,
          CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<string>>(result));
+            return Ok(new JsonResponse<UpdateMangaResponseDto>(result));
         }
         [HttpDelete]
         [Route("manga/delete")]

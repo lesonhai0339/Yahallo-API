@@ -19,18 +19,24 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 
             builder.Property(x => x.Name)
                 .IsUnicode(true)
-                .HasMaxLength(256)
+                .HasMaxLength(450)
                 .UseCollation("Latin1_General_CI_AI");
+            builder.Property(x => x.SeasonName)
+               .IsUnicode(true)
+               .HasMaxLength(450)
+               .UseCollation("Latin1_General_CI_AI");
 
             builder.Property(x => x.Description)
                 .IsUnicode(true);
 
-            builder.HasOne(x => x.MangaSeasonEntity)
+            builder.HasOne(x => x.MangaGroup)
                 .WithMany(x => x.MangaEntities)
-                .HasForeignKey(x => x.MangaSeasonId);
+                .HasForeignKey(x => x.MangaGroupId);
+
             builder.HasOne(x => x.UserEntity)
                 .WithMany(x => x.MangaEntities)
                 .HasForeignKey(x => x.UserId);
+
             builder.HasOne(x => x.ViewCount)
                .WithOne(x => x.Manga)
                .HasForeignKey<ViewCountEntity>(x => x.MangaId)

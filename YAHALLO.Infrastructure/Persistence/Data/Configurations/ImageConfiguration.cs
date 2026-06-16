@@ -19,11 +19,6 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .IsUnicode(false)
                 .IsRequired();
 
-            builder.HasOne(x => x.UserEntity)
-                .WithOne(x => x.Avatar)
-                .HasForeignKey<ImageEntity>(x => x.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
             builder.HasOne(x => x.ChapterEntity)
                 .WithMany(x => x.ImagesEntities)
                 .HasForeignKey(x => x.ChapterId)

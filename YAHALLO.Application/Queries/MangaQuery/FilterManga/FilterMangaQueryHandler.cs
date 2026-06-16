@@ -39,7 +39,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
                     .Select(m => new MangaDto
                     {
                         Id = m.Id,
-                        Name = m.Name,
+                        DisplayName = (m.Name + " " + m.SeasonName).Trim(),
                         Description = m.Description,
                         Level = m.Level,
                         Status = m.Status,
@@ -84,6 +84,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
                 var name = request.Name.Trim();
                 query = query.Where(x =>
                     x.Name.Trim().Contains(name)
+                    || x.SeasonName.Trim().Contains(name)
                     || x.AuthorEntities.Any(a => a.Author.Name.Contains(name))
                     || x.ArtistEntities.Any(a => a.Artist.Name.Contains(name))
                     || x.TagEntities.Any(t => t.Tag.Name.Contains(name)));

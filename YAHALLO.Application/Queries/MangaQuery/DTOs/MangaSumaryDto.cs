@@ -13,7 +13,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
     public class MangaSumaryDto : IMapFrom<MangaEntity>
     {
         public required string Id { get; set; }
-        public required string Name { get; set; }  
+        public required string DisplayName { get; set; }  
         public string? MangaThumbnail { get; set; }
         public string? MangaBackground { get; set; }    
         public long? TotalViews { get; set; }    

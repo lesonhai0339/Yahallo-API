@@ -39,7 +39,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
                 .Select(t => new MangaDetailDto
                 {
                     Id = t.Id,
-                    Name = t.Name,
+                    DisplayName = (t.Name + " " + t.SeasonName).Trim(),
                     Description = t.Description,
                     Level = t.Level,
                     Status = t.Status,

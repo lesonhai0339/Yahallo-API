@@ -24,9 +24,8 @@ namespace YAHALLO.Application.Queries.UserQuery.Anonymous.GetAllDeleted
         {
             var listUsers = await _userRepository.FindAllAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (listUsers == null)
-            {
                 throw new NotFoundException("Không tìm thấy thành viên nào");
-            }
+
             return listUsers.MapToUserDtoToList(_mapper);
         }
     }
