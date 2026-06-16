@@ -5266,3 +5266,157 @@ ORDER BY CASE
 END DESC, [m].[Id] DESC
 OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
 2026-06-16 23:27:46.010 +07:00 [WRN] Yahallo Long Running Request: GetHomepageRequest (2218 milliseconds)  {"$type":"GetHomepageRequest"}
+2026-06-16 23:40:24.232 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:40:24.633 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:40:34.600 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:40:34.836 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:40:42.498 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:40:42.781 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:40:50.598 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:40:50.840 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:41:03.700 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:41:04.567 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-16 23:41:04.578 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-16 23:41:04.579 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-16 23:41:04.580 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-16 23:41:04.587 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-16 23:41:04.594 +07:00 [INF] Applying migration '20260615164146_v1'.
+2026-06-16 23:41:04.680 +07:00 [ERR] Failed executing DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Artist] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(255) COLLATE Latin1_General_CI_AI NOT NULL,
+    [Countries] int NOT NULL,
+    [Depscription] nvarchar(max) NOT NULL,
+    [Birth] datetime2 NOT NULL,
+    [LifeStatus] int NOT NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_Artist] PRIMARY KEY ([Id])
+);
+2026-06-16 23:41:26.572 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:41:26.838 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-16 23:41:26.849 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-16 23:41:26.850 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-16 23:41:26.851 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-16 23:41:26.856 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-16 23:41:26.862 +07:00 [INF] Applying migration '20260616021318_v8'.
+2026-06-16 23:41:26.903 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260616021318_v8', N'8.0.0');
+2026-06-16 23:41:26.906 +07:00 [INF] Applying migration '20260616091044_v9'.
+2026-06-16 23:41:26.937 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260616091044_v9', N'8.0.0');
+2026-06-16 23:41:26.938 +07:00 [INF] Applying migration '20260616164051_v10'.
+2026-06-16 23:41:26.984 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Image] DROP CONSTRAINT [FK_Image_Users_UserId];
+2026-06-16 23:41:26.985 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Manga] DROP CONSTRAINT [FK_Manga_MangaSeason_MangaSeasonId];
+2026-06-16 23:41:26.987 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [MangaSeason];
+2026-06-16 23:41:26.989 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_Manga_MangaSeasonId] ON [Manga];
+2026-06-16 23:41:26.990 +07:00 [ERR] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_Image_UserId] ON [Image];
+2026-06-16 23:41:56.344 +07:00 [WRN] The foreign key {'Id'} on entity type 'CommentEntity' targets itself. Consider removing it since it serves no purpose.
+2026-06-16 23:41:56.636 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-16 23:41:56.648 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-16 23:41:56.649 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-16 23:41:56.650 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-16 23:41:56.655 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-16 23:41:56.662 +07:00 [INF] Applying migration '20260616164051_v10'.
+2026-06-16 23:41:56.725 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Image] DROP CONSTRAINT [FK_Image_Users_UserId];
+2026-06-16 23:41:56.726 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Manga] DROP CONSTRAINT [FK_Manga_MangaSeason_MangaSeasonId];
+2026-06-16 23:41:56.727 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE [MangaSeason];
+2026-06-16 23:41:56.728 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX [IX_Manga_MangaSeasonId] ON [Manga];
+2026-06-16 23:41:56.738 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Image]') AND [c].[name] = N'UserId');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Image] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Image] DROP COLUMN [UserId];
+2026-06-16 23:41:56.850 +07:00 [INF] Executed DbCommand (112ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[UserToken].[RefeshToken]', N'RefreshToken', N'COLUMN';
+2026-06-16 23:41:56.851 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+EXEC sp_rename N'[UserToken].[ExpiredRefeshToken]', N'ExpiredRefreshToken', N'COLUMN';
+2026-06-16 23:41:56.853 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Users] ADD [BackgroundThumbnail] nvarchar(max) NULL;
+2026-06-16 23:41:56.861 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Manga]') AND [c].[name] = N'Name');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Manga] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [Manga] ALTER COLUMN [Name] nvarchar(450) COLLATE Latin1_General_CI_AI NOT NULL;
+2026-06-16 23:41:56.872 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Manga]') AND [c].[name] = N'MangaSeasonId');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Manga] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [Manga] ALTER COLUMN [MangaSeasonId] nvarchar(max) NULL;
+2026-06-16 23:41:56.873 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Manga] ADD [MangaGroupId] nvarchar(450) NULL;
+2026-06-16 23:41:56.875 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Manga] ADD [SeasonName] nvarchar(450) COLLATE Latin1_General_CI_AI NOT NULL DEFAULT N'';
+2026-06-16 23:41:56.883 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @var3 sysname;
+SELECT @var3 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Image]') AND [c].[name] = N'BaseUrl');
+IF @var3 IS NOT NULL EXEC(N'ALTER TABLE [Image] DROP CONSTRAINT [' + @var3 + '];');
+ALTER TABLE [Image] ALTER COLUMN [BaseUrl] nvarchar(max) NULL;
+2026-06-16 23:41:56.884 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MangaGroup] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) COLLATE Latin1_General_CI_AI NULL,
+    [Description] nvarchar(max) NULL,
+    [CreateDate] datetime2 NULL,
+    [IdUserCreate] nvarchar(max) NULL,
+    [UpdateDate] datetime2 NULL,
+    [IdUserUpdate] nvarchar(max) NULL,
+    [DeleteDate] datetime2 NULL,
+    [IdUserDelete] nvarchar(max) NULL,
+    CONSTRAINT [PK_MangaGroup] PRIMARY KEY ([Id])
+);
+2026-06-16 23:41:57.057 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Manga_MangaGroupId] ON [Manga] ([MangaGroupId]);
+2026-06-16 23:41:57.059 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Manga] ADD CONSTRAINT [FK_Manga_MangaGroup_MangaGroupId] FOREIGN KEY ([MangaGroupId]) REFERENCES [MangaGroup] ([Id]);
+2026-06-16 23:41:57.059 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260616164051_v10', N'8.0.0');

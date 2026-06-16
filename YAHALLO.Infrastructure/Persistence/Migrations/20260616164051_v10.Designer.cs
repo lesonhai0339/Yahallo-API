@@ -12,8 +12,8 @@ using YAHALLO.Infrastructure.Data;
 namespace YAHALLO.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260615164146_v1")]
-    partial class v1
+    [Migration("20260616164051_v10")]
+    partial class v10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -345,7 +345,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("BaseUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ChapterId")
@@ -382,16 +381,9 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ChapterId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Image", (string)null);
                 });
@@ -544,21 +536,31 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<string>("MangaBackground")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MangaSeasonId")
+                    b.Property<string>("MangaGroupId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MangaSeasonId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MangaThumbnail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(256)
+                        .HasMaxLength(450)
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("nvarchar(450)")
                         .UseCollation("Latin1_General_CI_AI");
 
                     b.Property<int>("Season")
                         .HasColumnType("int");
+
+                    b.Property<string>("SeasonName")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(450)")
+                        .UseCollation("Latin1_General_CI_AI");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -578,14 +580,14 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("LastChapterId");
 
-                    b.HasIndex("MangaSeasonId");
+                    b.HasIndex("MangaGroupId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Manga", (string)null);
                 });
 
-            modelBuilder.Entity("YAHALLO.Domain.Entities.MangaSeasonEntity", b =>
+            modelBuilder.Entity("YAHALLO.Domain.Entities.MangaGroupEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -597,6 +599,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsUnicode(true)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdUserCreate")
@@ -608,15 +611,18 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<string>("IdUserUpdate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Season")
-                        .HasColumnType("float");
+                    b.Property<string>("Name")
+                        .HasMaxLength(450)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(450)")
+                        .UseCollation("Latin1_General_CI_AI");
 
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MangaSeason", (string)null);
+                    b.ToTable("MangaGroup", (string)null);
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.MangaTagEntity", b =>
@@ -1257,6 +1263,9 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<string>("AvatarThumbnail")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("BackgroundThumbnail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -1414,7 +1423,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ExpiredRefeshToken")
+                    b.Property<string>("ExpiredRefreshToken")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdUserCreate")
@@ -1426,7 +1435,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<string>("IdUserUpdate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RefeshToken")
+                    b.Property<string>("RefreshToken")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -1599,14 +1608,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasForeignKey("ChapterId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("YAHALLO.Domain.Entities.UserEntity", "UserEntity")
-                        .WithOne("Avatar")
-                        .HasForeignKey("YAHALLO.Domain.Entities.ImageEntity", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.Navigation("ChapterEntity");
-
-                    b.Navigation("UserEntity");
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.MangaArtistEntity", b =>
@@ -1665,9 +1667,9 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasForeignKey("LastChapterId")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("YAHALLO.Domain.Entities.MangaSeasonEntity", "MangaSeasonEntity")
+                    b.HasOne("YAHALLO.Domain.Entities.MangaGroupEntity", "MangaGroup")
                         .WithMany("MangaEntities")
-                        .HasForeignKey("MangaSeasonId");
+                        .HasForeignKey("MangaGroupId");
 
                     b.HasOne("YAHALLO.Domain.Entities.UserEntity", "UserEntity")
                         .WithMany("MangaEntities")
@@ -1675,7 +1677,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.Navigation("LastChapter");
 
-                    b.Navigation("MangaSeasonEntity");
+                    b.Navigation("MangaGroup");
 
                     b.Navigation("UserEntity");
                 });
@@ -2016,7 +2018,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Navigation("ViewCount");
                 });
 
-            modelBuilder.Entity("YAHALLO.Domain.Entities.MangaSeasonEntity", b =>
+            modelBuilder.Entity("YAHALLO.Domain.Entities.MangaGroupEntity", b =>
                 {
                     b.Navigation("MangaEntities");
                 });
@@ -2043,8 +2045,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.UserEntity", b =>
                 {
-                    b.Navigation("Avatar");
-
                     b.Navigation("CommentEntities");
 
                     b.Navigation("FollowEntities");
