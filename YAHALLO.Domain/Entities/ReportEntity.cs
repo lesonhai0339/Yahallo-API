@@ -18,7 +18,7 @@ namespace YAHALLO.Domain.Entities
         public string? Content { get; set; }
 
 
-        public virtual ICollection<AttachmentEntity>? Attechments { get; set; }
+        public virtual ICollection<AttachmentEntity> Attechments { get; set; }  = new List<AttachmentEntity>(); 
 
         public string? IdUserReport { get; set; }
         public virtual UserEntity? User { get; set; }

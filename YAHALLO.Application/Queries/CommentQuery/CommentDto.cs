@@ -19,19 +19,22 @@ namespace YAHALLO.Application.Queries.CommentQuery
         public DateTime? DateTime { get;set; } 
         public int Like { get;set; }
         public int Dislike { get;set; }
+        public string? DisplayName { get; set; }
+        public string? Avatar { get; set; }
         public UserDto? UserCommentTo { get; set;  }    
-        public static CommentDto Create(string id, string userid, string mangaid, string message,DateTime datetime, int like, int dislike, UserDto? userCommentTo = null)
+        public static CommentDto Create(string id, string userid, string mangaid, string message,DateTime datetime, int like, int dislike, string? avatar, UserDto? userCommentTo = null)
         {
             return new CommentDto
             {
                 Id = id,
                 UserId = userid,
                 MangaId = mangaid,
-                Message = message,  
+                Message = message,
                 DateTime = datetime,
                 Like = like,
                 Dislike = dislike,
-                UserCommentTo = userCommentTo       
+                Avatar = avatar,
+                UserCommentTo = userCommentTo
             };
         }
         public void Mapping(Profile profile)

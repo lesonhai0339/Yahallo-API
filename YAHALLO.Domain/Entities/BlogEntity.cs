@@ -41,11 +41,12 @@ namespace YAHALLO.Domain.Entities
         public CommonStatus Status { get; set; } = CommonStatus.Active;
         public BlogEnumType Type { get; set; }  = BlogEnumType.None;
 
+     
         public virtual ViewCountEntity? ViewCount { get; set; } 
 
-        public virtual ICollection<ThreadOfBlogEntity>? ThreadOfBlogEntities { get;set; }   
-        public virtual ICollection<ReactionEntity>? Reactions { get;set; }     
-        public virtual ICollection<CommentEntity>? Comments { get; set; }
-        public virtual ICollection<AttachmentEntity>?  Attechments { get; set; }
+        public virtual ICollection<ThreadOfBlogEntity>? ThreadOfBlogEntities { get;set; }   = new List<ThreadOfBlogEntity>();
+        public virtual ICollection<ReactionEntity>? Reactions { get;set; }     = new List<ReactionEntity>   ();
+        public virtual ICollection<CommentEntity>? Comments { get; set; } = new List<CommentEntity> ();
+        public virtual ICollection<AttachmentEntity>? Attechments { get; set; } = new List<AttachmentEntity>     ();
     }
 }

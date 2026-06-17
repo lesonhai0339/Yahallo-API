@@ -10,6 +10,6 @@ namespace YAHALLO.Domain.Entities
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
 
-        public virtual ICollection<MangaTagEntity>? MangaTagEntities { get; set; }
+        public virtual ICollection<MangaTagEntity> MangaTagEntities { get; set; } = new List<MangaTagEntity>(); 
     }
 }

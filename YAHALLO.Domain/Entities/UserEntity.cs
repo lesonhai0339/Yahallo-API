@@ -1,10 +1,4 @@
-﻿using System;
-using System.Buffers.Text;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YAHALLO.Domain.Entities.Base;
+﻿using YAHALLO.Domain.Entities.Base;
 using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Enums.UserEnums;
 
@@ -42,23 +36,28 @@ namespace YAHALLO.Domain.Entities
 
         public string UserName { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-
-        public string? AvatarThumbnail { get; set; } = string.Empty; 
-        public string? BackgroundThumbnail { get; set; } = string.Empty;    
-        public virtual UserTokenEntity? UserToken { get; set; }
-
         public UserStatus Status { get; set; }
         public UserLevel Level { get; set; }
+        public string? AvatarThumbnail { get; set; } = string.Empty; 
+        public string? BackgroundThumbnail { get; set; } = string.Empty;    
+
+
+        public string? CountryId { get; set; }
+        public virtual CountryEntity? Country { get; set; }  
+
+        public virtual UserTokenEntity? UserToken { get; set; }
+
+        public virtual UserBlacklistEntity? Blacklist { get; set;  }
 
         public virtual UserOldPasswordEntity? OldPasswords { get; set; }
 
-        public virtual ICollection<UserRoleEntity> UserRoleEntities { get; set; }=null!;
-        public virtual ICollection<MangaEntity>? MangaEntities { get;set; }
-        public virtual ICollection<CommentEntity>? CommentEntities { get; set; }
-        public virtual ICollection<CommentEntity>? ReplyComment { get; set; }
-        public virtual ICollection<FollowEntity>? FollowEntities { get; set;}
-        public virtual ICollection<ReactionEntity>? Reactions { get; set; }
-        public virtual ICollection<ReportEntity>? Reports { get; set; } = null;
+        public virtual ICollection<UserRoleEntity> UserRoleEntities { get; set; } = new List<UserRoleEntity>    ();
+        public virtual ICollection<MangaEntity>? MangaEntities { get;set; } = new List<MangaEntity> ();
+        public virtual ICollection<CommentEntity>? CommentEntities { get; set; } = new List<CommentEntity>       ();
+        public virtual ICollection<CommentEntity>? ReplyComment { get; set; } = new List<CommentEntity>();  
+        public virtual ICollection<FollowEntity>? FollowEntities { get; set;} = new List<FollowEntity> ();
+        public virtual ICollection<ReactionEntity>? Reactions { get; set; } = new List<ReactionEntity>   ();
+        public virtual ICollection<ReportEntity>? Reports { get; set; } = new List<ReportEntity>     ();
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
 
         public UserEntity? ConvertFromString(string classname)

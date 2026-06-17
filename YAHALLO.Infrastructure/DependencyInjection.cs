@@ -131,7 +131,6 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IFollowRepository, FollowRepository>();
             services.AddScoped<IMangaAssociateNameRepository, MangaAssociateNameRepository>();
             services.AddScoped<IMangaGroupRepository, MangaGroupRepository>();
-            services.AddScoped<IMangaViewRepository, MangaViewRepository>();
             services.AddScoped<IUserTokenRepository, UserTokenRepository>();
             services.AddScoped<IAttechmentRepository, AttechmentRepository>();
             services.AddScoped<IBlogRepository, BlogRepository>();
@@ -145,6 +144,11 @@ namespace YAHALLO.Infrastructure
             services.AddTransient(typeof(IFiles<>), typeof(Files<>));
             services.AddScoped<IFilters, Filters>();
             services.AddScoped<IMangaSearchRepository, MangaSearchRepository>();
+            services.AddScoped<IUserBlacklistRepository, UserBlacklistRepository>();
+            services.AddScoped<IUnTrustEmailRepository, UnTrustEmailRepository>();
+            services.AddScoped<IUnTrustPhoneRepository, UnTrustPhoneRepository>();
+            services.AddScoped<IPendingRegistrationRepository, PendingRegistrationRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
 
             // AI generated — new repositories
             services.AddScoped<ITagRepository, TagRepository>();

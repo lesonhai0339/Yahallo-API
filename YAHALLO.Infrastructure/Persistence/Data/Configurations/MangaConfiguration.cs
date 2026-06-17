@@ -37,16 +37,16 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .WithMany(x => x.MangaEntities)
                 .HasForeignKey(x => x.UserId);
 
-            builder.HasOne(x => x.ViewCount)
-               .WithOne(x => x.Manga)
-               .HasForeignKey<ViewCountEntity>(x => x.MangaId)
-               .OnDelete(DeleteBehavior.Cascade);
-
             builder
-    .HasOne(x => x.LastChapter)
-    .WithMany()
-    .HasForeignKey(x => x.LastChapterId)
-    .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(x => x.LastChapter)
+                .WithMany()
+                .HasForeignKey(x => x.LastChapterId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasOne(x => x.Country)
+                .WithMany(x => x.MangaEntities)
+                .HasForeignKey(x => x.CountryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable("Manga");
         }

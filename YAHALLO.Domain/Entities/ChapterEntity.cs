@@ -10,19 +10,15 @@ namespace YAHALLO.Domain.Entities
 {
     public class ChapterEntity:BaseEntity
     {
-        public ChapterEntity() 
-        {
-            ImagesEntities = new List<ImageEntity>();
-        }
         public string? Title { get; set; }
         public int Index { get;set; }
 
-        public string MangaId { get; set; } = null!;
-        public virtual MangaEntity MangaEntity { get; set; } = null!;
+        public string? MangaId { get; set; }
+        public virtual MangaEntity? MangaEntity { get; set; }
         public virtual ViewCountEntity? ViewCount { get;set; }  
         
-        public virtual ICollection<ImageEntity>? ImagesEntities { get; set; }
-        public virtual ICollection<CommentEntity>? CommentEntities { get; set; }
+        public virtual ICollection<ImageEntity>? ImagesEntities { get; set; } = new List<ImageEntity>();    
+        public virtual ICollection<CommentEntity>? CommentEntities { get; set; } = new List<CommentEntity>();   
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
 
     }

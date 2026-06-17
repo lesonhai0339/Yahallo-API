@@ -12,6 +12,6 @@ namespace YAHALLO.Domain.Entities
         public int RoleCode { get;set; }
         public string RoleName { get; set; } = null!;
         public string? RoleDescription { get;set;}
-        public virtual ICollection<UserRoleEntity> UserRoleEntities { get; set; } = null!;
+        public virtual ICollection<UserRoleEntity> UserRoleEntities { get; set; }  = new List<UserRoleEntity>();
     }
 }

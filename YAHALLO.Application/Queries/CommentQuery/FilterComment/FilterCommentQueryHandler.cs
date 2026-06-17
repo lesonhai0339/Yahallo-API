@@ -51,6 +51,8 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
                     MangaId = x.MangaId,
                     Message = x.Message,
                     UserId = x.UserId,
+                    DisplayName = x.UserEntity == null ? null : x.UserEntity.DisplayName,
+                    Avatar = x.UserEntity == null ? null : x.UserEntity.AvatarThumbnail,
                     UserCommentTo = x.CommentToUser == null ? null : new UserDto
                     {
                         Id = x.CommentToUser.Id,

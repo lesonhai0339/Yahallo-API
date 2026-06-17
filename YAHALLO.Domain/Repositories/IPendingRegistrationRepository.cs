@@ -7,7 +7,7 @@ using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Repositories
 {
-    public interface IMangaViewRepository: IEFRepository<MangaViewEntity, MangaViewEntity>
+    public interface IPendingRegistrationRepository: IEFRepository<PendingRegistrationEntity, PendingRegistrationEntity>
     {
     }
 }

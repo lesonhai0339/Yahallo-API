@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
@@ -34,26 +35,15 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         public async Task<ResponseResult<string>> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
             ArgumentNullException.ThrowIfNullOrEmpty(request.UserId);
+            bool hasManga = !string.IsNullOrEmpty(request.MangaId);
+            bool hasChapter = !string.IsNullOrEmpty(request.ChapterId);
 
-            var commentUser= await _userRepository.FindAsync(x=> x.Id == request.UserId, cancellationToken); 
+            if (hasManga == hasChapter)
+                throw new BadRequestException("Comment phải thuộc về manga hoặc chapter, không được cả hai hoặc bỏ trống");
+
+            var commentUser = await _userRepository.FindAsync(x=> x.Id == request.UserId, cancellationToken); 
             if( commentUser == null )
                 throw new NotFoundException($"Không tồn tại tài khoản với Id {request.UserId}");
-
-            var userReplyTo = !string.IsNullOrEmpty(request.CommentToUserId)
-                ? await _userRepository.FindAsync(x => x.Id == request.CommentToUserId, cancellationToken):
-                null;   
-
-            var commentRoot = !string.IsNullOrEmpty(request.ParentId) 
-                ? await _commentRepository.FindAsync(x => x.Id == request.ParentId, cancellationToken) 
-                : null;
-
-            var manga = !string.IsNullOrEmpty(request.MangaId)
-                ? await _mangaRepository.FindAsync(x => x.Id == request.MangaId, cancellationToken)
-                : null;
-
-            var chapter = !string.IsNullOrEmpty(request.ChapterId)
-               ? await _chapterRepository.FindAsync(x => x.Id == request.ChapterId, cancellationToken)
-               : null;
 
             CommentEntity comment = new CommentEntity
             {
@@ -66,16 +56,11 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
                 LikeCount = 0,
                 DisLikeCount = 0,
                 Message = request.Message,
-                Parent = commentRoot,
-                ParentId = commentRoot?.Id,
-                UserEntity = commentUser,
+                ParentId = request.ParentId,
                 UserId = commentUser.Id,
-                MangaId = manga?.Id,
-                MangaEntity = manga,
-                ChapterId = chapter?.Id,
-                ChapterEntity = chapter,
-                CommentToUserId = commentUser?.Id,  
-                CommentToUser = commentUser,        
+                MangaId = request.MangaId,
+                ChapterId = request.ChapterId,
+                CommentToUserId = request.CommentToUserId,  
                 CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId
             };

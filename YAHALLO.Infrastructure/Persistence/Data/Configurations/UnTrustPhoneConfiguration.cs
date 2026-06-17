@@ -6,16 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
-using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 {
-    public class BlogConfiguration : IEntityTypeConfiguration<BlogEntity>
+    public class UnTrustPhoneConfiguration : IEntityTypeConfiguration<UnTrustPhoneEntity>
     {
-        public void Configure(EntityTypeBuilder<BlogEntity> builder)
+        public void Configure(EntityTypeBuilder<UnTrustPhoneEntity> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.ToTable("Blogs");
+
+            builder.HasIndex(x => x.Phone);
+
+
+            builder.ToTable("UnTrustPhone");
         }
     }
 }

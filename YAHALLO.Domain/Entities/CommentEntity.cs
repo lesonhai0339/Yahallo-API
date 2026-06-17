@@ -42,10 +42,11 @@ namespace YAHALLO.Domain.Entities
         public int DisLikeCount { get; set; }
         public string? Message { get; set;}
         public CommentType CommentType { get; set; }
+
         public virtual ViewCountEntity? ViewCount { get; set; }
 
-        public string UserId { get; set; } = null!;
-        public virtual UserEntity? UserEntity { get; set; }=null!;
+        public string? UserId { get; set; }
+        public virtual UserEntity? UserEntity { get; set; }
         public string? MangaId { get; set;}
         public virtual MangaEntity? MangaEntity { get; set; }
         public string? ChapterId { get; set; }
@@ -58,7 +59,7 @@ namespace YAHALLO.Domain.Entities
 
         public string? CommentToUserId { get; set; }
         public virtual UserEntity? CommentToUser { get; set; }
-        public virtual ICollection<CommentEntity>? Entities { get; set; }
-        public virtual ICollection<AttachmentEntity>? Attechments { get; set; }     
+        public virtual ICollection<CommentEntity>? Entities { get; set; } = new List<CommentEntity>();
+        public virtual ICollection<AttachmentEntity>? Attechments { get; set; }     = new List<AttachmentEntity>();  
     }
 }

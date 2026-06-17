@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using YAHALLO.Domain;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Entities.Reference;
 using YAHALLO.Domain.Repositories;
@@ -28,7 +29,6 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<ImageEntity>? ImageEntities { get; set; }   
         public DbSet<MangaEntity>? MangaEntities { get; set; }
         public DbSet<RatingEntity>? RatingEntities { get; set; }
-        public DbSet<MangaViewEntity>? MangaViewEntities { get; set; }
         public DbSet<RoleEntity>? RoleEntities { get; set; }
         public DbSet<UserRoleEntity>? UserRoles { get; set; }
         public DbSet<UserEntity>? UserEntities { get; set; }
@@ -45,6 +45,12 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<BlogEntity> Blogs { get; set; }
 
         public DbSet<MangaGroupEntity>? MangaGroup { get; set; }
+        public DbSet<UserBlacklistEntity>? UserBlackList { get; set; }
+
+        public DbSet<UnTrustEmailEntity>? UnTrustEmail { get; set; }
+        public DbSet<UnTrustPhoneEntity>? UnTrustPhone { get; set; }
+        public DbSet<PendingRegistrationEntity>? PendingRegistration { get; set; }
+        public DbSet<CountryEntity>? Countries { get; set; }
 
 
         // AI generated — new tables
@@ -81,14 +87,12 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new ImageConfiguration());
             modelBuilder.ApplyConfiguration(new MangaConfiguration());
             modelBuilder.ApplyConfiguration(new RatingConfiguration());
-            modelBuilder.ApplyConfiguration(new MangaViewConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new MangaArtistConfiguration());
             modelBuilder.ApplyConfiguration(new MangaAuthorConfiguration());
             modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
-
             modelBuilder.ApplyConfiguration(new ViewCountConfiguration());
             modelBuilder.ApplyConfiguration(new ReactionConfiguration());
             modelBuilder.ApplyConfiguration(new ThreadConfiguration());
@@ -98,7 +102,11 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
             modelBuilder.ApplyConfiguration(new MangaGroupConfiguration());
-
+            modelBuilder.ApplyConfiguration(new UserBlacklistConfiguration());
+            modelBuilder.ApplyConfiguration(new UnTrustEmailConfiguration());
+            modelBuilder.ApplyConfiguration(new UnTrustPhoneConfiguration());
+            modelBuilder.ApplyConfiguration(new PendingRegistrationConfiguration());
+            modelBuilder.ApplyConfiguration(new CountryConfiguration());
             // AI generated — new configurations
             modelBuilder.ApplyConfiguration(new TagConfiguration());
             modelBuilder.ApplyConfiguration(new MangaTagConfiguration());

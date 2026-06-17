@@ -35,14 +35,16 @@ namespace YAHALLO.Domain.Entities
         public virtual ChapterEntity? LastChapter { get; set; }
 
 
-        public string? MangaSeasonId { get; set; }
         public string? UserId { get; set; }
-        public string? MangaGroupId { get; set; }   
-
         public virtual UserEntity UserEntity { get; set; } = null!;
-        public virtual MangaViewEntity? MangaView { get; set; }
         public virtual ViewCountEntity? ViewCount { get; set; }
-        public virtual MangaGroupEntity? MangaGroup { get; set; } = null!;
+        public string? MangaGroupId { get; set; }
+        public virtual MangaGroupEntity? MangaGroup { get; set; }
+
+
+        public string? CountryId { get; set;  }
+        public virtual CountryEntity? Country { get; set;  }
+
         public virtual ICollection<MangaTagEntity> TagEntities { get; set; } = new List<MangaTagEntity>();
         public virtual ICollection<MangaAssociateNameEntity> AssociateNameEntities {get;set;} = new List<MangaAssociateNameEntity>();   
         public virtual ICollection<MangaArtistEntity> ArtistEntities { get; set; } = new List<MangaArtistEntity>(); 

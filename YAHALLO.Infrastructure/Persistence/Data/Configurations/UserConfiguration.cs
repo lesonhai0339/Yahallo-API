@@ -18,7 +18,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.Property(x => x.Email)
                 .IsRequired();
 
-            builder.HasIndex(x => x.Email);
+            builder.HasIndex(x => x.Email).IsUnique();
             builder.Property(x => x.FirstName)
                 .HasMaxLength(200)
                 .IsUnicode(true)
@@ -41,6 +41,11 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                .WithOne(x => x.UserEntity)
                .HasForeignKey<UserOldPasswordEntity>(x => x.UserId)
                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(x => x.Country)
+                .WithMany(x => x.UserEntities)
+                .HasForeignKey(x => x.CountryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable("Users");
         }

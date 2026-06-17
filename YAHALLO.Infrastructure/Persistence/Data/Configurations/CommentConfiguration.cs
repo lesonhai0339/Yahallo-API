@@ -45,11 +45,6 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(x => x.CommentToUser)
-                .WithMany(x => x.ReplyComment)
-                .HasForeignKey(x => x.CommentToUserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
             builder.ToTable("Comment");
         }
     }
