@@ -20,30 +20,45 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .IsUnicode(true);
 
             builder.HasOne(x => x.Parent)
-                .WithMany(x => x.Entities)
-                .HasForeignKey(x => x.Id);
+                .WithMany(x => x.Comments)
+                .HasForeignKey(x => x.ParentId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
           
             builder.HasOne(x => x.MangaEntity)
                 .WithMany(x => x.CommentEntities)
                 .HasForeignKey(x => x.MangaId)
                 .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(x => x.ChapterEntity)
                 .WithMany(x => x.CommentEntities)
                 .HasForeignKey(x => x.ChapterId)
                 .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(x => x.BlogEntity)
                 .WithMany(x => x.Comments)
                 .HasForeignKey(x => x.BlogId)
                 .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(x => x.ViewCount)
                 .WithOne(x => x.Comment)
                 .HasForeignKey<ViewCountEntity>(x => x.CommentId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-              builder.HasOne(x => x.UserEntity)
-                .WithMany(x => x.CommentEntities)
-                .HasForeignKey(x => x.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.UserEntity)
+            .WithMany(x => x.CommentEntities)
+            .HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.CommentToUser)
+                .WithMany()
+                .HasForeignKey(x => x.CommentToUserId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+            builder.HasOne(x => x.ReplyComment)
+                .WithMany()
+                .HasForeignKey(x => x.ReplyToCommentId)
+                .OnDelete(DeleteBehavior.Restrict); 
 
             builder.ToTable("Comment");
         }

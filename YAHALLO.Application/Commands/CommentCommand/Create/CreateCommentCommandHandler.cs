@@ -61,6 +61,7 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
                 MangaId = request.MangaId,
                 ChapterId = request.ChapterId,
                 CommentToUserId = request.CommentToUserId,  
+                ReplyToCommentId = request.ReplyCommentId,
                 CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId
             };

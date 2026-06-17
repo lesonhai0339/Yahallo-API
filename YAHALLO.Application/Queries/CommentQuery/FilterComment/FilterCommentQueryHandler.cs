@@ -48,9 +48,15 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
                     Like = x.LikeCount,
                     Dislike = x.DisLikeCount,
                     DateTime = x.CreateDate,
-                    MangaId = x.MangaId,
-                    Message = x.Message,
                     UserId = x.UserId,
+                    MangaId = x.MangaId,
+                    ChapterId = x.ChapterId,
+                    BlogId = x.BlogId,
+                    ParentId = x.ParentId,
+                    ReplyToCommentId = x.ReplyToCommentId,
+                    Message = x.Message,
+                    ReplyCount = x.Comments == null ? 0 : x.Comments.Count(),
+                    IsDeleted = x.DeleteDate.HasValue && !string.IsNullOrEmpty(x.IdUserDelete),
                     DisplayName = x.UserEntity == null ? null : x.UserEntity.DisplayName,
                     Avatar = x.UserEntity == null ? null : x.UserEntity.AvatarThumbnail,
                     UserCommentTo = x.CommentToUser == null ? null : new UserDto
@@ -60,7 +66,8 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
                         Avatar = x.CommentToUser.AvatarThumbnail
                     }
                 }),
-                cancellation: cancellationToken);
+                cancellation: cancellationToken,
+                ignoreQueryFilters: true); //Get all
 
             if (!comments.Any())
                 throw new InvalidDataException("No Data");
@@ -80,9 +87,14 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
         private IQueryable<CommentEntity> ApplySorting(IQueryable<CommentEntity> query, FilterCommentQuery request)
         {
             if (!string.IsNullOrEmpty(request.Id)) query = query.Where(x => x.Id.Equals(request.Id));
-            if (!string.IsNullOrEmpty(request.UserId)) query = query.Where(x => x.UserId.Equals(request.UserId));
+            if (!string.IsNullOrEmpty(request.UserId)) query = query.Where(x => x.UserId!.Equals(request.UserId));
             if(!string.IsNullOrEmpty(request.ChapterId)) query = query.Where(x => x.ChapterId == request.ChapterId);
             if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.MangaId == request.MangaId);
+            if (!string.IsNullOrEmpty(request.ParentId))
+                query = query.Where(x => x.ParentId == request.ParentId);
+            else
+                query = query.Where(x => x.ParentId == null);
+
             return query;
         }
     }

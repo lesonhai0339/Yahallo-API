@@ -16,7 +16,8 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
         public string? Id { get; set; }
         public string? UserId { get; set; } 
         public string? MangaId { get; set; }
-        public string? ChapterId { get; set; }      
+        public string? ChapterId { get; set; }    
+        public string? ParentId { get; set; }   
         public CommentSortBy? SortBy { get; set;  }
         public bool ReverseSort { get; set; } = false;   
     }

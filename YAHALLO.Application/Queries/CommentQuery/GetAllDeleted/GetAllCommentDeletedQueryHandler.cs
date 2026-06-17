@@ -25,9 +25,8 @@ namespace YAHALLO.Application.Queries.CommentQuery.GetAllDeleted
         {
             var listCommentExists= await _commentRepository.FindAllAsync(x=> !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(listCommentExists.Count() == 0)
-            {
                 throw new NotFoundException("Không tìm thấy comment nào bị xóa");
-            }
+
             return new ResponseResult<CommentDto>(listCommentExists.MapToCommentDtoToList(_mapper));
         }
     }

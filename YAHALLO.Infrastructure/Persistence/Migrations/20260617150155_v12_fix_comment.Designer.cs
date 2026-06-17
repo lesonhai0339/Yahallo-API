@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YAHALLO.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using YAHALLO.Infrastructure.Data;
 namespace YAHALLO.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260617150155_v12_fix_comment")]
+    partial class v12_fix_comment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,9 +283,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Property<string>("ParentId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ReplyToCommentId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
@@ -303,8 +303,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.HasIndex("MangaId");
 
                     b.HasIndex("ParentId");
-
-                    b.HasIndex("ReplyToCommentId");
 
                     b.HasIndex("UserEntityId");
 
@@ -1802,13 +1800,8 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("YAHALLO.Domain.Entities.CommentEntity", "Parent")
-                        .WithMany("Comments")
+                        .WithMany("Entities")
                         .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("YAHALLO.Domain.Entities.CommentEntity", "ReplyComment")
-                        .WithMany()
-                        .HasForeignKey("ReplyToCommentId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("YAHALLO.Domain.Entities.UserEntity", null)
@@ -1829,8 +1822,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                     b.Navigation("MangaEntity");
 
                     b.Navigation("Parent");
-
-                    b.Navigation("ReplyComment");
 
                     b.Navigation("UserEntity");
                 });
@@ -2260,7 +2251,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                 {
                     b.Navigation("Attechments");
 
-                    b.Navigation("Comments");
+                    b.Navigation("Entities");
 
                     b.Navigation("ViewCount");
                 });

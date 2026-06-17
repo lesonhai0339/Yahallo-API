@@ -27,9 +27,8 @@ namespace YAHALLO.Application.Queries.CommentQuery.GetAllPagination
             var listCommentExists= await _commentRepository.FindAllAsync(x=> string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, 
                 request.PageNumber, request.PageSize, cancellationToken);
             if (!listCommentExists.Any())
-            {
                 throw new NotFoundException("Không tìm thấy bất kỳ comment nào");
-            }
+
             return listCommentExists.MapToPagedResult(x=> x.MapToCommentDto(_mapper));
         }
     }

@@ -57,9 +57,14 @@ namespace YAHALLO.Domain.Entities
         public string? ParentId { get; set; }
         public virtual CommentEntity? Parent { get; set; }
 
+        public string? ReplyToCommentId { get; set; }   
+        public virtual CommentEntity? ReplyComment { get; set; }    
+
         public string? CommentToUserId { get; set; }
         public virtual UserEntity? CommentToUser { get; set; }
-        public virtual ICollection<CommentEntity>? Entities { get; set; } = new List<CommentEntity>();
+
+
+        public virtual ICollection<CommentEntity>? Comments { get; set; } = new List<CommentEntity>();
         public virtual ICollection<AttachmentEntity>? Attechments { get; set; }     = new List<AttachmentEntity>();  
     }
 }

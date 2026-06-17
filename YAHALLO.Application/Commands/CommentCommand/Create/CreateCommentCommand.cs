@@ -10,6 +10,7 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         public string? MangaId { get; set; }
         public string? ChapterId { get; set; }
         public string? ParentId { get;set; }
+        public string? ReplyCommentId { get; set; } 
         public string? CommentToUserId { get; set; }    
         public CommentType Type { get; set; }
         public string Message { get; set; } = string.Empty;
