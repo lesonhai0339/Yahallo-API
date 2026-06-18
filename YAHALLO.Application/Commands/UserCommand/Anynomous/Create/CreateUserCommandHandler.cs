@@ -144,8 +144,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
                 CreateDate = DateTime.UtcNow,
                 Status = UserStatus.None,
                 Level = UserLevel.One,
-                CountryId = country.Id,
-                Country = country,  
+                CountryId = country.Id
             };
 
             var oldPassword= new UserOldPasswordEntity(user);

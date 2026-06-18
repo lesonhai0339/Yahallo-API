@@ -14,6 +14,8 @@ namespace YAHALLO.Domain.Entities
         public int PhoneCode { get; set; }
         public string Name { get; set; } = null!;
         public string FullName { get; set; } = null!;
+        public string VietnameseName { get; set; } = null!;
+        public int FaxCode { get; set; }
 
         public virtual ICollection<MangaEntity> MangaEntities { get; set; } = new List<MangaEntity>();
         public virtual ICollection<UserEntity> UserEntities { get; set;  } = new List<UserEntity>();        

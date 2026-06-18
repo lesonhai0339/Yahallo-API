@@ -16,7 +16,8 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasKey(x => x.Id);
 
             builder.HasIndex(x => x.Code).IsUnique();
-            builder.HasIndex(x => x.PhoneCode).IsUnique();
+            // PhoneCode KHÔNG unique: nhiều quốc gia dùng chung mã (vd +1 cho US/Canada, +7 cho Nga/Kazakhstan, +44 cho UK/Guernsey/Jersey/Isle of Man).
+            builder.HasIndex(x => x.PhoneCode);
 
             builder.Property(x => x.Name)
                 .IsUnicode(true)
@@ -30,7 +31,15 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
               .HasMaxLength(450)
               .UseCollation("Latin1_General_CI_AI");
 
-            builder.ToTable("PhoneCode");
+            builder.Property(x => x.VietnameseName)
+              .IsUnicode(true)
+              .IsRequired()
+              .HasMaxLength(450)
+              .UseCollation("Latin1_General_CI_AI");
+
+            builder.ToTable("Country");
+
+            builder.HasData(CountrySeedData.GetCountries());
         }
     }
 }
