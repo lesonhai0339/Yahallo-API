@@ -9,7 +9,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.CountryQuery.GetAll
 {
-    public class GetAllCountryRequestHandler : IRequestHandler<GetAllCountryRequest, IReadOnlyList<CountryDto>>
+    public class GetAllCountryRequestHandler : IRequestHandler<GetAllCountryRequest, List<CountryDto>>
     {
         private readonly ICountryRepository _countryRepository;
         public GetAllCountryRequestHandler(ICountryRepository countryRepository)
@@ -17,7 +17,7 @@ namespace YAHALLO.Application.Queries.CountryQuery.GetAll
             _countryRepository = countryRepository;
         }
 
-        public async Task<IReadOnlyList<CountryDto>> Handle(GetAllCountryRequest request, CancellationToken cancellationToken)
+        public async Task<List<CountryDto>> Handle(GetAllCountryRequest request, CancellationToken cancellationToken)
         {
             var countries = await _countryRepository.FindAllSelectAsync(x => x
                 .Select(x => new CountryDto

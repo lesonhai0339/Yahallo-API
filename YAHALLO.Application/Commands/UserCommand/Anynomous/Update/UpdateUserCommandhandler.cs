@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Commands.UserCommand.DTOs;
 using YAHALLO.Application.Common.Exceptions;
+using YAHALLO.Application.Common.Helper;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Entities.S3;
@@ -18,6 +19,7 @@ using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Storage;
+using YAHALLO.Domain.S3;
 
 namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
 {
@@ -47,10 +49,10 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
 
             user.DisplayName = request.DisplayName ?? user.DisplayName;
             user.PhoneNumber = request.PhoneNumber ?? user.PhoneNumber;
-            string avatarUploadUrl = string.Empty;
+            S3Response? avatarResponse = null;
             if (request.Avatar != null)
             {
-                avatarUploadUrl = await _avatarStorage.CreateSignedURL(new UserAvatar
+                avatarResponse = await _avatarStorage.CreateSignedURL(new UserAvatar
                 {
                     FileName = request.Avatar.FileName,
                     ContentType = request.Avatar.ContentType,
@@ -58,10 +60,10 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
-            string backgroundUploadUrl = string.Empty;
+            S3Response? backgroundResponse = null;
             if (request.Background != null)
             {
-                backgroundUploadUrl = await _backgrondStorage.CreateSignedURL(new UserBackground
+                backgroundResponse = await _backgrondStorage.CreateSignedURL(new UserBackground
                 {
                     FileName = request.Background.FileName,
                     ContentType = request.Background.ContentType,
@@ -75,8 +77,8 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
             return result > 0 ? new UpdateUserResponseDto{ 
                 Id = user.Id,
                 DisplayName = user.DisplayName,
-                AvatarUrl = avatarUploadUrl,
-                BackgroundUrl = backgroundUploadUrl,    
+                AvatarUrl = avatarResponse == null ? null : S3UrlHelper.ToCloudFrontUrl(avatarResponse.Url!, avatarResponse.CloundFrontDomain),
+                BackgroundUrl = backgroundResponse == null ? null : S3UrlHelper.ToCloudFrontUrl(backgroundResponse.Url!, backgroundResponse.CloundFrontDomain),    
             } : throw new UpdateFailedException($"Cannot update info for user id : {request.Id}");
         }
     }

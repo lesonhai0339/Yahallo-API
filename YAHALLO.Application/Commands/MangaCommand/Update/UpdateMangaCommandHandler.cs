@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using YAHALLO.Application.Commands.MangaCommand.DTOs;
+using YAHALLO.Application.Common.Helper;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
@@ -10,6 +11,7 @@ using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Elastic;
 using YAHALLO.Domain.Repositories.Storage;
+using YAHALLO.Domain.S3;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Update
 {
@@ -62,7 +64,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                 throw new UnAuthorizeException("Tài khoản hiện tại không có quyền thực hiện chức năng này");
 
 
-            string avatarUploadUrl = string.Empty;
+            S3Response? avatarUploadUrl = null;
             if (request.Avatar != null)
             {
                 avatarUploadUrl = await _avatarStorage.CreateSignedURL(new MangaThumbnail
@@ -73,7 +75,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
-            string backgroundUploadUrl = string.Empty;
+            S3Response? backgroundUploadUrl = null;
             if (request.Background != null)
             {
                 //test for upload to s3
@@ -97,13 +99,19 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
             manga.Countries = request.Countries ?? manga.Countries;
             manga.UpdateDate = DateTime.Now;
             manga.IdUserUpdate = _currentUser.UserId;
+            manga.MangaThumbnail = (avatarUploadUrl != null && !string.IsNullOrEmpty(avatarUploadUrl.Url)) 
+                ? S3UrlHelper.ToCloudFrontUrl(avatarUploadUrl.Url, avatarUploadUrl.CloundFrontDomain) 
+                : manga.MangaThumbnail;
 
+            manga.MangaBackground = (backgroundUploadUrl != null && !string.IsNullOrEmpty(backgroundUploadUrl.Url))
+             ? S3UrlHelper.ToCloudFrontUrl(backgroundUploadUrl.Url, backgroundUploadUrl.CloundFrontDomain)
+             : manga.MangaBackground;
 
             var response = new UpdateMangaResponseDto
             {
                 Message = "Cập nhật manga thất bại",
-                AvatarUrl = backgroundUploadUrl,
-                BackgroundUrl = backgroundUploadUrl
+                AvatarUrl = avatarUploadUrl?.Url,
+                BackgroundUrl = backgroundUploadUrl?.Url
             };
             _mangaRepository.Update(manga);
             var result= await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

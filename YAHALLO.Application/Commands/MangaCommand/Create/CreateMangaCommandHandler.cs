@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Commands.MangaCommand.DTOs;
+using YAHALLO.Application.Common.Helper;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Logger;
 using YAHALLO.Domain.Entities;
@@ -17,6 +18,7 @@ using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Elastic;
 using YAHALLO.Domain.Repositories.Storage;
+using YAHALLO.Domain.S3;
 
 namespace YAHALLO.Application.Commands.MangaCommand.Create
 {
@@ -40,7 +42,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
         }
         public async Task<CreateMangaResponseDto> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
         {
-            string avatarUploadUrl = string.Empty;
+            S3Response? avatarUploadUrl = null;
             if (request.Avatar != null)
             {
                 avatarUploadUrl = await _avatarStorage.CreateSignedURL(new MangaThumbnail
@@ -51,7 +53,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
-            string backgroundUploadUrl = string.Empty;
+            S3Response? backgroundUploadUrl = null;
             if (request.Background != null)
             {
                 //test for upload to s3
@@ -75,14 +77,16 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                 Season = request.Season,
                 CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId,
-                UserId = _currentUser.UserId
+                UserId = _currentUser.UserId,
+                MangaThumbnail = S3UrlHelper.ToCloudFrontUrl(avatarUploadUrl?.Url, avatarUploadUrl?.CloundFrontDomain),
+                MangaBackground = S3UrlHelper.ToCloudFrontUrl(backgroundUploadUrl?.Url, backgroundUploadUrl?.CloundFrontDomain)
             };
 
             var response = new CreateMangaResponseDto
             {
                 Message = "Tạo manga thất bại",
-                AvatarUrl = backgroundUploadUrl,
-                BackgroundUrl = backgroundUploadUrl
+                AvatarUrl = avatarUploadUrl?.Url,
+                BackgroundUrl = backgroundUploadUrl?.Url
             };
 
             _mangaRepository.Add(newManga);

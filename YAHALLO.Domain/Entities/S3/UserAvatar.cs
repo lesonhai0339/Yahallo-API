@@ -10,6 +10,6 @@ namespace YAHALLO.Domain.Entities.S3
 {
     public class UserAvatar: S3FileBase
     {
-        public override string GenerateKey() => $"user-avatars/{Id}/{FileName}";
+        public override string GenerateKey() => $"public/user_avatars/{Id}/{FileName}";
     }
 }

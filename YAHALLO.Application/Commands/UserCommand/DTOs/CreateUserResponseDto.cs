@@ -8,6 +8,7 @@ namespace YAHALLO.Application.Commands.UserCommand.DTOs
 {
     public class CreateUserResponseDto
     {
+        public string UserId { get; set; } = null!; 
         public string? Message { get; set; }    
         public string? AvatarUrl { get; set; }  
         public string? BackgroundUrl { get; set; }  

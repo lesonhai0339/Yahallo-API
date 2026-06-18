@@ -10,7 +10,7 @@ namespace YAHALLO.Domain.Entities.S3
     {
         public override string GenerateKey()
         {
-            return $"manga-backgrounds/{Id}/{FileName}";
+            return $"public/manga_backgrounds/{Id}/{FileName}";
         }   
     }
 }

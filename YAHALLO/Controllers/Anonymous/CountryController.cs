@@ -25,10 +25,9 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<CountryDto>>>> GetallArtistDeleted(
-            [FromQuery] GetAllCountryRequest request,
            CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(request, cancellationToken);
+            var result = await _sender.Send(new GetAllCountryRequest{ }, cancellationToken);
             return Ok(new JsonResponse<List<CountryDto>>(result));
         }
     }

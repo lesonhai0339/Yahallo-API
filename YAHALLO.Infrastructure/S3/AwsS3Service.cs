@@ -1,12 +1,10 @@
-﻿using Amazon.Runtime.Internal.Util;
-using Amazon.S3;
+﻿using Amazon.S3;
 using Amazon.S3.Model;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
-using System.Threading.Tasks;
 using YAHALLO.Domain.Entities.S3;
 using YAHALLO.Domain.Repositories.Storage;
+using YAHALLO.Domain.S3;
 
 namespace YAHALLO.Infrastructure.S3
 {
@@ -22,11 +20,11 @@ namespace YAHALLO.Infrastructure.S3
             _s3Client = s3Client;
             _logger = logger;
         }   
-        public async Task<IEnumerable<string>> CreateSignedURL(IEnumerable<T> files)
+        public async Task<IEnumerable<S3Response>> CreateSignedURL(IEnumerable<T> files)
         {
             return await Task.WhenAll(files.Select(async fileInfo => await CreateSignedURL(fileInfo)));
         }
-        public async Task<string> CreateSignedURL(T fileInfo)
+        public async Task<S3Response> CreateSignedURL(T fileInfo)
         {
             var request = new GetPreSignedUrlRequest
             {
@@ -35,16 +33,26 @@ namespace YAHALLO.Infrastructure.S3
                 Expires = DateTime.UtcNow.AddMinutes(15),
                 Verb = HttpVerb.PUT
             };
-            return await _s3Client.GetPreSignedURLAsync(request);
+            var url =  await _s3Client.GetPreSignedURLAsync(request);
+            return new S3Response
+            {
+                Url = url,
+                CloundFrontDomain = _options.CloundFrontDomain,
+            };
         }
-        public async Task<object> GetObjectURL(T fileInfo)
+        public async Task<S3Response> GetObjectURL(T fileInfo)
         {
             var request = new GetObjectMetadataRequest
             {
                 BucketName = _options.BucketName,
                 Key = fileInfo.Key,
             };
-            return await _s3Client.GetObjectMetadataAsync(request);
+            var obj =  await _s3Client.GetObjectMetadataAsync(request);
+            return new S3Response
+            {
+                Object = obj,
+                CloundFrontDomain = _options.CloundFrontDomain,
+            };
         }
     }
 }

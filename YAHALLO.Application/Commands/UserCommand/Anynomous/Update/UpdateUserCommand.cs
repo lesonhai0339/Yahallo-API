@@ -16,7 +16,6 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
         public string Id { get; set; } = string.Empty;
         public string? DisplayName { get; set; }
         public string? PhoneNumber { get; set; }
-
         public IFormFile? Avatar { get; set; }
         public IFormFile? Background { get; set; }  
     }

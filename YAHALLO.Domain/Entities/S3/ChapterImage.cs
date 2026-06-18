@@ -11,7 +11,7 @@ namespace YAHALLO.Domain.Entities.S3
         public required string MangaId { get; set;}
         public override string GenerateKey()
         {
-            return $"chapters/{MangaId}/{Id}/{FileName}";
+            return $"public/manga_chapters/{MangaId}/{Id}/{FileName}";
         }
     }
 }

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YAHALLO.Infrastructure.S3
+namespace YAHALLO.Domain.S3
 {
-    public class AwsS3Options
+    public class S3Response
     {
-        public string BucketName { get; set; } = string.Empty;
+        public string? Url { get; set; }
+        public object? Object { get; set; } 
         public string CloundFrontDomain { get; set; } = string.Empty;   
     }
 }

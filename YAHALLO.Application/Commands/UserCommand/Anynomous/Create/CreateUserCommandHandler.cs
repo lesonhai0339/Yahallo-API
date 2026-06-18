@@ -21,6 +21,7 @@ using YAHALLO.Domain.Enums.UserEnums;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Storage;
+using YAHALLO.Domain.S3;
 
 namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
 {
@@ -107,10 +108,10 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
             if (blocked)
                 return await HandleUnTrustUser(email, phone, request, cancellationToken);
 
-            string avatarUploadUrl = string.Empty; 
-            if(request.Avatar != null)
+            S3Response? avatarResponse = null;
+            if (request.Avatar != null)
             {
-                avatarUploadUrl = await _avatarStorage.CreateSignedURL(new UserAvatar
+                avatarResponse = await _avatarStorage.CreateSignedURL(new UserAvatar
                 {
                     FileName = request.Avatar.FileName,
                     ContentType = request.Avatar.ContentType,
@@ -118,11 +119,10 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
-            string backgroundUploadUrl = string.Empty;
+            S3Response? backgroundResponse = null;
             if (request.Background != null)
             {
-                //test for upload to s3
-                backgroundUploadUrl = await _backgrondStorage.CreateSignedURL(new UserBackground
+                backgroundResponse = await _backgrondStorage.CreateSignedURL(new UserBackground
                 {
                     FileName = request.Background.FileName,
                     ContentType = request.Background.ContentType,
@@ -144,7 +144,9 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
                 CreateDate = DateTime.UtcNow,
                 Status = UserStatus.None,
                 Level = UserLevel.One,
-                CountryId = country.Id
+                CountryId = country.Id,
+                AvatarThumbnail = S3UrlHelper.ToCloudFrontUrl(avatarResponse?.Url, avatarResponse?.CloundFrontDomain),
+                BackgroundThumbnail = S3UrlHelper.ToCloudFrontUrl(backgroundResponse?.Url, backgroundResponse?.CloundFrontDomain),  
             };
 
             var oldPassword= new UserOldPasswordEntity(user);
@@ -160,9 +162,10 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
 
             var response = new CreateUserResponseDto
             {
+                UserId = user.Id,   
                 Message = $"Tạo tài khỏan thành công",
-                AvatarUrl = avatarUploadUrl,
-                BackgroundUrl = backgroundUploadUrl,
+                AvatarUrl = avatarResponse?.Url,
+                BackgroundUrl = backgroundResponse?.Url,
             };
             if (result > 0)
             {
@@ -205,6 +208,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
             };
             var response = new CreateUserResponseDto
             {
+                UserId = pending.Id,
                 Message = $"Tạo tài khoản thất bại",
             };
             _pendingRegistrationRepository.Add(pending);

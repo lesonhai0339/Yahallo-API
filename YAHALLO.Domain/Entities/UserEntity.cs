@@ -15,7 +15,8 @@ namespace YAHALLO.Domain.Entities
             string? phone,
             string username,
             string password,
-            string? avatarThumbnail)
+            string? avatarThumbnail,
+            string? background)
         {
             DisplayName = displayname;
             FirstName = firstname;
@@ -25,6 +26,7 @@ namespace YAHALLO.Domain.Entities
             UserName = username;
             Password = password;
             AvatarThumbnail = avatarThumbnail ?? string.Empty;
+            BackgroundThumbnail = background;
         }
         public string? DisplayName { get; set; }
         public string? FirstName { get; set; }
