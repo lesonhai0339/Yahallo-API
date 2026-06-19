@@ -40,9 +40,9 @@ namespace YAHALLO.Application.Commands.SubscriptionCommand.Create
                 UserId = _currentUser.UserId,
                 Plan = request.Plan,
                 Status = SubscriptionStatus.Active,
-                StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddDays(request.DurationDays),
-                CreateDate = DateTime.Now,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddDays(request.DurationDays),
+                CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId
             };
             _subscriptionRepository.Add(sub);

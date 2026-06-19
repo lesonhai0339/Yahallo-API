@@ -29,7 +29,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Restore
             }
             checkUserExists.DeleteDate = null;
             checkUserExists.IdUserDelete = null;
-            checkUserExists.UpdateDate = DateTime.Now;
+            checkUserExists.UpdateDate = DateTime.UtcNow;
             checkUserExists.IdUserUpdate = _curreentUser.UserId;
             _userRepository.Update(checkUserExists);
             var result = await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

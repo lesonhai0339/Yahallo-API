@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.RoleCommand.Restore
             }
             checkRoleExist.IdUserDelete = null;
             checkRoleExist.DeleteDate = null;
-            checkRoleExist.UpdateDate = DateTime.Now;
+            checkRoleExist.UpdateDate = DateTime.UtcNow;
             checkRoleExist.IdUserUpdate = _currentUser.UserId;
             _roleRepository.Update(checkRoleExist);
             var result= await _roleRepository.UnitOfWork.SaveChangesAsync(cancellationToken);   

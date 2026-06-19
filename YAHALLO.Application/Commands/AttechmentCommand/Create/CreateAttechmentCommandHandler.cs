@@ -66,7 +66,7 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
                 Url2 = request.Url2,
                 Url3 = request.Url3,
                 IdUserCreate = _currentUser.UserId,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.UtcNow,
                 CommentId = (entity.Item1 =="Comment") ? entity.Item2 : null,
                 Comment = (entity.Item1 == "Comment") ? (CommentEntity)checkEntityExist : null,
                 BlogId = (entity.Item1 == "Blog") ? entity.Item2 : null,

@@ -34,7 +34,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Create
                 Countries = (CountriesEnum)request.CountryCode,
                 Birth = request.Birth,
                 LifeStatus =(LifeStatus)request.LifeStatus,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUserRepository.UserId
             };
             _artistRepository.Add(newArtist);

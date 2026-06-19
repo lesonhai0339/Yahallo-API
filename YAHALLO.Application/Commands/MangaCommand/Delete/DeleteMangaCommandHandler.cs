@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,28 +23,24 @@ namespace YAHALLO.Application.Commands.MangaCommand.Delete
 
         public async Task<ResponseResult<string>> Handle(DeleteMangaCommand request, CancellationToken cancellationToken)
         {
-            var role =await _currentUser.IsInRoleAsync("1");
             var checkUserForManga= await _mangaRepository
                 .FindAsync(x=> x.Id == request.Id&& string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
             if(checkUserForManga == null)
             {
-                throw new NotFoundException($"Không tìm thấy manga với Id {request.Id}");
+                throw new NotFoundException($"Không tìm thấy manga với Id {request.Id}");
             }
-            if(checkUserForManga.UserId != _currentUser.UserId || role == false && checkUserForManga.UserId != _currentUser.UserId)
-            {
-                throw new UnAuthorizeException("Tài khoản hiện tại không có quyền để xóa truyện này");
-            }
-            checkUserForManga.DeleteDate = DateTime.Now;
+            // Quyền truy cập đã được kiểm soát qua [Authorize(Roles="Admin,Mod")] trên command.
+            checkUserForManga.DeleteDate = DateTime.UtcNow;
             checkUserForManga.IdUserDelete = _currentUser.UserId;
             _mangaRepository.Update(checkUserForManga);
             var result = await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result > 0)
             {
-                return new ResponseResult<string>(message: "Xóa thành công");
+                return new ResponseResult<string>(message: "Xóa thành công");
             }
             else
             {
-                return new ResponseResult<string>(message: "Xóa thất bại");
+                return new ResponseResult<string>(message: "Xóa thất bại");
             }
         }
     }

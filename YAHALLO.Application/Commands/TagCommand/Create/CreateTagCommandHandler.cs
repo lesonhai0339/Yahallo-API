@@ -35,7 +35,7 @@ namespace YAHALLO.Application.Commands.TagCommand.Create
             {
                 Name = request.Name,
                 Description = request.Description,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId
             };
             _tagRepository.Add(tag);

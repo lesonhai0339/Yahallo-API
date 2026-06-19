@@ -29,7 +29,7 @@ namespace YAHALLO.Application.Commands.UserRoleCommand.Delete
                 throw new NotFoundException($"Không tìm thấy UserRole với UserId: {request.UserId} và RoleId: {request.RoleId}");
             }
             checkUserRoleExist.IdUserDelete = _currentUser.UserId;
-            checkUserRoleExist.DeleteDate = DateTime.Now;
+            checkUserRoleExist.DeleteDate = DateTime.UtcNow;
             _userRoleRepository.Update(checkUserRoleExist);
             var result = await _userRoleRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result > 0)

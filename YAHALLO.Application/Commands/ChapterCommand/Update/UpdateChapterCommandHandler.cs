@@ -27,14 +27,14 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
 
         public async Task<ResponseResult<string>> Handle(UpdateChapterCommand request, CancellationToken cancellationToken)
         {
-            var checkRole = await _currentUser.IsInRoleAsync("1");
+            var checkRole = await _currentUser.IsInRoleAsync("Admin");
             var checkMangaExist = await _mangaRepository
                 .FindAsync(x => x.Id == request.MangaId, cancellationToken);
             if (checkMangaExist == null || !string.IsNullOrEmpty(checkMangaExist.IdUserDelete) && checkMangaExist.DeleteDate.HasValue)
             {
                 throw new NotFoundException("Không tìm thấy manga hoặc manga đã bị vô hiệu");
             }
-            if (checkMangaExist.UserId != _currentUser.UserId || checkRole == false && checkMangaExist.UserId != _currentUser.UserId)
+            if (checkMangaExist.UserId != _currentUser.UserId && checkRole == false)
             {
                 throw new NotFoundException("Tài khoản hiện tại không có quyền thực hiện chức năng này");
             }
@@ -57,7 +57,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
                 throw new DuplicateException($"Đã tồn tại chương truyện có vị trí tương tự");
             }
             checkChapterExist.Index = request.Index ?? checkChapterExist.Index;
-            checkChapterExist.UpdateDate = DateTime.Now;
+            checkChapterExist.UpdateDate = DateTime.UtcNow;
             checkChapterExist.IdUserUpdate = _currentUser.UserId;
             _chapterRepository.Update(checkChapterExist);
             var result=await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

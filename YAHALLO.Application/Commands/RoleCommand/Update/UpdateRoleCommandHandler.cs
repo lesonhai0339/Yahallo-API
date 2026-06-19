@@ -38,7 +38,7 @@ namespace YAHALLO.Application.Commands.RoleCommand.Update
             checkRoleExist.RoleCode = request.RoleCode ?? checkRoleExist.RoleCode;
             checkRoleExist.RoleName = request.RoleName ?? checkRoleExist.RoleName;
             checkRoleExist.RoleDescription = request.RoleDescription ?? checkRoleExist.RoleDescription;
-            checkRoleExist.UpdateDate = DateTime.Now;
+            checkRoleExist.UpdateDate = DateTime.UtcNow;
             checkRoleExist.IdUserUpdate = _currentUser.UserId;
             _roleRepository.Update(checkRoleExist);
             var result = await _roleRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

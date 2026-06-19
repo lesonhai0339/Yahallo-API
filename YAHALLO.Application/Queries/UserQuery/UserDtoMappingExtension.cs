@@ -18,6 +18,7 @@ namespace YAHALLO.Application.Queries.UserQuery
             var map = mapper.Map<UserDto>(Entity);
             map.DisplayName = Entity.DisplayName;
             map.Avatar = Entity.AvatarThumbnail;
+            map.Background = Entity.BackgroundThumbnail;
             map.Status = Entity.Status;
             map.Level = Entity.Level;
             return map;

@@ -26,7 +26,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
 
         public async Task<ResponseResult<string>> Handle(CreateChapterCommand request, CancellationToken cancellationToken)
         {
-            var hasAccess = await _currentUser.IsInRoleAsync("1");
+            var hasAccess = await _currentUser.IsInRoleAsync("Admin");
 
             //Manga
             var checkMangaExist = await _mangaRepository
@@ -58,7 +58,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
                 Index = request.Index,
                 MangaId = request.MangaId,
                 IdUserCreate = _currentUser.UserId,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.UtcNow,
 
             };
             _chapterRepository.Add(chapter);

@@ -70,7 +70,7 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
             reportEntity.Content = request.Content ?? "";
             reportEntity.Description = request.Description ?? "";
             reportEntity.IdUserCreate = _currentUser.UserId;
-            reportEntity.CreateDate = DateTime.Now;
+            reportEntity.CreateDate = DateTime.UtcNow;
             reportEntity.IdUserReport = _currentUser.UserId;
             reportEntity.Attechments = request.Media!.Select(x =>
             {

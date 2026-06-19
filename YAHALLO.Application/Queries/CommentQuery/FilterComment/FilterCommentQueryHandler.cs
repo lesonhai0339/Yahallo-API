@@ -42,7 +42,7 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
             var comments = await _commentRepository.FindAllSelectAsync(
                 pageNo: request.PageNumber,
                 pageSize: request.PageSize,
-                selector: _=> query.Select(x => new CommentDto
+                selector: _ => query.Select(x => new CommentDto
                 {
                     Id = x.Id,
                     Like = x.LikeCount,
@@ -51,6 +51,7 @@ namespace YAHALLO.Application.Queries.CommentQuery.FilterComment
                     UserId = x.UserId,
                     MangaId = x.MangaId,
                     ChapterId = x.ChapterId,
+                    ChapterName = x.ChapterEntity == null ? null : x.ChapterEntity.Title,
                     BlogId = x.BlogId,
                     ParentId = x.ParentId,
                     ReplyToCommentId = x.ReplyToCommentId,

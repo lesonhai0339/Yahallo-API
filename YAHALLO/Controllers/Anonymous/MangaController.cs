@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using YAHALLO.Application.Common.Authorization;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.MangaCommand.Create;
 using YAHALLO.Application.Commands.MangaCommand.Delete;
@@ -42,6 +44,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<HomePageDto>(result));
         }
 
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [HttpPost]
         [Route("manga/create")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -55,6 +58,7 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<CreateMangaResponseDto>(result));
         }
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [HttpPost]
         [Route("manga/restore")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -68,6 +72,7 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [HttpPut]
         [Route("manga/update")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -81,6 +86,7 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<UpdateMangaResponseDto>(result));
         }
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [HttpDelete]
         [Route("manga/delete")]
         [Produces(MediaTypeNames.Application.Json)]

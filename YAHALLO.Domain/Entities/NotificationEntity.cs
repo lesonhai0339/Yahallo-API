@@ -19,7 +19,7 @@ namespace YAHALLO.Domain.Entities
         /// <summary>Optional reference id (e.g. MangaId, ChapterId).</summary>
         public string? ReferenceId { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? ReadAt { get; set; }
     }
 }

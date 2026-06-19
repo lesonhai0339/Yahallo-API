@@ -16,6 +16,7 @@ namespace YAHALLO.Application.Queries.CommentQuery
         public string? UserId { get;set; }
         public string? MangaId { get;set; }
         public string? ChapterId { get; set; }
+        public string? ChapterName { get; set; }    
         public string? ParentId { get; set; }
         public string? BlogId { get; set; }
         public string? ReplyToCommentId { get; set; }   

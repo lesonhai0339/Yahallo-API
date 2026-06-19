@@ -37,10 +37,10 @@ namespace YAHALLO.Domain.Entities
 
         public string? UserId { get; set; }
         public virtual UserEntity UserEntity { get; set; } = null!;
-        public virtual ViewCountEntity? ViewCount { get; set; }
         public string? MangaGroupId { get; set; }
         public virtual MangaGroupEntity? MangaGroup { get; set; }
 
+        public virtual ViewCountEntity? ViewCount { get; set; }
 
         public string? CountryId { get; set;  }
         public virtual CountryEntity? Country { get; set;  }
@@ -53,6 +53,9 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<CommentEntity> CommentEntities { get; set; } = new List<CommentEntity>();
         public virtual ICollection<FollowEntity> FollowEntities { get; set; } = new List<FollowEntity>();
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
+        public virtual ICollection<ReactionEntity> Reactions { get; set; } = new List<ReactionEntity>();
+
+        public virtual ICollection<BookmarkEntity> Bookmarks { get; set; } = new List<BookmarkEntity>();
 
     }
 }

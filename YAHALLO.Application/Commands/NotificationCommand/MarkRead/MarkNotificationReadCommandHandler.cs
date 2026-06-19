@@ -31,7 +31,7 @@ namespace YAHALLO.Application.Commands.NotificationCommand.MarkRead
                 if (notif is null) throw new NotFoundException("Không tìm thấy thông báo");
 
                 notif.Status = NotificationStatus.Read;
-                notif.ReadAt = DateTime.Now;
+                notif.ReadAt = DateTime.UtcNow;
                 _notificationRepository.Update(notif);
             }
             else
@@ -43,7 +43,7 @@ namespace YAHALLO.Application.Commands.NotificationCommand.MarkRead
                 foreach (var n in allUnread)
                 {
                     n.Status = NotificationStatus.Read;
-                    n.ReadAt = DateTime.Now;
+                    n.ReadAt = DateTime.UtcNow;
                     _notificationRepository.Update(n);
                 }
             }

@@ -36,15 +36,15 @@ namespace YAHALLO.Application.Commands.BlogCommand.Delete
             {
                 throw new NotFoundException($"Does not exit Blog with Id {request.BlogId}");
             }
-            if(_currentUser.UserId != checkBlogExist.IdUserCreate || !await _currentUser.IsInRoleAsync("Admin"))
+            if(_currentUser.UserId != checkBlogExist.IdUserCreate && !await _currentUser.IsInRoleAsync("Admin"))
             {
                 throw new UnAuthorizeException("Current User not blog owner or doesn't have Admin role");
             }
-            checkBlogExist.Attechments?.Select(x => { x.IdUserDelete = _currentUser.UserId; x.DeleteDate = DateTime.Now; return x; }).ToList();
-            checkBlogExist.ThreadOfBlogEntities?.Select(x => { x.IdUserDelete = _currentUser.UserId; x.DeleteDate = DateTime.Now; return x; }).ToList();
-            checkBlogExist.Comments?.Select(x => { x.IdUserDelete = _currentUser.UserId; x.DeleteDate = DateTime.Now; return x; }).ToList();
-            checkBlogExist.Reactions?.Select(x => { x.IdUserDelete = _currentUser.UserId; x.DeleteDate = DateTime.Now; return x; }).ToList();
-            checkBlogExist.DeleteDate = DateTime.Now;
+            checkBlogExist.Attechments?.Select(x => { x.IdUserDelete = _currentUser.UserId; x.DeleteDate = DateTime.UtcNow; return x; }).ToList();
+            checkBlogExist.ThreadOfBlogEntities?.Select(x => { x.IdUserDelete = _currentUser.UserId; x.DeleteDate = DateTime.UtcNow; return x; }).ToList();
+            checkBlogExist.Comments?.Select(x => { x.IdUserDelete = _currentUser.UserId; x.DeleteDate = DateTime.UtcNow; return x; }).ToList();
+            checkBlogExist.Reactions?.Select(x => { x.IdUserDelete = _currentUser.UserId; x.DeleteDate = DateTime.UtcNow; return x; }).ToList();
+            checkBlogExist.DeleteDate = DateTime.UtcNow;
             checkBlogExist.IdUserDelete = _currentUser.UserId;
             _blogRepository.Update(checkBlogExist);
             var result = await _blogRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

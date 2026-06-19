@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Delete
                 throw new NotFoundException($"Không tìm thấy tác giả nào với Id {request.Id}");
             }
             checkAuthorExist.IdUserDelete = _currentUser.UserId;
-            checkAuthorExist.DeleteDate = DateTime.Now;
+            checkAuthorExist.DeleteDate = DateTime.UtcNow;
             _authorRepository.Update(checkAuthorExist);
             var result = await _authorRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result> 0)

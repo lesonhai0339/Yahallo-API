@@ -32,7 +32,7 @@ namespace YAHALLO.Application.Commands.TagCommand.Update
 
             if (!string.IsNullOrEmpty(request.Name)) tag.Name = request.Name;
             if (request.Description is not null) tag.Description = request.Description;
-            tag.UpdateDate = DateTime.Now;
+            tag.UpdateDate = DateTime.UtcNow;
             tag.IdUserUpdate = _currentUser.UserId;
 
             _tagRepository.Update(tag);

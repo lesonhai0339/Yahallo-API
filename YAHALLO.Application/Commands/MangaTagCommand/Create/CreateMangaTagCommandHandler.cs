@@ -46,7 +46,7 @@ namespace YAHALLO.Application.Commands.MangaTagCommand.Create
             {
                 MangaId = request.MangaId,
                 TagId = request.TagId,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId
             };
             _mangaTagRepository.Add(mangaTag);

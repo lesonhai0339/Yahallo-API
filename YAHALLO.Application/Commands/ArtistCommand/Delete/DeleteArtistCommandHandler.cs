@@ -29,7 +29,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Delete
                 throw new NotFoundException($"Không tìm thấy họa sĩ nào có Id {request.Id}");
             }
             checkArtistExists.IdUserDelete = _currentUserService.UserId;
-            checkArtistExists.DeleteDate = DateTime.Now;
+            checkArtistExists.DeleteDate = DateTime.UtcNow;
             _artistRepository.Update(checkArtistExists);
             var result = await _artistRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result>0)

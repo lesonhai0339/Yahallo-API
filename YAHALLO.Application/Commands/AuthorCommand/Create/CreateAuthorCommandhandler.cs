@@ -54,7 +54,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Create
                 Birth = request.Birth,
                 LifeStatus = (LifeStatus)request.LifeStatus,
                 IdUserCreate = _currentUser.UserId,
-                CreateDate = DateTime.Now
+                CreateDate = DateTime.UtcNow
             };
             _authorRepository.Add(newAuthor);
             var result= await _authorRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

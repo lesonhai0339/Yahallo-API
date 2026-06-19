@@ -65,7 +65,7 @@ namespace YAHALLO.Application.Commands.FollowCommand.Create
                 UserId = request.UserId,
                 MangaId = request.MangaId,
                 IdUserCreate = _currentUser.UserId,
-                CreateDate = DateTime.Now
+                CreateDate = DateTime.UtcNow
             };
             _followRepository.Add(followManga);
             var result = await _followRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

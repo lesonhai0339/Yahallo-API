@@ -36,10 +36,12 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         {
             ArgumentNullException.ThrowIfNullOrEmpty(request.UserId);
             bool hasManga = !string.IsNullOrEmpty(request.MangaId);
-            bool hasChapter = !string.IsNullOrEmpty(request.ChapterId);
 
-            if (hasManga == hasChapter)
-                throw new BadRequestException("Comment phải thuộc về manga hoặc chapter, không được cả hai hoặc bỏ trống");
+            // MangaId luôn bắt buộc. ChapterId tùy chọn:
+            //  - chỉ MangaId      => comment cho manga
+            //  - MangaId+ChapterId => comment cho chapter (chapter luôn thuộc 1 manga)
+            if (!hasManga)
+                throw new BadRequestException("Comment phải thuộc về một manga");
 
             var commentUser = await _userRepository.FindAsync(x=> x.Id == request.UserId, cancellationToken); 
             if( commentUser == null )

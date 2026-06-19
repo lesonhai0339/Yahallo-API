@@ -30,8 +30,8 @@ namespace YAHALLO.Application.Commands.ReadingProgressCommand.Upsert
             if (existing is not null)
             {
                 existing.LastPage = request.LastPage;
-                existing.LastReadAt = DateTime.Now;
-                existing.UpdateDate = DateTime.Now;
+                existing.LastReadAt = DateTime.UtcNow;
+                existing.UpdateDate = DateTime.UtcNow;
                 existing.IdUserUpdate = _currentUser.UserId;
                 _progressRepository.Update(existing);
             }
@@ -43,8 +43,8 @@ namespace YAHALLO.Application.Commands.ReadingProgressCommand.Upsert
                     MangaId = request.MangaId,
                     ChapterId = request.ChapterId,
                     LastPage = request.LastPage,
-                    LastReadAt = DateTime.Now,
-                    CreateDate = DateTime.Now,
+                    LastReadAt = DateTime.UtcNow,
+                    CreateDate = DateTime.UtcNow,
                     IdUserCreate = _currentUser.UserId
                 };
                 _progressRepository.Add(progress);

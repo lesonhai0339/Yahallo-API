@@ -37,7 +37,7 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Delete
                 throw new Exception("This Attechment has deleted before");
             }
             checkAttechmentExist.IdUserDelete = _currentUser.UserId;
-            checkAttechmentExist.DeleteDate = DateTime.Now;
+            checkAttechmentExist.DeleteDate = DateTime.UtcNow;
             _attechmentRepository.Update(checkAttechmentExist);
             var result = await _attechmentRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result > 0)

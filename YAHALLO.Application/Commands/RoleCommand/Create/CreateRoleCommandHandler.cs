@@ -39,7 +39,7 @@ namespace YAHALLO.Application.Commands.RoleCommand.Create
                 RoleDescription = request.RoleDescription,
                 RoleName = request.RoleName,
                 IdUserCreate = _currentUser.UserId,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.UtcNow,
             };
             _roleRepository.Add(newRole);   
             var result= await _roleRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

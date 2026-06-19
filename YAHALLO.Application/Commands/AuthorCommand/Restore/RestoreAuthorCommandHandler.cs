@@ -31,7 +31,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Restore
             checkAuthorExist.IdUserDelete = null;
             checkAuthorExist.DeleteDate = null;
             checkAuthorExist.IdUserUpdate = _currentUser.UserId;
-            checkAuthorExist.UpdateDate = DateTime.Now;
+            checkAuthorExist.UpdateDate = DateTime.UtcNow;
             _authorRepository.Update(checkAuthorExist);
             var result= await _authorRepository.UnitOfWork.SaveChangesAsync(cancellationToken); 
             if(result >0)

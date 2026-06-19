@@ -39,7 +39,7 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Restore
             checkAttechmentExist.IdUserDelete = null;
             checkAttechmentExist.DeleteDate = null;
             checkAttechmentExist.IdUserUpdate = _currentUser.UserId;
-            checkAttechmentExist.UpdateDate = DateTime.Now;
+            checkAttechmentExist.UpdateDate = DateTime.UtcNow;
             _attechmentRepository.Update(checkAttechmentExist);
             var result = await _attechmentRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result >0)

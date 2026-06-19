@@ -27,14 +27,14 @@ namespace YAHALLO.Application.Commands.BlogCommand.Restore
             {
                 throw new NotFoundException($"Cannot found Blog with Id {request.BlogId}");
             }
-            if(checkBlogExist.IdUserCreate != _currentUser.UserId ||! await _currentUser.IsInRoleAsync("Admin"))
+            if(checkBlogExist.IdUserCreate != _currentUser.UserId && ! await _currentUser.IsInRoleAsync("Admin"))
             {
                 throw new UnAuthorizeException($"You don't have permission to using this method");
             }
             checkBlogExist.IdUserDelete = null;
             checkBlogExist.DeleteDate = null;
             checkBlogExist.IdUserUpdate = _currentUser.UserId;
-            checkBlogExist.UpdateDate = DateTime.Now;
+            checkBlogExist.UpdateDate = DateTime.UtcNow;
             _blogRepository.Update(checkBlogExist);
             var result = await _blogRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result >0 )

@@ -57,7 +57,7 @@ namespace YAHALLO.Application.Commands.BlogCommand.Create
                 Title = request.Title,
                 Description = request.Description,
                 Content = request.Content,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId,
             };
             blogEntity.ThreadOfBlogEntities = request.ThreadIds.Select(x => 

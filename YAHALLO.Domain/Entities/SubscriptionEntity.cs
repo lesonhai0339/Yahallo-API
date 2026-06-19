@@ -16,6 +16,6 @@ namespace YAHALLO.Domain.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public bool IsActive => Status == SubscriptionStatus.Active && EndDate >= DateTime.Now;
+        public bool IsActive => Status == SubscriptionStatus.Active && EndDate >= DateTime.UtcNow;
     }
 }

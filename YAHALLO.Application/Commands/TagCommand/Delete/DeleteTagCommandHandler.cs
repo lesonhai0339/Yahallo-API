@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.TagCommand.Delete
                 throw new NotFoundException($"Không tìm thấy tag với Id: {request.Id}");
             }
 
-            tag.DeleteDate = DateTime.Now;
+            tag.DeleteDate = DateTime.UtcNow;
             tag.IdUserDelete = _currentUser.UserId;
             _tagRepository.Update(tag);
             await _tagRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

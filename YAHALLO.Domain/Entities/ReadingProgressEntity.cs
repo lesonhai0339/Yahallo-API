@@ -18,6 +18,6 @@ namespace YAHALLO.Domain.Entities
         /// <summary>Page index the user last read (1-based).</summary>
         public int LastPage { get; set; } = 1;
 
-        public DateTime LastReadAt { get; set; } = DateTime.Now;
+        public DateTime LastReadAt { get; set; } = DateTime.UtcNow;
     }
 }

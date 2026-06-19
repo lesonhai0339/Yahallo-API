@@ -23,20 +23,20 @@ namespace YAHALLO.Application.Commands.MangaCommand.Restore
     
         public async Task<ResponseResult<string>> Handle(RestoreMangaCommand request, CancellationToken cancellationToken)
         {
-            var checkRole =await _currentUser.IsInRoleAsync("1");
+            var checkRole =await _currentUser.IsInRoleAsync("Admin");
             var checkMangaExist = await _mangaRepository
                 .FindAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkMangaExist == null)
             {
                 throw new NotFoundException($"Không tìm thấy manga nào có Id {request.Id} bị xóa");
             }
-            if(checkMangaExist.UserId != _currentUser.UserId || checkRole == false && checkMangaExist.UserId != _currentUser.UserId)
+            if(checkMangaExist.UserId != _currentUser.UserId && checkRole == false)
             {
                 throw new UnAuthorizeException("Tài khoản hiện tại không có quyền sử dụng chức năng này");
             }
             checkMangaExist.IdUserDelete = null;
             checkMangaExist.DeleteDate = null;
-            checkMangaExist.UpdateDate = DateTime.Now;
+            checkMangaExist.UpdateDate = DateTime.UtcNow;
             checkMangaExist.IdUserUpdate = _currentUser.UserId;
             _mangaRepository.Update(checkMangaExist);
             var result = await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

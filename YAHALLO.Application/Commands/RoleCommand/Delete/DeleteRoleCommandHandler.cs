@@ -37,7 +37,7 @@ namespace YAHALLO.Application.Commands.RoleCommand.Delete
             {
                 throw new ForeignKeyConstraintException($"Không thể xóa role do tồn tại {checkUserInRoleExist.Count()} thành viên có role này");
             }
-            checkRoleExist.DeleteDate = DateTime.Now;
+            checkRoleExist.DeleteDate = DateTime.UtcNow;
             checkRoleExist.IdUserDelete = _currentUser.UserId;
             _roleRepository.Update(checkRoleExist);
             var result= await _roleRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

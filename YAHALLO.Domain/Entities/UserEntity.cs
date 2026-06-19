@@ -61,6 +61,7 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<ReactionEntity>? Reactions { get; set; } = new List<ReactionEntity>   ();
         public virtual ICollection<ReportEntity>? Reports { get; set; } = new List<ReportEntity>     ();
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
+        public virtual ICollection<BookmarkEntity> Bookmarks { get; set; } = new List<BookmarkEntity>();
 
         public UserEntity? ConvertFromString(string classname)
         {

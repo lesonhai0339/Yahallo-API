@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Enums;
@@ -24,6 +25,9 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
 
         public async Task<bool> Handle(DeleteRatingCommand request, CancellationToken cancellationToken)
         {
+            var isStaff = await _currentUser.AuthorizeAsync(Policies.ModOrAdmin);
+            if (!isStaff) throw new UnauthorizedAccessException();
+
             var existed = request.RatingTo == RatingEnum.Manga
               ? await _ratingRepository.FindAsync(x => x.ToMangaId == request.TargetId && x.UserId == request.UserId, cancellationToken)
               : request.RatingTo != RatingEnum.Chapter
@@ -35,7 +39,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Delete
             if(existed == null)
                 throw new NotFoundException("Không tìm thấy MangaRating với thông tin trên");
 
-            existed.DeleteDate = DateTime.Now;
+            existed.DeleteDate = DateTime.UtcNow;
             existed.IdUserDelete = _currentUser.UserId;
 
             _ratingRepository.Update(existed);

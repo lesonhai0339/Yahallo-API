@@ -34,6 +34,9 @@
 		<ProjectReference Include="..\YAHALLO.Domain\YAHALLO.Domain.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Commands\ReactionCommand\Delete\" />
+	  <Folder Include="Commands\ReactionCommand\Restore\" />
+	  <Folder Include="Commands\ReactionCommand\Update\" />
 	  <Folder Include="Commands\ReportCommand\Delete\" />
 	  <Folder Include="Commands\ReportCommand\Restore\" />
 	  <Folder Include="Commands\ReportCommand\Update\" />

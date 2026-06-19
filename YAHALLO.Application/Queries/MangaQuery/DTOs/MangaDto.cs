@@ -19,7 +19,8 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
         public int Season { get; set; }
         public string? MangaThumbnail { get; set; }
         public string? MangaBackground{ get; set; }
-
+        public long? ViewCount { get; set;  }
+        public double? Rating { get; set; }
         public string? UserID { get; set; }
         public ChapterDto? LastestChapter { get; set; } 
         public static MangaDto Createmap(

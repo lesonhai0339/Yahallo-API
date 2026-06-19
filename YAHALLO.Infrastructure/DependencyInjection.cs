@@ -108,8 +108,28 @@ namespace YAHALLO.Infrastructure
                 return new KeypairGenerate(ops);
             });
 
-            services.AddDefaultAWSOptions(configuration.GetAWSOptions());
-            services.AddAWSService<IAmazonS3>();
+            // S3 uses a DEDICATED IAM user (yahallo-storage) separate from the
+            // ECS/ECR deploy user (ecr_ecs). Presigned URLs are signed with these
+            // credentials, so this identity is the one that needs s3:PutObject.
+            services.AddSingleton<IAmazonS3>(sp =>
+            {
+                var accessKey = Environment.GetEnvironmentVariable("S3_AccessKey");
+                var secretKey = Environment.GetEnvironmentVariable("S3_SecretKey");
+                var region = Environment.GetEnvironmentVariable("S3_Region")
+                             ?? Environment.GetEnvironmentVariable("AWS_REGION")
+                             ?? "ap-southeast-1";
+                var regionEndpoint = Amazon.RegionEndpoint.GetBySystemName(region);
+
+                // If dedicated S3 keys are provided, use them; otherwise fall back
+                // to the default credential chain (local profile / task role).
+                if (!string.IsNullOrEmpty(accessKey) && !string.IsNullOrEmpty(secretKey))
+                {
+                    var credentials = new Amazon.Runtime.BasicAWSCredentials(accessKey, secretKey);
+                    return new AmazonS3Client(credentials, regionEndpoint);
+                }
+
+                return new AmazonS3Client(regionEndpoint);
+            });
             services.AddTransient(typeof(IStorageService<>), typeof(AwsS3Service<>));
 
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
@@ -149,6 +169,7 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IUnTrustPhoneRepository, UnTrustPhoneRepository>();
             services.AddScoped<IPendingRegistrationRepository, PendingRegistrationRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<IBookmarkRepository, BookmarkRepository>();
 
             // AI generated — new repositories
             services.AddScoped<ITagRepository, TagRepository>();

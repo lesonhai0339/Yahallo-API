@@ -12,6 +12,6 @@ namespace YAHALLO.Domain.Enums.MangaEnums
         ViewCount,
         Rating,
         CommentCount,
-        ChapterCount
+        ChapterCount,
     }
 }

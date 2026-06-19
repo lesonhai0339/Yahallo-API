@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Exceptions;
@@ -23,15 +24,22 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Update
 
         public async Task<bool> Handle(UpdateRatingCommand request, CancellationToken cancellationToken)
         {
-            var checkMangaRatingExist = await _ratingRepository
+            ArgumentOutOfRangeException.ThrowIfLessThan(request.Rating, 0);
+
+            var rating = await _ratingRepository
                 .FindAsync(x => x.Id == request.RatingId, cancellationToken);
-            if(checkMangaRatingExist == null)
+
+            if (rating == null)
                 throw new NotFoundException("Không tìm thấy MangaRating theo yêu cầu");
 
-            checkMangaRatingExist.Rating = (request.Rating==0) ? request.Rating : checkMangaRatingExist.Rating;
-            checkMangaRatingExist.UpdateDate = DateTime.Now;
-            checkMangaRatingExist.IdUserUpdate = _currentUser.UserId;
-            _ratingRepository.Update(checkMangaRatingExist);
+            var isStaff = await _currentUser.AuthorizeAsync(Policies.ModOrAdmin);
+            if (rating.UserId != _currentUser.UserId && !isStaff)
+                throw new UnauthorizedAccessException();
+
+            rating.Rating = request.Rating;
+            rating.UpdateDate = DateTime.UtcNow;
+            rating.IdUserUpdate = _currentUser.UserId;
+            _ratingRepository.Update(rating);
             var result = await _ratingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             return result > 0;
         }

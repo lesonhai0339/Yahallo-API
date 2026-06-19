@@ -30,11 +30,11 @@ namespace YAHALLO.Application.Commands.CommentCommand.Update
                 throw new NotFoundException($"Không tìm thấy bình luận với Id {request.Id}");
             }
             var checkRole = await _currentUser.IsInRoleAsync("Admin");
-            if (checkCommentExst.UserId != _currentUser.UserId || !checkRole)
+            if (checkCommentExst.UserId != _currentUser.UserId && !checkRole)
             {
                 throw new UnauthorizedAccessException("Tài khoản hiện tại không thể thực hiện chức năng này");
             }
-            checkCommentExst.UpdateDate = DateTime.Now;
+            checkCommentExst.UpdateDate = DateTime.UtcNow;
             checkCommentExst.IdUserUpdate = _currentUser.UserId;
             checkCommentExst.Message = request.Message ?? checkCommentExst.Message;
             checkCommentExst.CanComment = request.CanComment ?? checkCommentExst.CanComment;

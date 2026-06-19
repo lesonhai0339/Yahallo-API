@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using YAHALLO.Application.Commands.MangaCommand.DTOs;
 using YAHALLO.Application.Common.Helper;
@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
         private readonly IStorageService<MangaThumbnail> _avatarStorage;
         private readonly IStorageService<MangaBackground> _backgroundStorage;
         public UpdateMangaCommandHandler(
-            IMangaRepository mangaRepository, 
+            IMangaRepository mangaRepository,
             ICurrentUserService currentUser,
             IStorageService<MangaThumbnail> avatarStorage,
             IStorageService<MangaBackground> backgroundStorage)
@@ -34,8 +34,6 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
         }
         public async Task<UpdateMangaResponseDto> Handle(UpdateMangaCommand request, CancellationToken cancellationToken)
         {
-            var checkRole = await _currentUser.IsInRoleAsync("1");
-
             var manga = await _mangaRepository.FindSelectAsync(x => x
                 .Where(x => x.Id == request.Id)
                 .Select(m => new MangaEntity
@@ -58,11 +56,9 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                 })
                 , cancellationToken);
             if (manga == null)
-                throw new NotFoundException($"Không tồn tại manga với Id {request.Id}");
+                throw new NotFoundException($"Không tồn tại manga với Id {request.Id}");
 
-            if (manga.UserId != _currentUser.UserId || checkRole == false && manga.UserId != _currentUser.UserId)
-                throw new UnAuthorizeException("Tài khoản hiện tại không có quyền thực hiện chức năng này");
-
+            // Quyền truy cập đã được kiểm soát qua [Authorize(Roles="Admin,Mod")] trên command.
 
             S3Response? avatarUploadUrl = null;
             if (request.Avatar != null)
@@ -97,10 +93,10 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
             manga.Status = request.Status ?? manga.Status;
             manga.Type = request.Type ?? manga.Type;
             manga.Countries = request.Countries ?? manga.Countries;
-            manga.UpdateDate = DateTime.Now;
+            manga.UpdateDate = DateTime.UtcNow;
             manga.IdUserUpdate = _currentUser.UserId;
-            manga.MangaThumbnail = (avatarUploadUrl != null && !string.IsNullOrEmpty(avatarUploadUrl.Url)) 
-                ? S3UrlHelper.ToCloudFrontUrl(avatarUploadUrl.Url, avatarUploadUrl.CloundFrontDomain) 
+            manga.MangaThumbnail = (avatarUploadUrl != null && !string.IsNullOrEmpty(avatarUploadUrl.Url))
+                ? S3UrlHelper.ToCloudFrontUrl(avatarUploadUrl.Url, avatarUploadUrl.CloundFrontDomain)
                 : manga.MangaThumbnail;
 
             manga.MangaBackground = (backgroundUploadUrl != null && !string.IsNullOrEmpty(backgroundUploadUrl.Url))
@@ -116,7 +112,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
             _mangaRepository.Update(manga);
             var result= await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (result > 0)
-                response.Message = "Cập nhật thành công";
+                response.Message = "Cập nhật thành công";
 
             return response;
         }

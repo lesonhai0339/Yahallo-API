@@ -27,7 +27,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Delete
             if (checkUserExist == null)
                 throw new NotFoundException($"KHông tìm thấy thành viên với id {request.Id}");
 
-            checkUserExist.DeleteDate = DateTime.Now;
+            checkUserExist.DeleteDate = DateTime.UtcNow;
             checkUserExist.IdUserDelete = _currentUser.UserId;
             _userRepository.Update(checkUserExist);
             var result = await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

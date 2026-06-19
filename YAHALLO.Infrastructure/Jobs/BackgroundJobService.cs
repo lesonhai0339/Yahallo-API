@@ -57,7 +57,7 @@ namespace YAHALLO.Infrastructure.Jobs
                     Type = NotificationType.NewChapter,
                     Status = NotificationStatus.Unread,
                     ReferenceId = chapterId,
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 };
                 _notificationRepository.Add(notification);
             }
@@ -68,7 +68,7 @@ namespace YAHALLO.Infrastructure.Jobs
 
         public async Task CleanupSoftDeletedRecordsAsync(int olderThanDays = 30, CancellationToken cancellationToken = default)
         {
-            var cutoff = DateTime.Now.AddDays(-olderThanDays);
+            var cutoff = DateTime.UtcNow.AddDays(-olderThanDays);
             var oldNotifications = await _notificationRepository.FindAllAsync(
                 x => x.DeleteDate.HasValue && x.DeleteDate < cutoff,
                 cancellationToken);
@@ -83,7 +83,7 @@ namespace YAHALLO.Infrastructure.Jobs
         public async Task ExpireSubscriptionsAsync(CancellationToken cancellationToken = default)
         {
             var expiredSubs = await _subscriptionRepository.FindAllAsync(
-                x => x.Status == SubscriptionStatus.Active && x.EndDate < DateTime.Now,
+                x => x.Status == SubscriptionStatus.Active && x.EndDate < DateTime.UtcNow,
                 cancellationToken);
 
             foreach (var sub in expiredSubs)

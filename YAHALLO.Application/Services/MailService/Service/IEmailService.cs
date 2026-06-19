@@ -11,6 +11,10 @@ namespace YAHALLO.Application.Services.MailService.Service
     {
         void SendEmail(Message mess);
         void SendEmailWithCSS(Message mess);
+        // Gửi email với HTML content tùy ý (gắn vào body của template).
+        void SendHtmlEmail(Message mess);
+        // Build HTML từ các field (form) rồi gửi — an toàn, không nhúng HTML thô.
+        void SendTemplatedEmail(IEnumerable<string> to, string subject, EmailContent content);
         string GenerateEmailToken(string userId);
         bool VerifyEmailToken(string userId, string token);
     }

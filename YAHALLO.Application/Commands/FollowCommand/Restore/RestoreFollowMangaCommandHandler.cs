@@ -32,7 +32,7 @@ namespace YAHALLO.Application.Commands.FollowCommand.Restore
             }
             checkFollowMangaExist.DeleteDate = null;
             checkFollowMangaExist.IdUserDelete = null;
-            checkFollowMangaExist.UpdateDate = DateTime.Now;
+            checkFollowMangaExist.UpdateDate = DateTime.UtcNow;
             checkFollowMangaExist.IdUserUpdate = _currentUserService.UserId;
             _followRepository.Update(checkFollowMangaExist);
             var result = await _followRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

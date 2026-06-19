@@ -33,7 +33,7 @@ namespace YAHALLO.Application.Commands.UserRoleCommand.Create
             {
                 UserId = request.UserId,
                 RoleId = request.RoleId,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId
             };
             _userRoleRepository.Add(newUserRole);

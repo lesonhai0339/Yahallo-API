@@ -23,20 +23,20 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Restore
     
         public async Task<ResponseResult<string>> Handle(RestoreChapterCommand request, CancellationToken cancellationToken)
         {
-            var checkRole = await _currentUser.IsInRoleAsync("1");
+            var checkRole = await _currentUser.IsInRoleAsync("Admin");
             var checkChapterExist = await _chapterRepository
                 .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (checkChapterExist == null)
             {
                 throw new NotFoundException($"Không có chương truyện nào với Id {request.Id}");
             }
-            if(checkChapterExist.IdUserCreate != _currentUser.UserId || checkChapterExist.IdUserCreate != _currentUser.UserId && checkRole == false)
+            if(checkChapterExist.IdUserCreate != _currentUser.UserId && checkRole == false)
             {
                 throw new UnAuthorizeException("Bạn không có quyền để thực hiện chức năng này");
             }
             checkChapterExist.IdUserDelete = null;
             checkChapterExist.DeleteDate = null;
-            checkChapterExist.UpdateDate = DateTime.Now;
+            checkChapterExist.UpdateDate = DateTime.UtcNow;
             checkChapterExist.IdUserUpdate = _currentUser.UserId;
             _chapterRepository.Update(checkChapterExist);
             var result = await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

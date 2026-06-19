@@ -34,7 +34,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetTrending
                 cacheKey,
                 async () =>
                 {
-                    var since = DateTime.Now.AddDays(-request.DaysWindow);
+                    var since = DateTime.UtcNow.AddDays(-request.DaysWindow);
 
                     // Get top manga IDs ordered by unique user views in the window
                     var topMangaIds = _viewRepository.CreateQueryable()

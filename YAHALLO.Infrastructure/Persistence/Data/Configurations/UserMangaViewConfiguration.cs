@@ -9,7 +9,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<UserMangaViewEntity> builder)
         {
-            builder.HasKey(e => new { e.UserId, e.MangaId });
+            builder.HasKey(e => e.Id);
 
             builder.HasOne(e => e.User)
                 .WithMany()
@@ -20,6 +20,10 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .WithMany()
                 .HasForeignKey(e => e.MangaId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Index phục vụ dedup theo từng case.
+            builder.HasIndex(e => new { e.UserId, e.MangaId, e.ViewedAt });
+            builder.HasIndex(e => new { e.VisitorId, e.MangaId, e.ViewedAt });
 
             builder.ToTable("UserMangaView");
         }

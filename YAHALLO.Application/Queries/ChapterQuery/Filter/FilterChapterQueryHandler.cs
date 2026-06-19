@@ -25,12 +25,24 @@ namespace YAHALLO.Application.Queries.ChapterQuery.Filter
             query = ApplyFilter(query, request);
             query = ApplySorting(query, request);
             var listChapterExists = await _chapterRepository
-                .FindAllAsync(query, request.PageNumber, request.PageSize, cancellationToken);
-            if(listChapterExists.Count() == 0)
-            {
+                .FindAllSelectAsync(
+                        pageNo: request.PageNumber, 
+                        pageSize: request.PageSize, 
+                        selector: _=> query
+                        .Select(x => new ChapterDto
+                        {
+                            Id = x.Id,
+                            Index = x.Index,
+                            MangaId = x.MangaId!,
+                            MangaName = x.MangaEntity == null ? null :  x.MangaEntity.Name,
+                            Title = x.Title,
+                            CreateDate = x.CreateDate
+                        }),
+                        cancellation: cancellationToken);
+            if(!listChapterExists.Any())
                 throw new NotFoundException("Không tìm thấy bản ghi nào");
-            }
-            return listChapterExists.MapToPagedResult(x => x.MapFullToChapterDto(_mapper));
+
+            return listChapterExists.MapToPagedResult(x => x);
         }
         private IQueryable<ChapterEntity> ApplySorting(IQueryable<ChapterEntity> filter, FilterChapterQuery request)
         {
@@ -48,7 +60,7 @@ namespace YAHALLO.Application.Queries.ChapterQuery.Filter
         {
             if (request.Index != null) query = query.Where(x => x.Index == request.Index);
             if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.MangaId == request.MangaId);
-            if (!string.IsNullOrEmpty(request.MangaName)) query = query.Where(x => x.MangaEntity.Name.Contains(request.MangaName));
+            if (!string.IsNullOrEmpty(request.MangaName)) query = query.Where(x => x.MangaEntity!.Name.Contains(request.MangaName));
             return query;
         }
     }

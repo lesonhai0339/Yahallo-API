@@ -33,7 +33,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Update
             checkAuthorExist.Depscription = request.Depscription ?? checkAuthorExist.Depscription;
             checkAuthorExist.Birth = request.Birth ?? checkAuthorExist.Birth;
             checkAuthorExist.LifeStatus = request.LifeStatus ?? checkAuthorExist.LifeStatus;
-            checkAuthorExist.UpdateDate = DateTime.Now;
+            checkAuthorExist.UpdateDate = DateTime.UtcNow;
             checkAuthorExist.IdUserUpdate = _currentUser.UserId;
             _authorRepository.Update(checkAuthorExist);
             var result = await _authorRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

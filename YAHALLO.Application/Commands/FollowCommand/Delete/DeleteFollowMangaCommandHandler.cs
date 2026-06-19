@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.FollowCommand.Delete
             {
                 throw new NotFoundException($"Không tìm thấy bản ghi nào với User Id: {request.UserId} và Manga Id: {request.MangaId}");
             }
-            checkFollowExist.DeleteDate = DateTime.Now;
+            checkFollowExist.DeleteDate = DateTime.UtcNow;
             checkFollowExist.IdUserDelete = _currentUser.UserId;
             _followRepository.Update(checkFollowExist);
             var result = await _followRepository.UnitOfWork.SaveChangesAsync(cancellationToken);

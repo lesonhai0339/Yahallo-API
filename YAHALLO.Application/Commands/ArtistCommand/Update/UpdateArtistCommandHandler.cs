@@ -36,7 +36,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Update
             checkArtistExists.Birth = request.Birth ?? checkArtistExists.Birth;
             checkArtistExists.LifeStatus = request.LifeStatus != null ? (LifeStatus)request.LifeStatus : checkArtistExists.LifeStatus;
             checkArtistExists.IdUserUpdate = _currentUser.UserId;
-            checkArtistExists.UpdateDate = DateTime.Now;
+            checkArtistExists.UpdateDate = DateTime.UtcNow;
             _artistRepository.Update(checkArtistExists);
             var result = await _artistRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result>0)

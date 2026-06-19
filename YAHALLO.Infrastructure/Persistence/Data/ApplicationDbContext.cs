@@ -51,6 +51,7 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<UnTrustPhoneEntity>? UnTrustPhone { get; set; }
         public DbSet<PendingRegistrationEntity>? PendingRegistration { get; set; }
         public DbSet<CountryEntity>? Countries { get; set; }
+        public DbSet<BookmarkEntity>? Bookmarks { get; set; }
 
 
         // AI generated — new tables
@@ -107,6 +108,11 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new UnTrustPhoneConfiguration());
             modelBuilder.ApplyConfiguration(new PendingRegistrationConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
+            modelBuilder.ApplyConfiguration(new BookmarkConfiguration());
+
+
+
+
             // AI generated — new configurations
             modelBuilder.ApplyConfiguration(new TagConfiguration());
             modelBuilder.ApplyConfiguration(new MangaTagConfiguration());
@@ -120,9 +126,9 @@ namespace YAHALLO.Infrastructure.Data
         {
             builder.Entity<RoleEntity>().HasData(
                 new RoleEntity { RoleCode = 1, RoleName = "Admin", RoleDescription = "Only Admin has this Role" },
-                new RoleEntity { RoleCode = 2, RoleName = "User", RoleDescription = "Normal User or New User has this Role" },
-                new RoleEntity { RoleCode = 3, RoleName = "Mod", RoleDescription = "Role for Moderator" },
-                new RoleEntity { RoleCode = 4, RoleName = "Upload", RoleDescription = "If User has this role then User can use Create, Update, Delete Manga" }
+                new RoleEntity { RoleCode = 2, RoleName = "Moderator", RoleDescription = "Role for Moderator" },
+                new RoleEntity { RoleCode = 3, RoleName = "User", RoleDescription = "Normal User or New User has this Role" },
+                new RoleEntity { RoleCode = 4, RoleName = "Trans", RoleDescription = "Translator role" }
                 );
         }
     }

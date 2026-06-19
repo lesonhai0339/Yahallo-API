@@ -35,7 +35,6 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
                 pageNo: request.PageNumber,
                 pageSize: request.PageSize,
                 selector: _ => query
-                    .OrderBy(x => x.Id)
                     .Select(m => new MangaDto
                     {
                         Id = m.Id,
@@ -49,6 +48,8 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
                         MangaThumbnail = m.MangaThumbnail,
                         MangaBackground = m.MangaBackground,
                         UserID = m.UserId,
+                        ViewCount = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
+                        Rating = m.RatingEntities.Select(x => (int?)x.Rating).Average(),
                         LastestChapter = m.LastChapter == null ? null : new ChapterDto
                         {
                             Id = m.LastChapter.Id,
@@ -70,11 +71,11 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
             return request.SortBy switch
             {
                 MangaSortBy.LastUpdate => OrderHelper.ApplyOrder(filter, x => x.LastChapterUpdate, request.ReverseSort),
-                MangaSortBy.Rating => OrderHelper.ApplyOrder(filter, x => x.RatingEntities == null ? 0 : x.RatingEntities.Average(x => x.Rating), request.ReverseSort),
+                MangaSortBy.Rating => OrderHelper.ApplyOrder(filter, x => x.RatingEntities.Average(x => (double?)x.Rating) ?? 0, request.ReverseSort),
                 MangaSortBy.ViewCount => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.TotalCount, request.ReverseSort),
-                MangaSortBy.CommentCount => OrderHelper.ApplyOrder(filter, x => x.CommentEntities == null ? 0 : x.CommentEntities.Count, request.ReverseSort),
-                MangaSortBy.ChapterCount => OrderHelper.ApplyOrder(filter, x => x.ChaptersEntities == null ? 0 : x.ChaptersEntities.Count, request.ReverseSort),
-                _=> filter
+                MangaSortBy.CommentCount => OrderHelper.ApplyOrder(filter, x => x.CommentEntities.Count, request.ReverseSort),
+                MangaSortBy.ChapterCount => OrderHelper.ApplyOrder(filter, x => x.ChaptersEntities.Count, request.ReverseSort),
+                _=> filter.OrderBy(x => x.Id)
             };
         }
         private IQueryable<MangaEntity> ApplyFilter(IQueryable<MangaEntity> query, FilterMangaQuery request)

@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Delete
 
         public async Task<ResponseResult<string>> Handle(DeleteChapterCommand request, CancellationToken cancellationToken)
         {
-            var checkRole =await _currentUser.IsInRoleAsync("1");
+            var checkRole =await _currentUser.IsInRoleAsync("Admin");
             var checkChapterExist = await _chapterRepository
                 .FindAsync
                 (x => x.Id == request.Id && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
@@ -31,12 +31,12 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Delete
             {
                 throw new NotFoundException("Không tìm thấy chương truyện");
             }
-            if(checkChapterExist.IdUserCreate != _currentUser.UserId || checkChapterExist.IdUserCreate != _currentUser.UserId && checkRole == false)
+            if(checkChapterExist.IdUserCreate != _currentUser.UserId && checkRole == false)
             {
                 throw new UnAuthorizeException("Tài khoản hiện tại không có quyền thực hiện chức năng này");
             }
             checkChapterExist.IdUserDelete = _currentUser.UserId;
-            checkChapterExist.DeleteDate = DateTime.Now;
+            checkChapterExist.DeleteDate = DateTime.UtcNow;
             _chapterRepository.Update(checkChapterExist);
             var result= await _chapterRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if(result> 0)

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Enums;
@@ -19,6 +20,9 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Restore
 
         public async Task<bool> Handle(RestoreRatingCommand request, CancellationToken cancellationToken)
         {
+            var isStaff = await _currentUser.AuthorizeAsync(Policies.ModOrAdmin);
+            if (!isStaff) throw new UnauthorizedAccessException();
+
             var existed = request.RatingTo == RatingEnum.Manga
              ? await _ratingRepository.FindAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue && x.ToMangaId == request.TargetId && x.UserId == request.UserId, cancellationToken, ignoreQueryFilters: true)
              : request.RatingTo != RatingEnum.Chapter
@@ -33,7 +37,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Restore
             existed.DeleteDate = null;
             existed.IdUserDelete = null;
             existed.IdUserUpdate = _currentUser.UserId;
-            existed.UpdateDate = DateTime.Now;
+            existed.UpdateDate = DateTime.UtcNow;
             _ratingRepository.Update(existed);
             var result = await _ratingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             return result > 0;

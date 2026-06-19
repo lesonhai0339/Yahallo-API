@@ -34,7 +34,7 @@ namespace YAHALLO.Application.Commands.CommentCommand.Restore
             checkCommentExist.IdUserDelete = null;
             checkCommentExist.DeleteDate = null;
             checkCommentExist.IdUserUpdate = _currentUser.UserId;
-            checkCommentExist.UpdateDate = DateTime.Now;
+            checkCommentExist.UpdateDate = DateTime.UtcNow;
             _commentRepository.Update(checkCommentExist);
             var result= await _commentRepository.UnitOfWork.SaveChangesAsync(cancellationToken);    
             if(result > 0)

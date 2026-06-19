@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using YAHALLO.Application.Common.Authorization;
+using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Application.Queries.ChapterQuery;
@@ -16,17 +18,19 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating
 {
     public class FilterRatingQueryHandler : IRequestHandler<FilterRatingQuery, PagedResult<RatingDto>>
     {
+        private readonly ICurrentUserService _currentUserService;   
         private readonly IRatingRepository _mangaRatingRepository;
-        public FilterRatingQueryHandler(IRatingRepository ratingRepository)
+        public FilterRatingQueryHandler(IRatingRepository ratingRepository, ICurrentUserService currentUser)
         {
             _mangaRatingRepository = ratingRepository;
+            _currentUserService = currentUser;  
         }
 
         public async Task<PagedResult<RatingDto>> Handle(FilterRatingQuery request, CancellationToken cancellationToken)
         {
             var query = _mangaRatingRepository.CreateQueryable();
 
-            query = ApplyFilter(query, request);
+            query = await ApplyFilter(query, request);
             query = ApplySorting(query, request);
 
             var listMangaRating = await _mangaRatingRepository
@@ -54,7 +58,7 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating
                         Chapter = t.ToChapter == null ? null : new ChapterDto
                         {
                             Id = t.ToChapter.Id,
-                            MangaId = t.ToChapter.MangaId,
+                            MangaId = t.ToChapter.MangaId!,
                             Index = t.ToChapter.Index,
                             Title = t.ToChapter.Title,
                             CreateDate = t.ToChapter.CreateDate,
@@ -80,11 +84,10 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating
                 _=> filter.OrderBy(x => x.Id), 
             };
         }
-        private IQueryable<RatingEntity> ApplyFilter(IQueryable<RatingEntity> query, FilterRatingQuery request)
+        private async Task<IQueryable<RatingEntity>> ApplyFilter(IQueryable<RatingEntity> query, FilterRatingQuery request)
         {
             if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.ToMangaId == request.MangaId);
 
-            if (!string.IsNullOrEmpty(request.UserId)) query = query.Where(x => x.UserId == request.UserId);
 
             if (!string.IsNullOrEmpty(request.MangaName)) query = query.Where(x => x.ToManga != null && x.ToManga.Name.Contains(request.MangaName));
 
@@ -94,6 +97,12 @@ namespace YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating
 
             if (!string.IsNullOrEmpty(request.ToUserId)) query = query.Where(x => x.ToUserId == request.ToUserId);
 
+            var isStaff = await _currentUserService.AuthorizeAsync(Policies.ModOrAdmin);
+            var targetId = (isStaff && !string.IsNullOrEmpty(request.UserId))
+                ? request.UserId
+                : _currentUserService.UserId;
+
+            if (!string.IsNullOrEmpty(targetId)) query = query.Where(x => x.UserId == targetId);
             return query;
         }
     }

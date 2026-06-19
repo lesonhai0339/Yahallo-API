@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Restore
             }
             checkArtistExists.IdUserDelete = null;
             checkArtistExists.DeleteDate = null;
-            checkArtistExists.UpdateDate = DateTime.Now;
+            checkArtistExists.UpdateDate = DateTime.UtcNow;
             checkArtistExists.IdUserUpdate = _currentUser.UserId;
             _artistRepository.Update(checkArtistExists);
             var result = await _artistRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
