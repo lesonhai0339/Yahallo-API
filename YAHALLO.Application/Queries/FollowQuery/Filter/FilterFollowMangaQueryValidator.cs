@@ -16,7 +16,7 @@ namespace YAHALLO.Application.Queries.FollowQuery.Filter
                     .NotEmpty()
                     .WithMessage("Page Number không được bỏ trống");
             RuleFor(x => x.PageSize)
-                .Null().NotEmpty().WithMessage("Page Size không được bỏ trống");
+                .NotNull().NotEmpty().WithMessage("Page Size không được bỏ trống");
         }
     }
 }

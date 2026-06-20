@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Domain.Enums.Follow;
 
 namespace YAHALLO.Application.Queries.FollowQuery.Filter
 {
@@ -16,5 +17,7 @@ namespace YAHALLO.Application.Queries.FollowQuery.Filter
         public string? UserName { get; set; }
         public string? MangaId { get;set; }
         public string? MangaName { get ; set; } 
+        public FollowSortBy? SortBy { get; set; }
+        public bool ReverseSort { get; set; }   
     }
 }
