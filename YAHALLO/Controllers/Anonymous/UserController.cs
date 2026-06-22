@@ -25,6 +25,9 @@ using YAHALLO.Application.Queries.UserQuery.Anonymous.GetByName;
 using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Services;
 using YAHALLO.Application.Commands.UserCommand.DTOs;
+using Elastic.Clients.Elasticsearch.Security;
+using YAHALLO.Application.Queries.UserQuery.Anonymous.GetProfileById;
+using Microsoft.AspNetCore.Authorization;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -229,6 +232,20 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _Sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<List<UserDto>>(result));
+        }
+        [Authorize]
+        [HttpGet]
+        [Route("user/get-profile")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<UserProfileDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<UserProfileDto>>> GetUserProfile(
+           [FromQuery] GetProfileByIdRequest query,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<UserProfileDto>(result));
         }
         [HttpGet]
         [Route("user/filter-user")]

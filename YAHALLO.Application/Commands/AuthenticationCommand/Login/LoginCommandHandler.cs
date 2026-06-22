@@ -61,12 +61,16 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (result > 0)
                     {
-                        return new LoginResponse(
-                           id: checkExistToken.Id,
-                           avatarUri: checkUserExist.AvatarThumbnail,
-                           name: checkUserExist.DisplayName,
-                           accessToken: checkExistToken.AccessToken,
-                           refreshToken: checkExistToken.RefreshToken);
+                        return new LoginResponse
+                        {
+                           Id = checkExistToken.Id,
+                           AvatarUri =  checkUserExist.AvatarThumbnail,
+                           Name = checkUserExist.DisplayName,
+                           AccessToken = checkExistToken.AccessToken,
+                           RefreshToken = checkExistToken.RefreshToken ,
+                           Roles = checkUserExist.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
+                           Level = checkUserExist.Level
+                        };
                     }
                 }
                 throw new UnAuthorizeException("Đăng nhập thất bại");
@@ -88,12 +92,16 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (result > 0)
                     {
-                        return new LoginResponse(
-                            id: checkUserExist.Id,
-                            avatarUri: checkUserExist.AvatarThumbnail,
-                            name: checkUserExist.DisplayName,
-                            accessToken: token,
-                            refreshToken: refreshToken);
+                        return new LoginResponse
+                        {
+                            Id = checkUserExist.Id,
+                            AvatarUri = checkUserExist.AvatarThumbnail,
+                            Name = checkUserExist.DisplayName,
+                            AccessToken = token,
+                            RefreshToken = refreshToken,
+                            Roles = checkUserExist.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
+                            Level = checkUserExist.Level
+                        };
                     }
                     else
                     {

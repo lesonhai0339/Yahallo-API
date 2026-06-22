@@ -46,7 +46,14 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                         IdUserDelete = t.IdUserDelete,
                         RefreshToken = t.RefreshToken,
                         UpdateDate = t.UpdateDate,
-                        UserEntity = t.UserEntity,
+                        UserEntity = new UserEntity
+                        {
+                            Id = t.UserEntity.Id,
+                            DisplayName = t.UserEntity.DisplayName,
+                            AvatarThumbnail = t.UserEntity.AvatarThumbnail,
+                            Level = t.UserEntity.Level,
+                            UserRoleEntities = t.UserEntity.UserRoleEntities
+                        }
                     }),
                 cancellationToken);
             if (userToken != null)
@@ -55,7 +62,16 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                 {
                     if (expired > DateTime.UtcNow)
                     {
-                        return new LoginResponse(userToken.Id, userToken?.UserEntity.AvatarThumbnail, userToken?.UserEntity.DisplayName, userToken?.AccessToken, userToken?.RefreshToken);
+                        return new LoginResponse
+                        {
+                           Id = userToken.Id,
+                           AvatarUri =  userToken?.UserEntity.AvatarThumbnail,
+                           Name = userToken?.UserEntity.DisplayName,
+                           AccessToken = userToken?.AccessToken,
+                           RefreshToken = userToken?.RefreshToken,
+                           Level = userToken?.UserEntity.Level,
+                           Roles = userToken?.UserEntity.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList()
+                        };
                     }
                     else
                     {
@@ -83,7 +99,16 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                         var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                         if (result > 0)
                         {
-                            return new LoginResponse(userToken.Id, userToken?.UserEntity.AvatarThumbnail, userToken?.UserEntity.DisplayName, userToken!.AccessToken, userToken.RefreshToken);
+                            return new LoginResponse
+                            {
+                                Id = userToken.Id,
+                                AvatarUri = userToken?.UserEntity.AvatarThumbnail,
+                                Name =  userToken?.UserEntity.DisplayName,
+                                AccessToken = userToken!.AccessToken,
+                                RefreshToken = userToken.RefreshToken,
+                                Level = userToken.UserEntity.Level  ,
+                                Roles = userToken.UserEntity.UserRoleEntities.Select(x => x.RoleEntity.RoleName).ToList()                           
+                            };
                         }
                         else
                         {
