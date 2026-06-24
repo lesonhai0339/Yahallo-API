@@ -53,6 +53,8 @@ namespace YAHALLO.Domain.Entities
 
         public virtual UserOldPasswordEntity? OldPasswords { get; set; }
 
+        public virtual UserSettingsEntity? Settings { get; set; }
+
         public virtual ICollection<UserRoleEntity> UserRoleEntities { get; set; } = new List<UserRoleEntity>    ();
         public virtual ICollection<MangaEntity> MangaEntities { get;set; } = new List<MangaEntity> ();
         public virtual ICollection<CommentEntity> CommentEntities { get; set; } = new List<CommentEntity>       ();

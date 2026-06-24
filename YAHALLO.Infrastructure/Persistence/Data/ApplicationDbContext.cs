@@ -52,6 +52,7 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<PendingRegistrationEntity>? PendingRegistration { get; set; }
         public DbSet<CountryEntity>? Countries { get; set; }
         public DbSet<BookmarkEntity>? Bookmarks { get; set; }
+        public DbSet<UserSettingsEntity>? UserSettings { get; set; }
 
 
         // AI generated — new tables
@@ -109,6 +110,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new PendingRegistrationConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new BookmarkConfiguration());
+            modelBuilder.ApplyConfiguration(new UserSettingsConfiguration());
 
 
 

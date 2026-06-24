@@ -1,4 +1,3 @@
-//AI generated
 using YAHALLO.Domain.Entities.Base;
 
 namespace YAHALLO.Domain.Entities

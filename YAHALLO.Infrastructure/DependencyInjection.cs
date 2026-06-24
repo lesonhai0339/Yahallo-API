@@ -178,6 +178,7 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<INotificationRepository, NotificationRepository>();
             services.AddScoped<IUserMangaViewRepository, UserMangaViewRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<IUserSettingsRepository, UserSettingsRepository>();
 
             // AI generated — Redis cache
             var redisConnection = Environment.GetEnvironmentVariable("Redis_Connection");
