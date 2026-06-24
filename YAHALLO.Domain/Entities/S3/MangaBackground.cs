@@ -11,6 +11,8 @@ namespace YAHALLO.Domain.Entities.S3
         public override string GenerateKey()
         {
             return $"public/manga_backgrounds/{Id}/{FileName}";
-        }   
+        }
+        public override string Prefix => "public/manga_backgrounds";
+
     }
 }

@@ -116,7 +116,6 @@ namespace YAHALLO.Infrastructure
                 var accessKey = Environment.GetEnvironmentVariable("S3_AccessKey");
                 var secretKey = Environment.GetEnvironmentVariable("S3_SecretKey");
                 var region = Environment.GetEnvironmentVariable("S3_Region")
-                             ?? Environment.GetEnvironmentVariable("AWS_REGION")
                              ?? "ap-southeast-1";
                 var regionEndpoint = Amazon.RegionEndpoint.GetBySystemName(region);
 

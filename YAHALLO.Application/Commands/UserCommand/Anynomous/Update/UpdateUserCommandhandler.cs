@@ -54,6 +54,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
             {
                 avatarResponse = await _avatarStorage.CreateSignedURL(new UserAvatar
                 {
+                    Id = user.Id,
                     FileName = request.Avatar.FileName,
                     ContentType = request.Avatar.ContentType,
                     FileSize = request.Avatar.Length,
@@ -65,6 +66,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
             {
                 backgroundResponse = await _backgrondStorage.CreateSignedURL(new UserBackground
                 {
+                    Id = user.Id,
                     FileName = request.Background.FileName,
                     ContentType = request.Background.ContentType,
                     FileSize = request.Background.Length,

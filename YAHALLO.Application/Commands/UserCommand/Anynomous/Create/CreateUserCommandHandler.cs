@@ -108,29 +108,6 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
             if (blocked)
                 return await HandleUnTrustUser(email, phone, request, cancellationToken);
 
-            S3Response? avatarResponse = null;
-            if (request.Avatar != null)
-            {
-                avatarResponse = await _avatarStorage.CreateSignedURL(new UserAvatar
-                {
-                    FileName = request.Avatar.FileName,
-                    ContentType = request.Avatar.ContentType,
-                    FileSize = request.Avatar.Length,
-                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
-                });
-            }
-            S3Response? backgroundResponse = null;
-            if (request.Background != null)
-            {
-                backgroundResponse = await _backgrondStorage.CreateSignedURL(new UserBackground
-                {
-                    FileName = request.Background.FileName,
-                    ContentType = request.Background.ContentType,
-                    FileSize = request.Background.Length,
-                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
-                });
-            }
-
             var user = new UserEntity
             {
                 DisplayName = (request.FirstName + " " + request.LastName).ToString(),
@@ -144,10 +121,36 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
                 CreateDate = DateTime.UtcNow,
                 Status = UserStatus.None,
                 Level = UserLevel.One,
-                CountryId = country.Id,
-                AvatarThumbnail = S3UrlHelper.ToCloudFrontUrl(avatarResponse?.Url, avatarResponse?.CloundFrontDomain),
-                BackgroundThumbnail = S3UrlHelper.ToCloudFrontUrl(backgroundResponse?.Url, backgroundResponse?.CloundFrontDomain),  
+                CountryId = country.Id
             };
+
+            S3Response? avatarResponse = null;
+            if (request.Avatar != null)
+            {
+                avatarResponse = await _avatarStorage.CreateSignedURL(new UserAvatar
+                {
+                    Id = user.Id,
+                    FileName = request.Avatar.FileName,
+                    ContentType = request.Avatar.ContentType,
+                    FileSize = request.Avatar.Length,
+                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
+                });
+            }
+            S3Response? backgroundResponse = null;
+            if (request.Background != null)
+            {
+                backgroundResponse = await _backgrondStorage.CreateSignedURL(new UserBackground
+                {
+                    Id = user.Id,
+                    FileName = request.Background.FileName,
+                    ContentType = request.Background.ContentType,
+                    FileSize = request.Background.Length,
+                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
+                });
+            }
+            user.AvatarThumbnail = S3UrlHelper.ToCloudFrontUrl(avatarResponse?.Url, avatarResponse?.CloundFrontDomain);
+            user.BackgroundThumbnail = S3UrlHelper.ToCloudFrontUrl(backgroundResponse?.Url, backgroundResponse?.CloundFrontDomain);
+
 
             var oldPassword= new UserOldPasswordEntity(user);
             oldPassword.AddNew(request.Password);

@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Queries.UserSettingsQuery.GetById
                 throw new UnAuthorizeException("Unknow user");
 
             var settings = await _userSettingsRepository.FindSelectAsync(x => x
-                .Where(x => x.Id == _currentUser.UserId)
+                .Where(x => x.UserId == _currentUser.UserId)
                 .Select(s => new UserSettingsDto
                 {
                     Id = s.Id,

@@ -3,8 +3,10 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.ReadingProgressCommand.Upsert;
+using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.ReadingProgressQuery;
 using YAHALLO.Application.Queries.ReadingProgressQuery.GetByUser;
+using YAHALLO.Application.Queries.ReadingProgressQuery.GetByUserPagination;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
@@ -37,6 +39,18 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<List<ReadingProgressDto>>(result));
+        }
+
+        [HttpGet]
+        [Route("reading-progress/get-pagination")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<ReadingProgressDto>>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<JsonResponse<PagedResult<ReadingProgressDto>>>> GetProgressPagination(
+            [FromQuery] GetReadingProgressByUserPaginationQuery query,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<ReadingProgressDto>>(result));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace YAHALLO.Domain.Entities.Base
     {
         [Key]
         public string Id { get; set; } = SequentialGuid.NewId();
-        public DateTime? CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; } = DateTime.UtcNow;
         public string? IdUserCreate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public string? IdUserUpdate { get; set; }

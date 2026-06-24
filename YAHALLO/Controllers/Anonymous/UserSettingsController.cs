@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.UserSettingsCommand.Create;
+using YAHALLO.Application.Commands.UserSettingsCommand.Update;
 using YAHALLO.Application.Queries.UserSettingsQuery;
 using YAHALLO.Application.Queries.UserSettingsQuery.GetById;
 using YAHALLO.Services;
@@ -19,21 +20,33 @@ namespace YAHALLO.Controllers.Anonymous
             _sender = sender;   
         }
         [HttpPost]
-        [Route("/user-settings-create")]
+        [Route("user-settings/create")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> CreateSettings(
-            [FromBody] CreateUserSettingsCommand command, 
+            [FromForm] CreateUserSettingsCommand command, 
             CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<string>(result));
         }
-
+        [HttpPut]
+        [Route("user-settings/update")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<string>>> UpdateSettings(
+           [FromForm] UpdateUserSettingsCommand command,
+           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<string>(result));
+        }
         [HttpGet]
-        [Route("/user-settings-get")]
+        [Route("user-settings/get")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<UserSettingsDto>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

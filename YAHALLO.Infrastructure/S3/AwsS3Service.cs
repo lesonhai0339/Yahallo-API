@@ -2,6 +2,7 @@
 using Amazon.S3.Model;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.IO;
 using YAHALLO.Domain.Entities.S3;
 using YAHALLO.Domain.Repositories.Storage;
 using YAHALLO.Domain.S3;
@@ -23,6 +24,16 @@ namespace YAHALLO.Infrastructure.S3
         public async Task<IEnumerable<S3Response>> CreateSignedURL(IEnumerable<T> files)
         {
             return await Task.WhenAll(files.Select(async fileInfo => await CreateSignedURL(fileInfo)));
+        }
+        public async Task<bool> DeleteFile(T fileInfo, string url)
+        {
+            var request = new DeleteObjectRequest
+            {
+                BucketName = _options.BucketName,
+                Key = fileInfo.GetKeyFromUrl(url),
+            };
+            var response = await _s3Client.DeleteObjectAsync(request);
+            return response.HttpStatusCode == System.Net.HttpStatusCode.NoContent;
         }
         public async Task<S3Response> CreateSignedURL(T fileInfo)
         {

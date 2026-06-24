@@ -12,5 +12,7 @@ namespace YAHALLO.Domain.Entities.S3
         {
             return $"public/manga_thumbnails/{Id}/{FileName}";
         }
+        public override string Prefix => "public/manga_thumbnails";
+
     }
 }

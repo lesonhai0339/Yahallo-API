@@ -12,5 +12,6 @@ namespace YAHALLO.Domain.Entities.S3
         {
             return $"public/user_settings_background/{Id}/{FileName}";
         }
+        public override string Prefix => "public/user_settings_background";
     }
 }

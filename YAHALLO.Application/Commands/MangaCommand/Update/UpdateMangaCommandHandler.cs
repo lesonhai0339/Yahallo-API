@@ -65,6 +65,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
             {
                 avatarUploadUrl = await _avatarStorage.CreateSignedURL(new MangaThumbnail
                 {
+                    Id = manga.Id,
                     FileName = request.Avatar.FileName,
                     ContentType = request.Avatar.ContentType,
                     FileSize = request.Avatar.Length,
@@ -77,6 +78,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                 //test for upload to s3
                 backgroundUploadUrl = await _backgroundStorage.CreateSignedURL(new MangaBackground
                 {
+                    Id = manga.Id,
                     FileName = request.Background.FileName,
                     ContentType = request.Background.ContentType,
                     FileSize = request.Background.Length,

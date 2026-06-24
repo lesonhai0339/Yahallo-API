@@ -42,11 +42,26 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
         }
         public async Task<CreateMangaResponseDto> Handle(CreateMangaCommand request, CancellationToken cancellationToken)
         {
+            var newManga = new MangaEntity
+            {
+                Name = request.Name,
+                Description = request.Description,
+                Level = request.Level,
+                Status = request.Status,
+                Type = request.Type,
+                Countries = request.Countries,
+                Season = request.Season,
+                CreateDate = DateTime.UtcNow,
+                IdUserCreate = _currentUser.UserId,
+                UserId = _currentUser.UserId
+            };
+
             S3Response? avatarUploadUrl = null;
             if (request.Avatar != null)
             {
                 avatarUploadUrl = await _avatarStorage.CreateSignedURL(new MangaThumbnail
                 {
+                    Id = newManga.Id,
                     FileName = request.Avatar.FileName,
                     ContentType = request.Avatar.ContentType,
                     FileSize = request.Avatar.Length,
@@ -59,28 +74,15 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
                 //test for upload to s3
                 backgroundUploadUrl = await _backgroundStorage.CreateSignedURL(new MangaBackground
                 {
+                    Id = newManga.Id,
                     FileName = request.Background.FileName,
                     ContentType = request.Background.ContentType,
                     FileSize = request.Background.Length,
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
-
-            var newManga = new MangaEntity
-            {
-                Name = request.Name,
-                Description = request.Description,
-                Level = request.Level,
-                Status = request.Status,
-                Type = request.Type,
-                Countries = request.Countries,
-                Season = request.Season,
-                CreateDate = DateTime.UtcNow,
-                IdUserCreate = _currentUser.UserId,
-                UserId = _currentUser.UserId,
-                MangaThumbnail = S3UrlHelper.ToCloudFrontUrl(avatarUploadUrl?.Url, avatarUploadUrl?.CloundFrontDomain),
-                MangaBackground = S3UrlHelper.ToCloudFrontUrl(backgroundUploadUrl?.Url, backgroundUploadUrl?.CloundFrontDomain)
-            };
+            newManga.MangaThumbnail = S3UrlHelper.ToCloudFrontUrl(avatarUploadUrl?.Url, avatarUploadUrl?.CloundFrontDomain);
+            newManga.MangaBackground = S3UrlHelper.ToCloudFrontUrl(backgroundUploadUrl?.Url, backgroundUploadUrl?.CloundFrontDomain);
 
             var response = new CreateMangaResponseDto
             {

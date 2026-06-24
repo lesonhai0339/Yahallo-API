@@ -12,6 +12,7 @@ namespace YAHALLO.Domain.Repositories.Storage
     {
         Task<S3Response> CreateSignedURL(T fileInfo);
         Task<IEnumerable<S3Response>> CreateSignedURL(IEnumerable<T> files);
+        Task<bool> DeleteFile(T fileInfo, string url);
 
         /// <summary>
         /// Return object GetObjectMetadataResponse(AWS object)

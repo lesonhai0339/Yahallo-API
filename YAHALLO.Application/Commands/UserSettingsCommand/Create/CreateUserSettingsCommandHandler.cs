@@ -32,25 +32,12 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
             if (string.IsNullOrEmpty(_currentUser.UserId))
                 throw new UnAuthorizeException("Invalid user");
 
-            S3Response? bg = null;
-            if(request.BgImage != null)
-            {
-                bg = await _storageService.CreateSignedURL(new UserSettingsBackground
-                {
-                    FileName = request.BgImage.FileName,
-                    ContentType = request.BgImage.ContentType,
-                    FileSize = request.BgImage.Length,
-                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
-                });
-            }
-
             var userSettings = new UserSettingsEntity
             {
                 UserId = _currentUser.UserId,
 
                 Language = request.Language,
                 Theme = request.Theme,
-                BgImageUrl = S3UrlHelper.ToCloudFrontUrl(bg?.Url, bg?.CloundFrontDomain),
                 BgOpacity = request.BgOpacity,
                 BgBlur = request.BgBlur,
 
@@ -66,6 +53,19 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
                 RetentionDays = request.RetentionDays,
                 MaxEntries = request.MaxEntries,
             };
+            S3Response? bg = null;
+            if (request.BgImage != null)
+            {
+                bg = await _storageService.CreateSignedURL(new UserSettingsBackground
+                {
+                    Id = userSettings.Id,
+                    FileName = request.BgImage.FileName,
+                    ContentType = request.BgImage.ContentType,
+                    FileSize = request.BgImage.Length,
+                    Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
+                });
+            }
+            userSettings.BgImageUrl = S3UrlHelper.ToCloudFrontUrl(bg?.Url, bg?.CloundFrontDomain);
 
             _userSettingsRepository.Add(userSettings);
             var result = await _userSettingsRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
