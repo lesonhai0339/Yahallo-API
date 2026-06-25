@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.PixelFormats;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -95,6 +96,12 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
+            var avatar = S3UrlHelper.ToCloudFrontUrl(avatarResponse?.Url!, avatarResponse?.CloundFrontDomain);
+            var background = S3UrlHelper.ToCloudFrontUrl(backgroundResponse?.Url!, backgroundResponse?.CloundFrontDomain);
+            
+            user.AvatarThumbnail = avatar ?? null;
+            user.BackgroundThumbnail  = background ?? null;
+
             _userRepository.Update(user);
             var result = await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             
@@ -103,9 +110,9 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
                 Id : user.Id,
                 DisplayName : user.DisplayName,
                 UploadAvatarUrl : avatarResponse?.Url,
-                AccessAvatarUrl :  S3UrlHelper.ToCloudFrontUrl(avatarResponse?.Url!, avatarResponse?.CloundFrontDomain),
+                AccessAvatarUrl : avatar,
                 UpdaloadBackgroundUrl : backgroundResponse?.Url,
-                AccessBackgroundUrl : S3UrlHelper.ToCloudFrontUrl(backgroundResponse?.Url!, backgroundResponse?.CloundFrontDomain)
+                AccessBackgroundUrl : background
             ) : throw new UpdateFailedException($"Cannot update info for user");
         }
     }

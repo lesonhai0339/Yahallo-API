@@ -20778,3 +20778,626 @@ ORDER BY CASE
     ELSE [t].[TotalCount]
 END DESC, [m].[Id] DESC
 OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-25 23:52:32.742 +07:00 [INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-25 23:52:33.253 +07:00 [INF] Start installing Hangfire SQL objects...
+2026-06-25 23:52:33.883 +07:00 [INF] Hangfire SQL objects installed.
+2026-06-25 23:52:34.746 +07:00 [WRN] The WebRootPath was not found: D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO\wwwroot. Static files may be unavailable.
+2026-06-25 23:52:34.867 +07:00 [INF] Now listening on: https://localhost:7181
+2026-06-25 23:52:34.867 +07:00 [INF] Now listening on: http://localhost:5213
+2026-06-25 23:52:34.994 +07:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: GC\SQLEXPRESS@Yahallo_dev'
+2026-06-25 23:52:34.996 +07:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-25 23:52:34.996 +07:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-25 23:52:35.050 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-25 23:52:35.051 +07:00 [INF] Hosting environment: Development
+2026-06-25 23:52:35.051 +07:00 [INF] Content root path: D:\Coding\repos\YAHALLO\Yahallo-API\YAHALLO
+2026-06-25 23:52:35.056 +07:00 [INF] Server gc:38936:f5bc8437 successfully announced in 6.1067 ms
+2026-06-25 23:52:35.063 +07:00 [INF] Server gc:38936:f5bc8437 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-25 23:52:35.072 +07:00 [INF] 2 servers were removed due to timeout
+2026-06-25 23:52:35.140 +07:00 [INF] Server gc:38936:f5bc8437 all the dispatchers started
+2026-06-25 23:52:35.578 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-06-25 23:52:36.737 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 889.3070 ms
+2026-06-25 23:52:36.742 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1169.1956ms
+2026-06-25 23:52:36.754 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-25 23:52:36.761 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 6.9668ms
+2026-06-25 23:52:36.767 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-06-25 23:52:36.819 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.1305ms
+2026-06-25 23:52:36.876 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-06-25 23:52:37.056 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 176.6507 ms
+2026-06-25 23:52:37.059 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 183.0726ms
+2026-06-25 23:52:38.784 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:52:38.913 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], LTRIM(RTRIM([t].[Name] + N' ' + [t].[SeasonName])), [t].[MangaThumbnail], [t].[MangaBackground], [t].[LastChapterId], [t].[LastChapterIndex], COALESCE([t].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t0].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t0].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [t].[Id] = [r].[ToMangaId]), 0.0E0), [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[MangaBackground], [m].[MangaThumbnail], [m].[Name], [m].[SeasonName]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-25 23:52:38.930 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t].[Id], [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterUpdate]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t].[Id] = [t1].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-25 23:52:38.950 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:52:38.974 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], LTRIM(RTRIM([m].[Name] + N' ' + [m].[SeasonName])), [m].[MangaThumbnail], [m].[MangaBackground], [m].[LastChapterId], [m].[LastChapterIndex], COALESCE([m].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [m].[Id] = [r].[ToMangaId]), 0.0E0), [t].[Id]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC, [t].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-25 23:52:38.977 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [m].[Id], [t].[Id] AS [Id0], CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END AS [c]
+    FROM [Manga] AS [m]
+    LEFT JOIN (
+        SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+        FROM [ViewCount] AS [v]
+        WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+    ) AS [t] ON [m].[Id] = [t].[MangaId]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t0].[Id] = [t1].[MangaId]
+ORDER BY [t0].[c] DESC, [t0].[Id] DESC, [t0].[Id0]
+2026-06-25 23:52:38.985 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[Description]
+FROM [Tag] AS [t]
+WHERE ([t].[IdUserDelete] IS NULL OR [t].[IdUserDelete] LIKE N'') AND [t].[DeleteDate] IS NULL
+2026-06-25 23:52:38.998 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Author] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-25 23:52:39.008 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-25 23:52:39.017 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:52:39.027 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], LTRIM(RTRIM([m].[Name] + N' ' + [m].[SeasonName])) AS [DisplayName], COALESCE([m].[MangaThumbnail], N'') AS [MangaThumbnail], CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END AS [View]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-25 23:52:39.076 +07:00 [WRN] Yahallo Long Running Request: GetHomepageRequest (3499 milliseconds)  {"$type":"GetHomepageRequest"}
+2026-06-25 23:55:05.711 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:55:05.717 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], LTRIM(RTRIM([t].[Name] + N' ' + [t].[SeasonName])), [t].[MangaThumbnail], [t].[MangaBackground], [t].[LastChapterId], [t].[LastChapterIndex], COALESCE([t].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t0].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t0].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [t].[Id] = [r].[ToMangaId]), 0.0E0), [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[MangaBackground], [m].[MangaThumbnail], [m].[Name], [m].[SeasonName]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-25 23:55:05.721 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t].[Id], [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterUpdate]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t].[Id] = [t1].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-25 23:55:05.726 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:55:05.733 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], LTRIM(RTRIM([m].[Name] + N' ' + [m].[SeasonName])), [m].[MangaThumbnail], [m].[MangaBackground], [m].[LastChapterId], [m].[LastChapterIndex], COALESCE([m].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [m].[Id] = [r].[ToMangaId]), 0.0E0), [t].[Id]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC, [t].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-25 23:55:05.736 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [m].[Id], [t].[Id] AS [Id0], CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END AS [c]
+    FROM [Manga] AS [m]
+    LEFT JOIN (
+        SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+        FROM [ViewCount] AS [v]
+        WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+    ) AS [t] ON [m].[Id] = [t].[MangaId]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t0].[Id] = [t1].[MangaId]
+ORDER BY [t0].[c] DESC, [t0].[Id] DESC, [t0].[Id0]
+2026-06-25 23:55:05.739 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[Description]
+FROM [Tag] AS [t]
+WHERE ([t].[IdUserDelete] IS NULL OR [t].[IdUserDelete] LIKE N'') AND [t].[DeleteDate] IS NULL
+2026-06-25 23:55:05.741 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Author] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-25 23:55:05.744 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-25 23:55:05.750 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:55:05.759 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], LTRIM(RTRIM([m].[Name] + N' ' + [m].[SeasonName])) AS [DisplayName], COALESCE([m].[MangaThumbnail], N'') AS [MangaThumbnail], CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END AS [View]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-25 23:57:05.815 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:57:05.822 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], LTRIM(RTRIM([t].[Name] + N' ' + [t].[SeasonName])), [t].[MangaThumbnail], [t].[MangaBackground], [t].[LastChapterId], [t].[LastChapterIndex], COALESCE([t].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t0].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t0].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [t].[Id] = [r].[ToMangaId]), 0.0E0), [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[MangaBackground], [m].[MangaThumbnail], [m].[Name], [m].[SeasonName]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-25 23:57:05.824 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t].[Id], [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterUpdate]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t].[Id] = [t1].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-25 23:57:05.827 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:57:05.830 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], LTRIM(RTRIM([m].[Name] + N' ' + [m].[SeasonName])), [m].[MangaThumbnail], [m].[MangaBackground], [m].[LastChapterId], [m].[LastChapterIndex], COALESCE([m].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [m].[Id] = [r].[ToMangaId]), 0.0E0), [t].[Id]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC, [t].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-25 23:57:05.832 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [m].[Id], [t].[Id] AS [Id0], CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END AS [c]
+    FROM [Manga] AS [m]
+    LEFT JOIN (
+        SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+        FROM [ViewCount] AS [v]
+        WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+    ) AS [t] ON [m].[Id] = [t].[MangaId]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t0].[Id] = [t1].[MangaId]
+ORDER BY [t0].[c] DESC, [t0].[Id] DESC, [t0].[Id0]
+2026-06-25 23:57:05.835 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[Description]
+FROM [Tag] AS [t]
+WHERE ([t].[IdUserDelete] IS NULL OR [t].[IdUserDelete] LIKE N'') AND [t].[DeleteDate] IS NULL
+2026-06-25 23:57:05.838 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Author] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-25 23:57:05.841 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-25 23:57:05.850 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:57:05.853 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], LTRIM(RTRIM([m].[Name] + N' ' + [m].[SeasonName])) AS [DisplayName], COALESCE([m].[MangaThumbnail], N'') AS [MangaThumbnail], CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END AS [View]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-25 23:59:05.892 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:59:05.929 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], LTRIM(RTRIM([t].[Name] + N' ' + [t].[SeasonName])), [t].[MangaThumbnail], [t].[MangaBackground], [t].[LastChapterId], [t].[LastChapterIndex], COALESCE([t].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t0].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t0].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [t].[Id] = [r].[ToMangaId]), 0.0E0), [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterId], [m].[LastChapterIndex], [m].[LastChapterUpdate], [m].[MangaBackground], [m].[MangaThumbnail], [m].[Name], [m].[SeasonName]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-25 23:59:05.936 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t].[Id], [t0].[Id]
+FROM (
+    SELECT [m].[Id], [m].[LastChapterUpdate]
+    FROM [Manga] AS [m]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY [m].[LastChapterUpdate] DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t0] ON [t].[Id] = [t0].[MangaId]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t].[Id] = [t1].[MangaId]
+ORDER BY [t].[LastChapterUpdate] DESC, [t].[Id] DESC, [t0].[Id]
+2026-06-25 23:59:05.940 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:59:05.943 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], LTRIM(RTRIM([m].[Name] + N' ' + [m].[SeasonName])), [m].[MangaThumbnail], [m].[MangaBackground], [m].[LastChapterId], [m].[LastChapterIndex], COALESCE([m].[LastChapterUpdate], '0001-01-01T00:00:00.0000000'), CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END, COALESCE((
+    SELECT AVG([r].[Rating])
+    FROM [Rating] AS [r]
+    WHERE ([r].[IdUserDelete] IS NULL OR [r].[IdUserDelete] LIKE N'') AND [r].[DeleteDate] IS NULL AND [m].[Id] = [r].[ToMangaId]), 0.0E0), [t].[Id]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC, [t].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-25 23:59:05.946 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t1].[Id], [t1].[Name], [t1].[Description], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [m].[Id], [t].[Id] AS [Id0], CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END AS [c]
+    FROM [Manga] AS [m]
+    LEFT JOIN (
+        SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+        FROM [ViewCount] AS [v]
+        WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+    ) AS [t] ON [m].[Id] = [t].[MangaId]
+    WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+    ORDER BY CASE
+        WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+        ELSE [t].[TotalCount]
+    END DESC, [m].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+INNER JOIN (
+    SELECT [m0].[TagId] AS [Id], [t2].[Name], [t2].[Description], [m0].[MangaId]
+    FROM [MangaTag] AS [m0]
+    INNER JOIN (
+        SELECT [t3].[Id], [t3].[Description], [t3].[Name]
+        FROM [Tag] AS [t3]
+        WHERE ([t3].[IdUserDelete] IS NULL OR [t3].[IdUserDelete] LIKE N'') AND [t3].[DeleteDate] IS NULL
+    ) AS [t2] ON [m0].[TagId] = [t2].[Id]
+    WHERE ([m0].[IdUserDelete] IS NULL OR [m0].[IdUserDelete] LIKE N'') AND [m0].[DeleteDate] IS NULL
+) AS [t1] ON [t0].[Id] = [t1].[MangaId]
+ORDER BY [t0].[c] DESC, [t0].[Id] DESC, [t0].[Id0]
+2026-06-25 23:59:05.949 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Name], [t].[Description]
+FROM [Tag] AS [t]
+WHERE ([t].[IdUserDelete] IS NULL OR [t].[IdUserDelete] LIKE N'') AND [t].[DeleteDate] IS NULL
+2026-06-25 23:59:05.958 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Author] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-25 23:59:05.962 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[Name], [a].[Depscription], [a].[Countries]
+FROM [Artist] AS [a]
+WHERE ([a].[IdUserDelete] IS NULL OR [a].[IdUserDelete] LIKE N'') AND [a].[DeleteDate] IS NULL
+2026-06-25 23:59:05.965 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[BlogId], [v].[ChapterId], [v].[CommentId], [v].[CreateDate], [v].[DayCount], [v].[DeleteDate], [v].[IdUserCreate], [v].[IdUserDelete], [v].[IdUserUpdate], [v].[LastDateModify], [v].[LastMonthModify], [v].[LastYearModify], [v].[MangaId], [v].[MonthCount], [v].[TotalCount], [v].[UpdateDate], [v].[YearCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+2026-06-25 23:59:05.968 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[Id], LTRIM(RTRIM([m].[Name] + N' ' + [m].[SeasonName])) AS [DisplayName], COALESCE([m].[MangaThumbnail], N'') AS [MangaThumbnail], CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END AS [View]
+FROM [Manga] AS [m]
+LEFT JOIN (
+    SELECT [v].[Id], [v].[MangaId], [v].[TotalCount]
+    FROM [ViewCount] AS [v]
+    WHERE ([v].[IdUserDelete] IS NULL OR [v].[IdUserDelete] LIKE N'') AND [v].[DeleteDate] IS NULL
+) AS [t] ON [m].[Id] = [t].[MangaId]
+WHERE ([m].[IdUserDelete] IS NULL OR [m].[IdUserDelete] LIKE N'') AND [m].[DeleteDate] IS NULL
+ORDER BY CASE
+    WHEN [t].[Id] IS NULL THEN CAST(0 AS bigint)
+    ELSE [t].[TotalCount]
+END DESC, [m].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
