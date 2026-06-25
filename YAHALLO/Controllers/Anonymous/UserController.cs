@@ -121,15 +121,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPut]
         [Route("user/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<UpdateUserResponseDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UpdateUserResult>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<UpdateUserResponseDto>>> UpdateUser(
+        public async Task<ActionResult<JsonResponse<UpdateUserResult>>> UpdateUser(
            [FromForm] UpdateUserCommand command,
            CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<UpdateUserResponseDto>(result));
+            return Ok(new JsonResponse<UpdateUserResult>(result));
         }
         [HttpDelete]
         [Route("user/delete")]

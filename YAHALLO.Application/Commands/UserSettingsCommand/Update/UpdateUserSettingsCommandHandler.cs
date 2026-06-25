@@ -18,7 +18,7 @@ using YAHALLO.Domain.S3;
 
 namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
 {
-    public class UpdateUserSettingsCommandHandler : IRequestHandler<UpdateUserSettingsCommand, string>
+    public class UpdateUserSettingsCommandHandler : IRequestHandler<UpdateUserSettingsCommand, UpdateUserSettingResult>
     {
         private readonly ICurrentUserService _currentUser;
         private readonly IUserSettingsRepository _userSettingsRepository;
@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
             _storageService = storageService;
         }
 
-        public async Task<string> Handle(UpdateUserSettingsCommand request, CancellationToken cancellationToken)
+        public async Task<UpdateUserSettingResult> Handle(UpdateUserSettingsCommand request, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(_currentUser.UserId))
                 throw new UnAuthorizeException("Unauthorize");
@@ -59,9 +59,11 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
                 });
             }
 
-            if(!string.IsNullOrEmpty(request.Language)) setting.Language = request.Language;
+            string imgUrl = S3UrlHelper.ToCloudFrontUrl(bg?.Url, bg?.CloundFrontDomain);
+
+            if (!string.IsNullOrEmpty(request.Language)) setting.Language = request.Language;
             if (request.Theme != null) setting.Theme = (Theme)request.Theme;
-            if(bg != null) setting.BgImageUrl = S3UrlHelper.ToCloudFrontUrl(bg?.Url, bg?.CloundFrontDomain);
+            if(bg != null) setting.BgImageUrl = imgUrl;
             if (request.BgOpacity != null) setting.BgOpacity = request.BgOpacity;
             if (request.BgBlur != null) setting.BgBlur = request.BgBlur;
             if (request.FontFamily != null) setting.FontFamily = request.FontFamily;
@@ -79,7 +81,7 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
             if (result == 0)
                 throw new Exception("Failed to create new user settings");
 
-            return bg?.Url ?? string.Empty;
+            return new UpdateUserSettingResult(UploadUrl: bg?.Url, AccessUrl: imgUrl);
 
         }
     }

@@ -15,7 +15,7 @@ using YAHALLO.Domain.S3;
 
 namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
 {
-    public class CreateUserSettingsCommandHandler : IRequestHandler<CreateUserSettingsCommand, string>
+    public class CreateUserSettingsCommandHandler : IRequestHandler<CreateUserSettingsCommand, CreateUserSettingResult>
     {
         private readonly IUserSettingsRepository _userSettingsRepository;
         private readonly ICurrentUserService _currentUser;
@@ -27,7 +27,7 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
             _storageService = storageService;
         }
 
-        public async Task<string> Handle(CreateUserSettingsCommand request, CancellationToken cancellationToken)
+        public async Task<CreateUserSettingResult> Handle(CreateUserSettingsCommand request, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(_currentUser.UserId))
                 throw new UnAuthorizeException("Invalid user");
@@ -65,14 +65,15 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
-            userSettings.BgImageUrl = S3UrlHelper.ToCloudFrontUrl(bg?.Url, bg?.CloundFrontDomain);
+            var imageUrl = S3UrlHelper.ToCloudFrontUrl(bg?.Url, bg?.CloundFrontDomain);
+            userSettings.BgImageUrl = imageUrl;
 
             _userSettingsRepository.Add(userSettings);
             var result = await _userSettingsRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (result == 0)
                 throw new Exception("Failed to create new user settings");
 
-            return bg?.Url ?? string.Empty;
+            return new CreateUserSettingResult(UploadUrl: bg?.Url, AccessUrl: imageUrl);
         }
     }
 }

@@ -11,7 +11,7 @@ using YAHALLO.Domain.Enums.Style;
 
 namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
 {
-    public class CreateUserSettingsCommand: IRequest<string>
+    public class CreateUserSettingsCommand: IRequest<CreateUserSettingResult>
     {
         public string? Language { get; set; }
 
@@ -33,4 +33,6 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
         public int RetentionDays { get; set; } = 1;
         public int MaxEntries { get; set; } = 10;
     }
+    public record CreateUserSettingResult(string? UploadUrl = null, string? AccessUrl = null);
+
 }

@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.UserSettingsCommand.Create;
+using YAHALLO.Application.Commands.UserSettingsCommand.Delete;
+using YAHALLO.Application.Commands.UserSettingsCommand.Restore;
 using YAHALLO.Application.Commands.UserSettingsCommand.Update;
 using YAHALLO.Application.Queries.UserSettingsQuery;
 using YAHALLO.Application.Queries.UserSettingsQuery.GetById;
@@ -22,28 +24,54 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("user-settings/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<CreateUserSettingResult>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<string>>> CreateSettings(
+        public async Task<ActionResult<JsonResponse<CreateUserSettingResult>>> CreateSettings(
             [FromForm] CreateUserSettingsCommand command, 
             CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<string>(result));
+            return Ok(new JsonResponse<CreateUserSettingResult>(result));
         }
         [HttpPut]
         [Route("user-settings/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UpdateUserSettingResult>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<string>>> UpdateSettings(
+        public async Task<ActionResult<JsonResponse<UpdateUserSettingResult>>> UpdateUserSettings(
            [FromForm] UpdateUserSettingsCommand command,
            CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<UpdateUserSettingResult>(result));
+        }
+        [HttpDelete]
+        [Route("user-settings/delete")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<string>>> DeleteUserSettings(
+           [FromBody] DeleteUserSettingsCommand command,
+           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<string>(result));
+        }
+        [HttpPost]
+        [Route("user-settings/restore")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<RestoreUserSettingsResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<RestoreUserSettingsResult>>> RestoreUserSettings(
+           [FromBody] RestoreUserSettingsCommand command,
+           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<RestoreUserSettingsResult>(result));
         }
         [HttpGet]
         [Route("user-settings/get")]

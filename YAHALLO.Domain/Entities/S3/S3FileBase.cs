@@ -26,10 +26,7 @@ namespace YAHALLO.Domain.Entities.S3
         {
             var uri = new Uri(url);
 
-            var key = uri.AbsolutePath.TrimStart('/');
-            return key.StartsWith(Prefix)
-                ? key.Substring(Prefix.Length).TrimStart('/')
-                : key;
+            return uri.AbsolutePath.TrimStart('/');
         }
         public virtual string Suffix
         {

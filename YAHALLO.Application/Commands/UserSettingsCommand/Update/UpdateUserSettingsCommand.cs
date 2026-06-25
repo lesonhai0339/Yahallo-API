@@ -11,7 +11,7 @@ using YAHALLO.Domain.Enums.Style;
 
 namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
 {
-    public class UpdateUserSettingsCommand: IRequest<string>
+    public class UpdateUserSettingsCommand: IRequest<UpdateUserSettingResult>
     {
         public string? Language { get; set; } = null;
 
@@ -33,4 +33,5 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
         public int? RetentionDays { get; set; } = null;
         public int? MaxEntries { get; set; } = null;
     }
+    public record UpdateUserSettingResult(string? UploadUrl = null, string? AccessUrl = null);
 }
