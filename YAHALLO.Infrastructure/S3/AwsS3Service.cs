@@ -42,7 +42,8 @@ namespace YAHALLO.Infrastructure.S3
                 BucketName = _options.BucketName,
                 Key = fileInfo.GenerateKey(),
                 Expires = DateTime.UtcNow.AddMinutes(15),
-                Verb = HttpVerb.PUT
+                Verb = HttpVerb.PUT,
+                ContentType = fileInfo.ContentType,      
             };
             var url =  await _s3Client.GetPreSignedURLAsync(request);
             return new S3Response

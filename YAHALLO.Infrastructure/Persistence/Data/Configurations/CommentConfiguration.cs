@@ -19,11 +19,6 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.Property(x => x.Message)
                 .IsUnicode(true);
 
-            builder.HasOne(x => x.Parent)
-                .WithMany(x => x.Comments)
-                .HasForeignKey(x => x.ParentId)
-                .OnDelete(DeleteBehavior.Restrict);
-            
           
             builder.HasOne(x => x.MangaEntity)
                 .WithMany(x => x.CommentEntities)
@@ -53,7 +48,14 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasOne(x => x.CommentToUser)
                 .WithMany()
                 .HasForeignKey(x => x.CommentToUserId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            builder.HasOne(x => x.Parent)
+                .WithMany(x => x.Comments)
+                .HasForeignKey(x => x.ParentId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             builder.HasOne(x => x.ReplyComment)
                 .WithMany()

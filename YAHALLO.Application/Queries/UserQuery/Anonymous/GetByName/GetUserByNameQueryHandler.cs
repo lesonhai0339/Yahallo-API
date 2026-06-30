@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using YAHALLO.Application.Queries.UserQuery.DTOs;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;

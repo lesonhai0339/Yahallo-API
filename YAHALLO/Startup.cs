@@ -7,6 +7,7 @@ using SixLabors.ImageSharp;
 using YAHALLO.Application;
 using YAHALLO.Application.Common.Caching;
 using YAHALLO.Application.Services.MailService;
+using YAHALLO.Common;
 using YAHALLO.Configuration;
 using YAHALLO.Filters;
 using YAHALLO.Hubs;
@@ -26,9 +27,9 @@ namespace YAHALLO
 
         public void ConfigureServices(IServiceCollection services)
         {
-            DotEnv.Load(new DotEnvOptions(ignoreExceptions: true, overwriteExistingVars: false));
 
             services.Configure<CacheSettings>(Configuration.GetSection(nameof(CacheSettings)));
+            services.Configure<AuthCookieOptions>(Configuration.GetSection("AuthCookie"));
 
             services.AddControllers(
                 opt =>
@@ -42,16 +43,20 @@ namespace YAHALLO
             services.Infrastructure(Configuration);
             services.ConfigureSwagger(Configuration);
             services.AddEmailService(Configuration);
-            services.ConfigurationServiceDJ(Configuration);
+            services.ConfigurationServiceDI(Configuration);
             services.ConfigureRateLimiting();
             services.AddSignalR();
 
             //var hangfireConn = Environment.GetEnvironmentVariable("Cloud_Server");
             var hangfireConn = Environment.GetEnvironmentVariable("Server");
 
-            Log.Information("Cloud_Server env var is {Status}", hangfireConn != null ? "SET" : "NULL");
+            Log.Information("Hangfire connection env var [Server] is {Status}",
+          string.IsNullOrEmpty(hangfireConn) ? "NULL" : "SET");
+
             if (string.IsNullOrEmpty(hangfireConn))
-                throw new InvalidOperationException("Cloud_Server environment variable is not set. Check ECS task definition.");
+                throw new InvalidOperationException(
+                    "Environment variable 'Server' is not set. Check ECS task definition.");
+
             services.AddHangfire(config => config
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
                 .UseSimpleAssemblyNameTypeSerializer()
@@ -67,13 +72,13 @@ namespace YAHALLO
             services.AddHangfireServer();
             services.AddCors(options =>
             {
+                var origins = Configuration.GetSection("CORS:Origins").Get<string[]>()
+                                ?? Array.Empty<string>();
+
+
                 options.AddPolicy("CorsPolicy",
-                builder => builder.WithOrigins(
-                        "https://www.yahallo.online",
-                        "https://yahallo.online",
-                        "http://localhost:4200",
-                        "https://localhost:4200"
-                    )
+                builder => builder
+                    .WithOrigins(origins)
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
@@ -88,14 +93,15 @@ namespace YAHALLO
         {
             if (env.IsDevelopment())
             {
+                app.UseSwashbuckle(Configuration);
                 app.UseDeveloperExceptionPage();
             }
-            app.UseStaticFiles();
-            app.UseCors("CorsPolicy");
-            app.UseSerilogRequestLogging();
             app.UseExceptionHandler();
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseRouting();
+            app.UseCors("CorsPolicy");
+            app.UseSerilogRequestLogging();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseRateLimiter();
@@ -106,7 +112,6 @@ namespace YAHALLO
                 endpoints.MapHub<NotificationHub>("/hubs/notification");
             });
             app.UseHangfireJobs();
-            app.UseSwashbuckle(Configuration);
         }
     }
 }

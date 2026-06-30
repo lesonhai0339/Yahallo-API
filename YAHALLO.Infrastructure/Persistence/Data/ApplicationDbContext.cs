@@ -26,7 +26,7 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<ChapterEntity>? ChaptersEntities { get; set; }
         public DbSet<CommentEntity>? CommentEntities { get; set; }
         public DbSet<FollowEntity>? FollowEntities { get; set; }
-        public DbSet<ImageEntity>? ImageEntities { get; set; }   
+        public DbSet<ChapterImageEntity>? ImageEntities { get; set; }   
         public DbSet<MangaEntity>? MangaEntities { get; set; }
         public DbSet<RatingEntity>? RatingEntities { get; set; }
         public DbSet<RoleEntity>? RoleEntities { get; set; }
@@ -86,7 +86,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new ChapterConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new FollowConfiguration());
-            modelBuilder.ApplyConfiguration(new ImageConfiguration());
+            modelBuilder.ApplyConfiguration(new MangaImageConfiguration());
             modelBuilder.ApplyConfiguration(new MangaConfiguration());
             modelBuilder.ApplyConfiguration(new RatingConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());

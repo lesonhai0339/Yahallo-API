@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Domain.Enums.ListView;
 using YAHALLO.Domain.Enums.Progress;
 using YAHALLO.Domain.Enums.Style;
@@ -17,7 +18,7 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
 
         public Theme? Theme { get; set; } = null;
 
-        public IFormFile? BgImage { get; set; } = null;
+        public FileUploadInfo? BgImage { get; set; } = null;
         public float? BgOpacity { get; set; } = null;
         public float? BgBlur { get; set; } = null;
 

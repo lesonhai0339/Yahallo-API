@@ -5,7 +5,7 @@ using YAHALLO.Infrastructure.Data;
 
 namespace YAHALLO.Infrastructure.Persistence.Repositories
 {
-    public class ImageRepository : RepositoryBase<ImageEntity, ImageEntity, ApplicationDbContext>, IImageRepository
+    public class ImageRepository : RepositoryBase<ChapterImageEntity, ChapterImageEntity, ApplicationDbContext>, IImageRepository
     {
         public ImageRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {

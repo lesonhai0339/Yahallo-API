@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Update
@@ -17,7 +18,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
             string mangaid,
             string? title,
             int? index,
-            List<IFormFile> images,
+            List<FileUploadInfo> images,
             List<string>? imageUrls)
         {
             ChapterId = chapterid;
@@ -31,7 +32,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
         public required string MangaId { get; set; }
         public string? Title { get; set; }
         public int? Index { get; set; }
-        public List<IFormFile>? Images { get; set; }
+        public List<FileUploadInfo>? Images { get; set; }
         public List<string>? ImageUrls { get; set; }
     }
 }

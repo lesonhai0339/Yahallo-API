@@ -34,10 +34,10 @@ namespace YAHALLO.Configuration
                 {
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateAudience = false,
                         ValidateIssuer = false,
-                        ValidateIssuerSigningKey = true,
+                        ValidateAudience = false,
                         ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
                         //RoleClaimType = "role",
                         ValidIssuer = Environment.GetEnvironmentVariable("Authentication_ValidIssuer"),
                         ValidAudience = Environment.GetEnvironmentVariable("Authentication_ValidAudience"),
@@ -45,6 +45,24 @@ namespace YAHALLO.Configuration
                         //ValidIssuer = configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
                         //ValidAudience = configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value,
                         //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!)),
+                    };
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            if (string.IsNullOrEmpty(context.Token))
+                                context.Token = context.Request.Cookies["accessToken"];
+
+                            var accessToken = context.Request.Query["access_token"];
+                            var path = context.HttpContext.Request.Path;
+                            if (string.IsNullOrEmpty(context.Token) &&
+                                !string.IsNullOrEmpty(accessToken) &&
+                                path.StartsWithSegments("/hubs"))
+                            {
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
                     };
                 });
 

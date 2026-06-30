@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums;
 
-namespace YAHALLO.Application.Queries.UserQuery
+namespace YAHALLO.Application.Queries.UserQuery.DTOs
 {
     public static class UserDtoMappingExtension
     {

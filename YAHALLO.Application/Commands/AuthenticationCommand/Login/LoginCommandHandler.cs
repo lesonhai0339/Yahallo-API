@@ -12,7 +12,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
 {
-    public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
+    public class LoginCommandHandler : IRequestHandler<LoginCommand, AuthResult>
     {
         private readonly IUserRepository _userRepository;
         private readonly IUserTokenRepository _userTokenRepository;
@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
             _userTokenRepository = userTokenRepository;
             _token = token;
         }
-        public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
+        public async Task<AuthResult> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             var checkUserExist = await _userRepository.FindSelectAsync(x => x
                 .Where(u => u.UserName == request.UserName)
@@ -61,16 +61,14 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (result > 0)
                     {
-                        return new LoginResponse
+                        return new AuthResult(new LoginResponse
                         {
-                           Id = checkExistToken.Id,
-                           AvatarUri =  checkUserExist.AvatarThumbnail,
-                           Name = checkUserExist.DisplayName,
-                           AccessToken = checkExistToken.AccessToken,
-                           RefreshToken = checkExistToken.RefreshToken ,
-                           Roles = checkUserExist.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
-                           Level = checkUserExist.Level
-                        };
+                            Id = checkExistToken.Id,
+                            AvatarUri = checkUserExist.AvatarThumbnail,
+                            Name = checkUserExist.DisplayName,
+                            Roles = checkUserExist.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
+                            Level = checkUserExist.Level
+                        }, checkExistToken.AccessToken , checkExistToken.RefreshToken);
                     }
                 }
                 throw new UnAuthorizeException("Đăng nhập thất bại");
@@ -92,16 +90,15 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                     if (result > 0)
                     {
-                        return new LoginResponse
-                        {
-                            Id = checkUserExist.Id,
-                            AvatarUri = checkUserExist.AvatarThumbnail,
-                            Name = checkUserExist.DisplayName,
-                            AccessToken = token,
-                            RefreshToken = refreshToken,
-                            Roles = checkUserExist.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
-                            Level = checkUserExist.Level
-                        };
+                        return new AuthResult(
+                            new LoginResponse
+                            {
+                                Id = checkUserExist.Id,
+                                AvatarUri = checkUserExist.AvatarThumbnail,
+                                Name = checkUserExist.DisplayName,
+                                Roles = checkUserExist.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
+                                Level = checkUserExist.Level,
+                            }, token, refreshToken);
                     }
                     else
                     {

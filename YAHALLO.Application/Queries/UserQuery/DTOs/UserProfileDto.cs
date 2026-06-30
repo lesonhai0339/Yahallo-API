@@ -8,7 +8,7 @@ using YAHALLO.Application.Common.Mappings;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.UserEnums;
 
-namespace YAHALLO.Application.Queries.UserQuery
+namespace YAHALLO.Application.Queries.UserQuery.DTOs
 {
     public class UserProfileDto: IMapFrom<UserEntity>
     {

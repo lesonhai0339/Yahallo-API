@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Application.Queries.UserQuery.DTOs;
 using YAHALLO.Domain.Common.Helper;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.UserEnums;

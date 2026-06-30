@@ -1,12 +1,14 @@
+using dotenv.net;
 using Microsoft.AspNetCore.Hosting;
-using Serilog.Events;
 using Serilog;
+using Serilog.Events;
 
 namespace YAHALLO;
 public static class Program
 {
     public static void Main(string[] args)
     {
+        DotEnv.Load(new DotEnvOptions(ignoreExceptions: true, overwriteExistingVars: false));
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
             .Enrich.FromLogContext()

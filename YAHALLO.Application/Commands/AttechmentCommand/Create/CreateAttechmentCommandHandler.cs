@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
@@ -19,20 +20,18 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
     public class CreateAttechmentCommandHandler : IRequestHandler<CreateAttechmentCommand, ResponseResult<string>>
     {
         private readonly ICommentRepository _commentRepository;
-        private readonly IFiles<IFormFile> _files;
         private readonly ICurrentUserService _currentUser;
         private readonly IAttechmentRepository _attechmentRepository;
         private readonly IBlogRepository _blogRepository;
         private MangaEntity? _manga;
         private ChapterEntity? _chapter;
         public CreateAttechmentCommandHandler(ICommentRepository commentRepository,
-            IFiles<IFormFile> files, ICurrentUserService currentUser, IAttechmentRepository attechmentRepository, IBlogRepository blogRepository)
+            ICurrentUserService currentUser, IAttechmentRepository attechmentRepository, IBlogRepository blogRepository)
         {
             _commentRepository = commentRepository;
             _currentUser = currentUser;
             _attechmentRepository = attechmentRepository;
             _blogRepository = blogRepository;
-            _files = files;
             _manga = null;
             _chapter = null;
         }
@@ -81,14 +80,14 @@ namespace YAHALLO.Application.Commands.AttechmentCommand.Create
                     {
                         try
                         {
-                            var path = $"Data\\Comments\\{parent_folder}";
-                            _files.CreateFolder(path);
-                            bool check = await _files.UpLoadimage(request.MediaFile, path);
-                            if (check)
-                            {
-                                url_1 = Path.Combine(path, request.MediaFile.FileName);
-                                attechment.Url1 = url_1;
-                            }
+                            //var path = $"Data\\Comments\\{parent_folder}";
+                            //_files.CreateFolder(path);
+                            //bool check = await _files.UpLoadimage(request.MediaFile, path);
+                            //if (check)
+                            //{
+                            //    url_1 = Path.Combine(path, request.MediaFile.FileName);
+                            //    attechment.Url1 = url_1;
+                            //}
                         }
                         catch (IOException e)
                         {

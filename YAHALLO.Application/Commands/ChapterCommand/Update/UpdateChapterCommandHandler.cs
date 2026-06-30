@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Enums.Base;
@@ -14,14 +15,12 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
         private readonly IMangaRepository _mangaRepository;
         private readonly IChapterRepository _chapterRepository;
         private readonly IImageRepository _imageRepository;
-        private readonly IFiles<IFormFile> _files;
         private readonly ICurrentUserService _currentUser;
-        public UpdateChapterCommandHandler(IMangaRepository mangaRepository, IChapterRepository chapterRepository, IImageRepository imageRepository, IFiles<IFormFile> files, ICurrentUserService currentUser)
+        public UpdateChapterCommandHandler(IMangaRepository mangaRepository, IChapterRepository chapterRepository, IImageRepository imageRepository, ICurrentUserService currentUser)
         {
             _mangaRepository = mangaRepository;
             _chapterRepository = chapterRepository;
             _imageRepository = imageRepository;
-            _files = files;
             _currentUser = currentUser;
         }
 
@@ -65,7 +64,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
             {
                if(request.Images != null || request.ImageUrls != null)
                 {
-                    var listimages =await _imageRepository.FindAllAsync(x =>x.ChapterId == request.ChapterId && x.TypeImage == TypeImage.Chapter, cancellationToken);
+                    var listimages =await _imageRepository.FindAllAsync(x =>x.ChapterId == request.ChapterId, cancellationToken);
                     if (listimages != null)
                     {
                         foreach(var image in listimages) 
@@ -82,14 +81,14 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
                                 }
                                 for(int i=0;i<request.Images.Count;i++)
                                 {
-                                    if (image.BaseUrl.Contains(request.Images[i].FileName))
+                                    if (image.Url.Contains(request.Images[i].FileName))
                                     {
-                                        string oldUrl = new string(image.BaseUrl);
-                                        image.BaseUrl = $"{path}\\{request.Images[i].FileName}";
-                                        image.CloudUrl = request.ImageUrls.FirstOrDefault(x => image.CloudUrl!.Contains(x));
-                                        _imageRepository.Update(image);
-                                        _files.DeleteImage(oldUrl);
-                                        await _files.UpLoadimage(request.Images[i], $"{path}");
+                                        //string oldUrl = new string(image.BaseUrl);
+                                        //image.BaseUrl = $"{path}\\{request.Images[i].FileName}";
+                                        //image.CloudUrl = request.ImageUrls.FirstOrDefault(x => image.CloudUrl!.Contains(x));
+                                        //_imageRepository.Update(image);
+                                        //_files.DeleteImage(oldUrl);
+                                        //await _files.UpLoadimage(request.Images[i], $"{path}");
                                     }
                                 }
                             }
@@ -97,13 +96,13 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
                             {
                                 for (int i = 0; i < request.Images.Count; i++)
                                 {
-                                    if (image.BaseUrl.Contains(request.Images[i].FileName))
+                                    if (image.Url.Contains(request.Images[i].FileName))
                                     {
-                                        string oldUrl = new string(image.BaseUrl);
-                                        image.BaseUrl = $"{path}\\{request.Images[i].FileName}";
-                                        _imageRepository.Update(image);
-                                        _files.DeleteImage(oldUrl);
-                                        await _files.UpLoadimage(request.Images[i], $"{path}");
+                                        //string oldUrl = new string(image.BaseUrl);
+                                        //image.BaseUrl = $"{path}\\{request.Images[i].FileName}";
+                                        //_imageRepository.Update(image);
+                                        //_files.DeleteImage(oldUrl);
+                                        //await _files.UpLoadimage(request.Images[i], $"{path}");
                                     }
                                 }
                             }
@@ -111,10 +110,10 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
                             {
                                 for (int i = 0; i < request.ImageUrls!.Count; i++)
                                 {
-                                    if (image.BaseUrl.Contains(request.ImageUrls[i]))
+                                    if (image.Url.Contains(request.ImageUrls[i]))
                                     {
-                                        image.BaseUrl = request.ImageUrls[i];
-                                        image.CloudUrl = request.ImageUrls[i];
+                                        image.Url = request.ImageUrls[i];
+                                        image.ResizeUrl = request.ImageUrls[i];
                                         _imageRepository.Update(image);
                                     }
                                 }

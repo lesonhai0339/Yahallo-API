@@ -62,6 +62,8 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
                     FileName = request.BgImage.FileName,
                     ContentType = request.BgImage.ContentType,
                     FileSize = request.BgImage.Length,
+                    Width = request.BgImage.Width,  
+                    Height = request.BgImage.Height,
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }

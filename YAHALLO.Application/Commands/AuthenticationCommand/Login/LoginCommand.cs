@@ -8,7 +8,7 @@ using YAHALLO.Application.ResponseTypes;
 
 namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
 {
-    public class LoginCommand: IRequest<LoginResponse>
+    public class LoginCommand: IRequest<AuthResult>
     {
         public LoginCommand(string username, string password) 
         {
@@ -18,4 +18,5 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
         public string UserName { get; set; }
         public string Password { get; set; }
     }
+    public record AuthResult(LoginResponse Info, string AccessToken, string RefreshToken);
 }

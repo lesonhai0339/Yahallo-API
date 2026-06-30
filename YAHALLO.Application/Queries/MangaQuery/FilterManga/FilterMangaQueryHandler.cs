@@ -4,6 +4,7 @@ using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Application.Queries.ChapterQuery;
 using YAHALLO.Application.Queries.MangaQuery.DTOs;
+using YAHALLO.Application.Queries.TagQuery;
 using YAHALLO.Domain.Common.Helper;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.MangaEnums;
@@ -15,14 +16,11 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
     public class FilterMangaQueryHandler : IRequestHandler<FilterMangaQuery, PagedResult<MangaDto>>
     {
         private readonly IMangaRepository _mangaRepository;
-        private readonly IMapper _mapper;
         public FilterMangaQueryHandler(
-            IMangaRepository mangaRepository,
-            IMapper mapper
+            IMangaRepository mangaRepository
             )
         {
             _mangaRepository = mangaRepository;
-            _mapper = mapper;
         }
 
         public async Task<PagedResult<MangaDto>> Handle(FilterMangaQuery request, CancellationToken cancellationToken)
@@ -58,7 +56,13 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
                             Title = m.LastChapter.Title,
                             MangaId = m.Id,
                             MangaName = m.Name
-                        }
+                        },
+                        Tags = m.TagEntities.Select(t => new TagDto
+                        {
+                            Id = t.TagId,
+                            Name = t.Tag.Name,
+                            Description = t.Tag.Description
+                        }).ToList()
                     }),
                 cancellation: cancellationToken);
 

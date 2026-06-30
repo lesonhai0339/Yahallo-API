@@ -10,16 +10,16 @@ namespace YAHALLO.Application.Queries.ChapterQuery
 {
     public static class ChapterImageDtoMappingExtension
     {
-        public static ChapterImageDto MapToChapterImageDto(this ImageEntity entity, IMapper mapper)
+        public static ChapterImageDto MapToChapterImageDto(this ChapterImageEntity entity, IMapper mapper)
             => mapper.Map<ChapterImageDto>(entity);
-        public static ChapterImageDto MapFullToChapterImageDto(this ImageEntity entity, IMapper mapper)
+        public static ChapterImageDto MapFullToChapterImageDto(this ChapterImageEntity entity, IMapper mapper)
         {
             var map = mapper.Map<ChapterImageDto>(entity);
             return map;
         }
-        public static List<ChapterImageDto> MapToChapterImageDtoToList(this ICollection<ImageEntity> entities, IMapper mapper)
+        public static List<ChapterImageDto> MapToChapterImageDtoToList(this ICollection<ChapterImageEntity> entities, IMapper mapper)
             => entities.Select(x => x.MapToChapterImageDto(mapper)).ToList();
-        public static List<ChapterImageDto> MapFullToChapterImageDtoToList(this ICollection<ImageEntity> entities, IMapper mapper)
+        public static List<ChapterImageDto> MapFullToChapterImageDtoToList(this ICollection<ChapterImageEntity> entities, IMapper mapper)
          => entities.Select(x => x.MapFullToChapterImageDto(mapper)).ToList();
     }
 }

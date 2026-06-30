@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Queries.UserQuery.DTOs;
 using YAHALLO.Domain.Enums.UserEnums;
 
 namespace YAHALLO.Application.Queries.UserQuery.Anonymous.FilterUser

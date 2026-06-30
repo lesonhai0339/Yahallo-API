@@ -9,14 +9,14 @@ using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 {
-    public class ImageConfiguration : IEntityTypeConfiguration<ImageEntity>
+    public class MangaImageConfiguration : IEntityTypeConfiguration<ChapterImageEntity>
     {
-        public void Configure(EntityTypeBuilder<ImageEntity> builder)
+        public void Configure(EntityTypeBuilder<ChapterImageEntity> builder)
         {
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Index)
-                .IsUnicode(false)
+                .HasPrecision(6,2)
                 .IsRequired();
 
             builder.HasOne(x => x.ChapterEntity)
@@ -24,12 +24,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .HasForeignKey(x => x.ChapterId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(x => x.ChapterEntity)
-                .WithMany(x => x.ImagesEntities)
-                .HasForeignKey(x => x.ChapterId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.ToTable("Image");
+            builder.ToTable("ChapterImage");
         }
     }
 }

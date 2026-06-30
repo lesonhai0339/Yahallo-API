@@ -17,7 +17,7 @@ namespace YAHALLO.Domain.Entities
         public virtual MangaEntity? MangaEntity { get; set; }
         public virtual ViewCountEntity? ViewCount { get;set; }  
         
-        public virtual ICollection<ImageEntity>? ImagesEntities { get; set; } = new List<ImageEntity>();    
+        public virtual ICollection<ChapterImageEntity>? ImagesEntities { get; set; } = new List<ChapterImageEntity>();    
         public virtual ICollection<CommentEntity>? CommentEntities { get; set; } = new List<CommentEntity>();   
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
         public virtual ICollection<ReactionEntity> Reactions { get; set; } = new List<ReactionEntity>();

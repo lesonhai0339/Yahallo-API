@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Commands.UserCommand.DTOs;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.UserEnums;
 
@@ -21,7 +22,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Create
 
         public string UserName { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public IFormFile? Avatar { get; set; }   
-        public IFormFile? Background { get; set; }  
+        public FileUploadInfo? Avatar { get; set; }   
+        public FileUploadInfo? Background { get; set; }  
     }
 }

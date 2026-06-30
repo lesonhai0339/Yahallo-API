@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Application.Queries.UserQuery.DTOs;
 using YAHALLO.Domain.Enums.ReactionEnums;
 using YAHALLO.Domain.Repositories;
 

@@ -8,7 +8,7 @@ using YAHALLO.Application.ResponseTypes;
 
 namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
 {
-    public class CheckExpiredTokenCommand: IRequest<LoginResponse>
+    public class CheckExpiredTokenCommand: IRequest<CheckExpiredResult>
     {
         public CheckExpiredTokenCommand(string refeshtoken)
         {
@@ -16,4 +16,6 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
         }
         public string Refeshtoken { get;set; }
     }
+    public record CheckExpiredResult(LoginResponse Info, string? AccessToken, string? RefreshToken);
+
 }

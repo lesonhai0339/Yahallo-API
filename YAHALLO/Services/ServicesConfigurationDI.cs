@@ -4,7 +4,7 @@ namespace YAHALLO.Services
 {
     public static class ServicesConfigurationDI
     {
-        public static IServiceCollection ConfigurationServiceDJ(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ConfigurationServiceDI(this IServiceCollection services, IConfiguration configuration)
         {
 
 

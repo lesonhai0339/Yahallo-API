@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Commands.MangaCommand.DTOs;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
@@ -21,8 +22,8 @@ namespace YAHALLO.Application.Commands.MangaCommand.Create
         public MangaType Type { get; set; }
         public CountriesEnum Countries { get; set; }
         public int Season { get; set; }
-        public IFormFile? Avatar { get; set; }
-        public IFormFile? Background { get; set; }
+        public FileUploadInfo? Avatar { get; set; }
+        public FileUploadInfo? Background { get; set; }
         public string? MangaGroupId { get; set; }
     }
 }

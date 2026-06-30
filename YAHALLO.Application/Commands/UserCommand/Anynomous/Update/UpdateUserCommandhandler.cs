@@ -75,6 +75,8 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
                     FileName = request.Avatar.FileName,
                     ContentType = request.Avatar.ContentType,
                     FileSize = request.Avatar.Length,
+                    Width = request.Avatar.Width,   
+                    Height = request.Avatar.Height, 
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
@@ -93,6 +95,8 @@ namespace YAHALLO.Application.Commands.UserCommand.Anynomous.Update
                     FileName = request.Background.FileName,
                     ContentType = request.Background.ContentType,
                     FileSize = request.Background.Length,
+                    Width = request.Background.Width,
+                    Height= request.Background.Height,
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }

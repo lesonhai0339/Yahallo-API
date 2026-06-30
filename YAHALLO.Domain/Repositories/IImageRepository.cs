@@ -7,7 +7,7 @@ using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Repositories
 {
-    public interface IImageRepository: IEFRepository<ImageEntity, ImageEntity>
+    public interface IImageRepository: IEFRepository<ChapterImageEntity, ChapterImageEntity>
     {
     }
 }

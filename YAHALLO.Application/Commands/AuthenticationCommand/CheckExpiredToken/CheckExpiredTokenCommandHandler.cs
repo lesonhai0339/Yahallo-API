@@ -14,7 +14,7 @@ using YAHALLO.Services;
 
 namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
 {
-    public class CheckExpiredTokenCommandHandler : IRequestHandler<CheckExpiredTokenCommand, LoginResponse>
+    public class CheckExpiredTokenCommandHandler : IRequestHandler<CheckExpiredTokenCommand, CheckExpiredResult>
     {
         private readonly IUserTokenRepository _userTokenRepository;
         private readonly IJwtService _jwtService;
@@ -29,7 +29,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
             _userRoleRepository = userRoleRepository;
         }
 
-        public async Task<LoginResponse> Handle(CheckExpiredTokenCommand request, CancellationToken cancellationToken)
+        public async Task<CheckExpiredResult> Handle(CheckExpiredTokenCommand request, CancellationToken cancellationToken)
         {
             var userToken = await _userTokenRepository
                 .FindSelectAsync(x => x
@@ -62,16 +62,14 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                 {
                     if (expired > DateTime.UtcNow)
                     {
-                        return new LoginResponse
+                        return new CheckExpiredResult(new LoginResponse
                         {
                            Id = userToken.Id,
                            AvatarUri =  userToken?.UserEntity.AvatarThumbnail,
                            Name = userToken?.UserEntity.DisplayName,
-                           AccessToken = userToken?.AccessToken,
-                           RefreshToken = userToken?.RefreshToken,
                            Level = userToken?.UserEntity.Level,
                            Roles = userToken?.UserEntity.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList()
-                        };
+                        }, userToken?.AccessToken, userToken?.RefreshToken);
                     }
                     else
                     {
@@ -99,16 +97,14 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                         var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
                         if (result > 0)
                         {
-                            return new LoginResponse
+                            return new CheckExpiredResult(new LoginResponse
                             {
                                 Id = userToken.Id,
                                 AvatarUri = userToken?.UserEntity.AvatarThumbnail,
-                                Name =  userToken?.UserEntity.DisplayName,
-                                AccessToken = userToken!.AccessToken,
-                                RefreshToken = userToken.RefreshToken,
-                                Level = userToken.UserEntity.Level  ,
-                                Roles = userToken.UserEntity.UserRoleEntities.Select(x => x.RoleEntity.RoleName).ToList()                           
-                            };
+                                Name = userToken?.UserEntity.DisplayName,
+                                Level = userToken?.UserEntity.Level,
+                                Roles = userToken?.UserEntity.UserRoleEntities.Select(x => x.RoleEntity.RoleName).ToList()
+                            }, userToken?.AccessToken, userToken?.RefreshToken);
                         }
                         else
                         {

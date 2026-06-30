@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
@@ -20,9 +21,8 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
         private readonly IChapterRepository _chapterRepository;
         private readonly IBlogRepository _blogRepository;
         private readonly IEnums _enums;
-        private readonly IFiles<IFormFile> _files;
         public CreateReportCommandHandler(IReportRepository reportRepository, ICurrentUserService currentUser, IUserRepository userRepository, IMangaRepository mangaRepository, 
-            IChapterRepository chapterRepository, IBlogRepository blogRepository, IEnums enums, IFiles<IFormFile> files)
+            IChapterRepository chapterRepository, IBlogRepository blogRepository, IEnums enums)
         {
             _reportRepository = reportRepository;
             _currentUser = currentUser;
@@ -31,7 +31,6 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
             _chapterRepository = chapterRepository;
             _blogRepository = blogRepository;
             _enums = enums;
-            _files = files;
         }
 
         public async Task<ResponseResult<string>> Handle(CreateReportCommand request, CancellationToken cancellationToken)

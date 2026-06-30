@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using YAHALLO.Application.Common.Mappings;
 using YAHALLO.Application.Queries.ChapterQuery;
+using YAHALLO.Application.Queries.TagQuery;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
@@ -22,7 +23,8 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
         public long? ViewCount { get; set;  }
         public double? Rating { get; set; }
         public string? UserID { get; set; }
-        public ChapterDto? LastestChapter { get; set; } 
+        public ChapterDto? LastestChapter { get; set; }
+        public List<TagDto>? Tags { get; set; }
         public static MangaDto Createmap(
             string id,
             string name,

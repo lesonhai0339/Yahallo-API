@@ -13,7 +13,6 @@ using YAHALLO.Application.Commands.UserCommand.Anynomous.ForgotPassword;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Restore;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Update;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.UserQuery;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.FilterUser;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetAll;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetAllDeleted;
@@ -28,28 +27,47 @@ using YAHALLO.Application.Commands.UserCommand.DTOs;
 using Elastic.Clients.Elasticsearch.Security;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetProfileById;
 using Microsoft.AspNetCore.Authorization;
+using YAHALLO.Common;
+using Microsoft.Extensions.Options;
+using YAHALLO.Application.Queries.UserQuery.DTOs;
+using YAHALLO.Application.Queries.UserQuery;
+using YAHALLO.Application.Queries.UserQuery.Anonymous.GetMe;
 
 namespace YAHALLO.Controllers.Anonymous
 {
     public class UserController : ControllerBase
     {
         private readonly IMediator _Sender;
-        public UserController(IMediator sender)
+        private readonly AuthCookieOptions _options;
+        public UserController(IMediator sender, IOptions<AuthCookieOptions> options)
         {
             _Sender = sender;
+            _options = options.Value;
         }
         [HttpPost]
         [Route("user/check-token-expired")]
+        [EnableRateLimiting(RateLimitingConfiguration.AuthPolicy)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<LoginResponse>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<LoginResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<LoginResponse>>> CheckToken(
-          [FromBody] CheckExpiredTokenCommand command,
           CancellationToken cancellationToken = default)
         {
-            var result = await _Sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<LoginResponse>(result));
+            var refresh = Request.Cookies["refreshToken"];
+            if (string.IsNullOrEmpty(refresh))
+                return Unauthorized();
+
+            var result = await _Sender.Send(new CheckExpiredTokenCommand(refresh), cancellationToken);
+            if(string.IsNullOrEmpty(result.AccessToken) || string.IsNullOrEmpty(result.RefreshToken))
+            {
+                var opts = new CookieOptions { Domain = _options.Domain, Path = "/" };
+                Response.Cookies.Delete("accessToken", opts);
+                Response.Cookies.Delete("refreshToken", opts);
+                return Unauthorized();
+            }
+            Response.SetAuthCookie(result.AccessToken, result.RefreshToken, _options);
+            return Ok(new JsonResponse<LoginResponse>(result.Info));
         }
         [HttpPost]
         [Route("user/forgot-password")]
@@ -82,15 +100,41 @@ namespace YAHALLO.Controllers.Anonymous
         [Route("user/login")]
         [EnableRateLimiting(RateLimitingConfiguration.AuthPolicy)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<LoginResponse>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(JsonResponse<LoginResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<LoginResponse>>> Login(
+        public async Task<ActionResult> Login(
           [FromBody] LoginCommand command,
+          [FromHeader(Name = "X-Client-Type")] string clientType,
           CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<LoginResponse>(result));
+            if(clientType == "web")
+            {
+                Response.SetAuthCookie(result.AccessToken!, result.RefreshToken!, _options);
+                return Ok(new JsonResponse<LoginResponse>(result.Info));
+            }
+            else
+            {
+                return Ok(new JsonResponse<AuthResult>(result));
+            }
+
+        }
+        [HttpPost]
+        [Route("user/logout")]
+        [EnableRateLimiting(RateLimitingConfiguration.AuthPolicy)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<bool>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<bool>>> Logout(
+           [FromHeader(Name = "X-Client-Type")] string clientType,
+           CancellationToken cancellationToken = default)
+        {
+            var opts = new CookieOptions { Domain = _options.Domain, Path = "/" };
+            Response.Cookies.Delete("accessToken", opts);
+            Response.Cookies.Delete("refreshToken", opts);
+            return Ok(new JsonResponse<bool>(true));
         }
         [HttpPost]
         [Route("user/create")]
@@ -259,6 +303,18 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _Sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<UserDto>>(result));
+        }
+        [HttpGet]
+        [Route("user/getme")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<MeResult>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<MeResult>>> Getme(
+         CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(new GetMeQuery { }, cancellationToken);
+            return Ok(new JsonResponse<MeResult>(result));
         }
     }
 }

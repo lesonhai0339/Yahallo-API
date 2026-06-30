@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Enums.ReportEnums;
 
@@ -17,6 +18,6 @@ namespace YAHALLO.Application.Commands.ReportCommand.Create
         public string? Content { get; set; }
         public string? Target { get;set; }
         public ReportEnumType Type { get; set; }
-        public ICollection<IFormFile>? Media { get; set; }
+        public ICollection<FileUploadInfo>? Media { get; set; }
     }
 }

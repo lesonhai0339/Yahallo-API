@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Mappings;
 using YAHALLO.Application.Queries.UserQuery;
+using YAHALLO.Application.Queries.UserQuery.DTOs;
 using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Application.Queries.CommentQuery

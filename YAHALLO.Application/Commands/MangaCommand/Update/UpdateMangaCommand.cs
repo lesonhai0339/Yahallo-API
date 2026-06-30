@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Commands.MangaCommand.DTOs;
+using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.CountryEnums;
@@ -24,8 +25,8 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
         public MangaType? Type { get; set; }
         public CountriesEnum? Countries { get; set; }
         public int Season { get; set; }
-        public IFormFile? Avatar { get; set; }
-        public IFormFile? Background { get; set; }
+        public FileUploadInfo? Avatar { get; set; }
+        public FileUploadInfo? Background { get; set; }
 
     }
 }

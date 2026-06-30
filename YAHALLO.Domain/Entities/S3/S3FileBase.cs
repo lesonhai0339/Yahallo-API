@@ -17,6 +17,8 @@ namespace YAHALLO.Domain.Entities.S3
         public string FileName { get; set; } = string.Empty;
         public string ContentType { get; set; } = string.Empty; 
         public long FileSize { get; set; }
+        public int Width { get; set;  }
+        public int Height { get; set; } 
         public string Etag { get; set; } = string.Empty;
         public string Key { get; set; } = string.Empty;
         public FileUploadStatus Status { get; set; }
