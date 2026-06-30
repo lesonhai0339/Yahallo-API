@@ -7,16 +7,19 @@ using YAHALLO.Domain.Entities.Base;
 
 namespace YAHALLO.Domain.Entities
 {
-    public class UserTokenEntity: RelationEntity
+    public class UserTokenEntity: BaseEntity
     {
-        public string Id { get; set; } = null!;
-        public virtual UserEntity UserEntity { get; set; } = null!;
-        public string AccessToken { get; set; } = null!;
+        public string? IpAddress { get; set; }  
+        public string? UserAgent { get; set; }  
+        public string? DeviceName { get; set; }
+        public DateTime LastUseDate { get; set; }
+        public string? LoginLocation { get; set; }   
         public string RefreshToken { get; set; } = null!;
-        public string? ExpiredRefreshToken { get;set; }
-        public void SetExpiredTime(DateTime date)
-        {
-            this.ExpiredRefreshToken= date.ToShortDateString();
-        }
+        public DateTime ExpiredRefreshToken { get; set; } = DateTime.UtcNow;
+        public bool IsRevoke { get; set; } = false;
+
+        public string UserId { get; set; } = null!;
+        public virtual UserEntity? UserEntity { get; set; }
+
     }
 }

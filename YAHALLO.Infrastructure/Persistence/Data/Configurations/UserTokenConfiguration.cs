@@ -15,9 +15,26 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.RefreshToken)
+                .IsUnique();
+
+            builder.Property(x => x.IpAddress)
+                .HasMaxLength(100);
+
+            builder.Property(x => x.UserAgent)
+                .HasMaxLength(100);  
+
+            builder.Property(x => x.DeviceName)
+                .IsUnicode(true)
+                .HasMaxLength(200);
+
+            builder.Property(x => x.LoginLocation)
+                .IsUnicode (true)
+                .HasMaxLength(200); 
+
             builder.HasOne(x => x.UserEntity)
                 .WithOne(x => x.UserToken)
-                .HasForeignKey<UserTokenEntity>(x => x.Id)
+                .HasForeignKey<UserTokenEntity>(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.ToTable("UserToken");
         }

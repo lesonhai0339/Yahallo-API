@@ -44,7 +44,7 @@ namespace YAHALLO.Services
                 issuer: validIssuer,
                 audience: validAudience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddDays(1),
+                expires: DateTime.UtcNow.AddMinutes(1),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -89,6 +89,20 @@ namespace YAHALLO.Services
                 rng.GetBytes(randomNumber);
                 return Convert.ToBase64String(randomNumber);
             }
+        }
+        public string HashToken(string token)
+        {
+            var bytes = Encoding.UTF8.GetBytes(token);
+            var hashed = SHA256.HashData(bytes);
+            return Convert.ToBase64String(hashed);  
+        }
+        public bool VerifyToken(string saveHash, string providerToken)
+        {
+            var computed = HashToken(providerToken);
+            return CryptographicOperations.FixedTimeEquals(
+                Convert.FromBase64String(saveHash),
+                Convert.FromBase64String(computed)
+                );
         }
     }
 }

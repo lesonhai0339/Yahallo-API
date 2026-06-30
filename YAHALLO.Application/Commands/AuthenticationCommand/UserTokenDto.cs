@@ -9,13 +9,19 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand
 {
     public class UserTokenDto
     {
-        public string? RefreshTokenExpired { get; set; }
-        public string? AccessToken { get; set; }    
-        public string? RefreshToken { get; set; }
-
-        public string Id { get; set; } = string.Empty;  
-        public string? DisplayName { get; set; } = string.Empty;     
-        public string? Avatar { get; set; } = string.Empty;
-        public UserLevel Level { get;set; }
+        public string UserId { get; set; } = null!;
+        public UserLevel Level { get; set; }
+        
+        public List<RoleDto> Roles { get; set; }   = new List<RoleDto>();
+        public string RefreshToken { get; set; } = null!;
+        public DateTime Expired { get; set; }  
+        public bool  IsRevoke { get; set; }
+        public string? Avatar { get; internal set; }
+        public string? DisplayName { get; internal set; }
+    }
+    public class RoleDto
+    {
+        public string Code { get; set; }
+        public string Name { get; set; }
     }
 }

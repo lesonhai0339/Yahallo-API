@@ -44,15 +44,13 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             byte[] salt = new byte[16];
             Array.Copy(hashBytes, 0, salt, 0, 16);
 
-            var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, 10000, HashAlgorithmName.SHA256);
-            byte[] hash = pbkdf2.GetBytes(20);
+            byte[] storedHash = new byte[20];
+            Array.Copy(hashBytes, 16, storedHash, 0, 20);
 
-            for (int i = 0; i < 20; i++)
-            {
-                if (hashBytes[i + 16] != hash[i])
-                    return false;
-            }
-            return true;
+            var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, 10000, HashAlgorithmName.SHA256);
+            byte[] computedHash = pbkdf2.GetBytes(20);
+
+            return CryptographicOperations.FixedTimeEquals(storedHash, computedHash);
         }
     }
 }

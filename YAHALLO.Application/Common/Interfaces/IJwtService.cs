@@ -12,5 +12,7 @@ namespace YAHALLO.Application.Common.Interfaces
         string CreateToken(string ID, List<string> roles);
         string CreateToken(string ID,UserLevel level, List<string> roles);
         string GenerateRefreshToken();
+        string HashToken(string token);
+        bool VerifyToken(string saveHash, string providerToken);
     }
 }

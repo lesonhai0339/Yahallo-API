@@ -1,16 +1,9 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using YAHALLO.Application.Common.Interfaces;
-using YAHALLO.Application.Queries.UserRoleQuery;
 using YAHALLO.Application.ResponseTypes;
-using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
-using YAHALLO.Services;
 
 namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
 {
@@ -18,103 +11,73 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
     {
         private readonly IUserTokenRepository _userTokenRepository;
         private readonly IJwtService _jwtService;
-        private readonly IUserRoleRepository _userRoleRepository;
         public CheckExpiredTokenCommandHandler(
             IUserTokenRepository userTokenRepository, 
-            IJwtService jwtService,
-            IUserRoleRepository userRoleRepository)
+            IJwtService jwtService)
         {
             _userTokenRepository = userTokenRepository;
             _jwtService = jwtService;
-            _userRoleRepository = userRoleRepository;
         }
 
         public async Task<CheckExpiredResult> Handle(CheckExpiredTokenCommand request, CancellationToken cancellationToken)
         {
-            var userToken = await _userTokenRepository
+            var hashedToken = _jwtService.HashToken(request.Refeshtoken);
+
+            var record = await _userTokenRepository
                 .FindSelectAsync(x => x
-                    .Where(x => x.RefreshToken == request.Refeshtoken)
-                    .Select(t => new UserTokenEntity
+                    .Where(x => x.RefreshToken == hashedToken)
+                    .Select(t => new UserTokenDto
                     {
-                        Id = t.Id,
-                        AccessToken = t.AccessToken,
-                        CreateDate = t.CreateDate,
-                        DeleteDate = t.DeleteDate,
-                        ExpiredRefreshToken = t.ExpiredRefreshToken,
-                        IdUserCreate = t.IdUserCreate,
-                        IdUserUpdate = t.IdUserUpdate,
-                        IdUserDelete = t.IdUserDelete,
-                        RefreshToken = t.RefreshToken,
-                        UpdateDate = t.UpdateDate,
-                        UserEntity = new UserEntity
-                        {
-                            Id = t.UserEntity.Id,
-                            DisplayName = t.UserEntity.DisplayName,
-                            AvatarThumbnail = t.UserEntity.AvatarThumbnail,
-                            Level = t.UserEntity.Level,
-                            UserRoleEntities = t.UserEntity.UserRoleEntities
-                        }
+                        UserId = t.UserId,
+                        Avatar = t.UserEntity!.AvatarThumbnail,
+                        DisplayName = t.UserEntity.DisplayName,
+                        Level = t.UserEntity.Level,
+                        Roles =  t.UserEntity.UserRoleEntities.Select(x => new RoleDto 
+                                {  
+                                    Code=  x.RoleEntity.RoleCode.ToString(), 
+                                    Name =  x.RoleEntity.RoleName }
+                        ).ToList(),
+                        Expired = t.ExpiredRefreshToken,
+                        IsRevoke = t.IsRevoke   
+                       
                     }),
-                cancellationToken);
-            if (userToken != null)
+                    cancellationToken);
+
+            if (record == null
+                || record.Expired < DateTime.UtcNow
+                || record.IsRevoke)
+                throw new UnAuthorizeException("Invalid or expired refresh token" );
+
+            var accessToken = _jwtService.CreateToken(record.UserId, record.Level, record.Roles.Select(x => x.Code).ToList());
+            if (accessToken == null) 
+                throw new Exception("Tạo token thất bại");
+
+            var refreshToken = _jwtService.GenerateRefreshToken();
+            var hashedRefreshToken = _jwtService.HashToken(refreshToken);
+
+            var userToken = await _userTokenRepository.FindAsync(x => x.UserId == record.UserId, cancellationToken);
+            if(userToken == null)
+                throw new UnAuthorizeException("Not found user token");
+
+            userToken.RefreshToken = hashedRefreshToken;
+            userToken.ExpiredRefreshToken = DateTime.UtcNow.AddDays(7);
+            userToken.UpdateDate = DateTime.UtcNow;
+            userToken.IdUserUpdate = userToken.UserId;
+            userToken.IsRevoke = false;
+
+
+            _userTokenRepository.Update(userToken);
+            var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+            if (result == 0)
+                throw new Exception("Error when check refresh token");
+            return new CheckExpiredResult(new LoginResponse
             {
-                if (DateTime.TryParse(userToken.ExpiredRefreshToken, out DateTime expired))
-                {
-                    if (expired > DateTime.UtcNow)
-                    {
-                        return new CheckExpiredResult(new LoginResponse
-                        {
-                           Id = userToken.Id,
-                           AvatarUri =  userToken?.UserEntity.AvatarThumbnail,
-                           Name = userToken?.UserEntity.DisplayName,
-                           Level = userToken?.UserEntity.Level,
-                           Roles = userToken?.UserEntity.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList()
-                        }, userToken?.AccessToken, userToken?.RefreshToken);
-                    }
-                    else
-                    {
-                        var roles = await _userRoleRepository.FindAllSelectAsync(x => x
-                            .Where(x => x.UserId == userToken.Id)
-                            .Select(r => new UserRoleDto
-                            {
-                                RoleId = r.RoleId,
-                                UserId = r.UserId,
-                                RoleName = r.RoleEntity.RoleName,
-                                UserName = r.UserEntity.DisplayName,
-                                RoleCode = r.RoleEntity.RoleCode,   
-                            })
-                            , cancellationToken);
-
-                        var newToken = _jwtService.CreateToken(userToken.Id, userToken.UserEntity.Level, roles.Select(x => x.RoleCode.ToString()).ToList());
-                        if (newToken == null) throw new Exception("Tạo token thất bại");
-                        var newRefeshToken = _jwtService.GenerateRefreshToken();
-                        userToken.AccessToken = newToken;
-                        userToken.RefreshToken = newRefeshToken;
-                        userToken.ExpiredRefreshToken = DateTime.UtcNow.AddDays(1).ToString();
-
-                        var u = await _userTokenRepository.FindAsync(x => x.Id == userToken.Id, cancellationToken);
-                        _userTokenRepository.Update(userToken);
-                        var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-                        if (result > 0)
-                        {
-                            return new CheckExpiredResult(new LoginResponse
-                            {
-                                Id = userToken.Id,
-                                AvatarUri = userToken?.UserEntity.AvatarThumbnail,
-                                Name = userToken?.UserEntity.DisplayName,
-                                Level = userToken?.UserEntity.Level,
-                                Roles = userToken?.UserEntity.UserRoleEntities.Select(x => x.RoleEntity.RoleName).ToList()
-                            }, userToken?.AccessToken, userToken?.RefreshToken);
-                        }
-                        else
-                        {
-                            throw new NotFoundException("Lỗi trong quá trình lưu dữ liệu");
-                        }
-                    }
-                }
-                throw new NotFoundException("Thất bại");
-            }
-            throw new NotFoundException("Không tìm thấy");
+                UserId = record.UserId,
+                AvatarUri = record.Avatar,
+                Name = record.DisplayName,
+                Level = record.Level,
+                Roles = record.Roles.Select(x => x.Name).ToList()
+            }, accessToken, refreshToken);
         }
     }
 }

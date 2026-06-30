@@ -24,7 +24,7 @@ namespace YAHALLO.Services
                 Path = baseOpts.Path,
                 Expires = DateTimeOffset.UtcNow.AddDays(1),
             });
-            response.Cookies.Append("refreshToken", access, new CookieOptions
+            response.Cookies.Append("refreshToken", refresh, new CookieOptions
             {
                 HttpOnly = baseOpts.HttpOnly,
                 Secure = baseOpts.Secure,
