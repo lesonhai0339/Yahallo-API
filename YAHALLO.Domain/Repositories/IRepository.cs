@@ -11,5 +11,6 @@ namespace YAHALLO.Domain.Repositories
         void Add(TDomain entity);
         void Update(TDomain entity);
         void Remove(TDomain entity);
+        void RemoveRange(IEnumerable<TDomain> entities);
     }
 }

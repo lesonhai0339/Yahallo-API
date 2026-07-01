@@ -11,5 +11,6 @@ namespace YAHALLO.Infrastructure.Jobs
 
         /// <summary>Expire subscriptions that have passed their end date.</summary>
         Task ExpireSubscriptionsAsync(CancellationToken cancellationToken = default);
+        Task CleanupExpiredTokensAsync(CancellationToken cancellationToken = default);
     }
 }

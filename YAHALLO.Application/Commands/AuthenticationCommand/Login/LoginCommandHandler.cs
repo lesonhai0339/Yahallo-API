@@ -1,4 +1,5 @@
 using MediatR;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,22 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
         private readonly IUserRepository _userRepository;
         private readonly IUserTokenRepository _userTokenRepository;
         private readonly IJwtService _token;
-        public LoginCommandHandler(IUserRepository userRepository, IUserTokenRepository userTokenRepository, IJwtService token)
+        private readonly IIPLookupService _ipLookup;
+        public LoginCommandHandler(IUserRepository userRepository, IUserTokenRepository userTokenRepository, IJwtService token, IIPLookupService ipLookup   )
         {
             _userRepository = userRepository;
             _userTokenRepository = userTokenRepository;
             _token = token;
+            _ipLookup = ipLookup;
         }
         public async Task<AuthResult> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var checkUserExist = await _userRepository.FindSelectAsync(x => x
+            (string? country, string? city) = string.IsNullOrEmpty(request.IpAddress)
+               ? (string.Empty, string.Empty)
+               : _ipLookup.Lookup(request.IpAddress);
+
+
+            var user = await _userRepository.FindSelectAsync(x => x
                 .Where(u => u.UserName == request.UserName)
                 .Select(t => new
                 {
@@ -40,77 +48,47 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
                     }).ToList(),
                 }));
 
-            if (checkUserExist == null)
+            if (user == null)
                 throw new NotFoundException("Tên đăng nhập không chính xác");
 
-            var checkPassword = _userRepository.VerifyPassword(checkUserExist.Password, request.Password);
+            var checkPassword = _userRepository.VerifyPassword(user.Password, request.Password);
             if (checkPassword == false)
                 throw new NotFoundException("Mật khẩu không chính xác");
 
-            var checkExistToken = await _userTokenRepository.FindAsync(x => x.UserId == checkUserExist.Id, cancellationToken);
+            const int maxActiveSessions = 10; 
+            var userToken = await _userTokenRepository.CountAsync(x => x.UserId == user.Id && x.ExpiredRefreshToken > DateTime.UtcNow, cancellationToken);
+            if (userToken > maxActiveSessions)
+                throw new UnauthorizedAccessException("Bạn đã đăng nhập tối đa số thiết bị cho phép. Vui lòng đăng xuất bớt thiết bị khác");
 
+            var accessToken = _token.CreateToken(user.Id, user.Level, user.UserRoleEntities.Select(x => x.RoleEntity.RoleCode.ToString()).ToList());
+            var refreshToken = _token.GenerateRefreshToken();
 
-
-            if (checkExistToken != null)
+            var newUserToken = new UserTokenEntity
             {
-                var accessToken = _token.CreateToken(checkUserExist.Id, checkUserExist.Level, checkUserExist.UserRoleEntities.Select(x => x.RoleEntity.RoleCode.ToString()).ToList());
-                if (accessToken != null)
-                {
-                    var refreshToken = _token.GenerateRefreshToken();
-                    
-                    checkExistToken.RefreshToken = _token.HashToken(refreshToken);
-                    checkExistToken.ExpiredRefreshToken = DateTime.UtcNow.AddDays(7);
+                UserId = user.Id,
+                RefreshToken = _token.HashToken(refreshToken),
+                ExpiredRefreshToken = DateTime.UtcNow.AddDays(7),
+                IpAddress = request.IpAddress,
+                UserAgent = request.UserAgent,
+                DeviceName = request.DeviceName,
+                LoginLocation = $"{city}, {country}",
+            };
 
-                    _userTokenRepository.Update(checkExistToken);
-                    var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+            _userTokenRepository.Add(newUserToken);
+            var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+            if (result == 0)
+                throw new UnAuthorizeException("User token cannot create");
 
-                    if (result > 0)
-                    {
-                        return new AuthResult(new LoginResponse
-                        {
-                            UserId = checkExistToken.UserId,
-                            AvatarUri = checkUserExist.AvatarThumbnail,
-                            Name = checkUserExist.DisplayName,
-                            Roles = checkUserExist.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
-                            Level = checkUserExist.Level
-                        }, accessToken, refreshToken);
-                    }
-                }
-                throw new UnAuthorizeException("Đăng nhập thất bại");
-            }
-            else
-            {
-                var token = _token.CreateToken(checkUserExist.Id, checkUserExist.Level, checkUserExist.UserRoleEntities.Select(x => x.RoleEntity.RoleCode.ToString()).ToList());
-                if (token != null)
+            return new AuthResult(
+                new LoginResponse
                 {
-                    var refreshToken = _token.GenerateRefreshToken();
-                    var userToken = new UserTokenEntity
-                    {
-                        UserId = checkUserExist.Id,
-                        RefreshToken = _token.HashToken(refreshToken),
-                        ExpiredRefreshToken = DateTime.UtcNow.AddDays(7)
-                    };
-                    _userTokenRepository.Add(userToken);
-                    var result = await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-                    if (result > 0)
-                    {
-                        return new AuthResult(
-                            new LoginResponse
-                            {
-                                UserId = checkUserExist.Id,
-                                AvatarUri = checkUserExist.AvatarThumbnail,
-                                Name = checkUserExist.DisplayName,
-                                Roles = checkUserExist.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
-                                Level = checkUserExist.Level,
-                            }, token, refreshToken);
-                    }
-                    else
-                    {
-                        throw new UnAuthorizeException("Đăng nhập thất bại");
-                    }
-                }
-                throw new UnAuthorizeException("Đăng nhập thất bại");
-            }
+                    Id = user.Id,
+                    AvatarUri = user.AvatarThumbnail,
+                    Name = user.DisplayName,
+                    Roles = user.UserRoleEntities.Select(r => r.RoleEntity.RoleName).ToList(),
+                    Level = user.Level,
+                    SessionId = newUserToken.Id
+                }, accessToken, refreshToken);
         }
     }
 }

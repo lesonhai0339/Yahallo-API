@@ -9,5 +9,6 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Logout
 {
     public class LogoutCommand: IRequest<bool>
     {
+        public string SessionId { get; init; } = null!;
     }
 }

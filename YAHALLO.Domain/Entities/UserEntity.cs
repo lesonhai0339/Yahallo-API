@@ -47,7 +47,6 @@ namespace YAHALLO.Domain.Entities
         public string? CountryId { get; set; }
         public virtual CountryEntity? Country { get; set; }  
 
-        public virtual UserTokenEntity? UserToken { get; set; }
 
         public virtual UserBlacklistEntity? Blacklist { get; set;  }
 
@@ -55,13 +54,15 @@ namespace YAHALLO.Domain.Entities
 
         public virtual UserSettingsEntity? Settings { get; set; }
 
-        public virtual ICollection<UserRoleEntity> UserRoleEntities { get; set; } = new List<UserRoleEntity>    ();
+        public virtual ICollection<UserTokenEntity> UserTokens { get; set; } = new List<UserTokenEntity>();
+
+        public virtual ICollection<UserRoleEntity> UserRoleEntities { get; set; } = new List<UserRoleEntity>();
         public virtual ICollection<MangaEntity> MangaEntities { get;set; } = new List<MangaEntity> ();
-        public virtual ICollection<CommentEntity> CommentEntities { get; set; } = new List<CommentEntity>       ();
+        public virtual ICollection<CommentEntity> CommentEntities { get; set; } = new List<CommentEntity>();
         public virtual ICollection<CommentEntity> ReplyComment { get; set; } = new List<CommentEntity>();  
         public virtual ICollection<FollowEntity> FollowEntities { get; set;} = new List<FollowEntity> ();
         public virtual ICollection<ReactionEntity> Reactions { get; set; } = new List<ReactionEntity>   ();
-        public virtual ICollection<ReportEntity> Reports { get; set; } = new List<ReportEntity>     ();
+        public virtual ICollection<ReportEntity> Reports { get; set; } = new List<ReportEntity>();
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
         public virtual ICollection<BookmarkEntity> Bookmarks { get; set; } = new List<BookmarkEntity>();
 

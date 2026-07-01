@@ -32,6 +32,8 @@ using Microsoft.Extensions.Options;
 using YAHALLO.Application.Queries.UserQuery.DTOs;
 using YAHALLO.Application.Queries.UserQuery;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetMe;
+using System.Net;
+using YAHALLO.Application.Commands.AuthenticationCommand.Logout;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -108,6 +110,16 @@ namespace YAHALLO.Controllers.Anonymous
           [FromHeader(Name = "X-Client-Type")] string clientType,
           CancellationToken cancellationToken = default)
         {
+            var ip = Request.Headers["CF-Connecting-IP"].ToString();
+            if (string.IsNullOrEmpty(ip))
+            {
+                ip = HttpContext.Connection.RemoteIpAddress?.ToString() ?? string.Empty;
+            }
+            var userAgent = Request.Headers["User-Agent"].ToString();
+
+            command.IpAddress = ip;
+            command.UserAgent = userAgent;
+
             var result = await _Sender.Send(command, cancellationToken);
             if(clientType == "web")
             {
@@ -128,13 +140,15 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<bool>>> Logout(
-           [FromHeader(Name = "X-Client-Type")] string clientType,
+           [FromBody] LogoutCommand command,
            CancellationToken cancellationToken = default)
         {
+
+            var result = await _Sender.Send(command, cancellationToken);
             var opts = new CookieOptions { Domain = _options.Domain, Path = "/" };
             Response.Cookies.Delete("accessToken", opts);
             Response.Cookies.Delete("refreshToken", opts);
-            return Ok(new JsonResponse<bool>(true));
+            return Ok(new JsonResponse<bool>(result));
         }
         [HttpPost]
         [Route("user/create")]

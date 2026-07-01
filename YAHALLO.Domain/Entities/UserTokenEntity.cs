@@ -15,8 +15,9 @@ namespace YAHALLO.Domain.Entities
         public DateTime LastUseDate { get; set; }
         public string? LoginLocation { get; set; }   
         public string RefreshToken { get; set; } = null!;
+        public bool IsRevoked { get; set; } = false;
+
         public DateTime ExpiredRefreshToken { get; set; } = DateTime.UtcNow;
-        public bool IsRevoke { get; set; } = false;
 
         public string UserId { get; set; } = null!;
         public virtual UserEntity? UserEntity { get; set; }

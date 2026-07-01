@@ -15,7 +15,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand
         public List<RoleDto> Roles { get; set; }   = new List<RoleDto>();
         public string RefreshToken { get; set; } = null!;
         public DateTime Expired { get; set; }  
-        public bool  IsRevoke { get; set; }
+        public bool  IsRevoked { get; set; }
         public string? Avatar { get; internal set; }
         public string? DisplayName { get; internal set; }
     }

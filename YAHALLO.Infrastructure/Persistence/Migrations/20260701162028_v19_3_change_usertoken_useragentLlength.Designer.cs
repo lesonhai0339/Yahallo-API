@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YAHALLO.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using YAHALLO.Infrastructure.Data;
 namespace YAHALLO.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260701162028_v19_3_change_usertoken_useragentLlength")]
+    partial class v19_3_change_usertoken_useragentLlength
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -502,7 +505,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.ToTable("Country", (string)null);
 
-                   /* b.HasData(
+                    b.HasData(
                         new
                         {
                             Id = "00000000-0000-0000-0000-000000000001",
@@ -3241,7 +3244,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                             Name = "ZW",
                             PhoneCode = 263,
                             VietnameseName = "Zimbabwe"
-                        });*/
+                        });
                 });
 
             modelBuilder.Entity("YAHALLO.Domain.Entities.FollowEntity", b =>

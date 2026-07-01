@@ -39,7 +39,10 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
         {
             GetSet().Remove((TPersistence)entity);
         }
-
+        public virtual void RemoveRange(IEnumerable<TDomain> entities)
+        {
+            GetSet().RemoveRange((List<TPersistence>)entities);
+        }
         public virtual void Add(TDomain entity)
         {
             GetSet().Add((TPersistence)entity);
@@ -134,7 +137,6 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
                 pageSize,
                 cancellationToken);
         }
-
         public virtual async Task<int> CountAsync(
             Expression<Func<TPersistence, bool>> filterExpression,
             CancellationToken cancellationToken = default)

@@ -19,10 +19,10 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .IsUnique();
 
             builder.Property(x => x.IpAddress)
-                .HasMaxLength(100);
+                .HasMaxLength(200);
 
             builder.Property(x => x.UserAgent)
-                .HasMaxLength(100);  
+                .HasMaxLength(450);  
 
             builder.Property(x => x.DeviceName)
                 .IsUnicode(true)
@@ -30,12 +30,13 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 
             builder.Property(x => x.LoginLocation)
                 .IsUnicode (true)
-                .HasMaxLength(200); 
+                .HasMaxLength(450); 
 
             builder.HasOne(x => x.UserEntity)
-                .WithOne(x => x.UserToken)
-                .HasForeignKey<UserTokenEntity>(x => x.UserId)
+                .WithMany(x => x.UserTokens)
+                .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
             builder.ToTable("UserToken");
         }
     }

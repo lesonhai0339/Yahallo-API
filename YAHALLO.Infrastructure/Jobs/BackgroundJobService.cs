@@ -16,13 +16,14 @@ namespace YAHALLO.Infrastructure.Jobs
         private readonly ISubscriptionRepository _subscriptionRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<BackgroundJobService> _logger;
-
+        private readonly IUserTokenRepository _userTokenRepository;
         public BackgroundJobService(
             IFollowRepository followRepository,
             INotificationRepository notificationRepository,
             IMangaRepository mangaRepository,
             IChapterRepository chapterRepository,
             ISubscriptionRepository subscriptionRepository,
+            IUserTokenRepository userTokenRepository,
             IUnitOfWork unitOfWork,
             ILogger<BackgroundJobService> logger)
         {
@@ -31,6 +32,7 @@ namespace YAHALLO.Infrastructure.Jobs
             _mangaRepository = mangaRepository;
             _chapterRepository = chapterRepository;
             _subscriptionRepository = subscriptionRepository;
+            _userTokenRepository = userTokenRepository;
             _unitOfWork = unitOfWork;
             _logger = logger;
         }
@@ -94,6 +96,24 @@ namespace YAHALLO.Infrastructure.Jobs
 
             var updated = await _unitOfWork.SaveChangesAsync(cancellationToken);
             _logger.LogInformation("Expired {Count} subscriptions", updated);
+        }
+
+        public async Task CleanupExpiredTokensAsync(CancellationToken cancellationToken = default)
+        {
+            const int batchSize = 1000;
+            int deleted;
+            do
+            {
+                var expiredTokens = await _userTokenRepository.FindAllAsync(x => x.ExpiredRefreshToken < DateTime.UtcNow, 0, batchSize, cancellationToken);
+                deleted = expiredTokens.Count();
+                if(deleted > 0)
+                {
+                    _userTokenRepository.RemoveRange(expiredTokens);
+                    await _userTokenRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+                }
+            }
+            while (deleted == batchSize);
+            _logger.LogInformation("Cleanup expired tokens");
         }
     }
 }

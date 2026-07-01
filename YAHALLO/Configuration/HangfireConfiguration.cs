@@ -1,4 +1,4 @@
-//AI generated
+﻿//AI generated
 using Hangfire;
 using MediatR;
 using YAHALLO.Application.Queries.MangaQuery.GetHomepage;
@@ -21,6 +21,13 @@ namespace YAHALLO.Configuration
             "homepage-cache-warmup",
             mediator => mediator.Send(new GetHomepageRequest(), CancellationToken.None),
             "*/1 * * * *");
+            //* * * * *
+            //│ │ │ │ │
+            //│ │ │ │ └── Ngay trong tuan(date in week(0 - 6, 0 = Chu nhat)
+            //│ │ │ └──── Thang(month)(1 - 12)
+            //│ │ └────── Ngay trong thang(date in month)(1 - 31)
+            //│ └──────── gio(hour)(0 - 23)
+            //└────────── phut(minute)(0 - 59)
 
             // Register recurring jobs
             RecurringJob.AddOrUpdate<IBackgroundJobService>(
@@ -32,6 +39,11 @@ namespace YAHALLO.Configuration
                 "cleanup-soft-deleted",
                 svc => svc.CleanupSoftDeletedRecordsAsync(30, CancellationToken.None),
                 Cron.Weekly);
+
+            RecurringJob.AddOrUpdate<IBackgroundJobService>(
+                "cleanup-expired-tokens",
+                svc => svc.CleanupExpiredTokensAsync(CancellationToken.None),
+                "0 3 * * *" );
 
             return app;
         }

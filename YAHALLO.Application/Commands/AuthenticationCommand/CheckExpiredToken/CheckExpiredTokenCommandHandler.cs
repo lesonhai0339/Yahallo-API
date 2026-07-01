@@ -38,14 +38,14 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                                     Name =  x.RoleEntity.RoleName }
                         ).ToList(),
                         Expired = t.ExpiredRefreshToken,
-                        IsRevoke = t.IsRevoke   
+                        IsRevoked = t.IsRevoked   
                        
                     }),
                     cancellationToken);
 
             if (record == null
                 || record.Expired < DateTime.UtcNow
-                || record.IsRevoke)
+                || record.IsRevoked)
                 throw new UnAuthorizeException("Invalid or expired refresh token" );
 
             var accessToken = _jwtService.CreateToken(record.UserId, record.Level, record.Roles.Select(x => x.Code).ToList());
@@ -63,7 +63,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
             userToken.ExpiredRefreshToken = DateTime.UtcNow.AddDays(7);
             userToken.UpdateDate = DateTime.UtcNow;
             userToken.IdUserUpdate = userToken.UserId;
-            userToken.IsRevoke = false;
+            userToken.IsRevoked = false;
 
 
             _userTokenRepository.Update(userToken);
@@ -72,11 +72,12 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                 throw new Exception("Error when check refresh token");
             return new CheckExpiredResult(new LoginResponse
             {
-                UserId = record.UserId,
+                Id = record.UserId,
                 AvatarUri = record.Avatar,
                 Name = record.DisplayName,
                 Level = record.Level,
-                Roles = record.Roles.Select(x => x.Name).ToList()
+                Roles = record.Roles.Select(x => x.Name).ToList(),
+                SessionId = userToken.Id
             }, accessToken, refreshToken);
         }
     }

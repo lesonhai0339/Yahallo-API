@@ -21,6 +21,7 @@ namespace YAHALLO.Configuration
             IConfiguration configuration)
         {
             DotEnv.Load();
+            services.AddSingleton<IIPLookupService, IPLookupService>();
             services.AddTransient<ICurrentUserService, CurrentUserService>();
             services.AddTransient<IJwtService, JwtService>();
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;

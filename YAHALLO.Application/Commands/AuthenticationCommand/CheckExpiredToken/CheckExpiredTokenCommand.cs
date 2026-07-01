@@ -16,6 +16,6 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
         }
         public string Refeshtoken { get;set; }
     }
-    public record CheckExpiredResult(LoginResponse Info, string? AccessToken, string? RefreshToken);
+    public record CheckExpiredResult(LoginResponse Info, string AccessToken, string RefreshToken);
 
 }
