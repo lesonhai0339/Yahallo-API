@@ -13,16 +13,19 @@ namespace YAHALLO.Services
     public class JwtService : IJwtService
     {
         private readonly IConfiguration _configuration;
+        private readonly string? _secret;
+        private readonly string? _validIssuer;
+        private readonly string? _validAudience;
         public JwtService(IConfiguration configuration)
         {
+            DotEnv.Load();
             _configuration = configuration;
+            _secret = Environment.GetEnvironmentVariable("Authentication_SecretKey");
+            _validIssuer = Environment.GetEnvironmentVariable("Authentication_ValidIssuer");
+            _validAudience = Environment.GetEnvironmentVariable("Authentication_ValidAudience");
         }
         public string CreateToken(string ID, List<string> roles)
         {
-            DotEnv.Load();
-            var secret = Environment.GetEnvironmentVariable("Authentication_SecretKey");
-            var validIssuer = Environment.GetEnvironmentVariable("Authentication_ValidIssuer");
-            var validAudience = Environment.GetEnvironmentVariable("Authentication_ValidAudience");
             //var secret = _configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!;
             //var validIssuer = _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value;
             //var validAudience = _configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value;
@@ -37,12 +40,12 @@ namespace YAHALLO.Services
                 claims.Add(new Claim(ClaimTypes.Role, role));
                 claims.Add(new Claim("UserRole", role));
             }
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret!));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
            
             var token = new JwtSecurityToken(
-                issuer: validIssuer,
-                audience: validAudience,
+                issuer: _validIssuer,
+                audience: _validAudience,
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(1),
                 signingCredentials: creds);
@@ -51,10 +54,6 @@ namespace YAHALLO.Services
         }
         public string CreateToken(string ID,UserLevel level, List<string> roles)
         {
-            DotEnv.Load();
-            var secret = Environment.GetEnvironmentVariable("Authentication_SecretKey");
-            var validIssuer = Environment.GetEnvironmentVariable("Authentication_ValidIssuer");
-            var validAudience = Environment.GetEnvironmentVariable("Authentication_ValidAudience");
             //var secret = _configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!;
             //var validIssuer = _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value;
             //var validAudience = _configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value;
@@ -69,14 +68,14 @@ namespace YAHALLO.Services
                 claims.Add(new Claim(ClaimTypes.Role, role));
                 claims.Add(new Claim("UserRole", role));
             }
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret!));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: validIssuer,
-                audience: validAudience,
+                issuer: _validIssuer,
+                audience: _validAudience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddDays(1),
+                expires: DateTime.UtcNow.AddMinutes(1),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

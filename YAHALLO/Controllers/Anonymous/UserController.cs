@@ -34,6 +34,7 @@ using YAHALLO.Application.Queries.UserQuery;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetMe;
 using System.Net;
 using YAHALLO.Application.Commands.AuthenticationCommand.Logout;
+using YAHALLO.Application.Common.Authorization;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -54,13 +55,15 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<LoginResponse>>> CheckToken(
+            [FromBody] CheckExpiredTokenCommand command,
           CancellationToken cancellationToken = default)
         {
             var refresh = Request.Cookies["refreshToken"];
             if (string.IsNullOrEmpty(refresh))
                 return Unauthorized();
 
-            var result = await _Sender.Send(new CheckExpiredTokenCommand(refresh), cancellationToken);
+            command.Refeshtoken = refresh;
+            var result = await _Sender.Send(command, cancellationToken);
             if(string.IsNullOrEmpty(result.AccessToken) || string.IsNullOrEmpty(result.RefreshToken))
             {
                 var opts = new CookieOptions { Domain = _options.Domain, Path = "/" };
@@ -86,6 +89,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<string>(result));
         }
         [HttpPost]
+        [Authorize]
         [Route("user/change-password")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
@@ -164,6 +168,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<CreateUserResponseDto>(result));
         }
         [HttpPost]
+        [Authorize]
         [Route("user/restore")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
@@ -177,6 +182,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<string>(result));
         }
         [HttpPut]
+        [Authorize]
         [Route("user/update")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<UpdateUserResult>), StatusCodes.Status201Created)]
@@ -190,6 +196,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<UpdateUserResult>(result));
         }
         [HttpDelete]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/delete")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
@@ -203,6 +210,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<string>(result));
         }
         [HttpGet]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<List<UserDto>>), StatusCodes.Status201Created)]
@@ -215,6 +223,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<List<UserDto>>(result));
         }
         [HttpGet]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<List<UserDto>>), StatusCodes.Status201Created)]
@@ -227,6 +236,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<List<UserDto>>(result));
         }
         [HttpGet]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<UserDto>>), StatusCodes.Status201Created)]
@@ -240,6 +250,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<PagedResult<UserDto>>(result));
         }
         [HttpGet]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all-deleted-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<UserDto>>), StatusCodes.Status201Created)]
@@ -253,6 +264,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<PagedResult<UserDto>>(result));
         }
         [HttpGet]
+        [Authorize]
         [Route("user/get-by-id")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<UserDto>), StatusCodes.Status201Created)]
@@ -266,6 +278,7 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<UserDto>(result));
         }
         [HttpGet]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-by-id-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<UserDto>), StatusCodes.Status201Created)]
@@ -291,8 +304,8 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _Sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<List<UserDto>>(result));
         }
-        [Authorize]
         [HttpGet]
+        [Authorize]
         [Route("user/get-profile")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<UserProfileDto>), StatusCodes.Status201Created)]

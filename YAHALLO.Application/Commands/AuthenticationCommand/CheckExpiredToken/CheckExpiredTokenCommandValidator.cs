@@ -15,6 +15,10 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                 .NotNull()
                 .NotEmpty()
                 .WithMessage("Refesh token không thể bỏ trống");
+            RuleFor(x => x.SessionId)
+                .NotNull()
+                .NotEmpty()
+                .WithMessage("Session id cannot be null or empty");
         }
     }
 }

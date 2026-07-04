@@ -10,11 +10,8 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
 {
     public class CheckExpiredTokenCommand: IRequest<CheckExpiredResult>
     {
-        public CheckExpiredTokenCommand(string refeshtoken)
-        {
-            Refeshtoken = refeshtoken;
-        }
-        public string Refeshtoken { get;set; }
+        public string Refeshtoken { get; set; } 
+        public string SessionId { get; init; } 
     }
     public record CheckExpiredResult(LoginResponse Info, string AccessToken, string RefreshToken);
 

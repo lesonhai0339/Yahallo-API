@@ -42,8 +42,9 @@ namespace YAHALLO.Configuration
                         //RoleClaimType = "role",
                         ValidIssuer = Environment.GetEnvironmentVariable("Authentication_ValidIssuer"),
                         ValidAudience = Environment.GetEnvironmentVariable("Authentication_ValidAudience"),
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("Authentication_SecretKey")!))
-                        //ValidIssuer = configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("Authentication_SecretKey")!)),
+                        ClockSkew = TimeSpan.Zero // Optional: Set clock skew to zero for immediate expiration validation   
+                        //ValidIssuer = configuration.GetSection("Authentication:Schemes:Bearer:ValidIss    uer").Value,
                         //ValidAudience = configuration.GetSection("Authentication:Schemes:Bearer:ValidAudience").Value,
                         //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("Authentication:Schemes:Bearer:SecretKey").Value!)),
                     };

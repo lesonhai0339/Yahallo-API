@@ -14,7 +14,7 @@ namespace YAHALLO.Application.ResponseTypes
         public string? Name { get; set; }
         public List<string>? Roles { get; set; }
         public UserLevel? Level { get; set; }
-        public string SessionId { get; set; }
+        public string SessionId { get; set; } = null!;
 
     }
 }

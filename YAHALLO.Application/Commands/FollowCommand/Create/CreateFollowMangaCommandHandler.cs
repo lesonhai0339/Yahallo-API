@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.FollowCommand.Create
         public async Task<ResponseResult<string>> Handle(CreateFollowMangaCommand request, CancellationToken cancellationToken)
         {
             var followExist = await _followRepository
-                .FindAsync(x => x.UserId == request.UserId && x.MangaId == request.MangaId, cancellationToken);
+                .FindAsync(x => x.UserId == request.UserId && x.MangaId == request.MangaId && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             //Exist but deleted => restore  
             if (followExist != null)
             {

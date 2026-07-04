@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using YAHALLO.Application.Common.Authorization;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.MangaCommand.Create;
 using YAHALLO.Application.Commands.MangaCommand.Delete;
 using YAHALLO.Application.Commands.MangaCommand.DTOs;
 using YAHALLO.Application.Commands.MangaCommand.Restore;
 using YAHALLO.Application.Commands.MangaCommand.Update;
+using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Application.Queries.MangaQuery.FilterManga;
@@ -17,6 +17,7 @@ using YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetAllPagination;
 using YAHALLO.Application.Queries.MangaQuery.GetDetail;
 using YAHALLO.Application.Queries.MangaQuery.GetHomepage;
+using YAHALLO.Application.Queries.MangaQuery.GetInteraction;
 using YAHALLO.Application.Queries.MangaQuery.GetStatus;
 using YAHALLO.Application.Queries.MangaQuery.GetTrending;
 using YAHALLO.Domain.Common.Interfaces;
@@ -197,6 +198,19 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<MangaStatusDto>(result));
+        }
+        [HttpGet]
+        [Authorize]
+        [Route("manga/interaction")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<GetInteractionQueryResult>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<JsonResponse<GetInteractionQueryResult>>> GetInteraction(
+           [FromQuery] GetInteractionQuery query,
+           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<GetInteractionQueryResult>(result));
         }
     }
 }
