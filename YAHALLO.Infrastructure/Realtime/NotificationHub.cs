@@ -1,12 +1,26 @@
-//AI generated
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using YAHALLO.Application.Commands.Hubs.UpdateLastActive;
 
-namespace YAHALLO.Hubs
+namespace YAHALLO.Infrastructure.Realtime
 {
     [Authorize]
     public class NotificationHub : Hub
     {
+        private readonly IMediator _sender;
+        private readonly ILogger<NotificationHub> _logger;
+        public NotificationHub(IMediator sender, ILogger<NotificationHub> logger)
+        {
+            _sender = sender;
+            _logger = logger;
+        }
         public override async Task OnConnectedAsync()
         {
             var userId = Context.UserIdentifier;
@@ -23,6 +37,20 @@ namespace YAHALLO.Hubs
                 await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"user_{userId}");
 
             await base.OnDisconnectedAsync(exception);
+        }
+        public async Task<bool> Ping()
+        {
+            try
+            {
+                var userId = Context.UserIdentifier;
+                if (string.IsNullOrEmpty(userId)) return false;
+                return await _sender.Send(new UpdateLastActiveCommand { UserId = userId });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ping failed for user {UserId}", Context.UserIdentifier);
+                throw new HubException("Ping failed");
+            }
         }
 
         /// <summary>Push a notification to a specific user from server-side code.</summary>

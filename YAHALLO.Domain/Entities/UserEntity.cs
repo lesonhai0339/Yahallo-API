@@ -40,6 +40,7 @@ namespace YAHALLO.Domain.Entities
         public string Password { get; set; } = string.Empty;
         public UserStatus Status { get; set; }
         public UserLevel Level { get; set; }
+        public DateTime LastActiveTime { get; set; } = DateTime.UtcNow;
         public string? AvatarThumbnail { get; set; } = string.Empty; 
         public string? BackgroundThumbnail { get; set; } = string.Empty;    
 

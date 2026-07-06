@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
         public string? MangaBackground{ get; set; }
         public long? ViewCount { get; set;  }
         public double? Rating { get; set; }
-        public string? UserID { get; set; }
+        public string? UserId { get; set; }
         public ChapterDto? LastestChapter { get; set; }
         public List<TagDto>? Tags { get; set; }
         public static MangaDto Createmap(
@@ -50,7 +50,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
                 Season = season,
                 MangaThumbnail = thumbnail,
                 MangaBackground = background,   
-                UserID = userid,
+                UserId = userid,
             };
         }
         public void Mapping(Profile profile)

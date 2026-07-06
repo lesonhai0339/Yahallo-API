@@ -1,17 +1,16 @@
 ﻿//AI generated
-using dotenv.net;
 using Hangfire;
 using Hangfire.SqlServer;
+using Microsoft.AspNetCore.SignalR;
 using Serilog;
-using SixLabors.ImageSharp;
 using YAHALLO.Application;
 using YAHALLO.Application.Common.Caching;
 using YAHALLO.Application.Services.MailService;
 using YAHALLO.Common;
 using YAHALLO.Configuration;
 using YAHALLO.Filters;
-using YAHALLO.Hubs;
 using YAHALLO.Infrastructure;
+using YAHALLO.Infrastructure.Realtime;
 using YAHALLO.Services;
 
 namespace YAHALLO
@@ -45,7 +44,7 @@ namespace YAHALLO
             services.AddEmailService(Configuration);
             services.ConfigurationServiceDI(Configuration);
             services.ConfigureRateLimiting();
-            services.AddSignalR();
+            services.AddSignalR(o => o.AddFilter<HubRateLimitFilter>());
 
             //var hangfireConn = Environment.GetEnvironmentVariable("Cloud_Server");
             var hangfireConn = Environment.GetEnvironmentVariable("Server");

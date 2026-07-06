@@ -45,7 +45,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
                         Season = m.Season,
                         MangaThumbnail = m.MangaThumbnail,
                         MangaBackground = m.MangaBackground,
-                        UserID = m.UserId,
+                        UserId = m.UserId,
                         ViewCount = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
                         Rating = m.RatingEntities.Select(x => (int?)x.Rating).Average(),
                         LastestChapter = m.LastChapter == null ? null : new ChapterDto

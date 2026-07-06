@@ -20,7 +20,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
             map.DisplayName = (entity.Name + " " +  entity.SeasonName).Trim();
             map.MangaThumbnail = entity.MangaThumbnail;
             map.MangaBackground = entity.MangaBackground;   
-            map.UserID = entity.IdUserCreate ?? "";
+            map.UserId = entity.IdUserCreate ?? "";
             map.Level = entity.Level;
             map.Status = entity.Status;
             map.Type = entity.Type;

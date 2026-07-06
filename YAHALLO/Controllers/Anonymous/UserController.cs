@@ -1,18 +1,26 @@
 ﻿//AI generated - added rate limiting
+using Elastic.Clients.Elasticsearch.Security;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.Extensions.Options;
+using System.Net;
 using System.Net.Mime;
-using YAHALLO.Configuration;
 using YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken;
 using YAHALLO.Application.Commands.AuthenticationCommand.Login;
+using YAHALLO.Application.Commands.AuthenticationCommand.Logout;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.ChangePassword;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Create;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Delete;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.ForgotPassword;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Restore;
 using YAHALLO.Application.Commands.UserCommand.Anynomous.Update;
+using YAHALLO.Application.Commands.UserCommand.DTOs;
+using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Queries.UserQuery;
+using YAHALLO.Application.Queries.UserQuery.Admin.GetUserDetail;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.FilterUser;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetAll;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetAllDeleted;
@@ -21,20 +29,13 @@ using YAHALLO.Application.Queries.UserQuery.Anonymous.GetAllPagination;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetById;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetByIdDeleted;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetByName;
-using YAHALLO.Application.ResponseTypes;
-using YAHALLO.Services;
-using YAHALLO.Application.Commands.UserCommand.DTOs;
-using Elastic.Clients.Elasticsearch.Security;
-using YAHALLO.Application.Queries.UserQuery.Anonymous.GetProfileById;
-using Microsoft.AspNetCore.Authorization;
-using YAHALLO.Common;
-using Microsoft.Extensions.Options;
-using YAHALLO.Application.Queries.UserQuery.DTOs;
-using YAHALLO.Application.Queries.UserQuery;
 using YAHALLO.Application.Queries.UserQuery.Anonymous.GetMe;
-using System.Net;
-using YAHALLO.Application.Commands.AuthenticationCommand.Logout;
-using YAHALLO.Application.Common.Authorization;
+using YAHALLO.Application.Queries.UserQuery.Anonymous.GetProfileById;
+using YAHALLO.Application.Queries.UserQuery.DTOs;
+using YAHALLO.Application.ResponseTypes;
+using YAHALLO.Common;
+using YAHALLO.Configuration;
+using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
 {
@@ -330,6 +331,20 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _Sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<UserDto>>(result));
+        }
+        
+        [HttpGet]
+        [Route("user/detail")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<UserDetailDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<UserDetailDto>>> Getme(
+            [FromQuery] GetUserDetailQuery query,
+         CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<UserDetailDto>(result));
         }
         [HttpGet]
         [Route("user/getme")]

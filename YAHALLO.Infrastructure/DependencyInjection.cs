@@ -4,11 +4,13 @@ using dotenv.net;
 using Elastic.Clients.Elasticsearch;
 using Elastic.Clients.Elasticsearch.Serialization;
 using Elastic.Transport;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;
@@ -22,6 +24,7 @@ using YAHALLO.Infrastructure.Elastic1.Repositories;
 using YAHALLO.Infrastructure.Files.Functions;
 using YAHALLO.Infrastructure.Jobs;
 using YAHALLO.Infrastructure.Persistence.Repositories;
+using YAHALLO.Infrastructure.Realtime;
 using YAHALLO.Infrastructure.Redis;
 using YAHALLO.Infrastructure.S3;
 using YAHALLO.Infrastructure.Security;
@@ -190,9 +193,13 @@ namespace YAHALLO.Infrastructure
                 services.AddDistributedMemoryCache();
             }
             services.AddSingleton<ICacheService, RedisCacheService>();
+            services.AddSingleton<IUserIdProvider, UserIdProvider>();
 
             // AI generated — Background job service (Hangfire DI moved to Startup.cs)
             services.AddScoped<IBackgroundJobService, BackgroundJobService>();
+
+            services.AddScoped<IBackgroundTaskQueue, BackgroundTaskQueue>();
+            services.AddScoped<IRealtimeNotifier, SignalRNotifier>();
 
             return services;
         }

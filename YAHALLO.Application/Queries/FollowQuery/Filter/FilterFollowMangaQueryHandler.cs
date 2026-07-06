@@ -30,6 +30,9 @@ namespace YAHALLO.Application.Queries.FollowQuery.Filter
                 : _currentUser.UserId;
 
             var query = _followRepository.CreateQueryable();
+            query = ApplyFilter(query, request);
+            query = ApplySorting(query, request);
+
             var listFollowMangaExists = await _followRepository
                 .FindAllSelectAsync(
                 pageNo: request.PageNumber,
@@ -51,7 +54,7 @@ namespace YAHALLO.Application.Queries.FollowQuery.Filter
 
             return listFollowMangaExists.MapToPagedResult(x => x);
         }
-        public IQueryable<FollowEntity> ApplyQuery(IQueryable<FollowEntity> query, FilterFollowMangaQuery request)
+        public IQueryable<FollowEntity> ApplyFilter(IQueryable<FollowEntity> query, FilterFollowMangaQuery request)
         {
             if (!string.IsNullOrEmpty(request.UserId)) query = query.Where(x => x.UserId == request.UserId);
             if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.MangaId == request.MangaId);
