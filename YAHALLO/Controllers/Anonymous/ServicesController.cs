@@ -1,10 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Net.Mime;
-using YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken;
-using YAHALLO.Application.Queries.UserQuery.Anonymous.ComfirmEmail;
-using YAHALLO.Application.ResponseTypes;
+using YAHALLO.Application.Commands.UserCommand.ComfirmEmail;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous

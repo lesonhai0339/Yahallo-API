@@ -67,7 +67,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.Login
             {
                 UserId = user.Id,
                 RefreshToken = _token.HashToken(refreshToken),
-                ExpiredRefreshToken = DateTime.UtcNow.AddDays(7),
+                ExpiredRefreshToken = DateTime.UtcNow,
                 IpAddress = request.IpAddress,
                 UserAgent = request.UserAgent,
                 DeviceName = request.DeviceName,

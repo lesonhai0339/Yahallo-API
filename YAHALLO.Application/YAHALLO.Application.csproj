@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Queries\UserQuery\Admin\GetAll\**" />
+    <Compile Remove="Commands\UserCommand\Admin\**" />
+    <Compile Remove="Commands\UserCommand\Moderator\**" />
     <Compile Remove="Queries\UserQuery\Moderator\**" />
-    <EmbeddedResource Remove="Queries\UserQuery\Admin\GetAll\**" />
+    <EmbeddedResource Remove="Commands\UserCommand\Admin\**" />
+    <EmbeddedResource Remove="Commands\UserCommand\Moderator\**" />
     <EmbeddedResource Remove="Queries\UserQuery\Moderator\**" />
-    <None Remove="Queries\UserQuery\Admin\GetAll\**" />
+    <None Remove="Commands\UserCommand\Admin\**" />
+    <None Remove="Commands\UserCommand\Moderator\**" />
     <None Remove="Queries\UserQuery\Moderator\**" />
   </ItemGroup>
 
@@ -49,8 +52,6 @@
 	  <Folder Include="Commands\ReportCommand\Delete\" />
 	  <Folder Include="Commands\ReportCommand\Restore\" />
 	  <Folder Include="Commands\ReportCommand\Update\" />
-	  <Folder Include="Commands\UserCommand\Moderator\" />
-	  <Folder Include="Commands\UserCommand\Admin\" />
 	  <Folder Include="Queries\AttechmentQuery\GetAllPagination\" />
 	  <Folder Include="Queries\AttechmentQuery\GetAllDeletedPagination\" />
 	  <Folder Include="Queries\AttechmentQuery\FilterAttechment\" />

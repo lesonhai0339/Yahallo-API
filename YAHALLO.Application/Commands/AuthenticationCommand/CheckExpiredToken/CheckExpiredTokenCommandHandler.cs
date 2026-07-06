@@ -60,7 +60,7 @@ namespace YAHALLO.Application.Commands.AuthenticationCommand.CheckExpiredToken
                 throw new UnAuthorizeException("Not found user token");
 
             userToken.RefreshToken = hashedRefreshToken;
-            userToken.ExpiredRefreshToken = DateTime.UtcNow.AddDays(7);
+            userToken.ExpiredRefreshToken = DateTime.UtcNow;
             userToken.UpdateDate = DateTime.UtcNow;
             userToken.IdUserUpdate = userToken.UserId;
             userToken.IsRevoked = false;
