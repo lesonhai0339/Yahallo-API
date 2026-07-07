@@ -250,7 +250,10 @@ paket-files/
 .env
 appsettings.json
 appsettings.Development.json
-
+/YAHALLO/appsettings.json
+/YAHALLO/appsettings.Development.json
+/YAHALLO/bin
 
 #resource
 /YAHALLO/resources/
+/YAHALLO/Logs/
