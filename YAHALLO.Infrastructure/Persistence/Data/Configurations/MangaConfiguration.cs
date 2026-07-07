@@ -15,7 +15,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<MangaEntity> builder)
         {
             builder.HasKey(e => e.Id);
-            builder.HasIndex(x => x.Id);
+            builder.HasIndex(x => x.CreateDate);
 
             builder.Property(x => x.Name)
                 .IsUnicode(true)

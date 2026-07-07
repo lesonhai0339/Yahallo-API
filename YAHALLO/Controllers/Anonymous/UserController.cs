@@ -17,20 +17,22 @@ using YAHALLO.Application.Commands.UserCommand.Restore;
 using YAHALLO.Application.Commands.UserCommand.Update;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Queries.Features.Admin.User;
+using YAHALLO.Application.Queries.Features.Admin.User.GetAllDeleted;
+using YAHALLO.Application.Queries.Features.Admin.User.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.Features.Admin.User.NewCount;
 using YAHALLO.Application.Queries.UserQuery;
 using YAHALLO.Application.Queries.UserQuery.DTOs;
 using YAHALLO.Application.Queries.UserQuery.FilterUser;
 using YAHALLO.Application.Queries.UserQuery.GetAll;
-using YAHALLO.Application.Queries.UserQuery.GetAllDeleted;
-using YAHALLO.Application.Queries.UserQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.UserQuery.GetAllPagination;
 using YAHALLO.Application.Queries.UserQuery.GetById;
 using YAHALLO.Application.Queries.UserQuery.GetByIdDeleted;
 using YAHALLO.Application.Queries.UserQuery.GetByName;
 using YAHALLO.Application.Queries.UserQuery.GetMe;
-using YAHALLO.Application.Queries.UserQuery.GetNewUserContByDate;
 using YAHALLO.Application.Queries.UserQuery.GetProfileById;
 using YAHALLO.Application.Queries.UserQuery.GetUserDetail;
+using YAHALLO.Application.Queries.UserQuery.GetUserStats;
 using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Common;
 using YAHALLO.Configuration;
@@ -224,19 +226,6 @@ namespace YAHALLO.Controllers.Anonymous
         }
         [HttpGet]
         [Authorize(Policy = Policies.ModOrAdmin)]
-        [Route("user/get-all-deleted")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<UserDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<UserDto>>>> GetAllDeleted(
-         CancellationToken cancellationToken = default)
-        {
-            var result = await _Sender.Send(new GetAllUserDeletedQuery(), cancellationToken);
-            return Ok(new JsonResponse<List<UserDto>>(result));
-        }
-        [HttpGet]
-        [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<UserDto>>), StatusCodes.Status201Created)]
@@ -249,20 +238,7 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _Sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<UserDto>>(result));
         }
-        [HttpGet]
-        [Authorize(Policy = Policies.ModOrAdmin)]
-        [Route("user/get-all-deleted-pagination")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<UserDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<UserDto>>>> GetAllDeletedPagination(
-            [FromQuery] GetAllUserDeletedPaginationQuery query,
-         CancellationToken cancellationToken = default)
-        {
-            var result = await _Sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<UserDto>>(result));
-        }
+     
         [HttpGet]
         [Authorize]
         [Route("user/get-by-id")]
@@ -370,6 +346,51 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _Sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<CountUserQueryResult>>(result));
+        }
+        [HttpGet]
+        [Route("user/stats")]
+        //[Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<List<GetUserStatsResult>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<List<GetUserStatsResult>>>> CountUser(
+           [FromQuery] GetUserStatsQuery query,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<List<GetUserStatsResult>>(result));
+        }
+
+
+
+
+        [HttpGet]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Route("user/get-all-deleted")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminUserDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<List<AdminUserDto>>>> GetAllDeleted(
+       CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(new GetAllUserDeletedQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<AdminUserDto>>(result));
+        }
+        [HttpGet]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Route("user/get-all-deleted-pagination")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminUserDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminUserDto>>>> GetAllDeletedPagination(
+         [FromQuery] GetAllUserDeletedPaginationQuery query,
+      CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<AdminUserDto>>(result));
         }
     }
 }

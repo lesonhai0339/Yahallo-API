@@ -6,14 +6,15 @@ using YAHALLO.Application.Commands.ArtistCommand.Create;
 using YAHALLO.Application.Commands.ArtistCommand.Delete;
 using YAHALLO.Application.Commands.ArtistCommand.Restore;
 using YAHALLO.Application.Commands.ArtistCommand.Update;
+using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.ArtistQuery;
 using YAHALLO.Application.Queries.ArtistQuery.FilterArtist;
 using YAHALLO.Application.Queries.ArtistQuery.GetAll;
-using YAHALLO.Application.Queries.ArtistQuery.GetAllDeleted;
-using YAHALLO.Application.Queries.ArtistQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.ArtistQuery.GetAllPagination;
-using YAHALLO.Application.ResponseTypes;
+using YAHALLO.Application.Queries.Features.Admin.Artist;
+using YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeleted;
+using YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeletedPagination;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
@@ -92,19 +93,7 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(new GetAllArtistQuery(), cancellationToken);
             return Ok(new JsonResponse<List<ArtistDto>>(result));
         }
-        [HttpGet]
-        [Route("artist/get-all-deleted")]
-        [AllowAnonymous]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<ArtistDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<ArtistDto>>>> GetallArtistDeleted(
-           CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(new GetAllArtistDeletedQuery(), cancellationToken);
-            return Ok(new JsonResponse<List<ArtistDto>>(result));
-        }
+
         [HttpGet]
         [Route("artist/get-all-pagination")]
         [AllowAnonymous]
@@ -120,18 +109,31 @@ namespace YAHALLO.Controllers.Anonymous
             return Ok(new JsonResponse<PagedResult<ArtistDto>>(result));
         }
         [HttpGet]
-        [Route("artist/get-all-deleted-pagination")]
-        [AllowAnonymous]
+        [Route("artist/get-all-deleted")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<ArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminArtistDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<ArtistDto>>>> GetallArtistDeletedPagination(
+        public async Task<ActionResult<JsonResponse<List<AdminArtistDto>>>> GetallArtistDeleted(
+   CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(new GetAllArtistDeletedQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<AdminArtistDto>>(result));
+        }
+        [HttpGet]
+        [Route("artist/get-all-deleted-pagination")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminArtistDto>>>> GetallArtistDeletedPagination(
           [FromQuery] GetAllArtistDeletedPaginationQuery query,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<ArtistDto>>(result));
+            return Ok(new JsonResponse<PagedResult<AdminArtistDto>>(result));
         }
         [HttpGet]
         [Route("artist/filter-artist")]

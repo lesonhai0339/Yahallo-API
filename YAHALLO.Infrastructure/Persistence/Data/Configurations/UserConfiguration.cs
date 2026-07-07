@@ -19,6 +19,9 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .IsRequired();
 
             builder.HasIndex(x => x.Email).IsUnique();
+
+            builder.HasIndex(x => x.CreateDate);
+
             builder.Property(x => x.FirstName)
                 .HasMaxLength(200)
                 .IsUnicode(true)

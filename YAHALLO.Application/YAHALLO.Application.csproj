@@ -57,5 +57,6 @@
 	  <Folder Include="Queries\AttechmentQuery\FilterAttechment\" />
 	  <Folder Include="Queries\AuthorQuery\GetById\" />
 	  <Folder Include="Queries\AuthorQuery\GetByIdDeleted\" />
+	  <Folder Include="Queries\Features\Public\" />
 	</ItemGroup>
 </Project>

@@ -21,13 +21,19 @@ namespace YAHALLO.Application.Queries.MangaQuery.CountNew
         }   
         public async Task<PagedResult<CountNewMangaQueryResult>> Handle(CountNewMangaQuery request, CancellationToken cancellationToken)
         {
+            var from = request.From.Date.AddMinutes(-request.TimeZoneOffset);
+            var toExclusive = request.To.Date.AddDays(1).AddMinutes(-request.TimeZoneOffset);
+
+            var query = _mangaRepository.CreateQueryable();
+            query = query.Where(u => u.CreateDate >= from && u.CreateDate <= toExclusive);
+
+
             var result = request.CountBy switch
             {
                 MangaCountBy.Day => await _mangaRepository.FindAllSelectAsync(
                     pageNo: request.PageNo,
                     pageSize: request.PageSize,
-                    selector: x=> x
-                        .Where(m => m.CreateDate >= request.From && m.CreateDate <= request.To)
+                    selector: _ => query
                         .GroupBy(x => x.CreateDate.AddMinutes(request.TimeZoneOffset).Date)
                         .Select(i => new CountNewMangaQueryResult
                         {
@@ -43,8 +49,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.CountNew
                 MangaCountBy.Month => await _mangaRepository.FindAllSelectAsync(
                    pageNo: request.PageNo,
                    pageSize: request.PageSize,
-                   selector: x => x
-                        .Where(m => m.CreateDate >= request.From && m.CreateDate <= request.To)
+                   selector: _ => query
                        .GroupBy(x => new { Month = x.CreateDate.AddMinutes(request.TimeZoneOffset).Month, Year = x.CreateDate.AddMinutes(request.TimeZoneOffset).Year})
                        .Select(i => new CountNewMangaQueryResult
                        {
@@ -60,8 +65,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.CountNew
                 MangaCountBy.Year => await _mangaRepository.FindAllSelectAsync(
                    pageNo: request.PageNo,
                    pageSize: request.PageSize,
-                   selector: x => x
-                        .Where(m => m.CreateDate >= request.From && m.CreateDate <= request.To)
+                   selector: _ => query
                        .GroupBy(x => x.CreateDate.AddMinutes(request.TimeZoneOffset).Year)
                        .Select(i => new CountNewMangaQueryResult
                        {

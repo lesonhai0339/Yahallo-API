@@ -13,7 +13,7 @@ namespace YAHALLO.Domain.Entities
         public string? Title { get; set; }
         public int Index { get;set; }
 
-        public string? MangaId { get; set; }
+        public string MangaId { get; set; } = null!;
         public virtual MangaEntity? MangaEntity { get; set; }
         public virtual ViewCountEntity? ViewCount { get;set; }  
         

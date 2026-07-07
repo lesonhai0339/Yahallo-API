@@ -1,18 +1,21 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.ChapterCommand.Create;
 using YAHALLO.Application.Commands.ChapterCommand.Delete;
 using YAHALLO.Application.Commands.ChapterCommand.Restore;
 using YAHALLO.Application.Commands.ChapterCommand.Update;
+using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.ChapterQuery;
 using YAHALLO.Application.Queries.ChapterQuery.Filter;
 using YAHALLO.Application.Queries.ChapterQuery.GetAll;
-using YAHALLO.Application.Queries.ChapterQuery.GetAllDeleted;
-using YAHALLO.Application.Queries.ChapterQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllImage;
 using YAHALLO.Application.Queries.ChapterQuery.GetAllPagination;
+using YAHALLO.Application.Queries.Features.Admin.Chapter;
+using YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeleted;
+using YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeletedPagination;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 
@@ -89,18 +92,7 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(new GetAllChapterQuery(), cancellationToken);
             return Ok(new JsonResponse<ResponseResult<ChapterDto>>(result));
         }
-        [HttpGet]
-        [Route("chapter/get-all-deleted")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<ChapterDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<ChapterDto>>>> GetAllChapterDeleted(
-       CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(new GetAllDeletedChapterQuery(), cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<ChapterDto>>(result));
-        }
+      
         [HttpGet]
         [Route("chapter/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -109,19 +101,6 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<ChapterDto>>>> GetAllChapterPagination(
         [FromQuery] GetAllChapterPaginationQuery query,
-        CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<ChapterDto>>(result));
-        }
-        [HttpGet]
-        [Route("chapter/get-all-deleted-pagination")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<ChapterDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<ChapterDto>>>> GetAllDeletedChapterPagination(
-        [FromQuery] GetAllDeletedChapterPaginationQuery query,
         CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
@@ -152,6 +131,34 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<List<ChapterImageDto>>(result));
+        }
+
+        [HttpGet]
+        [Route("chapter/get-all-deleted")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<List<AdminChapterDto>>>> GetAllChapterDeleted(
+    CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(new GetAllDeletedChapterQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<AdminChapterDto>>(result));
+        }
+        [HttpGet]
+        [Route("chapter/get-all-deleted-pagination")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminChapterDto>>>> GetAllDeletedChapterPagination(
+        [FromQuery] GetAllDeletedChapterPaginationQuery query,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<AdminChapterDto>>(result));
         }
     }
 }

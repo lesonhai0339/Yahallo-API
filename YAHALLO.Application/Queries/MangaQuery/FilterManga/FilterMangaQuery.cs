@@ -14,40 +14,6 @@ namespace YAHALLO.Application.Queries.MangaQuery.FilterManga
 {
     public class FilterMangaQuery: IRequest<PagedResult<MangaDto>>
     {
-        public FilterMangaQuery() { }
-        public FilterMangaQuery(
-            int pageNumber, 
-            int pageSize, 
-            string? name, 
-            string? tagIds,
-            string? authorId,
-            string? artistId,
-            MangaLevel? level, 
-            MangaStatus? status, 
-            MangaType? type, 
-            CountriesEnum? countries, 
-            int season, 
-            string? userId, 
-            DateTime? dateUpdate,
-            MangaSortBy sortby,
-            bool reverseSort
-            )
-        {
-            PageNumber = pageNumber;
-            PageSize = pageSize;
-            Name = name;
-            TagIds = tagIds;
-            AuthorId = authorId;
-            ArtistId = artistId;
-            Level = level;
-            Status = status;
-            Type = type;
-            Countries = countries;
-            Season = season;
-            UserId = userId;
-            DateUpdate = dateUpdate;
-        }
-
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public string? Name { get; set; }

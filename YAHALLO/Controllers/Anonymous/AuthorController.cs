@@ -2,18 +2,19 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
-using YAHALLO.Application.Commands.ArtistCommand.Create;
 using YAHALLO.Application.Commands.AuthorCommand.Create;
 using YAHALLO.Application.Commands.AuthorCommand.Delete;
 using YAHALLO.Application.Commands.AuthorCommand.Restore;
 using YAHALLO.Application.Commands.AuthorCommand.Update;
+using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.AuthorQuery;
 using YAHALLO.Application.Queries.AuthorQuery.FilterAuthor;
 using YAHALLO.Application.Queries.AuthorQuery.GetAll;
-using YAHALLO.Application.Queries.AuthorQuery.GetAllDeleted;
-using YAHALLO.Application.Queries.AuthorQuery.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.AuthorQuery.GetAllPagination;
+using YAHALLO.Application.Queries.Features.Admin.Author;
+using YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeleted;
+using YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeletedPagination;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
@@ -107,28 +108,30 @@ namespace YAHALLO.Controllers.Anonymous
         }
         [HttpGet]
         [Route("author/get-all-deleted")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<AuthorDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminAuthorDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<AuthorDto>>>> GetAllAuthorDeleted(
+        public async Task<ActionResult<JsonResponse<List<AdminAuthorDto>>>> GetAllAuthorDeleted(
            CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllAuthorDeletedQuery(), cancellationToken);
-            return Ok(new JsonResponse<List<AuthorDto>>(result));
+            var result = await _sender.Send(new GetAllAuthorDeletedQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<AdminAuthorDto>>(result));
         }
         [HttpGet]
         [Route("author/get-all-deleted-pagination")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AuthorDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminAuthorDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<AuthorDto>>>> GetAllAuthorDeletedPagination(
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminAuthorDto>>>> GetAllAuthorDeletedPagination(
             [FromQuery] GetAllAuthorDeletedPaginationQuery query,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<AuthorDto>>(result));
+            return Ok(new JsonResponse<PagedResult<AdminAuthorDto>>(result));
         }
         [HttpGet]
         [AllowAnonymous]
