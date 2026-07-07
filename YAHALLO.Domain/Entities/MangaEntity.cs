@@ -57,5 +57,8 @@ namespace YAHALLO.Domain.Entities
 
         public virtual ICollection<BookmarkEntity> Bookmarks { get; set; } = new List<BookmarkEntity>();
 
+        public virtual ICollection<MangaDailyAnalyticsEntity> MangaDailyAnalytics { get; set; } = new List<MangaDailyAnalyticsEntity>();
+        public virtual ICollection<UserMangaDailyReadEntity> UserMangaDailyReadEntities { get; set; } = new List<UserMangaDailyReadEntity>();
+
     }
 }

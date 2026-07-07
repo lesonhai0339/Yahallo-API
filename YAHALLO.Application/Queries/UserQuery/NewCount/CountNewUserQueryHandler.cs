@@ -26,7 +26,7 @@ namespace YAHALLO.Application.Queries.UserQuery.GetNewUserContByDate
                 pageSize: request.PageSize,
                 selector: x => x
                     .Where(u => u.CreateDate >= request.From && u.CreateDate <= request.To.AddDays(1))
-                    .GroupBy(u => u.CreateDate!.Value.AddMinutes(request.TimeZoneOffset).Date)
+                    .GroupBy(u => u.CreateDate.AddMinutes(request.TimeZoneOffset).Date)
                     .Select(i => new CountUserQueryResult 
                     {
                         Day = i.Key.Day,
@@ -42,7 +42,7 @@ namespace YAHALLO.Application.Queries.UserQuery.GetNewUserContByDate
                 pageSize: request.PageSize,
                 selector: x => x
                     .Where(u => u.CreateDate >= request.From && u.CreateDate <= request.To)
-                    .GroupBy(u => new {  Month = u.CreateDate!.Value.AddMinutes(request.TimeZoneOffset).Month, Year = u.CreateDate!.Value.AddMinutes(request.TimeZoneOffset).Year})
+                    .GroupBy(u => new {  Month = u.CreateDate.AddMinutes(request.TimeZoneOffset).Month, Year = u.CreateDate.AddMinutes(request.TimeZoneOffset).Year})
                     .Select(i => 
                         new CountUserQueryResult 
                         {
@@ -59,7 +59,7 @@ namespace YAHALLO.Application.Queries.UserQuery.GetNewUserContByDate
                 pageSize: request.PageSize,
                 selector: x => x
                     .Where(u => u.CreateDate >= request.From && u.CreateDate <= request.To)
-                    .GroupBy(u => u.CreateDate!.Value.AddMinutes(request.TimeZoneOffset).Year)
+                    .GroupBy(u => u.CreateDate.AddMinutes(request.TimeZoneOffset).Year)
                     .Select(i => new CountUserQueryResult
                     {
                         Day = 1,

@@ -9,6 +9,7 @@ using YAHALLO.Application.Commands.MangaCommand.Restore;
 using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Queries.MangaQuery.Analytics;
 using YAHALLO.Application.Queries.MangaQuery.CountNew;
 using YAHALLO.Application.Queries.MangaQuery.DTOs;
 using YAHALLO.Application.Queries.MangaQuery.FilterManga;
@@ -225,6 +226,19 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<CountNewMangaQueryResult>>(result));
+        }
+        [HttpGet]
+        [Route("manga/analytics")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<GetMangaAnalyticsResult>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<JsonResponse<GetMangaAnalyticsResult>>> MangaAnalytics(
+         [FromQuery] GetMangaAnalyticsQuery query,
+         CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<GetMangaAnalyticsResult>(result));
         }
     }
 }

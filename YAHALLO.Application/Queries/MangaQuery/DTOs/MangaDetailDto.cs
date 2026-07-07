@@ -26,6 +26,9 @@ namespace YAHALLO.Application.Queries.MangaQuery.DTOs
         public string? MangaThumbnail { get; set; }
         public string? MangaBackground { get; set; }
         public string? UserId { get; set; }
+        public double? Rating { get; set; }
+        public long ViewCount { get; set; } 
+        public int CommentCount { get; set; }
 
         public List<TagDto> Tags { get; set; } = new();
         public List<ArtistDto> Artists { get; set; } = new();

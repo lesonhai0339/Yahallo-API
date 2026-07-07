@@ -29,15 +29,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("follow-manga/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> CreateFollowManga(
+        public async Task<ActionResult<JsonResponse<string>>> CreateFollowManga(
            [FromBody] CreateFollowMangaCommand command,
            CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<string>>(result));
+            return Ok(new JsonResponse<string>(result));
         }
         [HttpPost]
         [Route("follow-manga/restore")]
@@ -55,15 +55,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpDelete]
         [Route("follow-manga/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> DeleteFollowManga(
+        public async Task<ActionResult<JsonResponse<string>>> DeleteFollowManga(
           [FromBody] DeleteFollowMangaCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<string>>(result));
+            return Ok(new JsonResponse<string>(result));
         }
         [HttpGet]
         [Route("follow-manga/get-all")]

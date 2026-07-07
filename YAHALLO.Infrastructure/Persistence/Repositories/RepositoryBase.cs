@@ -3,19 +3,8 @@ using AutoMapper.QueryableExtensions;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using Org.BouncyCastle.Asn1;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.Pkcs;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Infrastructure.Persistence.Repositories
@@ -33,7 +22,6 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             _mapper = mapper;
         }
-
         public IUnitOfWork UnitOfWork => _dbContext;
         public virtual void Remove(TDomain entity)
         {
@@ -47,7 +35,6 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
         {
             GetSet().Add((TPersistence)entity);
         }
-
         public virtual void Update(TDomain entity)
         {
             GetSet().Update((TPersistence)entity);

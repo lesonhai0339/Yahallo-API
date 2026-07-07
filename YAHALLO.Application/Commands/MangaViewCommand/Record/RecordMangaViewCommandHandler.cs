@@ -14,15 +14,18 @@ namespace YAHALLO.Application.Commands.MangaViewCommand.Record
         private readonly IViewCountRepository _viewCountRepository;
         private readonly IUserMangaViewRepository _userMangaViewRepository;
         private readonly ICurrentUserService _currentUser;
+        private readonly IMangaDailyAnalyticsRepository _mangaDailyAnalyticsRepository;
 
         public RecordMangaViewCommandHandler(
             IViewCountRepository viewCountRepository,
             IUserMangaViewRepository userMangaViewRepository,
-            ICurrentUserService currentUser)
+            ICurrentUserService currentUser,
+            IMangaDailyAnalyticsRepository mangaDailyAnalyticsRepository)
         {
             _viewCountRepository = viewCountRepository;
             _userMangaViewRepository = userMangaViewRepository;
             _currentUser = currentUser;
+            _mangaDailyAnalyticsRepository = mangaDailyAnalyticsRepository;   
         }
 
         public async Task<bool> Handle(RecordMangaViewCommand request, CancellationToken cancellationToken)
@@ -66,6 +69,8 @@ namespace YAHALLO.Application.Commands.MangaViewCommand.Record
                 ViewedAt = now,
                 CreateDate = now,
             });
+
+            await _mangaDailyAnalyticsRepository.Increment(request.MangaId, Domain.Enums.MangaDaily.MangaDailyType.View, cancellationToken);
 
             var result = await _userMangaViewRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             return result > 0;

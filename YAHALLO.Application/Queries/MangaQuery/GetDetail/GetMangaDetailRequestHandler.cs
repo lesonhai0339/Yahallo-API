@@ -49,6 +49,9 @@ namespace YAHALLO.Application.Queries.MangaQuery.GetDetail
                     MangaThumbnail = t.MangaThumbnail,
                     MangaBackground = t.MangaBackground,
                     UserId = t.UserId,
+                    Rating = t.RatingEntities.Select(x => (double?)x.Rating).Average(),
+                    CommentCount = t.CommentEntities.Count(),
+                    ViewCount = t.ViewCount == null ? 0 : t.ViewCount.TotalCount,
                     Tags = t.TagEntities
                     .Select(x => new TagDto
                     {

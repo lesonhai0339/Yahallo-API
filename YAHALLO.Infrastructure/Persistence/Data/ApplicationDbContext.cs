@@ -1,4 +1,5 @@
 ﻿//AI generated
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
@@ -53,6 +54,10 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<CountryEntity>? Countries { get; set; }
         public DbSet<BookmarkEntity>? Bookmarks { get; set; }
         public DbSet<UserSettingsEntity>? UserSettings { get; set; }
+
+        public DbSet<MangaDailyAnalyticsEntity> MangaDailyAnalytics { get; set; }
+        public DbSet<UserDailyActivityEntity> UserDailyActivityEntities { get; set; }
+        public DbSet<UserMangaDailyReadEntity> UserMangaDailyReadEntities { get; set; }
 
 
         // AI generated — new tables
@@ -111,7 +116,9 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new BookmarkConfiguration());
             modelBuilder.ApplyConfiguration(new UserSettingsConfiguration());
-
+            modelBuilder.ApplyConfiguration(new MangaDailyAnalyticsConfiguration());
+            modelBuilder.ApplyConfiguration(new UserDailyActivityConfiguration());
+            modelBuilder.ApplyConfiguration(new UserMangaDailyReadConfiguration());
 
 
 
@@ -132,6 +139,21 @@ namespace YAHALLO.Infrastructure.Data
                 new RoleEntity { RoleCode = 3, RoleName = "User", RoleDescription = "Normal User or New User has this Role" },
                 new RoleEntity { RoleCode = 4, RoleName = "Trans", RoleDescription = "Translator role" }
                 );
+        }
+        public async Task<int> SaveChangesDroppingDuplicateAnalyticsAsync(CancellationToken ct)
+        {
+            try
+            {
+                return await SaveChangesAsync(ct);
+            }
+            catch (DbUpdateException ex) when (
+                ex.InnerException is SqlException { Number: 2601 or 2627 }
+                && ex.Entries.All(e => e.Entity is IAnalyticsEntity))
+            {
+                foreach (var entry in ex.Entries)
+                    entry.State = EntityState.Detached;
+                return await SaveChangesAsync(ct);
+            }
         }
     }
 }

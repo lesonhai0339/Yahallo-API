@@ -28,7 +28,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.CountNew
                     pageSize: request.PageSize,
                     selector: x=> x
                         .Where(m => m.CreateDate >= request.From && m.CreateDate <= request.To)
-                        .GroupBy(x => x.CreateDate!.Value.AddMinutes(request.TimeZoneOffset).Date)
+                        .GroupBy(x => x.CreateDate.AddMinutes(request.TimeZoneOffset).Date)
                         .Select(i => new CountNewMangaQueryResult
                         {
                             Day = i.Key.Day,
@@ -45,7 +45,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.CountNew
                    pageSize: request.PageSize,
                    selector: x => x
                         .Where(m => m.CreateDate >= request.From && m.CreateDate <= request.To)
-                       .GroupBy(x => new { Month = x.CreateDate!.Value.AddMinutes(request.TimeZoneOffset).Month, Year = x.CreateDate!.Value.AddMinutes(request.TimeZoneOffset).Year})
+                       .GroupBy(x => new { Month = x.CreateDate.AddMinutes(request.TimeZoneOffset).Month, Year = x.CreateDate.AddMinutes(request.TimeZoneOffset).Year})
                        .Select(i => new CountNewMangaQueryResult
                        {
                            Day = 1,
@@ -62,7 +62,7 @@ namespace YAHALLO.Application.Queries.MangaQuery.CountNew
                    pageSize: request.PageSize,
                    selector: x => x
                         .Where(m => m.CreateDate >= request.From && m.CreateDate <= request.To)
-                       .GroupBy(x => x.CreateDate!.Value.AddMinutes(request.TimeZoneOffset).Year)
+                       .GroupBy(x => x.CreateDate.AddMinutes(request.TimeZoneOffset).Year)
                        .Select(i => new CountNewMangaQueryResult
                        {
                            Day = 1,

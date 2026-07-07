@@ -8,7 +8,7 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.FollowCommand.Create
 {
-    public class CreateFollowMangaCommand: IRequest<ResponseResult<string>>
+    public class CreateFollowMangaCommand: IRequest<string>
     {
         public CreateFollowMangaCommand(
             string userid,

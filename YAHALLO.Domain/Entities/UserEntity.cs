@@ -66,6 +66,8 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<ReportEntity> Reports { get; set; } = new List<ReportEntity>();
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
         public virtual ICollection<BookmarkEntity> Bookmarks { get; set; } = new List<BookmarkEntity>();
+        public virtual ICollection<UserDailyActivityEntity> DailyActivityEntities { get; set; } = new List<UserDailyActivityEntity>();
+        public virtual ICollection<UserMangaDailyReadEntity> UserMangaDailyReadEntities { get; set; } = new List<UserMangaDailyReadEntity>();
 
         public UserEntity? ConvertFromString(string classname)
         {

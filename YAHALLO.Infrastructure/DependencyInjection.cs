@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using YAHALLO.Application.Common.Interfaces;
+using YAHALLO.Domain;
 using YAHALLO.Domain.Functions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;
@@ -172,6 +173,9 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IPendingRegistrationRepository, PendingRegistrationRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<IBookmarkRepository, BookmarkRepository>();
+            services.AddScoped<IMangaDailyAnalyticsRepository, MangaDailyAnalyticsRepository>();
+            services.AddScoped<IUserDailyActivityRepository, UserDailyActivityRepository>();
+            services.AddScoped<IUserMangaDailyReadRepository, UserMangaDailyReadRepository>();
 
             // AI generated — new repositories
             services.AddScoped<ITagRepository, TagRepository>();

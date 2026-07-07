@@ -1,5 +1,7 @@
 //AI generated
 using MediatR;
+using YAHALLO.Application.Commands.MangaCommand.UserMangaDailyRead;
+using YAHALLO.Application.Commands.UserCommand.DailyActivity;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Exceptions;
@@ -9,11 +11,12 @@ namespace YAHALLO.Application.Commands.ReadingProgressCommand.Upsert
 {
     public class UpsertReadingProgressCommandHandler : IRequestHandler<UpsertReadingProgressCommand, string>
     {
+        private readonly IMediator _sender;
         private readonly IReadingProgressRepository _progressRepository;
         private readonly ICurrentUserService _currentUser;
-
-        public UpsertReadingProgressCommandHandler(IReadingProgressRepository progressRepository, ICurrentUserService currentUser)
+        public UpsertReadingProgressCommandHandler(IMediator sender, IReadingProgressRepository progressRepository, ICurrentUserService currentUser)
         {
+            _sender = sender;   
             _progressRepository = progressRepository;
             _currentUser = currentUser;
         }
@@ -49,8 +52,9 @@ namespace YAHALLO.Application.Commands.ReadingProgressCommand.Upsert
                 };
                 _progressRepository.Add(progress);
             }
+            await _sender.Publish(new UserMangaDailyReadNotification { UserId = _currentUser.UserId, MangaId = request.MangaId, ChapterId = request.ChapterId }, cancellationToken);
 
-            await _progressRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
+            await _progressRepository.UnitOfWork.SaveChangesDroppingDuplicateAnalyticsAsync(cancellationToken);
             return "Lưu tiến độ đọc thành công";
         }
     }

@@ -22,6 +22,7 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
         public virtual ICollection<ReactionEntity> Reactions { get; set; } = new List<ReactionEntity>();
         public virtual ICollection<BookmarkEntity> Bookmarks { get; set; } = new List<BookmarkEntity>();
+        public virtual ICollection<UserMangaDailyReadEntity> UserMangaDailyReadEntities { get; set; } = new List<UserMangaDailyReadEntity>();
 
     }
 }

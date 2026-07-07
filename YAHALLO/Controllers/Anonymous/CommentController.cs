@@ -30,15 +30,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpPost]
         [Route("comment/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> CreateComment(
+        public async Task<ActionResult<JsonResponse<string>>> CreateComment(
          [FromForm] CreateCommentCommand command,
          CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<string>>(result));
+            return Ok(new JsonResponse<string>(result));
         }
         [Authorize]
 

@@ -38,13 +38,15 @@ namespace YAHALLO.Infrastructure.Realtime
 
             await base.OnDisconnectedAsync(exception);
         }
-        public async Task<bool> Ping()
+        public async Task Ping()
         {
             try
             {
                 var userId = Context.UserIdentifier;
-                if (string.IsNullOrEmpty(userId)) return false;
-                return await _sender.Send(new UpdateLastActiveCommand { UserId = userId });
+                if (string.IsNullOrEmpty(userId)) 
+                    return;
+
+                await _sender.Publish(new UpdateLastActiveCommand { UserId = userId });
             }
             catch (Exception ex)
             {

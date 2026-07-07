@@ -8,25 +8,18 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.Hubs.UpdateLastActive
 {
-    public class UpdateLastActiveCommandHandler : IRequestHandler<UpdateLastActiveCommand, bool>
+    public class UpdateLastActiveCommandHandler : INotificationHandler<UpdateLastActiveCommand>
     {
-        private readonly IUserRepository _userRepository;
-        public UpdateLastActiveCommandHandler(IUserRepository userRepository)
+        private readonly IUserDailyActivityRepository _userDailyActivityRepository;
+        public UpdateLastActiveCommandHandler(IUserDailyActivityRepository userDailyActivityRepository)
         {
-            _userRepository = userRepository;
+            _userDailyActivityRepository = userDailyActivityRepository;
         }
 
-        public async Task<bool> Handle(UpdateLastActiveCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateLastActiveCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.FindAsync(x => x.Id == request.UserId, cancellationToken);
-            if (user == null)
-                return false;
-
-            user.LastActiveTime = DateTime.UtcNow;
-
-            _userRepository.Update(user);
-            var result = await _userRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-            return result > 0;
+            await _userDailyActivityRepository.Increment(request.UserId, Domain.Enums.UserDaily.UserDailyType.Activity, cancellationToken);
+            await _userDailyActivityRepository.UnitOfWork.SaveChangesDroppingDuplicateAnalyticsAsync(cancellationToken);
         }
     }
 }
