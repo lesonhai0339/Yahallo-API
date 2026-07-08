@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.Filter
             query = ApplySorting(query, request);
 
             var listUsers = await _userRepository.FindAllSelectAsync(
-                pageNo: request.PageNumber,
+                pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: _ => query
                     .Select(u => new AdminUserDto

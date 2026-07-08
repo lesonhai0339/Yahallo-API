@@ -85,6 +85,17 @@ namespace YAHALLO.Infrastructure.Data
                     modelBuilder.Entity(et.ClrType).HasQueryFilter(Expression.Lambda(body, p));
                 }
             }
+            //foreach (var et in modelBuilder.Model.GetEntityTypes())
+            //{
+            //    if (typeof(ISoftDelete).IsAssignableFrom(et.ClrType))
+            //    {
+            //        var p = Expression.Parameter(et.ClrType, "e");
+            //        var body = Expression.Equal(
+            //            Expression.Property(p, nameof(ISoftDelete.DeleteDate)),
+            //            Expression.Constant(null, typeof(DateTime?)));
+            //        modelBuilder.Entity(et.ClrType).HasQueryFilter(Expression.Lambda(body, p));
+            //    }
+            //}
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
             modelBuilder.ApplyConfiguration(new ArtistConfiguration());
             modelBuilder.ApplyConfiguration(new AssociateNameConfiguration());

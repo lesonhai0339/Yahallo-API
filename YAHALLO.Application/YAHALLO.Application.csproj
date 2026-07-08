@@ -9,13 +9,19 @@
   <ItemGroup>
     <Compile Remove="Commands\UserCommand\Admin\**" />
     <Compile Remove="Commands\UserCommand\Moderator\**" />
-    <Compile Remove="Queries\UserQuery\Moderator\**" />
+    <Compile Remove="Queries\Features\Public\Author\GetByIdDeleted\**" />
+    <Compile Remove="Queries\Features\Public\Author\GetById\**" />
+    <Compile Remove="Queries\Features\Public\User\Moderator\**" />
     <EmbeddedResource Remove="Commands\UserCommand\Admin\**" />
     <EmbeddedResource Remove="Commands\UserCommand\Moderator\**" />
-    <EmbeddedResource Remove="Queries\UserQuery\Moderator\**" />
+    <EmbeddedResource Remove="Queries\Features\Public\Author\GetByIdDeleted\**" />
+    <EmbeddedResource Remove="Queries\Features\Public\Author\GetById\**" />
+    <EmbeddedResource Remove="Queries\Features\Public\User\Moderator\**" />
     <None Remove="Commands\UserCommand\Admin\**" />
     <None Remove="Commands\UserCommand\Moderator\**" />
-    <None Remove="Queries\UserQuery\Moderator\**" />
+    <None Remove="Queries\Features\Public\Author\GetByIdDeleted\**" />
+    <None Remove="Queries\Features\Public\Author\GetById\**" />
+    <None Remove="Queries\Features\Public\User\Moderator\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,11 +58,8 @@
 	  <Folder Include="Commands\ReportCommand\Delete\" />
 	  <Folder Include="Commands\ReportCommand\Restore\" />
 	  <Folder Include="Commands\ReportCommand\Update\" />
-	  <Folder Include="Queries\AttechmentQuery\GetAllPagination\" />
-	  <Folder Include="Queries\AttechmentQuery\GetAllDeletedPagination\" />
-	  <Folder Include="Queries\AttechmentQuery\FilterAttechment\" />
-	  <Folder Include="Queries\AuthorQuery\GetById\" />
-	  <Folder Include="Queries\AuthorQuery\GetByIdDeleted\" />
-	  <Folder Include="Queries\Features\Public\" />
+	  <Folder Include="Queries\Features\Public\Attechment\GetAllPagination\" />
+	  <Folder Include="Queries\Features\Public\Attechment\GetAllDeletedPagination\" />
+	  <Folder Include="Queries\Features\Public\Attechment\FilterAttechment\" />
 	</ItemGroup>
 </Project>

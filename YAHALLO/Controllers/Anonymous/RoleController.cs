@@ -7,12 +7,13 @@ using YAHALLO.Application.Commands.RoleCommand.Delete;
 using YAHALLO.Application.Commands.RoleCommand.Restore;
 using YAHALLO.Application.Commands.RoleCommand.Update;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.RoleQuery;
-using YAHALLO.Application.Queries.RoleQuery.FilterRole;
-using YAHALLO.Application.Queries.RoleQuery.GetAll;
-using YAHALLO.Application.Queries.RoleQuery.GetAllDeleted;
-using YAHALLO.Application.Queries.RoleQuery.GetAllDeletedPagination;
-using YAHALLO.Application.Queries.RoleQuery.GetAllPagination;
+using YAHALLO.Application.Queries.Features.Admin.Role;
+using YAHALLO.Application.Queries.Features.Admin.Role.GetAllDeleted;
+using YAHALLO.Application.Queries.Features.Admin.Role.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.Features.Public.Role;
+using YAHALLO.Application.Queries.Features.Public.Role.FilterRole;
+using YAHALLO.Application.Queries.Features.Public.Role.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Role.GetAllPagination;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
@@ -86,20 +87,20 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<RoleDto>>>> GetAll(
            CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllRoleQuery(), cancellationToken);
+            var result = await _sender.Send(new GetAllRoleQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<RoleDto>>(result));
         }
         [HttpGet]
         [Route("role/get-all-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<RoleDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminRoleDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<RoleDto>>>> GetAllDeleted(
+        public async Task<ActionResult<JsonResponse<List<AdminRoleDto>>>> GetAllDeleted(
           CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllRoleDeletedQuery(), cancellationToken);
-            return Ok(new JsonResponse<List<RoleDto>>(result));
+            var result = await _sender.Send(new AdminGetAllRoleDeletedQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<AdminRoleDto>>(result));
         }
         [HttpGet]
         [Route("role/get-all-pagination")]
@@ -117,15 +118,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpGet]
         [Route("role/get-all-deleted-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<RoleDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminRoleDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<RoleDto>>>> GetAllDeletedPagination(
-          [FromQuery] GetAllRoleDeletedPaginationQuery command,
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminRoleDto>>>> GetAllDeletedPagination(
+          [FromQuery] AdminGetAllRoleDeletedPaginationQuery command,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<RoleDto>>(result));
+            return Ok(new JsonResponse<PagedResult<AdminRoleDto>>(result));
         }
         [HttpGet]
         [Route("role/filter-role")]

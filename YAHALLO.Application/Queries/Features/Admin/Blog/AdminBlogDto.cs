@@ -24,6 +24,8 @@ namespace YAHALLO.Application.Queries.Features.Admin.Blog
         public CommonStatus Status { get; set; } = CommonStatus.Active;
         public BlogEnumType Type { get; set; } = BlogEnumType.None;
         public long Views { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
 
         public void Mapping(Profile profile)
         {

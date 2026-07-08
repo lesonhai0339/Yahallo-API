@@ -2,7 +2,7 @@
 
 namespace YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeleted
 {
-    public sealed class GetAllArtistDeletedQuery : IRequest<List<AdminArtistDto>>
+    public sealed class AdminGetAllArtistDeletedQuery : IRequest<List<AdminArtistDto>>
     {
     }
 }

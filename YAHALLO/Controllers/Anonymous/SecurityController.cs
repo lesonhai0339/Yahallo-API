@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using System.Threading;
 using YAHALLO.Application.Commands.ArtistCommand.Create;
-using YAHALLO.Application.Queries.Security.Get;
+using YAHALLO.Application.Queries.Features.Public.Security.Get;
 using YAHALLO.Services;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 

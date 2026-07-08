@@ -9,19 +9,20 @@ using YAHALLO.Application.Commands.MangaCommand.Restore;
 using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.MangaQuery.Analytics;
-using YAHALLO.Application.Queries.MangaQuery.CountNew;
-using YAHALLO.Application.Queries.MangaQuery.DTOs;
-using YAHALLO.Application.Queries.MangaQuery.FilterManga;
-using YAHALLO.Application.Queries.MangaQuery.GetAll;
-using YAHALLO.Application.Queries.MangaQuery.GetAllDeleted;
-using YAHALLO.Application.Queries.MangaQuery.GetAllDeletedPagination;
-using YAHALLO.Application.Queries.MangaQuery.GetAllPagination;
-using YAHALLO.Application.Queries.MangaQuery.GetDetail;
-using YAHALLO.Application.Queries.MangaQuery.GetHomepage;
-using YAHALLO.Application.Queries.MangaQuery.GetInteraction;
-using YAHALLO.Application.Queries.MangaQuery.GetStatus;
-using YAHALLO.Application.Queries.MangaQuery.GetTrending;
+using YAHALLO.Application.Queries.Features.Admin.Manga;
+using YAHALLO.Application.Queries.Features.Admin.Manga.GetAllDeleted;
+using YAHALLO.Application.Queries.Features.Admin.Manga.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.Features.Public.Manga.Analytics;
+using YAHALLO.Application.Queries.Features.Public.Manga.CountNew;
+using YAHALLO.Application.Queries.Features.Public.Manga.DTOs;
+using YAHALLO.Application.Queries.Features.Public.Manga.FilterManga;
+using YAHALLO.Application.Queries.Features.Public.Manga.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Manga.GetAllPagination;
+using YAHALLO.Application.Queries.Features.Public.Manga.GetDetail;
+using YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage;
+using YAHALLO.Application.Queries.Features.Public.Manga.GetInteraction;
+using YAHALLO.Application.Queries.Features.Public.Manga.GetStatus;
+using YAHALLO.Application.Queries.Features.Public.Manga.GetTrending;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 
@@ -43,7 +44,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<HomePageDto>>> GetHomePage(
             CancellationToken cancellationToken= default)
         {
-            var result = await _sender.Send(new GetHomepageRequest() , cancellationToken);
+            var result = await _sender.Send(new GetHomepageRequest { } , cancellationToken);
             return Ok(new JsonResponse<HomePageDto>(result));
         }
 
@@ -112,20 +113,20 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<ResponseResult<MangaDto>>>> GetAllManga(
          CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllMangaQuery(), cancellationToken);
+            var result = await _sender.Send(new GetAllMangaQuery { }, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<MangaDto>>(result));
         }
         [HttpGet]
         [Route("manga/get-all-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<MangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminMangaDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<MangaDto>>>> GetAllDeletedManga(
+        public async Task<ActionResult<JsonResponse<List<AdminMangaDto>>>> GetAllDeletedManga(
         CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllMangaDeletedQuery(), cancellationToken);
-            return Ok(new JsonResponse<List<MangaDto>>(result));
+            var result = await _sender.Send(new AdminGetAllMangaDeletedQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<AdminMangaDto>>(result));
         }
         [HttpGet]
         [Route("manga/get-all-pagination")]
@@ -143,15 +144,15 @@ namespace YAHALLO.Controllers.Anonymous
         [HttpGet]
         [Route("manga/get-all-deleted-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminMangaDto>>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> GetAllMangaDeletedPagination(
-          [FromQuery] GetAllMangaDeletedPaginationQuery query,
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminMangaDto>>>> GetAllMangaDeletedPagination(
+          [FromQuery] AdminGetAllMangaDeletedPaginationQuery query,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
+            return Ok(new JsonResponse<PagedResult<AdminMangaDto>>(result));
         }
         [HttpGet]
         [Route("manga/filter-manga")]
@@ -201,9 +202,14 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<MangaStatusDto>(result));
         }
+
+
+        //Admin section
+
         [HttpGet]
         [Authorize]
         [Route("manga/interaction")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<GetInteractionQueryResult>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
@@ -239,6 +245,19 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<GetMangaAnalyticsResult>(result));
+        }
+        [HttpGet]
+        [Route("manga/admin/filter")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> AdminFilter(
+         [FromQuery] FilterMangaQuery query,
+         CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<MangaDto>>(result));
         }
     }
 }

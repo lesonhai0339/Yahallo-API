@@ -2,7 +2,7 @@
 
 namespace YAHALLO.Application.Queries.Features.Admin.Comment.GetAllDeleted
 {
-    public sealed class GetAllCommentDeletedQuery: IRequest<List<AdminCommentDto>>
+    public sealed class AdminGetAllCommentDeletedQuery: IRequest<List<AdminCommentDto>>
     { 
     }
 }

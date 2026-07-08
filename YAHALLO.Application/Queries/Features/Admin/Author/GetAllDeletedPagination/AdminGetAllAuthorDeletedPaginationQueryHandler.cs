@@ -6,18 +6,18 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeletedPagination
 {
-    public sealed class GetAllAuthorDeletedPaginationQueryHandler : IRequestHandler<GetAllAuthorDeletedPaginationQuery, PagedResult<AdminAuthorDto>>
+    public sealed class AdminGetAllAuthorDeletedPaginationQueryHandler : IRequestHandler<AdminGetAllAuthorDeletedPaginationQuery, PagedResult<AdminAuthorDto>>
     {
         private readonly IAuthorRepository _authorRepository;
-        public GetAllAuthorDeletedPaginationQueryHandler(IAuthorRepository authorRepository)
+        public AdminGetAllAuthorDeletedPaginationQueryHandler(IAuthorRepository authorRepository)
         {
             _authorRepository = authorRepository;
         }
-        public async Task<PagedResult<AdminAuthorDto>> Handle(GetAllAuthorDeletedPaginationQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<AdminAuthorDto>> Handle(AdminGetAllAuthorDeletedPaginationQuery request, CancellationToken cancellationToken)
         {
             var authors = await _authorRepository
               .FindAllSelectAsync(
-                pageNo: request.PageNumber,
+                pageNo: request.PageNo,
                 pageSize: request.PageSize, 
                 selector: x => x
                   .Where(a => !string.IsNullOrEmpty(a.IdUserDelete) && a.DeleteDate.HasValue)
@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeletedPaginat
                   {
                       Id = t.Id,
                       Birth = t.Birth,
-                      Countries = t.Countries.GetDescription(),
+                      Country = t.Countries.GetDescription(),
                       Depscription = t.Depscription,
                       LifeStatus = t.LifeStatus.GetDescription(),
                       Name = t.Name

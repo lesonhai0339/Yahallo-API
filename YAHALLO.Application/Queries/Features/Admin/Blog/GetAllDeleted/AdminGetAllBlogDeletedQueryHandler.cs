@@ -3,15 +3,15 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Blog.GetAllDeleted
 {
-    public sealed class GetAllBlogDeletedQueryHandler : IRequestHandler<GetAllBlogDeletedQuery, List<AdminBlogDto>>
+    public sealed class AdminGetAllBlogDeletedQueryHandler : IRequestHandler<AdminGetAllBlogDeletedQuery, List<AdminBlogDto>>
     {
         private readonly IBlogRepository _blogRepository;
-        public GetAllBlogDeletedQueryHandler(IBlogRepository blogRepository)
+        public AdminGetAllBlogDeletedQueryHandler(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
         }
     
-        public async Task<List<AdminBlogDto>> Handle(GetAllBlogDeletedQuery request, CancellationToken cancellationToken)
+        public async Task<List<AdminBlogDto>> Handle(AdminGetAllBlogDeletedQuery request, CancellationToken cancellationToken)
         {
             var blogs = await _blogRepository
                 .FindAllSelectAsync(x=> x

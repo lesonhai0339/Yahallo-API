@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Mappings;
-using YAHALLO.Application.Queries.UserQuery;
+using YAHALLO.Application.Queries.Features.Admin.User;
+using YAHALLO.Application.Queries.Features.Public.User.DTOs;
 using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Comment
@@ -28,7 +29,10 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment
         public string? DisplayName { get; set; }
         public string? Avatar { get; set; }
         public int ReplyCount { get; set; }
-        public UserDto? UserCommentTo { get; set; }
+        public AdminUserDto? UserCommentTo { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
+
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CommentEntity, AdminCommentDto>();

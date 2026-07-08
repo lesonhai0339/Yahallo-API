@@ -40,10 +40,6 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         }
         public async Task<string> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
-            var commentUser = await _userRepository.FindAsync(x=> x.Id == request.UserId, cancellationToken); 
-            if( commentUser == null )
-                throw new NotFoundException($"Không tồn tại tài khoản với Id {request.UserId}");
-
             CommentEntity comment = new CommentEntity
             {
                 CanComment = true,
@@ -56,7 +52,7 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
                 DisLikeCount = 0,
                 Message = request.Message,
                 ParentId = request.ParentId,
-                UserId = commentUser.Id,
+                UserId = _currentUser.UserId,
                 MangaId = request.MangaId,
                 ChapterId = request.ChapterId,
                 CommentToUserId = request.CommentToUserId,  

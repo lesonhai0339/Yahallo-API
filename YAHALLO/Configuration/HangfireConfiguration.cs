@@ -1,7 +1,7 @@
 ﻿//AI generated
 using Hangfire;
 using MediatR;
-using YAHALLO.Application.Queries.MangaQuery.GetHomepage;
+using YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage;
 using YAHALLO.Infrastructure.Jobs;
 
 namespace YAHALLO.Configuration
@@ -19,7 +19,7 @@ namespace YAHALLO.Configuration
             //reload homepage
             RecurringJob.AddOrUpdate<IMediator>(
             "homepage-cache-warmup",
-            mediator => mediator.Send(new GetHomepageRequest(), CancellationToken.None),
+            mediator => mediator.Send(new GetHomepageRequest { }, CancellationToken.None),
             "*/1 * * * *");
             //* * * * *
             //│ │ │ │ │

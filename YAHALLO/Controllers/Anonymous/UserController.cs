@@ -20,19 +20,18 @@ using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Admin.User;
 using YAHALLO.Application.Queries.Features.Admin.User.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.User.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.Features.Admin.User.GetByIdDeleted;
 using YAHALLO.Application.Queries.Features.Admin.User.NewCount;
-using YAHALLO.Application.Queries.UserQuery;
-using YAHALLO.Application.Queries.UserQuery.DTOs;
-using YAHALLO.Application.Queries.UserQuery.FilterUser;
-using YAHALLO.Application.Queries.UserQuery.GetAll;
-using YAHALLO.Application.Queries.UserQuery.GetAllPagination;
-using YAHALLO.Application.Queries.UserQuery.GetById;
-using YAHALLO.Application.Queries.UserQuery.GetByIdDeleted;
-using YAHALLO.Application.Queries.UserQuery.GetByName;
-using YAHALLO.Application.Queries.UserQuery.GetMe;
-using YAHALLO.Application.Queries.UserQuery.GetProfileById;
-using YAHALLO.Application.Queries.UserQuery.GetUserDetail;
-using YAHALLO.Application.Queries.UserQuery.GetUserStats;
+using YAHALLO.Application.Queries.Features.Public.User.DTOs;
+using YAHALLO.Application.Queries.Features.Public.User.Filter;
+using YAHALLO.Application.Queries.Features.Public.User.GetAll;
+using YAHALLO.Application.Queries.Features.Public.User.GetAllPagination;
+using YAHALLO.Application.Queries.Features.Public.User.GetById;
+using YAHALLO.Application.Queries.Features.Public.User.GetByName;
+using YAHALLO.Application.Queries.Features.Public.User.GetMe;
+using YAHALLO.Application.Queries.Features.Public.User.GetProfileById;
+using YAHALLO.Application.Queries.Features.Public.User.GetUserDetail;
+using YAHALLO.Application.Queries.Features.Public.User.GetUserStats;
 using YAHALLO.Application.ResponseTypes;
 using YAHALLO.Common;
 using YAHALLO.Configuration;
@@ -221,7 +220,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<UserDto>>>> GetAll(
           CancellationToken cancellationToken = default)
         {
-            var result = await _Sender.Send(new GetAllUserQuery(), cancellationToken);
+            var result = await _Sender.Send(new GetAllUserQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<UserDto>>(result));
         }
         [HttpGet]
@@ -257,15 +256,15 @@ namespace YAHALLO.Controllers.Anonymous
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-by-id-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<UserDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<AdminUserDto>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<UserDto>>> GetByIdDeleted(
-          [FromQuery] GetUserByIdDeleted query,
+        public async Task<ActionResult<JsonResponse<AdminUserDto>>> GetByIdDeleted(
+          [FromQuery] AdminGetUserByIdDeleted query,
        CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<UserDto>(result));
+            return Ok(new JsonResponse<AdminUserDto>(result));
         }
         [HttpGet]
         [Route("user/get-by-name")]
@@ -337,15 +336,15 @@ namespace YAHALLO.Controllers.Anonymous
         [Route("user/count")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<CountUserQueryResult>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminCountUserQueryResult>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<PagedResult<CountUserQueryResult>>>> CountUser(
-            [FromQuery] CountNewUserQuery query,
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminCountUserQueryResult>>>> CountUser(
+            [FromQuery] AdminCountNewUserQuery query,
          CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(query, cancellationToken);
-            return Ok(new JsonResponse<PagedResult<CountUserQueryResult>>(result));
+            return Ok(new JsonResponse<PagedResult<AdminCountUserQueryResult>>(result));
         }
         [HttpGet]
         [Route("user/stats")]
@@ -375,7 +374,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<AdminUserDto>>>> GetAllDeleted(
        CancellationToken cancellationToken = default)
         {
-            var result = await _Sender.Send(new GetAllUserDeletedQuery { }, cancellationToken);
+            var result = await _Sender.Send(new AdminGetAllUserDeletedQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<AdminUserDto>>(result));
         }
         [HttpGet]
@@ -386,7 +385,7 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminUserDto>>>> GetAllDeletedPagination(
-         [FromQuery] GetAllUserDeletedPaginationQuery query,
+         [FromQuery] AdminGetAllUserDeletedPaginationQuery query,
       CancellationToken cancellationToken = default)
         {
             var result = await _Sender.Send(query, cancellationToken);

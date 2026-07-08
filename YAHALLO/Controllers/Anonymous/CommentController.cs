@@ -8,13 +8,14 @@ using YAHALLO.Application.Commands.CommentCommand.Restore;
 using YAHALLO.Application.Commands.CommentCommand.Update;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.CommentQuery;
-using YAHALLO.Application.Queries.CommentQuery.FilterComment;
-using YAHALLO.Application.Queries.CommentQuery.GetAll;
-using YAHALLO.Application.Queries.CommentQuery.GetAllPagination;
 using YAHALLO.Application.Queries.Features.Admin.Comment;
+using YAHALLO.Application.Queries.Features.Admin.Comment.Filter;
 using YAHALLO.Application.Queries.Features.Admin.Comment.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Comment.GetAllDeteledPagination;
+using YAHALLO.Application.Queries.Features.Public.Comment;
+using YAHALLO.Application.Queries.Features.Public.Comment.FilterComment;
+using YAHALLO.Application.Queries.Features.Public.Comment.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Comment.GetAllPagination;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 
@@ -95,7 +96,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<ResponseResult<CommentDto>>>> GetAllComment(
             CancellationToken cancellationToken = default)
         {
-            var result= await _sender.Send(new GetAllCommentQuery(),cancellationToken);
+            var result= await _sender.Send(new GetAllCommentQuery { },cancellationToken);
             return Ok(new JsonResponse<ResponseResult<CommentDto>>(result));    
         }
         [HttpGet]
@@ -108,7 +109,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<AdminCommentDto>>>> GetAllcommentDeleted(
            CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllCommentDeletedQuery { }, cancellationToken);
+            var result = await _sender.Send(new AdminGetAllCommentDeletedQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<AdminCommentDto>>(result));
         }
         [HttpGet]
@@ -119,7 +120,7 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminCommentDto>>>> GetAllCommentDeletedPagination(
-        [FromQuery] GetAllCommentDeletedPaginationQuery query,
+        [FromQuery] AdminGetAllCommentDeletedPaginationQuery query,
         CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);
@@ -151,6 +152,21 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<CommentDto>>(result));
+        }
+
+        [HttpGet]
+        [Route("comment/admin/filter")]
+        //[Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminCommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminCommentDto>>>> AdminFilter(
+        [FromQuery] AdminFilterCommentQuery query,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<AdminCommentDto>>(result));
         }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
-using YAHALLO.Application.Queries.ArtistQuery;
-using YAHALLO.Application.Queries.AuthorQuery;
-using YAHALLO.Application.Queries.ChapterQuery;
-using YAHALLO.Application.Queries.MangaQuery.DTOs;
-using YAHALLO.Application.Queries.TagQuery;
+using YAHALLO.Application.Queries.Features.Public.Artist;
+using YAHALLO.Application.Queries.Features.Public.Author;
+using YAHALLO.Application.Queries.Features.Public.Manga.DTOs;
+using YAHALLO.Application.Queries.Features.Public.Tag;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;

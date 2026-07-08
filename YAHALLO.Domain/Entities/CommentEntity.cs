@@ -64,8 +64,8 @@ namespace YAHALLO.Domain.Entities
         public virtual UserEntity? CommentToUser { get; set; }
 
 
-        public virtual ICollection<CommentEntity>? Comments { get; set; } = new List<CommentEntity>();
-        public virtual ICollection<AttachmentEntity>? Attechments { get; set; }     = new List<AttachmentEntity>();
-        public virtual ICollection<ReactionEntity>? Reactions { get; set; } = new List<ReactionEntity>();
+        public virtual ICollection<CommentEntity> Comments { get; set; } = new List<CommentEntity>();
+        public virtual ICollection<AttachmentEntity> Attechments { get; set; }     = new List<AttachmentEntity>();
+        public virtual ICollection<ReactionEntity> Reactions { get; set; } = new List<ReactionEntity>();
     }
 }

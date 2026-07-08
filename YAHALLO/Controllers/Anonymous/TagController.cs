@@ -5,10 +5,10 @@ using System.Net.Mime;
 using YAHALLO.Application.Commands.TagCommand.Create;
 using YAHALLO.Application.Commands.TagCommand.Delete;
 using YAHALLO.Application.Commands.TagCommand.Update;
-using YAHALLO.Application.Queries.TagQuery;
-using YAHALLO.Application.Queries.TagQuery.FilterTag;
-using YAHALLO.Application.Queries.TagQuery.GetAll;
 using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Queries.Features.Public.Tag;
+using YAHALLO.Application.Queries.Features.Public.Tag.FilterTag;
+using YAHALLO.Application.Queries.Features.Public.Tag.GetAll;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
@@ -24,7 +24,7 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(typeof(JsonResponse<List<TagDto>>), StatusCodes.Status200OK)]
         public async Task<ActionResult<JsonResponse<List<TagDto>>>> GetAllTags(CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllTagQuery(), cancellationToken);
+            var result = await _sender.Send(new GetAllTagQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<TagDto>>(result));
         }
 

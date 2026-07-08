@@ -6,15 +6,15 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
 {
-    public sealed class CountNewUserQueryHandler : IRequestHandler<CountNewUserQuery, PagedResult<CountUserQueryResult>>
+    public sealed class AdminCountNewUserQueryHandler : IRequestHandler<AdminCountNewUserQuery, PagedResult<AdminCountUserQueryResult>>
     {
         private readonly IUserRepository _userRepository;
-        public CountNewUserQueryHandler(IUserRepository userRepository)
+        public AdminCountNewUserQueryHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public async Task<PagedResult<CountUserQueryResult>> Handle(CountNewUserQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<AdminCountUserQueryResult>> Handle(AdminCountNewUserQuery request, CancellationToken cancellationToken)
         {
             var from = request.From.Date.AddMinutes(-request.TimeZoneOffset);       
             var toExclusive = request.To.Date.AddDays(1).AddMinutes(-request.TimeZoneOffset);
@@ -24,12 +24,12 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
 
             var result = request.CountBy switch
             {
-                UserCountBy.Day => await _userRepository.FindAllSelectAsync(
+                AdminUserCountBy.Day => await _userRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: _ => query
                     .GroupBy(u => u.CreateDate.AddMinutes(request.TimeZoneOffset).Date)
-                    .Select(i => new CountUserQueryResult 
+                    .Select(i => new AdminCountUserQueryResult 
                     {
                         Day = i.Key.Day,
                         Month = i.Key.Month,
@@ -39,13 +39,13 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
                     .OrderBy(x => x.Year).ThenBy(x => x.Month).ThenBy(x => x.Day),
                 cancellation: cancellationToken),
 
-                UserCountBy.Month => await _userRepository.FindAllSelectAsync(
+                AdminUserCountBy.Month => await _userRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: _ => query
                     .GroupBy(u => new {  u.CreateDate.AddMinutes(request.TimeZoneOffset).Month, u.CreateDate.AddMinutes(request.TimeZoneOffset).Year})
                     .Select(i => 
-                        new CountUserQueryResult 
+                        new AdminCountUserQueryResult 
                         {
                             Day = 1,
                             Month = i.Key.Month,
@@ -55,12 +55,12 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
                     .OrderBy(x => x.Year).ThenBy(x => x.Month),
                 cancellation: cancellationToken),
 
-                UserCountBy.Year => await _userRepository.FindAllSelectAsync(
+                AdminUserCountBy.Year => await _userRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: _ => query
                     .GroupBy(u => u.CreateDate.AddMinutes(request.TimeZoneOffset).Year)
-                    .Select(i => new CountUserQueryResult
+                    .Select(i => new AdminCountUserQueryResult
                     {
                         Day = 1,
                         Month = 1,

@@ -7,10 +7,10 @@ using YAHALLO.Application.Commands.MangaRatingCommand.Delete;
 using YAHALLO.Application.Commands.MangaRatingCommand.Restore;
 using YAHALLO.Application.Commands.MangaRatingCommand.Update;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.ArtistQuery;
-using YAHALLO.Application.Queries.ArtistQuery.GetAll;
-using YAHALLO.Application.Queries.MangaRatingQuery;
-using YAHALLO.Application.Queries.MangaRatingQuery.FilterMangaRating;
+using YAHALLO.Application.Queries.Features.Public.Artist;
+using YAHALLO.Application.Queries.Features.Public.Artist.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Rating;
+using YAHALLO.Application.Queries.Features.Public.Rating.FilterMangaRating;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
@@ -85,7 +85,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<ArtistDto>>>> GetallArtist(
            CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllArtistQuery(), cancellationToken);
+            var result = await _sender.Send(new GetAllArtistQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<ArtistDto>>(result));
         }
         [HttpGet]

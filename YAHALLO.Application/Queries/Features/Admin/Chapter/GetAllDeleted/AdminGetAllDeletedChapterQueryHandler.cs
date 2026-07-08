@@ -3,14 +3,14 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeleted
 {
-    public sealed class GetAllDeletedChapterQueryHandler : IRequestHandler<GetAllDeletedChapterQuery, List<AdminChapterDto>>
+    public sealed class AdminGetAllDeletedChapterQueryHandler : IRequestHandler<AdminGetAllDeletedChapterQuery, List<AdminChapterDto>>
     {
         private readonly IChapterRepository _chapterRepository;
-        public GetAllDeletedChapterQueryHandler(IChapterRepository chapterRepository)
+        public AdminGetAllDeletedChapterQueryHandler(IChapterRepository chapterRepository)
         {
             _chapterRepository = chapterRepository;
         }
-        public async Task<List<AdminChapterDto>> Handle(GetAllDeletedChapterQuery request, CancellationToken cancellationToken)
+        public async Task<List<AdminChapterDto>> Handle(AdminGetAllDeletedChapterQuery request, CancellationToken cancellationToken)
         {
             var chapters = await _chapterRepository.FindAllSelectAsync(x => x
             .Where(c => !string.IsNullOrEmpty(c.IdUserDelete) && c.DeleteDate.HasValue)

@@ -10,10 +10,10 @@ using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Admin.Follow;
 using YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeletedPagination;
-using YAHALLO.Application.Queries.FollowQuery;
-using YAHALLO.Application.Queries.FollowQuery.Filter;
-using YAHALLO.Application.Queries.FollowQuery.GetAll;
-using YAHALLO.Application.Queries.FollowQuery.GetAllPagination;
+using YAHALLO.Application.Queries.Features.Public.Follow;
+using YAHALLO.Application.Queries.Features.Public.Follow.Filter;
+using YAHALLO.Application.Queries.Features.Public.Follow.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Follow.GetAllPagination;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 
@@ -75,7 +75,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<FollowMangaDto>>>> GetAllFollowManga(
           CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllFollowMangaQuery(), cancellationToken);
+            var result = await _sender.Send(new GetAllFollowMangaQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<FollowMangaDto>>(result));
         }
       
@@ -116,7 +116,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<AdminFollowDto>>>> GetAllDeletedFollowManga(
       CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllDeletedFollowMangaQuery { }, cancellationToken);
+            var result = await _sender.Send(new AdminGetAllDeletedFollowMangaQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<AdminFollowDto>>(result));
         }
         [HttpGet]
@@ -127,7 +127,7 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminFollowDto>>>> GetAllDeletedFollowMangaPagination(
-          [FromQuery] GetAllDeletedFollowMangaPaginationQuery query,
+          [FromQuery] AdminGetAllDeletedFollowMangaPaginationQuery query,
        CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);

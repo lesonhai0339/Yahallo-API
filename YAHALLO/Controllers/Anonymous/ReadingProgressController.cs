@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.ReadingProgressCommand.Upsert;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.ReadingProgressQuery;
-using YAHALLO.Application.Queries.ReadingProgressQuery.GetByUser;
-using YAHALLO.Application.Queries.ReadingProgressQuery.GetByUserPagination;
+using YAHALLO.Application.Queries.Features.Public.ReadingProgress;
+using YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUser;
+using YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUserPagination;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous

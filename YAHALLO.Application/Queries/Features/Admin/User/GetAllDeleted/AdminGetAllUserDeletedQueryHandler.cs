@@ -3,15 +3,15 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.User.GetAllDeleted
 {
-    public sealed class GetAllUserDeletedQueryHandler : IRequestHandler<GetAllUserDeletedQuery, List<AdminUserDto>>
+    public sealed class AdminGetAllUserDeletedQueryHandler : IRequestHandler<AdminGetAllUserDeletedQuery, List<AdminUserDto>>
     {
         private readonly IUserRepository _userRepository;
-        public GetAllUserDeletedQueryHandler(IUserRepository userRepository)
+        public AdminGetAllUserDeletedQueryHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public async Task<List<AdminUserDto>> Handle(GetAllUserDeletedQuery request, CancellationToken cancellationToken)
+        public async Task<List<AdminUserDto>> Handle(AdminGetAllUserDeletedQuery request, CancellationToken cancellationToken)
         {
             var listUsers = await _userRepository
                 .FindAllSelectAsync(x => x

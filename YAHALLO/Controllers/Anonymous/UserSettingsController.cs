@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
@@ -7,8 +6,8 @@ using YAHALLO.Application.Commands.UserSettingsCommand.Create;
 using YAHALLO.Application.Commands.UserSettingsCommand.Delete;
 using YAHALLO.Application.Commands.UserSettingsCommand.Restore;
 using YAHALLO.Application.Commands.UserSettingsCommand.Update;
-using YAHALLO.Application.Queries.UserSettingsQuery;
-using YAHALLO.Application.Queries.UserSettingsQuery.GetById;
+using YAHALLO.Application.Queries.Features.Public.UserSettings;
+using YAHALLO.Application.Queries.Features.Public.UserSettings.GetById;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous

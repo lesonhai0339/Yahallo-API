@@ -8,13 +8,13 @@ using YAHALLO.Application.Commands.AuthorCommand.Restore;
 using YAHALLO.Application.Commands.AuthorCommand.Update;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.AuthorQuery;
-using YAHALLO.Application.Queries.AuthorQuery.FilterAuthor;
-using YAHALLO.Application.Queries.AuthorQuery.GetAll;
-using YAHALLO.Application.Queries.AuthorQuery.GetAllPagination;
 using YAHALLO.Application.Queries.Features.Admin.Author;
 using YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.Features.Public.Author;
+using YAHALLO.Application.Queries.Features.Public.Author.Filter;
+using YAHALLO.Application.Queries.Features.Public.Author.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Author.GetAllPagination;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous
@@ -89,7 +89,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<AuthorDto>>>> GetAllAuthor(
            CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllAuthorQuery(), cancellationToken);
+            var result = await _sender.Send(new GetAllAuthorQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<AuthorDto>>(result));
         }
         [HttpGet]
@@ -116,7 +116,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<AdminAuthorDto>>>> GetAllAuthorDeleted(
            CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllAuthorDeletedQuery { }, cancellationToken);
+            var result = await _sender.Send(new AdminGetAllAuthorDeletedQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<AdminAuthorDto>>(result));
         }
         [HttpGet]
@@ -127,7 +127,7 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminAuthorDto>>>> GetAllAuthorDeletedPagination(
-            [FromQuery] GetAllAuthorDeletedPaginationQuery query,
+            [FromQuery] AdminGetAllAuthorDeletedPaginationQuery query,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);

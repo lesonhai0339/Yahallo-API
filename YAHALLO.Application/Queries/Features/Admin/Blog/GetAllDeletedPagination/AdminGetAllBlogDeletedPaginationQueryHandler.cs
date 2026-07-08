@@ -6,20 +6,20 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Blog.GetAllDeletedPagination
 {
-    public class GetAllBlogDeletedPaginationQueryHandler : IRequestHandler<GetAllBlogDeletedPaginationQuery, PagedResult<AdminBlogDto>>
+    public class AdminGetAllBlogDeletedPaginationQueryHandler : IRequestHandler<AdminGetAllBlogDeletedPaginationQuery, PagedResult<AdminBlogDto>>
     {
         private readonly IBlogRepository _blogRepository;
         private readonly IMapper _mapper;
-        public GetAllBlogDeletedPaginationQueryHandler(IBlogRepository blogRepository, IMapper mapper)
+        public AdminGetAllBlogDeletedPaginationQueryHandler(IBlogRepository blogRepository, IMapper mapper)
         {
             _blogRepository = blogRepository;
             _mapper = mapper;
         }
-        public async Task<PagedResult<AdminBlogDto>> Handle(GetAllBlogDeletedPaginationQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<AdminBlogDto>> Handle(AdminGetAllBlogDeletedPaginationQuery request, CancellationToken cancellationToken)
         {
             var blogs = await _blogRepository
                  .FindAllSelectAsync(
-                    pageNo: request.PageNumber,
+                    pageNo: request.PageNo,
                     pageSize: request.PageSize, 
                       selector:  x => x
                          .Where(a => !string.IsNullOrWhiteSpace(a.IdUserDelete) && a.DeleteDate.HasValue)

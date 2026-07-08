@@ -12,6 +12,9 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             // Composite key: one record per user × manga × chapter
             builder.HasKey(e => new { e.UserId, e.MangaId, e.ChapterId });
 
+            builder.HasIndex(x => new { x.UserId, x.LastReadAt })
+.IncludeProperties(x => new { x.MangaId, x.ChapterId, x.LastPage });
+
             builder.HasOne(e => e.User)
                 .WithMany()
                 .HasForeignKey(e => e.UserId)

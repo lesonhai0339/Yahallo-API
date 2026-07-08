@@ -15,10 +15,13 @@ namespace YAHALLO.Application.Queries.Features.Admin.Author
     {
         public string Id { get; set; } = null!;
         public string? Name { get; set; }
-        public string? Countries { get; set; }
+        public string? Country { get; set; }
         public string? Depscription { get; set; }
         public DateTime Birth { get; set; }
         public string? LifeStatus { get; set; }
+        public DateTime? CreateDate { get;  set; }
+        public DateTime? DeleteDate { get; set; }
+
         public void Mapping(Profile profile)
         {
             profile.CreateMap<AuthorEntity, AdminAuthorDto>();

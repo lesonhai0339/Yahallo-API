@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.NotificationCommand.MarkRead;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.NotificationQuery;
-using YAHALLO.Application.Queries.NotificationQuery.GetByUser;
+using YAHALLO.Application.Queries.Features.Public.Notification;
+using YAHALLO.Application.Queries.Features.Public.Notification.GetByUser;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous

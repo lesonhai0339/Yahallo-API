@@ -6,7 +6,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.Filter
 {
     public sealed class AdminFilterUserQuery: IRequest<PagedResult<AdminUserDto>>
     {
-        public int PageNumber { get; set; }
+        public int PageNo { get; set; }
         public int PageSize { get; set; }
         public string? Id { get; set; }
         public string? Name { get; set; }

@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
-using YAHALLO.Application.Queries.CountryQuery;
-using YAHALLO.Application.Queries.CountryQuery.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Country;
+using YAHALLO.Application.Queries.Features.Public.Country.GetAll;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers.Anonymous

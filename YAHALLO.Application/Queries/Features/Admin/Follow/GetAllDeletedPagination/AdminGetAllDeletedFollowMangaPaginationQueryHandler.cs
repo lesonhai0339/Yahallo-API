@@ -5,17 +5,17 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeletedPagination
 {
-    public sealed class GetAllDeletedFollowMangaPaginationQueryHandler : IRequestHandler<GetAllDeletedFollowMangaPaginationQuery, PagedResult<AdminFollowDto>>
+    public sealed class AdminGetAllDeletedFollowMangaPaginationQueryHandler : IRequestHandler<AdminGetAllDeletedFollowMangaPaginationQuery, PagedResult<AdminFollowDto>>
     {
         private readonly IFollowRepository _followRepository;
-        public GetAllDeletedFollowMangaPaginationQueryHandler(IFollowRepository followRepository)
+        public AdminGetAllDeletedFollowMangaPaginationQueryHandler(IFollowRepository followRepository)
         {
             _followRepository = followRepository;
         }
-        public async Task<PagedResult<AdminFollowDto>> Handle(GetAllDeletedFollowMangaPaginationQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<AdminFollowDto>> Handle(AdminGetAllDeletedFollowMangaPaginationQuery request, CancellationToken cancellationToken)
         {
             var follows = await _followRepository.FindAllSelectAsync(
-            pageNo: request.PageNumber,
+            pageNo: request.PageNo,
             pageSize: request.PageSize,
             selector:    x => x
                 .Where(f => !string.IsNullOrEmpty(f.IdUserDelete) && f.DeleteDate.HasValue)

@@ -1,6 +1,4 @@
-﻿using YAHALLO.Application.Queries.UserQuery;
-
-namespace YAHALLO.Application.Common.Pagination
+﻿namespace YAHALLO.Application.Common.Pagination
 {
     public class PagedResult<T>
     {

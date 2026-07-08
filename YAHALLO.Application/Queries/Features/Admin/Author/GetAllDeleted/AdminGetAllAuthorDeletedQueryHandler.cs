@@ -4,14 +4,14 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeleted
 {
-    public sealed class GetAllAuthorDeletedQueryHandler : IRequestHandler<GetAllAuthorDeletedQuery, List<AdminAuthorDto>>
+    public sealed class AdminGetAllAuthorDeletedQueryHandler : IRequestHandler<AdminGetAllAuthorDeletedQuery, List<AdminAuthorDto>>
     {
         private readonly IAuthorRepository _authorRepository;
-        public GetAllAuthorDeletedQueryHandler(IAuthorRepository authorReoisitory)
+        public AdminGetAllAuthorDeletedQueryHandler(IAuthorRepository authorReoisitory)
         {
             _authorRepository = authorReoisitory;
         }
-        public async Task<List<AdminAuthorDto>> Handle(GetAllAuthorDeletedQuery request, CancellationToken cancellationToken)
+        public async Task<List<AdminAuthorDto>> Handle(AdminGetAllAuthorDeletedQuery request, CancellationToken cancellationToken)
         {
             var authors = await _authorRepository
                 .FindAllSelectAsync(x => x
@@ -20,7 +20,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeleted
                 {
                     Id = t.Id,
                     Birth    = t.Birth,
-                    Countries = t.Countries.GetDescription(),
+                    Country = t.Countries.GetDescription(),
                     Depscription = t.Depscription,
                     LifeStatus = t.LifeStatus.GetDescription(),
                     Name = t.Name

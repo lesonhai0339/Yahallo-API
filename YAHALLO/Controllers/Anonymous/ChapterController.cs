@@ -8,14 +8,14 @@ using YAHALLO.Application.Commands.ChapterCommand.Restore;
 using YAHALLO.Application.Commands.ChapterCommand.Update;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.ChapterQuery;
-using YAHALLO.Application.Queries.ChapterQuery.Filter;
-using YAHALLO.Application.Queries.ChapterQuery.GetAll;
-using YAHALLO.Application.Queries.ChapterQuery.GetAllImage;
-using YAHALLO.Application.Queries.ChapterQuery.GetAllPagination;
 using YAHALLO.Application.Queries.Features.Admin.Chapter;
 using YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.Features.Public.Chapter;
+using YAHALLO.Application.Queries.Features.Public.Chapter.Filter;
+using YAHALLO.Application.Queries.Features.Public.Chapter.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Chapter.GetAllPagination;
+using YAHALLO.Application.Queries.Features.Public.Chapter.GetImage;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 
@@ -89,7 +89,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<ResponseResult<ChapterDto>>>> GetAllChapter(
         CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllChapterQuery(), cancellationToken);
+            var result = await _sender.Send(new GetAllChapterQuery { }, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<ChapterDto>>(result));
         }
       
@@ -143,7 +143,7 @@ namespace YAHALLO.Controllers.Anonymous
         public async Task<ActionResult<JsonResponse<List<AdminChapterDto>>>> GetAllChapterDeleted(
     CancellationToken cancellationToken = default)
         {
-            var result = await _sender.Send(new GetAllDeletedChapterQuery { }, cancellationToken);
+            var result = await _sender.Send(new AdminGetAllDeletedChapterQuery { }, cancellationToken);
             return Ok(new JsonResponse<List<AdminChapterDto>>(result));
         }
         [HttpGet]
@@ -154,7 +154,7 @@ namespace YAHALLO.Controllers.Anonymous
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminChapterDto>>>> GetAllDeletedChapterPagination(
-        [FromQuery] GetAllDeletedChapterPaginationQuery query,
+        [FromQuery] AdminGetAllDeletedChapterPaginationQuery query,
         CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);

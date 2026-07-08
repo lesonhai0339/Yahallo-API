@@ -5,18 +5,18 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeletedPagination
 {
-    public sealed class GetAllDeletedChapterPaginationQueryHandler : IRequestHandler<GetAllDeletedChapterPaginationQuery, PagedResult<AdminChapterDto>>
+    public sealed class AdminGetAllDeletedChapterPaginationQueryHandler : IRequestHandler<AdminGetAllDeletedChapterPaginationQuery, PagedResult<AdminChapterDto>>
     {
         private readonly IChapterRepository _chapterRepository;
-        public GetAllDeletedChapterPaginationQueryHandler(IChapterRepository chapterRepository)
+        public AdminGetAllDeletedChapterPaginationQueryHandler(IChapterRepository chapterRepository)
         {
             _chapterRepository = chapterRepository;
         }
 
-        public async Task<PagedResult<AdminChapterDto>> Handle(GetAllDeletedChapterPaginationQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<AdminChapterDto>> Handle(AdminGetAllDeletedChapterPaginationQuery request, CancellationToken cancellationToken)
         {
             var chapters = await _chapterRepository.FindAllSelectAsync(
-            pageNo: request.PageNumber,
+            pageNo: request.PageNo,
             pageSize: request.PageSize, 
             selector: x => x
                .Where(c => !string.IsNullOrEmpty(c.IdUserDelete) && c.DeleteDate.HasValue)

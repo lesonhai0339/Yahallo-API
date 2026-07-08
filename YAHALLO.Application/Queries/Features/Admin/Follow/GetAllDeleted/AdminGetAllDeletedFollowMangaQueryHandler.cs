@@ -3,14 +3,14 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeleted
 {
-    public sealed class GetAllDeletedFollowMangaQueryHandler : IRequestHandler<GetAllDeletedFollowMangaQuery, List<AdminFollowDto>>
+    public sealed class AdminGetAllDeletedFollowMangaQueryHandler : IRequestHandler<AdminGetAllDeletedFollowMangaQuery, List<AdminFollowDto>>
     {
         private readonly IFollowRepository _followrepository;
-        public GetAllDeletedFollowMangaQueryHandler(IFollowRepository followrepository)
+        public AdminGetAllDeletedFollowMangaQueryHandler(IFollowRepository followrepository)
         {
             _followrepository = followrepository;
         }
-        public async Task<List<AdminFollowDto>> Handle(GetAllDeletedFollowMangaQuery request, CancellationToken cancellationToken)
+        public async Task<List<AdminFollowDto>> Handle(AdminGetAllDeletedFollowMangaQuery request, CancellationToken cancellationToken)
         {
             var follows = await _followrepository.FindAllSelectAsync(x => x
                 .Where(f => !string.IsNullOrEmpty(f.IdUserDelete) && f.DeleteDate.HasValue)

@@ -1,18 +1,18 @@
 ﻿using MediatR;
-using YAHALLO.Application.Queries.UserQuery;
+using YAHALLO.Application.Queries.Features.Admin.User;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Admin.Comment.GetAllDeleted
 {
-    public sealed class GetAllCommentDeletedQueryHandler : IRequestHandler<GetAllCommentDeletedQuery, List<AdminCommentDto>>
+    public sealed class AdminGetAllCommentDeletedQueryHandler : IRequestHandler<AdminGetAllCommentDeletedQuery, List<AdminCommentDto>>
     {
         private readonly ICommentRepository _commentRepository;
-        public GetAllCommentDeletedQueryHandler(ICommentRepository commentRepository)
+        public AdminGetAllCommentDeletedQueryHandler(ICommentRepository commentRepository)
         {
             _commentRepository = commentRepository;
         }
     
-        public async Task<List<AdminCommentDto>> Handle(GetAllCommentDeletedQuery request, CancellationToken cancellationToken)
+        public async Task<List<AdminCommentDto>> Handle(AdminGetAllCommentDeletedQuery request, CancellationToken cancellationToken)
         {
             var comments= await _commentRepository.FindAllSelectAsync(x=> x 
                 .Where(c => !string.IsNullOrEmpty(c.IdUserDelete) && c.DeleteDate.HasValue)
@@ -34,7 +34,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment.GetAllDeleted
                     IsDeleted = t.DeleteDate.HasValue && !string.IsNullOrEmpty(t.IdUserDelete),
                     DisplayName = t.UserEntity == null ? null : t.UserEntity.DisplayName,
                     Avatar = t.UserEntity == null ? null : t.UserEntity.AvatarThumbnail,
-                    UserCommentTo = t.CommentToUser == null ? null : new UserDto
+                    UserCommentTo = t.CommentToUser == null ? null : new AdminUserDto
                     {
                         Id = t.CommentToUser.Id,
                         DisplayName = t.CommentToUser.DisplayName,

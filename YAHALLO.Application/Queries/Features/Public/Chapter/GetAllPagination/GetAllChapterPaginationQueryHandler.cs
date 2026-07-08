@@ -1,0 +1,37 @@
+﻿using AutoMapper;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Application.Queries.Features.Public.Chapter;
+using YAHALLO.Domain.Exceptions;
+using YAHALLO.Domain.Repositories;
+
+namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetAllPagination
+{
+    public class GetAllChapterPaginationQueryHandler : IRequestHandler<GetAllChapterPaginationQuery, PagedResult<ChapterDto>>
+    {
+        private readonly IChapterRepository _chapterRepository;
+        private readonly IMapper _mapper;
+        public GetAllChapterPaginationQueryHandler(IChapterRepository chapterRepository, IMapper mapper)
+        {
+            _chapterRepository = chapterRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<PagedResult<ChapterDto>> Handle(GetAllChapterPaginationQuery request, CancellationToken cancellationToken)
+        {
+            var checkChapterExists = await _chapterRepository
+                .FindAllAsync(request.PageNo, request.PageSize, cancellationToken);
+            if(checkChapterExists.Count() == 0)
+            {
+                throw new NotFoundException("Không tìm thấy bất  kỳ chương truyện nào");
+            }
+            return checkChapterExists.MapToPagedResult(x => x.MapFullToChapterDto(_mapper));
+        }
+    }
+}
