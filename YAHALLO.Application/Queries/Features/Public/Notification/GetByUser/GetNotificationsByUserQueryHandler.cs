@@ -4,7 +4,6 @@ using MediatR;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Application.Queries.Features.Public.Notification;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 

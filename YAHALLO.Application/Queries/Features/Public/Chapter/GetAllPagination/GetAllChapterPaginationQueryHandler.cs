@@ -1,14 +1,6 @@
-﻿using AutoMapper;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Application.Queries.Features.Public.Chapter;
-using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetAllPagination
@@ -16,22 +8,30 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetAllPagination
     public class GetAllChapterPaginationQueryHandler : IRequestHandler<GetAllChapterPaginationQuery, PagedResult<ChapterDto>>
     {
         private readonly IChapterRepository _chapterRepository;
-        private readonly IMapper _mapper;
-        public GetAllChapterPaginationQueryHandler(IChapterRepository chapterRepository, IMapper mapper)
+        public GetAllChapterPaginationQueryHandler(IChapterRepository chapterRepository)
         {
             _chapterRepository = chapterRepository;
-            _mapper = mapper;
         }
 
         public async Task<PagedResult<ChapterDto>> Handle(GetAllChapterPaginationQuery request, CancellationToken cancellationToken)
         {
-            var checkChapterExists = await _chapterRepository
-                .FindAllAsync(request.PageNo, request.PageSize, cancellationToken);
-            if(checkChapterExists.Count() == 0)
-            {
-                throw new NotFoundException("Không tìm thấy bất  kỳ chương truyện nào");
-            }
-            return checkChapterExists.MapToPagedResult(x => x.MapFullToChapterDto(_mapper));
+            var chapters = await _chapterRepository
+               .FindAllSelectAsync(
+                   pageNo: request.PageNo,
+                   pageSize: request.PageSize,
+                   selector: q => q
+                   .Select(x => new ChapterDto
+                   {
+                       Id = x.Id,
+                       Index = x.Index,
+                       MangaId = x.MangaId!,
+                       MangaName = x.MangaEntity == null ? null : x.MangaEntity.Name,
+                       Title = x.Title,
+                       CreateDate = x.CreateDate
+                   }),
+                   cancellation: cancellationToken);
+
+            return chapters.MapToPagedResult(x => x);
         }
     }
 }

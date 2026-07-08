@@ -1,9 +1,6 @@
 //AI generated
-using AutoMapper;
 using MediatR;
 using YAHALLO.Application.Common.Interfaces;
-using YAHALLO.Application.Queries.Features.Public.ReadingProgress;
-using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUser
@@ -12,29 +9,31 @@ namespace YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUser
     {
         private readonly IReadingProgressRepository _progressRepository;
         private readonly ICurrentUserService _currentUser;
-        private readonly IMapper _mapper;
 
-        public GetReadingProgressByUserQueryHandler(IReadingProgressRepository progressRepository, ICurrentUserService currentUser, IMapper mapper)
+        public GetReadingProgressByUserQueryHandler(IReadingProgressRepository progressRepository, ICurrentUserService currentUser)
         {
             _progressRepository = progressRepository;
             _currentUser = currentUser;
-            _mapper = mapper;
         }
 
         public async Task<List<ReadingProgressDto>> Handle(GetReadingProgressByUserQuery request, CancellationToken cancellationToken)
         {
-            var userId = request.UserId ?? _currentUser.UserId;
-            if (string.IsNullOrEmpty(userId))
-                throw new UnAuthorizeException("Bạn cần đăng nhập để xem tiến độ đọc");
+            var progresses = await _progressRepository.FindAllSelectAsync(x => x
+                .Where(r => r.UserId == _currentUser.UserId && r.MangaId == request.MangaId)
+                .Select(t => new ReadingProgressDto
+                {
+                    MangaId = t.MangaId,
+                    ChapterId = t.ChapterId,
+                    ChapterIndex = t.Chapter.Index,
+                    ChapterTitle = t.Chapter.Title,
+                    LastPage = t.LastPage,
+                    LastReadAt = t.LastReadAt,
+                    MangaName   = t.Manga.Name,
+                    MangaThumbnail = t.Manga.MangaThumbnail
+                }),
+                cancellationToken);
 
-            var list = await _progressRepository.FindAllAsync(query =>
-            {
-                query = query.Where(x => x.UserId == userId);
-                if (!string.IsNullOrEmpty(request.MangaId))
-                    query = query.Where(x => x.MangaId == request.MangaId);
-                return query;
-            }, cancellationToken);
-            return list.Select(x => _mapper.Map<ReadingProgressDto>(x)).ToList();
+            return progresses;
         }
     }
 }

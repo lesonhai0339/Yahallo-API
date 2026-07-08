@@ -1,14 +1,8 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Application.Queries.Features.Public.ReadingProgress;
 using YAHALLO.Domain.Common.Helper;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.ReadingProgress;
@@ -17,33 +11,23 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUserPagination
 {
-    public class GetReadingProgressByUserPaginationQueryHanler : IRequestHandler<GetReadingProgressByUserPaginationQuery, PagedResult<ReadingProgressDto>>
+    public class FilterReadingProgressQueryHandler : IRequestHandler<FilterReadingProgressQuery, PagedResult<ReadingProgressDto>>
     {
-        private readonly ICurrentUserService _currentUserService;
+        private readonly ICurrentUserService _currentUser;
         private readonly IReadingProgressRepository _readingProgressRepository; 
-        public GetReadingProgressByUserPaginationQueryHanler(ICurrentUserService currentUserService, IReadingProgressRepository readingProgressRepository)
+        public FilterReadingProgressQueryHandler(ICurrentUserService currentUserService, IReadingProgressRepository readingProgressRepository)
         {
-            _currentUserService = currentUserService;
+            _currentUser = currentUserService;
             _readingProgressRepository = readingProgressRepository;
         }
 
-        public async Task<PagedResult<ReadingProgressDto>> Handle(GetReadingProgressByUserPaginationQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResult<ReadingProgressDto>> Handle(FilterReadingProgressQuery request, CancellationToken cancellationToken)
         {
-            var isStaff = await _currentUserService.AuthorizeAsync(Policies.ModOrAdmin);
-            request.UserId = (isStaff && !string.IsNullOrEmpty(request.UserId))
-                ? request.UserId
-                : _currentUserService.UserId;
-
-            var query = _readingProgressRepository.CreateQueryable();
-            query = ApplyFilter(query, request);
-
-            var grouped = query.GroupBy(r => r.MangaId);
-            grouped = ApplyGroupSorting(grouped, request);
-
             var readingProgresses = await _readingProgressRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
-                selector: _ => grouped
+                selector: q => 
+                    ApplyGroupSorting(ApplyFilter(q, request).GroupBy(r => r.MangaId), request)
                     .Select(g => g
                         .OrderByDescending(r => r.LastReadAt)
                         .Select(r => new ReadingProgressDto
@@ -59,27 +43,27 @@ namespace YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUserP
                         })
                 .First()),
                 cancellation: cancellationToken);
-            if (!readingProgresses.Any())
-                throw new NotFoundException("No reading progress found!");
 
             return readingProgresses.MapToPagedResult(x => x);
         }
         private IQueryable<IGrouping<string, ReadingProgressEntity>> ApplyGroupSorting(
-    IQueryable<IGrouping<string, ReadingProgressEntity>> grouped,
-    GetReadingProgressByUserPaginationQuery request)
+            IQueryable<IGrouping<string, ReadingProgressEntity>> grouped,
+            FilterReadingProgressQuery request)
         {
             return request.SortBy switch
             {
                 ReadingProgressSortBy.LastReadAt => request.ReverseSort
                     ? grouped.OrderBy(g => g.Max(r => r.LastReadAt))
                     : grouped.OrderByDescending(g => g.Max(r => r.LastReadAt)),
-                _ => grouped
+                _ => grouped.OrderByDescending(g => g.Max(r => r.LastReadAt))
             };
         }
-        private IQueryable<ReadingProgressEntity> ApplyFilter(IQueryable<ReadingProgressEntity> query, GetReadingProgressByUserPaginationQuery request)
-        {
-            if (!string.IsNullOrEmpty(request.UserId)) query = query.Where(x => x.UserId == request.UserId);
+        private IQueryable<ReadingProgressEntity> ApplyFilter(IQueryable<ReadingProgressEntity> query, FilterReadingProgressQuery request)
+        {            
+            query = query.Where(x => x.UserId == _currentUser.UserId);
+
             if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.MangaId == request.MangaId);
+
             return query;
         }
     }

@@ -13,37 +13,16 @@ namespace YAHALLO.Domain.Entities
 {
     public class BlogEntity: BaseEntity
     {
-        public BlogEntity() { }
-        public BlogEntity(string? parentId, string title, string description, string content, int like, int disLike, CommonStatus status, BlogEnumType type, ViewCountEntity? viewCount, ICollection<ThreadOfBlogEntity>? threadOfBlogEntities, ICollection<ReactionEntity>? reactions, ICollection<CommentEntity>? comments, ICollection<AttachmentEntity>? attechments)
-        {
-            ParentId = parentId;
-            Title = title;
-            Description = description;
-            Content = content;
-            Like = like;
-            DisLike = disLike;
-            Status = status;
-            Type = type;
-            ViewCount = viewCount;
-            ThreadOfBlogEntities = threadOfBlogEntities;
-            Reactions = reactions;
-            Comments = comments;
-            Attechments = attechments;
-        }
-
-        public string? ParentId { get; set; }
-        public string? Title { get; set; }
+        public string Title { get; set; } = null!;
         public string? Description { get; set; } = "None";
         public string? Content { get; set; } = "No Content";
         public int Like { get; set; } = 0;
         public int DisLike { get; set; } = 0;
-
         public CommonStatus Status { get; set; } = CommonStatus.Active;
-        public BlogEnumType Type { get; set; }  = BlogEnumType.None;
-
-     
-        public virtual ViewCountEntity? ViewCount { get; set; } 
-
+        public BlogEnumType Type { get; set; }  = BlogEnumType.None;  
+        public virtual ViewCountEntity? ViewCount { get; set; }
+        public string UserId { get; set; } = null!;
+        public virtual UserEntity? User { get; set; }
         public virtual ICollection<ThreadOfBlogEntity>? ThreadOfBlogEntities { get;set; }   = new List<ThreadOfBlogEntity>();
         public virtual ICollection<ReactionEntity>? Reactions { get;set; }     = new List<ReactionEntity>   ();
         public virtual ICollection<CommentEntity>? Comments { get; set; } = new List<CommentEntity> ();

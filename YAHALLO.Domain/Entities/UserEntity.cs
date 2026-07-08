@@ -68,12 +68,8 @@ namespace YAHALLO.Domain.Entities
         public virtual ICollection<BookmarkEntity> Bookmarks { get; set; } = new List<BookmarkEntity>();
         public virtual ICollection<UserDailyActivityEntity> DailyActivityEntities { get; set; } = new List<UserDailyActivityEntity>();
         public virtual ICollection<UserMangaDailyReadEntity> UserMangaDailyReadEntities { get; set; } = new List<UserMangaDailyReadEntity>();
+        public virtual ICollection<BlogEntity> BlogEntities { get; set; } = new List<BlogEntity>();
 
-        public UserEntity? ConvertFromString(string classname)
-        {
-            var local = typeof(UserEntity);
-            var type = Type.GetType(string.Format($"{local.Namespace}.{0}", classname));
-            return (UserEntity?)Activator.CreateInstance(type!);
-        }
+
     }
 }

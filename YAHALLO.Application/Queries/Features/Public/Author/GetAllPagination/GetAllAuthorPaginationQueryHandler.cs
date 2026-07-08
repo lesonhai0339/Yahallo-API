@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.Author.GetAllPagination
@@ -10,18 +8,30 @@ namespace YAHALLO.Application.Queries.Features.Public.Author.GetAllPagination
     public class GetAllAuthorPaginationQueryHandler : IRequestHandler<GetAllAuthorPaginationQuery, PagedResult<AuthorDto>>
     {
         private readonly IAuthorRepository _authorRepository;
-        private IMapper _mapper;
-        public GetAllAuthorPaginationQueryHandler(IAuthorRepository authorRepository, IMapper mapper)
+        public GetAllAuthorPaginationQueryHandler(IAuthorRepository authorRepository)
         {
             _authorRepository = authorRepository;
-            _mapper = mapper;
         }
 
         public async Task<PagedResult<AuthorDto>> Handle(GetAllAuthorPaginationQuery request, CancellationToken cancellationToken)
         {
-            var authors= await _authorRepository
-                .FindAllAsync(x=> string.IsNullOrEmpty(x.IdUserDelete)&& !x.DeleteDate.HasValue, request.PageNo, request.PageSize, cancellationToken);    
-            return authors.MapToPagedResult(x => x.MapToAuthorDto(_mapper));
+            var authors = await _authorRepository
+                .FindAllSelectAsync(
+                pageNo: request.PageNo,
+                pageSize: request.PageSize,
+                selector: q => q
+                    .Select(x => new AuthorDto
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        Depscription = x.Depscription,
+                        Birth = x.Birth,
+                        Countries = x.Countries,
+                        LifeStatus = x.LifeStatus
+                    }),
+                cancellationToken
+                );
+            return authors.MapToPagedResult(x => x);
         }
     }
 }

@@ -5,7 +5,6 @@ using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Application.Queries.Features.Public.Chapter;
 using YAHALLO.Application.Queries.Features.Public.Manga.DTOs;
 using YAHALLO.Application.Queries.Features.Public.Tag;
-using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.Manga.GetAllPagination
@@ -22,7 +21,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetAllPagination
 
         public async Task<PagedResult<MangaDto>> Handle(GetAllMangaPaginationQuery request, CancellationToken cancellationToken)
         {
-            var results = await _mangaRepository.FindAllSelectAsync(
+            var mangas = await _mangaRepository.FindAllSelectAsync(
                 pageSize: request.PageSize,
                 pageNo: request.PageNo,
                 selector: x => x
@@ -57,10 +56,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetAllPagination
                         }).ToList()
                     })
                 , cancellation: cancellationToken);
-            if(!results.Any())
-                throw new NotFoundException("Không tìm thấy bất kỳ manga nào");
 
-            return results.MapToPagedResult(x => x);
+            return mangas.MapToPagedResult(x => x);
         }
     }
 }

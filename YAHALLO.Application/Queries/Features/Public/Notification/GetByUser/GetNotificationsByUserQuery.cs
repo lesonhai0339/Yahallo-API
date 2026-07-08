@@ -1,7 +1,6 @@
 //AI generated
 using MediatR;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Application.Queries.Features.Public.Notification;
 using YAHALLO.Domain.Enums.NotificationEnums;
 
 namespace YAHALLO.Application.Queries.Features.Public.Notification.GetByUser

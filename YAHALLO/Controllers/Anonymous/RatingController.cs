@@ -8,7 +8,6 @@ using YAHALLO.Application.Commands.MangaRatingCommand.Restore;
 using YAHALLO.Application.Commands.MangaRatingCommand.Update;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Public.Artist;
-using YAHALLO.Application.Queries.Features.Public.Artist.GetAll;
 using YAHALLO.Application.Queries.Features.Public.Rating;
 using YAHALLO.Application.Queries.Features.Public.Rating.FilterMangaRating;
 using YAHALLO.Services;
@@ -74,19 +73,6 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<bool>(result));
-        }
-        [HttpGet]
-        [Route("rating/get-all")]
-        [AllowAnonymous]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<ArtistDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<ArtistDto>>>> GetallArtist(
-           CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(new GetAllArtistQuery { }, cancellationToken);
-            return Ok(new JsonResponse<List<ArtistDto>>(result));
         }
         [HttpGet]
         [Route("rating/filter")]

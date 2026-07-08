@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Domain.Enums.MangaDaily;
 
-namespace YAHALLO.Application.Queries.Features.Public.Manga.Analytics
+namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
 {
     public class GetMangaAnalyticsQuery: IRequest<GetMangaAnalyticsResult>
     {

@@ -1,12 +1,5 @@
-﻿using AutoMapper;
-using MediatR;
-using System;
-using System.Collections.Generic;
+﻿using MediatR;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YAHALLO.Application.Queries.Features.Public.Chapter;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetImage
@@ -14,24 +7,31 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetImage
     public class GetImageQueryHandler : IRequestHandler<GetImageQuery, List<ChapterImageDto>>
     {
         private readonly IImageRepository _imageRepository;
-        private readonly IMapper _mapper;
-        public GetImageQueryHandler(IImageRepository imageRepository, IMapper mapper)
+        public GetImageQueryHandler(IImageRepository imageRepository)
         {
             _imageRepository = imageRepository;
-            _mapper = mapper;
         }
         public async Task<List<ChapterImageDto>> Handle(GetImageQuery request, CancellationToken cancellationToken)
         {
-            var images = await _imageRepository.FindAllAsync(
-                filterExpression: x =>
-                string.IsNullOrEmpty(x.IdUserDelete)
-                && !x.DeleteDate.HasValue
-                && x.ChapterId == request.ChapterId,
-                cancellationToken);
-            if(images == null || !images.Any())
-                throw new DataException("Không tìm thấy ảnh nào cho chapter này");
-
-            return images.MapFullToChapterImageDtoToList(_mapper);
+            var images = await _imageRepository
+                .FindAllSelectAsync(x => x
+                    .Where(i => i.ChapterId == request.ChapterId)
+                    .Select(x => new ChapterImageDto 
+                    { 
+                        Id = x.Id,
+                        ContentType = x.ContentType,
+                        Height = x.Height,
+                        Index = x.Index,
+                        ResizeHeight = x.ResizeHeight,
+                        ResizeUrl = x.ResizeUrl,    
+                        ResizeWidth = x.ResizeWidth,    
+                        Url = x.Url,    
+                        Width = x.Width 
+                    })
+                    .OrderBy(x => x.Index),
+                    cancellationToken
+                );
+            return images;
         }
     }
 }

@@ -9,7 +9,7 @@ using YAHALLO.Domain.Enums.MangaDaily;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
-namespace YAHALLO.Application.Queries.Features.Public.Manga.Analytics
+namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
 {
     public class GetMangaAnalyticsQueryHandler : IRequestHandler<GetMangaAnalyticsQuery, GetMangaAnalyticsResult>
     {
@@ -50,7 +50,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.Analytics
                 .Where(d => d.MangaId == request.MangaId
                     && d.CreateDate >= request.From
                     && d.CreateDate < request.To.AddDays(1))
-                .GroupBy(x => new { Month = x.CreateDate.Month, Year = x.CreateDate.Year })
+                .GroupBy(x => new { x.CreateDate.Month, x.CreateDate.Year })
                 .Select(g => new MangaAnalytics
                 {
                     MangaId = request.MangaId,

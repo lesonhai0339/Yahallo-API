@@ -13,7 +13,6 @@ using YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.Features.Public.Chapter;
 using YAHALLO.Application.Queries.Features.Public.Chapter.Filter;
-using YAHALLO.Application.Queries.Features.Public.Chapter.GetAll;
 using YAHALLO.Application.Queries.Features.Public.Chapter.GetAllPagination;
 using YAHALLO.Application.Queries.Features.Public.Chapter.GetImage;
 using YAHALLO.Domain.Common.Interfaces;
@@ -79,18 +78,6 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<string>>(result));
-        }
-        [HttpGet]
-        [Route("chapter/get-all")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<ChapterDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<ChapterDto>>>> GetAllChapter(
-        CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(new GetAllChapterQuery { }, cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<ChapterDto>>(result));
         }
       
         [HttpGet]

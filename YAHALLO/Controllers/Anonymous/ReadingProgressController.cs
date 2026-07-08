@@ -1,5 +1,6 @@
 //AI generated
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.ReadingProgressCommand.Upsert;
@@ -31,6 +32,7 @@ namespace YAHALLO.Controllers.Anonymous
 
         [HttpGet]
         [Route("reading-progress/get")]
+        [Authorize]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<List<ReadingProgressDto>>), StatusCodes.Status200OK)]
         public async Task<ActionResult<JsonResponse<List<ReadingProgressDto>>>> GetProgress(
@@ -46,7 +48,7 @@ namespace YAHALLO.Controllers.Anonymous
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<ReadingProgressDto>>), StatusCodes.Status200OK)]
         public async Task<ActionResult<JsonResponse<PagedResult<ReadingProgressDto>>>> GetProgressPagination(
-            [FromQuery] GetReadingProgressByUserPaginationQuery query,
+            [FromQuery] FilterReadingProgressQuery query,
             CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(query, cancellationToken);

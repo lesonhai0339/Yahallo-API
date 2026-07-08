@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Blog.GetAllDeleted
                         Description = t.Description,
                         DisLike = t.DisLike,
                         Like = t.Like,
-                        ParentId = t.ParentId,
+                        ParentId = t.UserId,
                         Status = t.Status,
                         Title = t.Title,
                         Type = t.Type,

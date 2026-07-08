@@ -1,8 +1,7 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Domain.Functions;
+using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.Artist.FilterArtist
@@ -10,26 +9,43 @@ namespace YAHALLO.Application.Queries.Features.Public.Artist.FilterArtist
     public class FilterArtistQueryHandler : IRequestHandler<FilterArtistQuery, PagedResult<ArtistDto>>
     {
         private readonly IArtistRepository _artistRepository;
-        private readonly IMapper _mapper;
-        private readonly IFilters _filters;
-        public FilterArtistQueryHandler(IArtistRepository artistRepository, IMapper mapper, IFilters filters)
+        public FilterArtistQueryHandler(IArtistRepository artistRepository)
         {
             _artistRepository = artistRepository;
-            _mapper = mapper;
-            _filters = filters;
         }
 
         public async Task<PagedResult<ArtistDto>> Handle(FilterArtistQuery request, CancellationToken cancellationToken)
         {
-            var query = _artistRepository.CreateQueryable();
+            var artists = await _artistRepository.FindAllSelectAsync(
+                pageNo: request.PageNo,
+                pageSize: request.PageSize,
+                selector: q => 
+                    ApplyFilter(q, request)
+                    .Select(x => new ArtistDto
+                    {
+                        Id = x.Id,  
+                        Name = x.Name,
+                        Depscription = x.Depscription,
+                        Birth = x.Birth,
+                        Countries = x.Countries,
+                        LifeStatus = x.LifeStatus
+                    }),
+                cancellationToken
+                );
 
+            return artists.MapToPagedResult(x => x);
+        }
+        private IQueryable<ArtistEntity> ApplyFilter(IQueryable<ArtistEntity> query, FilterArtistQuery request)
+        {
             if (!string.IsNullOrEmpty(request.Id)) query = query.Where(x => x.Id == request.Id);
 
             var name = request.Name?.Trim();
-            if (!string.IsNullOrEmpty(name)) query = query.Where(x => x.Name.Contains(name));
+            if (!string.IsNullOrEmpty(name)) 
+            {
+                query = query.Where(x => x.Name.Contains(name));
+            }
+            return query;
+        } 
 
-            var artists = await _artistRepository.FindAllAsync(query, request.PageNo, request.PageSize, cancellationToken);
-            return artists.MapToPagedResult(x => x.MapToArtistDto(_mapper));
-        }
     }
 }

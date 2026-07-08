@@ -13,7 +13,6 @@ using YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.Features.Public.Artist;
 using YAHALLO.Application.Queries.Features.Public.Artist.FilterArtist;
-using YAHALLO.Application.Queries.Features.Public.Artist.GetAll;
 using YAHALLO.Application.Queries.Features.Public.Artist.GetAllPagination;
 using YAHALLO.Services;
 
@@ -79,19 +78,6 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<string>(result));
-        }
-        [HttpGet]
-        [Route("artist/get-all")]
-        [AllowAnonymous]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<ArtistDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<ArtistDto>>>> GetallArtist(
-           CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(new GetAllArtistQuery { }, cancellationToken);
-            return Ok(new JsonResponse<List<ArtistDto>>(result));
         }
 
         [HttpGet]

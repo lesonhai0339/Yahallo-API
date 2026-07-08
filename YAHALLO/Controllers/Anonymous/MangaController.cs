@@ -10,13 +10,12 @@ using YAHALLO.Application.Commands.MangaCommand.Update;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Admin.Manga;
+using YAHALLO.Application.Queries.Features.Admin.Manga.Analytics;
+using YAHALLO.Application.Queries.Features.Admin.Manga.CountNew;
 using YAHALLO.Application.Queries.Features.Admin.Manga.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Manga.GetAllDeletedPagination;
-using YAHALLO.Application.Queries.Features.Public.Manga.Analytics;
-using YAHALLO.Application.Queries.Features.Public.Manga.CountNew;
 using YAHALLO.Application.Queries.Features.Public.Manga.DTOs;
 using YAHALLO.Application.Queries.Features.Public.Manga.FilterManga;
-using YAHALLO.Application.Queries.Features.Public.Manga.GetAll;
 using YAHALLO.Application.Queries.Features.Public.Manga.GetAllPagination;
 using YAHALLO.Application.Queries.Features.Public.Manga.GetDetail;
 using YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage;
@@ -103,18 +102,6 @@ namespace YAHALLO.Controllers.Anonymous
         {
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<string>>(result));
-        }
-        [HttpGet]
-        [Route("manga/get-all")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<MangaDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<MangaDto>>>> GetAllManga(
-         CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(new GetAllMangaQuery { }, cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<MangaDto>>(result));
         }
         [HttpGet]
         [Route("manga/get-all-deleted")]

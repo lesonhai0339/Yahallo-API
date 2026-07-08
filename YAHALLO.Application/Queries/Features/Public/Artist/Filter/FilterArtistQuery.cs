@@ -1,7 +1,5 @@
 ﻿using MediatR;
 using YAHALLO.Application.Common.Pagination;
-using YAHALLO.Domain.Enums.Base;
-using YAHALLO.Domain.Enums.CountryEnums;
 
 namespace YAHALLO.Application.Queries.Features.Public.Artist.FilterArtist
 {

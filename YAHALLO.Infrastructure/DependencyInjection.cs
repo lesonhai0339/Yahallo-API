@@ -61,6 +61,7 @@ namespace YAHALLO.Infrastructure
                             maxRetryCount: 5,
                             maxRetryDelay: TimeSpan.FromSeconds(30),
                             errorNumbersToAdd: null);
+                        b.CommandTimeout(30);
                     });
                 options.UseLazyLoadingProxies(false);
             });

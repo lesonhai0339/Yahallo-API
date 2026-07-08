@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.FilterManga
 
         public async Task<PagedResult<MangaDto>> Handle(FilterMangaQuery request, CancellationToken cancellationToken)
         {
-            var listMangaExists = await _mangaRepository.FindAllSelectAsync(
+            var mangas = await _mangaRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: q =>
@@ -62,9 +62,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.FilterManga
                     }),
                 cancellation: cancellationToken);
 
-            if (listMangaExists.Count() == 0)
-                throw new NotFoundException("Không tìm thấy manga phù hợp yêu cầu");
-            return listMangaExists.MapToPagedResult(x => x);
+            return mangas.MapToPagedResult(x => x);
         }
         private IQueryable<MangaEntity> ApplySorting(IQueryable<MangaEntity> filter, FilterMangaQuery request)
         {

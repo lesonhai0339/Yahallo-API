@@ -14,7 +14,6 @@ using YAHALLO.Application.Queries.Features.Admin.Comment.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Comment.GetAllDeteledPagination;
 using YAHALLO.Application.Queries.Features.Public.Comment;
 using YAHALLO.Application.Queries.Features.Public.Comment.FilterComment;
-using YAHALLO.Application.Queries.Features.Public.Comment.GetAll;
 using YAHALLO.Application.Queries.Features.Public.Comment.GetAllPagination;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
@@ -87,18 +86,7 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
-        [HttpGet]
-        [Route("comment/get-all")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<CommentDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<CommentDto>>>> GetAllComment(
-            CancellationToken cancellationToken = default)
-        {
-            var result= await _sender.Send(new GetAllCommentQuery { },cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<CommentDto>>(result));    
-        }
+
         [HttpGet]
         [Route("comment/get-all-deleted")]
         [Authorize(Policy = Policies.ModOrAdmin)]

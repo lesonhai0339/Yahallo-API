@@ -10,6 +10,7 @@ using YAHALLO.Domain.Common.Interfaces;
 namespace YAHALLO.Application.Queries.Features.Public.Attechment.GetAll
 {
     public class GetAllAttechmentQuery: IRequest<ResponseResult<AttechmentDto>>
-    {  
+    {
+  
     }
 }

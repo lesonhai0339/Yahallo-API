@@ -65,8 +65,10 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
 
             _commentRepository.Add(comment);
             var result = await _commentRepository.UnitOfWork.SaveChangesDroppingDuplicateAnalyticsAsync(cancellationToken);
+            if (result == 0)
+                throw new Exception("Save comment failed");
 
-            return result > 0 ? "Thành công" : "Thất bại";
+            return comment.Id;
         }
     }
 }

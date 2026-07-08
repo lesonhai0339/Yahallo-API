@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YAHALLO.Application.Queries.Features.Public.Manga.Analytics
+namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
 {
     public class GetMangaAnalyticsQueryValidator: AbstractValidator<GetMangaAnalyticsQuery>
     {

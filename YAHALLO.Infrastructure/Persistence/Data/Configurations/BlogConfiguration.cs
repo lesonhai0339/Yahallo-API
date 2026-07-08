@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAHALLO.Domain.Entities;
-using YAHALLO.Domain.Entities.Reference;
 
 namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 {
@@ -15,6 +9,23 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<BlogEntity> builder)
         {
             builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Title)
+                .IsUnicode(true)
+                .HasMaxLength(450)
+                .UseCollation("Latin1_General_CI_AI");
+
+            builder.Property(x => x.Description)
+                .IsUnicode(true)
+                .HasColumnType("nvarchar(max)");
+
+
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.BlogEntities)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+
             builder.ToTable("Blogs");
         }
     }

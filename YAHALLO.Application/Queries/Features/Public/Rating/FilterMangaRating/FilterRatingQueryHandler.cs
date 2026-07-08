@@ -11,7 +11,6 @@ using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.CountryEnums;
 using YAHALLO.Domain.Enums.MangaEnums;
 using YAHALLO.Domain.Enums.MangaRating;
-using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.Rating.FilterMangaRating
@@ -19,10 +18,10 @@ namespace YAHALLO.Application.Queries.Features.Public.Rating.FilterMangaRating
     public class FilterRatingQueryHandler : IRequestHandler<FilterRatingQuery, PagedResult<RatingDto>>
     {
         private readonly ICurrentUserService _currentUserService;   
-        private readonly IRatingRepository _mangaRatingRepository;
+        private readonly IRatingRepository _ratingRepository;
         public FilterRatingQueryHandler(IRatingRepository ratingRepository, ICurrentUserService currentUser)
         {
-            _mangaRatingRepository = ratingRepository;
+            _ratingRepository = ratingRepository;
             _currentUserService = currentUser;  
         }
 
@@ -33,8 +32,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Rating.FilterMangaRating
                 ? request.UserId
                 : _currentUserService.UserId;
 
-            var query = _mangaRatingRepository.CreateQueryable();
-            var listMangaRating = await _mangaRatingRepository
+            var query = _ratingRepository.CreateQueryable();
+            var ratings = await _ratingRepository
                 .FindAllSelectAsync(
                 request.PageNo,
                 request.PageSize,
@@ -73,10 +72,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Rating.FilterMangaRating
                         }
                     }),
                 cancellationToken);
-            if(!listMangaRating.Any())
-                throw new NotFoundException("Không tìm thấy bất kỳ MangaRating nào phù hợp");
 
-            return listMangaRating.MapToPagedResult(x => x);
+            return ratings.MapToPagedResult(x => x);
         }
         private IQueryable<RatingEntity> ApplySorting(IQueryable<RatingEntity> filter, FilterRatingQuery request)
         {

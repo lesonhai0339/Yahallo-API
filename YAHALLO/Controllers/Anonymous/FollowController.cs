@@ -12,7 +12,6 @@ using YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.Features.Public.Follow;
 using YAHALLO.Application.Queries.Features.Public.Follow.Filter;
-using YAHALLO.Application.Queries.Features.Public.Follow.GetAll;
 using YAHALLO.Application.Queries.Features.Public.Follow.GetAllPagination;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
@@ -66,19 +65,6 @@ namespace YAHALLO.Controllers.Anonymous
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<string>(result));
         }
-        [HttpGet]
-        [Route("follow-manga/get-all")]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<FollowMangaDto>>), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<List<FollowMangaDto>>>> GetAllFollowManga(
-          CancellationToken cancellationToken = default)
-        {
-            var result = await _sender.Send(new GetAllFollowMangaQuery { }, cancellationToken);
-            return Ok(new JsonResponse<List<FollowMangaDto>>(result));
-        }
-      
         [HttpGet]
         [Route("follow-manga/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]

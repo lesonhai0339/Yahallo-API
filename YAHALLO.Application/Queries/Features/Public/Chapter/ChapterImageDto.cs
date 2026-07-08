@@ -12,7 +12,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter
     public class ChapterImageDto : IMapFrom<ChapterImageEntity>
     {
         public required string Id { get; set; }
-        public int? Index { get; set; }
+        public decimal Index { get; set; }
 
         public string? Url { get; set; }
         public string? ResizeUrl { get; set; }

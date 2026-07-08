@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Blog.Filter
                         Content = b.Content,
                         DisLike = b.DisLike,
                         Like = b.Like,
-                        ParentId = b.ParentId, 
+                        ParentId = b.UserId, 
                         Status = b.Status,
                         Title = b.Title,
                         Type = b.Type, 
@@ -46,7 +46,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Blog.Filter
         private IQueryable<BlogEntity> ApplyFilter(IQueryable<BlogEntity> filter, AdminBlogFilterQuery request)
         {
             if (!string.IsNullOrEmpty(request.Id)) filter = filter.Where(x => x.Id == request.Id);
-            if (!string.IsNullOrEmpty(request.ParentId)) filter = filter.Where(x => x.ParentId == request.ParentId);
+            if (!string.IsNullOrEmpty(request.ParentId)) filter = filter.Where(x => x.UserId == request.ParentId);
 
             if (request.Status != null) filter = filter.Where(x => x.Status == request.Status);
 

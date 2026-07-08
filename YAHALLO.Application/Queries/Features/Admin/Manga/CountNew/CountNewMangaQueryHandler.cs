@@ -10,7 +10,7 @@ using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
-namespace YAHALLO.Application.Queries.Features.Public.Manga.CountNew
+namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
 {
     public class CountNewMangaQueryHandler : IRequestHandler<CountNewMangaQuery, PagedResult<CountNewMangaQueryResult>>
     {
@@ -50,7 +50,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.CountNew
                    pageNo: request.PageNo,
                    pageSize: request.PageSize,
                    selector: _ => query
-                       .GroupBy(x => new { Month = x.CreateDate.AddMinutes(request.TimeZoneOffset).Month, Year = x.CreateDate.AddMinutes(request.TimeZoneOffset).Year})
+                       .GroupBy(x => new { x.CreateDate.AddMinutes(request.TimeZoneOffset).Month, x.CreateDate.AddMinutes(request.TimeZoneOffset).Year})
                        .Select(i => new CountNewMangaQueryResult
                        {
                            Day = 1,

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Application.Queries.Features.Public.User.DTOs;
@@ -13,15 +12,9 @@ namespace YAHALLO.Application.Queries.Features.Public.Comment.FilterComment
     public class FilterCommentQueryHandler : IRequestHandler<FilterCommentQuery, PagedResult<CommentDto>>
     {
         private readonly ICommentRepository _commentRepository;
-        private readonly IMapper _mapper;
-        private readonly IUserRepository _userRepository;
-        private readonly IMangaRepository _mapgaRepository;
-        public FilterCommentQueryHandler(ICommentRepository commentRepository, IMapper mapper, IUserRepository userRepository, IMangaRepository mapgaRepository)
+        public FilterCommentQueryHandler(ICommentRepository commentRepository)
         {
             _commentRepository = commentRepository;
-            _mapper = mapper;
-            _userRepository = userRepository;
-            _mapgaRepository = mapgaRepository;
         }
     
         public async Task<PagedResult<CommentDto>> Handle(FilterCommentQuery request, CancellationToken cancellationToken)
@@ -56,11 +49,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Comment.FilterComment
                         Avatar = x.CommentToUser.AvatarThumbnail
                     }
                 }),
-                cancellation: cancellationToken,
-                ignoreQueryFilters: true); //Get all
+                cancellation: cancellationToken);
 
-            if (!comments.Any())
-                throw new InvalidDataException("No Data");
             return comments.MapToPagedResult(x => x);
         }
 

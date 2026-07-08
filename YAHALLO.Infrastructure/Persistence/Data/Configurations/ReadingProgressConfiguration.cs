@@ -18,17 +18,17 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasOne(e => e.User)
                 .WithMany()
                 .HasForeignKey(e => e.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(e => e.Manga)
                 .WithMany()
                 .HasForeignKey(e => e.MangaId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(e => e.Chapter)
                 .WithMany()
                 .HasForeignKey(e => e.ChapterId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable("ReadingProgress");
         }

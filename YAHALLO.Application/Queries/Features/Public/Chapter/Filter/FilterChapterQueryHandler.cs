@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Application.Queries.Features.Public.Chapter;
 using YAHALLO.Domain.Common.Helper;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.Chappter;
-using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.Chapter.Filter
@@ -14,15 +11,13 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.Filter
     public class FilterChapterQueryHandler : IRequestHandler<FilterChapterQuery, PagedResult<ChapterDto>>
     {
         private readonly IChapterRepository _chapterRepository;
-        private readonly IMapper _mapper;
-        public FilterChapterQueryHandler(IChapterRepository chapterRepository, IMapper mapper)
+        public FilterChapterQueryHandler(IChapterRepository chapterRepository)
         {
             _chapterRepository = chapterRepository;
-            _mapper = mapper;
         }
         public async Task<PagedResult<ChapterDto>> Handle(FilterChapterQuery request, CancellationToken cancellationToken)
         {
-            var listChapterExists = await _chapterRepository
+            var chapters = await _chapterRepository
                 .FindAllSelectAsync(
                     pageNo: request.PageNo, 
                     pageSize: request.PageSize,
@@ -38,10 +33,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.Filter
                         CreateDate = x.CreateDate
                     }),
                     cancellation: cancellationToken);
-            if(!listChapterExists.Any())
-                throw new NotFoundException("Không tìm thấy bản ghi nào");
 
-            return listChapterExists.MapToPagedResult(x => x);
+            return chapters.MapToPagedResult(x => x);
         }
         private IQueryable<ChapterEntity> ApplySorting(IQueryable<ChapterEntity> filter, FilterChapterQuery request)
         {

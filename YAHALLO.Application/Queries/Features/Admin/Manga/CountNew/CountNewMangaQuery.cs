@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Pagination;
 
-namespace YAHALLO.Application.Queries.Features.Public.Manga.CountNew
+namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
 {
     public class CountNewMangaQuery: IRequest<PagedResult<CountNewMangaQueryResult>>
     {

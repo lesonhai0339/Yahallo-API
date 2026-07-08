@@ -53,7 +53,7 @@ namespace YAHALLO.Application.Commands.BlogCommand.Create
             }
             var blogEntity = new BlogEntity()
             {
-                ParentId = request.ParentId,
+                UserId = request.ParentId,
                 Title = request.Title,
                 Description = request.Description,
                 Content = request.Content,

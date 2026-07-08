@@ -1,14 +1,6 @@
-﻿using AutoMapper;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
-using YAHALLO.Application.Queries.Features.Public.Follow;
-using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Queries.Features.Public.Follow.GetAllPagination
@@ -16,23 +8,31 @@ namespace YAHALLO.Application.Queries.Features.Public.Follow.GetAllPagination
     public class GetAllFollowMangaPaginationQueryHandler : IRequestHandler<GetAllFollowMangaPaginationQuery, PagedResult<FollowMangaDto>>
     {
         private readonly IFollowRepository _followRepository;
-        private readonly IMapper _mapper;
-        public GetAllFollowMangaPaginationQueryHandler(IFollowRepository followRepository, IMapper mapper)
+        public GetAllFollowMangaPaginationQueryHandler(IFollowRepository followRepository)
         {
             _followRepository = followRepository;
-            _mapper = mapper;
         }
     
         public async Task<PagedResult<FollowMangaDto>> Handle(GetAllFollowMangaPaginationQuery request, CancellationToken cancellationToken)
         {
-            var listFollowMangaExists= await _followRepository
-                .FindAllAsync(x=> string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue,
-                request.PageNo, request.PageSize, cancellationToken);
-            if(listFollowMangaExists.Count() == 0)
-            {
-                throw new NotFoundException("Không tìm thấy bất kỳ bản ghi nào");
-            }
-            return listFollowMangaExists.MapToPagedResult(x => x.MapFullToFollowMangaDto(_mapper));
+            var follows = await _followRepository
+                .FindAllSelectAsync(
+                pageNo: request.PageNo,
+                pageSize: request.PageSize,
+                selector: q => q
+                    .Select(x => new FollowMangaDto
+                    {
+                        MangaId = x.MangaId,
+                        UserId = x.UserId,
+                        MangaName = x.Manga.Name,
+                        UserName = x.User.DisplayName,
+                        Avatar = x.Manga.MangaThumbnail,
+                        Background = x.Manga.MangaBackground,
+                        LastUpdate = x.Manga.LastChapterUpdate
+                    }),
+                cancellation: cancellationToken);
+
+            return follows.MapToPagedResult(x => x);
         }
     }
 }
