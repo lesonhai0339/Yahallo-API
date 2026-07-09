@@ -60,6 +60,8 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<UserMangaDailyReadEntity> UserMangaDailyReadEntities { get; set; }
         public DbSet<ChapterImageEntity> ChapterImages { get; set; } 
 
+        public DbSet<ReportEntity> Reports { get; set; }    
+
         // AI generated — new tables
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<MangaTagEntity> MangaTags { get; set; }
@@ -71,31 +73,31 @@ namespace YAHALLO.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            foreach (var et in modelBuilder.Model.GetEntityTypes())
-            {
-                if (typeof(ISoftDelete).IsAssignableFrom(et.ClrType))
-                {
-                    var p = Expression.Parameter(et.ClrType, "e");
-                    var body = Expression.AndAlso(
-                        Expression.Call(typeof(string), nameof(string.IsNullOrEmpty), null,
-                            Expression.Property(p, nameof(ISoftDelete.IdUserDelete))),
-                        Expression.Equal(
-                            Expression.Property(p, nameof(ISoftDelete.DeleteDate)),
-                            Expression.Constant(null)));
-                    modelBuilder.Entity(et.ClrType).HasQueryFilter(Expression.Lambda(body, p));
-                }
-            }
             //foreach (var et in modelBuilder.Model.GetEntityTypes())
             //{
             //    if (typeof(ISoftDelete).IsAssignableFrom(et.ClrType))
             //    {
             //        var p = Expression.Parameter(et.ClrType, "e");
-            //        var body = Expression.Equal(
-            //            Expression.Property(p, nameof(ISoftDelete.DeleteDate)),
-            //            Expression.Constant(null, typeof(DateTime?)));
+            //        var body = Expression.AndAlso(
+            //            Expression.Call(typeof(string), nameof(string.IsNullOrEmpty), null,
+            //                Expression.Property(p, nameof(ISoftDelete.IdUserDelete))),
+            //            Expression.Equal(
+            //                Expression.Property(p, nameof(ISoftDelete.DeleteDate)),
+            //                Expression.Constant(null)));
             //        modelBuilder.Entity(et.ClrType).HasQueryFilter(Expression.Lambda(body, p));
             //    }
             //}
+            foreach (var et in modelBuilder.Model.GetEntityTypes())
+            {
+                if (typeof(ISoftDelete).IsAssignableFrom(et.ClrType))
+                {
+                    var p = Expression.Parameter(et.ClrType, "e");
+                    var body = Expression.Equal(
+                        Expression.Property(p, nameof(ISoftDelete.DeleteDate)),
+                        Expression.Constant(null, typeof(DateTime?)));
+                    modelBuilder.Entity(et.ClrType).HasQueryFilter(Expression.Lambda(body, p));
+                }
+            }
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
             modelBuilder.ApplyConfiguration(new ArtistConfiguration());
             modelBuilder.ApplyConfiguration(new AssociateNameConfiguration());
@@ -131,7 +133,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new UserDailyActivityConfiguration());
             modelBuilder.ApplyConfiguration(new UserMangaDailyReadConfiguration());
             modelBuilder.ApplyConfiguration(new ChapterImageConfiguration());
-
+            modelBuilder.ApplyConfiguration(new ReportConfiguration()); 
 
             // AI generated — new configurations
             modelBuilder.ApplyConfiguration(new TagConfiguration());

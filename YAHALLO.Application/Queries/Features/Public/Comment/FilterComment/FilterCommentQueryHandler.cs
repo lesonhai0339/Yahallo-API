@@ -39,7 +39,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Comment.FilterComment
                     ReplyToCommentId = x.ReplyToCommentId,
                     Message = x.Message,
                     ReplyCount = x.Comments == null ? 0 : x.Comments.Count(),
-                    IsDeleted = x.DeleteDate.HasValue && !string.IsNullOrEmpty(x.IdUserDelete),
+                    IsDeleted = x.DeleteDate.HasValue,
+                    IdUserDeleted = x.IdUserDelete,
                     DisplayName = x.UserEntity == null ? null : x.UserEntity.DisplayName,
                     Avatar = x.UserEntity == null ? null : x.UserEntity.AvatarThumbnail,
                     UserCommentTo = x.CommentToUser == null ? null : new UserDto

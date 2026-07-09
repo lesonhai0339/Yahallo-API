@@ -32,6 +32,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment
         public AdminUserDto? UserCommentTo { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? DeleteDate { get; set; }
+        public string? IdUserDeleted { get; internal set; }
 
         public void Mapping(Profile profile)
         {

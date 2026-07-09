@@ -19,9 +19,17 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.Property(x => x.Description)
                 .IsUnicode()
                 .HasMaxLength(2000);
+
             builder.Property(x => x.Title)
-                .IsUnicode()
+                .IsUnicode(true)
                 .HasMaxLength(2000);
+
+            builder.Property(x => x.Url1)
+              .HasMaxLength(450);
+            builder.Property(x => x.Url2)
+              .HasMaxLength(450);
+            builder.Property(x => x.Url3)
+              .HasMaxLength(450);
 
             builder.HasOne(x => x.Comment)
                 .WithMany(x => x.Attechments)

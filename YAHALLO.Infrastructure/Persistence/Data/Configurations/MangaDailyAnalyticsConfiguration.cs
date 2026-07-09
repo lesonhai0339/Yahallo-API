@@ -16,6 +16,8 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Date).HasColumnType("date");
 
+            builder.HasIndex(x => x.Date);
+
             builder.HasIndex(x => new { x.MangaId, x.Date })
                 .IsUnique();
 

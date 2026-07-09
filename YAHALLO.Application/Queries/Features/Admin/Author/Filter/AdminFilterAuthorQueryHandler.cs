@@ -51,7 +51,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Author.Filter
             if (request.LifeStatus != null) filter = filter.Where(x => x.LifeStatus == request.LifeStatus);
 
             if (request.IsDeleted) //deleted items
-                filter = filter.Where(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue);
+                filter = filter.Where(x =>  x.DeleteDate.HasValue);
 
             return filter;
         }

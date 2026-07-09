@@ -24,11 +24,11 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Restore
             if (!isStaff) throw new UnauthorizedAccessException();
 
             var existed = request.RatingTo == RatingEnum.Manga
-             ? await _ratingRepository.FindAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue && x.ToMangaId == request.TargetId && x.UserId == request.UserId, cancellationToken, ignoreQueryFilters: true)
+             ? await _ratingRepository.FindAsync(x => x.DeleteDate.HasValue && x.ToMangaId == request.TargetId && x.UserId == request.UserId, cancellationToken, ignoreQueryFilters: true)
              : request.RatingTo != RatingEnum.Chapter
-             ? await _ratingRepository.FindAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue && x.ToChapterId == request.TargetId && x.UserId == request.UserId, cancellationToken, ignoreQueryFilters: true)
+             ? await _ratingRepository.FindAsync(x => x.DeleteDate.HasValue && x.ToChapterId == request.TargetId && x.UserId == request.UserId, cancellationToken, ignoreQueryFilters: true)
              : request.RatingTo == RatingEnum.User
-             ? await _ratingRepository.FindAsync(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue && x.ToUserId == request.TargetId && x.UserId == request.UserId, cancellationToken, ignoreQueryFilters: true)
+             ? await _ratingRepository.FindAsync(x => x.DeleteDate.HasValue && x.ToUserId == request.TargetId && x.UserId == request.UserId, cancellationToken, ignoreQueryFilters: true)
              : null;
 
             if(existed == null)

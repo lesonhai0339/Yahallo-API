@@ -31,10 +31,13 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 
             builder.Property(x => x.CountryId)
               .HasMaxLength(450);
+
             builder.Property(x => x.UserName)
             .HasMaxLength(450);
+
             builder.Property(x => x.HashedPassword)
             .HasMaxLength(450);
+
             builder.Property(x => x.MatchReason)
                 .IsUnicode(true)
             .HasMaxLength(2000);
@@ -47,7 +50,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             .HasMaxLength(2000);
 
 
-            builder.Property(x => x.MatchReason).IsUnicode(true);
+            builder.Property(x => x.MatchedSource).IsUnicode(true).HasMaxLength(2000);
             builder.Property(x => x.ReviewNote).IsUnicode(true);
 
             builder.ToTable("PendingRegistration");

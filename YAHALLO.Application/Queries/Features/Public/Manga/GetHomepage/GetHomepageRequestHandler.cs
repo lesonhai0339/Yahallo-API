@@ -6,6 +6,7 @@ using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Application.Queries.Features.Public.Artist;
 using YAHALLO.Application.Queries.Features.Public.Author;
 using YAHALLO.Application.Queries.Features.Public.Manga.DTOs;
+using YAHALLO.Application.Queries.Features.Public.Rating;
 using YAHALLO.Application.Queries.Features.Public.Tag;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Cache;
@@ -20,12 +21,14 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
         private readonly IArtistRepository _artistRepository;
         private readonly ICacheService _cache;
         private readonly CacheSettings _settings;
+        private readonly IMangaDailyAnalyticsRepository _mangaDaily;
         public GetHomepageRequestHandler(
             IOptions<CacheSettings> options,
             IMangaRepository mangaRepository,
             ITagRepository tagRepository,
             IAuthorRepository authorRepository,
             IArtistRepository artistRepository,
+            IMangaDailyAnalyticsRepository mangaDaily,
             ICacheService cache)
         {
             _settings = options.Value;
@@ -33,6 +36,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
             _tagRepository = tagRepository;
             _authorRepository = authorRepository;
             _artistRepository = artistRepository;
+            _mangaDaily = mangaDaily;
             _cache = cache;
         }
         public async Task<HomePageDto> Handle(GetHomepageRequest request, CancellationToken cancellationToken)
@@ -125,27 +129,63 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
                 }),
                 cancellationToken);
 
-            //Top manga by date, load 5(still not implement)
-            var topMangaByDate = await _mangaRepository.FindAllSelectAsync(
+            var now = DateTime.UtcNow;
+            var date = now.Date;
+
+            var startMonth = new DateTime(now.Year, now.Month,1);
+            var endMonth = startMonth.AddMonths(1);
+
+            var startYear = new DateTime(now.Year, 1,1);
+            var endYear = startYear.AddYears(1);    
+
+            var topByDate = await _mangaDaily.
+                FindAllSelectAsync(
                 pageNo: 1,
                 pageSize: 5,
                 selector: x => x
-                    .OrderByDescending(m => m.ViewCount == null ? 0 : m.ViewCount.TotalCount).ThenByDescending(m => m.Id)
-                    .Select(m => new TopMangaDto
+                    .Where(c => c.Date == date)
+                    .OrderByDescending(o => o.ViewCount)
+                    .Select(t => new TopMangaDto
                     {
-                        Id = m.Id,
-                        DisplayName = (m.Name + " " + m.SeasonName).Trim(),
-                        MangaThumbnail = m.MangaThumbnail ?? "",
-                        View = m.ViewCount == null ? 0 : m.ViewCount.TotalCount
+                        Id = t.Id,
+                        DisplayName = (t.Manga!.Name + " " + t.Manga.SeasonName).Trim(),
+                        MangaThumbnail = t.Manga.MangaThumbnail ?? "",
+                        View = t.ViewCount
                     }),
-                cancellation: cancellationToken
-                );
+                cancellationToken);
 
-            //Top manga by month,load 5(still not implement)
-            var topMangaByMonth = topMangaByDate;
+            var topByMonth = await _mangaDaily.
+              FindAllSelectAsync(
+              pageNo: 1,
+              pageSize: 5,
+              selector: x => x
+                  .Where(c => c.Date >= startMonth && c.Date < endMonth)
+                  .OrderByDescending(o => o.ViewCount)
+                  .Select(t => new TopMangaDto
+                  {
+                      Id = t.Id,
+                      DisplayName = (t.Manga!.Name + " " + t.Manga.SeasonName).Trim(),
+                      MangaThumbnail = t.Manga.MangaThumbnail ?? "",
+                      View = t.ViewCount
+                  }),
+              cancellationToken);
 
-            //topmanga by year,load 5(still not implement)
-            var topMangaByYear = topMangaByDate;
+
+            var topByYear = await _mangaDaily.
+              FindAllSelectAsync(
+              pageNo: 1,
+              pageSize: 5,
+              selector: x => x
+                  .Where(c => c.Date >= startYear && c.Date < endYear)
+                  .OrderByDescending(o => o.ViewCount)
+                  .Select(t => new TopMangaDto
+                  {
+                      Id = t.Id,
+                      DisplayName = (t.Manga!.Name + " " + t.Manga.SeasonName).Trim(),
+                      MangaThumbnail = t.Manga.MangaThumbnail ?? "",
+                      View = t.ViewCount
+                  }),
+              cancellationToken);
 
             var homepage = new HomePageDto
             {
@@ -154,12 +194,10 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
                 Tags = tags,
                 Authors = authors,
                 Artists = artists,
-                TopMangaByDate = topMangaByDate.MapToPagedResult(x => x).Data.ToList(),
-                TopMangaByMonth = topMangaByMonth.MapToPagedResult(x => x).Data.ToList(),
-                TopMangaByYear = topMangaByYear.MapToPagedResult(x => x).Data.ToList()
+                TopMangaByDate = topByDate.MapToPagedResult(x => x).Data.ToList(),
+                TopMangaByMonth = topByDate.MapToPagedResult(x => x).Data.ToList(),
+                TopMangaByYear = topByDate.MapToPagedResult(x => x).Data.ToList()
             };
-            if (homepage == null)
-                throw new Exception("Cannot load home page");
 
             await _cache.SetAsync(
                 CacheKeys.Home, 

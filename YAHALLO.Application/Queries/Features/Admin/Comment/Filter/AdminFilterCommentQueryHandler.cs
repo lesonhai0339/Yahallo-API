@@ -43,7 +43,8 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment.Filter
                         ReplyToCommentId = x.ReplyToCommentId,
                         Message = x.Message,
                         ReplyCount = x.Comments.Count(),
-                        IsDeleted = x.DeleteDate.HasValue && !string.IsNullOrEmpty(x.IdUserDelete),
+                        IsDeleted = x.DeleteDate.HasValue,
+                        IdUserDeleted = x.IdUserDelete,
                         DisplayName = x.UserEntity == null ? null : x.UserEntity.DisplayName,
                         Avatar = x.UserEntity == null ? null : x.UserEntity.AvatarThumbnail,
                         CreateDate = x.CreateDate,
@@ -90,7 +91,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment.Filter
             }
 
             if (request.IsDeleted)
-                query = query.Where(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue);
+                query = query.Where(x => x.DeleteDate.HasValue);
 
             return query;
         }

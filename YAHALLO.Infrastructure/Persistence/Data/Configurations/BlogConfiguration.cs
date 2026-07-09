@@ -15,7 +15,6 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .HasMaxLength(450)
                 .UseCollation("Latin1_General_CI_AI");
 
-
             builder.Property(x => x.UserId)
                 .HasMaxLength(450);
 

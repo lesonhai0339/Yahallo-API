@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
             var toExclusive = request.To.Date.AddDays(1).AddMinutes(-request.TimeZoneOffset);
 
             var query = _mangaRepository.CreateQueryable();
-            query = query.Where(u => u.CreateDate >= from && u.CreateDate <= toExclusive);
+            query = query.Where(u => u.CreateDate >= from && u.CreateDate < toExclusive);
 
 
             var result = request.CountBy switch

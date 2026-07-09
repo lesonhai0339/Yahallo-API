@@ -57,7 +57,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Chapter.Filter
             if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.MangaId == request.MangaId);
             if (!string.IsNullOrEmpty(request.MangaName)) query = query.Where(x => x.MangaEntity!.Name.Contains(request.MangaName));
             if (request.IsDeleted)
-                query = query.Where(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue);
+                query = query.Where(x => x.DeleteDate.HasValue);
 
             return query;
         }

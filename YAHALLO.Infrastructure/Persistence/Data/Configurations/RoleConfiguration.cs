@@ -14,7 +14,9 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<RoleEntity> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.HasIndex(x => x.Id);
+
+            builder.HasIndex(x => x.RoleName);
+
             builder.Property(x => x.RoleDescription)
    .IsUnicode(true)
    .HasMaxLength(2000);
@@ -22,12 +24,11 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
 
             builder.Property(x => x.RoleCode)
                 .IsUnicode(false);
+
             builder.Property(x => x.RoleName)
                 .IsUnicode(true)
                 .HasMaxLength(450);
-            builder.Property(x => x.RoleDescription)
-                .IsUnicode(true)
-                .HasMaxLength(int.MaxValue);
+
             builder.ToTable("Roles");
         }
     }

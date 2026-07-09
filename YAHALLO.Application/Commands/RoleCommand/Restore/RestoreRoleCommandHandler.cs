@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Commands.RoleCommand.Restore
         public async Task<string> Handle(RestoreRoleCommand request, CancellationToken cancellationToken)
         {
             var checkRoleExist = await _roleRepository
-                .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
+                .FindAsync(x => x.Id == request.Id && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkRoleExist == null)
             {
                 throw new NotFoundException($"Không tìm thấy role với Id {request.Id}");

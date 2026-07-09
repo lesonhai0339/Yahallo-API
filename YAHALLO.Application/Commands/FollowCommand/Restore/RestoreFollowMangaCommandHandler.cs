@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Commands.FollowCommand.Restore
         {
             var checkFollowMangaExist= await _followRepository
                 .FindAsync(x=> x.UserId == request.UserId && x.MangaId == request.MangaId
-                && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
+                && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if(checkFollowMangaExist == null)
             {
                 throw new NotFoundException("Không tìm thấy bản ghi nào phù hợp");

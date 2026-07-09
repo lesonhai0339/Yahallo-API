@@ -26,7 +26,7 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Restore
             if (!isStaff)
                 throw new UnauthorizedAccessException("You do not have permission for this action");
 
-            var setting = await _userSettingsRepository.FindAsync(x => x.UserId == request.UserId && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
+            var setting = await _userSettingsRepository.FindAsync(x => x.UserId == request.UserId && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (setting == null)
                 throw new NotFoundException($"Setting for user {request.UserId} not found");
 

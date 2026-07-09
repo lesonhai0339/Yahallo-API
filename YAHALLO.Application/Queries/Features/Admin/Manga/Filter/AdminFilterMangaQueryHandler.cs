@@ -113,7 +113,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
             }
 
             if (request.IsDeleted)
-                query = query.Where(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue);
+                query = query.Where(x => x.DeleteDate.HasValue);
 
             return query;
         }

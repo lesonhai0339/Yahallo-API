@@ -53,7 +53,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Blog.Filter
             if (request.Type != null) filter = filter.Where(x => x.Type == request.Type);
 
             if (request.IsDeleted)
-                filter = filter.Where(x => !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue);
+                filter = filter.Where(x => x.DeleteDate.HasValue);
 
             return filter;
         }

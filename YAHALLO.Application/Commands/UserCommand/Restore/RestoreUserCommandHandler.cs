@@ -22,7 +22,7 @@ namespace YAHALLO.Application.Commands.UserCommand.Restore
         public async Task<string> Handle(RestoreUserCommand request, CancellationToken cancellationToken)
         {
             var checkUserExists = await _userRepository
-                .FindAsync(x => x.Id == request.Id && !string.IsNullOrEmpty(x.IdUserDelete) && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
+                .FindAsync(x => x.Id == request.Id && x.DeleteDate.HasValue, cancellationToken, ignoreQueryFilters: true);
             if (checkUserExists == null)
             {
                 throw new NotFoundException($"Không tìm thấy thành viên với Id {request.Id}");
