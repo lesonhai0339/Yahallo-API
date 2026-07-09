@@ -15,7 +15,16 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.HasIndex(x => x.Email);
+            builder.HasIndex(x => x.Email).IsUnique();
+
+            builder.Property(x => x.Email).HasMaxLength(300);
+
+            builder.Property(x => x.Reason)
+   .IsUnicode(true)
+   .HasMaxLength(2000);
+            builder.Property(x => x.Source)
+   .IsUnicode(true)
+   .HasMaxLength(2000);
 
             builder.ToTable("UnTrustEmail");
         }

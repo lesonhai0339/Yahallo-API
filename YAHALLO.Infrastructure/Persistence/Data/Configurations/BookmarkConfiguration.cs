@@ -20,8 +20,10 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .HasMaxLength(450)
                 .UseCollation("Latin1_General_CI_AI");
 
+
             builder.Property(x => x.Descriptions)
-                .IsUnicode(true);
+                .IsUnicode(true)
+                .HasMaxLength(2000);
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.Bookmarks)

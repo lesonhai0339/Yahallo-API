@@ -16,6 +16,14 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasKey(x => x.Id);
             builder.HasIndex(x => new { x.Id, x.UserId }).IsUnique();
 
+
+            builder.Property(x => x.Language).HasMaxLength(100);
+            builder.Property(x => x.BgImageUrl).HasMaxLength(2000);
+            builder.Property(x => x.FontFamily).HasMaxLength(100);
+            builder.Property(x => x.FontWeight).HasMaxLength(100);
+            builder.Property(x => x.FontColor).HasMaxLength(100);
+
+
             builder.HasOne(x => x.User)
                 .WithOne(x => x.Settings)
                 .HasForeignKey<UserSettingsEntity>(x => x.UserId)

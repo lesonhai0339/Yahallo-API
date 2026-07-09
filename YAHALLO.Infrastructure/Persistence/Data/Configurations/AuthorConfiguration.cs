@@ -14,13 +14,19 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<AuthorEntity> builder)
         {
             builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Depscription)
+    .IsUnicode(true)
+    .HasMaxLength(2000);
+
+
             builder.Property(x => x.Name)
                 .IsUnicode(true)
                 .IsRequired()
                 .HasMaxLength(255)
                 .UseCollation("Latin1_General_CI_AI");
-            builder.Property(x => x.Depscription)
-                .IsUnicode(true);
+
+
             builder.ToTable("Author");
         }
     }

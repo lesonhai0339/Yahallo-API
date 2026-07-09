@@ -6,8 +6,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetImage
 {
     public class GetImageQueryHandler : IRequestHandler<GetImageQuery, List<ChapterImageDto>>
     {
-        private readonly IImageRepository _imageRepository;
-        public GetImageQueryHandler(IImageRepository imageRepository)
+        private readonly IChapterImageRepository _imageRepository;
+        public GetImageQueryHandler(IChapterImageRepository imageRepository)
         {
             _imageRepository = imageRepository;
         }

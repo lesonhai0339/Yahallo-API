@@ -15,10 +15,37 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.Email).IsUnique();
+            builder.Property(x => x.Email)
+                .HasMaxLength(450)
+                .IsRequired();
+
+            builder.Property(x => x.PhoneNumber)
+                .HasMaxLength(12);
+
             builder.Property(x => x.FirstName)
                 .IsUnicode(true)
                 .HasMaxLength(450);
+
             builder.Property(x => x.LastName).IsUnicode(true).HasMaxLength(450);
+
+            builder.Property(x => x.CountryId)
+              .HasMaxLength(450);
+            builder.Property(x => x.UserName)
+            .HasMaxLength(450);
+            builder.Property(x => x.HashedPassword)
+            .HasMaxLength(450);
+            builder.Property(x => x.MatchReason)
+                .IsUnicode(true)
+            .HasMaxLength(2000);
+
+            builder.Property(x => x.ReviewedById)
+            .HasMaxLength(45);
+
+            builder.Property(x => x.ReviewNote)
+                .IsUnicode (true)   
+            .HasMaxLength(2000);
+
 
             builder.Property(x => x.MatchReason).IsUnicode(true);
             builder.Property(x => x.ReviewNote).IsUnicode(true);

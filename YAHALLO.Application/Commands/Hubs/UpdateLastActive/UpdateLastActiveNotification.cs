@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Application.Commands.Hubs.UpdateLastActive
 {
-    public class UpdateLastActiveCommand: INotification
+    public class UpdateLastActiveNotification: INotification
     {
         public required string UserId { get; set; } 
     }

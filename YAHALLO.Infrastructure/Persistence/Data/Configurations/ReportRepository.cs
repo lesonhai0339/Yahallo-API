@@ -15,6 +15,22 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.Title);
+            builder.Property(x => x.Title)
+                .IsUnicode(true)
+                .HasMaxLength(300);
+
+            builder.Property(x => x.Title)
+               .HasMaxLength(450);
+
+            builder.Property(x => x.Description)
+               .IsUnicode(true)
+               .HasMaxLength(2000);
+
+            builder.Property(x => x.Content)
+              .IsUnicode(true)
+              .HasMaxLength(4000);
+
             builder.HasOne(x => x.User)
                 .WithMany(x => x.Reports)
                 .HasForeignKey(x => x.Id)

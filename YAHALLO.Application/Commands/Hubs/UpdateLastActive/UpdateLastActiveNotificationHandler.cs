@@ -8,15 +8,15 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.Hubs.UpdateLastActive
 {
-    public class UpdateLastActiveCommandHandler : INotificationHandler<UpdateLastActiveCommand>
+    public class UpdateLastActiveNotificationHandler : INotificationHandler<UpdateLastActiveNotification>
     {
         private readonly IUserDailyActivityRepository _userDailyActivityRepository;
-        public UpdateLastActiveCommandHandler(IUserDailyActivityRepository userDailyActivityRepository)
+        public UpdateLastActiveNotificationHandler(IUserDailyActivityRepository userDailyActivityRepository)
         {
             _userDailyActivityRepository = userDailyActivityRepository;
         }
 
-        public async Task Handle(UpdateLastActiveCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateLastActiveNotification request, CancellationToken cancellationToken)
         {
             await _userDailyActivityRepository.Increment(request.UserId, Domain.Enums.UserDaily.UserDailyType.Activity, cancellationToken);
             await _userDailyActivityRepository.UnitOfWork.SaveChangesDroppingDuplicateAnalyticsAsync(cancellationToken);

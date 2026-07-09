@@ -14,9 +14,9 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
     {
         private readonly IMangaRepository _mangaRepository;
         private readonly IChapterRepository _chapterRepository;
-        private readonly IImageRepository _imageRepository;
+        private readonly IChapterImageRepository _imageRepository;
         private readonly ICurrentUserService _currentUser;
-        public UpdateChapterCommandHandler(IMangaRepository mangaRepository, IChapterRepository chapterRepository, IImageRepository imageRepository, ICurrentUserService currentUser)
+        public UpdateChapterCommandHandler(IMangaRepository mangaRepository, IChapterRepository chapterRepository, IChapterImageRepository imageRepository, ICurrentUserService currentUser)
         {
             _mangaRepository = mangaRepository;
             _chapterRepository = chapterRepository;

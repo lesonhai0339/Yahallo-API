@@ -15,9 +15,11 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
+
+
             builder.Property(x => x.Reason)
                 .IsUnicode(true)
-                .HasMaxLength(int.MaxValue);
+                .HasMaxLength(2000);
 
             builder.HasOne(x => x.User)
                 .WithOne(x => x.Blacklist)

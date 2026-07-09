@@ -146,7 +146,6 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IChapterRepository, ChapterRepository>();
             services.AddScoped<IRatingRepository, RatingRepository>();
 
-            services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IArtistRepository, ArtistRepository>();
             services.AddScoped<IMangaArtistRepository, MangaArtistRepository>();
@@ -177,6 +176,7 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IMangaDailyAnalyticsRepository, MangaDailyAnalyticsRepository>();
             services.AddScoped<IUserDailyActivityRepository, UserDailyActivityRepository>();
             services.AddScoped<IUserMangaDailyReadRepository, UserMangaDailyReadRepository>();
+            services.AddScoped<IChapterImageRepository, ChapterImageRepository>();
 
             // AI generated — new repositories
             services.AddScoped<ITagRepository, TagRepository>();

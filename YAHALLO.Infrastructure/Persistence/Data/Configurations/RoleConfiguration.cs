@@ -15,6 +15,10 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.HasIndex(x => x.Id);
+            builder.Property(x => x.RoleDescription)
+   .IsUnicode(true)
+   .HasMaxLength(2000);
+
 
             builder.Property(x => x.RoleCode)
                 .IsUnicode(false);

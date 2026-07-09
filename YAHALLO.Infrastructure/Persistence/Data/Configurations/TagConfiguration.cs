@@ -11,13 +11,21 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(e => e.Id);
             builder.HasIndex(e => e.Id);
+
+
+
+
             builder.Property(e => e.Name)
                 .IsUnicode(true)
-                .HasMaxLength(128)
+                .HasMaxLength(256)
                 .IsRequired()
                 .UseCollation("Latin1_General_CI_AI");
+
             builder.Property(e => e.Description)
-                .IsUnicode(true);
+                .IsUnicode(true)
+                .HasMaxLength(2000);
+
+
             builder.ToTable("Tag");
         }
     }

@@ -46,7 +46,7 @@ namespace YAHALLO.Infrastructure.Realtime
                 if (string.IsNullOrEmpty(userId)) 
                     return;
 
-                await _sender.Publish(new UpdateLastActiveCommand { UserId = userId });
+                await _sender.Publish(new UpdateLastActiveNotification { UserId = userId });
             }
             catch (Exception ex)
             {

@@ -15,6 +15,14 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
+            builder.Property(x => x.Name)
+   .IsUnicode(true)
+   .HasMaxLength(2000);
+
+            builder.Property(x => x.Description)
+   .IsUnicode(true)
+   .HasMaxLength(2000);
+
             builder.ToTable("Threads");
         }
     }

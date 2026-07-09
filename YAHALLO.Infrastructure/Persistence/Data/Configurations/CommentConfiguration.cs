@@ -16,10 +16,15 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Message)
-                .IsUnicode(true);
+            builder.HasIndex(x => new { x.MangaId, x.ParentId, x.CreateDate });   
+            builder.HasIndex(x => new { x.ChapterId, x.ParentId, x.CreateDate }); 
+            builder.HasIndex(x => new { x.UserId, x.CreateDate });
 
-          
+
+            builder.Property(x => x.Message)
+                .IsUnicode(true)
+                .HasMaxLength(2000);
+      
             builder.HasOne(x => x.MangaEntity)
                 .WithMany(x => x.CommentEntities)
                 .HasForeignKey(x => x.MangaId)

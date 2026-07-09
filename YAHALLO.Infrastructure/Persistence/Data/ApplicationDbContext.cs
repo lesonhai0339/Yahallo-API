@@ -58,7 +58,7 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<MangaDailyAnalyticsEntity> MangaDailyAnalytics { get; set; }
         public DbSet<UserDailyActivityEntity> UserDailyActivityEntities { get; set; }
         public DbSet<UserMangaDailyReadEntity> UserMangaDailyReadEntities { get; set; }
-
+        public DbSet<ChapterImageEntity> ChapterImages { get; set; } 
 
         // AI generated — new tables
         public DbSet<TagEntity> Tags { get; set; }
@@ -102,7 +102,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new ChapterConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new FollowConfiguration());
-            modelBuilder.ApplyConfiguration(new MangaImageConfiguration());
+            modelBuilder.ApplyConfiguration(new ChapterImageConfiguration());
             modelBuilder.ApplyConfiguration(new MangaConfiguration());
             modelBuilder.ApplyConfiguration(new RatingConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
@@ -116,7 +116,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new ThreadConfiguration());
             modelBuilder.ApplyConfiguration(new ThreadOfBlogConfiguration());
             modelBuilder.ApplyConfiguration(new UserOldPasswordConfiguration());
-            modelBuilder.ApplyConfiguration(new AttechmentConfiguration());
+            modelBuilder.ApplyConfiguration(new AttachmentConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
             modelBuilder.ApplyConfiguration(new MangaGroupConfiguration());
@@ -130,7 +130,7 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new MangaDailyAnalyticsConfiguration());
             modelBuilder.ApplyConfiguration(new UserDailyActivityConfiguration());
             modelBuilder.ApplyConfiguration(new UserMangaDailyReadConfiguration());
-
+            modelBuilder.ApplyConfiguration(new ChapterImageConfiguration());
 
 
             // AI generated — new configurations

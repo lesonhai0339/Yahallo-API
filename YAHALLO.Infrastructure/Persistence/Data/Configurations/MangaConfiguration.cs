@@ -15,33 +15,43 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<MangaEntity> builder)
         {
             builder.HasKey(e => e.Id);
-            builder.HasIndex(x => x.CreateDate);
-
-            builder.Property(x => x.Name)
-                .IsUnicode(true)
-                .HasMaxLength(450)
-                .UseCollation("Latin1_General_CI_AI");
-            builder.Property(x => x.SeasonName)
-               .IsUnicode(true)
-               .HasMaxLength(450)
-               .UseCollation("Latin1_General_CI_AI");
 
             builder.Property(x => x.Description)
-                .IsUnicode(true);
+                .HasMaxLength(4000);
+
+            builder.Property(x => x.MangaThumbnail)
+                .HasMaxLength(2000);
+
+            builder.Property(x => x.MangaBackground)
+                .HasMaxLength(2000);
+
+
+            builder.HasIndex(x => x.Name);
+            builder.Property(x => x.Name)
+                .IsUnicode(true)
+                .HasMaxLength(300)
+                .UseCollation("Latin1_General_CI_AI");
+
+            builder.Property(x => x.SeasonName)
+               .IsUnicode(true)
+               .HasMaxLength(300)
+               .UseCollation("Latin1_General_CI_AI");
 
             builder.HasOne(x => x.MangaGroup)
                 .WithMany(x => x.MangaEntities)
-                .HasForeignKey(x => x.MangaGroupId);
+                .HasForeignKey(x => x.MangaGroupId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.UserEntity)
                 .WithMany(x => x.MangaEntities)
-                .HasForeignKey(x => x.UserId);
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasOne(x => x.LastChapter)
                 .WithMany()
                 .HasForeignKey(x => x.LastChapterId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.Country)
                 .WithMany(x => x.MangaEntities)

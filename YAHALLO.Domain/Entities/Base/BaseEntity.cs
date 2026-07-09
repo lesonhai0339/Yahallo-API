@@ -14,12 +14,16 @@ namespace YAHALLO.Domain.Entities.Base
     public class BaseEntity : ISoftDelete
     {
         [Key]
+        [MaxLength(450)]
         public string Id { get; set; } = SequentialGuid.NewId();
         public DateTime CreateDate { get; set; } = DateTime.UtcNow;
+        [MaxLength(450)]
         public string? IdUserCreate { get; set; }
         public DateTime? UpdateDate { get; set; }
+        [MaxLength(450)]
         public string? IdUserUpdate { get; set; }
         public DateTime? DeleteDate { get; set; }
+        [MaxLength(450)]
         public string? IdUserDelete { get; set; }
 
         [NotMapped]

@@ -10,16 +10,15 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<NotificationEntity> builder)
         {
             builder.HasKey(e => e.Id);
-            builder.HasIndex(e => e.UserId);
-            builder.HasIndex(e => e.Status);
 
-            builder.Property(e => e.Title).HasMaxLength(256).IsUnicode(true);
-            builder.Property(e => e.Message).IsUnicode(true);
+            builder.Property(e => e.Title).HasMaxLength(450).IsUnicode(true);
+            builder.Property(e => e.Message).IsUnicode(true).HasMaxLength(2000);
+            builder.Property(e => e.ReferenceId).HasMaxLength(450);
 
             builder.HasOne(e => e.User)
                 .WithMany()
                 .HasForeignKey(e => e.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable("Notification");
         }

@@ -15,10 +15,22 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<UserEntity> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Email)
-                .IsRequired();
+
 
             builder.HasIndex(x => x.Email).IsUnique();
+            builder.HasIndex(x => x.Email).IsUnique();
+            builder.Property(x => x.Email)
+                .HasMaxLength(450)
+                .IsRequired();
+
+
+            builder.Property(x => x.UserName).HasMaxLength(450);
+            builder.Property(x =>  x.Password).HasMaxLength(450);
+            builder.Property(x => x.AvatarThumbnail).HasMaxLength(2000);
+            builder.Property(x => x.BackgroundThumbnail).HasMaxLength(2000);
+
+            builder.Property(x => x.PhoneNumber)
+                .HasMaxLength(12);
 
             builder.HasIndex(x => x.CreateDate);
 

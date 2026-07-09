@@ -15,8 +15,15 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.HasIndex(x => x.Phone);
+            builder.HasIndex(x => x.Phone).IsUnique();
+            builder.Property(x => x.Phone).HasMaxLength(12);
 
+            builder.Property(x => x.Reason)
+.IsUnicode(true)
+.HasMaxLength(2000);
+            builder.Property(x => x.Source)
+   .IsUnicode(true)
+   .HasMaxLength(2000);
 
             builder.ToTable("UnTrustPhone");
         }
