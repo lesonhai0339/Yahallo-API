@@ -106,29 +106,6 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
                 }),
                 cancellationToken);
 
-            //Author
-            var authors = await _authorRepository.FindAllSelectAsync(x => x
-                .Select(a => new AuthorDto
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    Depscription = a.Depscription,
-                    Countries = a.Countries,
-                }),
-                cancellationToken);
-
-
-            //Artist
-            var artists = await _artistRepository.FindAllSelectAsync(x => x
-                .Select(a => new ArtistDto
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    Depscription = a.Depscription,
-                    Countries = a.Countries
-                }),
-                cancellationToken);
-
             var now = DateTime.UtcNow;
             var date = now.Date;
 
@@ -192,8 +169,6 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
                 LastUpdate = lastUpdate.MapToPagedResult(x => x).Data.ToList(),
                 Popular = popular.MapToPagedResult(x => x).Data.ToList(),
                 Tags = tags,
-                Authors = authors,
-                Artists = artists,
                 TopMangaByDate = topByDate.MapToPagedResult(x => x).Data.ToList(),
                 TopMangaByMonth = topByDate.MapToPagedResult(x => x).Data.ToList(),
                 TopMangaByYear = topByDate.MapToPagedResult(x => x).Data.ToList()

@@ -1,0 +1,139 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
+using YAHALLO.Application.Commands.ArtistCommand.Create;
+using YAHALLO.Application.Commands.ArtistCommand.Delete;
+using YAHALLO.Application.Commands.ArtistCommand.Restore;
+using YAHALLO.Application.Commands.ArtistCommand.Update;
+using YAHALLO.Application.Common.Authorization;
+using YAHALLO.Application.Common.Pagination;
+using YAHALLO.Application.Queries.Features.Admin.Artist;
+using YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeleted;
+using YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.Features.Public.Artist;
+using YAHALLO.Application.Queries.Features.Public.Artist.FilterArtist;
+using YAHALLO.Application.Queries.Features.Public.Artist.GetAllPagination;
+using YAHALLO.Services;
+
+namespace YAHALLO.Controllers
+{
+    [Authorize]
+    //[Authorize(Policy = "Admin")]
+    public class ArtistController : ControllerBase
+    {
+        private readonly IMediator _sender;
+        public ArtistController(IMediator sender)
+        {
+            _sender = sender;
+        }
+        [HttpPost]
+        [Route("artist/create")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<string>>> CreateArtist(
+            [FromBody] CreateArtistCommand command,
+            CancellationToken cancellationToken= default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<string>(result));
+        }
+        [HttpPost]
+        [Route("artist/restore")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<string>>> RestoreArtist(
+            [FromBody] RestoreArtistCommand command,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<string>(result));
+        }
+        [HttpPut]
+        [Route("artist/update")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<string>>> UpdateArtist(
+            [FromBody] UpdateArtistCommand command,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<string>(result));
+        }
+        [HttpDelete]
+        [Route("artist/delete")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<string>>> DeleteArtist(
+            [FromBody] DeleteArtistCommand command,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+            return Ok(new JsonResponse<string>(result));
+        }
+
+        [HttpGet]
+        [Route("artist/get-all-pagination")]
+        [AllowAnonymous]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<ArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<ArtistDto>>>> GetallArtistPagination(
+           [FromQuery] GetAllArtistPaginationQuery query,
+           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<ArtistDto>>(result));
+        }
+        [HttpGet]
+        [Route("artist/get-all-deleted")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<List<AdminArtistDto>>>> GetallArtistDeleted(
+   CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(new AdminGetAllArtistDeletedQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<AdminArtistDto>>(result));
+        }
+        [HttpGet]
+        [Route("artist/get-all-deleted-pagination")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminArtistDto>>>> GetallArtistDeletedPagination(
+          [FromQuery] AdminGetAllArtistDeletedPaginationQuery query,
+          CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<AdminArtistDto>>(result));
+        }
+        [HttpGet]
+        [Route("artist/filter-artist")]
+        [AllowAnonymous]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<ArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<ArtistDto>>>> FilterArtist(
+            [FromQuery] FilterArtistQuery query,
+            CancellationToken cancellationToken = default)
+        {
+            var result= await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<ArtistDto>>(result));
+        }
+    }
+}

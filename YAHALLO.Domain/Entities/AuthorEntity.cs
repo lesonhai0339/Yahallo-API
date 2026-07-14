@@ -17,6 +17,6 @@ namespace YAHALLO.Domain.Entities
         public DateTime Birth { get;set; }
         public LifeStatus LifeStatus { get; set; }
 
-        public virtual ICollection<MangaAuthorEntity> AuthorEntities { get; set; }  = new List<MangaAuthorEntity>(); 
+        public virtual ICollection<MangaAuthorEntity> MangaAuthorEntities { get; set; }  = new List<MangaAuthorEntity>(); 
     }
 }

@@ -15,6 +15,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.Name);
             builder.Property(x => x.Name)
                 .IsUnicode(true)
                 .IsRequired()
@@ -25,7 +26,6 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.Property(x => x.Depscription)
                 .IsUnicode(true)
                 .HasMaxLength(2000);
-
 
             builder.ToTable("Artist");
         }

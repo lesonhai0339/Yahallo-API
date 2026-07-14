@@ -9,7 +9,7 @@ using YAHALLO.Domain.Enums;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
 {
-    public class CreateRatingCommand: IRequest<bool>
+    public class CreateRatingCommand: IRequest<string>
     {
         public string TargetId { get; set; }  = string.Empty;
         public string UserId { get; set; } = string.Empty;

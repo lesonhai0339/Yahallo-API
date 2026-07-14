@@ -14,8 +14,6 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.DTOs
         public List<MangaSumaryDto> LastUpdate { get; set; } = new List<MangaSumaryDto>();
         public List<MangaSumaryDto> Popular { get; set; } = new List<MangaSumaryDto>();
         public List<TagDto> Tags { get; set; } = new List<TagDto>();
-        public List<AuthorDto> Authors { get; set; } = new List<AuthorDto>();
-        public List<ArtistDto> Artists { get; set; } = new List<ArtistDto>();
         public List<TopMangaDto> TopMangaByDate { get; set; } = new List<TopMangaDto>();
         public List<TopMangaDto> TopMangaByMonth { get; set; } = new List<TopMangaDto>();
         public List<TopMangaDto> TopMangaByYear { get; set; } = new List<TopMangaDto>();

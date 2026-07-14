@@ -35,9 +35,6 @@
 		<ProjectReference Include="..\YAHALLO.Infrastructure\YAHALLO.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Controllers\AdminOnly\" />
-	  <Folder Include="Controllers\Moderator\" />
-	  <Folder Include="Controllers\Uploader\" />
 	  <Folder Include="Logs\Mangas\" />
 	</ItemGroup>
 	<ItemGroup>
@@ -49,5 +46,19 @@
 		<Content Include="resources\**\*">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="Controllers\AdminOnly\**" />
+	  <Compile Remove="Controllers\Moderator\**" />
+	  <Compile Remove="Controllers\Uploader\**" />
+	  <Content Remove="Controllers\AdminOnly\**" />
+	  <Content Remove="Controllers\Moderator\**" />
+	  <Content Remove="Controllers\Uploader\**" />
+	  <EmbeddedResource Remove="Controllers\AdminOnly\**" />
+	  <EmbeddedResource Remove="Controllers\Moderator\**" />
+	  <EmbeddedResource Remove="Controllers\Uploader\**" />
+	  <None Remove="Controllers\AdminOnly\**" />
+	  <None Remove="Controllers\Moderator\**" />
+	  <None Remove="Controllers\Uploader\**" />
 	</ItemGroup>
 </Project>

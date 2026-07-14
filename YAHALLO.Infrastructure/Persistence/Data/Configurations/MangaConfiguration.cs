@@ -15,6 +15,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<MangaEntity> builder)
         {
             builder.HasKey(e => e.Id);
+            builder.HasIndex(x => x.Name);
 
             builder.Property(x => x.Description)
                 .HasMaxLength(4000);
@@ -26,15 +27,14 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .HasMaxLength(2000);
 
 
-            builder.HasIndex(x => x.Name);
             builder.Property(x => x.Name)
                 .IsUnicode(true)
-                .HasMaxLength(300)
+                .HasMaxLength(450)
                 .UseCollation("Latin1_General_CI_AI");
 
             builder.Property(x => x.SeasonName)
                .IsUnicode(true)
-               .HasMaxLength(300)
+               .HasMaxLength(450)
                .UseCollation("Latin1_General_CI_AI");
 
             builder.HasOne(x => x.MangaGroup)

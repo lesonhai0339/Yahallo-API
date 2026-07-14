@@ -10,14 +10,12 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         public void Configure(EntityTypeBuilder<TagEntity> builder)
         {
             builder.HasKey(e => e.Id);
-            builder.HasIndex(e => e.Id);
 
-
-
+            builder.HasIndex(e => e.Name);
 
             builder.Property(e => e.Name)
                 .IsUnicode(true)
-                .HasMaxLength(256)
+                .HasMaxLength(450)
                 .IsRequired()
                 .UseCollation("Latin1_General_CI_AI");
 

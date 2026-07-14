@@ -13,7 +13,7 @@ using YAHALLO.Domain.Repositories;
 
 namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
 {
-    public class CreateRatingCommandHandler : IRequestHandler<CreateRatingCommand, bool>
+    public class CreateRatingCommandHandler : IRequestHandler<CreateRatingCommand, string>
     {
         private readonly IRatingRepository _ratingRepository;
         private readonly ICurrentUserService _currentUser;
@@ -23,7 +23,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
             _ratingRepository = ratingRepository;
         }
 
-        public async Task<bool> Handle(CreateRatingCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateRatingCommand request, CancellationToken cancellationToken)
         {
 
             var existed = request.RatingTo == RatingEnum.Manga
@@ -54,7 +54,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
 
             _ratingRepository.Add(rating);
             var result =   await _ratingRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
-            return result > 0;
+            return result > 0 ? rating.Id : string.Empty;
         }
     }
 }
