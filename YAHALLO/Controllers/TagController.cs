@@ -9,6 +9,7 @@ using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Public.Tag;
 using YAHALLO.Application.Queries.Features.Public.Tag.FilterTag;
 using YAHALLO.Application.Queries.Features.Public.Tag.GetAll;
+using YAHALLO.Application.Queries.Features.Public.Tag.GetById;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers
@@ -39,7 +40,17 @@ namespace YAHALLO.Controllers
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<TagDto>>(result));
         }
-
+        [HttpGet]
+        [Route("tag/get-by-id")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<TagDto>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<JsonResponse<TagDto>>> GetById(
+           [FromQuery] GetTagInfoByIdQuery query,
+           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<TagDto>(result));
+        }
         [HttpPost]
         [Route("tag/create")]
         [Produces(MediaTypeNames.Application.Json)]
