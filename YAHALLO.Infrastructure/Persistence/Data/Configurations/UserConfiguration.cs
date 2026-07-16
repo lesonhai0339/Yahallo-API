@@ -16,9 +16,9 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.CreateDate);
+            builder.HasIndex(x => x.Email).IsUnique();
 
-            builder.HasIndex(x => x.Email).IsUnique();
-            builder.HasIndex(x => x.Email).IsUnique();
             builder.Property(x => x.Email)
                 .HasMaxLength(450)
                 .IsRequired();

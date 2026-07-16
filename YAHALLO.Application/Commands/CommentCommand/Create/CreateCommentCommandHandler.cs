@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Commands.MangaCommand.MangaDaily;
+using YAHALLO.Application.Commands.Mention.Create;
 using YAHALLO.Application.Commands.UserCommand.DailyActivity;
 using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
@@ -40,6 +41,12 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
         }
         public async Task<string> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
+            CommentEntity? com = null;
+            if(!string.IsNullOrEmpty(request.ReplyCommentId))
+            {
+                com = await _commentRepository.FindAsync(x => x.Id == request.ReplyCommentId, cancellationToken);
+            }
+
             CommentEntity comment = new CommentEntity
             {
                 CanComment = true,
@@ -51,24 +58,43 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
                 LikeCount = 0,
                 DisLikeCount = 0,
                 Message = request.Message,
-                ParentId = request.ParentId,
                 UserId = _currentUser.UserId,
                 MangaId = request.MangaId,
                 ChapterId = request.ChapterId,
-                CommentToUserId = request.CommentToUserId,  
-                ReplyToCommentId = request.ReplyCommentId,
+                BlogId = request.BlogId,    
+                CommentToUserId = com?.UserId,  
+                ReplyToCommentId = com?.Id,
+                ParentId = !string.IsNullOrWhiteSpace(com?.ParentId) ? com.ParentId : com?.Id,  //If com is root comment, set parentId for com.Id else com.ParentId 
                 CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUser.UserId
             };
             await _sender.Publish(new UpdateMangaDailyNotification { MangaId = request.MangaId, Type = Domain.Enums.MangaDaily.MangaDailyType.Comment }, cancellationToken);
             await _sender.Publish(new UpdateDailyActivityNotification { UserId = _currentUser.UserId!, Type = Domain.Enums.UserDaily.UserDailyType.Comment }, cancellationToken);
+            
+            if(!string.IsNullOrEmpty(com?.UserId) && _currentUser.UserId != com?.UserId)
+            {
+                await _sender.Publish(new CreateMentionNotification
+                {
+                    CommentId = comment?.Id,
+                    RootCommentId = comment?.ParentId,
+                    UserId = com?.UserId,
+                    MangaId = request.MangaId,
+                    ChapterId = request.ChapterId,
+                    BlogId = request.BlogId,
+                    MentionFrom = !string.IsNullOrEmpty(request.BlogId) ?
+                    MentionFrom.BlogComment :
+                    (!string.IsNullOrEmpty(request.MangaId) && !string.IsNullOrEmpty(request.ChapterId)) ?
+                    MentionFrom.ChapterComment :
+                    MentionFrom.MangaComment
+                }, cancellationToken);
+            }
 
-            _commentRepository.Add(comment);
+            _commentRepository.Add(comment!);
             var result = await _commentRepository.UnitOfWork.SaveChangesDroppingDuplicateAnalyticsAsync(cancellationToken);
             if (result == 0)
                 throw new Exception("Save comment failed");
 
-            return comment.Id;
+            return comment!.Id;
         }
     }
 }

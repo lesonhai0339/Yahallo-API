@@ -4,6 +4,7 @@ using MediatR;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 
@@ -27,16 +28,51 @@ namespace YAHALLO.Application.Queries.Features.Public.Notification.GetByUser
             if (string.IsNullOrEmpty(_currentUser.UserId))
                 throw new UnAuthorizeException("Bạn cần đăng nhập");
 
-            var query = _notificationRepository.CreateQueryable();
-            query = query.Where(x => x.UserId == _currentUser.UserId);
+            var mention = await LoadMention();
+            var noti = await LoadNotification();
+        }
+        public enum NotificationType
+        {
+            Mention,
+            Notification,
+        }
+        public enum TargetType
+        {
+            Manga,
+            Chapter,
+            Blog
+        }
+        public class CommentNotification
+        {
+            public string? MangaId { get; set;  }
+            public string? ChapterId { get; set;  }
+            public string? BlogId { get; set; }
 
-            if (request.Status.HasValue)
-                query = query.Where(x => x.Status == request.Status.Value);
+            public string? RootCommentId { get; set; }  
+            public string? CommentId { get; set;  }
+        }
+        public class OtherNotification
+        {
+            public  string? TargetId { get; set;  }
+        }
+        public class NotificationDto
+        {
+            public string Id { get; set; } = null!;
 
-            query = query.OrderByDescending(x => x.CreatedAt);
+            public NotificationType NotificationType { get; set;  }
+            public TargetType TargetType { get; set; }
 
-            var paged = await _notificationRepository.FindAllAsync(query, request.PageNo, request.PageSize, cancellationToken);
-            return paged.MapToPagedResult(x => _mapper.Map<NotificationDto>(x));
+            public CommentNotification? CommentNotification { get; set;  }
+            public OtherNotification? OtherNotification { get; set;  }
+            
+        }
+        private async Task<List<NotificationDto>> LoadMention()
+        {
+
+        }
+        private async Task<List<NotificationDto>> LoadNotification()
+        {
+
         }
     }
 }

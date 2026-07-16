@@ -177,6 +177,7 @@ namespace YAHALLO.Infrastructure
             services.AddScoped<IUserDailyActivityRepository, UserDailyActivityRepository>();
             services.AddScoped<IUserMangaDailyReadRepository, UserMangaDailyReadRepository>();
             services.AddScoped<IChapterImageRepository, ChapterImageRepository>();
+            services.AddScoped<IMentionRepository, MentionRepository>();
 
             // AI generated — new repositories
             services.AddScoped<ITagRepository, TagRepository>();

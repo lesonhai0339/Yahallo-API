@@ -62,6 +62,8 @@ namespace YAHALLO.Infrastructure.Data
 
         public DbSet<ReportEntity> Reports { get; set; }    
 
+        public DbSet<MentionEntity> Mentions { get; set;  }
+
         // AI generated — new tables
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<MangaTagEntity> MangaTags { get; set; }
@@ -133,7 +135,9 @@ namespace YAHALLO.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new UserDailyActivityConfiguration());
             modelBuilder.ApplyConfiguration(new UserMangaDailyReadConfiguration());
             modelBuilder.ApplyConfiguration(new ChapterImageConfiguration());
-            modelBuilder.ApplyConfiguration(new ReportConfiguration()); 
+            modelBuilder.ApplyConfiguration(new ReportConfiguration());
+            modelBuilder.ApplyConfiguration(new MentionConfiguration());
+
 
             // AI generated — new configurations
             modelBuilder.ApplyConfiguration(new TagConfiguration());

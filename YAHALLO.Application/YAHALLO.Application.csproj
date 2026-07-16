@@ -52,6 +52,8 @@
 		<ProjectReference Include="..\YAHALLO.Domain\YAHALLO.Domain.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Commands\Mention\Delete\" />
+	  <Folder Include="Commands\Mention\Update\" />
 	  <Folder Include="Commands\ReactionCommand\Delete\" />
 	  <Folder Include="Commands\ReactionCommand\Restore\" />
 	  <Folder Include="Commands\ReactionCommand\Update\" />
@@ -61,5 +63,6 @@
 	  <Folder Include="Queries\Features\Public\Attechment\GetAllPagination\" />
 	  <Folder Include="Queries\Features\Public\Attechment\GetAllDeletedPagination\" />
 	  <Folder Include="Queries\Features\Public\Attechment\FilterAttechment\" />
+	  <Folder Include="Queries\Features\Public\Mention\" />
 	</ItemGroup>
 </Project>

@@ -16,6 +16,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(e => e.Id);
             builder.HasIndex(x => x.Name);
+            builder.HasIndex(x => x.CreateDate);
 
             builder.Property(x => x.Description)
                 .HasMaxLength(4000);

@@ -11,8 +11,6 @@ namespace YAHALLO.Application.Commands.CommentCommand.Create
     {
         public CreateCommentCommandValidator() 
         {
-            RuleFor(x => x.UserId).NotNull().NotEmpty().WithMessage("UserId không được bỏ trống");
-            RuleFor(x => x.MangaId).NotNull().NotEmpty().WithMessage("MangaId không được bỏ trống");    
         }  
     }
 }

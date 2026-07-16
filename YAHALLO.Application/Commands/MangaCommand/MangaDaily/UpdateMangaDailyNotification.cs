@@ -10,7 +10,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.MangaDaily
 {
     public class UpdateMangaDailyNotification: INotification
     {
-        public string MangaId { get; set; } = null!;
+        public string? MangaId { get; set; } = null!;
         public MangaDailyType Type { get; set; }
         public bool IsDelete { get; set; } = false;
     }
