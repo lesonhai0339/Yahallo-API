@@ -85,8 +85,8 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment.Filter
 
             if(request.From != null && request.To != null)
             {
-                var from = request.From.Value.AddMinutes(-request.TimeZoneOffset);
-                var to = request.To.Value.AddDays(1).AddMinutes(-request.TimeZoneOffset);
+                var from = request.From.Value.UtcDateTime;
+                var to = request.To.Value.AddDays(1).UtcDateTime;
                 query = query.Where(x => x.CreateDate >= from && x.CreateDate <= to);
             }
 

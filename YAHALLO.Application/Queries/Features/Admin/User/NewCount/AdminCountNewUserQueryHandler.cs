@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using YAHALLO.Application.Common.Helper;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Domain.Exceptions;
@@ -16,19 +17,20 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
 
         public async Task<PagedResult<AdminCountUserQueryResult>> Handle(AdminCountNewUserQuery request, CancellationToken cancellationToken)
         {
-            var from = request.From.Date.AddMinutes(-request.TimeZoneOffset);       
-            var toExclusive = request.To.Date.AddDays(1).AddMinutes(-request.TimeZoneOffset);
+            var from = request.From.UtcDateTime;       
+            var toExclusive = request.To.UtcDateTime;
+            var offsetHours = DateTimeHelper.ResolveOffsetHours(request.TimeZone, request.To);
 
             var query = _userRepository.CreateQueryable();
             query = query.Where(u => u.CreateDate >= from && u.CreateDate < toExclusive);
 
-            var result = request.CountBy switch
+            var result = request.GroupBy switch
             {
-                AdminUserCountBy.Day => await _userRepository.FindAllSelectAsync(
+                AdminUserGroupBy.Day => await _userRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: _ => query
-                    .GroupBy(u => u.CreateDate.AddMinutes(request.TimeZoneOffset).Date)
+                    .GroupBy(u => u.CreateDate.AddHours(offsetHours).Date)
                     .Select(i => new AdminCountUserQueryResult 
                     {
                         Day = i.Key.Day,
@@ -39,11 +41,11 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
                     .OrderBy(x => x.Year).ThenBy(x => x.Month).ThenBy(x => x.Day),
                 cancellation: cancellationToken),
 
-                AdminUserCountBy.Month => await _userRepository.FindAllSelectAsync(
+                AdminUserGroupBy.Month => await _userRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: _ => query
-                    .GroupBy(u => new {  u.CreateDate.AddMinutes(request.TimeZoneOffset).Month, u.CreateDate.AddMinutes(request.TimeZoneOffset).Year})
+                    .GroupBy(u => new {  u.CreateDate.Month, u.CreateDate.Year})
                     .Select(i => 
                         new AdminCountUserQueryResult 
                         {
@@ -55,11 +57,11 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
                     .OrderBy(x => x.Year).ThenBy(x => x.Month),
                 cancellation: cancellationToken),
 
-                AdminUserCountBy.Year => await _userRepository.FindAllSelectAsync(
+                AdminUserGroupBy.Year => await _userRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: _ => query
-                    .GroupBy(u => u.CreateDate.AddMinutes(request.TimeZoneOffset).Year)
+                    .GroupBy(u => u.CreateDate.Year)
                     .Select(i => new AdminCountUserQueryResult
                     {
                         Day = 1,
@@ -70,7 +72,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
                    .OrderBy(x => x.Year),
                 cancellation: cancellationToken),
 
-                _ => throw new ArgumentOutOfRangeException(nameof(request.CountBy), "Invalid CountBy value"),
+                _ => throw new ArgumentOutOfRangeException(nameof(request.GroupBy), "Invalid CountBy value"),
             };
            
             if (!result.Any())

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Entities;
@@ -34,7 +35,7 @@ namespace YAHALLO.Application.Commands.MangaRatingCommand.Create
                 ? await _ratingRepository.FindAsync(x => x.ToUserId == request.TargetId && x.UserId == request.UserId, cancellationToken)
                 : null;
             if (existed != null)
-                throw new DuplicateException($"Existed rating on {request.RatingTo} - Id: {existed.Id}");
+                throw new ConflictException($"Existed rating on {request.RatingTo} - Id: {existed.Id}");
 
             var rating = new RatingEntity
             {

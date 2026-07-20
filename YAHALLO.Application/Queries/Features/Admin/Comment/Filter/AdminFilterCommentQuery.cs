@@ -9,9 +9,8 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment.Filter
         public string? MangaId { get; set; }
         public string? ChapterId { get; set; }
         public string? ParentId { get; set; }
-        public DateTime? From { get; set;  }
-        public DateTime? To { get; set; }
-        public double TimeZoneOffset { get; set;  }
+        public DateTimeOffset? From { get; set;  }
+        public DateTimeOffset? To { get; set; }
         public CommentSortBy? SortBy { get; set; }
         public bool ReverseSort { get; set; } = false;
         public bool IsDeleted { get; set; } = false;

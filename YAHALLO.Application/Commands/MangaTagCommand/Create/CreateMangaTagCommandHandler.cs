@@ -1,6 +1,7 @@
 //AI generated
 using MediatR;
 using Serilog;
+using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Logger;
 using YAHALLO.Domain.Entities;
@@ -40,7 +41,7 @@ namespace YAHALLO.Application.Commands.MangaTagCommand.Create
             if (!tagExists) throw new NotFoundException($"Không tìm thấy tag: {request.TagId}");
 
             var alreadyLinked = await _mangaTagRepository.AnyAsync(x => x.MangaId == request.MangaId && x.TagId == request.TagId, cancellationToken);
-            if (alreadyLinked) throw new DuplicateException("Manga đã được gắn tag này");
+            if (alreadyLinked) throw new ConflictException("Manga đã được gắn tag này");
 
             var mangaTag = new MangaTagEntity
             {

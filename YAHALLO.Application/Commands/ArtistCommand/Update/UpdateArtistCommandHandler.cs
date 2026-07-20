@@ -33,7 +33,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Update
             checkArtistExists.Name = request.Name ?? checkArtistExists.Name;
             checkArtistExists.Countries = request.Countries != null ? (CountriesEnum)request.Countries: checkArtistExists.Countries;
             checkArtistExists.Depscription = request.Depscription ?? checkArtistExists.Depscription;
-            checkArtistExists.Birth = request.Birth ?? checkArtistExists.Birth;
+            checkArtistExists.Birth = request.Birth?.UtcDateTime ?? checkArtistExists.Birth;
             checkArtistExists.LifeStatus = request.LifeStatus != null ? (LifeStatus)request.LifeStatus : checkArtistExists.LifeStatus;
             checkArtistExists.IdUserUpdate = _currentUser.UserId;
             checkArtistExists.UpdateDate = DateTime.UtcNow;

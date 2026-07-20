@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using YAHALLO.Application.Common.DTOs;
+using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Domain.Enums.Base;
@@ -53,7 +54,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Update
                 && string.IsNullOrEmpty(x.IdUserDelete) && !x.DeleteDate.HasValue, cancellationToken);
             if (checkExistIndex != null)
             {
-                throw new DuplicateException($"Đã tồn tại chương truyện có vị trí tương tự");
+                throw new ConflictException($"Đã tồn tại chương truyện có vị trí tương tự");
             }
             checkChapterExist.Index = request.Index ?? checkChapterExist.Index;
             checkChapterExist.UpdateDate = DateTime.UtcNow;

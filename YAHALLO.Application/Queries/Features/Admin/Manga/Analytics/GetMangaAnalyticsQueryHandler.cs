@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YAHALLO.Application.Common.Exceptions;
+using YAHALLO.Application.Common.Helper;
 using YAHALLO.Domain.Enums.MangaDaily;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
@@ -25,23 +26,19 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
         }
         public async Task<GetMangaAnalyticsResult> Handle(GetMangaAnalyticsQuery request, CancellationToken cancellationToken)
         {
-            var startDate = request.From.Date;
-            var endDate = request.To.Date;
 
-            var startMonth = new DateTime(request.From.Year, request.From.Month, 1);
-            var endMonth = new DateTime(request.To.Year, request.To.AddMonths(1).Month, 1);
+            var start = request.From.UtcDateTime;
+            var end = request.To.UtcDateTime;
+            var offsetHours = DateTimeHelper.ResolveOffsetHours(request.TimeZone, request.To);
 
-            var startYear = new DateTime(request.From.Year, 1,  1);
-            var endYear = new DateTime(request.To.AddYears(1).Year, 1, 1);  
-
-            var result = request.FilterBy switch
+            var result = request.GroupBy switch
             {
-                MangaDailyFilterBy.Day => await _mangaDailyRepository.FindAllSelectAsync(
+                MangaDailyGroupBy.Day => await _mangaDailyRepository.FindAllSelectAsync(
                 selector: x => x
                 .Where(d => d.MangaId == request.MangaId
-                    && d.CreateDate >= request.From
-                    && d.CreateDate < request.To.AddDays(1))
-                .GroupBy(x => x.CreateDate.Date)
+                    && d.CreateDate >= start
+                    && d.CreateDate < end)
+                .GroupBy(x => x.CreateDate.AddHours(offsetHours).Date)
                 .Select(g => new MangaAnalytics
                 {
                     MangaId = request.MangaId,
@@ -56,11 +53,11 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
                 cancellationToken),
 
 
-                MangaDailyFilterBy.Month => await _mangaDailyRepository.FindAllSelectAsync(
+                MangaDailyGroupBy.Month => await _mangaDailyRepository.FindAllSelectAsync(
                 selector: x => x
-                .Where(d => d.MangaId == request.MangaId
-                    && d.CreateDate >= request.From
-                    && d.CreateDate < request.To.AddDays(1))
+               .Where(d => d.MangaId == request.MangaId
+                    && d.CreateDate >= start
+                    && d.CreateDate < end)
                 .GroupBy(x => new { x.CreateDate.Month, x.CreateDate.Year })
                 .Select(g => new MangaAnalytics
                 {
@@ -76,11 +73,11 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
                 cancellationToken) ,
 
 
-                MangaDailyFilterBy.Year => await _mangaDailyRepository.FindAllSelectAsync(
+                MangaDailyGroupBy.Year => await _mangaDailyRepository.FindAllSelectAsync(
                 selector: x => x
                 .Where(d => d.MangaId == request.MangaId
-                    && d.CreateDate >= request.From
-                    && d.CreateDate < request.To.AddDays(1))
+                    && d.CreateDate >= start
+                    && d.CreateDate < end)
                 .GroupBy(x => x.CreateDate.Year)
                 .Select(g => new MangaAnalytics
                 {
@@ -95,7 +92,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
                 .OrderBy(x => x.Year),
                 cancellationToken),
 
-                _ => throw new BadRequestException($"FilterBy {request.FilterBy} không hợp lệ, chỉ chấp nhận các giá trị: 'day', 'month', 'year'")
+                _ => throw new BadRequestException($"FilterBy {request.GroupBy} không hợp lệ, chỉ chấp nhận các giá trị: 'day', 'month', 'year'")
             };
             var sumary = await _mangaRepository.FindSelectAsync(x => x
                 .Where(m => m.Id == request.MangaId)

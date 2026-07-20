@@ -31,7 +31,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Update
             checkAuthorExist.Name = request.Name ?? checkAuthorExist.Name;
             checkAuthorExist.Countries = request.Countries ?? checkAuthorExist.Countries;
             checkAuthorExist.Depscription = request.Depscription ?? checkAuthorExist.Depscription;
-            checkAuthorExist.Birth = request.Birth ?? checkAuthorExist.Birth;
+            checkAuthorExist.Birth = request.Birth?.UtcDateTime ?? checkAuthorExist.Birth;
             checkAuthorExist.LifeStatus = request.LifeStatus ?? checkAuthorExist.LifeStatus;
             checkAuthorExist.UpdateDate = DateTime.UtcNow;
             checkAuthorExist.IdUserUpdate = _currentUser.UserId;

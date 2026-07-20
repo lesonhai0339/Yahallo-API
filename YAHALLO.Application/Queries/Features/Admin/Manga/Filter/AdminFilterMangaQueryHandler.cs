@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using YAHALLO.Application.Common.Helper;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
 using YAHALLO.Application.Queries.Features.Admin.Chapter;
@@ -92,10 +93,10 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
             if (request.Countries != null) query = query.Where(x => x.Countries == request.Countries);
             if (request.Date != null)
             {
-                var from = request.Date.Value.AddMinutes(-request.TimeZoneOffset);
-                var to = request.Date.Value.AddDays(1).AddMinutes(-request.TimeZoneOffset);
+                var from = request.Date?.UtcDateTime;
+                var to = request.Date?.AddDays(1).UtcDateTime;
 
-                query = query.Where(x => x.CreateDate >= from && x.CreateDate <= to);
+                query = query.Where(x => x.CreateDate >= from && x.CreateDate < to);
             }
             if (request.UserId != null) query = query.Where(x => x.UserId == request.UserId);
             if (request.Season > 0)

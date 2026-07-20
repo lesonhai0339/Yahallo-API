@@ -62,10 +62,9 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.Filter
 
             if(request.CreateDate != null)
             {
-                var offset = TimeSpan.FromMinutes(request.TimezoneOffset); 
-                var date = request.CreateDate.Value.Date - offset;           
-                var nextDay = date.AddDays(1);
-                query = query.Where(x => x.CreateDate >= date && x.CreateDate <= nextDay);
+                var date = request.CreateDate?.UtcDateTime;           
+                var nextDay = date?.AddDays(1);
+                query = query.Where(x => x.CreateDate >= date && x.CreateDate < nextDay);
             }
             return query;
         }

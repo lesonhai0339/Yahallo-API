@@ -7,13 +7,13 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
     {
         public int PageNo { get; init; } 
         public int PageSize { get; init; }  
-        public DateTime From { get; init; }
-        public DateTime To { get;init; }
-        public AdminUserCountBy CountBy { get; init; } = AdminUserCountBy.Day;
-        public int TimeZoneOffset { get; init; } = 0;
+        public DateTimeOffset From { get; init; }
+        public DateTimeOffset To { get;init; }
+        public AdminUserGroupBy GroupBy { get; init; } = AdminUserGroupBy.Day;
+        public string? TimeZone { get; set; }
 
     }
-    public enum AdminUserCountBy
+    public enum AdminUserGroupBy
     {
         Day, 
         Month,

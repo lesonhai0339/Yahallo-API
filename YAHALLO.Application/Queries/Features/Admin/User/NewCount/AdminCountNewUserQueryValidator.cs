@@ -11,7 +11,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
 
             RuleFor(x => x.To).GreaterThan(x => x.From).WithMessage("The 'To' date must be greater than the 'From' date.");
             RuleFor(x => x).Must(x =>
-    x.CountBy != AdminUserCountBy.Day || (x.To - x.From).Days <= 366)
+    x.GroupBy != AdminUserGroupBy.Day || (x.To - x.From).Days <= 366)
     .WithMessage("Time too long for filter by day");
         }
     }

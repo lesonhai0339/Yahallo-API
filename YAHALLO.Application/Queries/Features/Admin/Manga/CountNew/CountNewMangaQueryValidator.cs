@@ -16,7 +16,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
 
             RuleFor(x => x.To).GreaterThan(x => x.From).WithMessage("The 'To' date must be greater than the 'From' date."); 
             RuleFor(x => x).Must(x => 
-            x.CountBy != MangaCountBy.Day || (x.To - x.From).Days <= 366).WithMessage("Time too long for filter by day");   
+            x.GroupBy != MangaGroupBy.Day || (x.To - x.From).Days <= 366).WithMessage("Time too long for filter by day");   
         }
     }
 }

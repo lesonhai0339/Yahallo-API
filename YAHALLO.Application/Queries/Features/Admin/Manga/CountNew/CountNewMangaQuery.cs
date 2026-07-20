@@ -12,12 +12,12 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
     {
         public int PageNo { get; init; }
         public int PageSize { get; init; }  
-        public DateTime From { get; init; }
-        public DateTime To { get; init; }   
-        public MangaCountBy CountBy { get; init; } = MangaCountBy.Day;  
-        public int TimeZoneOffset { get; init; } = 0;   
+        public DateTimeOffset From { get; init; }
+        public DateTimeOffset To { get; init; }   
+        public MangaGroupBy GroupBy { get; init; } = MangaGroupBy.Day;  
+        public string? TimeZone { get; set; }   
     }
-    public enum MangaCountBy
+    public enum MangaGroupBy
     {
         Day, 
         Month,

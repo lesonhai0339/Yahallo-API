@@ -12,8 +12,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.Filter
         public string? Name { get; set; }
         public string? Email { get; set; }
         public string? Phone { get; set; }
-        public DateTime? CreateDate { get; set; }
-        public int TimezoneOffset { get; set; }
+        public DateTimeOffset? CreateDate { get; set; }
         public UserSortBy? SortBy { get; set; }
         public bool ReverseSort { get; set; } = false;
     }

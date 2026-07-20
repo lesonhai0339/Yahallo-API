@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.Base;
@@ -44,14 +45,14 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Create
             var checkAuthorExist = await _authorRepository.FindAsync(options, cancellationToken);
             if(checkAuthorExist !=null)
             {
-                throw new DuplicateException("Đã tồn tại tác giả với thông tin tương tự");
+                throw new ConflictException("Đã tồn tại tác giả với thông tin tương tự");
             }
             var newAuthor = new AuthorEntity
             {
                 Name = request.Name,
                 Depscription = request.Depscription,
                 Countries = (CountriesEnum)request.Countries,
-                Birth = request.Birth,
+                Birth = request.Birth.UtcDateTime,
                 LifeStatus = (LifeStatus)request.LifeStatus,
                 IdUserCreate = _currentUser.UserId,
                 CreateDate = DateTime.UtcNow

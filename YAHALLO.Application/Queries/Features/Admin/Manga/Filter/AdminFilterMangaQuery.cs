@@ -16,8 +16,8 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
         public CountriesEnum? Countries { get; set; }
         public int Season { get; set; }
         public string? UserId { get; set; }
-        public DateTime? Date { get; set; }
-        public double TimeZoneOffset { get; set;  }
+        public DateTimeOffset? Date { get; set; }
+        public string ? TimeZone { get; set; }  
         public MangaSortBy? SortBy { get; set; }
         public bool ReverseSort { get; set; }
         public bool IsDeleted { get; set; } = false;

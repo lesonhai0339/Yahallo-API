@@ -11,9 +11,10 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
     public class GetMangaAnalyticsQuery: IRequest<GetMangaAnalyticsResult>
     {
         public string MangaId { get; init; } = null!;
-        public DateTime From {  get; init; }
-        public DateTime To { get; init; }  
-        public MangaDailyFilterBy FilterBy { get; init; } = MangaDailyFilterBy.Day;
+        public DateTimeOffset From {  get; init; }
+        public DateTimeOffset To { get; init; }  
+        public MangaDailyGroupBy GroupBy { get; init; } = MangaDailyGroupBy.Day;
+        public string? TimeZone { get; set; }
     }
     public record GetMangaAnalyticsResult
     {

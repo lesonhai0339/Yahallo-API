@@ -50,7 +50,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
                 && !x.DeleteDate.HasValue, cancellationToken);
 
             if(checkChapterExist.Any())
-                throw new DuplicateException("Đã tồn tại chapter với index cho manga tương tự");
+                throw new ConflictException("Đã tồn tại chapter với index cho manga tương tự");
 
             var chapter = new ChapterEntity
             {

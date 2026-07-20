@@ -33,7 +33,12 @@ namespace YAHALLO
             services.AddControllers(
                 opt =>
                 {
+                    opt.ModelBinderProviders.Insert(0, new StrictDateTimeOffsetBinderProvider());
                     opt.Filters.Add<ExceptionFilter>();
+                })
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new StrictDateTimeOffsetConverter());
                 });
             services.AddApplication(Configuration);
             services.ConfigureApplicationSecurity(Configuration);

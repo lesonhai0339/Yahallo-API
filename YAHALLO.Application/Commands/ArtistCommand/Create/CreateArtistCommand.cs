@@ -15,7 +15,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Create
             string name,
             int countrycode,
             string depscription,
-            DateTime birth,
+            DateTimeOffset birth,
             int lifestatus) 
         {
             Name=   name;
@@ -27,7 +27,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Create
         public string Name { get; set; } = null!;
         public int CountryCode { get; set; }
         public string Depscription { get; set; } = null!;
-        public DateTime Birth { get; set; }
+        public DateTimeOffset Birth { get; set; }
         public int LifeStatus { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
@@ -33,7 +34,7 @@ namespace YAHALLO.Application.Commands.RoleCommand.Update
                 .FindAllAsync(x=> x.RoleCode == request.RoleCode, cancellationToken);   
             if(checkRoleCodeExists.Count() >1)
             {
-                throw new DuplicateException($"Đã tồn tại role với role code {request.RoleCode}");
+                throw new ConflictException($"Đã tồn tại role với role code {request.RoleCode}");
             }
             checkRoleExist.RoleCode = request.RoleCode ?? checkRoleExist.RoleCode;
             checkRoleExist.RoleName = request.RoleName ?? checkRoleExist.RoleName;

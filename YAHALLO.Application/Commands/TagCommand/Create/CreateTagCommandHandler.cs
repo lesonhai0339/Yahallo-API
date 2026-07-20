@@ -1,6 +1,7 @@
 //AI generated
 using MediatR;
 using Serilog;
+using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Logger;
 using YAHALLO.Domain.Entities;
@@ -28,7 +29,7 @@ namespace YAHALLO.Application.Commands.TagCommand.Create
             if (exists)
             {
                 _logger.Error("Tag already exists: {Name}", request.Name);
-                throw new DuplicateException($"Tag '{request.Name}' đã tồn tại");
+                throw new ConflictException($"Tag '{request.Name}' đã tồn tại");
             }
 
             var tag = new TagEntity

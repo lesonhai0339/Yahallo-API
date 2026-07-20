@@ -38,23 +38,34 @@ namespace YAHALLO.Filters
                     .AddContextInformation(context);
                     context.ExceptionHandled = true;
                     break;
-                case DuplicateException exception:
-                    context.Result = new BadRequestObjectResult(new ProblemDetails
-                    {
-                        Detail = exception.Message
-                    })
-                        .AddContextInformation(context);
-                    context.ExceptionHandled = true;
-                    break;
                 case UnAuthorizeException exception:
                     context.Result = new UnauthorizedObjectResult(new ProblemDetails
                     {
                         Detail = exception.Message
                     })
-                        .AddContextInformation(context);
+                    .AddContextInformation(context);
                     context.ExceptionHandled = true;
                     break;
-
+                case ConflictException exception:
+                    context.Result = new ConflictObjectResult(new ProblemDetails
+                    {
+                        Title = "Conflict",
+                        Status = StatusCodes.Status409Conflict,
+                        Detail = exception.Message
+                    })
+                    .AddContextInformation(context);
+                    context.ExceptionHandled = true;
+                    break;
+                default:
+                    context.Result = new ObjectResult(new ProblemDetails
+                    {
+                        Title = "Internal Server Error",
+                        Status = StatusCodes.Status500InternalServerError,
+                        Detail = "Đã xảy ra lỗi không mong muốn" 
+                    })
+                    .AddContextInformation(context);
+                    context.ExceptionHandled = true;
+                    break;
 
             }
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YAHALLO.Domain.Enums.MangaDaily
 {
-    public enum MangaDailyFilterBy
+    public enum MangaDailyGroupBy
     {
         Day,
         Month,

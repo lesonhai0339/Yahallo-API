@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Helper;
 using YAHALLO.Application.Common.Interfaces;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
@@ -21,20 +22,21 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
         }   
         public async Task<PagedResult<CountNewMangaQueryResult>> Handle(CountNewMangaQuery request, CancellationToken cancellationToken)
         {
-            var from = request.From.Date.AddMinutes(-request.TimeZoneOffset);
-            var toExclusive = request.To.Date.AddDays(1).AddMinutes(-request.TimeZoneOffset);
+            var from = request.From.UtcDateTime;
+            var toExclusive = request.To.AddDays(1).UtcDateTime;
+            var offsetHours = DateTimeHelper.ResolveOffsetHours(request.TimeZone, request.To);
 
             var query = _mangaRepository.CreateQueryable();
             query = query.Where(u => u.CreateDate >= from && u.CreateDate < toExclusive);
 
 
-            var result = request.CountBy switch
+            var result = request.GroupBy switch
             {
-                MangaCountBy.Day => await _mangaRepository.FindAllSelectAsync(
+                MangaGroupBy.Day => await _mangaRepository.FindAllSelectAsync(
                     pageNo: request.PageNo,
                     pageSize: request.PageSize,
                     selector: _ => query
-                        .GroupBy(x => x.CreateDate.AddMinutes(request.TimeZoneOffset).Date)
+                        .GroupBy(x => x.CreateDate.AddHours(offsetHours).Date)
                         .Select(i => new CountNewMangaQueryResult
                         {
                             Day = i.Key.Day,
@@ -46,11 +48,11 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
                     cancellation: cancellationToken
                     ),
 
-                MangaCountBy.Month => await _mangaRepository.FindAllSelectAsync(
+                MangaGroupBy.Month => await _mangaRepository.FindAllSelectAsync(
                    pageNo: request.PageNo,
                    pageSize: request.PageSize,
                    selector: _ => query
-                       .GroupBy(x => new { x.CreateDate.AddMinutes(request.TimeZoneOffset).Month, x.CreateDate.AddMinutes(request.TimeZoneOffset).Year})
+                       .GroupBy(x => new { x.CreateDate.Month, x.CreateDate.Year})
                        .Select(i => new CountNewMangaQueryResult
                        {
                            Day = 1,
@@ -62,11 +64,11 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
                    cancellation: cancellationToken
                    ),
 
-                MangaCountBy.Year => await _mangaRepository.FindAllSelectAsync(
+                MangaGroupBy.Year => await _mangaRepository.FindAllSelectAsync(
                    pageNo: request.PageNo,
                    pageSize: request.PageSize,
                    selector: _ => query
-                       .GroupBy(x => x.CreateDate.AddMinutes(request.TimeZoneOffset).Year)
+                       .GroupBy(x => x.CreateDate.Year)
                        .Select(i => new CountNewMangaQueryResult
                        {
                            Day = 1,
@@ -78,7 +80,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
                    cancellation: cancellationToken
                    ),
 
-                _ => throw new ArgumentOutOfRangeException(nameof(request.CountBy), "Invalid CountBy value") 
+                _ => throw new ArgumentOutOfRangeException(nameof(request.GroupBy), "Invalid CountBy value") 
             };
             return result.MapToPagedResult(x => x);
         }

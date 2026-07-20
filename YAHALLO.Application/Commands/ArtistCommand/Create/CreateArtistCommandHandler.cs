@@ -32,7 +32,7 @@ namespace YAHALLO.Application.Commands.ArtistCommand.Create
                 Name = request.Name,
                 Depscription = request.Depscription,
                 Countries = (CountriesEnum)request.CountryCode,
-                Birth = request.Birth,
+                Birth = request.Birth.UtcDateTime,
                 LifeStatus =(LifeStatus)request.LifeStatus,
                 CreateDate = DateTime.UtcNow,
                 IdUserCreate = _currentUserRepository.UserId

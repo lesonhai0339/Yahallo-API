@@ -15,7 +15,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Create
             string name,
             CountriesEnum countries,
             string depscription,
-            DateTime birth,
+            DateTimeOffset birth,
             LifeStatus lifestatus)
         {
             Name = name;
@@ -27,7 +27,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Create
         public string Name { get; set; }
         public CountriesEnum Countries { get; set; }
         public string Depscription { get; set; }
-        public DateTime Birth { get; set; }
+        public DateTimeOffset Birth { get; set; }
         public LifeStatus LifeStatus { get; set; }
     }
 }

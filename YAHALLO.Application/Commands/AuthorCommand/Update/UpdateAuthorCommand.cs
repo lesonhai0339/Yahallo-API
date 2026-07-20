@@ -16,7 +16,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Update
             string? name,
             CountriesEnum? countries,
             string? depscription,
-            DateTime? birth,
+            DateTimeOffset? birth,
             LifeStatus? lifestatus) 
         {
             Id = id;
@@ -30,7 +30,7 @@ namespace YAHALLO.Application.Commands.AuthorCommand.Update
         public string? Name { get; set; }
         public CountriesEnum? Countries { get; set; }
         public string? Depscription { get; set; }
-        public DateTime? Birth { get; set; }
+        public DateTimeOffset? Birth { get; set; }
         public LifeStatus? LifeStatus { get; set; }
     }
 }

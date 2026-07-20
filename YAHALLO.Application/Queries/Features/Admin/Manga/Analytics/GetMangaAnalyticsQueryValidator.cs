@@ -19,7 +19,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
                 .NotNull().WithMessage("Ngày kết thúc không được null");
 
             RuleFor(x => x)
-                .Must(x => x.FilterBy != Domain.Enums.MangaDaily.MangaDailyFilterBy.Day || (x.To - x.From).Days <= 366).WithMessage("Khi lọc theo ngày, khoảng thời gian không được vượt quá 1 năm");
+                .Must(x => x.GroupBy != Domain.Enums.MangaDaily.MangaDailyGroupBy.Day || (x.To - x.From).Days <= 366).WithMessage("Khi lọc theo ngày, khoảng thời gian không được vượt quá 1 năm");
         }
     }
 }
