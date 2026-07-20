@@ -16,6 +16,9 @@ namespace YAHALLO.Domain.Enums.NotificationEnums
 
         [Description("Hệ thống")]
         System = 4,
+
+        [Description("Đề cập")]
+        Mention = 5,    
     }
 
     public enum NotificationStatus

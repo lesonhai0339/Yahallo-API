@@ -14,14 +14,25 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
     public class GetMangaAnalyticsQueryHandler : IRequestHandler<GetMangaAnalyticsQuery, GetMangaAnalyticsResult>
     {
         private readonly IMangaDailyAnalyticsRepository _mangaDailyRepository;
-        private readonly IChapterRepository _chapterRepository;
-        public GetMangaAnalyticsQueryHandler(IMangaDailyAnalyticsRepository mangaDailyRepository, IChapterRepository chapterRepository)
+        private readonly IMangaRepository _mangaRepository;
+        public GetMangaAnalyticsQueryHandler(
+            IMangaDailyAnalyticsRepository mangaDailyRepository, 
+            IMangaRepository mangaRepository
+            )
         {
             _mangaDailyRepository = mangaDailyRepository;
-            _chapterRepository = chapterRepository;
+            _mangaRepository = mangaRepository;
         }
         public async Task<GetMangaAnalyticsResult> Handle(GetMangaAnalyticsQuery request, CancellationToken cancellationToken)
         {
+            var startDate = request.From.Date;
+            var endDate = request.To.Date;
+
+            var startMonth = new DateTime(request.From.Year, request.From.Month, 1);
+            var endMonth = new DateTime(request.To.Year, request.To.AddMonths(1).Month, 1);
+
+            var startYear = new DateTime(request.From.Year, 1,  1);
+            var endYear = new DateTime(request.To.AddYears(1).Year, 1, 1);  
 
             var result = request.FilterBy switch
             {
@@ -86,11 +97,22 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
 
                 _ => throw new BadRequestException($"FilterBy {request.FilterBy} không hợp lệ, chỉ chấp nhận các giá trị: 'day', 'month', 'year'")
             };
-            var chapterCount = await _chapterRepository.CountAsync(x => x.MangaId == request.MangaId, cancellationToken);  
-
+            var sumary = await _mangaRepository.FindSelectAsync(x => x
+                .Where(m => m.Id == request.MangaId)
+                .Select(t => new
+                {
+                    totalView = t.ViewCount == null ? 0 : t.ViewCount.TotalCount,
+                    totalComment = t.CommentEntities.Count(),
+                    totalFollowing = t.FollowEntities.Count(),
+                    totalChapter = t.ChaptersEntities.Count()
+                }),
+                cancellationToken);
             return new GetMangaAnalyticsResult
             {
-                TotalChapter = chapterCount,
+                TotalView = sumary?.totalView,
+                TotalComment = sumary?.totalComment, 
+                TotalFollowing = sumary?.totalFollowing, 
+                TotalChapter = sumary?.totalChapter,
                 MangaAnalytics = result 
             };
         }

@@ -15,6 +15,8 @@ using YAHALLO.Application.Queries.Features.Admin.Comment.GetAllDeteledPagination
 using YAHALLO.Application.Queries.Features.Public.Comment;
 using YAHALLO.Application.Queries.Features.Public.Comment.FilterComment;
 using YAHALLO.Application.Queries.Features.Public.Comment.GetAllPagination;
+using YAHALLO.Application.Queries.Features.Public.Comment.Load;
+using YAHALLO.Application.Queries.Features.Public.Comment.LoadChild;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 
@@ -155,6 +157,38 @@ namespace YAHALLO.Controllers
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<AdminCommentDto>>(result));
+        }
+
+
+
+
+
+        [HttpGet]
+        [Route("comment/load")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<CommentDto>>>> LoadComment(
+        [FromQuery] LoadCommentQuery query,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<CommentDto>>(result));
+        }
+
+        [HttpGet]
+        [Route("comment/load-child")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<CommentDto>>>> LoadChildComment(
+        [FromQuery] LoadChildCommentQuery query,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<CommentDto>>(result));
         }
     }
 }

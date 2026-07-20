@@ -1,11 +1,14 @@
 //AI generated
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.NotificationCommand.MarkRead;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Public.Notification;
 using YAHALLO.Application.Queries.Features.Public.Notification.GetByUser;
+using YAHALLO.Configuration;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers
@@ -17,6 +20,8 @@ namespace YAHALLO.Controllers
 
         [HttpGet]
         [Route("notification/get")]
+        [Authorize]
+        [EnableRateLimiting(RateLimitingConfiguration.AuthPolicy)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<NotificationDto>>), StatusCodes.Status200OK)]
         public async Task<ActionResult<JsonResponse<PagedResult<NotificationDto>>>> GetNotifications(

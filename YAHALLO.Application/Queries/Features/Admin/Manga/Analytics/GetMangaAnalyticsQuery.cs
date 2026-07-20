@@ -12,12 +12,15 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Analytics
     {
         public string MangaId { get; init; } = null!;
         public DateTime From {  get; init; }
-        public  DateTime To { get; init; }  
+        public DateTime To { get; init; }  
         public MangaDailyFilterBy FilterBy { get; init; } = MangaDailyFilterBy.Day;
     }
     public record GetMangaAnalyticsResult
     {
-        public int TotalChapter { get; set; }
+        public long? TotalView { get; set; }
+        public int? TotalComment {  get; set; }
+        public int? TotalFollowing { get; set; } 
+        public int? TotalChapter { get; set; }
         public List<MangaAnalytics> MangaAnalytics { get; set; } = new List<MangaAnalytics>();
     }
     public record MangaAnalytics

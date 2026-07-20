@@ -170,8 +170,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
                 Popular = popular.MapToPagedResult(x => x).Data.ToList(),
                 Tags = tags,
                 TopMangaByDate = topByDate.MapToPagedResult(x => x).Data.ToList(),
-                TopMangaByMonth = topByDate.MapToPagedResult(x => x).Data.ToList(),
-                TopMangaByYear = topByDate.MapToPagedResult(x => x).Data.ToList()
+                TopMangaByMonth = topByMonth.MapToPagedResult(x => x).Data.ToList(),
+                TopMangaByYear = topByYear.MapToPagedResult(x => x).Data.ToList()
             };
 
             await _cache.SetAsync(

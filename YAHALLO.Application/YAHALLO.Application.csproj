@@ -53,7 +53,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Commands\Mention\Delete\" />
-	  <Folder Include="Commands\Mention\Update\" />
 	  <Folder Include="Commands\ReactionCommand\Delete\" />
 	  <Folder Include="Commands\ReactionCommand\Restore\" />
 	  <Folder Include="Commands\ReactionCommand\Update\" />
