@@ -11,6 +11,8 @@ namespace YAHALLO.Application.Common.Keys
         public const string MangaDetailPrefix = "manga:detail:";
         public static string MangaDetail(string id) => $"{MangaDetailPrefix}{id}";
         public static string Home => "Homepage";
+        public static string Author => "Author";
+        public static string Artist => "Artist";
 
     }
 }

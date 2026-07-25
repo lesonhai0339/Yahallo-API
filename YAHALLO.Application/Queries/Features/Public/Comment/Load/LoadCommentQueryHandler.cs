@@ -44,33 +44,45 @@ namespace YAHALLO.Application.Queries.Features.Public.Comment.Load
                 selector: x => x
                     .Where(x => x.MangaId == root.MangaId && x.ChapterId == root.ChapterId && x.BlogId == x.BlogId && x.ParentId == null)
                     .OrderByDescending(x => x.CreateDate)
-                    .Select(c => new CommentDto
+                     .Select(x => !x.DeleteDate.HasValue ? new CommentDto
+                     {
+                         Id = x.Id,
+                         Like = x.LikeCount,
+                         Dislike = x.DisLikeCount,
+                         DateTime = x.CreateDate,
+                         UserId = x.UserId,
+                         MangaId = x.MangaId,
+                         ChapterId = x.ChapterId,
+                         ChapterName = x.ChapterEntity == null ? null : x.ChapterEntity.Title,
+                         BlogId = x.BlogId,
+                         ParentId = x.ParentId,
+                         ReplyToCommentId = x.ReplyToCommentId,
+                         Message = x.Message,
+                         ReplyCount = x.Comments == null ? 0 : x.Comments.Count(),
+                         IsDeleted = x.DeleteDate.HasValue,
+                         DisplayName = x.UserEntity == null ? null : x.UserEntity.DisplayName,
+                         Avatar = x.UserEntity == null ? null : x.UserEntity.AvatarThumbnail,
+                         UserCommentTo = x.CommentToUser == null ? null : new UserDto
+                         {
+                             Id = x.CommentToUser.Id,
+                             DisplayName = x.CommentToUser.DisplayName,
+                             Avatar = x.CommentToUser.AvatarThumbnail
+                         }
+                     }
+                    : new CommentDto
                     {
-                        Id = c.Id,
-                        Like = c.LikeCount,
-                        Dislike = c.DisLikeCount,
-                        DateTime = c.CreateDate,
-                        UserId = c.UserId,
-                        MangaId = c.MangaId,
-                        ChapterId = c.ChapterId,
-                        ChapterName = c.ChapterEntity == null ? null : c.ChapterEntity.Title,
-                        BlogId = c.BlogId,
-                        ParentId = c.ParentId,
-                        ReplyToCommentId = c.ReplyToCommentId,
-                        Message = c.Message,
-                        ReplyCount = c.Comments == null ? 0 : c.Comments.Count(),
-                        IsDeleted = c.DeleteDate.HasValue,
-                        IdUserDeleted = c.IdUserDelete,
-                        DisplayName = c.UserEntity == null ? null : c.UserEntity.DisplayName,
-                        Avatar = c.UserEntity == null ? null : c.UserEntity.AvatarThumbnail,
-                        UserCommentTo = c.CommentToUser == null ? null : new UserDto
-                        {
-                            Id = c.CommentToUser.Id,
-                            DisplayName = c.CommentToUser.DisplayName,
-                            Avatar = c.CommentToUser.AvatarThumbnail
-                        }
+                        Id = x.Id,
+                        UserId = x.UserId,
+                        MangaId = x.MangaId,
+                        ChapterId = x.ChapterId,
+                        BlogId = x.BlogId,
+                        ParentId = x.ParentId,
+                        ReplyToCommentId = x.ReplyToCommentId,
+                        IsDeleted = x.DeleteDate.HasValue,
+                        ReplyCount = x.Comments == null ? 0 : x.Comments.Count()
                     }),
-               cancellationToken);
+               cancellationToken,
+               ignoreQueryFilters: true);
 
             return result.MapToPagedResult(x => x);
         }

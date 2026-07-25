@@ -10,7 +10,6 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.NewCount
         public DateTimeOffset From { get; init; }
         public DateTimeOffset To { get;init; }
         public AdminUserGroupBy GroupBy { get; init; } = AdminUserGroupBy.Day;
-        public string? TimeZone { get; set; }
 
     }
     public enum AdminUserGroupBy

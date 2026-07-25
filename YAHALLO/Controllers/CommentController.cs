@@ -48,7 +48,7 @@ namespace YAHALLO.Controllers
         [HttpPost]
         [Route("comment/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> RestoreComment(
@@ -63,7 +63,7 @@ namespace YAHALLO.Controllers
         [HttpPut]
         [Route("comment/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> UpdateComment(
@@ -73,12 +73,11 @@ namespace YAHALLO.Controllers
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<ResponseResult<string>>(result));
         }
-        [Authorize]
-
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [HttpDelete]
         [Route("comment/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> DeleteComment(
@@ -93,7 +92,7 @@ namespace YAHALLO.Controllers
         [Route("comment/get-all-deleted")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<AdminCommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminCommentDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<AdminCommentDto>>>> GetAllcommentDeleted(
@@ -106,7 +105,7 @@ namespace YAHALLO.Controllers
         [Route("comment/get-all-deleted-pagination")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminCommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminCommentDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminCommentDto>>>> GetAllCommentDeletedPagination(
@@ -119,7 +118,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("comment/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<CommentDto>>>> GetAllCommentPagination(
@@ -133,7 +132,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("comment/filter-comment")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<CommentDto>>>> FilterComment(
@@ -148,7 +147,7 @@ namespace YAHALLO.Controllers
         [Route("comment/admin/filter")]
         //[Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminCommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminCommentDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminCommentDto>>>> AdminFilter(
@@ -166,7 +165,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("comment/load")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<CommentDto>>>> LoadComment(
@@ -180,7 +179,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("comment/load-child")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<CommentDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<CommentDto>>>> LoadChildComment(

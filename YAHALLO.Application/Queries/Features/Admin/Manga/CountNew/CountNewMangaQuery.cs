@@ -15,7 +15,6 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
         public DateTimeOffset From { get; init; }
         public DateTimeOffset To { get; init; }   
         public MangaGroupBy GroupBy { get; init; } = MangaGroupBy.Day;  
-        public string? TimeZone { get; set; }   
     }
     public enum MangaGroupBy
     {

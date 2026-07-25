@@ -24,7 +24,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.CountNew
         {
             var from = request.From.UtcDateTime;
             var toExclusive = request.To.AddDays(1).UtcDateTime;
-            var offsetHours = DateTimeHelper.ResolveOffsetHours(request.TimeZone, request.To);
+            var offsetHours = DateTimeHelper.ResolveOffsetHours(null, request.To);
 
             var query = _mangaRepository.CreateQueryable();
             query = query.Where(u => u.CreateDate >= from && u.CreateDate < toExclusive);

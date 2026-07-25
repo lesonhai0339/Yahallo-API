@@ -32,11 +32,7 @@ namespace YAHALLO.Application.Commands.CommentCommand.Delete
             {
                 throw new Exception("Comment này đã bị vô hiệu hóa");
             }
-            var checkRole= await _currentUser.IsInRoleAsync("Admin");
-            if (!checkRole && _currentUser.UserId != checkCommentExist.UserId)
-            {
-                throw new UnauthorizedAccessException("Tài khoản hiện tại không có quyền thực hiện chức năng này");
-            }
+
             checkCommentExist.IdUserDelete = _currentUser.UserId;
             checkCommentExist.DeleteDate = DateTime.UtcNow;
             _commentRepository.Update(checkCommentExist);

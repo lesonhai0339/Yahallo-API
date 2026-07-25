@@ -24,7 +24,6 @@ namespace YAHALLO.Application.Queries.Features.Public.Comment
         public string? Avatar { get; set; }
         public int ReplyCount { get; set; }
         public UserDto? UserCommentTo { get; set;  }
-        public string? IdUserDeleted { get; internal set; }
 
         public static CommentDto Create(string id, string userid, string mangaid, string? chapterId, string? parentId, string? blogId, string message, bool isDeleted, DateTime datetime, int like, int dislike, string? avatar, int replyCount, string? replyToCommentId, UserDto? userCommentTo = null)
         {

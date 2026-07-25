@@ -79,7 +79,7 @@ namespace YAHALLO.Controllers
         [Route("user/forgot-password")]
         [EnableRateLimiting(RateLimitingConfiguration.AuthPolicy)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> ForgotPassword(
@@ -93,7 +93,7 @@ namespace YAHALLO.Controllers
         [Authorize]
         [Route("user/change-password")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> ChangePassword(
@@ -172,7 +172,7 @@ namespace YAHALLO.Controllers
         [Authorize]
         [Route("user/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> RestoreUser(
@@ -186,7 +186,7 @@ namespace YAHALLO.Controllers
         [Authorize]
         [Route("user/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<UpdateUserResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UpdateUserResult>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<UpdateUserResult>>> UpdateUser(
@@ -200,7 +200,7 @@ namespace YAHALLO.Controllers
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> DeleteUser(
@@ -214,7 +214,7 @@ namespace YAHALLO.Controllers
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<UserDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<UserDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<UserDto>>>> GetAll(
@@ -227,7 +227,7 @@ namespace YAHALLO.Controllers
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<UserDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<UserDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<UserDto>>>> GetAllPagination(
@@ -242,7 +242,7 @@ namespace YAHALLO.Controllers
         [Authorize]
         [Route("user/get-by-id")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<UserDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UserDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<UserDto>>> GetById(
@@ -256,7 +256,7 @@ namespace YAHALLO.Controllers
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-by-id-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<AdminUserDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<AdminUserDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<AdminUserDto>>> GetByIdDeleted(
@@ -269,7 +269,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("user/get-by-name")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<UserDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<UserDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<UserDto>>>> GetuserByName(
@@ -283,7 +283,7 @@ namespace YAHALLO.Controllers
         [Authorize]
         [Route("user/get-profile")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<UserProfileDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UserProfileDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<UserProfileDto>>> GetUserProfile(
@@ -296,7 +296,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("user/filter-user")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<UserDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<UserDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<UserDto>>>> FilterUser(
@@ -368,7 +368,7 @@ namespace YAHALLO.Controllers
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<AdminUserDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminUserDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<AdminUserDto>>>> GetAllDeleted(
@@ -381,7 +381,7 @@ namespace YAHALLO.Controllers
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Route("user/get-all-deleted-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminUserDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminUserDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminUserDto>>>> GetAllDeletedPagination(

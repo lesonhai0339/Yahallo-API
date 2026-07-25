@@ -30,7 +30,6 @@ namespace YAHALLO.Configuration
             //└────────── phut(minute)(0 - 59)
 
 
-
             // Register recurring jobs
             RecurringJob.AddOrUpdate<IBackgroundJobService>(
                 "expire-subscriptions",

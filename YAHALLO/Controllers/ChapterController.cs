@@ -43,7 +43,7 @@ namespace YAHALLO.Controllers
         [HttpPost]
         [Route("chapter/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> RestoreChapter(
@@ -56,7 +56,7 @@ namespace YAHALLO.Controllers
         [HttpPut]
         [Route("chapter/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> UpdateChapter(
@@ -69,7 +69,7 @@ namespace YAHALLO.Controllers
         [HttpDelete]
         [Route("chapter/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> DeleteChapter(
@@ -83,7 +83,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("chapter/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<ChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<ChapterDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<ChapterDto>>>> GetAllChapterPagination(
@@ -96,7 +96,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("chapter/filter-chapter")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<ChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<ChapterDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<ChapterDto>>>> FilterChapter(
@@ -109,7 +109,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("chapter/get-image")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<ChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<ChapterDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<ChapterImageDto>>>> GetAllImage(
@@ -124,7 +124,7 @@ namespace YAHALLO.Controllers
         [Route("chapter/get-all-deleted")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<AdminChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminChapterDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<AdminChapterDto>>>> GetAllChapterDeleted(
@@ -137,7 +137,7 @@ namespace YAHALLO.Controllers
         [Route("chapter/get-all-deleted-pagination")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminChapterDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminChapterDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminChapterDto>>>> GetAllDeletedChapterPagination(

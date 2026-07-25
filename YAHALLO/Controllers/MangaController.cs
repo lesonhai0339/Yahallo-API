@@ -51,7 +51,7 @@ namespace YAHALLO.Controllers
         [HttpPost]
         [Route("manga/create")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<CreateMangaResponseDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<CreateMangaResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<CreateMangaResponseDto>>> CreateManga(
@@ -65,7 +65,7 @@ namespace YAHALLO.Controllers
         [HttpPost]
         [Route("manga/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> RestoreManga(
@@ -79,7 +79,7 @@ namespace YAHALLO.Controllers
         [HttpPut]
         [Route("manga/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<UpdateMangaResponseDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UpdateMangaResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<UpdateMangaResponseDto>>> UpdateManga(
@@ -93,7 +93,7 @@ namespace YAHALLO.Controllers
         [HttpDelete]
         [Route("manga/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> Deletemanga(
@@ -106,7 +106,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("manga/get-all-deleted")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<AdminMangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminMangaDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<AdminMangaDto>>>> GetAllDeletedManga(
@@ -118,7 +118,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("manga/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> GetAllMangaPagination(
@@ -131,7 +131,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("manga/get-all-deleted-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminMangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminMangaDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminMangaDto>>>> GetAllMangaDeletedPagination(
@@ -144,7 +144,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("manga/filter-manga")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<MangaDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<MangaDto>>>> FilterManga(

@@ -36,7 +36,7 @@ namespace YAHALLO.Controllers
         [HttpPut]
         [Route("user-settings/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<UpdateUserSettingResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UpdateUserSettingResult>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<UpdateUserSettingResult>>> UpdateUserSettings(
@@ -49,7 +49,7 @@ namespace YAHALLO.Controllers
         [HttpDelete]
         [Route("user-settings/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> DeleteUserSettings(
@@ -62,7 +62,7 @@ namespace YAHALLO.Controllers
         [HttpPost]
         [Route("user-settings/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<RestoreUserSettingsResult>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<RestoreUserSettingsResult>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<RestoreUserSettingsResult>>> RestoreUserSettings(
@@ -75,7 +75,7 @@ namespace YAHALLO.Controllers
         [HttpGet]
         [Route("user-settings/get")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<UserSettingsDto>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<UserSettingsDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<UserSettingsDto>>> GetSettings(

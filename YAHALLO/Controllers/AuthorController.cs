@@ -13,6 +13,7 @@ using YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Author.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.Features.Public.Author;
 using YAHALLO.Application.Queries.Features.Public.Author.Filter;
+using YAHALLO.Application.Queries.Features.Public.Author.GetAll;
 using YAHALLO.Application.Queries.Features.Public.Author.GetAllPagination;
 using YAHALLO.Services;
 
@@ -42,7 +43,7 @@ namespace YAHALLO.Controllers
         [HttpPost]
         [Route("author/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> RestoreAuthor(
@@ -55,7 +56,7 @@ namespace YAHALLO.Controllers
         [HttpPut]
         [Route("author/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> UpdateAuthor(
@@ -68,7 +69,7 @@ namespace YAHALLO.Controllers
         [HttpDelete]
         [Route("author/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<string>>> DeleteAuthor(
@@ -80,9 +81,22 @@ namespace YAHALLO.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
+        [Route("author/get-all")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<List<GetAllAuthorResult>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<List<GetAllAuthorResult>>>> GetAllAuthor(
+           CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(new GetAllAuthorQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<GetAllAuthorResult>>(result));
+        }
+        [HttpGet]
+        [AllowAnonymous]
         [Route("author/get-all-pagination")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AuthorDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AuthorDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AuthorDto>>>> GetAllAuthor(
@@ -96,7 +110,7 @@ namespace YAHALLO.Controllers
         [Route("author/get-all-deleted")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<AdminAuthorDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminAuthorDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<AdminAuthorDto>>>> GetAllAuthorDeleted(
@@ -109,7 +123,7 @@ namespace YAHALLO.Controllers
         [Route("author/get-all-deleted-pagination")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminAuthorDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminAuthorDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminAuthorDto>>>> GetAllAuthorDeletedPagination(
@@ -123,7 +137,7 @@ namespace YAHALLO.Controllers
         [AllowAnonymous]
         [Route("author/filter-author")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AuthorDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AuthorDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AuthorDto>>>> FilterAuthor(

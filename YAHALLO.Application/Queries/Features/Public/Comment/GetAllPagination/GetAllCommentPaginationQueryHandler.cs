@@ -20,7 +20,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Comment.GetAllPagination
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
                 selector: q => q
-                .Select(x => new CommentDto
+                .Select(x => !x.DeleteDate.HasValue ? new CommentDto
                 {
                     Id = x.Id,
                     Like = x.LikeCount,
@@ -36,7 +36,6 @@ namespace YAHALLO.Application.Queries.Features.Public.Comment.GetAllPagination
                     Message = x.Message,
                     ReplyCount = x.Comments == null ? 0 : x.Comments.Count(),
                     IsDeleted = x.DeleteDate.HasValue,
-                    IdUserDeleted = x.IdUserDelete,
                     DisplayName = x.UserEntity == null ? null : x.UserEntity.DisplayName,
                     Avatar = x.UserEntity == null ? null : x.UserEntity.AvatarThumbnail,
                     UserCommentTo = x.CommentToUser == null ? null : new UserDto
@@ -45,8 +44,21 @@ namespace YAHALLO.Application.Queries.Features.Public.Comment.GetAllPagination
                         DisplayName = x.CommentToUser.DisplayName,
                         Avatar = x.CommentToUser.AvatarThumbnail
                     }
+                }
+                : new CommentDto
+                {
+                    Id = x.Id,
+                    UserId = x.UserId,
+                    MangaId = x.MangaId,
+                    ChapterId = x.ChapterId,
+                    BlogId = x.BlogId,
+                    ParentId = x.ParentId,
+                    ReplyToCommentId = x.ReplyToCommentId,
+                    IsDeleted = x.DeleteDate.HasValue,
+                    ReplyCount = x.Comments == null ? 0 : x.Comments.Count()
                 }),
-                cancellation: cancellationToken); 
+                cancellation: cancellationToken,
+                ignoreQueryFilters: true); 
 
             return comments.MapToPagedResult(x => x);
         }

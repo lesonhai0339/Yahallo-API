@@ -13,6 +13,7 @@ using YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Artist.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.Features.Public.Artist;
 using YAHALLO.Application.Queries.Features.Public.Artist.FilterArtist;
+using YAHALLO.Application.Queries.Features.Public.Artist.GetAll;
 using YAHALLO.Application.Queries.Features.Public.Artist.GetAllPagination;
 using YAHALLO.Services;
 
@@ -79,12 +80,24 @@ namespace YAHALLO.Controllers
             var result = await _sender.Send(command, cancellationToken);
             return Ok(new JsonResponse<string>(result));
         }
-
+        [HttpGet]
+        [Route("artist/get-all")]
+        [AllowAnonymous]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<List<GetAllArtistResult>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<List<GetAllArtistResult>>>> GetallArtist(
+         CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(new GetAllArtistQuery { }, cancellationToken);
+            return Ok(new JsonResponse<List<GetAllArtistResult>>(result));
+        }
         [HttpGet]
         [Route("artist/get-all-pagination")]
         [AllowAnonymous]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<ArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<ArtistDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<ArtistDto>>>> GetallArtistPagination(
@@ -98,7 +111,7 @@ namespace YAHALLO.Controllers
         [Route("artist/get-all-deleted")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<List<AdminArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<List<AdminArtistDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<List<AdminArtistDto>>>> GetallArtistDeleted(
@@ -111,7 +124,7 @@ namespace YAHALLO.Controllers
         [Route("artist/get-all-deleted-pagination")]
         [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminArtistDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<AdminArtistDto>>>> GetallArtistDeletedPagination(
@@ -125,7 +138,7 @@ namespace YAHALLO.Controllers
         [Route("artist/filter-artist")]
         [AllowAnonymous]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<ArtistDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<ArtistDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<ArtistDto>>>> FilterArtist(

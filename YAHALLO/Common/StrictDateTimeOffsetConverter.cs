@@ -8,7 +8,7 @@ namespace YAHALLO.Common
     public class StrictDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
     {
         private static readonly Regex IsoWithOffset = new Regex(
-             @"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,7})?(Zz|[+-]\d{2}:?\d{2})$",
+             @"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,7})?(Z|[+-]\d{2}:?\d{2})$",
              RegexOptions.Compiled);
 
 

@@ -38,7 +38,7 @@ namespace YAHALLO.Controllers
         [HttpPost]
         [Route("rating/restore")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<bool>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<bool>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<bool>>> RestoreArtist(
@@ -51,7 +51,7 @@ namespace YAHALLO.Controllers
         [HttpPut]
         [Route("rating/update")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<bool>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<bool>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<bool>>> UpdateArtist(
@@ -64,7 +64,7 @@ namespace YAHALLO.Controllers
         [HttpDelete]
         [Route("rating/delete")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<bool>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<bool>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<bool>>> DeleteArtist(
@@ -78,7 +78,7 @@ namespace YAHALLO.Controllers
         [Route("rating/filter")]
         [AllowAnonymous]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<PagedResult<RatingDto>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<RatingDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JsonResponse<PagedResult<RatingDto>>>> FilterRating(
