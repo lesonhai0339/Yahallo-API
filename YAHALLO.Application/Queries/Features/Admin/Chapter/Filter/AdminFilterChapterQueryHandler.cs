@@ -43,7 +43,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Chapter.Filter
         {
             return request.SortBy switch
             {
-                ChapterSortBy.Index => OrderHelper.ApplyOrder(filter, x => x.Index, request.ReverseSort),
+                ChapterSortBy.Index => OrderHelper.ApplyOrder(filter, x => x.Index, request.ReverseSort).ThenBy(x => x.SubIndex),
                 ChapterSortBy.LastUpdate => OrderHelper.ApplyOrder(filter, x => x.CreateDate, request.ReverseSort),
                 ChapterSortBy.Rating => OrderHelper.ApplyOrder(filter, x => x.RatingEntities.Select(x => (double?)x.Rating).Average(), request.ReverseSort),
                 ChapterSortBy.ViewCount => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.TotalCount, request.ReverseSort),

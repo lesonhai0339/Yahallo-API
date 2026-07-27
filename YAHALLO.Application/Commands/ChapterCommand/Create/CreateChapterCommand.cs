@@ -9,20 +9,11 @@ using YAHALLO.Domain.Common.Interfaces;
 
 namespace YAHALLO.Application.Commands.ChapterCommand.Create
 {
-    public class CreateChapterCommand: IRequest<ResponseResult<string>>
+    public class CreateChapterCommand: IRequest<string>
     {
-        public CreateChapterCommand() { }
-        public CreateChapterCommand(
-            string? title,
-            int index,
-            string mangaid)
-        {
-            Title = title;
-            Index = index;
-            MangaId = mangaid;
-        }
         public string? Title { get; set; }
         public required int Index { get; set; }
+        public int SubIndex { get; set; }   
         public required string MangaId { get; set; }
     }
 }

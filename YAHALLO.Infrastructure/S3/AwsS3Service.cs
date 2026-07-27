@@ -50,6 +50,9 @@ namespace YAHALLO.Infrastructure.S3
             {
                 Url = url,
                 CloundFrontDomain = _options.CloundFrontDomain,
+                Width = fileInfo.Width,
+                Height = fileInfo.Height,
+                ContentType = fileInfo.ContentType,
             };
         }
         public async Task<S3Response> GetObjectURL(T fileInfo)
@@ -64,6 +67,9 @@ namespace YAHALLO.Infrastructure.S3
             {
                 Object = obj,
                 CloundFrontDomain = _options.CloundFrontDomain,
+                Width = fileInfo.Width,
+                Height = fileInfo.Height,
+                ContentType = fileInfo.ContentType,
             };
         }
     }

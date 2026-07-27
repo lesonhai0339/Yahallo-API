@@ -85,7 +85,10 @@ namespace YAHALLO.Configuration
                 context.User.HasClaim("UserRole", "1") ||
                 context.User.HasClaim("UserRole", "2")
             ));
-
+            options.AddPolicy(Policies.TransOrAdmin, policy => policy.RequireAssertion(context =>
+               context.User.HasClaim("UserRole", "1") ||
+               context.User.HasClaim("UserRole", "4")
+            ));
         }
     }
 }

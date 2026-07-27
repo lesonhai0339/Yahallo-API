@@ -4,6 +4,8 @@ using FluentValidation;
 using System.Diagnostics;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Application.Common.Exceptions;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace YAHALLO.Filters
 {
@@ -52,6 +54,16 @@ namespace YAHALLO.Filters
                         Title = "Conflict",
                         Status = StatusCodes.Status409Conflict,
                         Detail = exception.Message
+                    })
+                    .AddContextInformation(context);
+                    context.ExceptionHandled = true;
+                    break;
+                case DbUpdateException { InnerException: SqlException { Number: 2601 or 2627 } }:
+                    context.Result = new ConflictObjectResult(new ProblemDetails
+                    {
+                        Title = "Conflict",
+                        Status = StatusCodes.Status409Conflict,
+                        Detail = "Dữ liệu đã tồn tại."
                     })
                     .AddContextInformation(context);
                     context.ExceptionHandled = true;

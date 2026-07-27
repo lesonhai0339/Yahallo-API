@@ -16,13 +16,11 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.HasIndex(x => new { x.Id, x.Index }).IsUnique().HasFilter("[DeleteDate] IS NULL"); ;
+            builder.HasIndex(x => new { x.MangaId, x.Index, x.SubIndex }).IsUnique().HasFilter("[DeleteDate] IS NULL"); ;
 
             builder.Property(x => x.Title)
                 .IsUnicode(true)
                 .HasMaxLength(255);
-            builder.Property(x => x.Index)
-                .IsUnicode(false);
                 
             builder.HasOne(x => x.MangaEntity)
                 .WithMany(x => x.ChaptersEntities)

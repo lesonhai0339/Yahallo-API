@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using YAHALLO.Application.Common.Exceptions;
 using YAHALLO.Domain;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Entities.Reference;
@@ -71,7 +72,17 @@ namespace YAHALLO.Infrastructure.Data
         public DbSet<NotificationEntity> Notifications { get; set; }
         public DbSet<UserMangaViewEntity> UserMangaViews { get; set; }
         public DbSet<SubscriptionEntity> Subscriptions { get; set; }
-
+        public override async Task<int> SaveChangesAsync(CancellationToken ct = default)
+        {
+            try
+            {
+                return await base.SaveChangesAsync(ct);
+            }
+            catch (DbUpdateException ex) when (ex.InnerException is SqlException { Number: 2601 or 2627 })
+            {
+                throw new ConflictException("Dữ liệu đã tồn tại.", ex);
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

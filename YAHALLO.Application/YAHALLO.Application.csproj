@@ -52,6 +52,9 @@
 		<ProjectReference Include="..\YAHALLO.Domain\YAHALLO.Domain.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Commands\ChapterImageCommand\Remove\" />
+	  <Folder Include="Commands\ChapterImageCommand\Restore\" />
+	  <Folder Include="Commands\ChapterImageCommand\Update\" />
 	  <Folder Include="Commands\Mention\Delete\" />
 	  <Folder Include="Commands\ReactionCommand\Delete\" />
 	  <Folder Include="Commands\ReactionCommand\Restore\" />

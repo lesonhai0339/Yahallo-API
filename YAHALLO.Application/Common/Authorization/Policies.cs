@@ -12,5 +12,6 @@ namespace YAHALLO.Application.Common.Authorization
         public const string User = "User";
         public const string Trans = "Trans";
         public const string ModOrAdmin = "ModOrAdmin";
+        public const string TransOrAdmin = "TransOrAdmin";
     }
 }

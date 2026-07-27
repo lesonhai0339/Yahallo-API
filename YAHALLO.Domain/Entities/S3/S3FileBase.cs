@@ -13,7 +13,7 @@ namespace YAHALLO.Domain.Entities.S3
 {
     public class S3FileBase
     {
-        public required string Id { get; set; } //UserId
+        public required string Id { get; set; } 
         public string FileName { get; set; } = string.Empty;
         public string ContentType { get; set; } = string.Empty; 
         public long FileSize { get; set; }

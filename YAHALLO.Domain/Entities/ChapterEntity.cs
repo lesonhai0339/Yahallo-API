@@ -12,6 +12,7 @@ namespace YAHALLO.Domain.Entities
     {
         public string? Title { get; set; }
         public int Index { get;set; }
+        public int SubIndex { get;set; }    
 
         public string MangaId { get; set; } = null!;
         public virtual MangaEntity? MangaEntity { get; set; }

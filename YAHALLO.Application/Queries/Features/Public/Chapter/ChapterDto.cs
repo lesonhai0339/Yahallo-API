@@ -10,7 +10,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter
         public required string Id { get; set; }
         public string? Title { get; set; }
         public int? Index { get; set; }
-
+        public int? SubIndex { get; set; }  
         public string MangaId { get; set; } = null!;
         public string? MangaName { get; set; }
         public DateTime? CreateDate { get; set; }

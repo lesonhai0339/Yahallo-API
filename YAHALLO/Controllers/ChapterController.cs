@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using System.Net.Mime;
 using YAHALLO.Application.Commands.ChapterCommand.Create;
 using YAHALLO.Application.Commands.ChapterCommand.Delete;
@@ -15,6 +16,7 @@ using YAHALLO.Application.Queries.Features.Public.Chapter;
 using YAHALLO.Application.Queries.Features.Public.Chapter.Filter;
 using YAHALLO.Application.Queries.Features.Public.Chapter.GetAllPagination;
 using YAHALLO.Application.Queries.Features.Public.Chapter.GetImage;
+using YAHALLO.Configuration;
 using YAHALLO.Domain.Common.Interfaces;
 using YAHALLO.Services;
 
@@ -29,16 +31,18 @@ namespace YAHALLO.Controllers
         }
         [HttpPost]
         [Route("chapter/create")]
+        [Authorize(Policy = Policies.TransOrAdmin)]
+        [EnableRateLimiting(RateLimitingConfiguration.AuthPolicy)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(JsonResponse<ResponseResult<string>>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(JsonResponse<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<JsonResponse<ResponseResult<string>>>> CreateChapter(
+        public async Task<ActionResult<JsonResponse<string>>> CreateChapter(
           [FromForm] CreateChapterCommand command,
           CancellationToken cancellationToken = default)
         {
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(new JsonResponse<ResponseResult<string>>(result));
+            return Ok(new JsonResponse<string>(result));
         }
         [HttpPost]
         [Route("chapter/restore")]

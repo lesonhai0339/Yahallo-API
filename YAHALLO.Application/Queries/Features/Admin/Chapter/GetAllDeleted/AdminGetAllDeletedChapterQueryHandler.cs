@@ -14,6 +14,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeleted
         {
             var chapters = await _chapterRepository.FindAllSelectAsync(x => x
             .Where(c => !string.IsNullOrEmpty(c.IdUserDelete) && c.DeleteDate.HasValue)
+            .OrderByDescending(c => c.DeleteDate)
             .Select(t => new AdminChapterDto
             {
                 Id = t.Id,

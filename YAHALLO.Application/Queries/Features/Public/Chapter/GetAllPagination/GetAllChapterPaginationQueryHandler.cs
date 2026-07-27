@@ -20,6 +20,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetAllPagination
                    pageNo: request.PageNo,
                    pageSize: request.PageSize,
                    selector: q => q
+                   .OrderBy(x => x.Index).ThenBy(x=> x.SubIndex)
                    .Select(x => new ChapterDto
                    {
                        Id = x.Id,
@@ -27,7 +28,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetAllPagination
                        MangaId = x.MangaId!,
                        MangaName = x.MangaEntity == null ? null : x.MangaEntity.Name,
                        Title = x.Title,
-                       CreateDate = x.CreateDate
+                       CreateDate = x.CreateDate,
+                       SubIndex = x.SubIndex,
                    }),
                    cancellation: cancellationToken);
 

@@ -20,6 +20,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeletedPagina
             pageSize: request.PageSize, 
             selector: x => x
                .Where(c => !string.IsNullOrEmpty(c.IdUserDelete) && c.DeleteDate.HasValue)
+               .OrderByDescending(x => x.DeleteDate)    
                .Select(t => new AdminChapterDto
                {
                    Id = t.Id,
