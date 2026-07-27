@@ -20,6 +20,7 @@ namespace YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUser
         {
             var progresses = await _progressRepository.FindAllSelectAsync(x => x
                 .Where(r => r.UserId == _currentUser.UserId && r.MangaId == request.MangaId)
+                .OrderByDescending(x => x.LastReadAt)
                 .Select(t => new ReadingProgressDto
                 {
                     MangaId = t.MangaId,
