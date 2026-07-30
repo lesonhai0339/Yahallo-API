@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.GetAllDeleted
                     .Select(t => new AdminMangaDto
                     {
                         Id = t.Id,
-                        DisplayName = (t.Name + " " + t.SeasonName).Trim(),
+                        DisplayName = t.Name,
                         Description = t.Description,
                         Level = t.Level,
                         Status = t.Status,

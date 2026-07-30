@@ -17,7 +17,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.DTOs
         public static MangaDto MapFullToMangaDto(this MangaEntity entity, IMapper mapper)
         {
             var map = mapper.Map<MangaDto>(entity);
-            map.DisplayName = (entity.Name + " " +  entity.SeasonName).Trim();
+            map.DisplayName = entity.Name;
             map.MangaThumbnail = entity.MangaThumbnail;
             map.MangaBackground = entity.MangaBackground;   
             map.UserId = entity.IdUserCreate ?? "";

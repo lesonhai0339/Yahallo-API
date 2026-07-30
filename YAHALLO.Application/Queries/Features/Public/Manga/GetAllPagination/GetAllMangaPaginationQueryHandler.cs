@@ -25,11 +25,12 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetAllPagination
                 pageSize: request.PageSize,
                 pageNo: request.PageNo,
                 selector: x => x
+                    .Where(x => x.DisplayMode == Domain.Enums.MangaEnums.DisplayMode.Visible)
                     .OrderByDescending(x => x.LastChapterUpdate)
                     .Select(m => new MangaDto
                     {
                         Id = m.Id,
-                        DisplayName = (m.Name + " "+ m.SeasonName).Trim(),
+                        DisplayName = m.Name,
                         Description = m.Description,
                         Level = m.Level,
                         Status = m.Status,

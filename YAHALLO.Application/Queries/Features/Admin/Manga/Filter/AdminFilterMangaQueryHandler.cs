@@ -1,9 +1,16 @@
 ﻿using MediatR;
+using System;
 using YAHALLO.Application.Common.Helper;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Application.Queries.Features.Admin.Artist;
+using YAHALLO.Application.Queries.Features.Admin.Author;
 using YAHALLO.Application.Queries.Features.Admin.Chapter;
 using YAHALLO.Application.Queries.Features.Admin.Tag;
+using YAHALLO.Application.Queries.Features.Public.Artist;
+using YAHALLO.Application.Queries.Features.Public.Author;
+using YAHALLO.Application.Queries.Features.Public.Manga.DTOs;
+using YAHALLO.Application.Queries.Features.Public.Tag;
 using YAHALLO.Domain.Common.Helper;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums.MangaEnums;
@@ -29,10 +36,11 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
                    .Select(m => new AdminMangaDto
                    {
                        Id = m.Id,
-                       DisplayName = (m.Name + " " + m.SeasonName).Trim(),
+                       DisplayName = m.Name.Trim(),
                        Description = m.Description,
                        Level = m.Level,
                        Status = m.Status,
+                       Mode = m.DisplayMode,
                        Type = m.Type,
                        Countries = m.Countries,
                        Season = m.Season,
@@ -41,6 +49,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
                        UserId = m.UserId,
                        ViewCount = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
                        Rating = m.RatingEntities.Select(x => (int?)x.Rating).Average(),
+                       CommentCount = m.CommentEntities.Count(),
                        LastestChapter = m.LastChapter == null ? null : new AdminChapterDto
                        {
                            Id = m.LastChapter.Id,
@@ -50,6 +59,26 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
                            MangaId = m.Id,
                            MangaName = m.Name
                        },
+                       Authors = m.AuthorEntities
+                        .Select(a => new AdminAuthorDto
+                        {
+                            Id = a.AuthorId,
+                            Name = a.Author.Name,
+                            Birth = a.Author.Birth,
+                            Country = a.Author.Countries.ToString(),
+                            Depscription = a.Author.Depscription,
+                            LifeStatus = a.Author.LifeStatus.ToString(),
+                        }).ToList(),
+                        Artists = m.ArtistEntities
+                        .Select(a => new AdminArtistDto
+                        {
+                            Id = a.ArtistId,
+                            Name = a.Artist.Name,
+                            Birth = a.Artist.Birth,
+                            Country = a.Artist.Countries.ToString(),
+                            Depscription = a.Artist.Depscription,
+                            LifeStatus = a.Artist.LifeStatus.ToString(),
+                        }).ToList(),
                        Tags = m.TagEntities.Select(t => new AdminTagDto
                        {
                            Id = t.TagId,
@@ -76,12 +105,13 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
         }
         private IQueryable<MangaEntity> ApplyFilter(IQueryable<MangaEntity> query, AdminFilterMangaQuery request)
         {
+            if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.Id == request.MangaId);
+
             if (!string.IsNullOrEmpty(request.Name))
             {
                 var name = request.Name.Trim();
                 query = query.Where(x =>
                     x.Name.Trim().Contains(name)
-                    || x.SeasonName.Trim().Contains(name)
                     || x.AuthorEntities.Any(a => a.Author.Name.Contains(name))
                     || x.ArtistEntities.Any(a => a.Artist.Name.Contains(name))
                     || x.TagEntities.Any(t => t.Tag.Name.Contains(name)));
@@ -89,6 +119,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
             if (!string.IsNullOrEmpty(request.Name)) query = query.Where(x => x.Name.Trim().Contains(request.Name.Trim()));
             if (request.Level != null) query = query.Where(x => x.Level == request.Level);
             if (request.Status != null) query = query.Where(x => x.Status == request.Status);
+            if (request.DisplayMode != null) query = query.Where(x => x.DisplayMode == request.DisplayMode);
             if (request.Type != null) query = query.Where(x => x.Type == request.Type);
             if (request.Countries != null) query = query.Where(x => x.Countries == request.Countries);
             if (request.Date != null)

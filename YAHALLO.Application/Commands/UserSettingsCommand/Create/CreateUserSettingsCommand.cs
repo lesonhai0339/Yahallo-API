@@ -9,6 +9,7 @@ using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Domain.Enums.ListView;
 using YAHALLO.Domain.Enums.Progress;
 using YAHALLO.Domain.Enums.Style;
+using YAHALLO.Domain.Enums.Theme;
 
 namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
 {
@@ -17,6 +18,8 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
         public string? Language { get; set; }
 
         public Theme Theme { get; set; }
+
+        public Transition? Transition { get; set; }  
 
         public FileUploadInfo? BgImage { get; set; }
         public float? BgOpacity { get; set; }

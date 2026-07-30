@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YAHALLO.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using YAHALLO.Infrastructure.Data;
 namespace YAHALLO.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260730152832_add_transition_to_userSetting")]
+    partial class add_transition_to_userSetting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -562,7 +565,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000001",
                             Code = 1,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(753),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8035),
                             FaxCode = 93,
                             FullName = "Afghanistan",
                             Name = "AF",
@@ -573,7 +576,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000002",
                             Code = 2,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(793),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8076),
                             FaxCode = 358,
                             FullName = "Åland Islands",
                             Name = "AX",
@@ -584,7 +587,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000003",
                             Code = 3,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(800),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8084),
                             FaxCode = 355,
                             FullName = "Albania",
                             Name = "AL",
@@ -595,7 +598,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000004",
                             Code = 4,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(806),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8110),
                             FaxCode = 213,
                             FullName = "Algeria",
                             Name = "DZ",
@@ -606,7 +609,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000005",
                             Code = 5,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(810),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8116),
                             FaxCode = 1684,
                             FullName = "American Samoa",
                             Name = "AS",
@@ -617,7 +620,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000006",
                             Code = 6,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(815),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8120),
                             FaxCode = 376,
                             FullName = "Andorra",
                             Name = "AD",
@@ -628,7 +631,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000007",
                             Code = 7,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(820),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8126),
                             FaxCode = 244,
                             FullName = "Angola",
                             Name = "AO",
@@ -639,7 +642,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000008",
                             Code = 8,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(825),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8131),
                             FaxCode = 1264,
                             FullName = "Anguilla",
                             Name = "AI",
@@ -650,7 +653,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000009",
                             Code = 9,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(830),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8137),
                             FaxCode = 672,
                             FullName = "Antarctica",
                             Name = "AQ",
@@ -661,7 +664,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000010",
                             Code = 10,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(867),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8143),
                             FaxCode = 1268,
                             FullName = "Antigua and Barbuda",
                             Name = "AG",
@@ -672,7 +675,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000011",
                             Code = 11,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(872),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8149),
                             FaxCode = 54,
                             FullName = "Argentina",
                             Name = "AR",
@@ -683,7 +686,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000012",
                             Code = 12,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(878),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8154),
                             FaxCode = 374,
                             FullName = "Armenia",
                             Name = "AM",
@@ -694,7 +697,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000013",
                             Code = 13,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(883),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8258),
                             FaxCode = 297,
                             FullName = "Aruba",
                             Name = "AW",
@@ -705,7 +708,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000014",
                             Code = 14,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(891),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8263),
                             FaxCode = 61,
                             FullName = "Australia",
                             Name = "AU",
@@ -716,7 +719,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000015",
                             Code = 15,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(899),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8269),
                             FaxCode = 43,
                             FullName = "Austria",
                             Name = "AT",
@@ -727,7 +730,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000016",
                             Code = 16,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(905),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8273),
                             FaxCode = 994,
                             FullName = "Azerbaijan",
                             Name = "AZ",
@@ -738,7 +741,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000017",
                             Code = 17,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(910),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8278),
                             FaxCode = 1242,
                             FullName = "Bahamas",
                             Name = "BS",
@@ -749,7 +752,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000018",
                             Code = 18,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(914),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8284),
                             FaxCode = 973,
                             FullName = "Bahrain",
                             Name = "BH",
@@ -760,7 +763,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000019",
                             Code = 19,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(919),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8289),
                             FaxCode = 880,
                             FullName = "Bangladesh",
                             Name = "BD",
@@ -771,7 +774,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000020",
                             Code = 20,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(924),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8294),
                             FaxCode = 1246,
                             FullName = "Barbados",
                             Name = "BB",
@@ -782,7 +785,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000021",
                             Code = 21,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(928),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8324),
                             FaxCode = 375,
                             FullName = "Belarus",
                             Name = "BY",
@@ -793,7 +796,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000022",
                             Code = 22,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(932),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8330),
                             FaxCode = 32,
                             FullName = "Belgium",
                             Name = "BE",
@@ -804,7 +807,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000023",
                             Code = 23,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(937),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8336),
                             FaxCode = 501,
                             FullName = "Belize",
                             Name = "BZ",
@@ -815,7 +818,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000024",
                             Code = 24,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(942),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8341),
                             FaxCode = 229,
                             FullName = "Benin",
                             Name = "BJ",
@@ -826,7 +829,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000025",
                             Code = 25,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(946),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8346),
                             FaxCode = 1441,
                             FullName = "Bermuda",
                             Name = "BM",
@@ -837,7 +840,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000026",
                             Code = 26,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(951),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8351),
                             FaxCode = 975,
                             FullName = "Bhutan",
                             Name = "BT",
@@ -848,7 +851,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000027",
                             Code = 27,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(981),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8356),
                             FaxCode = 591,
                             FullName = "Bolivia (Plurinational State of)",
                             Name = "BO",
@@ -859,7 +862,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000028",
                             Code = 28,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(986),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8362),
                             FaxCode = 599,
                             FullName = "Bonaire, Sint Eustatius and Saba",
                             Name = "BQ",
@@ -870,7 +873,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000029",
                             Code = 29,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(990),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8367),
                             FaxCode = 387,
                             FullName = "Bosnia and Herzegovina",
                             Name = "BA",
@@ -881,7 +884,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000030",
                             Code = 30,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1048),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8372),
                             FaxCode = 267,
                             FullName = "Botswana",
                             Name = "BW",
@@ -892,7 +895,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000031",
                             Code = 31,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1066),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8378),
                             FaxCode = 47,
                             FullName = "Bouvet Island",
                             Name = "BV",
@@ -903,7 +906,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000032",
                             Code = 32,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1070),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8383),
                             FaxCode = 55,
                             FullName = "Brazil",
                             Name = "BR",
@@ -914,7 +917,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000033",
                             Code = 33,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1075),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8389),
                             FaxCode = 246,
                             FullName = "British Indian Ocean Territory",
                             Name = "IO",
@@ -925,7 +928,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000034",
                             Code = 34,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1082),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8394),
                             FaxCode = 673,
                             FullName = "Brunei Darussalam",
                             Name = "BN",
@@ -936,7 +939,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000035",
                             Code = 35,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1087),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8399),
                             FaxCode = 359,
                             FullName = "Bulgaria",
                             Name = "BG",
@@ -947,7 +950,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000036",
                             Code = 36,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1092),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8403),
                             FaxCode = 226,
                             FullName = "Burkina Faso",
                             Name = "BF",
@@ -958,7 +961,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000037",
                             Code = 37,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1097),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8408),
                             FaxCode = 257,
                             FullName = "Burundi",
                             Name = "BI",
@@ -969,7 +972,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000038",
                             Code = 38,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1102),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8436),
                             FaxCode = 238,
                             FullName = "Cabo Verde",
                             Name = "CV",
@@ -980,7 +983,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000039",
                             Code = 39,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1107),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8441),
                             FaxCode = 855,
                             FullName = "Cambodia",
                             Name = "KH",
@@ -991,7 +994,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000040",
                             Code = 40,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1112),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8446),
                             FaxCode = 237,
                             FullName = "Cameroon",
                             Name = "CM",
@@ -1002,7 +1005,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000041",
                             Code = 41,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1116),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8452),
                             FaxCode = 1,
                             FullName = "Canada",
                             Name = "CA",
@@ -1013,7 +1016,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000042",
                             Code = 42,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1121),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8458),
                             FaxCode = 1345,
                             FullName = "Cayman Islands",
                             Name = "KY",
@@ -1024,7 +1027,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000043",
                             Code = 43,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1126),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8464),
                             FaxCode = 236,
                             FullName = "Central African Republic",
                             Name = "CF",
@@ -1035,7 +1038,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000044",
                             Code = 44,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1150),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8469),
                             FaxCode = 235,
                             FullName = "Chad",
                             Name = "TD",
@@ -1046,7 +1049,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000045",
                             Code = 45,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1156),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8475),
                             FaxCode = 56,
                             FullName = "Chile",
                             Name = "CL",
@@ -1057,7 +1060,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000046",
                             Code = 46,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1161),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8480),
                             FaxCode = 86,
                             FullName = "China",
                             Name = "CN",
@@ -1068,7 +1071,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000047",
                             Code = 47,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1165),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8486),
                             FaxCode = 61,
                             FullName = "Christmas Island",
                             Name = "CX",
@@ -1079,7 +1082,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000048",
                             Code = 48,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1171),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8492),
                             FaxCode = 61,
                             FullName = "Cocos (Keeling) Islands",
                             Name = "CC",
@@ -1090,7 +1093,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000049",
                             Code = 49,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1175),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8497),
                             FaxCode = 57,
                             FullName = "Colombia",
                             Name = "CO",
@@ -1101,7 +1104,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000050",
                             Code = 50,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1180),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8502),
                             FaxCode = 269,
                             FullName = "Comoros",
                             Name = "KM",
@@ -1112,7 +1115,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000051",
                             Code = 51,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1184),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8507),
                             FaxCode = 242,
                             FullName = "Congo",
                             Name = "CG",
@@ -1123,7 +1126,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000052",
                             Code = 52,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1189),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8511),
                             FaxCode = 243,
                             FullName = "Congo (Democratic Republic of the)",
                             Name = "CD",
@@ -1134,7 +1137,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000053",
                             Code = 53,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1193),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8516),
                             FaxCode = 682,
                             FullName = "Cook Islands",
                             Name = "CK",
@@ -1145,7 +1148,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000054",
                             Code = 54,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1198),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8521),
                             FaxCode = 506,
                             FullName = "Costa Rica",
                             Name = "CR",
@@ -1156,7 +1159,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000055",
                             Code = 55,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1202),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8548),
                             FaxCode = 225,
                             FullName = "Côte d'Ivoire",
                             Name = "CI",
@@ -1167,7 +1170,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000056",
                             Code = 56,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1206),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8554),
                             FaxCode = 385,
                             FullName = "Croatia",
                             Name = "HR",
@@ -1178,7 +1181,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000057",
                             Code = 57,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1211),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8560),
                             FaxCode = 53,
                             FullName = "Cuba",
                             Name = "CU",
@@ -1189,7 +1192,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000058",
                             Code = 58,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1215),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8566),
                             FaxCode = 599,
                             FullName = "Curaçao",
                             Name = "CW",
@@ -1200,7 +1203,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000059",
                             Code = 59,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1220),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8572),
                             FaxCode = 357,
                             FullName = "Cyprus",
                             Name = "CY",
@@ -1211,7 +1214,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000060",
                             Code = 60,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1225),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8577),
                             FaxCode = 420,
                             FullName = "Czechia",
                             Name = "CZ",
@@ -1222,7 +1225,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000061",
                             Code = 61,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1268),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8583),
                             FaxCode = 45,
                             FullName = "Denmark",
                             Name = "DK",
@@ -1233,7 +1236,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000062",
                             Code = 62,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1274),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8588),
                             FaxCode = 253,
                             FullName = "Djibouti",
                             Name = "DJ",
@@ -1244,7 +1247,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000063",
                             Code = 63,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1278),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8593),
                             FaxCode = 1767,
                             FullName = "Dominica",
                             Name = "DM",
@@ -1255,7 +1258,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000064",
                             Code = 64,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1283),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8598),
                             FaxCode = 1809,
                             FullName = "Dominican Republic",
                             Name = "DO",
@@ -1266,7 +1269,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000065",
                             Code = 65,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1288),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8603),
                             FaxCode = 593,
                             FullName = "Ecuador",
                             Name = "EC",
@@ -1277,7 +1280,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000066",
                             Code = 66,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1292),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8607),
                             FaxCode = 20,
                             FullName = "Egypt",
                             Name = "EG",
@@ -1288,7 +1291,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000067",
                             Code = 67,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1296),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8612),
                             FaxCode = 503,
                             FullName = "El Salvador",
                             Name = "SV",
@@ -1299,7 +1302,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000068",
                             Code = 68,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1301),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8617),
                             FaxCode = 240,
                             FullName = "Equatorial Guinea",
                             Name = "GQ",
@@ -1310,7 +1313,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000069",
                             Code = 69,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1305),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8622),
                             FaxCode = 291,
                             FullName = "Eritrea",
                             Name = "ER",
@@ -1321,7 +1324,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000070",
                             Code = 70,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1310),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8626),
                             FaxCode = 372,
                             FullName = "Estonia",
                             Name = "EE",
@@ -1332,7 +1335,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000071",
                             Code = 71,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1314),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8631),
                             FaxCode = 251,
                             FullName = "Ethiopia",
                             Name = "ET",
@@ -1343,7 +1346,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000072",
                             Code = 72,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1318),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8651),
                             FaxCode = 500,
                             FullName = "Falkland Islands (Malvinas)",
                             Name = "FK",
@@ -1354,7 +1357,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000073",
                             Code = 73,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1322),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8657),
                             FaxCode = 298,
                             FullName = "Faroe Islands",
                             Name = "FO",
@@ -1365,7 +1368,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000074",
                             Code = 74,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1326),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8662),
                             FaxCode = 679,
                             FullName = "Fiji",
                             Name = "FJ",
@@ -1376,7 +1379,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000075",
                             Code = 75,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1331),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8667),
                             FaxCode = 358,
                             FullName = "Finland",
                             Name = "FI",
@@ -1387,7 +1390,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000076",
                             Code = 76,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1335),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8673),
                             FaxCode = 33,
                             FullName = "France",
                             Name = "FR",
@@ -1398,7 +1401,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000077",
                             Code = 77,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1339),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8677),
                             FaxCode = 594,
                             FullName = "French Guiana",
                             Name = "GF",
@@ -1409,7 +1412,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000078",
                             Code = 78,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1362),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8682),
                             FaxCode = 689,
                             FullName = "French Polynesia",
                             Name = "PF",
@@ -1420,7 +1423,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000079",
                             Code = 79,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1367),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8687),
                             FaxCode = 262,
                             FullName = "French Southern Territories",
                             Name = "TF",
@@ -1431,7 +1434,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000080",
                             Code = 80,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1371),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8692),
                             FaxCode = 241,
                             FullName = "Gabon",
                             Name = "GA",
@@ -1442,7 +1445,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000081",
                             Code = 81,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1376),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8697),
                             FaxCode = 220,
                             FullName = "Gambia",
                             Name = "GM",
@@ -1453,7 +1456,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000082",
                             Code = 82,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1380),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8702),
                             FaxCode = 995,
                             FullName = "Georgia",
                             Name = "GE",
@@ -1464,7 +1467,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000083",
                             Code = 83,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1384),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8707),
                             FaxCode = 49,
                             FullName = "Germany",
                             Name = "DE",
@@ -1475,7 +1478,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000084",
                             Code = 84,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1389),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8744),
                             FaxCode = 233,
                             FullName = "Ghana",
                             Name = "GH",
@@ -1486,7 +1489,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000085",
                             Code = 85,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1393),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8750),
                             FaxCode = 350,
                             FullName = "Gibraltar",
                             Name = "GI",
@@ -1497,7 +1500,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000086",
                             Code = 86,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1397),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8755),
                             FaxCode = 30,
                             FullName = "Greece",
                             Name = "GR",
@@ -1508,7 +1511,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000087",
                             Code = 87,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1402),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8760),
                             FaxCode = 299,
                             FullName = "Greenland",
                             Name = "GL",
@@ -1519,7 +1522,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000088",
                             Code = 88,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1406),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8766),
                             FaxCode = 1473,
                             FullName = "Grenada",
                             Name = "GD",
@@ -1530,7 +1533,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000089",
                             Code = 89,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1410),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8808),
                             FaxCode = 590,
                             FullName = "Guadeloupe",
                             Name = "GP",
@@ -1541,7 +1544,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000090",
                             Code = 90,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1415),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8813),
                             FaxCode = 1671,
                             FullName = "Guam",
                             Name = "GU",
@@ -1552,7 +1555,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000091",
                             Code = 91,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1419),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8819),
                             FaxCode = 502,
                             FullName = "Guatemala",
                             Name = "GT",
@@ -1563,7 +1566,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000092",
                             Code = 92,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1423),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8825),
                             FaxCode = 44,
                             FullName = "Guernsey",
                             Name = "GG",
@@ -1574,7 +1577,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000093",
                             Code = 93,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1427),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8830),
                             FaxCode = 224,
                             FullName = "Guinea",
                             Name = "GN",
@@ -1585,7 +1588,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000094",
                             Code = 94,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1454),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8836),
                             FaxCode = 245,
                             FullName = "Guinea-Bissau",
                             Name = "GW",
@@ -1596,7 +1599,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000095",
                             Code = 95,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1480),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8842),
                             FaxCode = 592,
                             FullName = "Guyana",
                             Name = "GY",
@@ -1607,7 +1610,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000096",
                             Code = 96,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1485),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8846),
                             FaxCode = 509,
                             FullName = "Haiti",
                             Name = "HT",
@@ -1618,7 +1621,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000097",
                             Code = 97,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1490),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8852),
                             FaxCode = 672,
                             FullName = "Heard Island and McDonald Islands",
                             Name = "HM",
@@ -1629,7 +1632,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000098",
                             Code = 98,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1495),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8857),
                             FaxCode = 379,
                             FullName = "Holy See",
                             Name = "VA",
@@ -1640,7 +1643,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000099",
                             Code = 99,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1500),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8863),
                             FaxCode = 504,
                             FullName = "Honduras",
                             Name = "HN",
@@ -1651,7 +1654,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000100",
                             Code = 100,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1504),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8867),
                             FaxCode = 852,
                             FullName = "Hong Kong",
                             Name = "HK",
@@ -1662,7 +1665,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000101",
                             Code = 101,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1511),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8874),
                             FaxCode = 36,
                             FullName = "Hungary",
                             Name = "HU",
@@ -1673,7 +1676,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000102",
                             Code = 102,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1515),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8879),
                             FaxCode = 354,
                             FullName = "Iceland",
                             Name = "IS",
@@ -1684,7 +1687,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000103",
                             Code = 103,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1520),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8885),
                             FaxCode = 91,
                             FullName = "India",
                             Name = "IN",
@@ -1695,7 +1698,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000104",
                             Code = 104,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1525),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8901),
                             FaxCode = 62,
                             FullName = "Indonesia",
                             Name = "ID",
@@ -1706,7 +1709,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000105",
                             Code = 105,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1530),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8907),
                             FaxCode = 98,
                             FullName = "Iran (Islamic Republic of)",
                             Name = "IR",
@@ -1717,7 +1720,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000106",
                             Code = 106,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1534),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8947),
                             FaxCode = 964,
                             FullName = "Iraq",
                             Name = "IQ",
@@ -1728,7 +1731,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000107",
                             Code = 107,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1539),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8953),
                             FaxCode = 353,
                             FullName = "Ireland",
                             Name = "IE",
@@ -1739,7 +1742,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000108",
                             Code = 108,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1543),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8958),
                             FaxCode = 44,
                             FullName = "Isle of Man",
                             Name = "IM",
@@ -1750,7 +1753,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000109",
                             Code = 109,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1547),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8964),
                             FaxCode = 972,
                             FullName = "Israel",
                             Name = "IL",
@@ -1761,7 +1764,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000110",
                             Code = 110,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1552),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8968),
                             FaxCode = 39,
                             FullName = "Italy",
                             Name = "IT",
@@ -1772,7 +1775,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000111",
                             Code = 111,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1556),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8974),
                             FaxCode = 1876,
                             FullName = "Jamaica",
                             Name = "JM",
@@ -1783,7 +1786,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000112",
                             Code = 112,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1579),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8979),
                             FaxCode = 81,
                             FullName = "Japan",
                             Name = "JP",
@@ -1794,7 +1797,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000113",
                             Code = 113,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1585),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8984),
                             FaxCode = 44,
                             FullName = "Jersey",
                             Name = "JE",
@@ -1805,7 +1808,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000114",
                             Code = 114,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1603),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8988),
                             FaxCode = 962,
                             FullName = "Jordan",
                             Name = "JO",
@@ -1816,7 +1819,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000115",
                             Code = 115,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1609),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8993),
                             FaxCode = 7,
                             FullName = "Kazakhstan",
                             Name = "KZ",
@@ -1827,7 +1830,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000116",
                             Code = 116,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1614),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(8999),
                             FaxCode = 254,
                             FullName = "Kenya",
                             Name = "KE",
@@ -1838,7 +1841,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000117",
                             Code = 117,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1618),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9003),
                             FaxCode = 686,
                             FullName = "Kiribati",
                             Name = "KI",
@@ -1849,7 +1852,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000118",
                             Code = 118,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1623),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9008),
                             FaxCode = 850,
                             FullName = "Korea (Democratic People's Republic of)",
                             Name = "KP",
@@ -1860,7 +1863,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000119",
                             Code = 119,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1627),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9013),
                             FaxCode = 82,
                             FullName = "Korea (Republic of)",
                             Name = "KR",
@@ -1871,7 +1874,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000120",
                             Code = 120,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1632),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9018),
                             FaxCode = 965,
                             FullName = "Kuwait",
                             Name = "KW",
@@ -1882,7 +1885,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000121",
                             Code = 121,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1637),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9023),
                             FaxCode = 996,
                             FullName = "Kyrgyzstan",
                             Name = "KG",
@@ -1893,7 +1896,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000122",
                             Code = 122,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1642),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9027),
                             FaxCode = 856,
                             FullName = "Lao People's Democratic Republic",
                             Name = "LA",
@@ -1904,7 +1907,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000123",
                             Code = 123,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1646),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9078),
                             FaxCode = 371,
                             FullName = "Latvia",
                             Name = "LV",
@@ -1915,7 +1918,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000124",
                             Code = 124,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1651),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9084),
                             FaxCode = 961,
                             FullName = "Lebanon",
                             Name = "LB",
@@ -1926,7 +1929,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000125",
                             Code = 125,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1656),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9093),
                             FaxCode = 266,
                             FullName = "Lesotho",
                             Name = "LS",
@@ -1937,7 +1940,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000126",
                             Code = 126,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1660),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9098),
                             FaxCode = 231,
                             FullName = "Liberia",
                             Name = "LR",
@@ -1948,7 +1951,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000127",
                             Code = 127,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1665),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9104),
                             FaxCode = 218,
                             FullName = "Libya",
                             Name = "LY",
@@ -1959,7 +1962,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000128",
                             Code = 128,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1669),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9115),
                             FaxCode = 423,
                             FullName = "Liechtenstein",
                             Name = "LI",
@@ -1970,7 +1973,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000129",
                             Code = 129,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1687),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9122),
                             FaxCode = 370,
                             FullName = "Lithuania",
                             Name = "LT",
@@ -1981,7 +1984,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000130",
                             Code = 130,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1693),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9127),
                             FaxCode = 352,
                             FullName = "Luxembourg",
                             Name = "LU",
@@ -1992,7 +1995,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000131",
                             Code = 131,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1698),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9133),
                             FaxCode = 853,
                             FullName = "Macao",
                             Name = "MO",
@@ -2003,7 +2006,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000132",
                             Code = 132,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1703),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9138),
                             FaxCode = 389,
                             FullName = "Macedonia (the former Yugoslav Republic of)",
                             Name = "MK",
@@ -2014,7 +2017,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000133",
                             Code = 133,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1707),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9143),
                             FaxCode = 261,
                             FullName = "Madagascar",
                             Name = "MG",
@@ -2025,7 +2028,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000134",
                             Code = 134,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1712),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9148),
                             FaxCode = 265,
                             FullName = "Malawi",
                             Name = "MW",
@@ -2036,7 +2039,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000135",
                             Code = 135,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1716),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9152),
                             FaxCode = 60,
                             FullName = "Malaysia",
                             Name = "MY",
@@ -2047,7 +2050,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000136",
                             Code = 136,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1721),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9158),
                             FaxCode = 960,
                             FullName = "Maldives",
                             Name = "MV",
@@ -2058,7 +2061,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000137",
                             Code = 137,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1725),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9162),
                             FaxCode = 223,
                             FullName = "Mali",
                             Name = "ML",
@@ -2069,7 +2072,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000138",
                             Code = 138,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1735),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9167),
                             FaxCode = 356,
                             FullName = "Malta",
                             Name = "MT",
@@ -2080,7 +2083,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000139",
                             Code = 139,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1739),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9173),
                             FaxCode = 692,
                             FullName = "Marshall Islands",
                             Name = "MH",
@@ -2091,7 +2094,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000140",
                             Code = 140,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1744),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9222),
                             FaxCode = 596,
                             FullName = "Martinique",
                             Name = "MQ",
@@ -2102,7 +2105,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000141",
                             Code = 141,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1748),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9228),
                             FaxCode = 222,
                             FullName = "Mauritania",
                             Name = "MR",
@@ -2113,7 +2116,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000142",
                             Code = 142,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1752),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9234),
                             FaxCode = 230,
                             FullName = "Mauritius",
                             Name = "MU",
@@ -2124,7 +2127,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000143",
                             Code = 143,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1756),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9239),
                             FaxCode = 262,
                             FullName = "Mayotte",
                             Name = "YT",
@@ -2135,7 +2138,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000144",
                             Code = 144,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1760),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9244),
                             FaxCode = 52,
                             FullName = "Mexico",
                             Name = "MX",
@@ -2146,7 +2149,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000145",
                             Code = 145,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1765),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9249),
                             FaxCode = 691,
                             FullName = "Micronesia (Federated States of)",
                             Name = "FM",
@@ -2157,7 +2160,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000146",
                             Code = 146,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1796),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9254),
                             FaxCode = 373,
                             FullName = "Moldova (Republic of)",
                             Name = "MD",
@@ -2168,7 +2171,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000147",
                             Code = 147,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1801),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9259),
                             FaxCode = 377,
                             FullName = "Monaco",
                             Name = "MC",
@@ -2179,7 +2182,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000148",
                             Code = 148,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1806),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9264),
                             FaxCode = 976,
                             FullName = "Mongolia",
                             Name = "MN",
@@ -2190,7 +2193,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000149",
                             Code = 149,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1811),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9269),
                             FaxCode = 382,
                             FullName = "Montenegro",
                             Name = "ME",
@@ -2201,7 +2204,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000150",
                             Code = 150,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1816),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9274),
                             FaxCode = 1664,
                             FullName = "Montserrat",
                             Name = "MS",
@@ -2212,7 +2215,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000151",
                             Code = 151,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1820),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9279),
                             FaxCode = 212,
                             FullName = "Morocco",
                             Name = "MA",
@@ -2223,7 +2226,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000152",
                             Code = 152,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1825),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9284),
                             FaxCode = 258,
                             FullName = "Mozambique",
                             Name = "MZ",
@@ -2234,7 +2237,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000153",
                             Code = 153,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1829),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9289),
                             FaxCode = 95,
                             FullName = "Myanmar",
                             Name = "MM",
@@ -2245,7 +2248,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000154",
                             Code = 154,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1833),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9293),
                             FaxCode = 264,
                             FullName = "Namibia",
                             Name = "NA",
@@ -2256,7 +2259,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000155",
                             Code = 155,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1838),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9299),
                             FaxCode = 674,
                             FullName = "Nauru",
                             Name = "NR",
@@ -2267,7 +2270,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000156",
                             Code = 156,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1843),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9304),
                             FaxCode = 977,
                             FullName = "Nepal",
                             Name = "NP",
@@ -2278,7 +2281,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000157",
                             Code = 157,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1847),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9351),
                             FaxCode = 31,
                             FullName = "Netherlands",
                             Name = "NL",
@@ -2289,7 +2292,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000158",
                             Code = 158,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1852),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9357),
                             FaxCode = 687,
                             FullName = "New Caledonia",
                             Name = "NC",
@@ -2300,7 +2303,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000159",
                             Code = 159,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1856),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9362),
                             FaxCode = 64,
                             FullName = "New Zealand",
                             Name = "NZ",
@@ -2311,7 +2314,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000160",
                             Code = 160,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1861),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9368),
                             FaxCode = 505,
                             FullName = "Nicaragua",
                             Name = "NI",
@@ -2322,7 +2325,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000161",
                             Code = 161,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1866),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9374),
                             FaxCode = 227,
                             FullName = "Niger",
                             Name = "NE",
@@ -2333,7 +2336,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000162",
                             Code = 162,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1870),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9379),
                             FaxCode = 234,
                             FullName = "Nigeria",
                             Name = "NG",
@@ -2344,7 +2347,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000163",
                             Code = 163,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1901),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9384),
                             FaxCode = 683,
                             FullName = "Niue",
                             Name = "NU",
@@ -2355,7 +2358,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000164",
                             Code = 164,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1906),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9389),
                             FaxCode = 672,
                             FullName = "Norfolk Island",
                             Name = "NF",
@@ -2366,7 +2369,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000165",
                             Code = 165,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1911),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9394),
                             FaxCode = 1670,
                             FullName = "Northern Mariana Islands",
                             Name = "MP",
@@ -2377,7 +2380,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000166",
                             Code = 166,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1922),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9400),
                             FaxCode = 47,
                             FullName = "Norway",
                             Name = "NO",
@@ -2388,7 +2391,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000167",
                             Code = 167,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1927),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9405),
                             FaxCode = 968,
                             FullName = "Oman",
                             Name = "OM",
@@ -2399,7 +2402,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000168",
                             Code = 168,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1932),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9410),
                             FaxCode = 92,
                             FullName = "Pakistan",
                             Name = "PK",
@@ -2410,7 +2413,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000169",
                             Code = 169,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1937),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9415),
                             FaxCode = 680,
                             FullName = "Palau",
                             Name = "PW",
@@ -2421,7 +2424,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000170",
                             Code = 170,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1942),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9420),
                             FaxCode = 970,
                             FullName = "Palestine, State of",
                             Name = "PS",
@@ -2432,7 +2435,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000171",
                             Code = 171,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1947),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9426),
                             FaxCode = 507,
                             FullName = "Panama",
                             Name = "PA",
@@ -2443,7 +2446,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000172",
                             Code = 172,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1951),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9431),
                             FaxCode = 675,
                             FullName = "Papua New Guinea",
                             Name = "PG",
@@ -2454,7 +2457,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000173",
                             Code = 173,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1955),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9437),
                             FaxCode = 595,
                             FullName = "Paraguay",
                             Name = "PY",
@@ -2465,7 +2468,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000174",
                             Code = 174,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1960),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9482),
                             FaxCode = 51,
                             FullName = "Peru",
                             Name = "PE",
@@ -2476,7 +2479,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000175",
                             Code = 175,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1964),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9488),
                             FaxCode = 63,
                             FullName = "Philippines",
                             Name = "PH",
@@ -2487,7 +2490,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000176",
                             Code = 176,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1970),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9494),
                             FaxCode = 64,
                             FullName = "Pitcairn",
                             Name = "PN",
@@ -2498,7 +2501,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000177",
                             Code = 177,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1975),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9499),
                             FaxCode = 48,
                             FullName = "Poland",
                             Name = "PL",
@@ -2509,7 +2512,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000178",
                             Code = 178,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1979),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9504),
                             FaxCode = 351,
                             FullName = "Portugal",
                             Name = "PT",
@@ -2520,7 +2523,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000179",
                             Code = 179,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(1983),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9509),
                             FaxCode = 1787,
                             FullName = "Puerto Rico",
                             Name = "PR",
@@ -2531,7 +2534,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000180",
                             Code = 180,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2007),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9514),
                             FaxCode = 974,
                             FullName = "Qatar",
                             Name = "QA",
@@ -2542,7 +2545,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000181",
                             Code = 181,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2013),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9519),
                             FaxCode = 262,
                             FullName = "Réunion",
                             Name = "RE",
@@ -2553,7 +2556,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000182",
                             Code = 182,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2018),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9524),
                             FaxCode = 40,
                             FullName = "Romania",
                             Name = "RO",
@@ -2564,7 +2567,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000183",
                             Code = 183,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2023),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9528),
                             FaxCode = 7,
                             FullName = "Russian Federation",
                             Name = "RU",
@@ -2575,7 +2578,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000184",
                             Code = 184,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2028),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9533),
                             FaxCode = 250,
                             FullName = "Rwanda",
                             Name = "RW",
@@ -2586,7 +2589,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000185",
                             Code = 185,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2033),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9537),
                             FaxCode = 590,
                             FullName = "Saint Barthélemy",
                             Name = "BL",
@@ -2597,7 +2600,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000186",
                             Code = 186,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2037),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9542),
                             FaxCode = 290,
                             FullName = "Saint Helena, Ascension and Tristan da Cunha",
                             Name = "SH",
@@ -2608,7 +2611,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000187",
                             Code = 187,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2042),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9547),
                             FaxCode = 1869,
                             FullName = "Saint Kitts and Nevis",
                             Name = "KN",
@@ -2619,7 +2622,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000188",
                             Code = 188,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2047),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9552),
                             FaxCode = 1758,
                             FullName = "Saint Lucia",
                             Name = "LC",
@@ -2630,7 +2633,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000189",
                             Code = 189,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2052),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9556),
                             FaxCode = 590,
                             FullName = "Saint Martin (French part)",
                             Name = "MF",
@@ -2641,7 +2644,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000190",
                             Code = 190,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2057),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9561),
                             FaxCode = 508,
                             FullName = "Saint Pierre and Miquelon",
                             Name = "PM",
@@ -2652,7 +2655,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000191",
                             Code = 191,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2062),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9635),
                             FaxCode = 1784,
                             FullName = "Saint Vincent and the Grenadines",
                             Name = "VC",
@@ -2663,7 +2666,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000192",
                             Code = 192,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2066),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9641),
                             FaxCode = 685,
                             FullName = "Samoa",
                             Name = "WS",
@@ -2674,7 +2677,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000193",
                             Code = 193,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2070),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9645),
                             FaxCode = 378,
                             FullName = "San Marino",
                             Name = "SM",
@@ -2685,7 +2688,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000194",
                             Code = 194,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2076),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9650),
                             FaxCode = 239,
                             FullName = "Sao Tome and Principe",
                             Name = "ST",
@@ -2696,7 +2699,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000195",
                             Code = 195,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2080),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9654),
                             FaxCode = 966,
                             FullName = "Saudi Arabia",
                             Name = "SA",
@@ -2707,7 +2710,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000196",
                             Code = 196,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2084),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9659),
                             FaxCode = 221,
                             FullName = "Senegal",
                             Name = "SN",
@@ -2718,7 +2721,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000197",
                             Code = 197,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2140),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9664),
                             FaxCode = 381,
                             FullName = "Serbia",
                             Name = "RS",
@@ -2729,7 +2732,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000198",
                             Code = 198,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2145),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9668),
                             FaxCode = 248,
                             FullName = "Seychelles",
                             Name = "SC",
@@ -2740,7 +2743,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000199",
                             Code = 199,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2150),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9672),
                             FaxCode = 232,
                             FullName = "Sierra Leone",
                             Name = "SL",
@@ -2751,7 +2754,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000200",
                             Code = 200,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2161),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9676),
                             FaxCode = 65,
                             FullName = "Singapore",
                             Name = "SG",
@@ -2762,7 +2765,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000201",
                             Code = 201,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2166),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9681),
                             FaxCode = 1721,
                             FullName = "Sint Maarten (Dutch part)",
                             Name = "SX",
@@ -2773,7 +2776,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000202",
                             Code = 202,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2170),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9686),
                             FaxCode = 421,
                             FullName = "Slovakia",
                             Name = "SK",
@@ -2784,7 +2787,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000203",
                             Code = 203,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2175),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9691),
                             FaxCode = 386,
                             FullName = "Slovenia",
                             Name = "SI",
@@ -2795,7 +2798,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000204",
                             Code = 204,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2180),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9696),
                             FaxCode = 677,
                             FullName = "Solomon Islands",
                             Name = "SB",
@@ -2806,7 +2809,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000205",
                             Code = 205,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2185),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9700),
                             FaxCode = 252,
                             FullName = "Somalia",
                             Name = "SO",
@@ -2817,7 +2820,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000206",
                             Code = 206,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2190),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9705),
                             FaxCode = 27,
                             FullName = "South Africa",
                             Name = "ZA",
@@ -2828,7 +2831,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000207",
                             Code = 207,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2194),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9709),
                             FaxCode = 500,
                             FullName = "South Georgia and the South Sandwich Islands",
                             Name = "GS",
@@ -2839,7 +2842,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000208",
                             Code = 208,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2198),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9728),
                             FaxCode = 211,
                             FullName = "South Sudan",
                             Name = "SS",
@@ -2850,7 +2853,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000209",
                             Code = 209,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2202),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9733),
                             FaxCode = 34,
                             FullName = "Spain",
                             Name = "ES",
@@ -2861,7 +2864,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000210",
                             Code = 210,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2207),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9738),
                             FaxCode = 94,
                             FullName = "Sri Lanka",
                             Name = "LK",
@@ -2872,7 +2875,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000211",
                             Code = 211,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2211),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9743),
                             FaxCode = 249,
                             FullName = "Sudan",
                             Name = "SD",
@@ -2883,7 +2886,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000212",
                             Code = 212,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2215),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9748),
                             FaxCode = 597,
                             FullName = "Suriname",
                             Name = "SR",
@@ -2894,7 +2897,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000213",
                             Code = 213,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2219),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9752),
                             FaxCode = 47,
                             FullName = "Svalbard and Jan Mayen",
                             Name = "SJ",
@@ -2905,7 +2908,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000214",
                             Code = 214,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2278),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9756),
                             FaxCode = 268,
                             FullName = "Swaziland",
                             Name = "SZ",
@@ -2916,7 +2919,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000215",
                             Code = 215,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2285),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9760),
                             FaxCode = 46,
                             FullName = "Sweden",
                             Name = "SE",
@@ -2927,7 +2930,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000216",
                             Code = 216,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2289),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9771),
                             FaxCode = 41,
                             FullName = "Switzerland",
                             Name = "CH",
@@ -2938,7 +2941,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000217",
                             Code = 217,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2294),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9776),
                             FaxCode = 963,
                             FullName = "Syrian Arab Republic",
                             Name = "SY",
@@ -2949,7 +2952,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000218",
                             Code = 218,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2298),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9782),
                             FaxCode = 886,
                             FullName = "Taiwan, Province of China",
                             Name = "TW",
@@ -2960,7 +2963,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000219",
                             Code = 219,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2303),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9787),
                             FaxCode = 992,
                             FullName = "Tajikistan",
                             Name = "TJ",
@@ -2971,7 +2974,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000220",
                             Code = 220,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2308),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9791),
                             FaxCode = 255,
                             FullName = "Tanzania, United Republic of",
                             Name = "TZ",
@@ -2982,7 +2985,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000221",
                             Code = 221,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2313),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9796),
                             FaxCode = 66,
                             FullName = "Thailand",
                             Name = "TH",
@@ -2993,7 +2996,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000222",
                             Code = 222,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2318),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9801),
                             FaxCode = 670,
                             FullName = "Timor-Leste",
                             Name = "TL",
@@ -3004,7 +3007,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000223",
                             Code = 223,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2322),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9806),
                             FaxCode = 228,
                             FullName = "Togo",
                             Name = "TG",
@@ -3015,7 +3018,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000224",
                             Code = 224,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2326),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9811),
                             FaxCode = 690,
                             FullName = "Tokelau",
                             Name = "TK",
@@ -3026,7 +3029,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000225",
                             Code = 225,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2331),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9855),
                             FaxCode = 676,
                             FullName = "Tonga",
                             Name = "TO",
@@ -3037,7 +3040,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000226",
                             Code = 226,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2335),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9861),
                             FaxCode = 1868,
                             FullName = "Trinidad and Tobago",
                             Name = "TT",
@@ -3048,7 +3051,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000227",
                             Code = 227,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2339),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9866),
                             FaxCode = 216,
                             FullName = "Tunisia",
                             Name = "TN",
@@ -3059,7 +3062,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000228",
                             Code = 228,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2344),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9871),
                             FaxCode = 90,
                             FullName = "Turkey",
                             Name = "TR",
@@ -3070,7 +3073,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000229",
                             Code = 229,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2348),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9876),
                             FaxCode = 993,
                             FullName = "Turkmenistan",
                             Name = "TM",
@@ -3081,7 +3084,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000230",
                             Code = 230,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2352),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9881),
                             FaxCode = 1649,
                             FullName = "Turks and Caicos Islands",
                             Name = "TC",
@@ -3092,7 +3095,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000231",
                             Code = 231,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2407),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9886),
                             FaxCode = 688,
                             FullName = "Tuvalu",
                             Name = "TV",
@@ -3103,7 +3106,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000232",
                             Code = 232,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2413),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9891),
                             FaxCode = 256,
                             FullName = "Uganda",
                             Name = "UG",
@@ -3114,7 +3117,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000233",
                             Code = 233,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2418),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9896),
                             FaxCode = 380,
                             FullName = "Ukraine",
                             Name = "UA",
@@ -3125,7 +3128,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000234",
                             Code = 234,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2423),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9901),
                             FaxCode = 971,
                             FullName = "United Arab Emirates",
                             Name = "AE",
@@ -3136,7 +3139,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000235",
                             Code = 235,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2428),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9906),
                             FaxCode = 44,
                             FullName = "United Kingdom of Great Britain and Northern Ireland",
                             Name = "GB",
@@ -3147,7 +3150,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000236",
                             Code = 236,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2433),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9917),
                             FaxCode = 1,
                             FullName = "United States of America",
                             Name = "US",
@@ -3158,7 +3161,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000237",
                             Code = 237,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2438),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9922),
                             FaxCode = 1,
                             FullName = "United States Minor Outlying Islands",
                             Name = "UM",
@@ -3169,7 +3172,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000238",
                             Code = 238,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2443),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9926),
                             FaxCode = 598,
                             FullName = "Uruguay",
                             Name = "UY",
@@ -3180,7 +3183,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000239",
                             Code = 239,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2447),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9931),
                             FaxCode = 998,
                             FullName = "Uzbekistan",
                             Name = "UZ",
@@ -3191,7 +3194,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000240",
                             Code = 240,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2452),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9935),
                             FaxCode = 678,
                             FullName = "Vanuatu",
                             Name = "VU",
@@ -3202,7 +3205,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000241",
                             Code = 241,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2462),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9939),
                             FaxCode = 58,
                             FullName = "Venezuela (Bolivarian Republic of)",
                             Name = "VE",
@@ -3213,7 +3216,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000242",
                             Code = 242,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2467),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9972),
                             FaxCode = 84,
                             FullName = "Viet Nam",
                             Name = "VN",
@@ -3224,7 +3227,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000243",
                             Code = 243,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2472),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9977),
                             FaxCode = 1284,
                             FullName = "Virgin Islands (British)",
                             Name = "VG",
@@ -3235,7 +3238,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000244",
                             Code = 244,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2477),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9982),
                             FaxCode = 1340,
                             FullName = "Virgin Islands (U.S.)",
                             Name = "VI",
@@ -3246,7 +3249,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000245",
                             Code = 245,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2481),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9986),
                             FaxCode = 681,
                             FullName = "Wallis and Futuna",
                             Name = "WF",
@@ -3257,7 +3260,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000246",
                             Code = 246,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2486),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9991),
                             FaxCode = 212,
                             FullName = "Western Sahara",
                             Name = "EH",
@@ -3268,7 +3271,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000247",
                             Code = 247,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2491),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9995),
                             FaxCode = 967,
                             FullName = "Yemen",
                             Name = "YE",
@@ -3279,7 +3282,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000248",
                             Code = 248,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2539),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 933, DateTimeKind.Utc).AddTicks(9999),
                             FaxCode = 260,
                             FullName = "Zambia",
                             Name = "ZM",
@@ -3290,7 +3293,7 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000249",
                             Code = 249,
-                            CreateDate = new DateTime(2026, 7, 30, 17, 9, 41, 83, DateTimeKind.Utc).AddTicks(2546),
+                            CreateDate = new DateTime(2026, 7, 30, 15, 28, 30, 934, DateTimeKind.Utc).AddTicks(4),
                             FaxCode = 263,
                             FullName = "Zimbabwe",
                             Name = "ZW",
@@ -3526,9 +3529,6 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
                         .HasMaxLength(4000)
                         .HasColumnType("nvarchar(4000)");
 
-                    b.Property<int>("DisplayMode")
-                        .HasColumnType("int");
-
                     b.Property<string>("IdUserCreate")
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
@@ -3573,6 +3573,13 @@ namespace YAHALLO.Infrastructure.Persistence.Migrations
 
                     b.Property<int>("Season")
                         .HasColumnType("int");
+
+                    b.Property<string>("SeasonName")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(450)")
+                        .UseCollation("Latin1_General_CI_AI");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

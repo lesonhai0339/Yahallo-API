@@ -33,11 +33,6 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .HasMaxLength(450)
                 .UseCollation("Latin1_General_CI_AI");
 
-            builder.Property(x => x.SeasonName)
-               .IsUnicode(true)
-               .HasMaxLength(450)
-               .UseCollation("Latin1_General_CI_AI");
-
             builder.HasOne(x => x.MangaGroup)
                 .WithMany(x => x.MangaEntities)
                 .HasForeignKey(x => x.MangaGroupId)

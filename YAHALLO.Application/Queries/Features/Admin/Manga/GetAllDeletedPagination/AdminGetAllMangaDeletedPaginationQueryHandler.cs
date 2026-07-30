@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.GetAllDeletedPaginati
                       .Select(t => new AdminMangaDto
                       {
                           Id = t.Id,
-                          DisplayName = (t.Name + " " + t.SeasonName).Trim(),
+                          DisplayName = t.Name,
                           Description = t.Description,
                           Level = t.Level,
                           Status = t.Status,

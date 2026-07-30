@@ -11,6 +11,7 @@ using YAHALLO.Domain.Entities.S3;
 using YAHALLO.Domain.Enums.ListView;
 using YAHALLO.Domain.Enums.Progress;
 using YAHALLO.Domain.Enums.Style;
+using YAHALLO.Domain.Enums.Theme;
 using YAHALLO.Domain.Exceptions;
 using YAHALLO.Domain.Repositories;
 using YAHALLO.Domain.Repositories.Storage;
@@ -63,7 +64,8 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
 
             if (!string.IsNullOrEmpty(request.Language)) setting.Language = request.Language;
             if (request.Theme != null) setting.Theme = (Theme)request.Theme;
-            if(bg != null) setting.BgImageUrl = imgUrl;
+            if (request.Transition != null) setting.Transition = (Transition)request.Transition;
+            if (bg != null) setting.BgImageUrl = imgUrl;
             if (request.BgOpacity != null) setting.BgOpacity = request.BgOpacity;
             if (request.BgBlur != null) setting.BgBlur = request.BgBlur;
             if (request.FontFamily != null) setting.FontFamily = request.FontFamily;

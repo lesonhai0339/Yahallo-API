@@ -34,11 +34,11 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetDetail
                 return cache;
 
             var manga = await _mangaRepository.FindSelectAsync(e => e
-                .Where(x => x.Id == request.Id)
+                .Where(x => x.Id == request.Id && x.DisplayMode == Domain.Enums.MangaEnums.DisplayMode.Visible)
                 .Select(t => new MangaDetailDto
                 {
                     Id = t.Id,
-                    DisplayName = (t.Name + " " + t.SeasonName).Trim(),
+                    DisplayName = t.Name.Trim(),
                     Description = t.Description,
                     Level = t.Level,
                     Status = t.Status,

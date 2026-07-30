@@ -9,7 +9,7 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Restore
 {
     public class RestoreUserSettingsCommand: IRequest<RestoreUserSettingsResult>   
     {
-        public string UserId { get; set; }  
+        public string UserId { get; set; } = null!;
     }
     public record RestoreUserSettingsResult(string Message);
 }

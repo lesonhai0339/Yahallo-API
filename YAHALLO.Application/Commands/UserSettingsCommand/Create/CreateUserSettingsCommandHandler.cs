@@ -38,6 +38,7 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Create
 
                 Language = request.Language,
                 Theme = request.Theme,
+                Transition = request.Transition ?? Domain.Enums.Theme.Transition.None,
                 BgOpacity = request.BgOpacity,
                 BgBlur = request.BgBlur,
 

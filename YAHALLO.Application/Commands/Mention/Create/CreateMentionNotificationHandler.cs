@@ -40,6 +40,7 @@ namespace YAHALLO.Application.Commands.Mention.Create
                 BlogId = request.BlogId
             };
             _mentionRepository.Add(mention);
+            await Task.CompletedTask;
         }
     }
 }

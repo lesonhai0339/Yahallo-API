@@ -32,7 +32,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.FilterManga
                     .Select(m => new MangaDto
                     {
                         Id = m.Id,
-                        DisplayName = (m.Name + " " + m.SeasonName).Trim(),
+                        DisplayName = m.Name.Trim(),
                         Description = m.Description,
                         Level = m.Level,
                         Status = m.Status,
@@ -78,12 +78,14 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.FilterManga
         }
         private IQueryable<MangaEntity> ApplyFilter(IQueryable<MangaEntity> query, FilterMangaQuery request)
         {
+            //public only see visible manga
+            query = query.Where(x => x.DisplayMode == DisplayMode.Visible);
+
             if (!string.IsNullOrEmpty(request.Name))
             {
                 var name = request.Name.Trim();
                 query = query.Where(x =>
                     x.Name.Trim().Contains(name)
-                    || x.SeasonName.Trim().Contains(name)
                     || x.AuthorEntities.Any(a => a.Author.Name.Contains(name))
                     || x.ArtistEntities.Any(a => a.Artist.Name.Contains(name))
                     || x.TagEntities.Any(t => t.Tag.Name.Contains(name)));

@@ -16,11 +16,10 @@ namespace YAHALLO.Domain.Entities
     public class MangaEntity : BaseEntity
     {
         public string Name { get; set; } = null!;
-        public string SeasonName { get; set; } = null!;
-
         public string? Description { get; set; }
         public MangaLevel Level { get; set; }
         public MangaStatus Status { get; set; }
+        public DisplayMode DisplayMode { get; set; } = DisplayMode.Visible;
         public MangaType Type { get; set; }
         public CountriesEnum Countries { get; set; }
         public int Season { get; set; }

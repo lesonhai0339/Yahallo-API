@@ -9,6 +9,7 @@ using YAHALLO.Application.Common.DTOs;
 using YAHALLO.Domain.Enums.ListView;
 using YAHALLO.Domain.Enums.Progress;
 using YAHALLO.Domain.Enums.Style;
+using YAHALLO.Domain.Enums.Theme;
 
 namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
 {
@@ -18,6 +19,7 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Update
 
         public Theme? Theme { get; set; } = null;
 
+        public Transition? Transition { get; set; }  
         public FileUploadInfo? BgImage { get; set; } = null;
         public float? BgOpacity { get; set; } = null;
         public float? BgBlur { get; set; } = null;

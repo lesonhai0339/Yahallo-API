@@ -9,6 +9,6 @@ namespace YAHALLO.Application.Commands.UserSettingsCommand.Delete
 {
     public class DeleteUserSettingsCommand: IRequest<string>
     {
-        public string UserId { get; set; }  
+        public string UserId { get; set; } = null!;
     }
 }

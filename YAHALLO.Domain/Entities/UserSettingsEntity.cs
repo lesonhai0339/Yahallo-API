@@ -7,6 +7,7 @@ using YAHALLO.Domain.Entities.Base;
 using YAHALLO.Domain.Enums.ListView;
 using YAHALLO.Domain.Enums.Progress;
 using YAHALLO.Domain.Enums.Style;
+using YAHALLO.Domain.Enums.Theme;
 
 namespace YAHALLO.Domain.Entities
 {
@@ -18,6 +19,8 @@ namespace YAHALLO.Domain.Entities
         public string? Language { get; set; } = "vi";
 
         public Theme Theme { get; set; } = Theme.Dark;
+
+        public Transition Transition { get; set; } = Transition.None;
 
         //background(website)
         public string? BgImageUrl { get; set; }  = string.Empty;

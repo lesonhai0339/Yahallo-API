@@ -36,7 +36,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment.Filter
                         DateTime = x.CreateDate,
                         UserId = x.UserId,
                         MangaId = x.MangaId,
-                        MangaName = x.MangaEntity == null ? "" : (x.MangaEntity.Name + " " + x.MangaEntity.SeasonName),
+                        MangaName = x.MangaEntity == null ? string.Empty : x.MangaEntity.Name,
                         ChapterId = x.ChapterId,
                         ChapterIndex = x.ChapterEntity == null ? -1 : x.ChapterEntity.Index,
                         ChapterName = x.ChapterEntity == null ? null : x.ChapterEntity.Title,

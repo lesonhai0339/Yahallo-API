@@ -7,11 +7,13 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
     public sealed class AdminFilterMangaQuery: PaginationQuery<AdminMangaDto>
     {
         public string? Name { get; set; }
+        public string? MangaId { get; set; }    
         public string? TagIds { get; set; }
         public string? AuthorId { get; set; }
         public string? ArtistId { get; set; }
         public MangaLevel? Level { get; set; }
         public MangaStatus? Status { get; set; }
+        public DisplayMode? DisplayMode { get; set; }   
         public MangaType? Type { get; set; }
         public CountriesEnum? Countries { get; set; }
         public int Season { get; set; }

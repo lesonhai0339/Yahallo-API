@@ -22,6 +22,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
         public string? Description { get; set; }
         public MangaLevel? Level { get; set; }
         public MangaStatus? Status { get; set; }
+        public DisplayMode? DisplayMode { get; set; }
         public MangaType? Type { get; set; }
         public CountriesEnum? Countries { get; set; }
         public int Season { get; set; }

@@ -43,11 +43,14 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                     Description = m.Description,
                     Level = m.Level,
                     Status = m.Status,
+                    DisplayMode = m.DisplayMode,
                     Type = m.Type,
                     Countries = m.Countries,
                     Season = m.Season,
                     UpdateDate = m.UpdateDate,
                     IdUserUpdate = m.IdUserUpdate,
+                    MangaThumbnail = m.MangaThumbnail,
+                    MangaBackground = m.MangaBackground,
                     MangaGroup = m.MangaGroup == null ? null : new MangaGroupEntity
                     {
                         Id = m.MangaGroup.Id,
@@ -93,6 +96,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
             manga.Description = request.Description ?? manga.Description;
             manga.Level = request.Level ?? manga.Level;
             manga.Status = request.Status ?? manga.Status;
+            manga.DisplayMode = request.DisplayMode ?? manga.DisplayMode;
             manga.Type = request.Type ?? manga.Type;
             manga.Countries = request.Countries ?? manga.Countries;
             manga.UpdateDate = DateTime.UtcNow;
