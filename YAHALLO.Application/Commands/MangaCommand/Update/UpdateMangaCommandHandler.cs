@@ -34,30 +34,7 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
         }
         public async Task<UpdateMangaResponseDto> Handle(UpdateMangaCommand request, CancellationToken cancellationToken)
         {
-            var manga = await _mangaRepository.FindSelectAsync(x => x
-                .Where(x => x.Id == request.Id)
-                .Select(m => new MangaEntity
-                {
-                    Id = m.Id,
-                    Name = m.Name,
-                    Description = m.Description,
-                    Level = m.Level,
-                    Status = m.Status,
-                    DisplayMode = m.DisplayMode,
-                    Type = m.Type,
-                    Countries = m.Countries,
-                    Season = m.Season,
-                    UpdateDate = m.UpdateDate,
-                    IdUserUpdate = m.IdUserUpdate,
-                    MangaThumbnail = m.MangaThumbnail,
-                    MangaBackground = m.MangaBackground,
-                    MangaGroup = m.MangaGroup == null ? null : new MangaGroupEntity
-                    {
-                        Id = m.MangaGroup.Id,
-                        MangaEntities = m.MangaGroup.MangaEntities.Select(x => x).ToList()
-                    }
-                })
-                , cancellationToken);
+            var manga = await _mangaRepository.FindAsync(x => x.Id == request.Id, cancellationToken);
             if (manga == null)
                 throw new NotFoundException($"Không tồn tại manga với Id {request.Id}");
 
@@ -88,10 +65,6 @@ namespace YAHALLO.Application.Commands.MangaCommand.Update
                     Status = Domain.Enums.FileUpload.FileUploadStatus.Pending
                 });
             }
-
-            if (manga.MangaGroup != null && manga.MangaGroup.MangaEntities.All(x => x.Season != request.Season))
-                manga.Season = request.Season;
-
             manga.Name = request.Name ?? manga.Name;
             manga.Description = request.Description ?? manga.Description;
             manga.Level = request.Level ?? manga.Level;
