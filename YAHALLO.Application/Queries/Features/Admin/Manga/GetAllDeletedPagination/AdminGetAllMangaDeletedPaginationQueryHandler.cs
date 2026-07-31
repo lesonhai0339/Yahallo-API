@@ -22,31 +22,26 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.GetAllDeletedPaginati
                   pageSize: request.PageSize,
                   selector: x => x
                       .Where(m => !string.IsNullOrEmpty(m.IdUserDelete) && m.DeleteDate.HasValue)
-                      .Select(t => new AdminMangaDto
+                      .Select(m => new AdminMangaDto
                       {
-                          Id = t.Id,
-                          DisplayName = t.Name,
-                          Description = t.Description,
-                          Level = t.Level,
-                          Status = t.Status,
-                          Type = t.Type,
-                          Countries = t.Countries,
-                          Season = t.Season,
-                          MangaThumbnail = t.MangaThumbnail,
-                          MangaBackground = t.MangaBackground,
-                          UserId = t.UserId,
-                          ViewCount = t.ViewCount == null ? 0 : t.ViewCount.TotalCount,
-                          Rating = t.RatingEntities.Select(x => (int?)x.Rating).Average(),
-                          LastestChapter = t.LastChapter == null ? null : new AdminChapterDto
+                          Id = m.Id,
+                          DisplayName = m.Name,
+                          Description = m.Description,
+                          Level = m.Level,
+                          Status = m.Status,
+                          Type = m.Type,
+                          Countries = m.Countries,
+                          Season = m.Season,
+                          MangaThumbnail = m.MangaThumbnail,
+                          MangaBackground = m.MangaBackground,
+                          TotalView = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
+                          Rating = m.RatingEntities.Select(x => (int?)x.Rating).Average(),
+                          Owner = new Owner
                           {
-                              Id = t.LastChapter.Id,
-                              Index = t.LastChapter.Index,
-                              CreateDate = t.LastChapter.CreateDate,
-                              Title = t.LastChapter.Title,
-                              MangaId = t.Id,
-                              MangaName = t.Name
+                              Id = m.UserEntity.Id,
+                              Name = m.UserEntity.DisplayName
                           },
-                          Tags = t.TagEntities.Select(t => new AdminTagDto
+                          Tags = m.TagEntities.Select(t => new AdminTagDto
                           {
                               Id = t.TagId,
                               Name = t.Tag.Name,

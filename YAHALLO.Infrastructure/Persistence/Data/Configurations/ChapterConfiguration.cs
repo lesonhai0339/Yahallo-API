@@ -26,6 +26,7 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
                 .WithMany(x => x.ChaptersEntities)
                 .HasForeignKey(x => x.MangaId)
                 .OnDelete(DeleteBehavior.Restrict);
+
             builder.ToTable("Chapter");
         }
     }

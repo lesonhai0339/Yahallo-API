@@ -6,7 +6,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Chapter
 {
     public class AdminChapterDto : IMapFrom<ChapterEntity>
     {
-        public string Id { get; set; } = null!;
+        public string? Id { get; set; }
         public string? Title { get; set; }
         public int? Index { get; set; }
 

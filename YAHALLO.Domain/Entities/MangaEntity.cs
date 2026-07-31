@@ -29,10 +29,9 @@ namespace YAHALLO.Domain.Entities
 
         //Newest chapter
         public int? LastChapterIndex { get; set; }  
-        public string? LastChapterId { get; set; }  
+        public string? LastChapterId { get; set; } 
+        public string? LatestChapterTitle { get; set; }
         public DateTime? LastChapterUpdate { get;set; } 
-        public virtual ChapterEntity? LastChapter { get; set; }
-
 
         public string? UserId { get; set; }
         public virtual UserEntity UserEntity { get; set; } = null!;

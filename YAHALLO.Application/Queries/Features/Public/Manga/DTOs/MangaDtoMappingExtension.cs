@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAHALLO.Application.Queries.Features.Admin.Chapter;
 using YAHALLO.Application.Queries.Features.Public.Chapter;
 using YAHALLO.Domain.Entities;
 using YAHALLO.Domain.Enums;
@@ -25,7 +26,13 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.DTOs
             map.Status = entity.Status;
             map.Type = entity.Type;
             map.Countries = entity.Countries;
-            map.LastestChapter = mapper.Map<ChapterDto>(entity.LastChapter);
+            map.LastestChapter = new ChapterDto
+            {
+                Id = entity.LastChapterId,
+                Index = entity.LastChapterIndex,
+                CreateDate = entity.LastChapterUpdate,
+                Title = entity.LatestChapterTitle,
+            };
 
             return map;
         }

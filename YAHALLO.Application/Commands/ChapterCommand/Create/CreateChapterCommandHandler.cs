@@ -40,7 +40,7 @@ namespace YAHALLO.Application.Commands.ChapterCommand.Create
             manga.LastChapterId = chapter.Id;
             manga.LastChapterIndex = chapter.Index;
             manga.LastChapterUpdate = chapter.CreateDate;
-            manga.LastChapter = chapter;
+            manga.LatestChapterTitle = chapter.Title;
 
             var result = await _mangaRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
             if (result == 0)

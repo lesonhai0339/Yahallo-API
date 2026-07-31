@@ -27,6 +27,9 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.Property(x => x.MangaBackground)
                 .HasMaxLength(2000);
 
+            builder.Property(x => x.LatestChapterTitle)
+                .IsUnicode(true)
+                .HasMaxLength(2000);
 
             builder.Property(x => x.Name)
                 .IsUnicode(true)
@@ -41,12 +44,6 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasOne(x => x.UserEntity)
                 .WithMany(x => x.MangaEntities)
                 .HasForeignKey(x => x.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder
-                .HasOne(x => x.LastChapter)
-                .WithMany()
-                .HasForeignKey(x => x.LastChapterId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.Country)

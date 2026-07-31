@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Common.Pagination.Pagination;
+using YAHALLO.Application.Queries.Features.Admin.Chapter;
 using YAHALLO.Application.Queries.Features.Public.Chapter;
 using YAHALLO.Application.Queries.Features.Public.Manga.DTOs;
 using YAHALLO.Application.Queries.Features.Public.Tag;
@@ -44,14 +45,12 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.FilterManga
                         UserId = m.UserId,
                         ViewCount = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
                         Rating = m.RatingEntities.Select(x => (int?)x.Rating).Average(),
-                        LastestChapter = m.LastChapter == null ? null : new ChapterDto
+                        LastestChapter = new ChapterDto
                         {
-                            Id = m.LastChapter.Id,
-                            Index = m.LastChapter.Index,
-                            CreateDate = m.LastChapter.CreateDate,
-                            Title = m.LastChapter.Title,
-                            MangaId = m.Id,
-                            MangaName = m.Name
+                            Id = m.LastChapterId,
+                            Index = m.LastChapterIndex,
+                            CreateDate = m.LastChapterUpdate,
+                            Title = m.LatestChapterTitle,
                         },
                         Tags = m.TagEntities.Select(t => new TagDto
                         {

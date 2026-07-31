@@ -34,15 +34,12 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.GetAll
                        Season = m.Season,
                        MangaThumbnail = m.MangaThumbnail,
                        MangaBackground = m.MangaBackground,
-                       ViewCount = m.ViewCount == null ? null : m.ViewCount.TotalCount,
+                       TotalView = m.ViewCount == null ? null : m.ViewCount.TotalCount,
                        Rating = m.RatingEntities.Select(x => (double?)x.Rating).Average(),
-                       UserId = m.UserId,
-                       LastestChapter = m.LastChapter == null ? null : new AdminChapterDto
+                       Owner = new Owner
                        {
-                           Id = m.LastChapter.Id,
-                           Title = m.LastChapter.Title,
-                           CreateDate = m.LastChapter.CreateDate,
-                           Index = m.LastChapter.Index
+                           Id = m.UserEntity.Id,
+                           Name = m.UserEntity.DisplayName
                        },
                        Tags = m.TagEntities.Select(x => new AdminTagDto
                        {

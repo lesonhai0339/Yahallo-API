@@ -30,18 +30,27 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga
         public int Season { get; set; }
         public string? MangaThumbnail { get; set; }
         public string? MangaBackground { get; set; }
-        public long? ViewCount { get; set; }
-        public int? CommentCount { get; set; } 
+        public  int? TotalChapter { get; set; }
+        public long? TotalView { get; set; }
+        public int? TotalComment { get; set; } 
         public double? Rating { get; set; }
-        public string? UserId { get; set; }
-        public AdminChapterDto? LastestChapter { get; set; }
+        public DateTime? CreateDate { get; set; }   
+        public DateTime? UpdateDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
         public List<AdminTagDto>? Tags { get; set; }
         public List<AdminAuthorDto>? Authors { get; set; }
         public List<AdminArtistDto>? Artists { get; set; }
+
+        public Owner? Owner { get; set; } 
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<MangaEntity, AdminMangaDto>();
         }
+    }
+    public class Owner
+    {
+        public string? Id { get; set; }  
+        public string? Name { get; set; }
     }
 }

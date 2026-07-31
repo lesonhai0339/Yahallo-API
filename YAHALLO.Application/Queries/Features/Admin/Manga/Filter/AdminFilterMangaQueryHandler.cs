@@ -46,18 +46,18 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
                        Season = m.Season,
                        MangaThumbnail = m.MangaThumbnail,
                        MangaBackground = m.MangaBackground,
-                       UserId = m.UserId,
-                       ViewCount = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
+
+                       TotalChapter = m.ChaptersEntities.Count(),
+                       TotalComment = m.CommentEntities.Count(),
+                       TotalView = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
                        Rating = m.RatingEntities.Select(x => (int?)x.Rating).Average(),
-                       CommentCount = m.CommentEntities.Count(),
-                       LastestChapter = m.LastChapter == null ? null : new AdminChapterDto
+                       CreateDate = m.CreateDate,
+                       UpdateDate = m.UpdateDate,
+                       DeleteDate = m.DeleteDate,   
+                       Owner = new Owner
                        {
-                           Id = m.LastChapter.Id,
-                           Index = m.LastChapter.Index,
-                           CreateDate = m.LastChapter.CreateDate,
-                           Title = m.LastChapter.Title,
-                           MangaId = m.Id,
-                           MangaName = m.Name
+                           Id = m.UserEntity.Id,
+                           Name = m.UserEntity.DisplayName
                        },
                        Authors = m.AuthorEntities
                         .Select(a => new AdminAuthorDto
@@ -86,7 +86,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
                            Description = t.Tag.Description
                        }).ToList()
                    }),
-               cancellation: cancellationToken,
+                cancellation: cancellationToken,
                ignoreQueryFilters: request.IsDeleted);
 
             return mangas.MapToPagedResult(x => x);
@@ -95,7 +95,9 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
         {
             return request.SortBy switch
             {
-                MangaSortBy.LastUpdate => OrderHelper.ApplyOrder(filter, x => x.LastChapterUpdate, request.ReverseSort),
+                MangaSortBy.LastUpdate => OrderHelper.ApplyOrder(filter, x => x.UpdateDate, request.ReverseSort),
+                MangaSortBy.CreateDate => OrderHelper.ApplyOrder(filter, x => x.CreateDate, request.ReverseSort),
+                MangaSortBy.Deletedate => OrderHelper.ApplyOrder(filter, x => x.DeleteDate, request.ReverseSort),
                 MangaSortBy.Rating => OrderHelper.ApplyOrder(filter, x => x.RatingEntities.Average(x => (double?)x.Rating) ?? 0, request.ReverseSort),
                 MangaSortBy.ViewCount => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.TotalCount, request.ReverseSort),
                 MangaSortBy.CommentCount => OrderHelper.ApplyOrder(filter, x => x.CommentEntities.Count, request.ReverseSort),
@@ -105,8 +107,6 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
         }
         private IQueryable<MangaEntity> ApplyFilter(IQueryable<MangaEntity> query, AdminFilterMangaQuery request)
         {
-            if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.Id == request.MangaId);
-
             if (!string.IsNullOrEmpty(request.Name))
             {
                 var name = request.Name.Trim();

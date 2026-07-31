@@ -8,7 +8,9 @@ namespace YAHALLO.Domain.Enums.MangaEnums
 {
     public enum MangaSortBy
     {
+        CreateDate,
         LastUpdate,
+        Deletedate,
         ViewCount,
         Rating,
         CommentCount,

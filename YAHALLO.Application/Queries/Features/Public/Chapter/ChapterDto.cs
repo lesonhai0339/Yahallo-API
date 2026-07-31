@@ -7,7 +7,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter
 {
     public class ChapterDto : IMapFrom<ChapterEntity>
     {
-        public required string Id { get; set; }
+        public string? Id { get; set; }
         public string? Title { get; set; }
         public int? Index { get; set; }
         public int? SubIndex { get; set; }  
