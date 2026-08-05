@@ -15,7 +15,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetImage
         {
             var images = await _imageRepository
                 .FindAllSelectAsync(x => x
-                    .Where(i => i.ChapterId == request.ChapterId)
+                    .Where(i => i.ChapterId == request.ChapterId && i.ChapterEntity!.MangaId == request.MangaId)
                     .OrderBy(x => x.Index)
                     .Select(x => new ChapterImageDto 
                     { 

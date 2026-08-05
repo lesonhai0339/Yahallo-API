@@ -10,6 +10,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Chapter.GetImage
 {
     public class GetImageQuery: IRequest<List<ChapterImageDto>>
     {
-        public string? ChapterId { get; set; }   
+        public string MangaId { get; set; } = null!;
+        public string ChapterId { get; set; } = null!;
     }
 }

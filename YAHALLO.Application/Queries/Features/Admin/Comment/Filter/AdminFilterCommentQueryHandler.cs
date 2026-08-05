@@ -75,8 +75,8 @@ namespace YAHALLO.Application.Queries.Features.Admin.Comment.Filter
         }
         private IQueryable<CommentEntity> ApplySorting(IQueryable<CommentEntity> query, AdminFilterCommentQuery request)
         {
-            if (!string.IsNullOrEmpty(request.Id)) query = query.Where(x => x.Id.Equals(request.Id));
-            if (!string.IsNullOrEmpty(request.UserId)) query = query.Where(x => x.UserId!.Equals(request.UserId));
+            if (!string.IsNullOrEmpty(request.Id)) query = query.Where(x => x.Id == request.Id);
+            if (!string.IsNullOrEmpty(request.UserId)) query = query.Where(x => x.UserId == request.UserId);
             if (!string.IsNullOrEmpty(request.ChapterId)) query = query.Where(x => x.ChapterId == request.ChapterId);
             if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.MangaId == request.MangaId);
             if (!string.IsNullOrEmpty(request.ParentId))

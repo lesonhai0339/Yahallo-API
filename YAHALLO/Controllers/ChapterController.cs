@@ -10,6 +10,7 @@ using YAHALLO.Application.Commands.ChapterCommand.Update;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Admin.Chapter;
+using YAHALLO.Application.Queries.Features.Admin.Chapter.Filter;
 using YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Chapter.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.Features.Public.Chapter;
@@ -124,6 +125,21 @@ namespace YAHALLO.Controllers
             return Ok(new JsonResponse<List<ChapterImageDto>>(result));
         }
 
+
+        [HttpGet]
+        [Route("chapter/admin/filter")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminChapterDto>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminChapterDto>>>> AdminFilterChapter(
+            [FromQuery] AdminFilterChapterQuery query,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<AdminChapterDto>>(result));
+        }
         [HttpGet]
         [Route("chapter/get-all-deleted")]
         [Authorize(Policy = Policies.ModOrAdmin)]

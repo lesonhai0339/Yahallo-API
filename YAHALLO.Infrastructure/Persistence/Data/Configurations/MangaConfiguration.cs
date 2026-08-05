@@ -18,6 +18,11 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasIndex(x => x.Name);
             builder.HasIndex(x => x.CreateDate);
 
+            builder.HasIndex(x => x.CreateDate);
+
+            builder.HasIndex(x => new { x.DisplayMode, x.LastChapterUpdate, x.Id })
+                   .IsDescending(false, true, true);
+
             builder.Property(x => x.Description)
                 .HasMaxLength(4000);
 

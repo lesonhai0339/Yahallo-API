@@ -27,6 +27,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Chapter.Filter
                     {
                         Id = c.Id,
                         Index = c.Index,
+                        SubIndex = c.SubIndex,  
                         Title = c.Title,
                         MangaId = c.MangaId,
                         CreateDate = c.CreateDate,
@@ -53,6 +54,8 @@ namespace YAHALLO.Application.Queries.Features.Admin.Chapter.Filter
         }
         private IQueryable<ChapterEntity> ApplyFilter(IQueryable<ChapterEntity> query, AdminFilterChapterQuery request)
         {
+            query = query.Where(x => x.MangaId == request.MangaId);
+
             if (request.Index != null) query = query.Where(x => x.Index == request.Index);
             if (!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.MangaId == request.MangaId);
             if (!string.IsNullOrEmpty(request.MangaName)) query = query.Where(x => x.MangaEntity!.Name.Contains(request.MangaName));

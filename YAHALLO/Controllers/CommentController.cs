@@ -145,7 +145,7 @@ namespace YAHALLO.Controllers
 
         [HttpGet]
         [Route("comment/admin/filter")]
-        //[Authorize(Policy = Policies.ModOrAdmin)]
+        [Authorize(Policy = Policies.ModOrAdmin)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminCommentDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

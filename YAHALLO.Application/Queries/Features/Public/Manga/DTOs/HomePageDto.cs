@@ -11,6 +11,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.DTOs
 {
     public class HomePageDto
     {
+        public List<MangaSumaryDto> NewManga { get; set; } = new List<MangaSumaryDto>();
         public List<MangaSumaryDto> LastUpdate { get; set; } = new List<MangaSumaryDto>();
         public List<MangaSumaryDto> Popular { get; set; } = new List<MangaSumaryDto>();
         public List<TagDto> Tags { get; set; } = new List<TagDto>();

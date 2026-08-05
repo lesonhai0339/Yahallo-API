@@ -93,7 +93,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
         }
         private IQueryable<MangaEntity> ApplySorting(IQueryable<MangaEntity> filter, AdminFilterMangaQuery request)
         {
-            return request.SortBy switch
+            var q =  request.SortBy switch
             {
                 MangaSortBy.LastUpdate => OrderHelper.ApplyOrder(filter, x => x.UpdateDate, request.ReverseSort),
                 MangaSortBy.CreateDate => OrderHelper.ApplyOrder(filter, x => x.CreateDate, request.ReverseSort),
@@ -102,21 +102,24 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.Filter
                 MangaSortBy.ViewCount => OrderHelper.ApplyOrder(filter, x => x.ViewCount == null ? 0 : x.ViewCount.TotalCount, request.ReverseSort),
                 MangaSortBy.CommentCount => OrderHelper.ApplyOrder(filter, x => x.CommentEntities.Count, request.ReverseSort),
                 MangaSortBy.ChapterCount => OrderHelper.ApplyOrder(filter, x => x.ChaptersEntities.Count, request.ReverseSort),
-                _ => filter.OrderBy(x => x.Id)
+                _ => OrderHelper.ApplyOrder(filter, x => x.Id, request.ReverseSort)
             };
+            return q.ThenBy(x => x.Id);
         }
         private IQueryable<MangaEntity> ApplyFilter(IQueryable<MangaEntity> query, AdminFilterMangaQuery request)
         {
+
+            if(!string.IsNullOrEmpty(request.MangaId)) query = query.Where(x => x.Id == request.MangaId);   
+
             if (!string.IsNullOrEmpty(request.Name))
             {
                 var name = request.Name.Trim();
                 query = query.Where(x =>
-                    x.Name.Trim().Contains(name)
+                    x.Name.Contains(name)
                     || x.AuthorEntities.Any(a => a.Author.Name.Contains(name))
                     || x.ArtistEntities.Any(a => a.Artist.Name.Contains(name))
                     || x.TagEntities.Any(t => t.Tag.Name.Contains(name)));
             }
-            if (!string.IsNullOrEmpty(request.Name)) query = query.Where(x => x.Name.Trim().Contains(request.Name.Trim()));
             if (request.Level != null) query = query.Where(x => x.Level == request.Level);
             if (request.Status != null) query = query.Where(x => x.Status == request.Status);
             if (request.DisplayMode != null) query = query.Where(x => x.DisplayMode == request.DisplayMode);

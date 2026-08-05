@@ -46,8 +46,48 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
             if (cached != null)
                 return cached;
 
+
+            var now = DateTime.UtcNow;
+            var date = now.Date;
+
+            var startMonth = new DateTime(now.Year, now.Month, 1);
+            var endMonth = startMonth.AddMonths(1);
+
+            var startYear = new DateTime(now.Year, 1, 1);
+            var endYear = startYear.AddYears(1);
+
+
+            //New Manga take 12
+            var newManga = await _mangaRepository.FindAllSelectAsync(
+                pageNo: 1,
+                pageSize: 12,
+                selector: x => x
+                .Where(x => x.DisplayMode == Domain.Enums.MangaEnums.DisplayMode.Visible)
+                .OrderByDescending(m => m.CreateDate).ThenByDescending(m => m.Id)
+                .Select(m => new MangaSumaryDto
+                {
+                    Id = m.Id,
+                    DisplayName = m.Name,
+                    MangaThumbnail = m.MangaThumbnail,
+                    MangaBackground = m.MangaBackground,
+
+                    LastChapterId = m.LastChapterId,
+                    LastChapterIndex = m.LastChapterIndex,
+                    LastChapterUpdate = m.LastChapterUpdate,
+
+                    TotalViews = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
+                    AverageRating = m.RatingEntities.Select(r => (double?)r.Rating).Average() ?? 0,
+                    Tags = m.TagEntities.Select(t => new TagDto
+                    {
+                        Id = t.TagId,
+                        Name = t.Tag.Name,
+                        Description = t.Tag.Description
+                    }).ToList()
+                }),
+                cancellation: cancellationToken);
+
             //Last update take 12
-            var lastUpdate = await _mangaRepository.FindAllSelectAsync(
+            var lastChapterUpdate = await _mangaRepository.FindAllSelectAsync(
                 pageNo: 1,
                 pageSize: 12,
                 selector: x => x
@@ -59,9 +99,11 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
                     DisplayName = m.Name,
                     MangaThumbnail = m.MangaThumbnail,
                     MangaBackground = m.MangaBackground,
+
                     LastChapterId = m.LastChapterId,
                     LastChapterIndex = m.LastChapterIndex,
-                    LastChapterUpdate = m.LastChapterUpdate ?? default,
+                    LastChapterUpdate = m.LastChapterUpdate,
+
                     TotalViews = m.ViewCount == null ? 0 : m.ViewCount.TotalCount,
                     AverageRating = m.RatingEntities.Select(r => (double?)r.Rating).Average() ?? 0,
                     Tags = m.TagEntities.Select(t => new TagDto
@@ -108,15 +150,6 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
                     Description = t.Description,    
                 }),
                 cancellationToken);
-
-            var now = DateTime.UtcNow;
-            var date = now.Date;
-
-            var startMonth = new DateTime(now.Year, now.Month,1);
-            var endMonth = startMonth.AddMonths(1);
-
-            var startYear = new DateTime(now.Year, 1,1);
-            var endYear = startYear.AddYears(1);    
 
             var topByDate = await _mangaDaily.
                 FindAllSelectAsync(
@@ -169,7 +202,8 @@ namespace YAHALLO.Application.Queries.Features.Public.Manga.GetHomepage
 
             var homepage = new HomePageDto
             {
-                LastUpdate = lastUpdate.MapToPagedResult(x => x).Data.ToList(),
+                NewManga = newManga.MapToPagedResult(x => x).Data.ToList(), 
+                LastUpdate = lastChapterUpdate.MapToPagedResult(x => x).Data.ToList(),
                 Popular = popular.MapToPagedResult(x => x).Data.ToList(),
                 Tags = tags,
                 TopMangaByDate = topByDate.MapToPagedResult(x => x).Data.ToList(),

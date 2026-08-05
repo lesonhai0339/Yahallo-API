@@ -8,6 +8,7 @@ using YAHALLO.Application.Commands.FollowCommand.Restore;
 using YAHALLO.Application.Common.Authorization;
 using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Admin.Follow;
+using YAHALLO.Application.Queries.Features.Admin.Follow.Filter;
 using YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeletedPagination;
 using YAHALLO.Application.Queries.Features.Public.Follow;
@@ -91,6 +92,21 @@ namespace YAHALLO.Controllers
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<FollowMangaDto>>(result));
         }
+        [HttpGet]
+        [Route("follow-manga/admin/filter")]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminFollowDto>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminFollowDto>>>> AdminFilter(
+            [FromQuery] AdminFilterFollowQuery query,   
+      CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<AdminFollowDto>>(result));
+        }
+
 
         [HttpGet]
         [Route("follow-manga/get-all-deleted")]

@@ -23,11 +23,15 @@ namespace YAHALLO.Application.Queries.Features.Admin.Follow.GetAllDeletedPaginat
                 {
                     MangaId = t.MangaId,
                     UserId = t.UserId,
+                    UserAvatar = t.User.AvatarThumbnail,
+
                     MangaThumbnail = t.Manga.MangaThumbnail,
                     MangaBackground = t.Manga.MangaBackground,
                     UserName = t.User.DisplayName,
                     MangaName = t.Manga.Name,
-                    LastUpdate = t.Manga.LastChapterUpdate
+                    CreateDate = t.CreateDate,
+                    UpdateDate = t.UpdateDate,
+                    DeleteDate = t.DeleteDate,
                 }),
             cancellation:   cancellationToken,
             ignoreQueryFilters: true);

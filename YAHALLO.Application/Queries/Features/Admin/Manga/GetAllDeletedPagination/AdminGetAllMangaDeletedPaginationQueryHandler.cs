@@ -21,7 +21,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Manga.GetAllDeletedPaginati
                   pageNo: request.PageNo,
                   pageSize: request.PageSize,
                   selector: x => x
-                      .Where(m => !string.IsNullOrEmpty(m.IdUserDelete) && m.DeleteDate.HasValue)
+                      .Where(m => m.DeleteDate.HasValue)
                       .Select(m => new AdminMangaDto
                       {
                           Id = m.Id,

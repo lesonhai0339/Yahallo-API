@@ -20,6 +20,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.User
         public string? Background { get; set; }
         public UserStatus? Status { get; set; }
         public UserLevel? Level { get; set; }
+        public string[] Roles { get; set; } = null!;    
         public void Mapping(Profile profile)
         {
             profile.CreateMap<UserEntity, AdminUserDto>();

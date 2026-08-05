@@ -20,6 +20,7 @@ using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Admin.User;
 using YAHALLO.Application.Queries.Features.Admin.User.GetAllDeleted;
 using YAHALLO.Application.Queries.Features.Admin.User.GetAllDeletedPagination;
+using YAHALLO.Application.Queries.Features.Admin.User.GetAllPagination;
 using YAHALLO.Application.Queries.Features.Admin.User.GetByIdDeleted;
 using YAHALLO.Application.Queries.Features.Admin.User.NewCount;
 using YAHALLO.Application.Queries.Features.Public.User.DTOs;
@@ -363,6 +364,21 @@ namespace YAHALLO.Controllers
 
 
 
+
+        [HttpGet]
+        [Authorize(Policy = Policies.ModOrAdmin)]
+        [Route("user/admin/get-all-pagination")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<AdminUserDto>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<JsonResponse<PagedResult<AdminUserDto>>>> AdminGetAllPagination(
+           [FromQuery] AdminGetAllUserPaginationQuery query,
+        CancellationToken cancellationToken = default)
+        {
+            var result = await _Sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<AdminUserDto>>(result));
+        }
 
         [HttpGet]
         [Authorize(Policy = Policies.ModOrAdmin)]

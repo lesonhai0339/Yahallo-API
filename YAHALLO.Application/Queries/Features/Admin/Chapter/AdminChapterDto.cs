@@ -9,7 +9,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.Chapter
         public string? Id { get; set; }
         public string? Title { get; set; }
         public int? Index { get; set; }
-
+        public int? SubIndex { get; set; }      
         public string MangaId { get; set; } = null!;
         public string? MangaName { get; set; }
         public string UserId { get; set; } = null!;

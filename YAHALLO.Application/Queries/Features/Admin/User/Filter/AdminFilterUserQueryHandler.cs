@@ -52,6 +52,7 @@ namespace YAHALLO.Application.Queries.Features.Admin.User.Filter
         }
         private IQueryable<UserEntity> ApplyFilter(IQueryable<UserEntity> query, AdminFilterUserQuery request)
         {
+
             if (!string.IsNullOrEmpty(request.Email)) query = query.Where(x => x.Email == request.Email);
 
             if (!string.IsNullOrEmpty(request.Phone)) query = query.Where(x => x.PhoneNumber == request.Phone);
