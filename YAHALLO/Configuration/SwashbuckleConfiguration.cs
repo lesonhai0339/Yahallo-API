@@ -31,7 +31,7 @@ namespace YAHALLO.Configuration
                     var applicationXmlFile = Path.Combine(AppContext.BaseDirectory, $"{typeof(DependencyInjection).Assembly.GetName().Name}.xml");
                     if (File.Exists(applicationXmlFile))
                     {
-                        options.IncludeXmlComments(applicationXmlFile);
+                        options.IncludeXmlComments(applicationXmlFile, includeControllerXmlComments: true);
                     }
                     options.OperationFilter<AuthorizeCheckOperationFilter>();
 

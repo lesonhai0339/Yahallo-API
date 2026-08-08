@@ -33,7 +33,7 @@ namespace YAHALLO.Application.Queries.Features.Public.Artist.FilterArtist
                 cancellationToken
                 );
 
-            return artists.MapToPagedResult(x => x);
+            return artists.ToPagedResult();
         }
         private IQueryable<ArtistEntity> ApplyFilter(IQueryable<ArtistEntity> query, FilterArtistQuery request)
         {

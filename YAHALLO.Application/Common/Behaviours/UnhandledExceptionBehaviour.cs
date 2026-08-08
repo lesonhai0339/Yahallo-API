@@ -28,7 +28,7 @@ namespace YAHALLO.Application.Common.Behaviours
             {
                 var requestName = typeof(TRequest).Name;
 
-                _logger.LogError(ex, "Yahallo Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
+                _logger.LogError(ex, "Assistant Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
 
                 throw;
             }

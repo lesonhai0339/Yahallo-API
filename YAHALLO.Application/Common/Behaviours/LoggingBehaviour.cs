@@ -25,7 +25,7 @@ namespace YAHALLO.Application.Common.Behaviours
             var requestName = typeof(TRequest).Name;
             var userId = _currentUserService.UserId ?? string.Empty;
 
-            _logger.LogInformation("Yahallo Request: {Name} {@UserId} {@Request}",
+            _logger.LogInformation("Assistant Request: {Name} {@UserId} {@Request}",
                 requestName, userId, request);
             return Task.CompletedTask;
         }

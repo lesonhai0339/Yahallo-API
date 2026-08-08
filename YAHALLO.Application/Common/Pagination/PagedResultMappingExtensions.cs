@@ -29,5 +29,14 @@ namespace YAHALLO.Application.Common.Pagination.Pagination
                 pageNumber: pagedResult.PageNo,
                 data: data);
         }
+        public static PagedResult<T> ToPagedResult<T>(this IPagedResult<T> pagedResult)
+        {
+            return PagedResult<T>.Create(
+                totalCount: pagedResult.TotalCount,
+                pageCount: pagedResult.PageCount,
+                pageSize: pagedResult.PageSize,
+                pageNumber: pagedResult.PageNo,
+                data: pagedResult.ToList());
+        }
     }
 }

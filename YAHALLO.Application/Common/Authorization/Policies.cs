@@ -5,13 +5,13 @@ namespace YAHALLO.Application.Common.Authorization
     /// Dùng const string thay magic string — xài được cả [Authorize(Policy = ...)]
     /// lẫn AuthorizeAsync(...).
     /// </summary>
-    public static class Policies
-    {
-        public const string Admin = "Admin";
-        public const string Mod = "Mod";
-        public const string User = "User";
-        public const string Trans = "Trans";
-        public const string ModOrAdmin = "ModOrAdmin";
-        public const string TransOrAdmin = "TransOrAdmin";
-    }
+        public static class Policies
+        {
+            public const string AdminOnly = "Admin";
+            public const string ModOnly = "Mod";
+            public const string User = "User";
+            public const string Trans = "Trans";
+            public const string ModOrAdmin = "ModOrAdmin";
+            public const string TransOrAdmin = "TransOrAdmin";
+        }
 }
