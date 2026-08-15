@@ -8,6 +8,7 @@ using YAHALLO.Application.Common.Pagination;
 using YAHALLO.Application.Queries.Features.Public.ReadingProgress;
 using YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUser;
 using YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUserPagination;
+using YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetReadHistoryByUser;
 using YAHALLO.Services;
 
 namespace YAHALLO.Controllers
@@ -53,6 +54,17 @@ namespace YAHALLO.Controllers
         {
             var result = await _sender.Send(query, cancellationToken);
             return Ok(new JsonResponse<PagedResult<ReadingProgressDto>>(result));
+        }
+        [HttpGet]
+        [Route("reading-progress/get-by-user")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(JsonResponse<PagedResult<GetUserReadingHistoryResult>>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<JsonResponse<PagedResult<GetUserReadingHistoryResult>>>> GetByUser(
+          [FromQuery] GetUserReadingHistoryQuery query,
+          CancellationToken cancellationToken = default)
+        {
+            var result = await _sender.Send(query, cancellationToken);
+            return Ok(new JsonResponse<PagedResult<GetUserReadingHistoryResult>>(result));
         }
     }
 }

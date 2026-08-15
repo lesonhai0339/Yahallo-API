@@ -416,6 +416,22 @@ namespace YAHALLO.Infrastructure.Persistence.Repositories
                 cancellation
                 );
         }
+        public async Task<IPagedResult<TResult>> FindAllSelectAsync<TResult>(
+         int pageNo, int pageSize,
+         Expression<Func<TPersistence, TResult>> selector,
+         Func<IQueryable<TPersistence>, IQueryable<TPersistence>>? queryOptions = null,
+         bool ignoreQueryFilters = false,
+         CancellationToken cancellation = default)
+        {
+            var query = CreateQuery(ignoreQueryFilters);
+            if (queryOptions is not null) query = queryOptions(query);
+            return await PagedList<TResult>.CreateAsync(
+                query.Select(selector),
+                pageNo,
+                pageSize,
+                cancellation
+                );
+        }
         public virtual async Task<IPagedResult<TDomain>> FindAllAsync(
             IQueryable<TPersistence> filterExpression,
             int pageNo,

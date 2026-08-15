@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Domain.Repositories
 {
@@ -102,5 +96,6 @@ namespace YAHALLO.Domain.Repositories
         Task<TResult?> FindSelectAsync<TResult>(Func<IQueryable<TPersistence>, IQueryable<TResult>> selector, CancellationToken cancellationToken = default, bool ignoreQueryFilters = false);
         bool Any(Expression<Func<TPersistence, bool>> filterExpression);
         Task<TDomain?> WhenAll(Expression<Func<TPersistence, bool>> filterExpression, CancellationToken cancellationToken = default);
+        Task<IPagedResult<TResult>> FindAllSelectAsync<TResult>(int pageNo, int pageSize, Expression<Func<TPersistence, TResult>> selector, Func<IQueryable<TPersistence>, IQueryable<TPersistence>>? queryOptions = null, bool ignoreQueryFilters = false, CancellationToken cancellation = default);
     }
 }

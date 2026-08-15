@@ -64,6 +64,7 @@ namespace YAHALLO.Application.Commands.ChapterImageCommand.Create
                 }
             }).ToList();
 
+            //chapter.TotalImage += pairs.Count;
             chapter.ImagesEntities = pairs.Select(x => x.Entity).ToList();
             _chapterRepository.Update(chapter); 
 
@@ -75,7 +76,7 @@ namespace YAHALLO.Application.Commands.ChapterImageCommand.Create
                 {
                     Id = x.Entity.Id,  
                     Index = x.Entity.Index,
-                    UploadUrl = x.UploadUrl,
+                    UploadUrl = x.UploadUrl!,
                     ChapterId = x.Entity.ChapterId
                 }).ToList()
             };

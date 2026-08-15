@@ -26,7 +26,7 @@ namespace YAHALLO.Application.Queries.Features.Public.ReadingProgress.GetByUserP
             var readingProgresses = await _readingProgressRepository.FindAllSelectAsync(
                 pageNo: request.PageNo,
                 pageSize: request.PageSize,
-                selector: q => 
+                selector: q =>
                     ApplyGroupSorting(ApplyFilter(q, request).GroupBy(r => r.MangaId), request)
                     .Select(g => g
                         .OrderByDescending(r => r.LastReadAt)

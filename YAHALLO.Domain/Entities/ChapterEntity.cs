@@ -13,13 +13,13 @@ namespace YAHALLO.Domain.Entities
         public string? Title { get; set; }
         public int Index { get;set; }
         public int SubIndex { get;set; }    
-
+        //public int TotalImage { get; set; } 
         public string MangaId { get; set; } = null!;
         public virtual MangaEntity? MangaEntity { get; set; }
         public virtual ViewCountEntity? ViewCount { get;set; }  
         
-        public virtual ICollection<ChapterImageEntity>? ImagesEntities { get; set; } = new List<ChapterImageEntity>();    
-        public virtual ICollection<CommentEntity>? CommentEntities { get; set; } = new List<CommentEntity>();   
+        public virtual ICollection<ChapterImageEntity> ImagesEntities { get; set; } = new List<ChapterImageEntity>();    
+        public virtual ICollection<CommentEntity> CommentEntities { get; set; } = new List<CommentEntity>();   
         public virtual ICollection<RatingEntity> RatingEntities { get; set; } = new List<RatingEntity>();
         public virtual ICollection<ReactionEntity> Reactions { get; set; } = new List<ReactionEntity>();
         public virtual ICollection<BookmarkEntity> Bookmarks { get; set; } = new List<BookmarkEntity>();

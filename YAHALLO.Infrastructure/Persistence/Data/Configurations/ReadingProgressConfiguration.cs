@@ -13,10 +13,10 @@ namespace YAHALLO.Infrastructure.Persistence.Data.Configurations
             builder.HasKey(e => new { e.UserId, e.MangaId, e.ChapterId });
 
             builder.HasIndex(x => new { x.UserId, x.LastReadAt })
-.IncludeProperties(x => new { x.MangaId, x.ChapterId, x.LastPage });
+                .IncludeProperties(x => new { x.MangaId, x.ChapterId, x.LastPage });
 
             builder.HasOne(e => e.User)
-                .WithMany()
+                .WithMany(e => e.ReadingProgressEntities)
                 .HasForeignKey(e => e.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 

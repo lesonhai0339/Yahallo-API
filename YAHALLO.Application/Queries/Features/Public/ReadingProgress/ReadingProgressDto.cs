@@ -1,6 +1,7 @@
 //AI generated
 using AutoMapper;
 using YAHALLO.Application.Common.Mappings;
+using YAHALLO.Application.Queries.Features.Public.Chapter;
 using YAHALLO.Domain.Entities;
 
 namespace YAHALLO.Application.Queries.Features.Public.ReadingProgress
@@ -15,7 +16,6 @@ namespace YAHALLO.Application.Queries.Features.Public.ReadingProgress
         public int? ChapterIndex { get; set; } = null!; 
         public int LastPage { get; set; }
         public DateTime LastReadAt { get; set; }
-
         public void Mapping(Profile profile)
         {
             profile.CreateMap<ReadingProgressEntity, ReadingProgressDto>();
